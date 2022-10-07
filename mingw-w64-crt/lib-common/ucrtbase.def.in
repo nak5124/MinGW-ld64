@@ -28,7 +28,7 @@ _CreateFrameInfo
 F_I386(_CxxThrowException@8)
 F_NON_I386(_CxxThrowException)
 F_I386(_EH_prolog)
-_Exit
+_Exit DATA
 _FCbuild
 _FCmulcc
 _FCmulcr
@@ -298,7 +298,7 @@ _execv
 _execve
 _execvp
 _execvpe
-_exit
+_exit DATA
 _expand
 _fclose_nolock
 _fcloseall
@@ -2296,7 +2296,7 @@ erfcf
 F_ARM_ANY(erfcl) ; Can't use long double functions from the CRT on x86
 erff
 F_ARM_ANY(erfl) ; Can't use long double functions from the CRT on x86
-exit
+exit DATA
 exp
 exp2
 exp2f
@@ -2486,7 +2486,7 @@ putwc
 putwchar
 qsort
 qsort_s
-quick_exit
+quick_exit DATA
 raise
 rand
 rand_s

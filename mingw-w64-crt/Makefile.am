@@ -83,7 +83,7 @@ src_libmingw32=include/oscalls.h include/internal.h include/sect_attribs.h \
   crt/usermatherr.c   \
   crt/xtxtmode.c      crt/crt_handler.c    \
   crt/tlsthrd.c       crt/tlsmthread.c     crt/tlsmcrt.c   \
-  crt/cxa_atexit.c    crt/cxa_thread_atexit.c crt/tls_atexit.c
+  crt/cxa_atexit.c    crt/cxa_thread_atexit.c   crt/tls_atexit.c   crt/exit_wrappers.c   crt/ucrt_exit_wrappers.c
 
 src_libscrnsave=libsrc/scrnsave.c
 src_libscrnsavw=libsrc/scrnsave.c
