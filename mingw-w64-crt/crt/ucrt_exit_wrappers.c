@@ -7,6 +7,9 @@
 #undef __MSVCRT_VERSION__
 #define _UCRT
 #include <_mingw.h>
+#ifdef __USING_MCFGTHREAD__
+#include <mcfgthread/exit.h>
+#endif
 
 /* `quick_exit()`, C99  */
 void quick_exit(int status) __attribute__((__noreturn__));
@@ -14,7 +17,11 @@ extern void (*__MINGW_IMP_SYMBOL(quick_exit))(int) __attribute__((__noreturn__))
 
 void quick_exit(int status)
 {
+#ifdef __USING_MCFGTHREAD__
+  __MCF_quick_exit(status);
+#else
   (*__MINGW_IMP_SYMBOL(quick_exit))(status);
+#endif
 }
 
 /* `_Exit()`, C99  */
@@ -23,5 +30,9 @@ extern void (*__MINGW_IMP_SYMBOL(_Exit))(int) __attribute__((__noreturn__));
 
 void _Exit(int status)
 {
+#ifdef __USING_MCFGTHREAD__
+  __MCF__Exit(status);
+#else
   (*__MINGW_IMP_SYMBOL(_Exit))(status);
+#endif
 }
