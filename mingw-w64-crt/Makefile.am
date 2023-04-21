@@ -306,7 +306,9 @@ src_libmingwex=\
   stdio/mingw_vsnprintf.c  stdio/mingw_vsnprintfw.c  stdio/mingw_vsprintf.c   stdio/mingw_vsprintfw.c   stdio/mingw_wscanf.c    \
   stdio/mingw_wvfscanf.c   stdio/truncate.c          \
   stdio/vasprintf.c        \
-  stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c
+  stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c \
+  \
+  time/clock.c             time/nanosleep.c
 
 # Include the default load config struct only for Control Flow Guard support.
 if CFGUARD
