@@ -387,13 +387,13 @@ __MINGW_BEGIN_C_DECLS
   void __cdecl __debugbreak(void);
   __MINGW_INTRIN_INLINE void __cdecl __debugbreak(void)
   {
-#ifdef __x86_64__
-    __asm__ __volatile__("int {$}3":);
-#elif defined(__aarch64__)
+#if defined(__aarch64__) || defined(__arm64ec__)
     __asm__ __volatile__("brk #0xf000");
+#elif defined(__x86_64__)
+    __asm__ __volatile__("int {$}3":);
 #else
     __asm__ __volatile__("unimplemented");
-#endif  /* __x86_64__ */
+#endif
 }
 #endif  /* __MINGW_DEBUGBREAK_IMPL == 1 */
 
@@ -407,14 +407,14 @@ __MINGW_BEGIN_C_DECLS
   __MINGW_INTRIN_INLINE __MINGW_NORETURN
   void __cdecl __fastfail(unsigned int __code)
   {
-#ifdef __x86_64__
+#if defined(__aarch64__) || defined(__arm64ec__)
+    register unsigned int w0 __asm__("w0") = __code;
+    __asm__ __volatile__("brk #0xf003"::"r"(w0));
+#elif defined(__x86_64__)
     __asm__ __volatile__("int {$}0x29"::"c"(__code));
-#elif defined(__aarch64__)
-    register unsigned int __w0 __asm__("__w0") = __code;
-    __asm__ __volatile__("brk #0xf003"::"r"(__w0));
 #else
     __asm__ __volatile__("unimplemented");
-#endif  /* __x86_64__ */
+#endif
     __builtin_unreachable();
   }
 #endif  /* __MINGW_FASTFAIL_IMPL == 1 */
