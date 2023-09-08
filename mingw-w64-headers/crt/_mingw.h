@@ -424,7 +424,7 @@ __MINGW_BEGIN_C_DECLS
 #else
 # define __MINGW_PREFETCH_IMPL 1
 #endif  /* __has_builtin */
-#if __MINGW_PREFETCH_IMPL == 1 && defined(__aarch64__)
+#if __MINGW_PREFETCH_IMPL == 1 && (defined(__aarch64__) || defined(__arm64ec__))
   void __cdecl __prefetch(const void *__addr);
   __MINGW_INTRIN_INLINE void __cdecl __prefetch(const void *__addr)
   {
