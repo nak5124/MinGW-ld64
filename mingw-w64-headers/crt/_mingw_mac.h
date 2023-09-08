@@ -59,6 +59,13 @@
 # endif
 #endif
 
+#ifdef __arm64ec__
+# define _M_ARM64EC 1
+# ifndef _ARM64EC_
+#   define _ARM64EC_ 1
+# endif
+#endif
+
 #define __MINGW_IMP_SYMBOL(sym)  __imp_##sym
 #define __MINGW_IMP_LSYMBOL(sym) __imp_##sym
 #define __MINGW_USYMBOL(sym)     sym

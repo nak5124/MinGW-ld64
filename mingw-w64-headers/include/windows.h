@@ -51,6 +51,12 @@
 # endif
 #endif
 
+#ifdef __arm64ec__
+# ifndef _ARM64EC_
+#   define _ARM64EC_ 1
+# endif
+#endif
+
 #ifndef RC_INVOKED
 # include <excpt.h>
 # include <stdarg.h>
