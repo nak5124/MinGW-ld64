@@ -10,9 +10,9 @@
       implementations.  No special #defines are needed for this case.
 
    2) Included from the library versions of these functions (ie mingw-w64-crt\intrincs\*.c).  All
-      intrinsics in this file must also be included in the library.  In this case, only the 
+      intrinsics in this file must also be included in the library.  In this case, only the
       specific functions requested will get defined, and they will not be defined as inline.  If
-      you have followed the instructions (below) for adding functions to this file, then all you 
+      you have followed the instructions (below) for adding functions to this file, then all you
       need to have in the .c file is the following:
 
       #define __INTRINSIC_ONLYSPECIAL
@@ -22,13 +22,13 @@
 
    3) Included from various platform sdk headers.  Some platform sdk headers (such as winnt.h)
       define a subset of intrinsics.  To avoid potential conflicts, this file is designed to
-      allow for specific subsets of functions to be defined.  This is done by defining the 
+      allow for specific subsets of functions to be defined.  This is done by defining the
       appropriate variable before including this file:
 
       #define __INTRINSIC_GROUP_WINNT
       #include <psdk_inc/intrin-impl.h>
 
-   In all cases, it is acceptable to include this file multiple times in any order (ie include 
+   In all cases, it is acceptable to include this file multiple times in any order (ie include
    winnt.h to get its subset, then include intrin.h to get everything, or vice versa).
 
    See also the comments at the top of intrin.h.
@@ -38,14 +38,14 @@
    If the function you are adding is not in intrin.h, you should not be adding it to this file.  This file is only
    for MSVC intrinsics.
 
-   Make sure you put your definition in the right section (x86 vs x64), and use this outline when adding definitions 
+   Make sure you put your definition in the right section (x86 vs x64), and use this outline when adding definitions
    to this file:
 
 #if __INTRINSIC_PROLOG(__int2c)
 
 <prototype goes here>
 
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 <code goes here>
 
 #define __INTRINSIC_DEFINED___int2c
@@ -78,7 +78,7 @@ __INTRINSICS_USEINLINE
 #pragma GCC diagnostic ignored "-Wexpansion-to-defined"
 #endif
 
-/* These macros are used by the routines below.  While this file may be included 
+/* These macros are used by the routines below.  While this file may be included
    multiple times, these macros only need to be defined once. */
 #ifndef _INTRIN_MAC_
 #define _INTRIN_MAC_
@@ -134,7 +134,7 @@ __INTRINSICS_USEINLINE
    FunctionName: Any valid function name
    DataType: __LONG32 or __int64
    OffsetConstraint: either "I" for 32bit data types or "J" for 64. */
-#if defined(__x86_64__) || defined(_AMD64_)
+#if (defined(__x86_64__) && !defined(__arm64ec__)) || (defined(_AMD64_) && !defined(_ARM64EC_))
 #define __buildbittesti(x, y, z, a) unsigned char x(y volatile *Base, y Offset) \
 { \
    unsigned char old; \
@@ -144,7 +144,7 @@ __INTRINSICS_USEINLINE
       : "memory" __FLAGCLOBBER1); \
    return old; \
 }
-#elif defined(__aarch64__) || defined(_ARM64_)
+#elif defined(__aarch64__) || defined(_ARM64_) || defined(__arm64ec__) || defined(_ARM64EC_)
 #define __buildbittesti(x, y, z, a) unsigned char x(y volatile *Base, y Offset) \
 { \
    unsigned int old, tmp1, tmp2; \
@@ -180,7 +180,7 @@ __INTRINSICS_USEINLINE
       : "memory", "cc"); \
    return (old >> Offset) & 1; \
 }
-#endif /* defined(__x86_64__) || defined(_AMD64_) */
+#endif  /* (defined(__x86_64__) && !defined(__arm64ec__)) || (defined(_AMD64_) && !defined(_ARM64EC_)) */
 
 /* This macro is used by YieldProcessor when compiling x86 w/o SSE2.
 It generates the same opcodes as _mm_pause.  */
@@ -192,7 +192,7 @@ Parameters: (IntNum)
 IntNum: Interrupt number in hex */
 #define __buildint(a) __asm__ __volatile__("int {$}" #a :)
 
-/* This macro is used by MemoryBarrier when compiling x86 w/o SSE2. 
+/* This macro is used by MemoryBarrier when compiling x86 w/o SSE2.
 Note that on i386, xchg performs an implicit lock. */
 #define __buildmemorybarrier() \
 { \
@@ -429,7 +429,7 @@ supports ReadWriteBarrier, map all 3 to do the same. */
 /* The logic for this macro is:
    if the function is not yet defined AND
    (
-       (if we are not just defining special OR 
+       (if we are not just defining special OR
            (we are defining special AND this is one of the ones we are defining)
        )
    )
@@ -456,7 +456,7 @@ supports ReadWriteBarrier, map all 3 to do the same. */
    If no groups are defined (such as what happens when including intrin.h),
    all intrinsics are defined.   */
 
-/* If __INTRINSIC_ONLYSPECIAL is defined at this point, we are processing case 2.  In 
+/* If __INTRINSIC_ONLYSPECIAL is defined at this point, we are processing case 2.  In
    that case, don't go looking for groups */
 #ifndef __INTRINSIC_ONLYSPECIAL
 
@@ -652,7 +652,7 @@ unsigned short _rotr16(unsigned short __X, unsigned char __C)
 #define __INTRINSIC_DEFINED__rotr16
 #endif /* __INTRINSIC_PROLOG */
 
-#if defined(__x86_64__) || defined(_AMD64_)
+#if (defined(__x86_64__) && !defined(__arm64ec__)) || (defined(_AMD64_) && !defined(_ARM64EC_))
 
 #if __INTRINSIC_PROLOG(__faststorefence)
 void __faststorefence(void);
@@ -670,7 +670,7 @@ void __faststorefence(void) {
 #if __INTRINSIC_PROLOG(__stosq)
 __MINGW_EXTENSION void __stosq(unsigned __int64 *, unsigned __int64, size_t);
 #if !__has_builtin(__stosq)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildstos(__stosq, unsigned __int64, "q|q")
 #endif
 #define __INTRINSIC_DEFINED___stosq
@@ -679,7 +679,7 @@ __buildstos(__stosq, unsigned __int64, "q|q")
 #if __INTRINSIC_PROLOG(_interlockedbittestandset64)
 __MINGW_EXTENSION unsigned char _interlockedbittestandset64(__int64 volatile *a, __int64 b);
 #if !__has_builtin(_interlockedbittestandset64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(_interlockedbittestandset64, __int64, "lock bts{q %[Offset],%[Base] | %[Base],%[Offset]}" __FLAGSET, "J")
 #endif
 #define __INTRINSIC_DEFINED__interlockedbittestandset64
@@ -688,7 +688,7 @@ __buildbittesti(_interlockedbittestandset64, __int64, "lock bts{q %[Offset],%[Ba
 #if __INTRINSIC_PROLOG(_interlockedbittestandreset64)
 __MINGW_EXTENSION unsigned char _interlockedbittestandreset64(__int64 volatile *a, __int64 b);
 #if !__has_builtin(_interlockedbittestandreset64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(_interlockedbittestandreset64, __int64, "lock btr{q %[Offset],%[Base] | %[Base],%[Offset]}" __FLAGSET, "J")
 #endif
 #define __INTRINSIC_DEFINED__interlockedbittestandreset64
@@ -697,7 +697,7 @@ __buildbittesti(_interlockedbittestandreset64, __int64, "lock btr{q %[Offset],%[
 #if __INTRINSIC_PROLOG(_interlockedbittestandcomplement64)
 __MINGW_EXTENSION unsigned char _interlockedbittestandcomplement64(__int64 volatile *a, __int64 b);
 #if !__has_builtin(_interlockedbittestandcomplement64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(_interlockedbittestandcomplement64, __int64, "lock btc{q %[Offset],%[Base] | %[Base],%[Offset]}" __FLAGSET, "J")
 #endif
 #define __INTRINSIC_DEFINED__interlockedbittestandcomplement64
@@ -706,7 +706,7 @@ __buildbittesti(_interlockedbittestandcomplement64, __int64, "lock btc{q %[Offse
 #if __INTRINSIC_PROLOG(InterlockedBitTestAndSet64)
 __MINGW_EXTENSION unsigned char InterlockedBitTestAndSet64(volatile __int64 *a, __int64 b);
 #if !__has_builtin(InterlockedBitTestAndSet64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(InterlockedBitTestAndSet64, __int64, "lock bts{q %[Offset],%[Base] | %[Base],%[Offset]}" __FLAGSET, "J")
 #endif
 #define __INTRINSIC_DEFINED_InterlockedBitTestAndSet64
@@ -715,7 +715,7 @@ __buildbittesti(InterlockedBitTestAndSet64, __int64, "lock bts{q %[Offset],%[Bas
 #if __INTRINSIC_PROLOG(InterlockedBitTestAndReset64)
 __MINGW_EXTENSION unsigned char InterlockedBitTestAndReset64(volatile __int64 *a, __int64 b);
 #if !__has_builtin(InterlockedBitTestAndReset64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(InterlockedBitTestAndReset64, __int64, "lock btr{q %[Offset],%[Base] | %[Base],%[Offset]}" __FLAGSET, "J")
 #endif
 #define __INTRINSIC_DEFINED_InterlockedBitTestAndReset64
@@ -724,7 +724,7 @@ __buildbittesti(InterlockedBitTestAndReset64, __int64, "lock btr{q %[Offset],%[B
 #if __INTRINSIC_PROLOG(InterlockedBitTestAndComplement64)
 __MINGW_EXTENSION unsigned char InterlockedBitTestAndComplement64(volatile __int64 *a, __int64 b);
 #if !__has_builtin(InterlockedBitTestAndComplement64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(InterlockedBitTestAndComplement64, __int64, "lock btc{q %[Offset],%[Base] | %[Base],%[Offset]}" __FLAGSET, "J")
 #endif
 #define __INTRINSIC_DEFINED_InterlockedBitTestAndComplement64
@@ -733,7 +733,7 @@ __buildbittesti(InterlockedBitTestAndComplement64, __int64, "lock btc{q %[Offset
 #if __INTRINSIC_PROLOG(_InterlockedAnd64)
 __MINGW_EXTENSION __int64 _InterlockedAnd64(__int64 volatile *, __int64);
 #if !__has_builtin(_InterlockedAnd64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedAnd64, __int64, and)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedAnd64
@@ -742,7 +742,7 @@ __buildlogicali(_InterlockedAnd64, __int64, and)
 #if __INTRINSIC_PROLOG(_InterlockedOr64)
 __MINGW_EXTENSION __int64 _InterlockedOr64(__int64 volatile *, __int64);
 #if !__has_builtin(_InterlockedOr64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedOr64, __int64, or)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedOr64
@@ -751,7 +751,7 @@ __buildlogicali(_InterlockedOr64, __int64, or)
 #if __INTRINSIC_PROLOG(_InterlockedXor64)
 __MINGW_EXTENSION __int64 _InterlockedXor64(__int64 volatile *, __int64);
 #if !__has_builtin(_InterlockedXor64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedXor64, __int64, xor)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedXor64
@@ -760,7 +760,7 @@ __buildlogicali(_InterlockedXor64, __int64, xor)
 #if __INTRINSIC_PROLOG(_InterlockedIncrement64)
 __MINGW_EXTENSION __int64 _InterlockedIncrement64(__int64 volatile *Addend);
 #if !__has_builtin(_InterlockedIncrement64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedIncrement64(__int64 volatile *Addend) {
     return __sync_add_and_fetch(Addend, 1);
 }
@@ -771,7 +771,7 @@ __int64 _InterlockedIncrement64(__int64 volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedDecrement64)
 __MINGW_EXTENSION __int64 _InterlockedDecrement64(__int64 volatile *Addend);
 #if !__has_builtin(_InterlockedDecrement64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedDecrement64(__int64 volatile *Addend) {
     return __sync_sub_and_fetch(Addend, 1);
 }
@@ -782,7 +782,7 @@ __int64 _InterlockedDecrement64(__int64 volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedExchange64)
 __MINGW_EXTENSION __int64 _InterlockedExchange64(__int64 volatile *Target, __int64 Value);
 #if !__has_builtin(_InterlockedExchange64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedExchange64(__int64 volatile *Target, __int64 Value) {
     return __sync_lock_test_and_set(Target, Value);
 }
@@ -793,7 +793,7 @@ __int64 _InterlockedExchange64(__int64 volatile *Target, __int64 Value) {
 #if __INTRINSIC_PROLOG(_InterlockedExchangeAdd64)
 __MINGW_EXTENSION __int64 _InterlockedExchangeAdd64(__int64 volatile *Addend, __int64 Value);
 #if !__has_builtin(_InterlockedExchangeAdd64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedExchangeAdd64(__int64 volatile *Addend, __int64 Value) {
     return __sync_fetch_and_add(Addend, Value);
 }
@@ -1057,7 +1057,7 @@ unsigned __int64 __shiftleft128 (unsigned __int64  LowPart, unsigned __int64 Hig
 {
    unsigned __int64 ret;
 
-   __asm__ ("shld {%[Shift],%[LowPart],%[HighPart]|%[HighPart], %[LowPart], %[Shift]}" 
+   __asm__ ("shld {%[Shift],%[LowPart],%[HighPart]|%[HighPart], %[LowPart], %[Shift]}"
       : [ret] "=r" (ret)
       : [LowPart] "r" (LowPart), [HighPart] "0" (HighPart), [Shift] "Jc" (Shift)
       : "cc");
@@ -1076,7 +1076,7 @@ unsigned __int64 __shiftright128 (unsigned __int64  LowPart, unsigned __int64 Hi
 {
    unsigned __int64 ret;
 
-   __asm__ ("shrd {%[Shift],%[HighPart],%[LowPart]|%[LowPart], %[HighPart], %[Shift]}" 
+   __asm__ ("shrd {%[Shift],%[HighPart],%[LowPart]|%[LowPart], %[HighPart], %[Shift]}"
       : [ret] "=r" (ret)
       : [LowPart] "0" (LowPart), [HighPart] "r" (HighPart), [Shift] "Jc" (Shift)
       : "cc");
@@ -1087,16 +1087,16 @@ unsigned __int64 __shiftright128 (unsigned __int64  LowPart, unsigned __int64 Hi
 #define __INTRINSIC_DEFINED___shiftright128
 #endif /* __INTRINSIC_PROLOG */
 
-#endif /* defined(__x86_64__) || defined(_AMD64_) */
+#endif  /* (defined(__x86_64__) && !defined(__arm64ec__)) || (defined(_AMD64_) && !defined(_ARM64EC_)) */
 
 /* ***************************************************** */
 
-#if defined(__aarch64__) || defined(_ARM64_)
+#if defined(__aarch64__) || defined(_ARM64_) || defined(__arm64ec__) || defined(_ARM64EC_)
 
 #if __INTRINSIC_PROLOG(_interlockedbittestandset)
 unsigned char _interlockedbittestandset(__LONG32 volatile *a, __LONG32 b);
 #if !__has_builtin(_interlockedbittestandset)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(_interlockedbittestandset, __LONG32, "orr", /* unused param */)
 #endif
 #define __INTRINSIC_DEFINED__interlockedbittestandset
@@ -1104,7 +1104,7 @@ __buildbittesti(_interlockedbittestandset, __LONG32, "orr", /* unused param */)
 
 #if __INTRINSIC_PROLOG(_interlockedbittestandreset)
 unsigned char _interlockedbittestandreset(__LONG32 volatile *a, __LONG32 b);
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 #if !__has_builtin(_interlockedbittestandreset)
 __buildbittesti(_interlockedbittestandreset, __LONG32, "bic", /* unused param */)
 #endif
@@ -1114,7 +1114,7 @@ __buildbittesti(_interlockedbittestandreset, __LONG32, "bic", /* unused param */
 #if __INTRINSIC_PROLOG(_interlockedbittestandcomplement)
 unsigned char _interlockedbittestandcomplement(__LONG32 volatile *a, __LONG32 b);
 #if !__has_builtin(_interlockedbittestandcomplement)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(_interlockedbittestandcomplement, __LONG32, "eor", /* unused param */)
 #endif
 #define __INTRINSIC_DEFINED__interlockedbittestandcomplement
@@ -1123,7 +1123,7 @@ __buildbittesti(_interlockedbittestandcomplement, __LONG32, "eor", /* unused par
 #if __INTRINSIC_PROLOG(InterlockedBitTestAndSet)
 unsigned char InterlockedBitTestAndSet(volatile __LONG32 *a, __LONG32 b);
 #if !__has_builtin(InterlockedBitTestAndSet)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(InterlockedBitTestAndSet, __LONG32, "orr", /* unused param */)
 #endif
 #define __INTRINSIC_DEFINED_InterlockedBitTestAndSet
@@ -1132,7 +1132,7 @@ __buildbittesti(InterlockedBitTestAndSet, __LONG32, "orr", /* unused param */)
 #if __INTRINSIC_PROLOG(InterlockedBitTestAndReset)
 unsigned char InterlockedBitTestAndReset(volatile __LONG32 *a, __LONG32 b);
 #if !__has_builtin(InterlockedBitTestAndReset)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(InterlockedBitTestAndReset, __LONG32, "bic", /* unused param */)
 #endif
 #define __INTRINSIC_DEFINED_InterlockedBitTestAndReset
@@ -1141,7 +1141,7 @@ __buildbittesti(InterlockedBitTestAndReset, __LONG32, "bic", /* unused param */)
 #if __INTRINSIC_PROLOG(InterlockedBitTestAndComplement)
 unsigned char InterlockedBitTestAndComplement(volatile __LONG32 *a, __LONG32 b);
 #if !__has_builtin(InterlockedBitTestAndComplement)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbittesti(InterlockedBitTestAndComplement, __LONG32, "eor", /* unused param */)
 #endif
 #define __INTRINSIC_DEFINED_InterlockedBitTestAndComplement
@@ -1204,7 +1204,7 @@ __buildbittesti64(InterlockedBitTestAndComplement64, __int64, "eor", /* unused p
 #if __INTRINSIC_PROLOG(_InterlockedAnd64)
 __MINGW_EXTENSION __int64 _InterlockedAnd64(__int64 volatile *, __int64);
 #if !__has_builtin(_InterlockedAnd64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedAnd64, __int64, and)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedAnd64
@@ -1213,7 +1213,7 @@ __buildlogicali(_InterlockedAnd64, __int64, and)
 #if __INTRINSIC_PROLOG(_InterlockedOr64)
 __MINGW_EXTENSION __int64 _InterlockedOr64(__int64 volatile *, __int64);
 #if !__has_builtin(_InterlockedOr64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedOr64, __int64, or)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedOr64
@@ -1222,7 +1222,7 @@ __buildlogicali(_InterlockedOr64, __int64, or)
 #if __INTRINSIC_PROLOG(_InterlockedXor64)
 __MINGW_EXTENSION __int64 _InterlockedXor64(__int64 volatile *, __int64);
 #if !__has_builtin(_InterlockedXor64)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedXor64, __int64, xor)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedXor64
@@ -1231,7 +1231,7 @@ __buildlogicali(_InterlockedXor64, __int64, xor)
 #if __INTRINSIC_PROLOG(_InterlockedIncrement64)
 __MINGW_EXTENSION __int64 _InterlockedIncrement64(__int64 volatile *Addend);
 #if !__has_builtin(_InterlockedIncrement64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedIncrement64(__int64 volatile *Addend) {
     return __sync_add_and_fetch(Addend, 1);
 }
@@ -1242,7 +1242,7 @@ __int64 _InterlockedIncrement64(__int64 volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedDecrement64)
 __MINGW_EXTENSION __int64 _InterlockedDecrement64(__int64 volatile *Addend);
 #if !__has_builtin(_InterlockedDecrement64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedDecrement64(__int64 volatile *Addend) {
     return __sync_sub_and_fetch(Addend, 1);
 }
@@ -1253,7 +1253,7 @@ __int64 _InterlockedDecrement64(__int64 volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedExchange64)
 __MINGW_EXTENSION __int64 _InterlockedExchange64(__int64 volatile *Target, __int64 Value);
 #if !__has_builtin(_InterlockedExchange64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedExchange64(__int64 volatile *Target, __int64 Value) {
     return __sync_lock_test_and_set(Target, Value);
 }
@@ -1264,7 +1264,7 @@ __int64 _InterlockedExchange64(__int64 volatile *Target, __int64 Value) {
 #if __INTRINSIC_PROLOG(_InterlockedExchangeAdd64)
 __MINGW_EXTENSION __int64 _InterlockedExchangeAdd64(__int64 volatile *Addend, __int64 Value);
 #if !__has_builtin(_InterlockedExchangeAdd64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedExchangeAdd64(__int64 volatile *Addend, __int64 Value) {
     return __sync_fetch_and_add(Addend, Value);
 }
@@ -1332,10 +1332,6 @@ unsigned char _BitScanReverse64(unsigned __LONG32 *Index, unsigned __int64 Mask)
 #define __INTRINSIC_DEFINED__BitScanReverse64
 #endif /* __INTRINSIC_PROLOG */
 
-#endif /* defined(__aarch64__) || define(_ARM64_) */
-
-#if defined(__aarch64__) || defined(_ARM64_)
-
 #if __INTRINSIC_PROLOG(_bittest)
 unsigned char _bittest(const __LONG32 *__a, __LONG32 __b);
 #if !__has_builtin(_bittest)
@@ -1389,10 +1385,6 @@ unsigned char _bittestandcomplement(__LONG32 *__a, __LONG32 __b)
 #endif
 #define __INTRINSIC_DEFINED__bittestandcomplement
 #endif /* __INTRINSIC_PROLOG */
-
-#endif /* defined(__aarch64__) || defined(_ARM64_) */
-
-#if defined(__aarch64__) || defined(_ARM64_)
 
 #if __INTRINSIC_PROLOG(_bittest64)
 unsigned char _bittest64(const __int64 *__a, __int64 __b);
@@ -1448,7 +1440,7 @@ unsigned char _bittestandcomplement64(__int64 *__a, __int64 __b)
 #define __INTRINSIC_DEFINED__bittestandcomplement64
 #endif /* __INTRINSIC_PROLOG */
 
-#endif /* defined(__aarch64__) || define(_ARM64_) */
+#endif  /* defined(__aarch64__) || defined(_ARM64_) || defined(__arm64ec__) || defined(_ARM64EC_) */
 
 /* ***************************************************** */
 
@@ -1493,7 +1485,7 @@ unsigned __int64 __popcnt64(unsigned __int64 value)
 #if __INTRINSIC_PROLOG(_InterlockedAnd)
 __LONG32 _InterlockedAnd(__LONG32 volatile *, __LONG32);
 #if !__has_builtin(_InterlockedAnd)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedAnd, __LONG32, and)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedAnd
@@ -1502,7 +1494,7 @@ __buildlogicali(_InterlockedAnd, __LONG32, and)
 #if __INTRINSIC_PROLOG(_InterlockedOr)
 __LONG32 _InterlockedOr(__LONG32 volatile *, __LONG32);
 #if !__has_builtin(_InterlockedOr)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedOr, __LONG32, or)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedOr
@@ -1511,7 +1503,7 @@ __buildlogicali(_InterlockedOr, __LONG32, or)
 #if __INTRINSIC_PROLOG(_InterlockedXor)
 __LONG32 _InterlockedXor(__LONG32 volatile *, __LONG32);
 #if !__has_builtin(_InterlockedXor)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildlogicali(_InterlockedXor, __LONG32, xor)
 #endif
 #define __INTRINSIC_DEFINED__InterlockedXor
@@ -1520,7 +1512,7 @@ __buildlogicali(_InterlockedXor, __LONG32, xor)
 #if __INTRINSIC_PROLOG(_InterlockedIncrement16)
 short _InterlockedIncrement16(short volatile *Addend);
 #if !__has_builtin(_InterlockedIncrement16)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 short _InterlockedIncrement16(short volatile *Addend) {
     return __sync_add_and_fetch(Addend, 1);
 }
@@ -1531,7 +1523,7 @@ short _InterlockedIncrement16(short volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedDecrement16)
 short _InterlockedDecrement16(short volatile *Addend);
 #if !__has_builtin(_InterlockedDecrement16)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 short _InterlockedDecrement16(short volatile *Addend) {
     return __sync_sub_and_fetch(Addend, 1);
 }
@@ -1542,7 +1534,7 @@ short _InterlockedDecrement16(short volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedCompareExchange16)
 short _InterlockedCompareExchange16(short volatile *Destination, short ExChange, short Comperand);
 #if !__has_builtin(_InterlockedCompareExchange16)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 short _InterlockedCompareExchange16(short volatile *Destination, short ExChange, short Comperand) {
     return __sync_val_compare_and_swap(Destination, Comperand, ExChange);
 }
@@ -1553,7 +1545,7 @@ short _InterlockedCompareExchange16(short volatile *Destination, short ExChange,
 #if __INTRINSIC_PROLOG(_InterlockedExchangeAdd)
 __LONG32 _InterlockedExchangeAdd(__LONG32 volatile *Addend, __LONG32 Value);
 #if !__has_builtin(_InterlockedExchangeAdd)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __LONG32 _InterlockedExchangeAdd(__LONG32 volatile *Addend, __LONG32 Value) {
     return __sync_fetch_and_add(Addend, Value);
 }
@@ -1564,7 +1556,7 @@ __LONG32 _InterlockedExchangeAdd(__LONG32 volatile *Addend, __LONG32 Value) {
 #if __INTRINSIC_PROLOG(_InterlockedCompareExchange)
 __LONG32 _InterlockedCompareExchange(__LONG32 volatile *Destination, __LONG32 ExChange, __LONG32 Comperand);
 #if !__has_builtin(_InterlockedCompareExchange)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __LONG32 _InterlockedCompareExchange(__LONG32 volatile *Destination, __LONG32 ExChange, __LONG32 Comperand) {
     return __sync_val_compare_and_swap(Destination, Comperand, ExChange);
 }
@@ -1575,7 +1567,7 @@ __LONG32 _InterlockedCompareExchange(__LONG32 volatile *Destination, __LONG32 Ex
 #if __INTRINSIC_PROLOG(_InterlockedIncrement)
 __LONG32 _InterlockedIncrement(__LONG32 volatile *Addend);
 #if !__has_builtin(_InterlockedIncrement)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __LONG32 _InterlockedIncrement(__LONG32 volatile *Addend) {
    return __sync_add_and_fetch(Addend, 1);
 }
@@ -1586,7 +1578,7 @@ __LONG32 _InterlockedIncrement(__LONG32 volatile *Addend) {
 #if __INTRINSIC_PROLOG(_InterlockedDecrement)
 __LONG32 _InterlockedDecrement(__LONG32 volatile *Addend);
 #if !__has_builtin(_InterlockedDecrement)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __LONG32 _InterlockedDecrement(__LONG32 volatile *Addend) {
    return __sync_sub_and_fetch(Addend, 1);
 }
@@ -1619,7 +1611,7 @@ __int64 _InterlockedAdd64(__int64 volatile *Addend, __int64 Value) {
 #if __INTRINSIC_PROLOG(_InterlockedExchange)
 __LONG32 _InterlockedExchange(__LONG32 volatile *Target, __LONG32 Value);
 #if !__has_builtin(_InterlockedExchange)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __LONG32 _InterlockedExchange(__LONG32 volatile *Target, __LONG32 Value) {
     return __sync_lock_test_and_set(Target, Value);
 }
@@ -1630,7 +1622,7 @@ __LONG32 _InterlockedExchange(__LONG32 volatile *Target, __LONG32 Value) {
 #if __INTRINSIC_PROLOG(_InterlockedCompareExchange64)
 __MINGW_EXTENSION __int64 _InterlockedCompareExchange64(__int64 volatile *Destination, __int64 ExChange, __int64 Comperand);
 #if !__has_builtin(_InterlockedCompareExchange64)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE 
+__MINGW_EXTENSION __INTRINSICS_USEINLINE
 __int64 _InterlockedCompareExchange64(__int64 volatile *Destination, __int64 ExChange, __int64 Comperand) {
     return __sync_val_compare_and_swap(Destination, Comperand, ExChange);
 }
@@ -1641,7 +1633,7 @@ __int64 _InterlockedCompareExchange64(__int64 volatile *Destination, __int64 ExC
 #if __INTRINSIC_PROLOG(_InterlockedCompareExchangePointer)
 void *_InterlockedCompareExchangePointer(void * volatile *Destination, void *ExChange, void *Comperand);
 #if !__has_builtin(_InterlockedCompareExchangePointer)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 void *_InterlockedCompareExchangePointer(void *volatile *Destination, void *ExChange, void *Comperand) {
     return __sync_val_compare_and_swap(Destination, Comperand, ExChange);
 }
@@ -1652,7 +1644,7 @@ void *_InterlockedCompareExchangePointer(void *volatile *Destination, void *ExCh
 #if __INTRINSIC_PROLOG(_InterlockedExchangePointer)
 void *_InterlockedExchangePointer(void *volatile *Target,void *Value);
 #if !__has_builtin(_InterlockedExchangePointer)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 void *_InterlockedExchangePointer(void *volatile *Target,void *Value) {
     return __sync_lock_test_and_set(Target, Value);
 }
@@ -1662,7 +1654,7 @@ void *_InterlockedExchangePointer(void *volatile *Target,void *Value) {
 
 #endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__aarch64__) || defined(_ARM64_) */
 
-#if defined(__x86_64__) || defined(_AMD64_)
+#if (defined(__x86_64__) && !defined(__arm64ec__)) || (defined(_AMD64_) && !defined(_ARM64EC_))
 
 #if __INTRINSIC_PROLOG(__int2c)
 void __int2c(void);
@@ -1759,7 +1751,7 @@ __buildbittesti(InterlockedBitTestAndComplement, __LONG32, "lock btc{l %[Offset]
 #if __INTRINSIC_PROLOG(_BitScanForward)
 unsigned char _BitScanForward(unsigned __LONG32 *Index, unsigned __LONG32 Mask);
 #if !__has_builtin(_BitScanForward)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbitscan(_BitScanForward, unsigned __LONG32, "bsf{l %[Mask],%[Index] | %[Index],%[Mask]}")
 #endif
 #define __INTRINSIC_DEFINED__BitScanForward
@@ -1768,7 +1760,7 @@ __buildbitscan(_BitScanForward, unsigned __LONG32, "bsf{l %[Mask],%[Index] | %[I
 #if __INTRINSIC_PROLOG(_BitScanReverse)
 unsigned char _BitScanReverse(unsigned __LONG32 *Index, unsigned __LONG32 Mask);
 #if !__has_builtin(_BitScanReverse)
-__INTRINSICS_USEINLINE 
+__INTRINSICS_USEINLINE
 __buildbitscan(_BitScanReverse, unsigned __LONG32, "bsr{l %[Mask],%[Index] | %[Index],%[Mask]}")
 #endif
 #define __INTRINSIC_DEFINED__BitScanReverse
@@ -2042,7 +2034,7 @@ unsigned __int64 _xgetbv(unsigned int index)
 #endif /* __INTRINSIC_PROLOG */
 #endif /* __GNUC__ < 8 */
 
-#endif /* defined(__x86_64__) || defined(_AMD64_) */
+#endif  /* (defined(__x86_64__) && !defined(__arm64ec__)) || (defined(_AMD64_) && !defined(_ARM64EC_)) */
 
 #ifdef __cplusplus
 }

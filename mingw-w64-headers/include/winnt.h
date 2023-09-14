@@ -1607,7 +1607,7 @@ extern "C" {
 
 #ifdef _AMD64_
 
-#if defined(__x86_64__) && !defined(RC_INVOKED)
+#if defined(__x86_64__) && !defined(__arm64ec__) && !defined(RC_INVOKED)
 
 #ifdef __cplusplus
 extern "C" {
@@ -2030,7 +2030,7 @@ extern "C" {
 }
 #endif
 
-#endif  /* defined(__x86_64__) && !defined(RC_INVOKED) */
+#endif  /* defined(__x86_64__) && !defined(__arm64ec__) && !defined(RC_INVOKED) */
 
 #define EXCEPTION_READ_FAULT    0
 #define EXCEPTION_WRITE_FAULT   1
@@ -2242,9 +2242,9 @@ extern "C" {
     } ScopeRecord[1];
   } SCOPE_TABLE_ARM64, *PSCOPE_TABLE_ARM64;
 
-#ifdef _ARM64_
+#if defined(_ARM64_) || defined(_ARM64EC_)
 
-#if defined(__aarch64__) && !defined(RC_INVOKED)
+#if (defined(__aarch64__) || defined(__arm64ec__)) && !defined(RC_INVOKED)
 
 #ifdef __cplusplus
 extern "C" {
@@ -2505,7 +2505,7 @@ extern "C" {
 }
 #endif
 
-#endif  /* defined(__aarch64__) && !defined(RC_INVOKED) */
+#endif  /* (defined(__aarch64__) || defined(__arm64ec__)) && !defined(RC_INVOKED) */
 
 #define EXCEPTION_READ_FAULT    0
 #define EXCEPTION_WRITE_FAULT   1
@@ -10942,7 +10942,7 @@ extern "C" {
   PVOID RtlSecureZeroMemory(PVOID ptr, SIZE_T cnt)
   {
     volatile char *vptr =(volatile char *)ptr;
-#ifdef __x86_64__
+#if defined(__x86_64__) && !defined(__arm64ec__)
     __stosb((PBYTE)((DWORD64)vptr), 0, cnt);
 #else  /* __aarch64__ */
     while(cnt)

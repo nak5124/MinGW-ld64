@@ -50,7 +50,7 @@
 # define __MINGW_FORCE_SYS_INTRINS
 #endif
 
-#ifdef __x86_64__
+if defined(__x86_64__) && !defined(__arm64ec__)
 #include <stdlib.h>
 #include <errno.h>
 
@@ -87,7 +87,7 @@ __MINGW_END_C_DECLS
 # define WINAPI __stdcall
 #endif
 
-#ifdef __x86_64__
+if defined(__x86_64__) && !defined(__arm64ec__)
 
 #if defined(__MMX__) || defined(__MINGW_FORCE_SYS_INTRINS)
 __MINGW_BEGIN_C_DECLS
@@ -130,7 +130,7 @@ __MINGW_END_C_DECLS
 #define __MACHINE(X) X;
 #define __MACHINEZ(X)
 
-#ifndef __x86_64__
+#if !defined(__x86_64__) || defined(__arm64ec__)
 # undef  __MACHINEX64
 # undef  __MACHINEI
 # undef  __MACHINEX86X
@@ -145,7 +145,7 @@ __MINGW_END_C_DECLS
 # define __MACHINEW64         __MACHINEZ
 #endif
 
-#ifndef __aarch64__
+#if !(defined(__aarch64__) || defined(__arm64ec__))
 # undef  __MACHINEARM64
 # undef  __MACHINEARM_ARM64
 # define __MACHINEARM64     __MACHINEZ
