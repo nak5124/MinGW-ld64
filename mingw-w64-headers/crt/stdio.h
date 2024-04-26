@@ -808,19 +808,10 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD)
 
-  __mingw_ovr
-  __MINGW_GNU_PRINTF(2, 0) __MINGW_NONNULL((1, 2))
   int vfprintf(FILE *__restrict _Stream, const char *__restrict _Format, va_list _ArgList)
-  {
-    return __mingw_vfprintf(_Stream, _Format, _ArgList);
-  }
-
-  __mingw_ovr
-  __MINGW_GNU_PRINTF(1, 0) __MINGW_NONNULL((1))
+    __MINGW_GNU_PRINTF(2, 0) __MINGW_NONNULL((1, 2)) __MINGW_ASM_CALL(__mingw_vfprintf);
   int vprintf(const char *__restrict _Format, va_list _ArgList)
-  {
-    return __mingw_vfprintf(stdout, _Format, _ArgList);
-  }
+    __MINGW_GNU_PRINTF(1, 0) __MINGW_NONNULL((1)) __MINGW_ASM_CALL(__mingw_vprintf);
 
   __mingw_ovr
   __MINGW_GNU_PRINTF(2, 3) __MINGW_NONNULL((1, 2))
@@ -848,19 +839,10 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 
-  __mingw_ovr
-  __MINGW_GNU_SCANF(2, 0) __MINGW_NONNULL((1, 2))
   int vfscanf(FILE *__restrict _Stream, const char *__restrict _Format, va_list _ArgList)
-  {
-    return __mingw_vfscanf(_Stream, _Format, _ArgList);
-  }
-
-  __mingw_ovr
-  __MINGW_GNU_SCANF(1, 0) __MINGW_NONNULL((1))
+    __MINGW_GNU_SCANF(2, 0) __MINGW_NONNULL((1, 2)) __MINGW_ASM_CALL(__mingw_vfscanf);
   int vscanf(const char *__restrict _Format, va_list _ArgList)
-  {
-    return __mingw_vfscanf(stdin, _Format, _ArgList);
-  }
+    __MINGW_GNU_SCANF(1, 0) __MINGW_NONNULL((1)) __MINGW_ASM_CALL(__mingw_vscanf);
 
 #endif
 
@@ -986,12 +968,8 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 
-  __mingw_ovr
-  __MINGW_GNU_SCANF(2, 0) __MINGW_NONNULL((2))
   int vsscanf(const char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList)
-  {
-    return __mingw_vsscanf(_Buffer, _Format, _ArgList);
-  }
+    __MINGW_GNU_SCANF(2, 0) __MINGW_NONNULL((2)) __MINGW_ASM_CALL(__mingw_vsscanf);
 
 #endif
 
@@ -1008,12 +986,9 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2)
-  __mingw_ovr
-  __MINGW_GNU_PRINTF(2, 0) __MINGW_NONNULL((1, 2)) __MINGW_NOTHROW
+
   int vasprintf(char **__restrict _Strp, const char *__restrict _Format, va_list _ArgList)
-  {
-    return __mingw_vasprintf(_Strp, _Format, _ArgList);
-  }
+    __MINGW_GNU_PRINTF(2, 0) __MINGW_NONNULL((1, 2)) __MINGW_NOTHROW __MINGW_ASM_CALL(__mingw_vasprintf);
 
   __mingw_ovr
   __MINGW_GNU_PRINTF(2, 3) __MINGW_NONNULL((1, 2)) __MINGW_NOTHROW
@@ -1026,6 +1001,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
+
 #endif
 
 /* Override __builtin_printf-routines ... Kludge for libstdc++ ...*/
