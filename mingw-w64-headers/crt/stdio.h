@@ -900,9 +900,10 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_vsprintf(_Buffer, _Format, _ArgList);
   }
 
-#if __MINGW_FORTIFY_VA_ARG
+  int sprintf(char *__restrict _Buffer, const char *__restrict _Format, ...)
+    __MINGW_GNU_PRINTF(2, 3) __MINGW_NONNULL((2)) __MINGW_NOTHROW __MINGW_ASM_CALL(__mingw_sprintf);
 
-  int sprintf(char *__restrict _Buffer, const char *__restrict _Format, ...) __MINGW_ASM_CALL(__mingw_sprintf);
+#if __MINGW_FORTIFY_VA_ARG
 
   __mingw_bos_extern_ovr
   __MINGW_GNU_PRINTF(2, 3) __MINGW_NONNULL((2)) __MINGW_NOTHROW
@@ -918,27 +919,14 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_sprintf(_Buffer, _Format, __builtin_va_arg_pack());
   }
 
-#else
-
-  __mingw_ovr
-  __MINGW_GNU_PRINTF(2, 3) __MINGW_NONNULL((2)) __MINGW_NOTHROW
-  int sprintf(char *__restrict _Buffer, const char *__restrict _Format, ...)
-  {
-    __builtin_va_list _ArgList;
-    int _Ret;
-    __builtin_va_start(_ArgList, _Format);
-    _Ret = __mingw_vsprintf(_Buffer, _Format, _ArgList);
-    __builtin_va_end(_ArgList);
-    return _Ret;
-  }
-
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
 
-#if __MINGW_FORTIFY_VA_ARG
+  int snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
+    __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW __MINGW_ASM_CALL(__mingw_snprintf);
 
-  int snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...) __MINGW_ASM_CALL(__mingw_snprintf);
+#if __MINGW_FORTIFY_VA_ARG
 
   __mingw_bos_extern_ovr
   __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW
@@ -946,20 +934,6 @@ __MINGW_BEGIN_C_DECLS
   {
     __mingw_bos_ptr_chk_warn(_Buffer, _BufferCount, 1);
     return __mingw_snprintf(_Buffer, _BufferCount, _Format, __builtin_va_arg_pack());
-  }
-
-#else
-
-  __mingw_ovr
-  __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW
-  int snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
-  {
-    __builtin_va_list _ArgList;
-    int _Ret;
-    __builtin_va_start(_ArgList, _Format);
-    _Ret = __mingw_vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-    __builtin_va_end(_ArgList);
-    return _Ret;
   }
 
 #endif  /* __MINGW_FORTIFY_VA_ARG */
