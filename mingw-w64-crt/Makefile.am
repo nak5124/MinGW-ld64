@@ -9,13 +9,10 @@ endif
 AM_CPPFLAGS=$(sysincludes)
 AM_CFLAGS=-pipe -std=gnu99 -D_CRTBLD -D_WIN32_WINNT=0x0f00 -D__MSVCRT_VERSION__=0x700 -D__USE_MINGW_ANSI_STDIO=0 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
 AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@ @ADD_CXX_ONLY_WARNING_FLAGS@
-CPPFLAGSARM32=-mfpu=vfpv3
 CPPFLAGS64=-m64 -masm=att
 AM_DLLTOOLFLAGS=-k --as=$(AS) --output-lib $@
-DLLTOOLFLAGSARM32=-m arm
 DLLTOOLFLAGSARM64=-m arm64
 DLLTOOLFLAGS64=--as-flags=--64 -m i386:x86-64
-DTDEFARM32=$(DLLTOOL) $(DLLTOOLFLAGSARM32) $(AM_DLLTOOLFLAGS) --input-def
 DTDEFARM64=$(DLLTOOL) $(DLLTOOLFLAGSARM64) $(AM_DLLTOOLFLAGS) --input-def
 DTDEF64=$(DLLTOOL) $(DLLTOOLFLAGS64) $(AM_DLLTOOLFLAGS) --input-def
 if DLLTOOL_HAS_TEMP_PREFIX
@@ -24,10 +21,8 @@ endif
 if DELAY_IMPORT_LIBS
   AM_DLLTOOLFLAGS += --output-delaylib $@.delayimp.a
 endif
-DTLIBARM32=$(DTDEFARM32) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
 DTLIBARM64=$(DTDEFARM64) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
 DTLIB64=$(DTDEF64) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
-LDFLAGSARM32= -L$(top_builddir)/libarm32
 LDFLAGSARM64= -L$(top_builddir)/libarm64
 LDFLAGS64=-m64 -L$(top_builddir)/lib64
 extra_include=-I$(top_srcdir)/include
@@ -242,10 +237,6 @@ src_msvcrt_common_add_arm=\
   math/tgammal.c \
   math/truncl.c
 
-# Arch specific files included in all libmsvcr*.a on arm32
-src_msvcrt_common_add_arm32=\
-  $(src_msvcrt_common_add_arm)
-
 # Arch specific files included in all libmsvcr*.a on arm64
 src_msvcrt_common_add_arm64=\
   $(src_msvcrt_common_add_arm)
@@ -254,11 +245,6 @@ src_msvcrt_common_add_arm64=\
 src_msvcrt_common64=\
   $(src_msvcrt_common) \
   $(src_msvcrt_common_add_x86_64)
-
-# Files included in all libmsvcr*.a on arm32
-src_msvcrt_commonarm32=\
-  $(src_msvcrt_common) \
-  $(src_msvcrt_common_add_arm32)
 
 # Files included in all libmsvcr*.a on arm64
 src_msvcrt_commonarm64=\
@@ -374,10 +360,6 @@ src_ucrtbase64=\
   math/nextafterl.c \
   math/nexttoward.c math/nexttowardf.c
 
-# Files included in libucrt*.a on arm32
-src_ucrtbasearm32=\
-  $(src_ucrtbase)
-
 # Files included in libucrt*.a on arm64
 src_ucrtbasearm64=\
   $(src_ucrtbase)
@@ -402,70 +384,6 @@ src_msvcrt64=\
   misc/_free_locale.c \
   misc/_get_current_locale.c \
   misc/seterrno.c
-
-# Files included in libmsvcrt-os.a (for msvcrt.dll) on arm32
-src_msvcrtarm32=\
-  $(src_msvcrt) \
-  misc/__p___argc.c \
-  misc/__p___argv.c \
-  misc/__p___wargv.c \
-  misc/__p__acmdln.c \
-  misc/__p__commode.c \
-  misc/__p__fmode.c \
-  misc/__p__mbcasemap.c \
-  misc/__p__mbctype.c \
-  misc/__p__pgmptr.c \
-  misc/__p__wcmdln.c \
-  misc/__p__wpgmptr.c \
-  misc/_getpid.c \
-  misc/initenv.c \
-  stdio/_fstat64i32.c \
-  stdio/_setmaxstdio.c \
-  stdio/gets.c
-
-if !ENABLE_SOFTMATH
-src_msvcrtarm32+=\
-  math/arm/exp2.S \
-  math/arm/exp2f.S \
-  math/arm/nearbyint.S \
-  math/arm/nearbyintf.S \
-  math/arm/nearbyintl.S \
-  math/arm/s_trunc.c \
-  math/arm/s_truncf.c \
-  math/arm-common/acosh.c \
-  math/arm-common/acoshf.c \
-  math/arm-common/acoshl.c \
-  math/arm-common/asinh.c \
-  math/arm-common/asinhf.c \
-  math/arm-common/asinhl.c \
-  math/arm-common/atanh.c \
-  math/arm-common/atanhf.c \
-  math/arm-common/atanhl.c \
-  math/arm-common/copysignl.c \
-  math/arm-common/expm1.c \
-  math/arm-common/expm1f.c \
-  math/arm-common/expm1l.c \
-  math/arm-common/ilogb.c \
-  math/arm-common/ilogbf.c \
-  math/arm-common/ilogbl.c \
-  math/arm-common/log1p.c \
-  math/arm-common/log1pf.c \
-  math/arm-common/log1pl.c \
-  math/arm-common/log2.c \
-  math/arm-common/logb.c \
-  math/arm-common/logbf.c \
-  math/arm-common/logbl.c \
-  math/arm-common/pow.c \
-  math/arm-common/powf.c \
-  math/arm-common/powl.c \
-  math/arm-common/remainder.c \
-  math/arm-common/remainderf.c \
-  math/arm-common/remainderl.c \
-  math/arm-common/remquol.c \
-  math/arm-common/s_remquo.c \
-  math/arm-common/s_remquof.c \
-  math/arm-common/scalbn.c
-endif
 
 # Files included in libmsvcrt-os.a (for msvcrt.dll) on arm64
 src_msvcrtarm64=\
@@ -656,34 +574,6 @@ src_libmingwex_x86=\
 
 src_libmingwex64=$(src_libmingwex_x86)
 
-# these only go into the ARM32 version:
-src_libmingwexarm32=\
-  math/arm/_chgsignl.S \
-  math/arm/s_rint.c         math/arm/s_rintf.c
-
-if ENABLE_SOFTMATH
-src_libmingwexarm32+=\
-  math/softmath/e_fmod.c    math/softmath/e_fmodf.c   math/softmath/e_powf.c    math/softmath/e_pow.c \
-  math/softmath/acosf.c     math/softmath/acosh.c     math/softmath/acosl.c     math/softmath/acoshf.c    math/softmath/acoshl.c    \
-  math/softmath/asinf.c     math/softmath/asinh.c     math/softmath/asinl.c     math/softmath/asinhf.c    math/softmath/asinhl.c    \
-  math/softmath/atan2f.c    math/softmath/atan2l.c    math/softmath/atanf.c     math/softmath/atanh.c     math/softmath/atanl.c     \
-  math/softmath/atanhf.c    math/softmath/atanhl.c    math/softmath/cos.c       math/softmath/cosf.c      math/softmath/cosl.c      \
-  math/softmath/exp.c       math/softmath/expl.c      math/softmath/exp2.c      math/softmath/exp2f.c     math/softmath/exp2l.c     \
-  math/softmath/expm1.c     math/softmath/expm1f.c    math/softmath/expm1l.c    math/softmath/fmod.c      math/softmath/fmodf.c     \
-  math/softmath/fmodl.c     math/softmath/frexpl.c    math/softmath/ilogb.c     math/softmath/ilogbf.c    math/softmath/ilogbl.c    \
-  math/softmath/ldexp.c     math/softmath/ldexpl.c    math/softmath/log.c       math/softmath/log10l.c    math/softmath/log1p.c     \
-  math/softmath/log1pf.c    math/softmath/log1pl.c    math/softmath/log2.c      math/softmath/log2f.c     math/softmath/log2l.c     \
-  math/softmath/logb.c      math/softmath/logbf.c     math/softmath/logbl.c     math/softmath/logl.c      math/softmath/pow.c       \
-  math/softmath/powl.c      \
-  math/softmath/remainder.c math/softmath/remainderf.c math/softmath/remainderl.c \
-  math/softmath/remquo.c    math/softmath/remquof.c   math/softmath/remquol.c   math/softmath/scalbn.c    math/softmath/scalbnf.c   \
-  math/softmath/scalbnl.c   math/softmath/sin.c       math/softmath/sincos.c    math/softmath/sincosf.c   math/softmath/sincosl.c   \
-  math/softmath/sinf.c      math/softmath/sinl.c      math/softmath/tanf.c      math/softmath/tanl.c
-else
-src_libmingwexarm32+=\
-  math/arm-common/ldexpl.c  math/arm/sincos.S         math/arm/sincosf.S
-endif
-
 # these only go into the ARM64 version:
 src_libmingwexarm64=\
   math/arm64/_chgsignl.S \
@@ -720,9 +610,6 @@ src_intrincs64=\
   intrincs/_umul128.c     intrincs/__movsq.c      intrincs/__stosq.c      intrincs/__shiftright128.c \
   intrincs/bittestci64.c  intrincs/__faststorefence.c    intrincs/__shiftleft128.c                   \
   intrincs/readcr8.c      intrincs/writecr8.c
-
-# these only go into the ARM32 version:
-src_intrincsarm32=
 
 # these only go into the ARM64 version:
 src_intrincsarm64=
@@ -1071,301 +958,6 @@ endif
 ##########
 
 
-
-if LIBARM32
-#########
-# Compiling ARM 32-bit runtime
-#
-
-libarm32dir=$(prefix)/@LIBARM32SUFFIXDIR@
-crt32dir=$(libarm32dir)
-winrt32dir=$(libarm32dir)
-dx32dir=$(libarm32dir)
-
-if !W32API
-crt32_DATA = \
-  libarm32/crt1.o    libarm32/crt2.o     libarm32/crt1u.o   libarm32/crt2u.o    libarm32/dllcrt1.o    libarm32/dllcrt2.o \
-  libarm32/CRT_fp8.o libarm32/CRT_fp10.o libarm32/txtmode.o libarm32/binmode.o  libarm32/crtbegin.o   libarm32/crtend.o \
-  libarm32/gcrt0.o   libarm32/gcrt1.o    libarm32/gcrt2.o   libarm32/CRT_glob.o libarm32/CRT_noglob.o
-else
-crt32_DATA =
-endif
-
-COMPILE32=$(COMPILE) $(CPPFLAGSARM32) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-libarm32/crt1.o: crt/crtexe.c
-	$(COMPILE32) -c $< -o $@
-libarm32/crt2.o: libarm32/crt1.o
-	cp $< $@
-libarm32/crt1u.o: crt/ucrtexe.c
-	$(COMPILE32) -c $< -o $@
-libarm32/crt2u.o: libarm32/crt1u.o
-	cp $< $@
-libarm32/dllcrt1.o: crt/crtdll.c
-	$(COMPILE32) -c $< -o $@
-libarm32/dllcrt2.o: libarm32/dllcrt1.o
-	cp $< $@
-
-libarm32/gcrt0.o: profile/gcrt0.c
-	$(COMPILE) $(CPPFLAGSARM32) -c $< -o $@
-libarm32/gcrt1.o: libarm32/gcrt0.o
-	cp $< $@
-libarm32/gcrt2.o: libarm32/gcrt0.o
-	cp $< $@
-
-libarm32/%.o: crt/%.c
-	$(COMPILE) $(CPPFLAGSARM32) -c $< -o $@
-
-# These source files aren't compiled in to any library yet.  I'm not sure how / where to do so.
-# The source files that I did compile somewhere I just guessed at anyway.
-#
-
-temp= \
-dxerr.c \
-test.c
-
-libarm32_LIBRARIES = libarm32/libkernel32.a
-libarm32_libkernel32_a_SOURCES = $(src_intrincs) $(src_intrincsarm32) lib-common/kernel32.def.in
-libarm32_libkernel32_a_AR = $(DTDEFARM32) libarm32/kernel32.def && $(AR) $(ARFLAGS)
-libarm32_libkernel32_a_CPPFLAGS=$(CPPFLAGSARM32) $(extra_include) $(AM_CPPFLAGS)
-EXTRA_libarm32_libkernel32_a_DEPENDENCIES=libarm32/kernel32.def
-
-libarm32_DATA =
-if !W32API
-libarm32_DATA += libarm32/libmsvcrt.a
-libarm32/libmsvcrt.a: libarm32/@MSVCRT_LIB@
-	cp $< $@
-
-libarm32_DATA += libarm32/libmsvcrt-os.a
-libarm32/libmsvcrt-os.a: lib-common/msvcrt-os.mri libarm32/libmsvcrt_def.a libarm32/libmsvcrt_common.a libarm32/libmsvcrt_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-endif
-
-libarm32_LIBRARIES += libarm32/libbits.a
-libarm32_libbits_a_SOURCES = $(src_libbits)
-libarm32_libbits_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libshell32.a
-libarm32_libshell32_a_SOURCES = $(src_libshell32)
-libarm32_libshell32_a_AR = $(DTDEFARM32) $(top_srcdir)/lib-common/shell32.def && $(AR) $(ARFLAGS)
-libarm32_libshell32_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libdinput.a
-libarm32_libdinput_a_SOURCES = $(src_libdinput)
-libarm32_libdinput_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-libarm32_libdinput_a_AR = $(DTDEFARM32) $(top_srcdir)/lib-common/dinput.def && $(AR) $(ARFLAGS)
-
-libarm32_LIBRARIES += libarm32/libdinput8.a
-libarm32_libdinput8_a_SOURCES = $(src_libdinput8)
-libarm32_libdinput8_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-libarm32_libdinput8_a_AR = $(DTDEFARM32) $(top_srcdir)/lib-common/dinput8.def && $(AR) $(ARFLAGS)
-
-libarm32_LIBRARIES += libarm32/libdmoguids.a
-libarm32_libdmoguids_a_SOURCES = $(src_libdmoguids)
-libarm32_libdmoguids_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libdxerr8.a
-libarm32_libdxerr8_a_SOURCES = $(src_libdxerr8)
-libarm32_libdxerr8_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libdxerr9.a
-libarm32_libdxerr9_a_SOURCES = $(src_libdxerr9)
-libarm32_libdxerr9_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libmsxml2.a
-libarm32_libmsxml2_a_SOURCES = $(src_libmsxml2)
-libarm32_libmsxml2_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libmsxml6.a
-libarm32_libmsxml6_a_SOURCES = $(src_libmsxml6)
-libarm32_libmsxml6_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libmfuuid.a
-libarm32_libmfuuid_a_SOURCES = $(src_libmfuuid)
-libarm32_libmfuuid_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libamstrmid.a
-libarm32_libamstrmid_a_SOURCES = $(src_libamstrmid)
-libarm32_libamstrmid_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libwmcodecdspuuid.a
-libarm32_libwmcodecdspuuid_a_SOURCES = $(src_libwmcodecdspuuid)
-libarm32_libwmcodecdspuuid_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libwindowscodecs.a
-libarm32_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)
-libarm32_libwindowscodecs_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-libarm32_libwindowscodecs_a_AR = $(DTDEFARM32) $(top_srcdir)/lib-common/windowscodecs.def && $(AR) $(ARFLAGS)
-
-libarm32_LIBRARIES += libarm32/libwbemuuid.a
-libarm32_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
-libarm32_libwbemuuid_a_CPPFLAGS = $(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libdxguid.a
-libarm32_libdxguid_a_SOURCES = $(src_libdxguid)
-libarm32_libdxguid_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libksuser.a
-libarm32_libksuser_a_SOURCES = $(src_libksuser)
-libarm32_libksuser_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-libarm32_libksuser_a_AR = $(DTDEFARM32) $(top_srcdir)/lib-common/ksuser.def && $(AR) $(ARFLAGS)
-
-libarm32_LIBRARIES += libarm32/libksguid.a
-libarm32_libksguid_a_SOURCES = $(src_libksguid)
-libarm32_libksguid_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/liblocationapi.a
-libarm32_liblocationapi_a_SOURCES = $(src_liblocationapi)
-libarm32_liblocationapi_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libsensorsapi.a
-libarm32_libsensorsapi_a_SOURCES = $(src_libsensorsapi)
-libarm32_libsensorsapi_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libsapi.a
-libarm32_libsapi_a_SOURCES = $(src_libsapi)
-libarm32_libsapi_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libportabledeviceguids.a
-libarm32_libportabledeviceguids_a_SOURCES = $(src_libportabledeviceguids)
-libarm32_libportabledeviceguids_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libscrnsave.a
-libarm32_libscrnsave_a_SOURCES = $(src_libscrnsave)
-libarm32_libscrnsave_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libscrnsavw.a
-libarm32_libscrnsavw_a_SOURCES = $(src_libscrnsavw)
-libarm32_libscrnsavw_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-libarm32_libscrnsavw_a_CFLAGS = -DUNICODE
-
-libarm32_LIBRARIES += libarm32/libstrmiids.a
-libarm32_libstrmiids_a_SOURCES = $(src_libstrmiids)
-libarm32_libstrmiids_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libuuid.a
-libarm32_libuuid_a_SOURCES = $(src_libuuid)
-libarm32_libuuid_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libgdiplus.a
-libarm32_libgdiplus_a_SOURCES = $(src_libgdiplus)
-libarm32_libgdiplus_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-libarm32_libgdiplus_a_AR = $(DTDEFARM32) $(top_srcdir)/lib-common/gdiplus.def && $(AR) $(ARFLAGS)
-
-libarm32_LIBRARIES += libarm32/libws2_32.a
-libarm32_libws2_32_a_SOURCES = $(src_libws2_32) lib-common/libws2_32.def.in
-libarm32_libws2_32_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-libarm32_libws2_32_a_AR = $(DTDEFARM32) libarm32/ws2_32.def && $(AR) $(ARFLAGS)
-EXTRA_libarm32_libws2_32_a_DEPENDENCIES=libarm32/ws2_32.def
-
-libarm32_LIBRARIES += libarm32/libadsiid.a
-libarm32_libadsiid_a_SOURCES = $(src_adsiid)
-libarm32_libadsiid_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libdloadhelper.a
-libarm32_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
-libarm32_libdloadhelper_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-if !W32API
-libarm32_LIBRARIES += libarm32/libdelayimp.a
-libarm32_libdelayimp_a_SOURCES =
-
-libarm32_LIBRARIES += libarm32/libm.a
-nodist_libarm32_libm_a_SOURCES = $(src_libm)
-libarm32_libm_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-#libarm32_LIBRARIES += libarm32/libgmon.a
-#libarm32_libgmon_a_SOURCES = profile/mcount.c \
-#  profile/profil.h profile/profil.c        \
-#  profile/gmon.h   profile/gmon.c \
-#  profile/mcountFunc.S
-#libarm32_libgmon_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/liblargeint.a
-libarm32_liblargeint_a_SOURCES = $(src_liblargeint)
-libarm32_liblargeint_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-libarm32_LIBRARIES += libarm32/libmingw32.a
-libarm32_libmingw32_a_CPPFLAGS=$(CPPFLAGSARM32) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
-libarm32_libmingw32_a_SOURCES = $(src_libmingw32)
-
-libarm32_LIBRARIES += libarm32/libmingwex.a
-libarm32_libmingwex_a_CPPFLAGS=$(CPPFLAGSARM32) $(extra_include) $(AM_CPPFLAGS)
-libarm32_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwexarm32) $(src_dfp_math)
-
-libarm32_LIBRARIES += libarm32/libmoldname.a
-libarm32_libmoldname_a_CPPFLAGS=$(CPPFLAGSARM32) $(extra_include) $(AM_CPPFLAGS)
-libarm32_libmoldname_a_SOURCES = $(src_libm)
-
-libarm32_LIBRARIES += libarm32/libmingwthrd.a
-libarm32_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
-libarm32_libmingwthrd_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
-
-processed_defs += libarm32/msvcrt.def libarm32/msvcr80.def libarm32/msvcr90.def libarm32/msvcr90d.def libarm32/msvcr100.def libarm32/msvcr110.def libarm32/msvcr120_app.def libarm32/ucrtbase.def \
-				  libarm32/advapi32.def libarm32/clbcatq.def libarm32/kernel32.def libarm32/ole32.def libarm32/oleaut32.def \
-				  libarm32/user32.def libarm32/ws2_32.def \
-				  libarm32/api-ms-win-crt-math-l1-1-0.def libarm32/api-ms-win-crt-private-l1-1-0.def libarm32/api-ms-win-crt-runtime-l1-1-0.def \
-				  libarm32/api-ms-win-crt-filesystem-l1-1-0.def libarm32/api-ms-win-crt-time-l1-1-0.def \
-				  libarm32/vcruntime140_app.def
-
-endif
-
-include libarm32/Makefile.am
-
-if !W32API
-libarm32_DATA += libarm32/libmsvcp60.a
-
-libarm32_DATA += libarm32/libmsvcr110.a
-libarm32/libmsvcr110.a: lib-common/msvcr110.mri libarm32/libmsvcr110_def.a libarm32/libmsvcrt_common.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-libarm32_DATA += libarm32/libmsvcr120_app.a
-libarm32/libmsvcr120_app.a: lib-common/msvcr120_app.mri libarm32/libmsvcr120_app_def.a libarm32/libmsvcrt_common.a libarm32/libmsvcr120_app_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-libarm32_DATA += libarm32/libucrtbase.a
-libarm32/libucrtbase.a: lib-common/ucrtbase.mri libarm32/libucrtbase_def.a libarm32/libucrt_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-libarm32_DATA += libarm32/libucrt.a libarm32/libucrtapp.a
-noinst_LIBRARIES += libarm32/libmsvcrt_common.a libarm32/libmsvcrt_extra.a libarm32/libmsvcr120_app_extra.a libarm32/libucrt_extra.a libarm32/libucrtapp_extra.a
-libarm32_libmsvcrt_common_a_SOURCES = $(src_msvcrt_commonarm32)
-libarm32_libmsvcrt_common_a_CPPFLAGS=$(CPPFLAGSARM32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-libarm32_libmsvcrt_extra_a_SOURCES = $(src_msvcrtarm32)
-libarm32_libmsvcrt_extra_a_CPPFLAGS=$(CPPFLAGSARM32) -D__LIBMSVCRT__ -D__LIBMSVCRT_OS__ $(extra_include) $(sysincludes)
-libarm32_libmsvcr120_app_extra_a_SOURCES = $(src_msvcr120_app)
-libarm32_libmsvcr120_app_extra_a_CPPFLAGS=$(CPPFLAGSARM32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-libarm32_libucrt_extra_a_SOURCES = $(src_ucrtbasearm32)
-libarm32_libucrt_extra_a_CPPFLAGS=$(CPPFLAGSARM32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-libarm32_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
-libarm32_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGSARM32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-
-libarm32_DATA += libarm32/libvcruntime140_app.a
-endif
-
-libarm32/lib%.a: libarm32/%.def
-	$(DTDEFARM32) $<
-
-libarm32/lib%.a: lib-common/%.def
-	$(DTDEFARM32) $<
-
-libarm32/lib%_def.a: libarm32/%.def
-	$(DTDEFARM32) $<
-
-libarm32/lib%_def.a: lib-common/%.def
-	$(DTDEFARM32) $<
-
-dx32_DATA =
-dx32_DATA += libarm32/libxinput.a
-dx32_DATA += libarm32/libd3dcompiler.a
-
-libarm32/libxinput.a: lib-common/xinput1_4.def
-	$(DTDEFARM32) $<
-libarm32/libd3dcompiler.a: lib-common/d3dcompiler_47.def
-	$(DTDEFARM32) $<
-
-endif
-# End ARM 32-bit runtime
-# ##########
 
 if LIBARM64
 #########
@@ -3268,17 +2860,11 @@ endif
 lib64/%.def: lib64/%.def.in
 	$(MKDIR_P) $(@D) && $(CPP) -x c $< -Wp,-w -undef -P -I$(top_srcdir)/def-include -DDEF_X64 > $@
 
-libarm32/%.def: libarm32/%.def.in
-	$(MKDIR_P) $(@D) && $(CPP) -x c $< -Wp,-w -undef -P -I$(top_srcdir)/def-include -DDEF_ARM32 > $@
-
 libarm64/%.def: libarm64/%.def.in
 	$(MKDIR_P) $(@D) && $(CPP) -x c $< -Wp,-w -undef -P -I$(top_srcdir)/def-include -DDEF_ARM64 > $@
 
 lib64/%.def: lib-common/%.def.in
 	$(MKDIR_P) $(@D) && $(CPP) -x c $< -Wp,-w -undef -P -I$(top_srcdir)/def-include -DDEF_X64 > $@
-
-libarm32/%.def: lib-common/%.def.in
-	$(MKDIR_P) $(@D) && $(CPP) -x c $< -Wp,-w -undef -P -I$(top_srcdir)/def-include -DDEF_ARM32 > $@
 
 libarm64/%.def: lib-common/%.def.in
 	$(MKDIR_P) $(@D) && $(CPP) -x c $< -Wp,-w -undef -P -I$(top_srcdir)/def-include -DDEF_ARM64 > $@
@@ -3311,12 +2897,9 @@ EXTRA_DIST = $(srcdir)/ChangeLog.*
 EXTRA_DIST += revstamp.h \
   $(top_srcdir)/lib-common/*.def \
   $(top_srcdir)/lib64/*.def \
-  $(top_srcdir)/libarm32/*.def \
   $(top_srcdir)/lib64/*.mri \
-  $(top_srcdir)/libarm32/*.mri \
   $(top_srcdir)/lib-common/*.def.in \
   $(top_srcdir)/lib64/*.def.in \
-  $(top_srcdir)/libarm32/*.def.in \
   $(top_srcdir)/def-include/*.def.in \
   crt/binmode.c \
   crt/crtbegin.c \

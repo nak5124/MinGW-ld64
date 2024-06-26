@@ -111,26 +111,6 @@ AS_CASE([$enable_lib64],
   [AC_MSG_ERROR([invalid argument.  Must be either yes or no.])])
 AM_CONDITIONAL([LIB64], [AS_VAR_TEST_SET([LIB64])])
 
-AC_MSG_CHECKING([whether to build the WinARM32 libraries])
-AC_ARG_ENABLE([libarm32],
-  [AS_HELP_STRING([--enable-libarm32],
-    [Build the WinARM32 libraries])],
-  [],
-  [AS_CASE([$host_cpu],
-    [armv7*],[enable_libarm32=yes],
-    [*],[enable_libarm32=no])
-  ])
-AC_MSG_RESULT([$enable_libarm32])
-AS_CASE([$enable_libarm32],
-  [no],[],
-  [yes],[AS_VAR_SET([LIBARM32])],
-  [AC_MSG_ERROR([invalid argument.  Must be either yes or no.])])
-AM_CONDITIONAL([LIBARM32], [AS_VAR_TEST_SET([LIBARM32])])
-
-AS_VAR_IF([enable_libarm32],[yes],[
-  AS_VAR_TEST_SET([LIB64])],
-    [AC_MSG_WARN([Building the runtime to use libarm32 with lib64 is unsupported.])])])
-
 AC_MSG_CHECKING([whether to build the WinARM64 libraries])
 AC_ARG_ENABLE([libarm64],
   [AS_HELP_STRING([--enable-libarm64],
@@ -148,37 +128,28 @@ AS_CASE([$enable_libarm64],
 AM_CONDITIONAL([LIBARM64], [AS_VAR_TEST_SET([LIBARM64])])
 
 AS_VAR_IF([enable_libarm64],[yes],[
-  AS_VAR_TEST_SET([LIB64]) || AS_VAR_TEST_SET([LIBARM32])],
-    [AC_MSG_WARN([Building the runtime to use libarm64 with lib64 or libarm32 is unsupported.])])])
+  AS_VAR_TEST_SET([LIB64])],
+    [AC_MSG_WARN([Building the runtime to use libarm64 with lib64 is unsupported.])])])
 
 AS_CASE([$host_cpu],
   [x86_64],[
     libx8664suffx=lib
-    libarm64suffx=libarm64
-    libarm32suffx=libarm32],
+    libarm64suffx=libarm64],
   [aarch64*],[
     libx8664suffx=libx8664
-    libarm64suffx=lib
-    libarm32suffx=lib32],
-  [armv7*],[
-    libx8664suffx=libx8664
-    libarm64suffx=lib64
-    libarm32suffx=lib],
+    libarm64suffx=lib],
   [
     libx8664suffx=libx8664
-    libarm64suffx=libarm64
-    libarm32suffx=libarm32]
+    libarm64suffx=libarm64]
 )
 
 AS_VAR_IF([enable_w32api],[yes],[
   libx8664suffx=$libx8664suffx/w32api
   libarm64suffx=$libarm64suffx/w32api
-  libarm32suffx=$libarm32suffx/w32api
 ])
 
 AC_SUBST([LIBX8664SUFFIXDIR],[$libx8664suffx])
 AC_SUBST([LIBARM64SUFFIXDIR],[$libarm64suffx])
-AC_SUBST([LIBARM32SUFFIXDIR],[$libarm32suffx])
 
 # Checks for features.
 
@@ -426,7 +397,6 @@ AC_MSG_NOTICE([])
 AC_MSG_NOTICE([])
 AC_MSG_NOTICE([Configuration Options Summary:])
 AC_MSG_NOTICE([])
-AC_MSG_NOTICE([  WinARM32 runtime.....: $enable_libarm32])
 AC_MSG_NOTICE([  WinARM64 runtime.....: $enable_libarm64])
 AC_MSG_NOTICE([  Win64 runtime........: $enable_lib64])
 AC_MSG_NOTICE([  C Warning Flags......: $ADD_C_ONLY_WARNING_FLAGS])
