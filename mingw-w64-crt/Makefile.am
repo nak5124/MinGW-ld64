@@ -48,18 +48,6 @@ _libm_dummy.c:
 
 src_libm=_libm_dummy.c
 
-if ENABLE_DFP
-src_dfp_math = \
-math/DFP/__fpclassifyd32.c math/DFP/__fpclassifyd64.c math/DFP/__fpclassifyd128.c \
-math/DFP/__isnand32.c math/DFP/__isnand64.c math/DFP/__isnand128.c \
-math/DFP/__signbitd32.c math/DFP/__signbitd64.c math/DFP/__signbitd128.c \
-math/DFP/isinfd32.c math/DFP/isinfd64.c math/DFP/isinfd128.c
-
-else
-src_dfp_math =
-
-endif
-
 src_libbits=libsrc/bits.c
 src_libshell32=libsrc/shell32.c
 src_libdinput=libsrc/dinput_kbd.c libsrc/dinput_joy.c libsrc/dinput_joy2.c libsrc/dinput_mouse.c libsrc/dinput_mouse2.c
@@ -829,7 +817,7 @@ lib64_libmingw32_a_SOURCES = $(src_libmingw32)
 
 lib64_LIBRARIES += lib64/libmingwex.a
 lib64_libmingwex_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
-lib64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwex64) $(src_dfp_math)
+lib64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwex64)
 
 lib64_LIBRARIES += lib64/libmoldname.a
 lib64_libmoldname_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
@@ -1178,7 +1166,7 @@ libarm64_libmingw32_a_SOURCES = $(src_libmingw32)
 
 libarm64_LIBRARIES += libarm64/libmingwex.a
 libarm64_libmingwex_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
-libarm64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwexarm64) $(src_dfp_math)
+libarm64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwexarm64)
 
 libarm64_LIBRARIES += libarm64/libmoldname.a
 libarm64_libmoldname_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
