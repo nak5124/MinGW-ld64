@@ -123,178 +123,6 @@ src_libws2_32=libsrc/ws2_32.c \
   libsrc/wspiapi/WspiapiLoad.c               libsrc/wspiapi/WspiapiGetAddrInfo.c       libsrc/wspiapi/WspiapiGetNameInfo.c        \
   libsrc/wspiapi/WspiapiFreeAddrInfo.c
 
-# Files included in all libmsvcr*.a
-src_msvcrt_common=\
-  misc/mbrtowc.c \
-  misc/mbsinit.c \
-  misc/onexit_table.c \
-  misc/register_tls_atexit.c \
-  misc/wcrtomb.c \
-  stdio/_getc_nolock.c \
-  stdio/_getwc_nolock.c \
-  stdio/_putc_nolock.c \
-  stdio/_putwc_nolock.c \
-  stdio/_strtof_l.c \
-  stdio/_wcstof_l.c \
-  stdio/acrt_iob_func.c \
-  stdio/strtof.c \
-  stdio/snprintf_alias.c \
-  stdio/vsnprintf_alias.c \
-  math/cbrt.c math/cbrtf.c \
-  math/copysign.c math/copysignf.c \
-  math/coshf.c \
-  math/expf.c \
-  math/fabs.c math/fabsf.c \
-  math/fdim.c math/fdimf.c \
-  math/fma.c math/fmaf.c \
-  math/fmax.c math/fmaxf.c \
-  math/fmin.c math/fminf.c \
-  math/frexp.c \
-  math/hypot.c \
-  math/llrint.c math/llrintf.c \
-  math/llround.c math/llroundf.c \
-  math/log10f.c \
-  math/logf.c \
-  math/lrint.c math/lrintf.c \
-  math/lround.c math/lroundf.c \
-  math/modf.c math/modff.c \
-  math/nextafterf.c math/nextafterl.c \
-  math/nexttoward.c math/nexttowardf.c \
-  math/powf.c \
-  math/round.c math/roundf.c \
-  math/s_erf.c math/sf_erf.c \
-  math/sinhf.c \
-  math/sqrt.c math/sqrtf.c \
-  math/tanhf.c \
-  math/tgamma.c math/tgammaf.c
-
-# Arch specific files included in all libmsvcr*.a on x86
-src_msvcrt_common_add_x86=\
-  math/x86/acosh.c math/x86/acoshf.c \
-  math/x86/asinh.c math/x86/asinhf.c \
-  math/x86/atan2.c \
-  math/x86/atanh.c math/x86/atanhf.c \
-  math/x86/ceil.S \
-  math/x86/cos.c \
-  math/x86/exp.c \
-  math/x86/exp2.S math/x86/exp2f.S \
-  math/x86/expm1.c math/x86/expm1f.c \
-  math/x86/floor.S \
-  math/x86/fmod.c \
-  math/x86/ilogb.S math/x86/ilogbf.S \
-  math/x86/log.c \
-  math/x86/log1p.S math/x86/log1pf.S \
-  math/x86/log2.S math/x86/log2f.S \
-  math/x86/logb.c math/x86/logbf.c \
-  math/x86/nearbyint.S math/x86/nearbyintf.S \
-  math/x86/pow.c \
-  math/x86/remainder.S math/x86/remainderf.S \
-  math/x86/remquo.S math/x86/remquof.S \
-  math/x86/rint.c math/x86/rintf.c \
-  math/x86/sin.c \
-  math/x86/trunc.S math/x86/truncf.S \
-  \
-  math/x86/acosf.c \
-  math/x86/asinf.c \
-  math/x86/atan2f.c \
-  math/x86/atanf.c \
-  math/x86/ceilf.S \
-  math/x86/cosf.c \
-  math/x86/floorf.S \
-  math/x86/fmodf.c \
-  math/x86/sinf.c \
-  math/x86/tanf.c
-
-# Arch specific files included in all libmsvcr*.a on x86_64
-src_msvcrt_common_add_x86_64=\
-  $(src_msvcrt_common_add_x86)
-
-# Arch specific files included in all libmsvcr*.a on arm
-src_msvcrt_common_add_arm=\
-  math/cbrtl.c \
-  math/erfl.c \
-  math/fdiml.c \
-  math/fmal.c \
-  math/fmaxl.c \
-  math/fminl.c \
-  math/llrintl.c \
-  math/llroundl.c \
-  math/lrintl.c \
-  math/lroundl.c \
-  math/rintl.c \
-  math/roundl.c \
-  math/tgammal.c \
-  math/truncl.c
-
-# Arch specific files included in all libmsvcr*.a on arm64
-src_msvcrt_common_add_arm64=\
-  $(src_msvcrt_common_add_arm)
-
-# Files included in all libmsvcr*.a on x86_64
-src_msvcrt_common64=\
-  $(src_msvcrt_common) \
-  $(src_msvcrt_common_add_x86_64)
-
-# Files included in all libmsvcr*.a on arm64
-src_msvcrt_commonarm64=\
-  $(src_msvcrt_common) \
-  $(src_msvcrt_common_add_arm64)
-
-# Files included in libmsvcrt-os.a (for msvcrt.dll) on all archs
-src_msvcrt=\
-  misc/__sys_errlist.c \
-  misc/__sys_nerr.c \
-  misc/_configthreadlocale.c \
-  misc/imaxdiv.c \
-  misc/invalid_parameter_handler.c \
-  misc/output_format.c \
-  misc/purecall.c \
-  secapi/_access_s.c \
-  secapi/_cgets_s.c \
-  secapi/_cgetws_s.c \
-  secapi/_chsize_s.c \
-  secapi/_controlfp_s.c \
-  secapi/_cprintf_s.c \
-  secapi/_cprintf_s_l.c \
-  secapi/_ctime32_s.c \
-  secapi/_ctime64_s.c \
-  secapi/_cwprintf_s.c \
-  secapi/_cwprintf_s_l.c \
-  secapi/_gmtime32_s.c \
-  secapi/_gmtime64_s.c \
-  secapi/_localtime32_s.c \
-  secapi/_localtime64_s.c \
-  secapi/_mktemp_s.c \
-  secapi/_sopen_s.c \
-  secapi/_strdate_s.c \
-  secapi/_strtime_s.c \
-  secapi/_umask_s.c \
-  secapi/_vcprintf_s.c \
-  secapi/_vcprintf_s_l.c \
-  secapi/_vcwprintf_s.c \
-  secapi/_vcwprintf_s_l.c \
-  secapi/_vscprintf_p.c \
-  secapi/_vscwprintf_p.c \
-  secapi/_vswprintf_p.c \
-  secapi/_waccess_s.c \
-  secapi/_wasctime_s.c \
-  secapi/_wctime32_s.c \
-  secapi/_wctime64_s.c \
-  secapi/_wstrtime_s.c \
-  secapi/_wmktemp_s.c \
-  secapi/_wstrdate_s.c \
-  secapi/asctime_s.c \
-  secapi/memcpy_s.c \
-  secapi/memmove_s.c \
-  secapi/rand_s.c \
-  secapi/sprintf_s.c \
-  secapi/strerror_s.c \
-  secapi/vsprintf_s.c \
-  secapi/wmemcpy_s.c \
-  secapi/wmemmove_s.c \
-  stdio/fseeki64.c \
-  stdio/mingw_lock.c
-
 # Files included in libucrt*.a
 src_ucrtbase=\
   crt/ucrtbase_compat.c \
@@ -352,96 +180,6 @@ src_ucrtbase64=\
 # Files included in libucrt*.a on arm64
 src_ucrtbasearm64=\
   $(src_ucrtbase)
-
-# Files included in libmsvcrt-os.a (for msvcrt.dll) on x86_64
-src_msvcrt64=\
-  $(src_msvcrt) \
-  misc/__p___argc.c \
-  misc/__p___argv.c \
-  misc/__p___wargv.c \
-  misc/__p__acmdln.c \
-  misc/__p__commode.c \
-  misc/__p__environ.c \
-  misc/__p__fmode.c \
-  misc/__p__mbcasemap.c \
-  misc/__p__mbctype.c \
-  misc/__p__pgmptr.c \
-  misc/__p__wcmdln.c \
-  misc/__p__wenviron.c \
-  misc/__p__wpgmptr.c \
-  misc/_create_locale.c \
-  misc/_free_locale.c \
-  misc/_get_current_locale.c \
-  misc/seterrno.c
-
-# Files included in libmsvcrt-os.a (for msvcrt.dll) on arm64
-src_msvcrtarm64=\
-  $(src_msvcrt) \
-  math/arm-common/acosh.c \
-  math/arm-common/acoshf.c \
-  math/arm-common/acoshl.c \
-  math/arm-common/asinh.c \
-  math/arm-common/asinhf.c \
-  math/arm-common/asinhl.c \
-  math/arm-common/atanh.c \
-  math/arm-common/atanhf.c \
-  math/arm-common/atanhl.c \
-  math/arm-common/copysignl.c \
-  math/arm-common/expm1.c \
-  math/arm-common/expm1f.c \
-  math/arm-common/expm1l.c \
-  math/arm-common/ilogb.c \
-  math/arm-common/ilogbf.c \
-  math/arm-common/ilogbl.c \
-  math/arm-common/log1p.c \
-  math/arm-common/log1pf.c \
-  math/arm-common/log1pl.c \
-  math/arm-common/log2.c \
-  math/arm-common/logb.c \
-  math/arm-common/logbf.c \
-  math/arm-common/logbl.c \
-  math/arm-common/pow.c \
-  math/arm-common/powf.c \
-  math/arm-common/powl.c \
-  math/arm-common/remainder.c \
-  math/arm-common/remainderf.c \
-  math/arm-common/remainderl.c \
-  math/arm-common/remquol.c \
-  math/arm-common/s_remquo.c \
-  math/arm-common/s_remquof.c \
-  math/arm-common/scalbn.c \
-  math/arm64/exp2.S \
-  math/arm64/exp2f.S \
-  math/arm64/nearbyint.S \
-  math/arm64/nearbyintf.S \
-  math/arm64/nearbyintl.S \
-  math/arm64/trunc.S \
-  math/arm64/truncf.S \
-  misc/__p___argc.c \
-  misc/__p___argv.c \
-  misc/__p___wargv.c \
-  misc/__p__acmdln.c \
-  misc/__p__commode.c \
-  misc/__p__fmode.c \
-  misc/__p__mbcasemap.c \
-  misc/__p__mbctype.c \
-  misc/__p__pgmptr.c \
-  misc/__p__wcmdln.c \
-  misc/__p__wpgmptr.c \
-  misc/_getpid.c \
-  misc/initenv.c \
-  stdio/_setmaxstdio.c \
-  stdio/gets.c
-
-src_msvcr80=\
-  misc/imaxdiv.c
-
-src_msvcr90=\
-  misc/imaxdiv.c
-
-src_msvcr120_app=\
-  misc/__set_app_type.c \
-  misc/_getpid.c
 
 # These mingwex sources are target independent:
 src_libmingwex=\
@@ -655,12 +393,8 @@ EXTRA_lib64_libkernel32_a_DEPENDENCIES=lib64/kernel32.def
 lib64_DATA =
 if !W32API
 lib64_DATA += lib64/libmsvcrt.a
-lib64/libmsvcrt.a: lib64/@MSVCRT_LIB@
+lib64/libmsvcrt.a: lib64/libucrt.a
 	cp $< $@
-
-lib64_DATA += lib64/libmsvcrt-os.a
-lib64/libmsvcrt-os.a: lib-common/msvcrt-os.mri lib64/libmsvcrt_def.a lib64/libmsvcrt_common.a lib64/libmsvcrt_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
 endif
 
 lib64_LIBRARIES += lib64/libbits.a
@@ -827,80 +561,28 @@ lib64_LIBRARIES += lib64/libmingwthrd.a
 lib64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 lib64_libmingwthrd_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
 
-processed_defs += lib64/msvcrt.def lib64/msvcr80.def lib64/msvcr80d.def lib64/msvcr90.def lib64/msvcr90d.def \
-				  lib64/msvcr100.def lib64/msvcr110.def lib64/msvcr120.def lib64/msvcr120d.def \
-				  lib64/msvcr120_app.def lib64/msvcp120_app.def lib64/ucrtbase.def \
+processed_defs += lib64/ucrtbase.def \
 				  lib64/advapi32.def lib64/clbcatq.def lib64/kernel32.def lib64/ole32.def \
 				  lib64/oleaut32.def lib64/user32.def lib64/winhvplatform.def lib64/ws2_32.def \
 				  lib64/api-ms-win-crt-math-l1-1-0.def lib64/api-ms-win-crt-private-l1-1-0.def lib64/api-ms-win-crt-runtime-l1-1-0.def \
-				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def \
-				  lib64/vcruntime140_app.def
+				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def
 
 endif
 
 include lib64/Makefile.am
 
 if !W32API
-lib64_DATA += lib64/libmsvcp60.a lib64/libmsvcp120_app.a
-
-lib64_DATA += lib64/libmsvcr80.a
-lib64/libmsvcr80.a: lib-common/msvcr80.mri lib64/libmsvcr80_def.a lib64/libmsvcrt_common.a lib64/libmsvcr80_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr80d.a
-lib64/libmsvcr80d.a: lib-common/msvcr80d.mri lib64/libmsvcr80d_def.a lib64/libmsvcrt_common.a lib64/libmsvcr80_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr90.a
-lib64/libmsvcr90.a: lib-common/msvcr90.mri lib64/libmsvcr90_def.a lib64/libmsvcrt_common.a lib64/libmsvcr90_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr90d.a
-lib64/libmsvcr90d.a: lib-common/msvcr90d.mri lib64/libmsvcr90d_def.a lib64/libmsvcrt_common.a lib64/libmsvcr90_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr100.a
-lib64/libmsvcr100.a: lib-common/msvcr100.mri lib64/libmsvcr100_def.a lib64/libmsvcrt_common.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr110.a
-lib64/libmsvcr110.a: lib-common/msvcr110.mri lib64/libmsvcr110_def.a lib64/libmsvcrt_common.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr120.a
-lib64/libmsvcr120.a: lib-common/msvcr120.mri lib64/libmsvcr120_def.a lib64/libmsvcrt_common.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr120d.a
-lib64/libmsvcr120d.a: lib-common/msvcr120d.mri lib64/libmsvcr120d_def.a lib64/libmsvcrt_common.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libmsvcr120_app.a
-lib64/libmsvcr120_app.a: lib-common/msvcr120_app.mri lib64/libmsvcr120_app_def.a lib64/libmsvcrt_common.a lib64/libmsvcr120_app_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
 lib64_DATA += lib64/libucrtbase.a
 lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
 
 lib64_DATA += lib64/libucrt.a lib64/libucrtapp.a
-noinst_LIBRARIES += lib64/libmsvcrt_common.a lib64/libmsvcrt_extra.a lib64/libmsvcr80_extra.a lib64/libmsvcr90_extra.a lib64/libmsvcr120_app_extra.a lib64/libucrt_extra.a lib64/libucrtapp_extra.a
-lib64_libmsvcrt_common_a_SOURCES = $(src_msvcrt_common64)
-lib64_libmsvcrt_common_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-lib64_libmsvcrt_extra_a_SOURCES = $(src_msvcrt64)
-lib64_libmsvcrt_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ -D__LIBMSVCRT_OS__ $(extra_include) $(sysincludes)
-lib64_libmsvcr80_extra_a_SOURCES = $(src_msvcr80)
-lib64_libmsvcr80_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-lib64_libmsvcr90_extra_a_SOURCES = $(src_msvcr90)
-lib64_libmsvcr90_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-lib64_libmsvcr120_app_extra_a_SOURCES = $(src_msvcr120_app)
-lib64_libmsvcr120_app_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+noinst_LIBRARIES += lib64/libucrt_extra.a lib64/libucrtapp_extra.a
 lib64_libucrt_extra_a_SOURCES = $(src_ucrtbase64)
 lib64_libucrt_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 lib64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
 lib64_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 
-lib64_DATA += lib64/libvcruntime140_app.a
 endif
 
 lib64/lib%.a: lib64/%.def
@@ -1008,12 +690,8 @@ EXTRA_libarm64_libkernel32_a_DEPENDENCIES=libarm64/kernel32.def
 libarm64_DATA =
 if !W32API
 libarm64_DATA += libarm64/libmsvcrt.a
-libarm64/libmsvcrt.a: libarm64/@MSVCRT_LIB@
+libarm64/libmsvcrt.a: libarm64/libucrt.a
 	cp $< $@
-
-libarm64_DATA += libarm64/libmsvcrt-os.a
-libarm64/libmsvcrt-os.a: lib-common/msvcrt-os.mri libarm64/libmsvcrt_def.a libarm64/libmsvcrt_common.a libarm64/libmsvcrt_extra.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
 endif
 
 libarm64_LIBRARIES += libarm64/libbits.a
@@ -1176,12 +854,11 @@ libarm64_LIBRARIES += libarm64/libmingwthrd.a
 libarm64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 libarm64_libmingwthrd_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
 
-processed_defs += libarm64/msvcrt.def libarm64/ucrtbase.def \
+processed_defs += libarm64/ucrtbase.def \
 				  libarm64/advapi32.def libarm64/clbcatq.def libarm64/kernel32.def libarm64/ole32.def libarm64/oleaut32.def \
 				  libarm64/user32.def libarm64/winhvplatform.def libarm64/ws2_32.def \
 				  libarm64/api-ms-win-crt-math-l1-1-0.def libarm64/api-ms-win-crt-private-l1-1-0.def libarm64/api-ms-win-crt-runtime-l1-1-0.def \
-				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def \
-				  libarm64/vcruntime140_app.def
+				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def
 
 endif
 
@@ -1193,17 +870,12 @@ libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libar
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
 
 libarm64_DATA += libarm64/libucrt.a libarm64/libucrtapp.a
-noinst_LIBRARIES += libarm64/libmsvcrt_common.a libarm64/libmsvcrt_extra.a libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
-libarm64_libmsvcrt_common_a_SOURCES = $(src_msvcrt_commonarm64)
-libarm64_libmsvcrt_common_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-libarm64_libmsvcrt_extra_a_SOURCES = $(src_msvcrtarm64)
-libarm64_libmsvcrt_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ -D__LIBMSVCRT_OS__ $(extra_include) $(sysincludes)
+noinst_LIBRARIES += libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
 libarm64_libucrt_extra_a_SOURCES = $(src_ucrtbasearm64)
 libarm64_libucrt_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 libarm64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
 libarm64_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 
-libarm64_DATA += libarm64/libvcruntime140_app.a
 endif
 
 libarm64/lib%.a: libarm64/%.def

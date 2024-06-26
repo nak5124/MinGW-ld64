@@ -214,13 +214,7 @@ limitations in handling dllimport attribute.  */
 
 #ifndef __MSVCRT_VERSION__
 /*  High byte is the major version, low byte is the minor. */
-# if defined(__CRTDLL__)
-#  define __MSVCRT_VERSION__ 0x00
-# elif defined(_UCRT)
-#  define __MSVCRT_VERSION__ 0xE00
-# else
-#  define __MSVCRT_VERSION__ @DEFAULT_MSVCRT_VERSION@
-# endif
+# define __MSVCRT_VERSION__ 0xE00
 #endif
 
 #if !defined(_UCRT) && ((__MSVCRT_VERSION__ >= 0x1400) || (__MSVCRT_VERSION__ >= 0xE00 && __MSVCRT_VERSION__ < 0x1000))
@@ -229,7 +223,7 @@ limitations in handling dllimport attribute.  */
 #endif
 
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT @DEFAULT_WIN32_WINNT@
+#define _WIN32_WINNT 0x0A00
 #endif
 
 #ifndef _INT128_DEFINED
