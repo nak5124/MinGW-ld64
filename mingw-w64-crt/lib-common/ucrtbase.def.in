@@ -2538,7 +2538,7 @@ strncat_s
 strncmp
 strncpy
 strncpy_s
-; strnlen replaced by emu
+strnlen
 strpbrk
 strrchr
 strspn
@@ -2597,8 +2597,7 @@ wcsncat_s
 wcsncmp
 wcsncpy
 wcsncpy_s
-; We provide replacement implementation in libmingwex
-wcsnlen DATA
+wcsnlen
 wcspbrk
 wcsrchr
 wcsrtombs
