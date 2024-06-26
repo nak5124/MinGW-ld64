@@ -253,9 +253,8 @@ src_libmingwex=\
   stdio/scanf2-argcount-char.c stdio/scanf2-argcount-wchar.c \
   stdio/vfscanf2.S         stdio/vfwscanf2.S         stdio/vscanf2.S          stdio/vsscanf2.S          stdio/vswscanf2.S \
   stdio/vwscanf2.S         stdio/strtok_r.c          stdio/scanf.S \
-  stdio/_findfirst64i32.c  stdio/_findnext64i32.c \
   stdio/_ftime.c       \
-  stdio/_stat.c            stdio/_stat64i32.c        stdio/_wfindfirst64i32.c stdio/_wfindnext64i32.c \
+  stdio/_stat.c            stdio/_stat64i32.c        \
   stdio/_wstat.c           stdio/_wstat64i32.c       stdio/asprintf.c         stdio/fgetpos64.c       \
   stdio/fopen64.c          stdio/fseeko32.c          stdio/fseeko64.c         stdio/fsetpos64.c         stdio/ftello.c          \
   stdio/ftello64.c         stdio/ftruncate64.c       stdio/lltoa.c            stdio/lltow.c             stdio/lseek64.c         \
