@@ -9,6 +9,7 @@ endif
 AM_CPPFLAGS=$(sysincludes)
 AM_CFLAGS=-pipe -std=gnu99 -D_CRTBLD -D_WIN32_WINNT=0x0f00 -D__MSVCRT_VERSION__=0x700 -D__USE_MINGW_ANSI_STDIO=0 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
 AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@ @ADD_CXX_ONLY_WARNING_FLAGS@
+CPPFLAGSARM64=
 CPPFLAGS64=-m64 -masm=att
 AM_DLLTOOLFLAGS=-k --as=$(AS) --output-lib $@
 DLLTOOLFLAGSARM64=-m arm64
@@ -2925,12 +2926,6 @@ dist-hook:
 
 # Testsuite options
 #
-
-#old
-#  testcases/tstwassert_win \
-#  testcases/tstwinmain \
-#  testcases/tstwassert \
-#  testcases_tstwinmain_LDADD = -lgdi32
 
 testcase_progs = \
   testcases/tstmainc \

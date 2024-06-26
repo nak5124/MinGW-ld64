@@ -111,6 +111,10 @@ AS_CASE([$enable_lib64],
   [AC_MSG_ERROR([invalid argument.  Must be either yes or no.])])
 AM_CONDITIONAL([LIB64], [AS_VAR_TEST_SET([LIB64])])
 
+AS_VAR_IF([enable_lib64],[yes],[
+  AS_IF([AS_VAR_TEST_SET([LIBARM64])],
+    [AC_MSG_WARN([Building the runtime to use lib64 with libarm64 is unsupported.])])])
+
 AC_MSG_CHECKING([whether to build the WinARM64 libraries])
 AC_ARG_ENABLE([libarm64],
   [AS_HELP_STRING([--enable-libarm64],
