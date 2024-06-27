@@ -239,7 +239,6 @@ src_libmingwex=\
   misc/strsafe.c         \
   misc/tdelete.c         misc/tdestroy.c            misc/tfind.c           \
   misc/tsearch.c         misc/twalk.c           \
-  misc/wcstold.c         \
   misc/wdirent.c         \
   misc/wmemchr.c         misc/wmemcmp.c             misc/wmemcpy.c          misc/wmemmove.c              misc/wmempcpy.c        \
   misc/wmemset.c         misc/ftw.c                 misc/ftw64.c            misc/mingw-access.c          \
@@ -289,7 +288,8 @@ src_libmingwex_x86=\
   math/x86/remainderl.S     math/x86/remquol.S        \
   math/x86/scalbn.S         math/x86/scalbnf.S        math/x86/scalbnl.S        \
   math/x86/sin.def.h        \
-  math/x86/sinl.c           math/x86/sinl_internal.S  math/x86/tanl.S
+  math/x86/sinl.c           math/x86/sinl_internal.S  math/x86/tanl.S			\
+  misc/wcstold.c
 
 
 src_libmingwex64=$(src_libmingwex_x86)
