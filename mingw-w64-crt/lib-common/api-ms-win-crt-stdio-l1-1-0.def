@@ -53,6 +53,7 @@ _filelengthi64
 _fileno
 fileno == _fileno
 _flushall
+flushall == _flushall
 _fputc_nolock
 _fputchar
 fputchar == _fputchar
@@ -88,6 +89,7 @@ isatty == _isatty
 _kbhit
 kbhit == _kbhit
 _locking
+locking == _locking
 _lseek
 lseek == _lseek
 _lseeki64
