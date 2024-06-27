@@ -259,7 +259,7 @@ _creat
 _create_locale
 _crt_at_quick_exit
 _crt_atexit
-_crt_debugger_hook
+F_I386(_crt_debugger_hook)
 _ctime32
 _ctime32_s
 _ctime64
@@ -342,7 +342,7 @@ F_NON_I386(_finitef)
 _flushall
 _fpclass
 F_X64(_fpclassf)
-F_NON_I386(_fpieee_flt)
+_fpieee_flt
 ; DATA added manually
 _fpreset DATA
 _fputc_nolock
