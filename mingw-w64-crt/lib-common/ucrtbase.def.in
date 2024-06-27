@@ -102,7 +102,6 @@ __dstbias
 __fpe_flt_rounds
 __fpecode
 __initialize_lconv_for_unsigned_char
-__lconv_init == __initialize_lconv_for_unsigned_char
 F_I386(__intrinsic_abnormal_termination)
 F_X64(__intrinsic_setjmp)
 F64(__intrinsic_setjmpex)
@@ -204,7 +203,6 @@ _aligned_offset_realloc
 _aligned_offset_recalloc
 _aligned_realloc
 _aligned_recalloc
-; DATA set manually
 _assert
 _atodbl
 _atodbl_l
@@ -343,7 +341,7 @@ _flushall
 _fpclass
 F_X64(_fpclassf)
 _fpieee_flt
-; DATA added manually
+; _fpreset is provided by CRT_fp10.o and CRT_fp8.o
 _fpreset DATA
 _fputc_nolock
 _fputchar
@@ -605,7 +603,6 @@ _mbbtombc
 _mbbtombc_l
 _mbbtype
 _mbbtype_l
-; DATA added manually
 _mbcasemap DATA
 _mbccpy
 _mbccpy_l
@@ -1910,7 +1907,6 @@ F_I386(_seh_longjmp_unwind@4)
 F_I386(_set_SSE2_enable)
 _set_abort_behavior
 _set_app_type
-__set_app_type == _set_app_type
 _set_controlfp
 _set_doserrno
 _set_errno
@@ -2009,7 +2005,7 @@ _toupper
 _toupper_l
 _towlower_l
 _towupper_l
-; This is wrapped in the compat code.
+; _tzset is provided by ucrtbase_compat.c
 _tzset DATA
 _ui64toa
 _ui64toa_s
@@ -2635,5 +2631,4 @@ wctype
 wmemcpy_s
 wmemmove_s
 
-#define UCRTBASE
 #include "crt-aliases.def.in"

@@ -44,7 +44,7 @@ _errno
 _execute_onexit_table
 _exit
 _fpieee_flt
-; DATA added manually
+; _fpreset is provided by CRT_fp10.o and CRT_fp8.o
 _fpreset DATA
 _get_doserrno
 _get_errno
