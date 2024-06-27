@@ -12,12 +12,15 @@ _ctime32
 _ctime32_s
 _ctime64
 _ctime64_s
+F32(ctime_s == _ctime32_s)
+F64(ctime_s == _ctime64_s)
 F32(difftime == _difftime32)
 F64(difftime == _difftime64)
 _difftime32
 _difftime64
 F32(_ftime == _ftime32)
 F64(_ftime == _ftime64)
+ftime == _ftime
 _ftime32
 _ftime32_s
 _ftime64
@@ -38,10 +41,14 @@ _gmtime32
 _gmtime32_s
 _gmtime64
 _gmtime64_s
+F32(gmtime_s == _gmtime32_s)
+F64(gmtime_s == _gmtime64_s)
 _localtime32
 _localtime32_s
 _localtime64
 _localtime64_s
+F32(localtime_s == _localtime32_s)
+F64(localtime_s == _localtime64_s)
 F32(_mkgmtime == _mkgmtime32)
 F64(_mkgmtime == _mkgmtime64)
 _mkgmtime32
@@ -63,8 +70,7 @@ _timespec64_get
 _tzset DATA
 F32(_utime == _utime32)
 F64(_utime == _utime64)
-F32(utime == _utime32)
-F64(utime == _utime64)
+utime == _utime
 _utime32
 _utime64
 _W_Getdays
@@ -80,6 +86,8 @@ _wctime32
 _wctime32_s
 _wctime64
 _wctime64_s
+F32(_wctime_s == _wctime32_s)
+F64(_wctime_s == _wctime64_s)
 _wstrdate
 _wstrdate_s
 _wstrtime
