@@ -337,7 +337,7 @@ _finite
 F_NON_I386(_finitef)
 _flushall
 _fpclass
-_fpclassf
+F_X64(_fpclassf)
 F_NON_I386(_fpieee_flt)
 ; DATA added manually
 _fpreset DATA
@@ -371,7 +371,7 @@ _futime64
 _fwrite_nolock
 _gcvt
 _gcvt_s
-_get_FMA3_enable
+F_X64(_get_FMA3_enable)
 _get_current_locale
 _get_daylight
 _get_doserrno
@@ -1893,7 +1893,7 @@ _searchenv
 _searchenv_s
 _seh_filter_dll
 _seh_filter_exe
-F64(_set_FMA3_enable)
+F_X64(_set_FMA3_enable)
 F_I386(_seh_longjmp_unwind4@4)
 F_I386(_seh_longjmp_unwind@4)
 F_I386(_set_SSE2_enable)
@@ -2515,7 +2515,6 @@ setvbuf
 signal
 sin
 F_NON_I386(sinf)
-; if we implement sinh, we can set it DATA only.
 sinh
 F_NON_I386(sinhf)
 sqrt
@@ -2558,7 +2557,6 @@ strxfrm
 system
 tan
 F_NON_I386(tanf)
-; if we implement tanh, we can set it to DATA only.
 tanh
 F_NON_I386(tanhf)
 terminate
