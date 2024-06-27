@@ -164,7 +164,7 @@ ADD_UNDERSCORE_DATA(tzname)
 #else
 ADD_UNDERSCORE(tzset)
 #endif
-; ADD_UNDERSCORE(ultoa)
+ADD_UNDERSCORE(ultoa)
 ADD_UNDERSCORE(umask)
 ADD_UNDERSCORE(ungetch)
 ADD_UNDERSCORE(unlink)

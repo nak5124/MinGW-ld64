@@ -59,6 +59,7 @@ _ui64toa_s
 _ui64tow
 _ui64tow_s
 _ultoa
+ultoa == _ultoa
 _ultoa_s
 _ultow
 _ultow_s
