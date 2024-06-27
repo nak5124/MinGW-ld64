@@ -11,10 +11,12 @@ __conio_common_vcwprintf_p
 __conio_common_vcwprintf_s
 __conio_common_vcwscanf
 _cgets
+cgets == _cgets
 _cgets_s
 _cgetws
 _cgetws_s
 _cputs
+cputs == _cputs
 _cputws
 _getch
 getch == _getch
