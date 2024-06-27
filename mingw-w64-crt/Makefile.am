@@ -250,9 +250,7 @@ src_libmingwex=\
   ssp/stpcpy_chk.c       ssp/strcpy_chk.c           ssp/strncat_chk.c       ssp/strncpy_chk.c \
   \
   stdio/mingw_pformat.h    \
-  stdio/scanf2-argcount-char.c stdio/scanf2-argcount-wchar.c \
-  stdio/vfscanf2.S         stdio/vfwscanf2.S         stdio/vscanf2.S          stdio/vsscanf2.S          stdio/vswscanf2.S \
-  stdio/vwscanf2.S         stdio/strtok_r.c          stdio/scanf.S \
+  stdio/strtok_r.c         \
   stdio/asprintf.c         stdio/fgetpos64.c         \
   stdio/fopen64.c          stdio/fseeko32.c          stdio/fseeko64.c         stdio/fsetpos64.c         stdio/ftello.c          \
   stdio/ftello64.c         stdio/ftruncate64.c       stdio/lltoa.c            stdio/lltow.c             stdio/lseek64.c         \
@@ -262,9 +260,9 @@ src_libmingwex=\
   stdio/mingw_vfprintf.c   stdio/mingw_vfprintfw.c   stdio/mingw_vfscanf.c    stdio/mingw_vprintf.c     stdio/mingw_vprintfw.c  \
   stdio/mingw_vsnprintf.c  stdio/mingw_vsnprintfw.c  stdio/mingw_vsprintf.c   stdio/mingw_vsprintfw.c   stdio/mingw_wscanf.c    \
   stdio/mingw_wvfscanf.c   stdio/snprintf.c          stdio/snwprintf.c        stdio/truncate.c        \
-  stdio/ulltoa.c           stdio/ulltow.c            stdio/vasprintf.c        stdio/vfscanf.c           stdio/vfwscanf.c        \
-  stdio/vscanf.c           stdio/vsnprintf.c         stdio/vsnwprintf.c        stdio/vsscanf.c         \
-  stdio/vswscanf.c         stdio/vwscanf.c           stdio/wtoll.c            stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c
+  stdio/ulltoa.c           stdio/ulltow.c            stdio/vasprintf.c        \
+  stdio/vsnprintf.c         stdio/vsnwprintf.c       \
+  stdio/wtoll.c            stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c
 
 # Include the default load config struct only for Control Flow Guard support.
 if CFGUARD
@@ -2571,9 +2569,7 @@ EXTRA_DIST += revstamp.h \
   crt/ucrtexe.c \
   profile/gcrt0.c \
   profile/COPYING \
-  profile/CYGWIN_LICENSE \
-  stdio/scanf2-argcount-template.c \
-  stdio/scanf2-template.S
+  profile/CYGWIN_LICENSE
 
 DISTCHECK_CONFIGURE_FLAGS = --host=$(host_triplet) $(withsys)
 
