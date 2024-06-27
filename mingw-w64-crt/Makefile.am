@@ -259,9 +259,8 @@ src_libmingwex=\
   stdio/mingw_snprintfw.c  stdio/mingw_sprintf.c     stdio/mingw_sprintfw.c   stdio/mingw_sscanf.c      stdio/mingw_swscanf.c   \
   stdio/mingw_vfprintf.c   stdio/mingw_vfprintfw.c   stdio/mingw_vfscanf.c    stdio/mingw_vprintf.c     stdio/mingw_vprintfw.c  \
   stdio/mingw_vsnprintf.c  stdio/mingw_vsnprintfw.c  stdio/mingw_vsprintf.c   stdio/mingw_vsprintfw.c   stdio/mingw_wscanf.c    \
-  stdio/mingw_wvfscanf.c   stdio/snprintf.c          stdio/snwprintf.c        stdio/truncate.c        \
+  stdio/mingw_wvfscanf.c   stdio/truncate.c          \
   stdio/ulltoa.c           stdio/ulltow.c            stdio/vasprintf.c        \
-  stdio/vsnprintf.c         stdio/vsnwprintf.c       \
   stdio/wtoll.c            stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c
 
 # Include the default load config struct only for Control Flow Guard support.
