@@ -130,6 +130,8 @@ src_ucrtbase=\
   math/ldexpf.c \
   math/lgamma.c math/lgammaf.c math/lgammal.c \
   misc/__initenv.c \
+  misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
+  misc/fesetenv.c misc/fesetexceptflag.c misc/fesetround.c misc/fetestexcept.c \
   misc/ucrt-access.c \
   stdio/ucrt_fprintf.c \
   stdio/ucrt_fscanf.c \
@@ -276,8 +278,7 @@ src_libmingwex=\
   misc/delay-f.c          misc/delay-n.c        \
   misc/delayimp.c        misc/dirent.c          \
   misc/dirname.c \
-  misc/feclearexcept.c   misc/fegetenv.c            misc/fegetexceptflag.c  misc/fegetround.c            misc/feholdexcept.c    \
-  misc/feraiseexcept.c   misc/fesetenv.c            misc/fesetexceptflag.c  misc/fesetround.c            misc/fetestexcept.c    \
+  misc/feraiseexcept.c   \
   misc/feupdateenv.c     misc/ftruncate.c           misc/fwide.c            misc/getlogin.c              misc/getopt.c          \
   misc/gettimeofday.c    \
   misc/mempcpy.c         misc/mingw-aligned-malloc.c \

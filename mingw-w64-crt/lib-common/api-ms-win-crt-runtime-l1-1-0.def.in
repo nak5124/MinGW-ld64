@@ -100,15 +100,15 @@ exit
 ; Don't use the float env functions from UCRT; fesetround doesn't seem to have
 ; any effect on the FPU control word as required by other libmingwex math
 ; routines.
-feclearexcept DATA
-fegetenv DATA
-fegetexceptflag DATA
-fegetround DATA
-feholdexcept DATA
-fesetenv DATA
-fesetexceptflag DATA
-fesetround DATA
-fetestexcept DATA
+; feclearexcept DATA
+; fegetenv DATA
+; fegetexceptflag DATA
+; fegetround DATA
+; feholdexcept DATA
+; fesetenv DATA
+; fesetexceptflag DATA
+; fesetround DATA
+; fetestexcept DATA
 perror
 quick_exit
 raise
