@@ -286,6 +286,7 @@ F_NON_I386(fmodf)
 F_ARM_ANY(fmodl == fmod)
 frexp
 hypot
+hypotf == _hypotf
 ilogb
 ilogbf
 F_ARM_ANY(ilogbl) ; Can't use long double functions from the CRT on x86

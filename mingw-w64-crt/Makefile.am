@@ -211,7 +211,7 @@ src_libmingwex=\
   math/coshl.c       \
   math/fabsl.c          math/fp_consts.c   math/fp_constsf.c     \
   math/fp_constsl.c     math/fpclassify.c  math/fpclassifyf.c    math/fpclassifyl.c   math/frexpf.c        math/frexpl.c \
-  math/hypotf.c         math/hypotl.c      math/isnan.c          math/isnanf.c        math/isnanl.c        \
+  math/hypotl.c         math/isnan.c       math/isnanf.c         math/isnanl.c        \
   math/ldexpf.c         math/lgamma.c      math/lgammaf.c        math/lgammal.c       \
   math/modfl.c          \
   math/powi.c           math/powif.c       math/powil.c          \
