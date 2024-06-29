@@ -609,11 +609,8 @@ PACKAGE_STRING='mingw-w64-headers 4.0b'
 PACKAGE_BUGREPORT='mingw-w64-public@lists.sourceforge.net'
 PACKAGE_URL=''
 
-ac_unique_file="crt/_mingw.h.in"
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
-DEFAULT_MSVCRT_VERSION
-DEFAULT_WIN32_WINNT
 IDLHEAD_LIST
 MINGW_HAS_DDK
 DDKHEAD_LIST
@@ -725,8 +722,6 @@ enable_w32api
 enable_crt
 enable_sdk
 enable_idl
-with_default_win32_winnt
-with_default_msvcrt
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1377,10 +1372,6 @@ Optional Packages:
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-widl=PATH        use widl to update idl-based headers. Optionally
                           search for a compatible widl in PATH
-  --with-default-win32-winnt=VER
-                          Default value of _WIN32_WINNT (default: 0xa00)
-  --with-default-msvcrt=LIB
-                          Default msvcrt to target (default: ucrt)
 
 Report bugs to <mingw-w64-public@lists.sourceforge.net>.
 _ACEOF
@@ -1920,7 +1911,6 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
 
 
 
@@ -2992,83 +2982,11 @@ esac
 fi
 
 
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking default _WIN32_WINNT version" >&5
-printf %s "checking default _WIN32_WINNT version... " >&6; }
-
-# Check whether --with-default-win32-winnt was given.
-if test ${with_default_win32_winnt+y}
-then :
-  withval=$with_default_win32_winnt;
-else case e in #(
-  e) with_default_win32_winnt=0xa00 ;;
-esac
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $with_default_win32_winnt" >&5
-printf "%s\n" "$with_default_win32_winnt" >&6; }
-DEFAULT_WIN32_WINNT=$with_default_win32_winnt
-
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking default msvcrt" >&5
-printf %s "checking default msvcrt... " >&6; }
-
-# Check whether --with-default-msvcrt was given.
-if test ${with_default_msvcrt+y}
-then :
-  withval=$with_default_msvcrt;
-else case e in #(
-  e) with_default_msvcrt=ucrt ;;
-esac
-fi
-
-case $with_default_msvcrt in
-msvcrt10*)
-  default_msvcrt_version=0x100
-  ;;
-msvcrt20*)
-  default_msvcrt_version=0x200
-  ;;
-msvcrt40*)
-  default_msvcrt_version=0x400
-  ;;
-msvcr70*)
-  default_msvcrt_version=0x700
-  ;;
-msvcr71*)
-  default_msvcrt_version=0x701
-  ;;
-msvcr80*)
-  default_msvcrt_version=0x800
-  ;;
-msvcr90*)
-  default_msvcrt_version=0x900
-  ;;
-msvcr100*)
-  default_msvcrt_version=0xA00
-  ;;
-msvcr110*)
-  default_msvcrt_version=0xB00
-  ;;
-msvcr120*)
-  default_msvcrt_version=0xC00
-  ;;
-msvcrt*)
-  default_msvcrt_version=0x700
-  ;;
-ucrt*|*)
-  default_msvcrt_version=0xE00
-  ;;
-esac
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $with_default_msvcrt ($default_msvcrt_version)" >&5
-printf "%s\n" "$with_default_msvcrt ($default_msvcrt_version)" >&6; }
-DEFAULT_MSVCRT_VERSION=$default_msvcrt_version
-
-
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile crt/_mingw.h"
+ac_config_files="$ac_config_files Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3787,7 +3705,6 @@ do
   case $ac_config_target in
     "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
-    "crt/_mingw.h") CONFIG_FILES="$CONFIG_FILES crt/_mingw.h" ;;
 
   *) as_fn_error $? "invalid argument: '$ac_config_target'" "$LINENO" 5;;
   esac

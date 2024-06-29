@@ -104,7 +104,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES = crt/_mingw.h
+CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -188,8 +188,8 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
 	$(top_srcdir)/build-aux/install-sh \
-	$(top_srcdir)/build-aux/missing $(top_srcdir)/crt/_mingw.h.in \
-	ChangeLog build-aux/config.guess build-aux/config.sub \
+	$(top_srcdir)/build-aux/missing ChangeLog \
+	build-aux/config.guess build-aux/config.sub \
 	build-aux/install-sh build-aux/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
@@ -222,8 +222,6 @@ CSCOPE = @CSCOPE@
 CTAGS = @CTAGS@
 CYGPATH_W = @CYGPATH_W@
 DDKHEAD_LIST = @DDKHEAD_LIST@
-DEFAULT_MSVCRT_VERSION = @DEFAULT_MSVCRT_VERSION@
-DEFAULT_WIN32_WINNT = @DEFAULT_WIN32_WINNT@
 DEFS = @DEFS@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
@@ -718,8 +716,6 @@ $(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 
 distclean-hdr:
 	-rm -f config.h stamp-h1
-crt/_mingw.h: $(top_builddir)/config.status $(top_srcdir)/crt/_mingw.h.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 install-baseheadHEADERS: $(basehead_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(basehead_HEADERS)'; test -n "$(baseheaddir)" || list=; \
