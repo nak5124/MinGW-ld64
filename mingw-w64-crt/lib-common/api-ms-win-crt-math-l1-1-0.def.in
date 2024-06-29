@@ -60,6 +60,7 @@ _cabs DATA
 _chgsign
 chgsign == _chgsign
 _chgsignf
+F_ARM_ANY(_chgsignl == _chgsign)
 _copysign
 _copysignf
 _d_int
@@ -287,15 +288,16 @@ F_ARM_ANY(fmodl == fmod)
 frexp
 hypot
 hypotf == _hypotf
+F_ARM_ANY(hypotl == hypot)
 ilogb
 ilogbf
 F_ARM_ANY(ilogbl) ; Can't use long double functions from the CRT on x86
-ldexp
-; The UCRT lgamma functions don't set/provide the signgam variable like
-; the mingw ones do. Therefore prefer the libmingwex version instead.
-lgamma DATA
-lgammaf DATA
-F_ARM_ANY(lgammal DATA) ; Can't use long double functions from the CRT on x86
+; The UCRT implementation of ldexp has a minor spec incompliance
+; ldexp
+; The UCRT lgamma functions don't set/provide the signgam variable like the mingw ones do.
+; lgamma
+; lgammaf
+; lgamma
 llrint
 llrintf
 F_ARM_ANY(llrintl) ; Can't use long double functions from the CRT on x86
@@ -357,12 +359,14 @@ F_ARM_ANY(rintl) ; Can't use long double functions from the CRT on x86
 round
 roundf
 F_ARM_ANY(roundl) ; Can't use long double functions from the CRT on x86
-scalbln
-scalblnf
-F_ARM_ANY(scalblnl) ; Can't use long double functions from the CRT on x86
-scalbn
-scalbnf
-F_ARM_ANY(scalbnl) ; Can't use long double functions from the CRT on x86
+; The UCRT implementation of scalbln/scalblnf/scalblnl has a minor spec incompliance
+; scalbln
+; scalblnf
+; scalblnl
+; The UCRT implementation of scalbn/scalbnf/scalbnl has a minor spec incompliance
+; scalbn
+; scalbnf
+; scalbnl
 sin
 F_NON_I386(sinf)
 F_ARM_ANY(sinl == sin)

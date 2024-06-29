@@ -148,12 +148,15 @@ cosl == cos
 expl == exp
 floorl == floor
 fmodl == fmod
+hypotl == hypot
 log10l == log10
 logl == log
 powl == pow
 sinl == sin
 tanl == tan
 #endif
+
+F_ARM_ANY(_chgsignl == _chgsign)
 
 ; This is list of symbol aliases for C11 functions
 F32(timespec_get == _timespec32_get)
