@@ -7,7 +7,7 @@
 #define _INC_WCHAR
 
 #include <corecrt.h>
-#include <corecrt_stdio_config.h>
+#include <corecrt_wconio.h>
 #include <corecrt_wstdlib.h>
 
 #if __USE_MINGW_ANSI_STDIO && !defined (__USE_MINGW_STRTOX) && !defined(_CRTBLD)
@@ -376,38 +376,6 @@ _CRTIMP FILE *__cdecl __acrt_iob_func(unsigned index);
   _CRTIMP int __cdecl _wstat32i64(const wchar_t *_Name,struct _stat32i64 *_Stat);
   int __cdecl _wstat64i32(const wchar_t *_Name,struct _stat64i32 *_Stat);
   _CRTIMP int __cdecl _wstat64(const wchar_t *_Name,struct _stat64 *_Stat);
-#endif
-#endif
-
-#ifndef _WCONIO_DEFINED
-#define _WCONIO_DEFINED
-
-#ifndef WEOF
-#define WEOF (wint_t)(0xFFFF)
-#endif
-
-  _CRTIMP wchar_t *_cgetws(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP wint_t __cdecl _getwch(void);
-  _CRTIMP wint_t __cdecl _getwche(void);
-  _CRTIMP wint_t __cdecl _putwch(wchar_t _WCh);
-  _CRTIMP wint_t __cdecl _ungetwch(wint_t _WCh);
-  _CRTIMP int __cdecl _cputws(const wchar_t *_String);
-  _CRTIMP int __cdecl _cwprintf(const wchar_t * __restrict__ _Format,...);
-  _CRTIMP int __cdecl _cwscanf(const wchar_t * __restrict__ _Format,...);
-  _CRTIMP int __cdecl _cwscanf_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,...);
-  _CRTIMP int __cdecl _vcwprintf(const wchar_t * __restrict__ _Format,va_list _ArgList);
-  _CRTIMP int __cdecl _cwprintf_p(const wchar_t * __restrict__ _Format,...);
-  _CRTIMP int __cdecl _vcwprintf_p(const wchar_t * __restrict__ _Format,va_list _ArgList);
-
-  _CRTIMP int __cdecl _cwprintf_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,...);
-  _CRTIMP int __cdecl _vcwprintf_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,va_list _ArgList);
-  _CRTIMP int __cdecl _cwprintf_p_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,...);
-  _CRTIMP int __cdecl _vcwprintf_p_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,va_list _ArgList);
-#if __MSVCRT_VERSION__ >= 0x800
-  wint_t __cdecl _putwch_nolock(wchar_t _WCh);
-  wint_t __cdecl _getwch_nolock(void);
-  wint_t __cdecl _getwche_nolock(void);
-  wint_t __cdecl _ungetwch_nolock(wint_t _WCh);
 #endif
 #endif
 
