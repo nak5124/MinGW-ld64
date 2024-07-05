@@ -53,25 +53,30 @@ extern "C" {
   extern unsigned int _amblksiz;
 
 #ifndef _CRT_ALLOCATION_DEFINED
-#define _CRT_ALLOCATION_DEFINED
-  void *__cdecl calloc(size_t _NumOfElements,size_t _SizeOfElements);
-  void __cdecl free(void *_Memory);
-  void *__cdecl malloc(size_t _Size);
-  void *__cdecl realloc(void *_Memory,size_t _NewSize);
-
+# define _CRT_ALLOCATION_DEFINED
+  _CRTIMP void *__cdecl _calloc_base(size_t _Count, size_t _Size);
+  _CRTIMP void *__cdecl calloc(size_t _NumOfElements, size_t _SizeOfElements);
+  _CRTIMP int __cdecl _callnewh(size_t _Size);
+  _CRTIMP void *__cdecl _expand(void *_Memory, size_t _NewSize);
+  _CRTIMP void __cdecl _free_base(void *_Block);
+  _CRTIMP void __cdecl free(void *_Memory);
+  _CRTIMP void *__cdecl _malloc_base(size_t _Size);
+  _CRTIMP void *__cdecl malloc(size_t _Size);
+  _CRTIMP size_t __cdecl _msize_base(void *_Block);
+  _CRTIMP size_t __cdecl _msize(void *_Memory);
+  _CRTIMP void *__cdecl _realloc_base(void *_Block, size_t _Size);
+  _CRTIMP void *__cdecl realloc(void *_Memory, size_t _NewSize);
+  _CRTIMP void *__cdecl _recalloc_base(void *_Block, size_t _Count, size_t _Size);
+  _CRTIMP void *__cdecl _recalloc(void *_Memory, size_t _Count, size_t _Size);
   _CRTIMP void __cdecl _aligned_free(void *_Memory);
-  _CRTIMP void *__cdecl _aligned_malloc(size_t _Size,size_t _Alignment);
-
-  _CRTIMP void *__cdecl _aligned_offset_malloc(size_t _Size,size_t _Alignment,size_t _Offset);
-  _CRTIMP void *__cdecl _aligned_realloc(void *_Memory,size_t _Size,size_t _Alignment);
-  _CRTIMP void *__cdecl _aligned_offset_realloc(void *_Memory,size_t _Size,size_t _Alignment,size_t _Offset);
-# if __MSVCRT_VERSION__ >= 0x900
-  _CRTIMP void *__cdecl _recalloc(void *_Memory,size_t _Count,size_t _Size);
-  _CRTIMP void *__cdecl _aligned_recalloc(void *_Memory,size_t _Count,size_t _Size,size_t _Alignment);
-  _CRTIMP void *__cdecl _aligned_offset_recalloc(void *_Memory,size_t _Count,size_t _Size,size_t _Alignment,size_t _Offset);
-  _CRTIMP size_t __cdecl _aligned_msize(void *_Memory,size_t _Alignment,size_t _Offset);
-# endif
-#endif
+  _CRTIMP void *__cdecl _aligned_malloc(size_t _Size, size_t _Alignment);
+  _CRTIMP void *__cdecl _aligned_offset_malloc(size_t _Size, size_t _Alignment, size_t _Offset);
+  _CRTIMP size_t __cdecl _aligned_msize(void *_Block, size_t _Alignment, size_t _Offset);
+  _CRTIMP void *__cdecl _aligned_offset_realloc(void *_Memory, size_t _Size, size_t _Alignment, size_t _Offset);
+  _CRTIMP void *__cdecl _aligned_offset_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment, size_t _Offset);
+  _CRTIMP void *__cdecl _aligned_realloc(void *_Memory, size_t _Size, size_t _Alignment);
+  _CRTIMP void *__cdecl _aligned_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment);
+#endif  /* _CRT_ALLOCATION_DEFINED */
 
 /* Users should really use MS provided versions */
 void * __mingw_aligned_malloc (size_t _Size, size_t _Alignment);
@@ -91,8 +96,6 @@ void * __mingw_aligned_realloc (void *_Memory, size_t _Size, size_t _Offset);
 #endif /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
   _CRTIMP unsigned long __cdecl _set_malloc_crt_max_wait(unsigned long _NewValue);
 
-  _CRTIMP void *__cdecl _expand(void *_Memory,size_t _NewSize);
-  _CRTIMP size_t __cdecl _msize(void *_Memory);
 #ifdef __GNUC__
 #undef _alloca
 #define _alloca(x) __builtin_alloca((x))
