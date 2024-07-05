@@ -133,6 +133,7 @@ src_ucrtbase=\
   math/modfl.c \
   misc/__badioinfo.c \
   misc/__initenv.c \
+  misc/__winitenv.c \
   misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
   misc/fesetenv.c misc/fesetexceptflag.c misc/fesetround.c misc/fetestexcept.c \
   misc/ucrt-access.c \
