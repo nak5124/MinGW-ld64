@@ -132,6 +132,8 @@ src_ucrtbase=\
   math/lgamma.c math/lgammaf.c math/lgammal.c \
   math/modfl.c \
   misc/__badioinfo.c \
+  misc/__p___initenv.c \
+  misc/__p___winitenv.c \
   misc/__initenv.c \
   misc/__winitenv.c \
   misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
