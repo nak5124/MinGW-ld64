@@ -230,14 +230,48 @@ limitations in handling dllimport attribute.  */
 # endif
 #endif
 
+#if (defined(_BSD_SOURCE) || defined(_SVID_SOURCE)) && !defined(_DEFAULT_SOURCE)
+# undef  _DEFAULT_SOURCE
+# define _DEFAULT_SOURCE 1
+#endif
+
+#ifdef _GNU_SOURCE
+# undef  _POSIX_C_SOURCE
+# define _POSIX_C_SOURCE 200809L
+# undef  _XOPEN_SOURCE
+# define _XOPEN_SOURCE	700
+# undef  _DEFAULT_SOURCE
+# define _DEFAULT_SOURCE 1
+#endif
+
+#if (defined(_POSIX) || defined(_POSIX_SOURCE)) && !defined(_POSIX_C_SOURCE)
+# define _POSIX_C_SOURCE 1
+#endif
+
+#if (!defined(__STRICT_ANSI__) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) >= 500)) && !defined(_POSIX_C_SOURCE)
+# define _POSIX_C_SOURCE 1
+# if defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 500
+#   define _POSIX_C_SOURCE 2
+# elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 600
+#   define _POSIX_C_SOURCE 199506L
+# elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 700
+#   define _POSIX_C_SOURCE 200112L
+# else
+#   define _POSIX_C_SOURCE 200809L
+# endif
+#endif
+
+#if defined(_THREAD_SAFE) && (!defined(_POSIX_C_SOURCE) || (_POSIX_C_SOURCE - 0) < 199506L)
+# undef  _POSIX_C_SOURCE
+# define _POSIX_C_SOURCE 199506L
+#endif
+
+#ifndef _FILE_OFFSET_BITS
+# define _FILE_OFFSET_BITS 64
+#endif
+
 /* We are activating __USE_MINGW_ANSI_STDIO for various define indicators. */
-#if (defined(_POSIX) || defined(_POSIX_SOURCE) || defined(_POSIX_C_SOURCE) \
-     || defined(_ISOC99_SOURCE) \
-     || defined(_XOPEN_SOURCE) || defined(_XOPEN_SOURCE_EXTENDED) \
-     || defined(_GNU_SOURCE) \
-     || defined(_SVID_SOURCE)) \
-     && !defined(__USE_MINGW_ANSI_STDIO)
-  /* Enable __USE_MINGW_ANSI_STDIO if user did _not_ specify it explicitly... */
+#if (defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_DEFAULT_SOURCE)) && !defined(__USE_MINGW_ANSI_STDIO)
 # define __USE_MINGW_ANSI_STDIO 1
 #endif
 
@@ -245,8 +279,10 @@ limitations in handling dllimport attribute.  */
 #if !defined(__USE_MINGW_ANSI_STDIO)
 # define __USE_MINGW_ANSI_STDIO 0      /* was not defined so it should be 0 */
 #elif (__USE_MINGW_ANSI_STDIO + 0) != 0 || (1 - __USE_MINGW_ANSI_STDIO - 1) == 2
+# undef __USE_MINGW_ANSI_STDIO
 # define __USE_MINGW_ANSI_STDIO 1      /* was defined as nonzero or empty so it should be 1 */
 #else
+# undef __USE_MINGW_ANSI_STDIO
 # define __USE_MINGW_ANSI_STDIO 0      /* was defined as (int)zero and non-empty so it should be 0 */
 #endif
 
