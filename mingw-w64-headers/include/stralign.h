@@ -130,6 +130,10 @@ extern "C" {
     if(WSTR_ALIGNED(String)) return wcscpy((PWSTR)Destination,(PCWSTR)Source);
     return uaw_wcscpy(Destination,Source);
   }
+  __CRT_INLINE PUWSTR ua_wcscpy_s(PUWSTR Destination,size_t DestinationSize,PCUWSTR Source) {
+    if(WSTR_ALIGNED(Source) && WSTR_ALIGNED(Destination)) return (wcscpy_s((PWSTR)Destination,DestinationSize,(PCWSTR)Source)==0 ? Destination : NULL);
+    return uaw_wcscpy((PCUWSTR)String,Character);
+  }
   __CRT_INLINE PUWSTR ua_wcsrchr(PUWSTR String,WCHAR Character) {
     if(WSTR_ALIGNED(String)) return wcsrchr(String,Character);
     return uaw_wcsrchr((PCUWSTR)String,Character);
@@ -202,5 +206,4 @@ extern "C" {
 }
 #endif
 
-#include <sec_api/stralign_s.h>
 #endif
