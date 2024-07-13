@@ -1,4 +1,4 @@
-#define __CRT__NO_INLINE
+#define _GNU_SOURCE
 #include <wchar.h>
 
 wchar_t * __cdecl

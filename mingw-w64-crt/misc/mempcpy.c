@@ -1,4 +1,4 @@
-#define __CRT__NO_INLINE
+#define _GNU_SOURCE
 #include <string.h>
 
 void * __cdecl

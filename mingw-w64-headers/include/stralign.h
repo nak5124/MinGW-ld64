@@ -100,7 +100,7 @@ extern "C" {
 #endif
 #endif /* !__CRT__NO_INLINE */
 
-#if defined(_WSTRING_DEFINED)
+#if defined(_INC_CORECRT_WSTRING)
 #ifdef _WConst_return
   typedef _WConst_return WCHAR UNALIGNED *PUWSTR_C;
 #else
@@ -160,7 +160,7 @@ extern "C" {
     return uaw_wcsicmp(String1,String2);
   }
 #endif /* !__CRT__NO_INLINE */
-#endif /* _WSTRING_DEFINED */
+#endif /* _INC_CORECRT_WSTRING */
 
 #ifndef __UA_WCSLEN
 #define __UA_WCSLEN ua_wcslen
