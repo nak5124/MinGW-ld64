@@ -26,18 +26,17 @@
  * $Date: 2003/05/03 13:48:47 $
  *
  */
-
 #ifndef _SYS_PARAM_H
 #define _SYS_PARAM_H
 
 #include <sys/types.h>
 #include <limits.h>
 
-/* These are useful for cross-compiling */ 
-#define BIG_ENDIAN	4321
-#define LITTLE_ENDIAN	1234
-#define BYTE_ORDER	LITTLE_ENDIAN
+/* These are useful for cross-compiling */
+#define BIG_ENDIAN    4321
+#define LITTLE_ENDIAN 1234
+#define BYTE_ORDER    LITTLE_ENDIAN
 
 #define MAXPATHLEN PATH_MAX
 
-#endif
+#endif  /* _SYS_PARAM_H */

@@ -8,6 +8,4 @@
  *
  * This fcntl.h maps to the root fcntl.h
  */
-
 #include <fcntl.h>
-

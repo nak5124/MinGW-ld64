@@ -3,7 +3,7 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-/* 
+/*
  * dir.h
  *
  * This file OBSOLESCENT and only provided for backward compatibility.
@@ -26,6 +26,4 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  */
-
 #include <io.h>
-

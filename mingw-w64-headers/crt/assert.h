@@ -12,45 +12,40 @@
 #ifndef __ASSERT_H_
 #define __ASSERT_H_
 
-#include <crtdefs.h>
-#ifdef __cplusplus
-#include <stdlib.h>
-#endif
+#include <corecrt.h>
+
+#pragma pack(push, _CRT_PACKING)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-_CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN _wassert(const wchar_t *_Message,const wchar_t *_File,unsigned _Line);
-_CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN _assert (const char *_Message, const char *_File, unsigned _Line);
+#if (defined(_ISOC11_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L)) \
+  && !defined(__cplusplus)
+/* Static assertion.  Requires support in the compiler. */
+# undef static_assert
+# define static_assert _Static_assert
+#endif
+
+  _CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN _wassert(const wchar_t *_Message, const wchar_t *_File, unsigned _Line);
+  _CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN _assert(const char *_Message, const char *_File, unsigned _Line);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* !defined (__ASSERT_H_) */
+#pragma pack(pop)
 
-#if (defined _ISOC11_SOURCE \
-     || (defined __STDC_VERSION__ && __STDC_VERSION__ >= 201112L)) \
-    && !defined (__cplusplus)
-/* Static assertion.  Requires support in the compiler.  */
-#undef static_assert
-#define static_assert _Static_assert
-#endif
+#endif  /* __ASSERT_H_ */
 
 #ifdef NDEBUG
-#define assert(_Expression) ((void)0)
-#else /* !defined (NDEBUG) */
-#if defined(_UNICODE) || defined(UNICODE)
-#define assert(_Expression) \
- (void) \
- ((!!(_Expression)) || \
-  (_wassert(_CRT_WIDE(#_Expression),_CRT_WIDE(__FILE__),__LINE__),0))
-#else /* not unicode */
-#define assert(_Expression) \
- (void) \
- ((!!(_Expression)) || \
-  (_assert(#_Expression,__FILE__,__LINE__),0))
-#endif /* _UNICODE||UNICODE */
-#endif /* !defined (NDEBUG) */
-
+# define assert(_Expression) ((void)0)
+#elif defined(_UNICODE) || defined(UNICODE)
+# define assert(_Expression) \
+  (void) \
+  ((!!(_Expression)) || (_wassert(_CRT_WIDE(#_Expression), _CRT_WIDE(__FILE__), __LINE__), 0))
+#else
+# define assert(_Expression) \
+  (void) \
+  ((!!(_Expression)) || (_assert(#_Expression, __FILE__, __LINE__), 0))
+#endif  /* NDEBUG */

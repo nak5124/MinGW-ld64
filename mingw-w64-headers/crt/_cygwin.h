@@ -7,7 +7,7 @@
 #define _INC_CYGWIN
 
 #ifndef __CYGWIN__
-#error Only Cygwin target is supported!
+# error Only Cygwin target is supported!
 #endif
 
 /* This includes the Cygwin gcc definitions for types like wchar_t or size_t. */
@@ -30,7 +30,7 @@
    with _WIN32.  Therefore we set it here.  The result is that _WIN64
    is only defined if Windows headers are included. */
 #ifdef __x86_64__
-#define _WIN64
+# define _WIN64
 #endif
 
-#endif /* _INC_CYGWIN */
+#endif  /* _INC_CYGWIN */

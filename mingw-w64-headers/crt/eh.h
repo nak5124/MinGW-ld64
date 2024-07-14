@@ -10,7 +10,7 @@
 
 #include <typeinfo>
 
-#include <crtdefs.h>
+#include <corecrt.h>
 
 #ifndef _EH_H_
 #define _EH_H_
