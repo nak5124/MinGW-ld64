@@ -98,9 +98,10 @@ extern "C" {
 
   _CRTIMP unsigned int __cdecl ___lc_codepage_func(void);
 
-#ifndef _WLOCALE_DEFINED
-#define _WLOCALE_DEFINED
-  _CRTIMP wchar_t *__cdecl _wsetlocale(int _Category,const wchar_t *_Locale);
+#ifndef _WLOCALE_DEFINED  /* Also in wchar.h */
+# define _WLOCALE_DEFINED
+  _CRTIMP wchar_t *__cdecl _wsetlocale(int _Category, const wchar_t *_Locale);
+  _CRTIMP _locale_t __cdecl _wcreate_locale(int _Category, const wchar_t *_Locale);
 #endif
 
 #ifdef __CHAR_UNSIGNED__
