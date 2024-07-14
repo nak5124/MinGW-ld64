@@ -16,6 +16,8 @@
 #include <corecrt_wstdlib.h>
 #include <corecrt_wstring.h>
 #include <corecrt_wtime.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #if defined(__LIBMSVCRT__)
 /* When building mingw-w64, this should be blank.  */
@@ -71,16 +73,7 @@ extern "C" {
 #endif
 
 #include <_mingw_off_t.h>
-#include <_mingw_stat64.h>
 
-#ifndef _WSTAT_DEFINED
-#define _WSTAT_DEFINED
-
-  _CRTIMP int __cdecl _wstat32(const wchar_t *_Name,struct _stat32 *_Stat);
-  _CRTIMP int __cdecl _wstat32i64(const wchar_t *_Name,struct _stat32i64 *_Stat);
-  int __cdecl _wstat64i32(const wchar_t *_Name,struct _stat64i32 *_Stat);
-  _CRTIMP int __cdecl _wstat64(const wchar_t *_Name,struct _stat64 *_Stat);
-#endif
 #endif
 
 #if defined(_UCRT) || defined(__LARGE_MBSTATE_T)
