@@ -148,12 +148,15 @@ _CRTIMP char* __cdecl _getcwd (char*, int);
 #define _WFINDDATA_T_DEFINED
 #endif /* _WFINDDATA_T_DEFINED */
 
+#ifndef _A_NORMAL
 #define _A_NORMAL 0x00
 #define _A_RDONLY 0x01
 #define _A_HIDDEN 0x02
 #define _A_SYSTEM 0x04
+#define _A_VOLID  0x08
 #define _A_SUBDIR 0x10
-#define _A_ARCH 0x20
+#define _A_ARCH   0x20
+#endif
 
 #ifndef _SIZE_T_DEFINED
 #define _SIZE_T_DEFINED

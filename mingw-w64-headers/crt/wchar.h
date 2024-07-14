@@ -9,6 +9,7 @@
 #include <corecrt.h>
 #include <corecrt_wconio.h>
 #include <corecrt_wctype.h>
+#include <corecrt_wdirect.h>
 #include <corecrt_wstdio.h>
 #include <corecrt_wstdlib.h>
 #include <corecrt_wstring.h>
@@ -102,19 +103,6 @@ extern "C" {
 #endif
 
 #define _WConst_return _CONST_RETURN
-
-#ifndef _WDIRECT_DEFINED
-#define _WDIRECT_DEFINED
-
-  _CRTIMP wchar_t *__cdecl _wgetcwd(wchar_t *_DstBuf,int _SizeInWords);
-  _CRTIMP wchar_t *__cdecl _wgetdcwd(int _Drive,wchar_t *_DstBuf,int _SizeInWords);
-#if __MSVCRT_VERSION__ >= 0x800
-  wchar_t *__cdecl _wgetdcwd_nolock(int _Drive,wchar_t *_DstBuf,int _SizeInWords);
-#endif
-  _CRTIMP int __cdecl _wchdir(const wchar_t *_Path);
-  _CRTIMP int __cdecl _wmkdir(const wchar_t *_Path);
-  _CRTIMP int __cdecl _wrmdir(const wchar_t *_Path);
-#endif
 
 #ifndef _WIO_DEFINED
 #define _WIO_DEFINED
