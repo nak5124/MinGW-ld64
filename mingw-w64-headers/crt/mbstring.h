@@ -169,8 +169,11 @@ extern "C" {
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _mbsupr_s_l, unsigned char, _String, _locale_t, _Locale)
   _CRTIMP size_t __cdecl _mbclen(const unsigned char *_Str);
   _CRTIMP size_t __cdecl _mbclen_l(const unsigned char *_Str, _locale_t _Locale);
+#ifndef _MBCCPY_DEFINED  /* Also in mbctype.h */
+# define _MBCCPY_DEFINED
   _CRTIMP void __cdecl _mbccpy(unsigned char *_Dst, const unsigned char *_Src) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP void __cdecl _mbccpy_l(unsigned char *_Dst, const unsigned char *_Src, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif  /* _MBCCPY_DEFINED */
   _CRTIMP errno_t __cdecl _mbccpy_s(unsigned char *_Dst, size_t _DstSizeInBytes, int *_PCopied, const unsigned char *_Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbccpy_s, unsigned char, _Dest, int *, _PCopied, const unsigned char *, _Source)
   _CRTIMP errno_t __cdecl _mbccpy_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, int *_PCopied, const unsigned char *_Src, _locale_t _Locale);
