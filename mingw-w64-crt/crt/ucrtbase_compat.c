@@ -47,10 +47,17 @@ _CRTIMP wchar_t*** __cdecl __p___wargv(void);
 _CRTIMP char*** __cdecl __p__environ(void);
 _CRTIMP wchar_t*** __cdecl __p__wenviron(void);
 
+typedef enum _crt_argv_mode
+{
+  _crt_argv_no_arguments,
+  _crt_argv_unexpanded_arguments,
+  _crt_argv_expanded_arguments,
+} _crt_argv_mode;
+
 _CRTIMP int __cdecl _initialize_narrow_environment(void);
 _CRTIMP int __cdecl _initialize_wide_environment(void);
-_CRTIMP int __cdecl _configure_narrow_argv(int mode);
-_CRTIMP int __cdecl _configure_wide_argv(int mode);
+_CRTIMP int __cdecl _configure_narrow_argv(_crt_argv_mode mode);
+_CRTIMP int __cdecl _configure_wide_argv(_crt_argv_mode mode);
 
 // Declared in new.h, but only visible to C++
 _CRTIMP int __cdecl _set_new_mode(int _NewMode);
@@ -62,7 +69,7 @@ extern char __mingw_module_is_dll;
 int __cdecl __getmainargs(int * _Argc, char *** _Argv, char ***_Env, int _DoWildCard, _startupinfo *_StartInfo)
 {
   _initialize_narrow_environment();
-  _configure_narrow_argv(_DoWildCard ? 2 : 1);
+  _configure_narrow_argv(_DoWildCard ? _crt_argv_expanded_arguments : _crt_argv_unexpanded_arguments);
   *_Argc = *__p___argc();
   *_Argv = *__p___argv();
   *_Env = *__p__environ();
@@ -74,7 +81,7 @@ int __cdecl __getmainargs(int * _Argc, char *** _Argv, char ***_Env, int _DoWild
 int __cdecl __wgetmainargs(int * _Argc, wchar_t *** _Argv, wchar_t ***_Env, int _DoWildCard, _startupinfo *_StartInfo)
 {
   _initialize_wide_environment();
-  _configure_wide_argv(_DoWildCard ? 2 : 1);
+  _configure_wide_argv(_DoWildCard ? _crt_argv_expanded_arguments : _crt_argv_unexpanded_arguments);
   *_Argc = *__p___argc();
   *_Argv = *__p___wargv();
   *_Env = *__p__wenviron();
