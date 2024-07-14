@@ -90,10 +90,13 @@ extern "C" {
   _CRTIMP errno_t __cdecl _set_errno(int _Value);
   _CRTIMP errno_t __cdecl _get_errno(int *_Value);
 #endif  /* _CRT_ERRNO_DEFINED */
+#ifndef _DOSERRNO_DEFINED  /* Also in errno.h */
+# define _DOSERRNO_DEFINED
   _CRTIMP unsigned long *__cdecl __doserrno(void);
 #define _doserrno (*__doserrno())
   _CRTIMP errno_t __cdecl _set_doserrno(unsigned long _Value);
   _CRTIMP errno_t __cdecl _get_doserrno(unsigned long *_Value);
+#endif  /* _DOSERRNO_DEFINED */
   _CRTIMP char **__cdecl __sys_errlist(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #define _sys_errlist (__sys_errlist())
   _CRTIMP int *__cdecl __sys_nerr(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;

@@ -13,15 +13,12 @@
 extern "C" {
 #endif
 
-#ifndef _CRT_ERRNO_DEFINED
+#ifndef _CRT_ERRNO_DEFINED  /* Also in errno.h and stdlib.h */
 # define _CRT_ERRNO_DEFINED
-
   _CRTIMP extern int *__cdecl _errno(void);
 # define errno (*_errno())
-
   _CRTIMP errno_t __cdecl _set_errno(int _Value);
   _CRTIMP errno_t __cdecl _get_errno(int *_Value);
-
 #endif  /* _CRT_ERRNO_DEFINED */
 
   _CRTIMP extern unsigned long __cdecl __threadid(void);
