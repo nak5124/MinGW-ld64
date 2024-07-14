@@ -97,8 +97,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 	$(am__configure_deps) $(basehead_HEADERS) $(ddkhead_HEADERS) \
 	$(gdiplushead_HEADERS) $(glhead_HEADERS) $(idlhead_HEADERS) \
 	$(khrhead_HEADERS) $(mingwhelperhead_HEADERS) \
-	$(noinst_HEADERS) $(sechead_HEADERS) $(secsyshead_HEADERS) \
-	$(syshead_HEADERS) $(wrlhead_HEADERS) \
+	$(noinst_HEADERS) $(syshead_HEADERS) $(wrlhead_HEADERS) \
 	$(wrlwrappershead_HEADERS) $(am__DIST_COMMON)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
@@ -156,15 +155,14 @@ am__installdirs = "$(DESTDIR)$(baseheaddir)" "$(DESTDIR)$(ddkheaddir)" \
 	"$(DESTDIR)$(gdiplusheaddir)" "$(DESTDIR)$(glheaddir)" \
 	"$(DESTDIR)$(idlheaddir)" "$(DESTDIR)$(khrheaddir)" \
 	"$(DESTDIR)$(mingwhelperheaddir)" "$(DESTDIR)$(sdksheaddir)" \
-	"$(DESTDIR)$(secheaddir)" "$(DESTDIR)$(secsysheaddir)" \
 	"$(DESTDIR)$(sysheaddir)" "$(DESTDIR)$(wrlheaddir)" \
 	"$(DESTDIR)$(wrlwrappersheaddir)"
 HEADERS = $(basehead_HEADERS) $(ddkhead_HEADERS) \
 	$(gdiplushead_HEADERS) $(glhead_HEADERS) $(idlhead_HEADERS) \
 	$(khrhead_HEADERS) $(mingwhelperhead_HEADERS) \
 	$(nodist_sdkshead_HEADERS) $(noinst_HEADERS) \
-	$(sechead_HEADERS) $(secsyshead_HEADERS) $(syshead_HEADERS) \
-	$(wrlhead_HEADERS) $(wrlwrappershead_HEADERS)
+	$(syshead_HEADERS) $(wrlhead_HEADERS) \
+	$(wrlwrappershead_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP) \
 	config.h.in
 # Read a list of newline-separated strings from the standard input,
@@ -252,8 +250,6 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
-SECHEAD_LIST = @SECHEAD_LIST@
-SECSYSHEAD_LIST = @SECSYSHEAD_LIST@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -313,8 +309,6 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 baseheaddir = $(includedir)
 sysheaddir = $(baseheaddir)/sys
-secheaddir = $(baseheaddir)/sec_api
-secsysheaddir = $(baseheaddir)/sec_api/sys
 glheaddir = $(baseheaddir)/GL
 khrheaddir = $(baseheaddir)/KHR
 gdiplusheaddir = $(baseheaddir)/gdiplus
@@ -324,8 +318,6 @@ mingwhelperheaddir = $(baseheaddir)/psdk_inc
 sdksheaddir = $(baseheaddir)/sdks
 basehead_HEADERS = @BASEHEAD_LIST@
 syshead_HEADERS = @SYSHEAD_LIST@
-sechead_HEADERS = @SECHEAD_LIST@
-secsyshead_HEADERS = @SECSYSHEAD_LIST@
 glhead_HEADERS = @GLHEAD_LIST@
 khrhead_HEADERS = @KHRHEAD_LIST@
 gdiplushead_HEADERS = @GDIPLUSHEAD_LIST@
@@ -359,8 +351,6 @@ EXTRA_HEADERS = \
   crt/*.h \
   crt/*.inl \
   crt/sys/*.h \
-  crt/sec_api/*.h \
-  crt/sec_api/sys/*.h \
   ddk/include/ddk/*.h \
   tlb/*.tlb
 
@@ -884,48 +874,6 @@ uninstall-nodist_sdksheadHEADERS:
 	@list='$(nodist_sdkshead_HEADERS)'; test -n "$(sdksheaddir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
 	dir='$(DESTDIR)$(sdksheaddir)'; $(am__uninstall_files_from_dir)
-install-secheadHEADERS: $(sechead_HEADERS)
-	@$(NORMAL_INSTALL)
-	@list='$(sechead_HEADERS)'; test -n "$(secheaddir)" || list=; \
-	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(secheaddir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(secheaddir)" || exit 1; \
-	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(secheaddir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(secheaddir)" || exit $$?; \
-	done
-
-uninstall-secheadHEADERS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(sechead_HEADERS)'; test -n "$(secheaddir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(secheaddir)'; $(am__uninstall_files_from_dir)
-install-secsysheadHEADERS: $(secsyshead_HEADERS)
-	@$(NORMAL_INSTALL)
-	@list='$(secsyshead_HEADERS)'; test -n "$(secsysheaddir)" || list=; \
-	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(secsysheaddir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(secsysheaddir)" || exit 1; \
-	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(secsysheaddir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(secsysheaddir)" || exit $$?; \
-	done
-
-uninstall-secsysheadHEADERS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(secsyshead_HEADERS)'; test -n "$(secsysheaddir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(secsysheaddir)'; $(am__uninstall_files_from_dir)
 install-sysheadHEADERS: $(syshead_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(syshead_HEADERS)'; test -n "$(sysheaddir)" || list=; \
@@ -1228,7 +1176,7 @@ check: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) check-am
 all-am: Makefile $(HEADERS) config.h
 installdirs:
-	for dir in "$(DESTDIR)$(baseheaddir)" "$(DESTDIR)$(ddkheaddir)" "$(DESTDIR)$(gdiplusheaddir)" "$(DESTDIR)$(glheaddir)" "$(DESTDIR)$(idlheaddir)" "$(DESTDIR)$(khrheaddir)" "$(DESTDIR)$(mingwhelperheaddir)" "$(DESTDIR)$(sdksheaddir)" "$(DESTDIR)$(secheaddir)" "$(DESTDIR)$(secsysheaddir)" "$(DESTDIR)$(sysheaddir)" "$(DESTDIR)$(wrlheaddir)" "$(DESTDIR)$(wrlwrappersheaddir)"; do \
+	for dir in "$(DESTDIR)$(baseheaddir)" "$(DESTDIR)$(ddkheaddir)" "$(DESTDIR)$(gdiplusheaddir)" "$(DESTDIR)$(glheaddir)" "$(DESTDIR)$(idlheaddir)" "$(DESTDIR)$(khrheaddir)" "$(DESTDIR)$(mingwhelperheaddir)" "$(DESTDIR)$(sdksheaddir)" "$(DESTDIR)$(sysheaddir)" "$(DESTDIR)$(wrlheaddir)" "$(DESTDIR)$(wrlwrappersheaddir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -1290,7 +1238,6 @@ install-data-am: install-baseheadHEADERS install-ddkheadHEADERS \
 	install-gdiplusheadHEADERS install-glheadHEADERS \
 	install-idlheadHEADERS install-khrheadHEADERS \
 	install-mingwhelperheadHEADERS install-nodist_sdksheadHEADERS \
-	install-secheadHEADERS install-secsysheadHEADERS \
 	install-sysheadHEADERS install-wrlheadHEADERS \
 	install-wrlwrappersheadHEADERS
 
@@ -1342,8 +1289,7 @@ uninstall-am: uninstall-baseheadHEADERS uninstall-ddkheadHEADERS \
 	uninstall-gdiplusheadHEADERS uninstall-glheadHEADERS \
 	uninstall-idlheadHEADERS uninstall-khrheadHEADERS \
 	uninstall-mingwhelperheadHEADERS \
-	uninstall-nodist_sdksheadHEADERS uninstall-secheadHEADERS \
-	uninstall-secsysheadHEADERS uninstall-sysheadHEADERS \
+	uninstall-nodist_sdksheadHEADERS uninstall-sysheadHEADERS \
 	uninstall-wrlheadHEADERS uninstall-wrlwrappersheadHEADERS
 
 .MAKE: all check install install-am install-exec install-strip
@@ -1363,8 +1309,7 @@ uninstall-am: uninstall-baseheadHEADERS uninstall-ddkheadHEADERS \
 	install-khrheadHEADERS install-man \
 	install-mingwhelperheadHEADERS install-nodist_sdksheadHEADERS \
 	install-pdf install-pdf-am install-ps install-ps-am \
-	install-secheadHEADERS install-secsysheadHEADERS install-strip \
-	install-sysheadHEADERS install-wrlheadHEADERS \
+	install-strip install-sysheadHEADERS install-wrlheadHEADERS \
 	install-wrlwrappersheadHEADERS installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-generic pdf pdf-am ps ps-am tags \
@@ -1372,8 +1317,7 @@ uninstall-am: uninstall-baseheadHEADERS uninstall-ddkheadHEADERS \
 	uninstall-ddkheadHEADERS uninstall-gdiplusheadHEADERS \
 	uninstall-glheadHEADERS uninstall-idlheadHEADERS \
 	uninstall-khrheadHEADERS uninstall-mingwhelperheadHEADERS \
-	uninstall-nodist_sdksheadHEADERS uninstall-secheadHEADERS \
-	uninstall-secsysheadHEADERS uninstall-sysheadHEADERS \
+	uninstall-nodist_sdksheadHEADERS uninstall-sysheadHEADERS \
 	uninstall-wrlheadHEADERS uninstall-wrlwrappersheadHEADERS
 
 .PRECIOUS: Makefile
