@@ -121,20 +121,6 @@ extern "C" {
   __MINGW_EXTENSION long long __cdecl wtoll(const wchar_t *_String);
   __MINGW_EXTENSION wchar_t *__cdecl lltow(long long _Val, wchar_t *_DstBuf, int _Radix);
   __MINGW_EXTENSION wchar_t *__cdecl ulltow(unsigned long long _Val, wchar_t *_DstBuf, int _Radix);
-#ifndef __CRT__NO_INLINE
-  __MINGW_EXTENSION __CRT_INLINE long long  __cdecl wtoll(const wchar_t *_String)
-  {
-    return _wtoll(_String);
-  }
-  __MINGW_EXTENSION __CRT_INLINE wchar_t *__cdecl lltow(long long _Val, wchar_t *_DstBuf, int _Radix)
-  {
-    return _i64tow(_Val, _DstBuf, _Radix);
-  }
-  __MINGW_EXTENSION __CRT_INLINE wchar_t *__cdecl ulltow(unsigned long long _Val, wchar_t *_DstBuf, int _Radix)
-  {
-    return _ui64tow(_Val, _DstBuf, _Radix);
-  }
-#endif  /* __CRT__NO_INLINE */
 #endif  /* __STRICT_ANSI__ */
 
 #ifdef __cplusplus

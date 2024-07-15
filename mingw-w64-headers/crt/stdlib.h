@@ -458,16 +458,6 @@ extern "C" {
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);
-#ifndef __CRT__NO_INLINE
-  __MINGW_EXTENSION __CRT_INLINE char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix)
-  {
-    return _i64toa(_Val, _DstBuf, _Radix);
-  }
-  __MINGW_EXTENSION __CRT_INLINE char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix)
-  {
-    return _ui64toa(_Val, _DstBuf, _Radix);
-  }
-#endif  /* __CRT__NO_INLINE */
 #endif  /* __STRICT_ANSI__ */
 
 #ifdef __cplusplus

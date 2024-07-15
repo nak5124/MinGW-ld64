@@ -64,10 +64,12 @@ _fread_nolock
 _fread_nolock_s
 _fseek_nolock
 _fseeki64
+fseeko64 == _fseeki64
 _fseeki64_nolock
 _fsopen
 _ftell_nolock
 _ftelli64
+ftello64 == _ftelli64
 _ftelli64_nolock
 _fwrite_nolock
 _get_fmode
@@ -93,6 +95,7 @@ locking == _locking
 _lseek
 lseek == _lseek
 _lseeki64
+lseek64 == _lseeki64
 _mktemp
 mktemp == _mktemp
 _mktemp_s
@@ -157,10 +160,12 @@ ferror
 fflush
 fgetc
 fgetpos
+fgetpos64 == fgetpos
 fgets
 fgetwc
 fgetws
 fopen
+fopen64 == fopen
 fopen_s
 fputc
 fputs
@@ -171,8 +176,11 @@ fread_s
 freopen
 freopen_s
 fseek
+fseeko == fseek
 fsetpos
+fsetpos64 == fsetpos
 ftell
+ftello == ftell
 fwrite
 getc
 getchar

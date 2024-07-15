@@ -168,10 +168,25 @@ ADD_DOUBLE_UNDERSCORE(toascii)
 ADD_UNDERSCORE(pclose)
 ADD_UNDERSCORE(popen)
 ; ADD_UNDERSCORE(scalb)
+fgetpos64 == fgetpos
+fsetpos64 == fsetpos
+fseeko == fseek
+fseeko64 == _fseeki64
+ftello == ftell
+ftello64 == _ftelli64
+fopen64 == fopen
+lseek64 == _lseeki64
 
 ; This is list of symbol aliases for GNU functions which are not part of POSIX or ISO C
 strcasecmp == _stricmp
 strncasecmp == _strnicmp
+
+; Non standard string functions
+lltoa == _i64toa
+lltow == _i64tow
+ulltoa == _ui64toa
+ulltow == _ui64tow
+wtoll == _wtoi64
 
 ; This is list of various symbol aliases which are needed for compatibility
 ; Some symbols in some version of CRT library were added and some other symbols were removed or renamed

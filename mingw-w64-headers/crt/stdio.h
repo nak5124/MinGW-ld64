@@ -1145,26 +1145,10 @@ extern "C++" {
   FILE *fopen64(const char * __restrict__ filename, const char * __restrict__  mode);
   int __cdecl fgetpos64(FILE * __restrict__ _File, fpos_t * __restrict__ _Pos);
   int __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos);
-
-  __mingw_ovr int fseeko(FILE *_File, _off_t _Offset, int _Origin)
-  {
-    return fseek(_File, _Offset, _Origin);
-  }
-
-  __mingw_ovr int fseeko64(FILE *_File, _off64_t _Offset, int _Origin)
-  {
-    return _fseeki64(_File, _Offset, _Origin);
-  }
-
-  __mingw_ovr _off_t ftello(FILE *_File)
-  {
-    return ftell(_File);
-  }
-
-  __mingw_ovr _off64_t ftello64(FILE *_File)
-  {
-    return _ftelli64(_File);
-  }
+  int fseeko(FILE *_File, _off_t _Offset, int _Origin);
+  int fseeko64(FILE *_File, _off64_t _Offset, int _Origin);
+  _off_t ftello(FILE *_File);
+  _off64_t ftello64(FILE *_File);
 
 #if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
 # define fseeko fseeko64

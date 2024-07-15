@@ -299,17 +299,16 @@ src_libmingwex=\
   \
   stdio/mingw_pformat.h    \
   stdio/strtok_r.c         \
-  stdio/asprintf.c         stdio/fgetpos64.c         \
-  stdio/fopen64.c          stdio/fseeko32.c          stdio/fseeko64.c         stdio/fsetpos64.c         stdio/ftello.c          \
-  stdio/ftello64.c         stdio/ftruncate64.c       stdio/lltoa.c            stdio/lltow.c             stdio/lseek64.c         \
+  stdio/asprintf.c         \
+  stdio/ftruncate64.c      \
   stdio/mingw_fprintf.c    stdio/mingw_fprintfw.c    stdio/mingw_fscanf.c     stdio/mingw_fwscanf.c     stdio/mingw_pformat.c   \
   stdio/mingw_pformatw.c   stdio/mingw_printf.c      stdio/mingw_printfw.c    stdio/mingw_scanf.c       stdio/mingw_snprintf.c  \
   stdio/mingw_snprintfw.c  stdio/mingw_sprintf.c     stdio/mingw_sprintfw.c   stdio/mingw_sscanf.c      stdio/mingw_swscanf.c   \
   stdio/mingw_vfprintf.c   stdio/mingw_vfprintfw.c   stdio/mingw_vfscanf.c    stdio/mingw_vprintf.c     stdio/mingw_vprintfw.c  \
   stdio/mingw_vsnprintf.c  stdio/mingw_vsnprintfw.c  stdio/mingw_vsprintf.c   stdio/mingw_vsprintfw.c   stdio/mingw_wscanf.c    \
   stdio/mingw_wvfscanf.c   stdio/truncate.c          \
-  stdio/ulltoa.c           stdio/ulltow.c            stdio/vasprintf.c        \
-  stdio/wtoll.c            stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c
+  stdio/vasprintf.c        \
+  stdio/mingw_asprintf.c    stdio/mingw_vasprintf.c
 
 # Include the default load config struct only for Control Flow Guard support.
 if CFGUARD
