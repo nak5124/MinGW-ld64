@@ -1,8 +1,8 @@
-/*	$NetBSD: profile.h,v 1.6 1995/03/28 18:17:08 jtc Exp $	*/
+/* $NetBSD: profile.h,v 1.6 1995/03/28 18:17:08 jtc Exp $ */
 
 /*
  * Copyright (c) 1992, 1993
- *	The Regents of the University of California.  All rights reserved.
+ * The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -28,7 +28,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)profile.h	8.1 (Berkeley) 6/11/93
+ * @(#)profile.h 8.1 (Berkeley) 6/11/93
  */
 
 /*
@@ -36,7 +36,7 @@
  * The differences should be within __MINGW32__ guard.
  */
 
-#include <_mingw_mac.h>
+#include <corecrt.h>
 
 /* If compiler doesn't inline, at least avoid passing args on the stack. */
 #ifndef _WIN64
@@ -58,5 +58,5 @@ extern void __MINGW_LSYMBOL(mcount)(void);
    Older versions of GCC (pre-4.1) will still fail with regparm since the
    compiler used %edx to store an unneeded counter variable.  */
 
-#define	MCOUNT
+#define MCOUNT
 

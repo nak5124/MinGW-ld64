@@ -19,59 +19,42 @@
  *
  *  Date: 2011-09-27
  */
-
 #ifndef __UCHAR_H
 #define __UCHAR_H
 
-#include <stddef.h>	/* size_t */
-#include <stdint.h>	/* uint_leastXX_t */
-#include <wchar.h>	/* mbstate_t */
+#include <corecrt.h>
+#include <stdint.h>  /* uint_leastXX_t */
 
 /* Remember that g++ >= 4.4 defines these types only in c++0x mode */
-#if !(defined(__cplusplus) && defined(__GXX_EXPERIMENTAL_CXX0X__)) ||	\
-    !defined(__GNUC__) ||						\
-    (!defined(__clang__) && (__GNUC__ < 4 || (__GNUC__ == 4 &&	__GNUC_MINOR__ < 4)))
-typedef uint_least16_t char16_t;
-typedef uint_least32_t char32_t;
+#if !(defined(__cplusplus) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || \
+  !defined(__GNUC__) || \
+  (!defined(__clang__) && (__GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 4)))
+  typedef uint_least16_t char16_t;
+  typedef uint_least32_t char32_t;
+  typedef uint_least16_t _Char16_t;
+  typedef uint_least32_t _Char32_t;
 #endif
 
 #ifndef __STDC_UTF_16__
-#define __STDC_UTF_16__ 1
+# define __STDC_UTF_16__ 1
 #endif
 
 #ifndef __STDC_UTF_32__
-#define __STDC_UTF_32__ 1
+# define __STDC_UTF_32__ 1
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifdef _UCRT
+  _CRTIMP size_t mbrtoc16(char16_t *__restrict__ pc16, const char *__restrict__ s, size_t n, mbstate_t *__restrict__ ps);
+  _CRTIMP size_t c16rtomb(char *__restrict__ s, char16_t c16, mbstate_t *__restrict__ ps);
 
-size_t mbrtoc16 (char16_t *__restrict__ pc16,
-		 const char *__restrict__ s,
-		 size_t n,
-		 mbstate_t *__restrict__ ps);
-
-size_t c16rtomb (char *__restrict__ s,
-		 char16_t c16,
-		 mbstate_t *__restrict__ ps);
-
-size_t mbrtoc32 (char32_t *__restrict__ pc32,
-		 const char *__restrict__ s,
-		 size_t n,
-		 mbstate_t *__restrict__ ps);
-
-size_t c32rtomb (char *__restrict__ s,
-		 char32_t c32,
-		 mbstate_t *__restrict__ ps);
-
-#endif  /* _UCRT */
+  _CRTIMP size_t mbrtoc32(char32_t *__restrict__ pc32, const char *__restrict__ s, size_t n, mbstate_t *__restrict__ ps);
+  _CRTIMP size_t c32rtomb(char *__restrict__ s, char32_t c32, mbstate_t *__restrict__ ps);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __UCHAR_H */
-
+#endif  /* __UCHAR_H */

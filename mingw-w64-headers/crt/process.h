@@ -158,8 +158,8 @@ extern "C" {
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
-# ifndef _CRT_GETPID_DEFINED
-#   define _CRT_GETPID_DEFINED  /* Also in unistd.h */
+# ifndef _CRT_GETPID_DEFINED  /* Also in unistd.h */
+#   define _CRT_GETPID_DEFINED
     int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */

@@ -6,11 +6,11 @@
 #ifndef _INC_NEW
 #define _INC_NEW
 
+#include <corecrt.h>
+
 #ifdef __cplusplus
 
 #include <new>
-
-#include <crtdefs.h>
 
 #pragma push_macro("new")
 #undef new
@@ -23,17 +23,6 @@
 #define __PLACEMENT_NEW_INLINE
 #endif
 
-_CRTIMP int __cdecl _query_new_mode(void);
-_CRTIMP int __cdecl _set_new_mode(int _NewMode);
-
-#ifndef _PNH_DEFINED
-typedef int (__cdecl *_PNH)(size_t);
-#define _PNH_DEFINED
-#endif
-
-_CRTIMP _PNH __cdecl _query_new_handler(void);
-_CRTIMP _PNH __cdecl _set_new_handler(_PNH _NewHandler);
-
 #ifndef _NO_ANSI_NH_DEFINED
 #define _NO_ANSI_NEW_HANDLER ((new_handler)-1)
 #define _NO_ANSI_NEW_HANDLER_M ((_new_handler_m)-1)
@@ -42,4 +31,25 @@ _CRTIMP _PNH __cdecl _set_new_handler(_PNH _NewHandler);
 
 #pragma pop_macro("new")
 #endif
+
+#pragma pack(push, _CRT_PACKING)
+
+#ifdef __cplusplus
+extern "C" {
 #endif
+
+  typedef int (__cdecl *_PNH)(size_t);
+
+  _CRTIMP _PNH __cdecl _query_new_handler(void);
+  _CRTIMP _PNH __cdecl _set_new_handler(_PNH _NewHandler);
+
+  _CRTIMP int __cdecl _query_new_mode(void);
+  _CRTIMP int __cdecl _set_new_mode(int _NewMode);
+
+#ifdef __cplusplus
+}
+#endif
+
+#pragma pack(pop)
+
+#endif  /* _INC_NEW */

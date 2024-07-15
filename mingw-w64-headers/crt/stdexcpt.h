@@ -3,13 +3,13 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#include <crtdefs.h>
-
 #ifndef _INC_STDEXCPT
 #define _INC_STDEXCPT
+
+#include <corecrt.h>
 
 #ifdef __cplusplus
 #include <exception>
 #endif
 
-#endif
+#endif  /* _INC_STDEXCPT */
