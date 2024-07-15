@@ -646,24 +646,23 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	misc/delay-f.c misc/delay-n.c misc/delayimp.c misc/dirent.c \
 	misc/dirname.c misc/feraiseexcept.c misc/feupdateenv.c \
 	misc/ftruncate.c misc/fwide.c misc/getlogin.c misc/getopt.c \
-	misc/gettimeofday.c misc/mempcpy.c misc/mingw-aligned-malloc.c \
-	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
-	misc/mingw_usleep.c misc/mingw_wcstod.c misc/mingw_wcstof.c \
-	misc/mingw_wcstold.c misc/mkstemp.c misc/sleep.c \
-	misc/strsafe.c misc/tdelete.c misc/tdestroy.c misc/tfind.c \
-	misc/tsearch.c misc/twalk.c misc/wdirent.c misc/wmemchr.c \
-	misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c \
-	misc/wmemset.c misc/ftw.c misc/ftw64.c misc/mingw-access.c \
-	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
-	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
-	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/strcat_chk.c \
-	ssp/stpcpy_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
-	ssp/strncpy_chk.c stdio/mingw_pformat.h stdio/strtok_r.c \
-	stdio/asprintf.c stdio/fgetpos64.c stdio/fopen64.c \
-	stdio/fseeko32.c stdio/fseeko64.c stdio/fsetpos64.c \
-	stdio/ftello.c stdio/ftello64.c stdio/ftruncate64.c \
-	stdio/lltoa.c stdio/lltow.c stdio/lseek64.c \
-	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
+	misc/gettimeofday.c misc/mempcpy.c misc/mingw_matherr.c \
+	misc/mingw_mbwc_convert.c misc/mingw_usleep.c \
+	misc/mingw_wcstod.c misc/mingw_wcstof.c misc/mingw_wcstold.c \
+	misc/mkstemp.c misc/sleep.c misc/strsafe.c misc/tdelete.c \
+	misc/tdestroy.c misc/tfind.c misc/tsearch.c misc/twalk.c \
+	misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c \
+	misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c misc/ftw.c \
+	misc/ftw64.c misc/mingw-access.c ssp/chk_fail.c ssp/gets_chk.c \
+	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
+	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
+	ssp/strcat_chk.c ssp/stpcpy_chk.c ssp/strcpy_chk.c \
+	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/mingw_pformat.h \
+	stdio/strtok_r.c stdio/asprintf.c stdio/fgetpos64.c \
+	stdio/fopen64.c stdio/fseeko32.c stdio/fseeko64.c \
+	stdio/fsetpos64.c stdio/ftello.c stdio/ftello64.c \
+	stdio/ftruncate64.c stdio/lltoa.c stdio/lltow.c \
+	stdio/lseek64.c stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
 	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
 	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
 	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
@@ -798,7 +797,6 @@ am__objects_22 =  \
 	misc/lib64_libmingwex_a-getopt.$(OBJEXT) \
 	misc/lib64_libmingwex_a-gettimeofday.$(OBJEXT) \
 	misc/lib64_libmingwex_a-mempcpy.$(OBJEXT) \
-	misc/lib64_libmingwex_a-mingw-aligned-malloc.$(OBJEXT) \
 	misc/lib64_libmingwex_a-mingw_matherr.$(OBJEXT) \
 	misc/lib64_libmingwex_a-mingw_mbwc_convert.$(OBJEXT) \
 	misc/lib64_libmingwex_a-mingw_usleep.$(OBJEXT) \
@@ -1609,24 +1607,23 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	misc/delay-f.c misc/delay-n.c misc/delayimp.c misc/dirent.c \
 	misc/dirname.c misc/feraiseexcept.c misc/feupdateenv.c \
 	misc/ftruncate.c misc/fwide.c misc/getlogin.c misc/getopt.c \
-	misc/gettimeofday.c misc/mempcpy.c misc/mingw-aligned-malloc.c \
-	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
-	misc/mingw_usleep.c misc/mingw_wcstod.c misc/mingw_wcstof.c \
-	misc/mingw_wcstold.c misc/mkstemp.c misc/sleep.c \
-	misc/strsafe.c misc/tdelete.c misc/tdestroy.c misc/tfind.c \
-	misc/tsearch.c misc/twalk.c misc/wdirent.c misc/wmemchr.c \
-	misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c \
-	misc/wmemset.c misc/ftw.c misc/ftw64.c misc/mingw-access.c \
-	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
-	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
-	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/strcat_chk.c \
-	ssp/stpcpy_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
-	ssp/strncpy_chk.c stdio/mingw_pformat.h stdio/strtok_r.c \
-	stdio/asprintf.c stdio/fgetpos64.c stdio/fopen64.c \
-	stdio/fseeko32.c stdio/fseeko64.c stdio/fsetpos64.c \
-	stdio/ftello.c stdio/ftello64.c stdio/ftruncate64.c \
-	stdio/lltoa.c stdio/lltow.c stdio/lseek64.c \
-	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
+	misc/gettimeofday.c misc/mempcpy.c misc/mingw_matherr.c \
+	misc/mingw_mbwc_convert.c misc/mingw_usleep.c \
+	misc/mingw_wcstod.c misc/mingw_wcstof.c misc/mingw_wcstold.c \
+	misc/mkstemp.c misc/sleep.c misc/strsafe.c misc/tdelete.c \
+	misc/tdestroy.c misc/tfind.c misc/tsearch.c misc/twalk.c \
+	misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c \
+	misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c misc/ftw.c \
+	misc/ftw64.c misc/mingw-access.c ssp/chk_fail.c ssp/gets_chk.c \
+	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
+	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
+	ssp/strcat_chk.c ssp/stpcpy_chk.c ssp/strcpy_chk.c \
+	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/mingw_pformat.h \
+	stdio/strtok_r.c stdio/asprintf.c stdio/fgetpos64.c \
+	stdio/fopen64.c stdio/fseeko32.c stdio/fseeko64.c \
+	stdio/fsetpos64.c stdio/ftello.c stdio/ftello64.c \
+	stdio/ftruncate64.c stdio/lltoa.c stdio/lltow.c \
+	stdio/lseek64.c stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
 	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
 	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
 	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
@@ -1761,7 +1758,6 @@ am__objects_65 =  \
 	misc/libarm64_libmingwex_a-getopt.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-gettimeofday.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-mempcpy.$(OBJEXT) \
-	misc/libarm64_libmingwex_a-mingw-aligned-malloc.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-mingw_matherr.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-mingw_mbwc_convert.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-mingw_usleep.$(OBJEXT) \
@@ -3326,7 +3322,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mempcpy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw-access.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_getsp.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_longjmp.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po \
@@ -3382,7 +3377,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-mempcpy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-access.Po \
-	misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_getsp.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_longjmp.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Po \
@@ -4582,24 +4576,23 @@ src_libmingwex = cfguard/mingw_cfguard_support.c crt/dllentry.c \
 	misc/delay-f.c misc/delay-n.c misc/delayimp.c misc/dirent.c \
 	misc/dirname.c misc/feraiseexcept.c misc/feupdateenv.c \
 	misc/ftruncate.c misc/fwide.c misc/getlogin.c misc/getopt.c \
-	misc/gettimeofday.c misc/mempcpy.c misc/mingw-aligned-malloc.c \
-	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
-	misc/mingw_usleep.c misc/mingw_wcstod.c misc/mingw_wcstof.c \
-	misc/mingw_wcstold.c misc/mkstemp.c misc/sleep.c \
-	misc/strsafe.c misc/tdelete.c misc/tdestroy.c misc/tfind.c \
-	misc/tsearch.c misc/twalk.c misc/wdirent.c misc/wmemchr.c \
-	misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c \
-	misc/wmemset.c misc/ftw.c misc/ftw64.c misc/mingw-access.c \
-	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
-	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
-	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/strcat_chk.c \
-	ssp/stpcpy_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
-	ssp/strncpy_chk.c stdio/mingw_pformat.h stdio/strtok_r.c \
-	stdio/asprintf.c stdio/fgetpos64.c stdio/fopen64.c \
-	stdio/fseeko32.c stdio/fseeko64.c stdio/fsetpos64.c \
-	stdio/ftello.c stdio/ftello64.c stdio/ftruncate64.c \
-	stdio/lltoa.c stdio/lltow.c stdio/lseek64.c \
-	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
+	misc/gettimeofday.c misc/mempcpy.c misc/mingw_matherr.c \
+	misc/mingw_mbwc_convert.c misc/mingw_usleep.c \
+	misc/mingw_wcstod.c misc/mingw_wcstof.c misc/mingw_wcstold.c \
+	misc/mkstemp.c misc/sleep.c misc/strsafe.c misc/tdelete.c \
+	misc/tdestroy.c misc/tfind.c misc/tsearch.c misc/twalk.c \
+	misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c \
+	misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c misc/ftw.c \
+	misc/ftw64.c misc/mingw-access.c ssp/chk_fail.c ssp/gets_chk.c \
+	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
+	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
+	ssp/strcat_chk.c ssp/stpcpy_chk.c ssp/strcpy_chk.c \
+	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/mingw_pformat.h \
+	stdio/strtok_r.c stdio/asprintf.c stdio/fgetpos64.c \
+	stdio/fopen64.c stdio/fseeko32.c stdio/fseeko64.c \
+	stdio/fsetpos64.c stdio/ftello.c stdio/ftello64.c \
+	stdio/ftruncate64.c stdio/lltoa.c stdio/lltow.c \
+	stdio/lseek64.c stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
 	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
 	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
 	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
@@ -6618,8 +6611,6 @@ misc/lib64_libmingwex_a-gettimeofday.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-mempcpy.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-mingw-aligned-malloc.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-mingw_matherr.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-mingw_mbwc_convert.$(OBJEXT):  \
@@ -7953,8 +7944,6 @@ misc/libarm64_libmingwex_a-gettimeofday.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-mempcpy.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libmingwex_a-mingw-aligned-malloc.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-mingw_matherr.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-mingw_mbwc_convert.$(OBJEXT):  \
@@ -9894,7 +9883,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mempcpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw-access.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_getsp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_longjmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po@am__quote@ # am--include-marker
@@ -9950,7 +9938,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-mempcpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-access.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_getsp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_longjmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Po@am__quote@ # am--include-marker
@@ -14556,20 +14543,6 @@ misc/lib64_libmingwex_a-mempcpy.obj: misc/mempcpy.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mempcpy.c' object='misc/lib64_libmingwex_a-mempcpy.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-mempcpy.obj `if test -f 'misc/mempcpy.c'; then $(CYGPATH_W) 'misc/mempcpy.c'; else $(CYGPATH_W) '$(srcdir)/misc/mempcpy.c'; fi`
-
-misc/lib64_libmingwex_a-mingw-aligned-malloc.o: misc/mingw-aligned-malloc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-mingw-aligned-malloc.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Tpo -c -o misc/lib64_libmingwex_a-mingw-aligned-malloc.o `test -f 'misc/mingw-aligned-malloc.c' || echo '$(srcdir)/'`misc/mingw-aligned-malloc.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mingw-aligned-malloc.c' object='misc/lib64_libmingwex_a-mingw-aligned-malloc.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-mingw-aligned-malloc.o `test -f 'misc/mingw-aligned-malloc.c' || echo '$(srcdir)/'`misc/mingw-aligned-malloc.c
-
-misc/lib64_libmingwex_a-mingw-aligned-malloc.obj: misc/mingw-aligned-malloc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-mingw-aligned-malloc.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Tpo -c -o misc/lib64_libmingwex_a-mingw-aligned-malloc.obj `if test -f 'misc/mingw-aligned-malloc.c'; then $(CYGPATH_W) 'misc/mingw-aligned-malloc.c'; else $(CYGPATH_W) '$(srcdir)/misc/mingw-aligned-malloc.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mingw-aligned-malloc.c' object='misc/lib64_libmingwex_a-mingw-aligned-malloc.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-mingw-aligned-malloc.obj `if test -f 'misc/mingw-aligned-malloc.c'; then $(CYGPATH_W) 'misc/mingw-aligned-malloc.c'; else $(CYGPATH_W) '$(srcdir)/misc/mingw-aligned-malloc.c'; fi`
 
 misc/lib64_libmingwex_a-mingw_matherr.o: misc/mingw_matherr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-mingw_matherr.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Tpo -c -o misc/lib64_libmingwex_a-mingw_matherr.o `test -f 'misc/mingw_matherr.c' || echo '$(srcdir)/'`misc/mingw_matherr.c
@@ -21683,20 +21656,6 @@ misc/libarm64_libmingwex_a-mempcpy.obj: misc/mempcpy.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-mempcpy.obj `if test -f 'misc/mempcpy.c'; then $(CYGPATH_W) 'misc/mempcpy.c'; else $(CYGPATH_W) '$(srcdir)/misc/mempcpy.c'; fi`
 
-misc/libarm64_libmingwex_a-mingw-aligned-malloc.o: misc/mingw-aligned-malloc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-mingw-aligned-malloc.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Tpo -c -o misc/libarm64_libmingwex_a-mingw-aligned-malloc.o `test -f 'misc/mingw-aligned-malloc.c' || echo '$(srcdir)/'`misc/mingw-aligned-malloc.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mingw-aligned-malloc.c' object='misc/libarm64_libmingwex_a-mingw-aligned-malloc.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-mingw-aligned-malloc.o `test -f 'misc/mingw-aligned-malloc.c' || echo '$(srcdir)/'`misc/mingw-aligned-malloc.c
-
-misc/libarm64_libmingwex_a-mingw-aligned-malloc.obj: misc/mingw-aligned-malloc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-mingw-aligned-malloc.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Tpo -c -o misc/libarm64_libmingwex_a-mingw-aligned-malloc.obj `if test -f 'misc/mingw-aligned-malloc.c'; then $(CYGPATH_W) 'misc/mingw-aligned-malloc.c'; else $(CYGPATH_W) '$(srcdir)/misc/mingw-aligned-malloc.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mingw-aligned-malloc.c' object='misc/libarm64_libmingwex_a-mingw-aligned-malloc.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-mingw-aligned-malloc.obj `if test -f 'misc/mingw-aligned-malloc.c'; then $(CYGPATH_W) 'misc/mingw-aligned-malloc.c'; else $(CYGPATH_W) '$(srcdir)/misc/mingw-aligned-malloc.c'; fi`
-
 misc/libarm64_libmingwex_a-mingw_matherr.o: misc/mingw_matherr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-mingw_matherr.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Tpo -c -o misc/libarm64_libmingwex_a-mingw_matherr.o `test -f 'misc/mingw_matherr.c' || echo '$(srcdir)/'`misc/mingw_matherr.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Po
@@ -27930,7 +27889,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mempcpy.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw-access.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_getsp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_longjmp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po
@@ -27986,7 +27944,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mempcpy.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-access.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_getsp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_longjmp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Po
@@ -29137,7 +29094,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mempcpy.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw-access.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw-aligned-malloc.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_getsp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_longjmp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po
@@ -29193,7 +29149,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mempcpy.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-access.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw-aligned-malloc.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_getsp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_longjmp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-mingw_matherr.Po
