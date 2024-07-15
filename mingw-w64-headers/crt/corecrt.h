@@ -162,7 +162,7 @@ extern "C" {
 #   ifdef __clang__
 #     define _STATIC_ASSERT(expr) _Static_assert((expr), #expr)
 #   else
-#     define _STATIC_ASSERT(expr) typedef char __static_assert_t[(expr) != 0]
+#     define _STATIC_ASSERT(expr) extern void __static_assert_t(int [(expr)?1:-1])
 #   endif
 # endif
 #endif
