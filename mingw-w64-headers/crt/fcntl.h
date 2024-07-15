@@ -27,6 +27,7 @@
 #define _O_NOINHERIT   0x0080
 #define _O_TEMPORARY   0x0040
 #define _O_SHORT_LIVED 0x1000
+#define _O_OBTAIN_DIR  0x2000
 
 #define _O_SEQUENTIAL 0x0020
 #define _O_RANDOM     0x0010

@@ -33,7 +33,7 @@
 #define __INTRIN_H_
 #ifndef RC_INVOKED
 
-#include <crtdefs.h>
+#include <corecrt.h>
 #ifndef __CYGWIN__
 #include <setjmp.h>
 #endif
@@ -273,9 +273,9 @@ extern "C" {
 #endif
 
 #ifndef __CYGWIN__
-	/* Put all declarations potentially colliding with POSIX headers here.
-	   So far, Cygwin is the only POSIX system using this header file.
-	   If that ever changes, make sure to tweak the guarding ifndef. */
+ /* Put all declarations potentially colliding with POSIX headers here.
+    So far, Cygwin is the only POSIX system using this header file.
+    If that ever changes, make sure to tweak the guarding ifndef. */
     __MACHINE(int __cdecl abs(int))
     __MACHINEX64(double ceil(double))
     __MACHINE(long __cdecl labs(long))
@@ -881,7 +881,7 @@ extern "C" {
     __MACHINEX86X(__m128d _mm_unpackhi_pd(__m128d,__m128d))
     __MACHINEX86X(__m128d _mm_unpacklo_pd(__m128d,__m128d))
     __MACHINEX86X(int _mm_movemask_pd(__m128d))
-    /*		__MACHINEX86X(__m128d _mm_shuffle_pd(__m128d,__m128d,int)) */
+    /*  __MACHINEX86X(__m128d _mm_shuffle_pd(__m128d,__m128d,int)) */
     __MACHINEX86X(__m128d _mm_load_pd(double const*))
     __MACHINEX86X(__m128d _mm_load1_pd(double const*))
     __MACHINEX86X(__m128d _mm_loadr_pd(double const*))
@@ -947,7 +947,7 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_and_si128(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_or_si128(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_xor_si128(__m128i,__m128i))
-    /*		__MACHINEX86X(__m128i _mm_slli_si128(__m128i,int)) */
+    /*  __MACHINEX86X(__m128i _mm_slli_si128(__m128i,int)) */
 /*    __MACHINEX86X(__m128i _mm_slli_epi16(__m128i,int)) */
     __MACHINEX86X(__m128i _mm_sll_epi16(__m128i,__m128i))
 /*    __MACHINEX86X(__m128i _mm_slli_epi32(__m128i,int)) */
@@ -958,7 +958,7 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_sra_epi16(__m128i,__m128i))
 /*    __MACHINEX86X(__m128i _mm_srai_epi32(__m128i,int)) */
     __MACHINEX86X(__m128i _mm_sra_epi32(__m128i,__m128i))
-    /*		__MACHINEX86X(__m128i _mm_srli_si128(__m128i,int)) */
+    /*  __MACHINEX86X(__m128i _mm_srli_si128(__m128i,int)) */
 /*    __MACHINEX86X(__m128i _mm_srli_epi16(__m128i,int)) */
     __MACHINEX86X(__m128i _mm_srl_epi16(__m128i,__m128i))
 /*    __MACHINEX86X(__m128i _mm_srli_epi32(__m128i,int)) */
@@ -979,12 +979,12 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_packs_epi16(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_packs_epi32(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_packus_epi16(__m128i,__m128i))
-    /*		__MACHINEX86X(int _mm_extract_epi16(__m128i,int)) */
-    /*		__MACHINEX86X(__m128i _mm_insert_epi16(__m128i,int,int)) */
+    /*  __MACHINEX86X(int _mm_extract_epi16(__m128i,int)) */
+    /*  __MACHINEX86X(__m128i _mm_insert_epi16(__m128i,int,int)) */
     __MACHINEX86X(int _mm_movemask_epi8(__m128i))
-    /*		__MACHINEX86X(__m128i _mm_shuffle_epi32(__m128i,int)) */
-    /*		__MACHINEX86X(__m128i _mm_shufflehi_epi16(__m128i,int)) */
-    /*		__MACHINEX86X(__m128i _mm_shufflelo_epi16(__m128i,int)) */
+    /*  __MACHINEX86X(__m128i _mm_shuffle_epi32(__m128i,int)) */
+    /*  __MACHINEX86X(__m128i _mm_shufflehi_epi16(__m128i,int)) */
+    /*  __MACHINEX86X(__m128i _mm_shufflelo_epi16(__m128i,int)) */
     __MACHINEX86X(__m128i _mm_unpackhi_epi8(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_unpackhi_epi16(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_unpackhi_epi32(__m128i,__m128i))
