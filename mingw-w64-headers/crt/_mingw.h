@@ -63,6 +63,14 @@ limitations in handling dllimport attribute.  */
 # endif  /* __declspec */
 #endif  /* __GNUC__ */
 
+#ifndef _LDCRTIMP
+# if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#   define _LDCRTIMP _CRTIMP
+# else
+#   define _LDCRTIMP
+# endif
+#endif
+
 #define USE___UUIDOF 0
 
 #ifndef _inline
