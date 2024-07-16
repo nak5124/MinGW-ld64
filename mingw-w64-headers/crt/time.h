@@ -158,8 +158,7 @@ extern "C" {
   extern int __cdecl mingw_gettimeofday(struct timeval *p, struct timezone *z);
 #endif  /* _TIMEZONE_DEFINED */
 
-#if (defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE -0) >= 1) || defined(_XOPEN_SOURCE) || defined(_DEFAULT_SOURCE) \
-  || (defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L)
+#if (defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE -0) >= 1) || defined(_XOPEN_SOURCE) || defined(_DEFAULT_SOURCE) || defined(__MINGW_USE_ISOC23)
   __forceinline struct tm *__CRTDECL localtime_r(const time_t *_Time, struct tm *_Tm)
   {
     return localtime_s(_Tm, _Time) ? NULL : _Tm;

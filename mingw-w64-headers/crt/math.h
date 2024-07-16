@@ -339,8 +339,7 @@ _CRTIMP double __cdecl scalb (double, long);
 #endif
 
 #ifndef __NO_ISOCEXT
-#if (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) \
- || !defined __STRICT_ANSI__ || defined __cplusplus
+#if defined(__MINGW_USE_ISOC99) || !defined(__STRICT_ANSI__) || defined(__cplusplus)
 
 #ifdef __GNUC__
 #define HUGE_VALF __builtin_huge_valf()
@@ -1166,7 +1165,7 @@ __MINGW_EXTENSION long long __cdecl llrintl (long double);
 
 #endif
 
-#endif /* __STDC_VERSION__ >= 199901L */
+#endif /* defined(__MINGW_USE_ISOC99) || !defined(__STRICT_ANSI__) || defined(__cplusplus) */
 #endif /* __NO_ISOCEXT */
 
 #if defined(_X86_) && !defined(__x86_64)

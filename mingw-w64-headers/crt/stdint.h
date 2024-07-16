@@ -63,8 +63,7 @@
   __MINGW_EXTENSION typedef unsigned long long uintmax_t;
 
 /* 7.18.2  Limits of specified-width integer types */
-#if !defined(__cplusplus) || defined(__STDC_LIMIT_MACROS) || \
-  defined(__GXX_EXPERIMENTAL_CXX0X__) || __cplusplus >= 201103L
+#if !defined(__cplusplus) || defined(__STDC_LIMIT_MACROS) || defined(__MINGW_USE_ISOCXX11)
 
 /* 7.18.2.1  Limits of exact-width integer types */
 #define INT8_MIN  (-128)
@@ -166,8 +165,7 @@
 
 
 /* 7.18.4  Macros for integer constants */
-#if !defined(__cplusplus) || defined(__STDC_CONSTANT_MACROS) || \
-  defined(__GXX_EXPERIMENTAL_CXX0X__) || __cplusplus >= 201103L
+#if !defined(__cplusplus) || defined(__STDC_CONSTANT_MACROS) || defined(__MINGW_USE_ISOCXX11)
 
 /* 7.18.4.1  Macros for minimum-width integer constants
 

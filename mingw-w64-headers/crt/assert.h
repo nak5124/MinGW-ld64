@@ -20,8 +20,7 @@
 extern "C" {
 #endif
 
-#if (defined(_ISOC11_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L)) \
-  && !defined(__cplusplus)
+#if defined(__MINGW_USE_ISOC11) && !defined(__cplusplus)
 /* Static assertion.  Requires support in the compiler. */
 # undef static_assert
 # define static_assert _Static_assert

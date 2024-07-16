@@ -134,7 +134,7 @@
 #define DBL_MANT_DIG  __DBL_MANT_DIG__
 #define LDBL_MANT_DIG __LDBL_MANT_DIG__
 
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+#ifdef __MINGW_USE_ISOC99
 /* The floating-point expression evaluation method.
       -1  indeterminate
        0  evaluate all operations and constants just to the range and
@@ -151,7 +151,7 @@
 #undef FLT_EVAL_METHOD
 #define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
 
-#endif  /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
+#endif  /* __MINGW_USE_ISOC99 */
 
 
 /* Control word values for unNew (use with related unMask above) */

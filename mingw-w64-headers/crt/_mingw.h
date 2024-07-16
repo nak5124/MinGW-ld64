@@ -278,6 +278,32 @@ limitations in handling dllimport attribute.  */
 # define _FILE_OFFSET_BITS 64
 #endif
 
+#if defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L)
+# define __MINGW_USE_ISOC23 1
+#endif
+
+#if defined(_ISOC11_SOURCE) || defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L)
+# define __MINGW_USE_ISOC11 1
+#endif
+
+#if defined(_ISOC99_SOURCE) || defined(_ISOC11_SOURCE) || defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
+# define __MINGW_USE_ISOC99 1
+#endif
+
+#if defined(_ISOC99_SOURCE) || defined(_ISOC11_SOURCE) || defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199409L)
+# define __MINGW_USE_ISOC95 1
+#endif
+
+#ifdef __cplusplus
+# if __cplusplus >= 201703L
+#  define __MINGW_USE_ISOC11 1
+# endif
+# if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+#  define __MINGW_USE_ISOCXX11 1
+#  define __MINGW_USE_ISOC99   1
+# endif
+#endif
+
 /* We are activating __USE_MINGW_ANSI_STDIO for various define indicators. */
 #if (defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_DEFAULT_SOURCE)) && !defined(__USE_MINGW_ANSI_STDIO)
 # define __USE_MINGW_ANSI_STDIO 1

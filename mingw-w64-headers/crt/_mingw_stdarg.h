@@ -28,10 +28,7 @@
 # define __va_copy _crt_va_copy
 #endif
 
-#if !defined(va_copy) && \
-    (!defined(__STRICT_ANSI__) || \
-    (defined(__STDC_VERSION__) && (__STDC_VERSION__ - 0 >= 199900L)) || \
-    (defined(__cplusplus) && (__cplusplus -0) >= 201103L))
+#if !defined(va_copy) && (!defined(__STRICT_ANSI__) || defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_ISOCXX11))
 # define va_copy _crt_va_copy
 #endif
 

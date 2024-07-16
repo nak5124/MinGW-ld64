@@ -44,8 +44,7 @@ extern "C" {
 #undef offsetof  /* in case a system header has defined it. */
 #define offsetof(TYPE, MEMBER) __builtin_offsetof(TYPE, MEMBER)
 
-#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) \
-  || (defined(__cplusplus) && __cplusplus >= 201103L)
+#if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
 # if !defined(_GCC_MAX_ALIGN_T) && !defined(__CLANG_MAX_ALIGN_T_DEFINED)
 #   define _GCC_MAX_ALIGN_T
 #   define __CLANG_MAX_ALIGN_T_DEFINED
@@ -57,25 +56,25 @@ extern "C" {
       long double __max_align_ld __attribute__((__aligned__(__alignof__(long double))));
     } max_align_t;
 # endif
-#endif  /* C11 or C++11. */
+#endif  /* defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11) */
 
-#if defined(__cplusplus) && __cplusplus >= 201103L
+#ifdef __MINGW_USE_ISOCXX11
 # ifndef _GXX_NULLPTR_T
 #   define _GXX_NULLPTR_T
     typedef decltype(nullptr) nullptr_t;
 # endif
-#endif  /* C++11. */
+#endif  /* __MINGW_USE_ISOCXX11 */
 
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L
+#ifdef __MINGW_USE_ISOC23
 # ifndef _GCC_NULLPTR_T
 #   define _GCC_NULLPTR_T
     typedef __typeof__(nullptr) nullptr_t;
 # endif
-#endif  /* C23. */
+#endif  /* __MINGW_USE_ISOC23 */
 
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L
+#ifdef __MINGW_USE_ISOC23
 # define unreachable() (__builtin_unreachable())
 # define __STDC_VERSION_STDDEF_H__ 202311L
-#endif
+#endif  /* __MINGW_USE_ISOC23 */
 
 #endif  /* _STDDEF_H */
