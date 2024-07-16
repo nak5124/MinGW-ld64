@@ -5,7 +5,7 @@
  */
 /*  Wide char wrapper for strtold
  *  Revision history:
- *  6 Nov 2002	Initial version.
+ *  6 Nov 2002 Initial version.
  *  25 Aug 2006  Don't use strtold internal functions.
  *
  *  Contributor:   Danny Smith <dannysmith@users.sourceforege.net>
@@ -48,12 +48,12 @@ long double __mingw_wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __rest
       int mb_len = 0;
       /* loop through till we hit null or invalid character */
       for (i = 0; (wcs[i] != 0) && (nbytes != 0); i++)
-	{
-	  nbytes = WideCharToMultiByte(cp, WC_COMPOSITECHECK | WC_SEPCHARS,
-				       wcs + i, 1, cs + mb_len, MB_CUR_MAX,
-				       NULL, NULL);
-	  mb_len += nbytes;
-	}
+ {
+   nbytes = WideCharToMultiByte(cp, WC_COMPOSITECHECK | WC_SEPCHARS,
+           wcs + i, 1, cs + mb_len, MB_CUR_MAX,
+           NULL, NULL);
+   mb_len += nbytes;
+ }
       cs[mb_len] = '\0';
     }
 
@@ -61,7 +61,7 @@ long double __mingw_wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __rest
 
   if (wcse)
     {
-      /* Make sure temp mbstring has 0 at cse.  */ 
+      /* Make sure temp mbstring has 0 at cse.  */
       *cse = '\0';
       i = MultiByteToWideChar (cp, MB_ERR_INVALID_CHARS, cs, -1, NULL, 0);
       if (i > 0)
@@ -72,3 +72,7 @@ long double __mingw_wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __rest
 
   return ret;
 }
+
+long double __cdecl
+wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse)
+  __attribute__((alias("__mingw_wcstold")));
