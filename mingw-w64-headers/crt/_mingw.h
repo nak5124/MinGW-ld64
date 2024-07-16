@@ -239,7 +239,7 @@ limitations in handling dllimport attribute.  */
 # undef  _POSIX_C_SOURCE
 # define _POSIX_C_SOURCE 200809L
 # undef  _XOPEN_SOURCE
-# define _XOPEN_SOURCE	700
+# define _XOPEN_SOURCE 700
 # undef  _DEFAULT_SOURCE
 # define _DEFAULT_SOURCE 1
 #endif

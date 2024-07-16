@@ -4,7 +4,7 @@
  */
 
 #ifndef _FTW_HXX
-#define	_FTW_HXX
+#define _FTW_HXX
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -23,7 +23,7 @@ extern "C" {
   /* A directory.  */
 #define FTW_D 1
   /* An unreadable directory.  */
-#define FTW_DNR	2
+#define FTW_DNR 2
   /* An unstatable file.  */
 #define FTW_NS 3
   /* A symbolic link (not supported).  */

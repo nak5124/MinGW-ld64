@@ -16,56 +16,56 @@ struct _exception;
 
 #pragma pack(push,_CRT_PACKING)
 
-#define	_DOMAIN		1	/* domain error in argument */
-#define	_SING		2	/* singularity */
-#define	_OVERFLOW	3	/* range overflow */
-#define	_UNDERFLOW	4	/* range underflow */
-#define	_TLOSS		5	/* total loss of precision */
-#define	_PLOSS		6	/* partial loss of precision */
+#define _DOMAIN  1 /* domain error in argument */
+#define _SING  2 /* singularity */
+#define _OVERFLOW 3 /* range overflow */
+#define _UNDERFLOW 4 /* range underflow */
+#define _TLOSS  5 /* total loss of precision */
+#define _PLOSS  6 /* partial loss of precision */
 
 #ifndef __STRICT_ANSI__
-#ifndef	NO_OLDNAMES
+#ifndef NO_OLDNAMES
 
-#define	DOMAIN		_DOMAIN
-#define	SING		_SING
-#define	OVERFLOW	_OVERFLOW
-#define	UNDERFLOW	_UNDERFLOW
-#define	TLOSS		_TLOSS
-#define	PLOSS		_PLOSS
+#define DOMAIN  _DOMAIN
+#define SING  _SING
+#define OVERFLOW _OVERFLOW
+#define UNDERFLOW _UNDERFLOW
+#define TLOSS  _TLOSS
+#define PLOSS  _PLOSS
 
 #endif
 #endif
 
 #if !defined(__STRICT_ANSI__) || defined(_POSIX_C_SOURCE) || defined(_POSIX_SOURCE) || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_BSD_SOURCE) || defined(_USE_MATH_DEFINES)
-#define M_E		2.7182818284590452354
-#define M_LOG2E		1.4426950408889634074
-#define M_LOG10E	0.43429448190325182765
-#define M_LN2		0.69314718055994530942
-#define M_LN10		2.30258509299404568402
-#define M_PI		3.14159265358979323846
-#define M_PI_2		1.57079632679489661923
-#define M_PI_4		0.78539816339744830962
-#define M_1_PI		0.31830988618379067154
-#define M_2_PI		0.63661977236758134308
-#define M_2_SQRTPI	1.12837916709551257390
-#define M_SQRT2		1.41421356237309504880
-#define M_SQRT1_2	0.70710678118654752440
+#define M_E  2.7182818284590452354
+#define M_LOG2E  1.4426950408889634074
+#define M_LOG10E 0.43429448190325182765
+#define M_LN2  0.69314718055994530942
+#define M_LN10  2.30258509299404568402
+#define M_PI  3.14159265358979323846
+#define M_PI_2  1.57079632679489661923
+#define M_PI_4  0.78539816339744830962
+#define M_1_PI  0.31830988618379067154
+#define M_2_PI  0.63661977236758134308
+#define M_2_SQRTPI 1.12837916709551257390
+#define M_SQRT2  1.41421356237309504880
+#define M_SQRT1_2 0.70710678118654752440
 #endif
 
 /* See also float.h  */
 #ifndef __MINGW_FPCLASS_DEFINED
 #define __MINGW_FPCLASS_DEFINED 1
 /* IEEE 754 classication */
-#define	_FPCLASS_SNAN	0x0001	/* Signaling "Not a Number" */
-#define	_FPCLASS_QNAN	0x0002	/* Quiet "Not a Number" */
-#define	_FPCLASS_NINF	0x0004	/* Negative Infinity */
-#define	_FPCLASS_NN	0x0008	/* Negative Normal */
-#define	_FPCLASS_ND	0x0010	/* Negative Denormal */
-#define	_FPCLASS_NZ	0x0020	/* Negative Zero */
-#define	_FPCLASS_PZ	0x0040	/* Positive Zero */
-#define	_FPCLASS_PD	0x0080	/* Positive Denormal */
-#define	_FPCLASS_PN	0x0100	/* Positive Normal */
-#define	_FPCLASS_PINF	0x0200	/* Positive Infinity */
+#define _FPCLASS_SNAN 0x0001 /* Signaling "Not a Number" */
+#define _FPCLASS_QNAN 0x0002 /* Quiet "Not a Number" */
+#define _FPCLASS_NINF 0x0004 /* Negative Infinity */
+#define _FPCLASS_NN 0x0008 /* Negative Normal */
+#define _FPCLASS_ND 0x0010 /* Negative Denormal */
+#define _FPCLASS_NZ 0x0020 /* Negative Zero */
+#define _FPCLASS_PZ 0x0040 /* Positive Zero */
+#define _FPCLASS_PD 0x0080 /* Positive Denormal */
+#define _FPCLASS_PN 0x0100 /* Positive Normal */
+#define _FPCLASS_PINF 0x0200 /* Positive Infinity */
 #endif
 
 #ifndef RC_INVOKED
@@ -146,12 +146,12 @@ extern "C" {
 #define _HUGE _HUGE
 #else
   extern double * __MINGW_IMP_SYMBOL(_HUGE);
-#define _HUGE	(* __MINGW_IMP_SYMBOL(_HUGE))
+#define _HUGE (* __MINGW_IMP_SYMBOL(_HUGE))
 #endif /* _UCRT */
 #endif
 
 #ifdef __GNUC__
-#define	HUGE_VAL __builtin_huge_val()
+#define HUGE_VAL __builtin_huge_val()
 #else
 #define HUGE_VAL _HUGE
 #endif /* __GNUC__ */
@@ -167,7 +167,7 @@ extern "C" {
   };
 
   void __mingw_raise_matherr (int typ, const char *name, double a1, double a2,
-			      double rslt);
+         double rslt);
   void __mingw_setusermatherr (int (__cdecl *)(struct _exception *));
   _CRTIMP void __setusermatherr(int (__cdecl *)(struct _exception *));
   #define __setusermatherr __mingw_setusermatherr
@@ -340,13 +340,13 @@ _CRTIMP double __cdecl scalb (double, long);
 
 #ifndef __NO_ISOCEXT
 #if (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) \
-	|| !defined __STRICT_ANSI__ || defined __cplusplus
+ || !defined __STRICT_ANSI__ || defined __cplusplus
 
 #ifdef __GNUC__
-#define HUGE_VALF	__builtin_huge_valf()
-#define HUGE_VALL	__builtin_huge_vall()
-#define INFINITY	__builtin_inff()
-#define NAN		__builtin_nanf("")
+#define HUGE_VALF __builtin_huge_valf()
+#define HUGE_VALL __builtin_huge_vall()
+#define INFINITY __builtin_inff()
+#define NAN  __builtin_nanf("")
 #else
 extern const float __INFF;
 #define HUGE_VALF __INFF
@@ -382,11 +382,11 @@ typedef long double double_t;
    in the high byte of status word and differ from
    the return values for MS IEEE 754 extension _fpclass()
 */
-#define FP_NAN		0x0100
-#define FP_NORMAL	0x0400
-#define FP_INFINITE	(FP_NAN | FP_NORMAL)
-#define FP_ZERO		0x4000
-#define FP_SUBNORMAL	(FP_NORMAL | FP_ZERO)
+#define FP_NAN  0x0100
+#define FP_NORMAL 0x0400
+#define FP_INFINITE (FP_NAN | FP_NORMAL)
+#define FP_ZERO  0x4000
+#define FP_SUBNORMAL (FP_NORMAL | FP_ZERO)
 /* 0x0200 is signbit mask */
 
 /*
@@ -799,7 +799,7 @@ __mingw_choose_expr (                                         \
 #elif defined(__i386__) || defined(_X86_)
     double res = 0.0;
     __asm__ __volatile__ ("fxtract\n\t"
-      "fstp	%%st" : "=t" (res) : "0" (x));
+      "fstp %%st" : "=t" (res) : "0" (x));
     return res;
 #endif
   }
@@ -822,7 +822,7 @@ __mingw_choose_expr (                                         \
 #elif defined(__i386__) || defined(_X86_)
     float res = 0.0F;
     __asm__ __volatile__ ("fxtract\n\t"
-      "fstp	%%st" : "=t" (res) : "0" (x));
+      "fstp %%st" : "=t" (res) : "0" (x));
     return res;
 #endif
   }
@@ -848,7 +848,7 @@ __mingw_choose_expr (                                         \
 #elif defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_)
     long double res = 0.0l;
     __asm__ __volatile__ ("fxtract\n\t"
-      "fstp	%%st" : "=t" (res) : "0" (x));
+      "fstp %%st" : "=t" (res) : "0" (x));
     return res;
 #endif
   }
@@ -974,48 +974,48 @@ __MINGW_EXTENSION long long __cdecl llrintl (long double);
   __CRT_INLINE long __cdecl lrint (double x) 
   {
     long retval = 0;
-    __asm__ __volatile__							      \
-      ("fistpl %0"  : "=m" (retval) : "t" (x) : "st");				      \
+    __asm__ __volatile__             \
+      ("fistpl %0"  : "=m" (retval) : "t" (x) : "st");          \
       return retval;
   }
 
   __CRT_INLINE long __cdecl lrintf (float x) 
   {
     long retval = 0;
-    __asm__ __volatile__							      \
-      ("fistpl %0"  : "=m" (retval) : "t" (x) : "st");				      \
+    __asm__ __volatile__             \
+      ("fistpl %0"  : "=m" (retval) : "t" (x) : "st");          \
       return retval;
   }
 
   __CRT_INLINE long __cdecl lrintl (long double x) 
   {
     long retval = 0;
-    __asm__ __volatile__							      \
-      ("fistpl %0"  : "=m" (retval) : "t" (x) : "st");				      \
+    __asm__ __volatile__             \
+      ("fistpl %0"  : "=m" (retval) : "t" (x) : "st");          \
       return retval;
   }
 
   __MINGW_EXTENSION __CRT_INLINE long long __cdecl llrint (double x) 
   {
     __MINGW_EXTENSION long long retval = 0ll;
-    __asm__ __volatile__							      \
-      ("fistpll %0"  : "=m" (retval) : "t" (x) : "st");				      \
+    __asm__ __volatile__             \
+      ("fistpll %0"  : "=m" (retval) : "t" (x) : "st");          \
       return retval;
   }
 
   __MINGW_EXTENSION __CRT_INLINE long long __cdecl llrintf (float x) 
   {
     __MINGW_EXTENSION long long retval = 0ll;
-    __asm__ __volatile__							      \
-      ("fistpll %0"  : "=m" (retval) : "t" (x) : "st");				      \
+    __asm__ __volatile__             \
+      ("fistpll %0"  : "=m" (retval) : "t" (x) : "st");          \
       return retval;
   }
 
   __MINGW_EXTENSION __CRT_INLINE long long __cdecl llrintl (long double x) 
   {
     __MINGW_EXTENSION long long retval = 0ll;
-    __asm__ __volatile__							      \
-      ("fistpll %0"  : "=m" (retval) : "t" (x) : "st");				      \
+    __asm__ __volatile__             \
+      ("fistpll %0"  : "=m" (retval) : "t" (x) : "st");          \
       return retval;
   }
 #endif /* defined(__GNUC__) && defined(__FAST_MATH__) */
@@ -1152,7 +1152,7 @@ __MINGW_EXTENSION long long __cdecl llrintl (long double);
     __fp_unordered_compare (long double x, long double y){
       unsigned short retval;
       __asm__ __volatile__ ("fucom %%st(1);"
-	"fnstsw;": "=a" (retval) : "t" (x), "u" (y));
+ "fnstsw;": "=a" (retval) : "t" (x), "u" (y));
       return retval;
   }
 #endif /* __GNUC__ */
@@ -1190,9 +1190,9 @@ __MINGW_EXTENSION long long __cdecl llrintl (long double);
 
 #define _hypotl hypotl
 
-#ifndef	NO_OLDNAMES
+#ifndef NO_OLDNAMES
 #define matherr _matherr
-#define HUGE	_HUGE
+#define HUGE _HUGE
 #endif
 
 /* Documentation on decimal float math
@@ -1572,7 +1572,7 @@ int __cdecl isnand32(_Decimal32 _X);
 }
 #endif
 
-#endif	/* Not RC_INVOKED */
+#endif /* Not RC_INVOKED */
 
 #pragma pack(pop)
 

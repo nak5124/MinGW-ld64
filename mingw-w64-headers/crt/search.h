@@ -37,27 +37,31 @@ IEEE Std 1003.1, 2004 Edition.
 eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
 */
 
-  typedef struct entry {
-  	char *key;
-  	void *data;
+  typedef struct entry
+  {
+    char *key;
+    void *data;
   } ENTRY;
 
-  typedef enum {
-  	FIND,
-  	ENTER
+  typedef enum
+  {
+    FIND,
+    ENTER
   } ACTION;
 
-  typedef enum {
-  	preorder,
-  	postorder,
-  	endorder,
-  	leaf
+  typedef enum
+  {
+    preorder,
+    postorder,
+    endorder,
+    leaf
   } VISIT;
 
 #ifdef _SEARCH_PRIVATE
-  typedef struct node {
-  	char         *key;
-  	struct node  *llink, *rlink;
+  typedef struct node
+  {
+    char         *key;
+    struct node  *llink, *rlink;
   } node_t;
 #endif
 
