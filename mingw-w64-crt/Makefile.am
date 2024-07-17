@@ -127,8 +127,10 @@ src_libws2_32=libsrc/ws2_32.c \
 src_ucrtbase=\
   crt/ucrtbase_compat.c \
   math/_huge.c \
+  math/frexpf.c \
   math/ldexpf.c \
   math/lgamma.c math/lgammaf.c math/lgammal.c \
+  math/modfl.c \
   misc/__initenv.c \
   misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
   misc/fesetenv.c misc/fesetexceptflag.c misc/fesetround.c misc/fetestexcept.c \
@@ -184,6 +186,7 @@ src_ucrtbase64=\
   math/fmal.c \
   math/fmaxl.c \
   math/fminl.c \
+  math/frexpl.c \
   math/hypotl.c \
   math/llrintl.c \
   math/llroundl.c \
@@ -191,8 +194,13 @@ src_ucrtbase64=\
   math/lroundl.c \
   math/nextafterl.c \
   math/nexttoward.c math/nexttowardf.c \
+  math/coshl.c \
+  math/fabsl.c \
   math/rintl.c \
   math/roundl.c \
+  math/sinhl.c \
+  math/sqrtl.c \
+  math/tanhl.c \
   math/tgammal.c \
   math/truncl.c \
   math/x86/_chgsignl.S \
@@ -253,16 +261,13 @@ src_libmingwex=\
   complex/conj.def.h    complex/cpow.def.h   complex/cproj.def.h   complex/creal.def.h   complex/csin.def.h          \
   complex/csinh.def.h   complex/csqrt.def.h  complex/ctan.def.h    complex/ctanh.def.h   \
   \
-  math/coshl.c       \
-  math/fabsl.c          math/fp_consts.c   math/fp_constsf.c     \
-  math/fp_constsl.c     math/fpclassify.c  math/fpclassifyf.c    math/fpclassifyl.c   math/frexpf.c        math/frexpl.c \
+  math/fp_consts.c      math/fp_constsf.c     \
+  math/fp_constsl.c     math/fpclassify.c  math/fpclassifyf.c    math/fpclassifyl.c      \
   math/isnan.c          math/isnanf.c      math/isnanl.c        \
-  math/modfl.c          \
   math/powi.c           math/powif.c       math/powil.c          \
   math/signbit.c        math/signbitf.c    math/signbitl.c       \
   math/signgam.c        \
-  math/sinhl.c          math/sqrtl.c       math/tanhl.c          \
-  math/powi.def.h       math/sqrt.def.h    \
+  math/powi.def.h       \
   math/cephes_mconf.h   math/fp_consts.h   \
   \
   misc/mingw_longjmp.S \

@@ -260,7 +260,7 @@ extern "C" {
  * but they really belong in math.h.
  */
 
-#ifndef _SIGN_DEFINED
+#ifndef _SIGN_DEFINED  /* Also in math.h */
 # define _SIGN_DEFINED
   _CRTIMP double __cdecl __MINGW_NOTHROW _copysign(double _Number, double _Sign);
   _CRTIMP double __cdecl __MINGW_NOTHROW _chgsign(double _X);
@@ -270,10 +270,12 @@ extern "C" {
   _CRTIMP int __cdecl __MINGW_NOTHROW _finite(double _X);
   _CRTIMP int __cdecl __MINGW_NOTHROW _isnan(double _X);
   _CRTIMP int __cdecl __MINGW_NOTHROW _fpclass(double _X);
+#if defined(__x86_64__) || defined(_AMD64_)
   _CRTIMP float __cdecl _scalbf(float _X, long _Y);
+#endif
 
-# define _copysignl copysignl
-  extern long double __cdecl _chgsignl(long double _X);
+  _LDCRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign);
+  _LDCRTIMP long double __cdecl _chgsignl(long double _X);
 #endif  /* _SIGN_DEFINED */
 
 #define clear87   _clear87

@@ -63,6 +63,7 @@ _chgsignf
 F_ARM_ANY(_chgsignl == _chgsign)
 _copysign
 _copysignf
+F_ARM_ANY(_copysignl == _copysign)
 _d_int
 _dclass
 _dexp
@@ -99,6 +100,7 @@ F_X64(_fpclassf)
 F_I386(_ftol)
 F_X64(_get_FMA3_enable)
 _hypot
+F_ARM_ANY(_hypotl == _hypot)
 _hypotf
 _isnan
 F_X64(_isnanf)
@@ -225,6 +227,7 @@ cos
 F_NON_I386(cosf)
 F_ARM_ANY(cosl == cos)
 cosh
+F_ARM_ANY(coshl == cosh)
 F_NON_I386(coshf)
 cpow
 cpowf
@@ -267,6 +270,7 @@ expm1f
 F_ARM_ANY(expm1l) ; Can't use long double functions from the CRT on x86
 fabs
 F_ARM_ANY(fabsf)
+F_ARM_ANY(fabsl == fabs)
 fdim
 fdimf
 F_ARM_ANY(fdiml) ; Can't use long double functions from the CRT on x86
@@ -286,6 +290,7 @@ fmod
 F_NON_I386(fmodf)
 F_ARM_ANY(fmodl == fmod)
 frexp
+F_ARM_ANY(frexpl == frexp)
 hypot
 hypotf == _hypotf
 F_ARM_ANY(hypotl == hypot)
@@ -371,13 +376,16 @@ sin
 F_NON_I386(sinf)
 F_ARM_ANY(sinl == sin)
 sinh
+F_ARM_ANY(sinhl == sinh)
 F_NON_I386(sinhf)
 sqrt
 F_NON_I386(sqrtf)
+F_ARM_ANY(sqrtl == sqrt)
 tan
 F_NON_I386(tanf)
 F_ARM_ANY(tanl == tan)
 tanh
+F_ARM_ANY(tanhl == tanh)
 F_NON_I386(tanhf)
 tgamma
 tgammaf

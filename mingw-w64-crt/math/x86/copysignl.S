@@ -42,3 +42,6 @@ __MINGW_USYMBOL(copysignl):
 	fldt	4(%esp)
 	ret
 #endif
+
+.globl __MINGW_USYMBOL(_copysignl)
+	.set	__MINGW_USYMBOL(_copysignl),__MINGW_USYMBOL(copysignl)

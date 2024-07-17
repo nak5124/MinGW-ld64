@@ -80,3 +80,6 @@ hypotl (long double x, long double y)
   /* Undo scaling */
   return (scalbnl (xx, scale));
 }
+
+long double
+_hypotl(long double x, long double y) __attribute__((alias("hypotl")));
