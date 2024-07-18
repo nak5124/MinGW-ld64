@@ -35,7 +35,7 @@ extern "C" {
   _CRTIMP size_t __cdecl wcslen(const wchar_t *_Str);
   _CRTIMP size_t __cdecl wcsnlen(const wchar_t *_Src, size_t _MaxCount);
 
-  __forceinline size_t __cdecl wcsnlen_s(const wchar_t * _src, size_t _count)
+  __mingw_ovr size_t __cdecl wcsnlen_s(const wchar_t * _src, size_t _count)
   {
     return _src ? wcsnlen(_src, _count) : 0;
   }
@@ -44,7 +44,7 @@ extern "C" {
   _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control);
   _CRTIMP size_t __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control);
 
-  __forceinline __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
   wchar_t *__cdecl _wcstok(wchar_t * __restrict__ _Str, const wchar_t * __restrict__ _Delim)
   {
     return wcstok(_Str, _Delim, 0);

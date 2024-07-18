@@ -116,7 +116,7 @@ void * memset(void * __dst, int __val, size_t __n)
   _CRTIMP size_t __cdecl __strncnt(const char *_String, size_t _Count);
   _CRTIMP size_t __cdecl strnlen(const char *_Str, size_t _MaxCount);
 
-  __forceinline size_t __cdecl strnlen_s(const char * _src, size_t _count)
+  __mingw_ovr size_t __cdecl strnlen_s(const char * _src, size_t _count)
   {
     return _src ? strnlen(_src, _count) : 0;
   }
