@@ -2204,60 +2204,60 @@ bsearch_s
 btowc
 c16rtomb
 c32rtomb
-cabs
-cabsf
-F_ARM_ANY(cabsl) ; Can't use long double functions from the CRT on x86
-cacos
-cacosf
-cacosh
-cacoshf
-F_ARM_ANY(cacoshl) ; Can't use long double functions from the CRT on x86
-F_ARM_ANY(cacosl) ; Can't use long double functions from the CRT on x86
+; cabs
+; cabsf
+; F_ARM_ANY(cabsl) ; Can't use long double functions from the CRT on x86
+; cacos
+; cacosf
+; cacosh
+; cacoshf
+; F_ARM_ANY(cacoshl) ; Can't use long double functions from the CRT on x86
+; F_ARM_ANY(cacosl) ; Can't use long double functions from the CRT on x86
 calloc
-carg
-cargf
-F_ARM_ANY(cargl) ; Can't use long double functions from the CRT on x86
-casin
-casinf
-casinh
-casinhf
-F_ARM_ANY(casinhl) ; Can't use long double functions from the CRT on x86
-F_ARM_ANY(casinl) ; Can't use long double functions from the CRT on x86
-catan
-catanf
-catanh
-catanhf
-F_ARM_ANY(catanhl) ; Can't use long double functions from the CRT on x86
-F_ARM_ANY(catanl) ; Can't use long double functions from the CRT on x86
+; carg
+; cargf
+; F_ARM_ANY(cargl) ; Can't use long double functions from the CRT on x86
+; casin
+; casinf
+; casinh
+; casinhf
+; F_ARM_ANY(casinhl) ; Can't use long double functions from the CRT on x86
+; F_ARM_ANY(casinl) ; Can't use long double functions from the CRT on x86
+; catan
+; catanf
+; catanh
+; catanhf
+; F_ARM_ANY(catanhl) ; Can't use long double functions from the CRT on x86
+; F_ARM_ANY(catanl) ; Can't use long double functions from the CRT on x86
 cbrt
 cbrtf
 F_ARM_ANY(cbrtl) ; Can't use long double functions from the CRT on x86
-ccos
-ccosf
-ccosh
-ccoshf
-F_ARM_ANY(ccoshl) ; Can't use long double functions from the CRT on x86
-F_ARM_ANY(ccosl) ; Can't use long double functions from the CRT on x86
+; ccos
+; ccosf
+; ccosh
+; ccoshf
+; F_ARM_ANY(ccoshl) ; Can't use long double functions from the CRT on x86
+; F_ARM_ANY(ccosl) ; Can't use long double functions from the CRT on x86
 ceil
 F_NON_I386(ceilf)
-cexp
-cexpf
-F_ARM_ANY(cexpl) ; Can't use long double functions from the CRT on x86
-cimag
-cimagf
-F_ARM_ANY(cimagl) ; Can't use long double functions from the CRT on x86
+; cexp
+; cexpf
+; F_ARM_ANY(cexpl) ; Can't use long double functions from the CRT on x86
+; cimag
+; cimagf
+; F_ARM_ANY(cimagl) ; Can't use long double functions from the CRT on x86
 clearerr
 clearerr_s
 clock
-clog
-clog10
-clog10f
-F_ARM_ANY(clog10l) ; Can't use long double functions from the CRT on x86
-clogf
-F_ARM_ANY(clogl) ; Can't use long double functions from the CRT on x86
-conj
-conjf
-F_ARM_ANY(conjl) ; Can't use long double functions from the CRT on x86
+; clog
+; clog10
+; clog10f
+; F_ARM_ANY(clog10l) ; Can't use long double functions from the CRT on x86
+; clogf
+; F_ARM_ANY(clogl) ; Can't use long double functions from the CRT on x86
+; conj
+; conjf
+; F_ARM_ANY(conjl) ; Can't use long double functions from the CRT on x86
 copysign
 copysignf
 F_ARM_ANY(copysignl) ; Can't use long double functions from the CRT on x86
@@ -2265,30 +2265,30 @@ cos
 F_NON_I386(cosf)
 cosh
 F_NON_I386(coshf)
-cpow
-cpowf
-F_ARM_ANY(cpowl) ; Can't use long double functions from the CRT on x86
-cproj
-cprojf
-F_ARM_ANY(cprojl) ; Can't use long double functions from the CRT on x86
-creal
-crealf
-F_ARM_ANY(creall) ; Can't use long double functions from the CRT on x86
-csin
-csinf
-csinh
-csinhf
-F_ARM_ANY(csinhl) ; Can't use long double functions from the CRT on x86
-F_ARM_ANY(csinl) ; Can't use long double functions from the CRT on x86
-csqrt
-csqrtf
-F_ARM_ANY(csqrtl) ; Can't use long double functions from the CRT on x86
-ctan
-ctanf
-ctanh
-ctanhf
-F_ARM_ANY(ctanhl) ; Can't use long double functions from the CRT on x86
-F_ARM_ANY(ctanl) ; Can't use long double functions from the CRT on x86
+; cpow
+; cpowf
+; F_ARM_ANY(cpowl) ; Can't use long double functions from the CRT on x86
+; cproj
+; cprojf
+; F_ARM_ANY(cprojl) ; Can't use long double functions from the CRT on x86
+; creal
+; crealf
+; F_ARM_ANY(creall) ; Can't use long double functions from the CRT on x86
+; csin
+; csinf
+; csinh
+; csinhf
+; F_ARM_ANY(csinhl) ; Can't use long double functions from the CRT on x86
+; F_ARM_ANY(csinl) ; Can't use long double functions from the CRT on x86
+; csqrt
+; csqrtf
+; F_ARM_ANY(csqrtl) ; Can't use long double functions from the CRT on x86
+; ctan
+; ctanf
+; ctanh
+; ctanhf
+; F_ARM_ANY(ctanhl) ; Can't use long double functions from the CRT on x86
+; F_ARM_ANY(ctanl) ; Can't use long double functions from the CRT on x86
 div
 erf
 erfc
