@@ -241,7 +241,7 @@ extern "C" {
 # endif
 #endif
 
-  double __cdecl _cabs(struct _complex _ComplexA); /* Overridden to use our cabs.  */
+  _CRTIMP double __cdecl _cabs(struct _complex _ComplexA);
   _CRTIMP double __cdecl _hypot(double _X, double _Y);
   _CRTIMP double __cdecl _j0(double _X);
   _CRTIMP double __cdecl _j1(double _X);

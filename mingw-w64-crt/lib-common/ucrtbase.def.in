@@ -223,8 +223,7 @@ _byteswap_uint64
 _byteswap_ulong
 _byteswap_ushort
 _c_exit
-; DATA set manually
-_cabs DATA
+_cabs
 _callnewh
 _calloc_base
 _cexit
