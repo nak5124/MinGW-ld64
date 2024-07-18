@@ -2473,9 +2473,9 @@ F_ARM_ANY(nextafterl) ; Can't use long double functions from the CRT on x86
 F_ARM_ANY(nexttoward) ; Can't use long double functions from the CRT on x86
 F_ARM_ANY(nexttowardf) ; Can't use long double functions from the CRT on x86
 F_ARM_ANY(nexttowardl) ; Can't use long double functions from the CRT on x86
-norm
-normf
-norml
+; norm
+; normf
+; norml
 perror
 pow
 F_NON_I386(powf)

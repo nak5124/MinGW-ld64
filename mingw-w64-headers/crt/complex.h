@@ -82,6 +82,7 @@ extern "C" {
   double _Complex csqrt(double _Complex _Z);
   double _Complex ctan(double _Complex _Z);
   double _Complex ctanh(double _Complex _Z);
+  double norm(double _Complex _Z);
 
   float __MINGW_ATTRIB_CONST cabsf(float _Complex _Z);
   float _Complex cacosf(float _Complex _Z);
@@ -108,6 +109,7 @@ extern "C" {
   float _Complex csqrtf(float _Complex _Z);
   float _Complex ctanf(float _Complex _Z);
   float _Complex ctanhf(float _Complex _Z);
+  float normf(float _Complex _Z);
 
   long double __MINGW_ATTRIB_CONST cabsl(long double _Complex _Z);
   long double _Complex cacosl(long double _Complex _Z);
@@ -134,6 +136,7 @@ extern "C" {
   long double _Complex csqrtl(long double _Complex _Z);
   long double _Complex ctanl(long double _Complex _Z);
   long double _Complex ctanhl(long double _Complex _Z);
+  long double norml(long double _Complex _Z);
 
 #ifdef __GNUC__
 #ifndef __CRT__NO_INLINE
