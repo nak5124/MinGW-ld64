@@ -666,8 +666,6 @@ LIBARM64_FALSE
 LIBARM64_TRUE
 LIB64_FALSE
 LIB64_TRUE
-W32API_FALSE
-W32API_TRUE
 DLLTOOL_HAS_TEMP_PREFIX_FALSE
 DLLTOOL_HAS_TEMP_PREFIX_TRUE
 AS
@@ -795,7 +793,6 @@ enable_silent_rules
 enable_maintainer_mode
 with_sysroot
 enable_dependency_tracking
-enable_w32api
 enable_lib64
 enable_libarm64
 enable_wildcard
@@ -1456,7 +1453,6 @@ Optional Features:
                           do not reject slow dependency extractors
   --disable-dependency-tracking
                           speeds up one-time build
-  --enable-w32api         Enable building a w32api package for Cygwin
   --enable-lib64          Build the Win64 libraries
   --enable-libarm64       Build the WinARM64 libraries
   --enable-wildcard       Enable command line globbing
@@ -6348,37 +6344,6 @@ else
 fi
 
 
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to build a w32api package for Cygwin" >&5
-printf %s "checking whether to build a w32api package for Cygwin... " >&6; }
-# Check whether --enable-w32api was given.
-if test ${enable_w32api+y}
-then :
-  enableval=$enable_w32api;
-else case e in #(
-  e) enable_w32api=no ;;
-esac
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $enable_w32api" >&5
-printf "%s\n" "$enable_w32api" >&6; }
-case $enable_w32api in #(
-  no) :
-     ;; #(
-  yes) :
-    W32API=
-	 includedir=${prefix}/include/w32api ;; #(
-  *) :
-    as_fn_error $? "invalid argument.  Must be either yes or no." "$LINENO" 5 ;;
-esac
- if test ${W32API+y}; then
-  W32API_TRUE=
-  W32API_FALSE='#'
-else
-  W32API_TRUE='#'
-  W32API_FALSE=
-fi
-
-
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to build the Win64 libraries" >&5
 printf %s "checking whether to build the Win64 libraries... " >&6; }
 # Check whether --enable-lib64 was given.
@@ -6505,14 +6470,6 @@ case $host_cpu in #(
  ;;
 esac
 
-if test "x$enable_w32api" = xyes
-then :
-
-  libx8664suffx=$libx8664suffx/w32api
-  libarm64suffx=$libarm64suffx/w32api
-
-fi
-
 LIBX8664SUFFIXDIR=$libx8664suffx
 
 LIBARM64SUFFIXDIR=$libarm64suffx
@@ -6623,7 +6580,7 @@ case $enable_cfguard in #(
      ;; #(
   yes) :
     CFGUARD=
-	 CFGUARD_CFLAGS=-mguard=cf ;; #(
+   CFGUARD_CFLAGS=-mguard=cf ;; #(
   *) :
     as_fn_error $? "invalid argument.  Must be either yes or no." "$LINENO" 5 ;;
 esac
@@ -7002,10 +6959,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${DLLTOOL_HAS_TEMP_PREFIX_TRUE}" && test -z "${DLLTOOL_HAS_TEMP_PREFIX_FALSE}"; then
   as_fn_error $? "conditional \"DLLTOOL_HAS_TEMP_PREFIX\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${W32API_TRUE}" && test -z "${W32API_FALSE}"; then
-  as_fn_error $? "conditional \"W32API\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${LIB64_TRUE}" && test -z "${LIB64_FALSE}"; then

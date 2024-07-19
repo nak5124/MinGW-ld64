@@ -145,62 +145,34 @@ host_triplet = @host@
 @CFGUARD_TRUE@am__append_3 = \
 @CFGUARD_TRUE@  cfguard/mingw_cfguard_loadcfg.S
 
-@LIB64_TRUE@@W32API_FALSE@am__append_4 = lib64/libmsvcrt.a
-@LIB64_TRUE@@W32API_FALSE@am__append_5 = lib64/libdelayimp.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/libm.a lib64/libgmon.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/liblargeint.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/libmingw32.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/libmingwex.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/libmoldname.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/libmingwthrd.a
-@LIB64_TRUE@@W32API_FALSE@am__append_6 = lib64/ucrtbase.def \
-@LIB64_TRUE@@W32API_FALSE@				  lib64/advapi32.def lib64/clbcatq.def lib64/kernel32.def lib64/ole32.def \
-@LIB64_TRUE@@W32API_FALSE@				  lib64/oleaut32.def lib64/user32.def lib64/winhvplatform.def lib64/ws2_32.def \
-@LIB64_TRUE@@W32API_FALSE@				  lib64/api-ms-win-crt-math-l1-1-0.def lib64/api-ms-win-crt-private-l1-1-0.def lib64/api-ms-win-crt-runtime-l1-1-0.def \
-@LIB64_TRUE@@W32API_FALSE@				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def
+@LIB64_TRUE@am__append_4 = lib64/ucrtbase.def \
+@LIB64_TRUE@				  lib64/advapi32.def lib64/clbcatq.def lib64/kernel32.def lib64/ole32.def \
+@LIB64_TRUE@				  lib64/oleaut32.def lib64/user32.def lib64/winhvplatform.def lib64/ws2_32.def \
+@LIB64_TRUE@				  lib64/api-ms-win-crt-math-l1-1-0.def lib64/api-ms-win-crt-private-l1-1-0.def lib64/api-ms-win-crt-runtime-l1-1-0.def \
+@LIB64_TRUE@				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def
 
-@LIB64_TRUE@@W32API_FALSE@am__append_7 = lib64/libucrtbase.a \
-@LIB64_TRUE@@W32API_FALSE@	lib64/libucrt.a lib64/libucrtapp.a
-@LIB64_TRUE@@W32API_FALSE@am__append_8 = lib64/libucrt_extra.a lib64/libucrtapp_extra.a
-@LIBARM64_TRUE@@W32API_FALSE@am__append_9 = libarm64/libmsvcrt.a
+@LIB64_TRUE@am__append_5 = lib64/libucrt_extra.a lib64/libucrtapp_extra.a
+@LIBARM64_TRUE@am__append_6 = libarm64/ucrtbase.def \
+@LIBARM64_TRUE@				  libarm64/advapi32.def libarm64/clbcatq.def libarm64/kernel32.def libarm64/ole32.def libarm64/oleaut32.def \
+@LIBARM64_TRUE@				  libarm64/user32.def libarm64/winhvplatform.def libarm64/ws2_32.def \
+@LIBARM64_TRUE@				  libarm64/api-ms-win-crt-math-l1-1-0.def libarm64/api-ms-win-crt-private-l1-1-0.def libarm64/api-ms-win-crt-runtime-l1-1-0.def \
+@LIBARM64_TRUE@				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def
 
-#libarm64_LIBRARIES += libarm64/libgmon.a
-#libarm64_libgmon_a_SOURCES = profile/mcount.c \
-#  profile/profil.h profile/profil.c        \
-#  profile/gmon.h   profile/gmon.c \
-#  profile/mcountFunc.S
-#libarm64_libgmon_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-@LIBARM64_TRUE@@W32API_FALSE@am__append_10 = libarm64/libdelayimp.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libm.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/liblargeint.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libmingw32.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libmingwex.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libmoldname.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libmingwthrd.a
-@LIBARM64_TRUE@@W32API_FALSE@am__append_11 = libarm64/ucrtbase.def \
-@LIBARM64_TRUE@@W32API_FALSE@				  libarm64/advapi32.def libarm64/clbcatq.def libarm64/kernel32.def libarm64/ole32.def libarm64/oleaut32.def \
-@LIBARM64_TRUE@@W32API_FALSE@				  libarm64/user32.def libarm64/winhvplatform.def libarm64/ws2_32.def \
-@LIBARM64_TRUE@@W32API_FALSE@				  libarm64/api-ms-win-crt-math-l1-1-0.def libarm64/api-ms-win-crt-private-l1-1-0.def libarm64/api-ms-win-crt-runtime-l1-1-0.def \
-@LIBARM64_TRUE@@W32API_FALSE@				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def
-
-@LIBARM64_TRUE@@W32API_FALSE@am__append_12 = libarm64/libucrtbase.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libucrt.a \
-@LIBARM64_TRUE@@W32API_FALSE@	libarm64/libucrtapp.a
-@LIBARM64_TRUE@@W32API_FALSE@am__append_13 = libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
-@ENABLE_TESTS_UNICODE_TRUE@am__append_14 = testcases/t_municode testcases/t_tmain
+@LIBARM64_TRUE@am__append_7 = libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
+@ENABLE_TESTS_UNICODE_TRUE@am__append_8 = testcases/t_municode testcases/t_tmain
 check_PROGRAMS = $(am__EXEEXT_2) $(am__EXEEXT_4)
 TESTS = $(am__EXEEXT_2) $(am__EXEEXT_4)
 XFAIL_TESTS = testcases/t_nullptrexception$(EXEEXT) $(am__EXEEXT_5)
 
 # Build the libraries
-@LIB64_TRUE@am__append_15 = $(newcomplex_test_lib64)
+@LIB64_TRUE@am__append_9 = $(newcomplex_test_lib64)
 
 # Build the programs during make check.
-@LIB64_TRUE@am__append_16 = $(newcomplex_tests64)
+@LIB64_TRUE@am__append_10 = $(newcomplex_tests64)
 
 # Declare the tests.
-@LIB64_TRUE@am__append_17 = $(newcomplex_tests64)
-@LIB64_TRUE@am__append_18 = 
+@LIB64_TRUE@am__append_11 = $(newcomplex_tests64)
+@LIB64_TRUE@am__append_12 = 
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -373,10 +345,11 @@ lib64_libgmon_a_LIBADD =
 am__lib64_libgmon_a_SOURCES_DIST = profile/mcount.c profile/profil.h \
 	profile/profil.c profile/gmon.h profile/gmon.c \
 	profile/mcountFunc.S
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libgmon_a_OBJECTS = profile/lib64_libgmon_a-mcount.$(OBJEXT) \
-@LIB64_TRUE@@W32API_FALSE@	profile/lib64_libgmon_a-profil.$(OBJEXT) \
-@LIB64_TRUE@@W32API_FALSE@	profile/lib64_libgmon_a-gmon.$(OBJEXT) \
-@LIB64_TRUE@@W32API_FALSE@	profile/lib64_libgmon_a-mcountFunc.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libgmon_a_OBJECTS =  \
+@LIB64_TRUE@	profile/lib64_libgmon_a-mcount.$(OBJEXT) \
+@LIB64_TRUE@	profile/lib64_libgmon_a-profil.$(OBJEXT) \
+@LIB64_TRUE@	profile/lib64_libgmon_a-gmon.$(OBJEXT) \
+@LIB64_TRUE@	profile/lib64_libgmon_a-mcountFunc.$(OBJEXT)
 lib64_libgmon_a_OBJECTS = $(am_lib64_libgmon_a_OBJECTS)
 lib64_libkernel32_a_LIBADD =
 am__lib64_libkernel32_a_SOURCES_DIST = intrincs/__movsb.c \
@@ -531,8 +504,7 @@ lib64_liblargeint_a_AR = $(AR) $(ARFLAGS)
 lib64_liblargeint_a_LIBADD =
 am__lib64_liblargeint_a_SOURCES_DIST = libsrc/largeint.c
 am__objects_16 = libsrc/lib64_liblargeint_a-largeint.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_liblargeint_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_16)
+@LIB64_TRUE@am_lib64_liblargeint_a_OBJECTS = $(am__objects_16)
 lib64_liblargeint_a_OBJECTS = $(am_lib64_liblargeint_a_OBJECTS)
 lib64_liblocationapi_a_AR = $(AR) $(ARFLAGS)
 lib64_liblocationapi_a_LIBADD =
@@ -543,8 +515,7 @@ lib64_liblocationapi_a_OBJECTS = $(am_lib64_liblocationapi_a_OBJECTS)
 lib64_libm_a_AR = $(AR) $(ARFLAGS)
 lib64_libm_a_LIBADD =
 am__objects_18 = lib64_libm_a-_libm_dummy.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@nodist_lib64_libm_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_18)
+@LIB64_TRUE@nodist_lib64_libm_a_OBJECTS = $(am__objects_18)
 lib64_libm_a_OBJECTS = $(nodist_lib64_libm_a_OBJECTS)
 lib64_libmfuuid_a_AR = $(AR) $(ARFLAGS)
 lib64_libmfuuid_a_LIBADD =
@@ -596,8 +567,7 @@ am__objects_20 = crt/lib64_libmingw32_a-crtexewin.$(OBJEXT) \
 	crt/lib64_libmingw32_a-cxa_atexit.$(OBJEXT) \
 	crt/lib64_libmingw32_a-cxa_thread_atexit.$(OBJEXT) \
 	crt/lib64_libmingw32_a-tls_atexit.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libmingw32_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_20)
+@LIB64_TRUE@am_lib64_libmingw32_a_OBJECTS = $(am__objects_20)
 lib64_libmingw32_a_OBJECTS = $(am_lib64_libmingw32_a_OBJECTS)
 lib64_libmingwex_a_AR = $(AR) $(ARFLAGS)
 lib64_libmingwex_a_LIBADD =
@@ -618,15 +588,16 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	complex/crealf.c complex/creall.c complex/csin.c \
 	complex/csinf.c complex/csinl.c complex/csqrt.c \
 	complex/csqrtf.c complex/csqrtl.c complex/ctan.c \
-	complex/ctanf.c complex/ctanl.c complex/cabs.def.h \
-	complex/cacos.def.h complex/cacosh.def.h complex/carg.def.h \
-	complex/casin.def.h complex/casinh.def.h complex/catan.def.h \
-	complex/catanh.def.h complex/ccos.def.h complex/ccosh.def.h \
-	complex/cexp.def.h complex/cimag.def.h complex/clog.def.h \
-	complex/clog10.def.h complex/complex_internal.h \
-	complex/conj.def.h complex/cpow.def.h complex/cproj.def.h \
-	complex/creal.def.h complex/csin.def.h complex/csinh.def.h \
-	complex/csqrt.def.h complex/ctan.def.h complex/ctanh.def.h \
+	complex/ctanf.c complex/ctanl.c complex/norm.c complex/normf.c \
+	complex/norml.c complex/cabs.def.h complex/cacos.def.h \
+	complex/cacosh.def.h complex/carg.def.h complex/casin.def.h \
+	complex/casinh.def.h complex/catan.def.h complex/catanh.def.h \
+	complex/ccos.def.h complex/ccosh.def.h complex/cexp.def.h \
+	complex/cimag.def.h complex/clog.def.h complex/clog10.def.h \
+	complex/complex_internal.h complex/conj.def.h \
+	complex/cpow.def.h complex/cproj.def.h complex/creal.def.h \
+	complex/csin.def.h complex/csinh.def.h complex/csqrt.def.h \
+	complex/ctan.def.h complex/ctanh.def.h complex/norm.def.h \
 	math/fp_consts.c math/fp_constsf.c math/fp_constsl.c \
 	math/fpclassify.c math/fpclassifyf.c math/fpclassifyl.c \
 	math/isnan.c math/isnanf.c math/isnanl.c math/powi.c \
@@ -728,6 +699,9 @@ am__objects_22 =  \
 	complex/lib64_libmingwex_a-ctan.$(OBJEXT) \
 	complex/lib64_libmingwex_a-ctanf.$(OBJEXT) \
 	complex/lib64_libmingwex_a-ctanl.$(OBJEXT) \
+	complex/lib64_libmingwex_a-norm.$(OBJEXT) \
+	complex/lib64_libmingwex_a-normf.$(OBJEXT) \
+	complex/lib64_libmingwex_a-norml.$(OBJEXT) \
 	math/lib64_libmingwex_a-fp_consts.$(OBJEXT) \
 	math/lib64_libmingwex_a-fp_constsf.$(OBJEXT) \
 	math/lib64_libmingwex_a-fp_constsl.$(OBJEXT) \
@@ -853,22 +827,20 @@ am__objects_23 = gdtoa/lib64_libmingwex_a-arithchk.$(OBJEXT) \
 	math/x86/lib64_libmingwex_a-fucom.$(OBJEXT) \
 	misc/lib64_libmingwex_a-mingw_wcstold.$(OBJEXT)
 am__objects_24 = $(am__objects_23)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libmingwex_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_22) $(am__objects_24)
+@LIB64_TRUE@am_lib64_libmingwex_a_OBJECTS = $(am__objects_22) \
+@LIB64_TRUE@	$(am__objects_24)
 lib64_libmingwex_a_OBJECTS = $(am_lib64_libmingwex_a_OBJECTS)
 lib64_libmingwthrd_a_AR = $(AR) $(ARFLAGS)
 lib64_libmingwthrd_a_LIBADD =
 am__lib64_libmingwthrd_a_SOURCES_DIST = libsrc/mingwthrd_mt.c
 am__objects_25 = libsrc/lib64_libmingwthrd_a-mingwthrd_mt.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libmingwthrd_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_25)
+@LIB64_TRUE@am_lib64_libmingwthrd_a_OBJECTS = $(am__objects_25)
 lib64_libmingwthrd_a_OBJECTS = $(am_lib64_libmingwthrd_a_OBJECTS)
 lib64_libmoldname_a_AR = $(AR) $(ARFLAGS)
 lib64_libmoldname_a_LIBADD =
 am__lib64_libmoldname_a_SOURCES_DIST = _libm_dummy.c
 am__objects_26 = lib64_libmoldname_a-_libm_dummy.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libmoldname_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_26)
+@LIB64_TRUE@am_lib64_libmoldname_a_OBJECTS = $(am__objects_26)
 lib64_libmoldname_a_OBJECTS = $(am_lib64_libmoldname_a_OBJECTS)
 lib64_libmsxml2_a_AR = $(AR) $(ARFLAGS)
 lib64_libmsxml2_a_LIBADD =
@@ -1073,8 +1045,7 @@ am__objects_37 = $(am__objects_36) \
 	math/x86/lib64_libucrt_extra_a-sinl.$(OBJEXT) \
 	math/x86/lib64_libucrt_extra_a-sinl_internal.$(OBJEXT) \
 	math/x86/lib64_libucrt_extra_a-tanl.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libucrt_extra_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_37)
+@LIB64_TRUE@am_lib64_libucrt_extra_a_OBJECTS = $(am__objects_37)
 lib64_libucrt_extra_a_OBJECTS = $(am_lib64_libucrt_extra_a_OBJECTS)
 lib64_libucrtapp_extra_a_AR = $(AR) $(ARFLAGS)
 lib64_libucrtapp_extra_a_LIBADD =
@@ -1100,8 +1071,7 @@ am__objects_38 =  \
 	string/lib64_libucrtapp_extra_a-wcschr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-wcsrchr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-wcsstr.$(OBJEXT)
-@LIB64_TRUE@@W32API_FALSE@am_lib64_libucrtapp_extra_a_OBJECTS =  \
-@LIB64_TRUE@@W32API_FALSE@	$(am__objects_38)
+@LIB64_TRUE@am_lib64_libucrtapp_extra_a_OBJECTS = $(am__objects_38)
 lib64_libucrtapp_extra_a_OBJECTS =  \
 	$(am_lib64_libucrtapp_extra_a_OBJECTS)
 lib64_libuuid_a_AR = $(AR) $(ARFLAGS)
@@ -1466,8 +1436,7 @@ libarm64_liblargeint_a_AR = $(AR) $(ARFLAGS)
 libarm64_liblargeint_a_LIBADD =
 am__libarm64_liblargeint_a_SOURCES_DIST = libsrc/largeint.c
 am__objects_59 = libsrc/libarm64_liblargeint_a-largeint.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_liblargeint_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_59)
+@LIBARM64_TRUE@am_libarm64_liblargeint_a_OBJECTS = $(am__objects_59)
 libarm64_liblargeint_a_OBJECTS = $(am_libarm64_liblargeint_a_OBJECTS)
 libarm64_liblocationapi_a_AR = $(AR) $(ARFLAGS)
 libarm64_liblocationapi_a_LIBADD =
@@ -1481,8 +1450,7 @@ libarm64_liblocationapi_a_OBJECTS =  \
 libarm64_libm_a_AR = $(AR) $(ARFLAGS)
 libarm64_libm_a_LIBADD =
 am__objects_61 = libarm64_libm_a-_libm_dummy.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@nodist_libarm64_libm_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_61)
+@LIBARM64_TRUE@nodist_libarm64_libm_a_OBJECTS = $(am__objects_61)
 libarm64_libm_a_OBJECTS = $(nodist_libarm64_libm_a_OBJECTS)
 libarm64_libmfuuid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmfuuid_a_LIBADD =
@@ -1534,8 +1502,7 @@ am__objects_63 = crt/libarm64_libmingw32_a-crtexewin.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-cxa_atexit.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-cxa_thread_atexit.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-tls_atexit.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_libmingw32_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_63)
+@LIBARM64_TRUE@am_libarm64_libmingw32_a_OBJECTS = $(am__objects_63)
 libarm64_libmingw32_a_OBJECTS = $(am_libarm64_libmingw32_a_OBJECTS)
 libarm64_libmingwex_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmingwex_a_LIBADD =
@@ -1556,15 +1523,16 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	complex/creal.c complex/crealf.c complex/creall.c \
 	complex/csin.c complex/csinf.c complex/csinl.c complex/csqrt.c \
 	complex/csqrtf.c complex/csqrtl.c complex/ctan.c \
-	complex/ctanf.c complex/ctanl.c complex/cabs.def.h \
-	complex/cacos.def.h complex/cacosh.def.h complex/carg.def.h \
-	complex/casin.def.h complex/casinh.def.h complex/catan.def.h \
-	complex/catanh.def.h complex/ccos.def.h complex/ccosh.def.h \
-	complex/cexp.def.h complex/cimag.def.h complex/clog.def.h \
-	complex/clog10.def.h complex/complex_internal.h \
-	complex/conj.def.h complex/cpow.def.h complex/cproj.def.h \
-	complex/creal.def.h complex/csin.def.h complex/csinh.def.h \
-	complex/csqrt.def.h complex/ctan.def.h complex/ctanh.def.h \
+	complex/ctanf.c complex/ctanl.c complex/norm.c complex/normf.c \
+	complex/norml.c complex/cabs.def.h complex/cacos.def.h \
+	complex/cacosh.def.h complex/carg.def.h complex/casin.def.h \
+	complex/casinh.def.h complex/catan.def.h complex/catanh.def.h \
+	complex/ccos.def.h complex/ccosh.def.h complex/cexp.def.h \
+	complex/cimag.def.h complex/clog.def.h complex/clog10.def.h \
+	complex/complex_internal.h complex/conj.def.h \
+	complex/cpow.def.h complex/cproj.def.h complex/creal.def.h \
+	complex/csin.def.h complex/csinh.def.h complex/csqrt.def.h \
+	complex/ctan.def.h complex/ctanh.def.h complex/norm.def.h \
 	math/fp_consts.c math/fp_constsf.c math/fp_constsl.c \
 	math/fpclassify.c math/fpclassifyf.c math/fpclassifyl.c \
 	math/isnan.c math/isnanf.c math/isnanl.c math/powi.c \
@@ -1659,6 +1627,9 @@ am__objects_65 =  \
 	complex/libarm64_libmingwex_a-ctan.$(OBJEXT) \
 	complex/libarm64_libmingwex_a-ctanf.$(OBJEXT) \
 	complex/libarm64_libmingwex_a-ctanl.$(OBJEXT) \
+	complex/libarm64_libmingwex_a-norm.$(OBJEXT) \
+	complex/libarm64_libmingwex_a-normf.$(OBJEXT) \
+	complex/libarm64_libmingwex_a-norml.$(OBJEXT) \
 	math/libarm64_libmingwex_a-fp_consts.$(OBJEXT) \
 	math/libarm64_libmingwex_a-fp_constsf.$(OBJEXT) \
 	math/libarm64_libmingwex_a-fp_constsl.$(OBJEXT) \
@@ -1761,25 +1732,22 @@ am__objects_65 =  \
 	$(am__objects_64)
 am__objects_66 = math/arm64/libarm64_libmingwex_a-sincos.$(OBJEXT) \
 	math/arm64/libarm64_libmingwex_a-sincosf.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_libmingwex_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_65) \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_66)
+@LIBARM64_TRUE@am_libarm64_libmingwex_a_OBJECTS = $(am__objects_65) \
+@LIBARM64_TRUE@	$(am__objects_66)
 libarm64_libmingwex_a_OBJECTS = $(am_libarm64_libmingwex_a_OBJECTS)
 libarm64_libmingwthrd_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmingwthrd_a_LIBADD =
 am__libarm64_libmingwthrd_a_SOURCES_DIST = libsrc/mingwthrd_mt.c
 am__objects_67 =  \
 	libsrc/libarm64_libmingwthrd_a-mingwthrd_mt.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_libmingwthrd_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_67)
+@LIBARM64_TRUE@am_libarm64_libmingwthrd_a_OBJECTS = $(am__objects_67)
 libarm64_libmingwthrd_a_OBJECTS =  \
 	$(am_libarm64_libmingwthrd_a_OBJECTS)
 libarm64_libmoldname_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmoldname_a_LIBADD =
 am__libarm64_libmoldname_a_SOURCES_DIST = _libm_dummy.c
 am__objects_68 = libarm64_libmoldname_a-_libm_dummy.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_libmoldname_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_68)
+@LIBARM64_TRUE@am_libarm64_libmoldname_a_OBJECTS = $(am__objects_68)
 libarm64_libmoldname_a_OBJECTS = $(am_libarm64_libmoldname_a_OBJECTS)
 libarm64_libmsxml2_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmsxml2_a_LIBADD =
@@ -1903,8 +1871,8 @@ am__objects_78 =  \
 am__objects_79 = $(am__objects_78) \
 	math/arm-common/libarm64_libucrt_extra_a-ldexpl.$(OBJEXT) \
 	math/arm-common/libarm64_libucrt_extra_a-scalbn.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_libucrt_extra_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_79)
+@LIBARM64_TRUE@am_libarm64_libucrt_extra_a_OBJECTS =  \
+@LIBARM64_TRUE@	$(am__objects_79)
 libarm64_libucrt_extra_a_OBJECTS =  \
 	$(am_libarm64_libucrt_extra_a_OBJECTS)
 libarm64_libucrtapp_extra_a_AR = $(AR) $(ARFLAGS)
@@ -1930,8 +1898,8 @@ am__objects_80 = crt/libarm64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT) 
 	string/libarm64_libucrtapp_extra_a-wcschr.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-wcsrchr.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-wcsstr.$(OBJEXT)
-@LIBARM64_TRUE@@W32API_FALSE@am_libarm64_libucrtapp_extra_a_OBJECTS =  \
-@LIBARM64_TRUE@@W32API_FALSE@	$(am__objects_80)
+@LIBARM64_TRUE@am_libarm64_libucrtapp_extra_a_OBJECTS =  \
+@LIBARM64_TRUE@	$(am__objects_80)
 libarm64_libucrtapp_extra_a_OBJECTS =  \
 	$(am_libarm64_libucrtapp_extra_a_OBJECTS)
 libarm64_libuuid_a_AR = $(AR) $(ARFLAGS)
@@ -2538,6 +2506,9 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	complex/$(DEPDIR)/lib64_libmingwex_a-ctan.Po \
 	complex/$(DEPDIR)/lib64_libmingwex_a-ctanf.Po \
 	complex/$(DEPDIR)/lib64_libmingwex_a-ctanl.Po \
+	complex/$(DEPDIR)/lib64_libmingwex_a-norm.Po \
+	complex/$(DEPDIR)/lib64_libmingwex_a-normf.Po \
+	complex/$(DEPDIR)/lib64_libmingwex_a-norml.Po \
 	complex/$(DEPDIR)/libarm64_libmingwex_a-cabs.Po \
 	complex/$(DEPDIR)/libarm64_libmingwex_a-cabsf.Po \
 	complex/$(DEPDIR)/libarm64_libmingwex_a-cabsl.Po \
@@ -2589,6 +2560,9 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	complex/$(DEPDIR)/libarm64_libmingwex_a-ctan.Po \
 	complex/$(DEPDIR)/libarm64_libmingwex_a-ctanf.Po \
 	complex/$(DEPDIR)/libarm64_libmingwex_a-ctanl.Po \
+	complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Po \
+	complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Po \
+	complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-CRT_fp10.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-_newmode.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-charmax.Po \
@@ -4187,8 +4161,8 @@ DTLIB64 = $(DTDEF64) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
 LDFLAGSARM64 = -L$(top_builddir)/libarm64
 LDFLAGS64 = -m64 -L$(top_builddir)/lib64
 extra_include = -I$(top_srcdir)/include
-processed_defs = $(am__append_6) $(am__append_11)
-noinst_LIBRARIES = $(am__append_8) $(am__append_13)
+processed_defs = $(am__append_4) $(am__append_6)
+noinst_LIBRARIES = $(am__append_5) $(am__append_7)
 
 # default directx import library names
 xinput = xinput1_3
@@ -4413,15 +4387,16 @@ src_libmingwex = cfguard/mingw_cfguard_support.c crt/dllentry.c \
 	complex/creal.c complex/crealf.c complex/creall.c \
 	complex/csin.c complex/csinf.c complex/csinl.c complex/csqrt.c \
 	complex/csqrtf.c complex/csqrtl.c complex/ctan.c \
-	complex/ctanf.c complex/ctanl.c complex/cabs.def.h \
-	complex/cacos.def.h complex/cacosh.def.h complex/carg.def.h \
-	complex/casin.def.h complex/casinh.def.h complex/catan.def.h \
-	complex/catanh.def.h complex/ccos.def.h complex/ccosh.def.h \
-	complex/cexp.def.h complex/cimag.def.h complex/clog.def.h \
-	complex/clog10.def.h complex/complex_internal.h \
-	complex/conj.def.h complex/cpow.def.h complex/cproj.def.h \
-	complex/creal.def.h complex/csin.def.h complex/csinh.def.h \
-	complex/csqrt.def.h complex/ctan.def.h complex/ctanh.def.h \
+	complex/ctanf.c complex/ctanl.c complex/norm.c complex/normf.c \
+	complex/norml.c complex/cabs.def.h complex/cacos.def.h \
+	complex/cacosh.def.h complex/carg.def.h complex/casin.def.h \
+	complex/casinh.def.h complex/catan.def.h complex/catanh.def.h \
+	complex/ccos.def.h complex/ccosh.def.h complex/cexp.def.h \
+	complex/cimag.def.h complex/clog.def.h complex/clog10.def.h \
+	complex/complex_internal.h complex/conj.def.h \
+	complex/cpow.def.h complex/cproj.def.h complex/creal.def.h \
+	complex/csin.def.h complex/csinh.def.h complex/csqrt.def.h \
+	complex/ctan.def.h complex/ctanh.def.h complex/norm.def.h \
 	math/fp_consts.c math/fp_constsf.c math/fp_constsl.c \
 	math/fpclassify.c math/fpclassifyf.c math/fpclassifyl.c \
 	math/isnan.c math/isnanf.c math/isnanl.c math/powi.c \
@@ -4523,18 +4498,16 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@winrt64dir = $(libarm64dir)
 @LIB64_TRUE@dx64dir = $(lib64dir)
 @LIBARM64_TRUE@dx64dir = $(libarm64dir)
-@LIB64_TRUE@@W32API_FALSE@crt64_DATA = \
-@LIB64_TRUE@@W32API_FALSE@  lib64/crt1.o    lib64/crt2.o     lib64/crt1u.o   lib64/crt2u.o   lib64/dllcrt1.o lib64/dllcrt2.o \
-@LIB64_TRUE@@W32API_FALSE@  lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
-@LIB64_TRUE@@W32API_FALSE@  lib64/gcrt0.o   lib64/gcrt1.o    lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
+@LIB64_TRUE@crt64_DATA = \
+@LIB64_TRUE@  lib64/crt1.o    lib64/crt2.o     lib64/crt1u.o   lib64/crt2u.o   lib64/dllcrt1.o lib64/dllcrt2.o \
+@LIB64_TRUE@  lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
+@LIB64_TRUE@  lib64/gcrt0.o   lib64/gcrt1.o    lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
 
-@LIB64_TRUE@@W32API_TRUE@crt64_DATA = 
-@LIBARM64_TRUE@@W32API_FALSE@crt64_DATA = \
-@LIBARM64_TRUE@@W32API_FALSE@  libarm64/crt1.o    libarm64/crt2.o     libarm64/crt1u.o   libarm64/crt2u.o    libarm64/dllcrt1.o    libarm64/dllcrt2.o \
-@LIBARM64_TRUE@@W32API_FALSE@  libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
-@LIBARM64_TRUE@@W32API_FALSE@  libarm64/gcrt0.o   libarm64/gcrt1.o    libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
+@LIBARM64_TRUE@crt64_DATA = \
+@LIBARM64_TRUE@  libarm64/crt1.o    libarm64/crt2.o     libarm64/crt1u.o   libarm64/crt2u.o    libarm64/dllcrt1.o    libarm64/dllcrt2.o \
+@LIBARM64_TRUE@  libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
+@LIBARM64_TRUE@  libarm64/gcrt0.o   libarm64/gcrt1.o    libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
 
-@LIBARM64_TRUE@@W32API_TRUE@crt64_DATA = 
 @LIB64_TRUE@COMPILE64 = $(COMPILE) $(CPPFLAGS64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
 @LIBARM64_TRUE@COMPILE64 = $(COMPILE) $(CPPFLAGSARM64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
 @LIB64_TRUE@lib64_LIBRARIES = lib64/libkernel32.a lib64/libbits.a \
@@ -4553,7 +4526,10 @@ src_intrincsarm64 =
 @LIB64_TRUE@	lib64/libuuid.a lib64/libgdiplus.a \
 @LIB64_TRUE@	lib64/libws2_32.a lib64/libtaskschd.a \
 @LIB64_TRUE@	lib64/libadsiid.a lib64/libdloadhelper.a \
-@LIB64_TRUE@	$(am__append_5)
+@LIB64_TRUE@	lib64/libdelayimp.a lib64/libm.a lib64/libgmon.a \
+@LIB64_TRUE@	lib64/liblargeint.a lib64/libmingw32.a \
+@LIB64_TRUE@	lib64/libmingwex.a lib64/libmoldname.a \
+@LIB64_TRUE@	lib64/libmingwthrd.a
 @LIB64_TRUE@lib64_libkernel32_a_SOURCES = $(src_intrincs) $(src_intrincs64) lib-common/kernel32.def.in
 @LIB64_TRUE@lib64_libkernel32_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
 @LIB64_TRUE@lib64_libkernel32_a_AR = $(DTDEF64) lib64/kernel32.def && $(AR) $(ARFLAGS)
@@ -4565,7 +4541,7 @@ src_intrincsarm64 =
 #lib64_DATA += lib64/libksuser.a    # Handled by custom rule
 #lib64_DATA += lib64/libshell32.a    # Handled by custom rule
 #lib64_DATA += lib64/libws2_32.a      # Handled by custom rule
-@LIB64_TRUE@lib64_DATA = $(am__append_4) lib64/libwinusb.a \
+@LIB64_TRUE@lib64_DATA = lib64/libmsvcrt.a lib64/libwinusb.a \
 @LIB64_TRUE@	lib64/libavrt.a lib64/libacledit.a \
 @LIB64_TRUE@	lib64/libaclui.a lib64/libactiveds.a \
 @LIB64_TRUE@	lib64/libadmparse.a lib64/libadmwprox.a \
@@ -4989,7 +4965,8 @@ src_intrincsarm64 =
 @LIB64_TRUE@	lib64/libsynchronization.a lib64/libwindowsapp.a \
 @LIB64_TRUE@	lib64/libwindowscoreheadless_apiset.a \
 @LIB64_TRUE@	lib64/libwscapi.a lib64/libwslapi.a \
-@LIB64_TRUE@	lib64/libxmllite.a $(am__append_7)
+@LIB64_TRUE@	lib64/libxmllite.a lib64/libucrtbase.a \
+@LIB64_TRUE@	lib64/libucrt.a lib64/libucrtapp.a
 @LIB64_TRUE@lib64_libbits_a_SOURCES = $(src_libbits)
 @LIB64_TRUE@lib64_libbits_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
 @LIB64_TRUE@lib64_libshell32_a_SOURCES = $(src_libshell32)
@@ -5059,29 +5036,29 @@ src_intrincsarm64 =
 @LIB64_TRUE@lib64_libadsiid_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
 @LIB64_TRUE@lib64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 @LIB64_TRUE@lib64_libdloadhelper_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-@LIB64_TRUE@@W32API_FALSE@lib64_libdelayimp_a_SOURCES = 
-@LIB64_TRUE@@W32API_FALSE@nodist_lib64_libm_a_SOURCES = $(src_libm)
-@LIB64_TRUE@@W32API_FALSE@lib64_libm_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-@LIB64_TRUE@@W32API_FALSE@lib64_libgmon_a_SOURCES = profile/mcount.c \
-@LIB64_TRUE@@W32API_FALSE@  profile/profil.h profile/profil.c        \
-@LIB64_TRUE@@W32API_FALSE@  profile/gmon.h   profile/gmon.c \
-@LIB64_TRUE@@W32API_FALSE@  profile/mcountFunc.S
+@LIB64_TRUE@lib64_libdelayimp_a_SOURCES = 
+@LIB64_TRUE@nodist_lib64_libm_a_SOURCES = $(src_libm)
+@LIB64_TRUE@lib64_libm_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+@LIB64_TRUE@lib64_libgmon_a_SOURCES = profile/mcount.c \
+@LIB64_TRUE@  profile/profil.h profile/profil.c        \
+@LIB64_TRUE@  profile/gmon.h   profile/gmon.c \
+@LIB64_TRUE@  profile/mcountFunc.S
 
-@LIB64_TRUE@@W32API_FALSE@lib64_libgmon_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-@LIB64_TRUE@@W32API_FALSE@lib64_liblargeint_a_SOURCES = $(src_liblargeint)
-@LIB64_TRUE@@W32API_FALSE@lib64_liblargeint_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmingw32_a_CPPFLAGS = $(CPPFLAGS64) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmingw32_a_SOURCES = $(src_libmingw32)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmingwex_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwex64)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmoldname_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmoldname_a_SOURCES = $(src_libm)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
-@LIB64_TRUE@@W32API_FALSE@lib64_libmingwthrd_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-@LIB64_TRUE@@W32API_FALSE@lib64_libucrt_extra_a_SOURCES = $(src_ucrtbase64)
-@LIB64_TRUE@@W32API_FALSE@lib64_libucrt_extra_a_CPPFLAGS = $(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-@LIB64_TRUE@@W32API_FALSE@lib64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
-@LIB64_TRUE@@W32API_FALSE@lib64_libucrtapp_extra_a_CPPFLAGS = $(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+@LIB64_TRUE@lib64_libgmon_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+@LIB64_TRUE@lib64_liblargeint_a_SOURCES = $(src_liblargeint)
+@LIB64_TRUE@lib64_liblargeint_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+@LIB64_TRUE@lib64_libmingw32_a_CPPFLAGS = $(CPPFLAGS64) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
+@LIB64_TRUE@lib64_libmingw32_a_SOURCES = $(src_libmingw32)
+@LIB64_TRUE@lib64_libmingwex_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
+@LIB64_TRUE@lib64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwex64)
+@LIB64_TRUE@lib64_libmoldname_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
+@LIB64_TRUE@lib64_libmoldname_a_SOURCES = $(src_libm)
+@LIB64_TRUE@lib64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
+@LIB64_TRUE@lib64_libmingwthrd_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+@LIB64_TRUE@lib64_libucrt_extra_a_SOURCES = $(src_ucrtbase64)
+@LIB64_TRUE@lib64_libucrt_extra_a_CPPFLAGS = $(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+@LIB64_TRUE@lib64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
+@LIB64_TRUE@lib64_libucrtapp_extra_a_CPPFLAGS = $(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 @LIB64_TRUE@dx64_DATA = lib64/libxinput.a lib64/libxapofx.a \
 @LIB64_TRUE@	lib64/libx3daudio.a lib64/libd3dx9.a \
 @LIB64_TRUE@	lib64/libd3dx10.a lib64/libd3dx11.a \
@@ -5104,6 +5081,13 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@dxerr.c \
 @LIBARM64_TRUE@test.c
 
+
+#libarm64_LIBRARIES += libarm64/libgmon.a
+#libarm64_libgmon_a_SOURCES = profile/mcount.c \
+#  profile/profil.h profile/profil.c        \
+#  profile/gmon.h   profile/gmon.c \
+#  profile/mcountFunc.S
+#libarm64_libgmon_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@libarm64_LIBRARIES = libarm64/libkernel32.a \
 @LIBARM64_TRUE@	libarm64/libbits.a libarm64/libshell32.a \
 @LIBARM64_TRUE@	libarm64/libdinput.a libarm64/libdinput8.a \
@@ -5122,7 +5106,10 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@	libarm64/libstrmiids.a libarm64/libuuid.a \
 @LIBARM64_TRUE@	libarm64/libgdiplus.a libarm64/libws2_32.a \
 @LIBARM64_TRUE@	libarm64/libadsiid.a libarm64/libdloadhelper.a \
-@LIBARM64_TRUE@	$(am__append_10)
+@LIBARM64_TRUE@	libarm64/libdelayimp.a libarm64/libm.a \
+@LIBARM64_TRUE@	libarm64/liblargeint.a libarm64/libmingw32.a \
+@LIBARM64_TRUE@	libarm64/libmingwex.a libarm64/libmoldname.a \
+@LIBARM64_TRUE@	libarm64/libmingwthrd.a
 @LIBARM64_TRUE@libarm64_libkernel32_a_SOURCES = $(src_intrincs) $(src_intrincsarm64) lib-common/kernel32.def.in
 @LIBARM64_TRUE@libarm64_libkernel32_a_AR = $(DTDEFARM64) libarm64/kernel32.def && $(AR) $(ARFLAGS)
 @LIBARM64_TRUE@libarm64_libkernel32_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
@@ -5134,15 +5121,15 @@ src_intrincsarm64 =
 #libarm64_DATA += libarm64/libksuser.a    # Handled by custom rule
 #libarm64_DATA += libarm64/libshell32.a    # Handled by custom rule
 #libarm64_DATA += libarm64/libws2_32.a      # Handled by custom rule
-@LIBARM64_TRUE@libarm64_DATA = $(am__append_9) libarm64/libacledit.a \
-@LIBARM64_TRUE@	libarm64/libactiveds.a libarm64/libadvapi32.a \
-@LIBARM64_TRUE@	libarm64/libadvpack.a libarm64/libappmgmts.a \
-@LIBARM64_TRUE@	libarm64/libappmgr.a libarm64/libasycfilt.a \
-@LIBARM64_TRUE@	libarm64/libatl.a libarm64/libaudiosrv.a \
-@LIBARM64_TRUE@	libarm64/libauthz.a libarm64/libavicap32.a \
-@LIBARM64_TRUE@	libarm64/libavifil32.a libarm64/libavrt.a \
-@LIBARM64_TRUE@	libarm64/libazroles.a libarm64/libbasesrv.a \
-@LIBARM64_TRUE@	libarm64/libbcrypt.a \
+@LIBARM64_TRUE@libarm64_DATA = libarm64/libmsvcrt.a \
+@LIBARM64_TRUE@	libarm64/libacledit.a libarm64/libactiveds.a \
+@LIBARM64_TRUE@	libarm64/libadvapi32.a libarm64/libadvpack.a \
+@LIBARM64_TRUE@	libarm64/libappmgmts.a libarm64/libappmgr.a \
+@LIBARM64_TRUE@	libarm64/libasycfilt.a libarm64/libatl.a \
+@LIBARM64_TRUE@	libarm64/libaudiosrv.a libarm64/libauthz.a \
+@LIBARM64_TRUE@	libarm64/libavicap32.a libarm64/libavifil32.a \
+@LIBARM64_TRUE@	libarm64/libavrt.a libarm64/libazroles.a \
+@LIBARM64_TRUE@	libarm64/libbasesrv.a libarm64/libbcrypt.a \
 @LIBARM64_TRUE@	libarm64/libbluetoothapis.a \
 @LIBARM64_TRUE@	libarm64/libbootvid.a libarm64/libbrowcli.a \
 @LIBARM64_TRUE@	libarm64/libbrowser.a libarm64/libbthci.a \
@@ -5338,7 +5325,8 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@	libarm64/libwtsapi32.a libarm64/libxaudio2_8.a \
 @LIBARM64_TRUE@	libarm64/libxaudio2_9.a libarm64/libxinput1_4.a \
 @LIBARM64_TRUE@	libarm64/libxinputuap.a libarm64/libxmllite.a \
-@LIBARM64_TRUE@	$(am__append_12)
+@LIBARM64_TRUE@	libarm64/libucrtbase.a libarm64/libucrt.a \
+@LIBARM64_TRUE@	libarm64/libucrtapp.a
 @LIBARM64_TRUE@libarm64_libbits_a_SOURCES = $(src_libbits)
 @LIBARM64_TRUE@libarm64_libbits_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@libarm64_libshell32_a_SOURCES = $(src_libshell32)
@@ -5406,23 +5394,23 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@libarm64_libadsiid_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@libarm64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 @LIBARM64_TRUE@libarm64_libdloadhelper_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libdelayimp_a_SOURCES = 
-@LIBARM64_TRUE@@W32API_FALSE@nodist_libarm64_libm_a_SOURCES = $(src_libm)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libm_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_liblargeint_a_SOURCES = $(src_liblargeint)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_liblargeint_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmingw32_a_CPPFLAGS = $(CPPFLAGSARM64) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmingw32_a_SOURCES = $(src_libmingw32)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmingwex_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwexarm64)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmoldname_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmoldname_a_SOURCES = $(src_libm)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libmingwthrd_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libucrt_extra_a_SOURCES = $(src_ucrtbasearm64)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libucrt_extra_a_CPPFLAGS = $(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
-@LIBARM64_TRUE@@W32API_FALSE@libarm64_libucrtapp_extra_a_CPPFLAGS = $(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+@LIBARM64_TRUE@libarm64_libdelayimp_a_SOURCES = 
+@LIBARM64_TRUE@nodist_libarm64_libm_a_SOURCES = $(src_libm)
+@LIBARM64_TRUE@libarm64_libm_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+@LIBARM64_TRUE@libarm64_liblargeint_a_SOURCES = $(src_liblargeint)
+@LIBARM64_TRUE@libarm64_liblargeint_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+@LIBARM64_TRUE@libarm64_libmingw32_a_CPPFLAGS = $(CPPFLAGSARM64) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
+@LIBARM64_TRUE@libarm64_libmingw32_a_SOURCES = $(src_libmingw32)
+@LIBARM64_TRUE@libarm64_libmingwex_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
+@LIBARM64_TRUE@libarm64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwexarm64)
+@LIBARM64_TRUE@libarm64_libmoldname_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
+@LIBARM64_TRUE@libarm64_libmoldname_a_SOURCES = $(src_libm)
+@LIBARM64_TRUE@libarm64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
+@LIBARM64_TRUE@libarm64_libmingwthrd_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+@LIBARM64_TRUE@libarm64_libucrt_extra_a_SOURCES = $(src_ucrtbasearm64)
+@LIBARM64_TRUE@libarm64_libucrt_extra_a_CPPFLAGS = $(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+@LIBARM64_TRUE@libarm64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
+@LIBARM64_TRUE@libarm64_libucrtapp_extra_a_CPPFLAGS = $(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 
 # Don't compile these, but install as is:
 #
@@ -5466,7 +5454,7 @@ testcase_progs = testcases/tstmainc testcases/tstmaincpp \
 	testcases/t_setjmp testcases/t_sigv testcases/t_speed_powl \
 	testcases/t_stat testcases/t_stdint testcases/t_time \
 	testcases/t_tls1 testcases/t_trycatch testcases/t_stat_slash \
-	testcases/t_wreaddir testcases/t_fseeko64 $(am__append_14)
+	testcases/t_wreaddir testcases/t_fseeko64 $(am__append_8)
 testcases_tstmaincpp_SOURCES = testcases/tstmaincpp.cpp
 testcases_t_trycatch_SOURCES = testcases/t_trycatch.cpp
 testcases_t_intrinc_CFLAGS = -std=c99
@@ -5475,7 +5463,7 @@ testcases_t_intrinc_CFLAGS = -std=c99
 
 # Do not specify TESTS = check_PROGRAMS, because some TESTS
 # may not be check_PROGRAMS.
-check_LIBRARIES = $(am__append_15)
+check_LIBRARIES = $(am__append_9)
 
 # Complex library check sources.
 check_complex_lib_sources = \
@@ -6331,6 +6319,12 @@ complex/lib64_libmingwex_a-ctan.$(OBJEXT): complex/$(am__dirstamp) \
 complex/lib64_libmingwex_a-ctanf.$(OBJEXT): complex/$(am__dirstamp) \
 	complex/$(DEPDIR)/$(am__dirstamp)
 complex/lib64_libmingwex_a-ctanl.$(OBJEXT): complex/$(am__dirstamp) \
+	complex/$(DEPDIR)/$(am__dirstamp)
+complex/lib64_libmingwex_a-norm.$(OBJEXT): complex/$(am__dirstamp) \
+	complex/$(DEPDIR)/$(am__dirstamp)
+complex/lib64_libmingwex_a-normf.$(OBJEXT): complex/$(am__dirstamp) \
+	complex/$(DEPDIR)/$(am__dirstamp)
+complex/lib64_libmingwex_a-norml.$(OBJEXT): complex/$(am__dirstamp) \
 	complex/$(DEPDIR)/$(am__dirstamp)
 math/$(am__dirstamp):
 	@$(MKDIR_P) math
@@ -7643,6 +7637,12 @@ complex/libarm64_libmingwex_a-ctanf.$(OBJEXT):  \
 	complex/$(am__dirstamp) complex/$(DEPDIR)/$(am__dirstamp)
 complex/libarm64_libmingwex_a-ctanl.$(OBJEXT):  \
 	complex/$(am__dirstamp) complex/$(DEPDIR)/$(am__dirstamp)
+complex/libarm64_libmingwex_a-norm.$(OBJEXT): complex/$(am__dirstamp) \
+	complex/$(DEPDIR)/$(am__dirstamp)
+complex/libarm64_libmingwex_a-normf.$(OBJEXT):  \
+	complex/$(am__dirstamp) complex/$(DEPDIR)/$(am__dirstamp)
+complex/libarm64_libmingwex_a-norml.$(OBJEXT):  \
+	complex/$(am__dirstamp) complex/$(DEPDIR)/$(am__dirstamp)
 math/libarm64_libmingwex_a-fp_consts.$(OBJEXT): math/$(am__dirstamp) \
 	math/$(DEPDIR)/$(am__dirstamp)
 math/libarm64_libmingwex_a-fp_constsf.$(OBJEXT): math/$(am__dirstamp) \
@@ -8915,6 +8915,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/lib64_libmingwex_a-ctan.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/lib64_libmingwex_a-ctanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/lib64_libmingwex_a-ctanl.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/lib64_libmingwex_a-norm.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/lib64_libmingwex_a-normf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/lib64_libmingwex_a-norml.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-cabs.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-cabsf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-cabsl.Po@am__quote@ # am--include-marker
@@ -8966,6 +8969,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-ctan.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-ctanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-ctanl.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-CRT_fp10.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-_newmode.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-charmax.Po@am__quote@ # am--include-marker
@@ -13377,6 +13383,48 @@ complex/lib64_libmingwex_a-ctanl.obj: complex/ctanl.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/ctanl.c' object='complex/lib64_libmingwex_a-ctanl.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-ctanl.obj `if test -f 'complex/ctanl.c'; then $(CYGPATH_W) 'complex/ctanl.c'; else $(CYGPATH_W) '$(srcdir)/complex/ctanl.c'; fi`
+
+complex/lib64_libmingwex_a-norm.o: complex/norm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/lib64_libmingwex_a-norm.o -MD -MP -MF complex/$(DEPDIR)/lib64_libmingwex_a-norm.Tpo -c -o complex/lib64_libmingwex_a-norm.o `test -f 'complex/norm.c' || echo '$(srcdir)/'`complex/norm.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/lib64_libmingwex_a-norm.Tpo complex/$(DEPDIR)/lib64_libmingwex_a-norm.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norm.c' object='complex/lib64_libmingwex_a-norm.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-norm.o `test -f 'complex/norm.c' || echo '$(srcdir)/'`complex/norm.c
+
+complex/lib64_libmingwex_a-norm.obj: complex/norm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/lib64_libmingwex_a-norm.obj -MD -MP -MF complex/$(DEPDIR)/lib64_libmingwex_a-norm.Tpo -c -o complex/lib64_libmingwex_a-norm.obj `if test -f 'complex/norm.c'; then $(CYGPATH_W) 'complex/norm.c'; else $(CYGPATH_W) '$(srcdir)/complex/norm.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/lib64_libmingwex_a-norm.Tpo complex/$(DEPDIR)/lib64_libmingwex_a-norm.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norm.c' object='complex/lib64_libmingwex_a-norm.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-norm.obj `if test -f 'complex/norm.c'; then $(CYGPATH_W) 'complex/norm.c'; else $(CYGPATH_W) '$(srcdir)/complex/norm.c'; fi`
+
+complex/lib64_libmingwex_a-normf.o: complex/normf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/lib64_libmingwex_a-normf.o -MD -MP -MF complex/$(DEPDIR)/lib64_libmingwex_a-normf.Tpo -c -o complex/lib64_libmingwex_a-normf.o `test -f 'complex/normf.c' || echo '$(srcdir)/'`complex/normf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/lib64_libmingwex_a-normf.Tpo complex/$(DEPDIR)/lib64_libmingwex_a-normf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/normf.c' object='complex/lib64_libmingwex_a-normf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-normf.o `test -f 'complex/normf.c' || echo '$(srcdir)/'`complex/normf.c
+
+complex/lib64_libmingwex_a-normf.obj: complex/normf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/lib64_libmingwex_a-normf.obj -MD -MP -MF complex/$(DEPDIR)/lib64_libmingwex_a-normf.Tpo -c -o complex/lib64_libmingwex_a-normf.obj `if test -f 'complex/normf.c'; then $(CYGPATH_W) 'complex/normf.c'; else $(CYGPATH_W) '$(srcdir)/complex/normf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/lib64_libmingwex_a-normf.Tpo complex/$(DEPDIR)/lib64_libmingwex_a-normf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/normf.c' object='complex/lib64_libmingwex_a-normf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-normf.obj `if test -f 'complex/normf.c'; then $(CYGPATH_W) 'complex/normf.c'; else $(CYGPATH_W) '$(srcdir)/complex/normf.c'; fi`
+
+complex/lib64_libmingwex_a-norml.o: complex/norml.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/lib64_libmingwex_a-norml.o -MD -MP -MF complex/$(DEPDIR)/lib64_libmingwex_a-norml.Tpo -c -o complex/lib64_libmingwex_a-norml.o `test -f 'complex/norml.c' || echo '$(srcdir)/'`complex/norml.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/lib64_libmingwex_a-norml.Tpo complex/$(DEPDIR)/lib64_libmingwex_a-norml.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norml.c' object='complex/lib64_libmingwex_a-norml.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-norml.o `test -f 'complex/norml.c' || echo '$(srcdir)/'`complex/norml.c
+
+complex/lib64_libmingwex_a-norml.obj: complex/norml.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/lib64_libmingwex_a-norml.obj -MD -MP -MF complex/$(DEPDIR)/lib64_libmingwex_a-norml.Tpo -c -o complex/lib64_libmingwex_a-norml.obj `if test -f 'complex/norml.c'; then $(CYGPATH_W) 'complex/norml.c'; else $(CYGPATH_W) '$(srcdir)/complex/norml.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/lib64_libmingwex_a-norml.Tpo complex/$(DEPDIR)/lib64_libmingwex_a-norml.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norml.c' object='complex/lib64_libmingwex_a-norml.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/lib64_libmingwex_a-norml.obj `if test -f 'complex/norml.c'; then $(CYGPATH_W) 'complex/norml.c'; else $(CYGPATH_W) '$(srcdir)/complex/norml.c'; fi`
 
 math/lib64_libmingwex_a-fp_consts.o: math/fp_consts.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT math/lib64_libmingwex_a-fp_consts.o -MD -MP -MF math/$(DEPDIR)/lib64_libmingwex_a-fp_consts.Tpo -c -o math/lib64_libmingwex_a-fp_consts.o `test -f 'math/fp_consts.c' || echo '$(srcdir)/'`math/fp_consts.c
@@ -20252,6 +20300,48 @@ complex/libarm64_libmingwex_a-ctanl.obj: complex/ctanl.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-ctanl.obj `if test -f 'complex/ctanl.c'; then $(CYGPATH_W) 'complex/ctanl.c'; else $(CYGPATH_W) '$(srcdir)/complex/ctanl.c'; fi`
 
+complex/libarm64_libmingwex_a-norm.o: complex/norm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/libarm64_libmingwex_a-norm.o -MD -MP -MF complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Tpo -c -o complex/libarm64_libmingwex_a-norm.o `test -f 'complex/norm.c' || echo '$(srcdir)/'`complex/norm.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Tpo complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norm.c' object='complex/libarm64_libmingwex_a-norm.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-norm.o `test -f 'complex/norm.c' || echo '$(srcdir)/'`complex/norm.c
+
+complex/libarm64_libmingwex_a-norm.obj: complex/norm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/libarm64_libmingwex_a-norm.obj -MD -MP -MF complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Tpo -c -o complex/libarm64_libmingwex_a-norm.obj `if test -f 'complex/norm.c'; then $(CYGPATH_W) 'complex/norm.c'; else $(CYGPATH_W) '$(srcdir)/complex/norm.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Tpo complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norm.c' object='complex/libarm64_libmingwex_a-norm.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-norm.obj `if test -f 'complex/norm.c'; then $(CYGPATH_W) 'complex/norm.c'; else $(CYGPATH_W) '$(srcdir)/complex/norm.c'; fi`
+
+complex/libarm64_libmingwex_a-normf.o: complex/normf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/libarm64_libmingwex_a-normf.o -MD -MP -MF complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Tpo -c -o complex/libarm64_libmingwex_a-normf.o `test -f 'complex/normf.c' || echo '$(srcdir)/'`complex/normf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Tpo complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/normf.c' object='complex/libarm64_libmingwex_a-normf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-normf.o `test -f 'complex/normf.c' || echo '$(srcdir)/'`complex/normf.c
+
+complex/libarm64_libmingwex_a-normf.obj: complex/normf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/libarm64_libmingwex_a-normf.obj -MD -MP -MF complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Tpo -c -o complex/libarm64_libmingwex_a-normf.obj `if test -f 'complex/normf.c'; then $(CYGPATH_W) 'complex/normf.c'; else $(CYGPATH_W) '$(srcdir)/complex/normf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Tpo complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/normf.c' object='complex/libarm64_libmingwex_a-normf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-normf.obj `if test -f 'complex/normf.c'; then $(CYGPATH_W) 'complex/normf.c'; else $(CYGPATH_W) '$(srcdir)/complex/normf.c'; fi`
+
+complex/libarm64_libmingwex_a-norml.o: complex/norml.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/libarm64_libmingwex_a-norml.o -MD -MP -MF complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Tpo -c -o complex/libarm64_libmingwex_a-norml.o `test -f 'complex/norml.c' || echo '$(srcdir)/'`complex/norml.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Tpo complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norml.c' object='complex/libarm64_libmingwex_a-norml.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-norml.o `test -f 'complex/norml.c' || echo '$(srcdir)/'`complex/norml.c
+
+complex/libarm64_libmingwex_a-norml.obj: complex/norml.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT complex/libarm64_libmingwex_a-norml.obj -MD -MP -MF complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Tpo -c -o complex/libarm64_libmingwex_a-norml.obj `if test -f 'complex/norml.c'; then $(CYGPATH_W) 'complex/norml.c'; else $(CYGPATH_W) '$(srcdir)/complex/norml.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Tpo complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='complex/norml.c' object='complex/libarm64_libmingwex_a-norml.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o complex/libarm64_libmingwex_a-norml.obj `if test -f 'complex/norml.c'; then $(CYGPATH_W) 'complex/norml.c'; else $(CYGPATH_W) '$(srcdir)/complex/norml.c'; fi`
+
 math/libarm64_libmingwex_a-fp_consts.o: math/fp_consts.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT math/libarm64_libmingwex_a-fp_consts.o -MD -MP -MF math/$(DEPDIR)/libarm64_libmingwex_a-fp_consts.Tpo -c -o math/libarm64_libmingwex_a-fp_consts.o `test -f 'math/fp_consts.c' || echo '$(srcdir)/'`math/fp_consts.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) math/$(DEPDIR)/libarm64_libmingwex_a-fp_consts.Tpo math/$(DEPDIR)/libarm64_libmingwex_a-fp_consts.Po
@@ -26006,6 +26096,9 @@ distclean: distclean-am
 	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-ctan.Po
 	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-ctanf.Po
 	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-ctanl.Po
+	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-norm.Po
+	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-normf.Po
+	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-norml.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-cabs.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-cabsf.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-cabsl.Po
@@ -26057,6 +26150,9 @@ distclean: distclean-am
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-ctan.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-ctanf.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-ctanl.Po
+	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Po
+	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Po
+	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-CRT_fp10.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-_newmode.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-charmax.Po
@@ -27150,6 +27246,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-ctan.Po
 	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-ctanf.Po
 	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-ctanl.Po
+	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-norm.Po
+	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-normf.Po
+	-rm -f complex/$(DEPDIR)/lib64_libmingwex_a-norml.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-cabs.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-cabsf.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-cabsl.Po
@@ -27201,6 +27300,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-ctan.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-ctanf.Po
 	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-ctanl.Po
+	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-norm.Po
+	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-normf.Po
+	-rm -f complex/$(DEPDIR)/libarm64_libmingwex_a-norml.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-CRT_fp10.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-_newmode.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-charmax.Po
@@ -28260,10 +28362,10 @@ _libm_dummy.c:
 
 @LIB64_TRUE@lib64/%.o: crt/%.c
 @LIB64_TRUE@	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
-@LIB64_TRUE@@W32API_FALSE@lib64/libmsvcrt.a: lib64/libucrt.a
-@LIB64_TRUE@@W32API_FALSE@	cp $< $@
-@LIB64_TRUE@@W32API_FALSE@lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a
-@LIB64_TRUE@@W32API_FALSE@	cd $(dir $@) && $(AR) -M < $(abspath $<)
+@LIB64_TRUE@lib64/libmsvcrt.a: lib64/libucrt.a
+@LIB64_TRUE@	cp $< $@
+@LIB64_TRUE@lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a
+@LIB64_TRUE@	cd $(dir $@) && $(AR) -M < $(abspath $<)
 
 @LIB64_TRUE@lib64/lib%.a: lib64/%.def
 @LIB64_TRUE@	$(DTDEF64) $<
@@ -28315,10 +28417,10 @@ _libm_dummy.c:
 
 @LIBARM64_TRUE@libarm64/%.o: crt/%.c
 @LIBARM64_TRUE@	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
-@LIBARM64_TRUE@@W32API_FALSE@libarm64/libmsvcrt.a: libarm64/libucrt.a
-@LIBARM64_TRUE@@W32API_FALSE@	cp $< $@
-@LIBARM64_TRUE@@W32API_FALSE@libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libarm64/libucrt_extra.a
-@LIBARM64_TRUE@@W32API_FALSE@	cd $(dir $@) && $(AR) -M < $(abspath $<)
+@LIBARM64_TRUE@libarm64/libmsvcrt.a: libarm64/libucrt.a
+@LIBARM64_TRUE@	cp $< $@
+@LIBARM64_TRUE@libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libarm64/libucrt_extra.a
+@LIBARM64_TRUE@	cd $(dir $@) && $(AR) -M < $(abspath $<)
 
 @LIBARM64_TRUE@libarm64/lib%.a: libarm64/%.def
 @LIBARM64_TRUE@	$(DTDEFARM64) $<

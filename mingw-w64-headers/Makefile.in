@@ -331,7 +331,7 @@ idlheaddir = $(baseheaddir)
 ddkhead_HEADERS = @DDKHEAD_LIST@
 idlhead_HEADERS = @IDLHEAD_LIST@
 CLEANFILES = $(nodist_sdkshead_HEADERS)
-DISTCHECK_CONFIGURE_FLAGS = --enable-crt --enable-sdk=all --enable-idl
+DISTCHECK_CONFIGURE_FLAGS = --enable-sdk=all --enable-idl
 EXTRA_DIST = $(srcdir)/ChangeLog.* include crt ddk tlb
 EXTRA_HEADERS = \
   include/*.c \
@@ -1330,23 +1330,23 @@ uninstall-am: uninstall-baseheadHEADERS uninstall-ddkheadHEADERS \
 
 
 dist-hook:
-	find $(distdir) -name ".svn" -type d -delete
+  find $(distdir) -name ".svn" -type d -delete
 
 @HAVE_WIDL_TRUE@%.h: %.idl crt/_mingw.h
-@HAVE_WIDL_TRUE@	$(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -h -o $@ $<
+@HAVE_WIDL_TRUE@  $(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -h -o $@ $<
 
 @HAVE_WIDL_TRUE@%.tlb: %.idl
-@HAVE_WIDL_TRUE@	$(WIDL) -I$(srcdir)/include -L$(srcdir)/tlb -t -o $@ $<
+@HAVE_WIDL_TRUE@  $(WIDL) -I$(srcdir)/include -L$(srcdir)/tlb -t -o $@ $<
 
 @HAVE_WIDL_TRUE@%_i.c: %.idl crt/_mingw.h
-@HAVE_WIDL_TRUE@	$(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -u -o $@ $<
+@HAVE_WIDL_TRUE@  $(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -u -o $@ $<
 
 # following headers are not meant to be generated from IDLs, so override default rule
 @HAVE_WIDL_TRUE@include/prsht.h: ;
 @HAVE_WIDL_TRUE@include/wincrypt.h: ;
 
 _mingw_ddk.h: $(srcdir)/crt/sdks/_mingw_ddk.h.in
-	$(SED) s/MINGW_HAS_DDK$$/@MINGW_HAS_DDK@/ $< > $@
+  $(SED) s/MINGW_HAS_DDK$$/@MINGW_HAS_DDK@/ $< > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
