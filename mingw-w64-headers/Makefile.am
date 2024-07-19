@@ -33,7 +33,7 @@ DISTCHECK_CONFIGURE_FLAGS = --enable-sdk=all --enable-idl
 EXTRA_DIST = $(srcdir)/ChangeLog.* include crt ddk tlb
 
 dist-hook:
-  find $(distdir) -name ".svn" -type d -delete
+	find $(distdir) -name ".svn" -type d -delete
 
 EXTRA_HEADERS = \
   include/*.c \
@@ -51,7 +51,6 @@ EXTRA_HEADERS = \
   include/wrl/*.h \
   include/wrl/wrappers/*.h \
   crt/*.h \
-  crt/*.inl \
   crt/sys/*.h \
   ddk/include/ddk/*.h \
   tlb/*.tlb
@@ -366,13 +365,13 @@ TLB_SRCS = \
 BUILT_SOURCES = $(IDL_SRCS:.idl=.h) $(TLB_SRCS:.idl=.tlb)
 
 %.h: %.idl crt/_mingw.h
-  $(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -h -o $@ $<
+	$(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -h -o $@ $<
 
 %.tlb: %.idl
-  $(WIDL) -I$(srcdir)/include -L$(srcdir)/tlb -t -o $@ $<
+	$(WIDL) -I$(srcdir)/include -L$(srcdir)/tlb -t -o $@ $<
 
 %_i.c: %.idl crt/_mingw.h
-  $(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -u -o $@ $<
+	$(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -u -o $@ $<
 
 # following headers are not meant to be generated from IDLs, so override default rule
 include/prsht.h: ;
@@ -381,4 +380,4 @@ include/wincrypt.h: ;
 endif
 
 _mingw_ddk.h: $(srcdir)/crt/sdks/_mingw_ddk.h.in
-  $(SED) s/MINGW_HAS_DDK$$/@MINGW_HAS_DDK@/ $< > $@
+	$(SED) s/MINGW_HAS_DDK$$/@MINGW_HAS_DDK@/ $< > $@
