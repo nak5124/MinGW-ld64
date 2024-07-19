@@ -2819,7 +2819,7 @@ for i in c inl dlg h16 hxx rh ver; do
   BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/include/*.$i
 done
 
-BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/crt/*.h" "$srcdir/crt/*.inl
+BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/crt/*.h
 SYSHEAD_LIST=$srcdir/crt/sys/*.h
 GDIPLUSHEAD_LIST=$srcdir/include/gdiplus/*.h
 WRLHEAD_LIST=$srcdir/include/wrl/*.h
