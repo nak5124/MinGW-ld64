@@ -163,11 +163,7 @@
 #endif
 
 #ifndef __MSABI_LONG
-# ifndef __LP64__
-#   define __MSABI_LONG(x) x ## l
-# else
-#   define __MSABI_LONG(x) x
-# endif
+# define __MSABI_LONG(x) x ## l
 #endif  /* __MSABI_LONG */
 
 #define __MINGW_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)

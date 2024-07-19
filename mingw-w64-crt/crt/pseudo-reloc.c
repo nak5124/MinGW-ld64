@@ -3,7 +3,7 @@
    Contributed by Egor Duda  <deo@logos-m.ru>
    Modified by addition of runtime_pseudo_reloc version 2
    by Kai Tietz  <kai.tietz@onevision.com>
-	
+ 
    THIS SOFTWARE IS NOT COPYRIGHTED
 
    This source code is offered for use in the public domain. You may
@@ -23,18 +23,7 @@
 #include <internal.h>
 #include <stdint.h>
 
-#if defined(__CYGWIN__)
-#include <wchar.h>
-#include <ntdef.h>
-#include <sys/cygwin.h>
-/* copied from winsup.h */
-# define NO_COPY __attribute__((nocommon)) __attribute__((section(".data_cygwin_nocopy")))
-/* custom status code: */
-#define STATUS_ILLEGAL_DLL_PSEUDO_RELOCATION ((NTSTATUS) 0xe0000269)
-#define SHORT_MSG_BUF_SZ 128
-#else
-# define NO_COPY
-#endif
+#define NO_COPY
 
 #define ATTRIBUTE_NORETURN __attribute__ ((noreturn))
 
@@ -79,86 +68,18 @@ typedef struct {
 static void ATTRIBUTE_NORETURN
 __report_error (const char *msg, ...)
 {
-#ifdef __CYGWIN__
-  /* This function is used to print short error messages
-   * to stderr, which may occur during DLL initialization
-   * while fixing up 'pseudo' relocations. This early, we
-   * may not be able to use cygwin stdio functions, so we
-   * use the win32 WriteFile api. This should work with both
-   * normal win32 console IO handles, redirected ones, and
-   * cygwin ptys.
-   */
-  char buf[SHORT_MSG_BUF_SZ];
-  wchar_t module[PATH_MAX];
-  char * posix_module = NULL;
-  static const char   UNKNOWN_MODULE[] = "<unknown module>: ";
-  static const size_t UNKNOWN_MODULE_LEN = sizeof (UNKNOWN_MODULE) - 1;
-  static const char   CYGWIN_FAILURE_MSG[] = "Cygwin runtime failure: ";
-  static const size_t CYGWIN_FAILURE_MSG_LEN = sizeof (CYGWIN_FAILURE_MSG) - 1;
-  DWORD len;
-  DWORD done;
-  va_list args;
-  HANDLE errh = GetStdHandle (STD_ERROR_HANDLE);
-  ssize_t modulelen = GetModuleFileNameW (NULL, module, PATH_MAX);
-
-  if (errh == INVALID_HANDLE_VALUE)
-    cygwin_internal (CW_EXIT_PROCESS,
-                     STATUS_ILLEGAL_DLL_PSEUDO_RELOCATION,
-                     1);
-
-  if (modulelen > 0)
-    posix_module = cygwin_create_path (CCP_WIN_W_TO_POSIX, module);
-
-  va_start (args, msg);
-  len = (DWORD) vsnprintf (buf, SHORT_MSG_BUF_SZ, msg, args);
-  va_end (args);
-  buf[SHORT_MSG_BUF_SZ-1] = '\0'; /* paranoia */
-
-  if (posix_module)
-    {
-      WriteFile (errh, (PCVOID)CYGWIN_FAILURE_MSG,
-                 CYGWIN_FAILURE_MSG_LEN, &done, NULL);
-      WriteFile (errh, (PCVOID)posix_module,
-                 strlen(posix_module), &done, NULL);
-      WriteFile (errh, (PCVOID)": ", 2, &done, NULL);
-      WriteFile (errh, (PCVOID)buf, len, &done, NULL);
-      free (posix_module);
-    }
-  else
-    {
-      WriteFile (errh, (PCVOID)CYGWIN_FAILURE_MSG,
-                 CYGWIN_FAILURE_MSG_LEN, &done, NULL);
-      WriteFile (errh, (PCVOID)UNKNOWN_MODULE,
-                 UNKNOWN_MODULE_LEN, &done, NULL);
-      WriteFile (errh, (PCVOID)buf, len, &done, NULL);
-    }
-  WriteFile (errh, (PCVOID)"\n", 1, &done, NULL);
-
-  cygwin_internal (CW_EXIT_PROCESS,
-                   STATUS_ILLEGAL_DLL_PSEUDO_RELOCATION,
-                   1);
-  /* not reached, but silences noreturn warning */
-  abort ();
-#else
   va_list argp;
   va_start (argp, msg);
-# ifdef __MINGW64_VERSION_MAJOR
   fprintf (stderr, "Mingw-w64 runtime failure:\n");
   vfprintf (stderr, msg, argp);
-# else
-  fprintf (stderr, "Mingw runtime failure:\n");
-  vfprintf (stderr, msg, argp);
-#endif
   va_end (argp);
   abort ();
-#endif
 }
 
 /* For mingw-w64 we have additional helpers to get image information
    on runtime.  This allows us to cache for pseudo-relocation pass
    the temporary access of code/read-only sections.
    This step speeds up pseudo-relocation pass.  */
-#ifdef __MINGW64_VERSION_MAJOR
 extern int __mingw_GetSectionCount (void);
 extern PIMAGE_SECTION_HEADER __mingw_GetSectionForAddress (LPVOID p);
 extern PBYTE _GetPEImageBase (void);
@@ -201,7 +122,7 @@ mark_section_writable (LPVOID addr)
   if (!VirtualQuery (the_secs[i].sec_start, &b, sizeof(b)))
     {
       __report_error ("  VirtualQuery failed for %d bytes at address %p",
-		      (int) h->Misc.VirtualSize, the_secs[i].sec_start);
+        (int) h->Misc.VirtualSize, the_secs[i].sec_start);
       return;
     }
 
@@ -216,10 +137,10 @@ mark_section_writable (LPVOID addr)
       the_secs[i].base_address = b.BaseAddress;
       the_secs[i].region_size = b.RegionSize;
       if (!VirtualProtect (b.BaseAddress, b.RegionSize,
-			   new_protect,
-			   &the_secs[i].old_protect))
-	__report_error ("  VirtualProtect failed with code 0x%x",
-	  (int) GetLastError ());
+      new_protect,
+      &the_secs[i].old_protect))
+ __report_error ("  VirtualProtect failed with code 0x%x",
+   (int) GetLastError ());
     }
   ++maxSections;
   return;
@@ -240,8 +161,6 @@ restore_modified_sections (void)
     }
 }
 
-#endif /* __MINGW64_VERSION_MAJOR */
-
 /* This function temporarily marks the page containing addr
  * writable, before copying len bytes from *src to *addr, and
  * then restores the original protection settings to the page.
@@ -261,41 +180,12 @@ __write_memory (void *addr, const void *src, size_t len)
   if (!len)
     return;
 
-#ifdef __MINGW64_VERSION_MAJOR
   /* Mark the section writable once, and unset it in
    * restore_modified_sections */
   mark_section_writable ((LPVOID) addr);
-#else
-  MEMORY_BASIC_INFORMATION b;
-  DWORD oldprot = 0;
-  int call_unprotect = 0;
-
-  if (!VirtualQuery (addr, &b, sizeof(b)))
-    {
-      __report_error ("  VirtualQuery failed for %d bytes at address %p",
-		      (int) sizeof(b), addr);
-    }
-
-  /* Temporarily allow write access to read-only protected memory.  */
-  if (b.Protect != PAGE_EXECUTE_READWRITE && b.Protect != PAGE_READWRITE
-      && b.Protect != PAGE_WRITECOPY && b.Protect != PAGE_EXECUTE_WRITECOPY)
-    {
-      call_unprotect = 1;
-      VirtualProtect (b.BaseAddress, b.RegionSize, PAGE_EXECUTE_READWRITE,
-		      &oldprot);
-    }
-#endif
 
   /* write the data. */
   memcpy (addr, src, len);
-
-#ifndef __MINGW64_VERSION_MAJOR
-  /* Restore original protection. */
-  if (call_unprotect
-      && b.Protect != PAGE_EXECUTE_READWRITE && b.Protect != PAGE_READWRITE
-      && b.Protect != PAGE_WRITECOPY && b.Protect != PAGE_EXECUTE_WRITECOPY)
-    VirtualProtect (b.BaseAddress, b.RegionSize, oldprot, &oldprot);
-#endif
 }
 
 #define RP_VERSION_V1 0
@@ -358,14 +248,14 @@ do_pseudo_reloc (void * start, void * end, void * base)
        *************************/
       runtime_pseudo_reloc_item_v1 * o;
       for (o = (runtime_pseudo_reloc_item_v1 *) v2_hdr;
-	   o < (runtime_pseudo_reloc_item_v1 *)end;
+    o < (runtime_pseudo_reloc_item_v1 *)end;
            o++)
-	{
-	  DWORD newval;
-	  reloc_target = (ptrdiff_t) base + o->target;
-	  newval = (*((DWORD*) reloc_target)) + o->addend;
-	  __write_memory ((void *) reloc_target, &newval, sizeof(DWORD));
-	}
+ {
+   DWORD newval;
+   reloc_target = (ptrdiff_t) base + o->target;
+   newval = (*((DWORD*) reloc_target)) + o->addend;
+   __write_memory ((void *) reloc_target, &newval, sizeof(DWORD));
+ }
       return;
     }
 
@@ -375,7 +265,7 @@ do_pseudo_reloc (void * start, void * end, void * base)
   if (v2_hdr->version != RP_VERSION_V2)
     {
       __report_error ("  Unknown pseudo relocation protocol version %d.\n",
-		      (int) v2_hdr->version);
+        (int) v2_hdr->version);
       return;
     }
 
@@ -406,32 +296,32 @@ do_pseudo_reloc (void * start, void * end, void * base)
       switch ((r->flags & 0xff))
         {
           case 8:
-	    reldata = (ptrdiff_t) (*((unsigned char *)reloc_target));
-	    if ((reldata & 0x80) != 0)
-	      reldata |= ~((ptrdiff_t) 0xff);
-	    break;
-	  case 16:
-	    reldata = (ptrdiff_t) (*((unsigned short *)reloc_target));
-	    if ((reldata & 0x8000) != 0)
-	      reldata |= ~((ptrdiff_t) 0xffff);
-	    break;
-	  case 32:
-	    reldata = (ptrdiff_t) (*((unsigned int *)reloc_target));
+     reldata = (ptrdiff_t) (*((unsigned char *)reloc_target));
+     if ((reldata & 0x80) != 0)
+       reldata |= ~((ptrdiff_t) 0xff);
+     break;
+   case 16:
+     reldata = (ptrdiff_t) (*((unsigned short *)reloc_target));
+     if ((reldata & 0x8000) != 0)
+       reldata |= ~((ptrdiff_t) 0xffff);
+     break;
+   case 32:
+     reldata = (ptrdiff_t) (*((unsigned int *)reloc_target));
 #ifdef _WIN64
-	    if ((reldata & 0x80000000) != 0)
-	      reldata |= ~((ptrdiff_t) 0xffffffff);
+     if ((reldata & 0x80000000) != 0)
+       reldata |= ~((ptrdiff_t) 0xffffffff);
 #endif
-	    break;
+     break;
 #ifdef _WIN64
-	  case 64:
-	    reldata = (ptrdiff_t) (*((unsigned long long *)reloc_target));
-	    break;
+   case 64:
+     reldata = (ptrdiff_t) (*((unsigned long long *)reloc_target));
+     break;
 #endif
-	  default:
-	    reldata=0;
-	    __report_error ("  Unknown pseudo relocation bit size %d.\n",
-		    (int) (r->flags & 0xff));
-	    break;
+   default:
+     reldata=0;
+     __report_error ("  Unknown pseudo relocation bit size %d.\n",
+      (int) (r->flags & 0xff));
+     break;
         }
 
       /* Adjust the relocation value */
@@ -450,29 +340,29 @@ do_pseudo_reloc (void * start, void * end, void * base)
           ptrdiff_t max_unsigned = (1LL << bits) - 1;
           ptrdiff_t min_signed = UINTPTR_MAX << (bits - 1);
           if (reldata > max_unsigned || reldata < min_signed)
-	    __report_error ("%d bit pseudo relocation at %p out of range, "
+     __report_error ("%d bit pseudo relocation at %p out of range, "
                             "targeting %p, yielding the value %p.\n",
                             bits, reloc_target, addr_imp, reldata);
         }
 
       /* Write the new relocation value back to *reloc_target */
       switch ((r->flags & 0xff))
-	{
+ {
          case 8:
            __write_memory ((void *) reloc_target, &reldata, 1);
-	   break;
-	 case 16:
+    break;
+  case 16:
            __write_memory ((void *) reloc_target, &reldata, 2);
-	   break;
-	 case 32:
+    break;
+  case 32:
            __write_memory ((void *) reloc_target, &reldata, 4);
-	   break;
+    break;
 #ifdef _WIN64
-	 case 64:
+  case 64:
            __write_memory ((void *) reloc_target, &reldata, 8);
-	   break;
+    break;
 #endif
-	}
+ }
      }
 }
 
@@ -481,24 +371,18 @@ void
 _pei386_runtime_relocator (void)
 {
   static NO_COPY int was_init = 0;
-#ifdef __MINGW64_VERSION_MAJOR
   int mSecs;
-#endif /* __MINGW64_VERSION_MAJOR */
 
   if (was_init)
     return;
   ++was_init;
-#ifdef __MINGW64_VERSION_MAJOR
   mSecs = __mingw_GetSectionCount ();
   the_secs = (sSecInfo *) alloca (sizeof (sSecInfo) * (size_t) mSecs);
   maxSections = 0;
-#endif /* __MINGW64_VERSION_MAJOR */
 
   do_pseudo_reloc (&__RUNTIME_PSEUDO_RELOC_LIST__,
-		   &__RUNTIME_PSEUDO_RELOC_LIST_END__,
-		   &__ImageBase
-		   );
-#ifdef __MINGW64_VERSION_MAJOR
+     &__RUNTIME_PSEUDO_RELOC_LIST_END__,
+     &__ImageBase
+     );
   restore_modified_sections ();
-#endif /* __MINGW64_VERSION_MAJOR */
 }

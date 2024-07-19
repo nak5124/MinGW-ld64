@@ -32,9 +32,7 @@
 #define __INTRIN_H_
 
 #include <corecrt.h>
-#ifndef __CYGWIN__
 #include <setjmp.h>
-#endif
 #include <stddef.h>
 #include <psdk_inc/intrin-impl.h>
 
@@ -257,7 +255,6 @@ extern "C" {
 extern "C" {
 #endif
 
-#ifndef __CYGWIN__
  /* Put all declarations potentially colliding with POSIX headers here.
     So far, Cygwin is the only POSIX system using this header file.
     If that ever changes, make sure to tweak the guarding ifndef. */
@@ -275,7 +272,6 @@ extern "C" {
     __MACHINEIW64(int __cdecl wcscmp(const wchar_t *,const wchar_t *))
     __MACHINEIW64(wchar_t *__cdecl wcscpy(wchar_t * __restrict__ ,const wchar_t * __restrict__ ))
     __MACHINEIW64(size_t __cdecl wcslen(const wchar_t *))
-#endif
 
 #undef _alloca
 #define _alloca(x) __builtin_alloca((x))
@@ -354,14 +350,12 @@ extern "C" {
     __MACHINE(__MINGW_EXTENSION unsigned __int64 __cdecl _rotr64(unsigned __int64,int))
 #define _rotl64 __rolq
 #define _rotr64 __rorq
-#ifndef __CYGWIN__
 #ifndef USE_NO_MINGW_SETJMP_TWO_ARGS
     __MACHINE(int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmp(jmp_buf,void *))
     __MACHINEX64(int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmpex(jmp_buf,void *))
 #else
     __MACHINE(int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmp(jmp_buf))
     __MACHINEX64(int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmpex(jmp_buf))
-#endif
 #endif
     __MACHINEARMX(void _SmulAdd_SL_ACC(int,int))
     __MACHINEARMX(void _SmulAddPack_2SW_ACC(int,int))
@@ -700,7 +694,7 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_add_epi32(__m128i,__m128i))
 #endif
 
-#if |!defined(__MMX__) && !defined(__MINGW_FORCE_SYS_INTRINS)
+#if !defined(__MMX__) && !defined(__MINGW_FORCE_SYS_INTRINS)
     __MACHINEX86X_NOX64(__m64 _mm_add_si64(__m64,__m64))
 #endif
 

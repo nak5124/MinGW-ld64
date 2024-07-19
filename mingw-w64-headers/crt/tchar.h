@@ -18,8 +18,6 @@
 extern "C" {
 #endif
 
-#ifndef __CYGWIN__
-
 #define _ftcscat  _tcscat
 #define _ftcschr  _tcschr
 #define _ftcscpy  _tcscpy
@@ -72,8 +70,6 @@ extern "C" {
 #define _ftccpy _tccpy
 #define _ftccmp _tccmp
 
-#endif  /* __CYGWIN__ */
-
 #ifdef _UNICODE
 
 #ifdef __cplusplus
@@ -104,8 +100,6 @@ extern "C" {
 #define _TEOF WEOF
 
 #define __T(x) L ## x
-
-#ifndef __CYGWIN__
 
 #define _tmain    wmain
 #define _tWinMain wWinMain
@@ -568,8 +562,6 @@ extern "C" {
 #define _ttelldir   _wtelldir
 #define _tseekdir   _wseekdir
 
-#endif  /* __CYGWIN__ */
-
 #else
 
 #ifdef __cplusplus
@@ -585,8 +577,6 @@ extern "C" {
 #define _TEOF EOF
 
 #define __T(x) x
-
-#ifndef __CYGWIN__
 
 #define _tmain     main
 #define _tWinMain  WinMain
@@ -902,7 +892,6 @@ extern "C" {
 
 #define _tsetlocale setlocale
 
-#endif  /* __CYGWIN__ */
 
 #ifdef _MBCS
 
@@ -913,8 +902,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-
-#ifndef __CYGWIN__
 
 #include <mbstring.h>
 
@@ -1187,8 +1174,6 @@ extern "C" {
 #define _istleadbyte   isleadbyte
 #define _istleadbyte_l _isleadbyte_l
 
-#endif  /* __CYGWIN__ */
-
 #else
 
 #ifndef __TCHAR_DEFINED
@@ -1205,8 +1190,6 @@ extern "C" {
   typedef char          TCHAR, *PTCHAR;
   typedef unsigned char TBYTE, *PTBYTE;
 #endif
-
-#ifndef __CYGWIN__
 
 #define _tcschr      strchr
 #define _tcscspn     strcspn
@@ -1361,8 +1344,6 @@ extern "C" {
 #define _strnset_s_l(_Destination, _Destination_size_chars, _Value, _Count, _Locale)    (_strnset_s(_Destination, _Destination_size_chars, _Value, _Count))
 #define _strset_l(_Destination, _Value, _Locale)                                        (_strset(_Destination, _Value))
 #define _strset_s_l(_Destination, _Destination_size_chars, _Value, _Locale)             (_strset_s(_Destination, _Destination_size_chars, _Value))
-
-#endif
 
 #endif
 

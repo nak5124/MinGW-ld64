@@ -21,7 +21,3 @@
   __MINGW_EXTENSION typedef unsigned long long u_int64;
 
 #endif  /* _BSDTYPES_DEFINED */
-
-#if defined (__LP64__) && defined (u_long)
-  typedef unsigned __LONG32 u_long;
-#endif

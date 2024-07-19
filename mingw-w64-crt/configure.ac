@@ -78,20 +78,6 @@ rm -f test.def libtest.a
 AC_MSG_RESULT([$dlltool_has_temp_prefix])
 AM_CONDITIONAL([DLLTOOL_HAS_TEMP_PREFIX],[test $dlltool_has_temp_prefix = yes])
 
-AC_MSG_CHECKING([whether to build a w32api package for Cygwin])
-AC_ARG_ENABLE([w32api],
-  [AS_HELP_STRING([--enable-w32api],
-    [Enable building a w32api package for Cygwin])],
-  [],
-  [AS_VAR_SET([enable_w32api],[no])])
-AC_MSG_RESULT([$enable_w32api])
-AS_CASE([$enable_w32api],
-  [no],[],
-  [yes],[AS_VAR_SET([W32API])
-	 AS_VAR_SET([includedir],[${prefix}/include/w32api])],
-  [AC_MSG_ERROR([invalid argument.  Must be either yes or no.])])
-AM_CONDITIONAL([W32API], [AS_VAR_TEST_SET([W32API])])
-
 AC_MSG_CHECKING([whether to build the Win64 libraries])
 AC_ARG_ENABLE([lib64],
   [AS_HELP_STRING([--enable-lib64],
@@ -147,11 +133,6 @@ AS_CASE([$host_cpu],
     libarm64suffx=libarm64]
 )
 
-AS_VAR_IF([enable_w32api],[yes],[
-  libx8664suffx=$libx8664suffx/w32api
-  libarm64suffx=$libarm64suffx/w32api
-])
-
 AC_SUBST([LIBX8664SUFFIXDIR],[$libx8664suffx])
 AC_SUBST([LIBARM64SUFFIXDIR],[$libarm64suffx])
 
@@ -206,7 +187,7 @@ AC_MSG_RESULT([$enable_cfguard])
 AS_CASE([$enable_cfguard],
   [no],[],
   [yes],[AS_VAR_SET([CFGUARD])
-	 AS_VAR_SET([CFGUARD_CFLAGS],[-mguard=cf])],
+   AS_VAR_SET([CFGUARD_CFLAGS],[-mguard=cf])],
   [AC_MSG_ERROR([invalid argument.  Must be either yes or no.])])
 AM_CONDITIONAL([CFGUARD], [AS_VAR_TEST_SET([CFGUARD])])
 AC_SUBST([CFGUARD_CFLAGS])

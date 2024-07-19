@@ -375,14 +375,10 @@ crt64dir=$(lib64dir)
 winrt64dir=$(lib64dir)
 dx64dir=$(lib64dir)
 
-if !W32API
 crt64_DATA = \
   lib64/crt1.o    lib64/crt2.o     lib64/crt1u.o   lib64/crt2u.o   lib64/dllcrt1.o lib64/dllcrt2.o \
   lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
   lib64/gcrt0.o   lib64/gcrt1.o    lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
-else
-crt64_DATA =
-endif
 
 COMPILE64=$(COMPILE) $(CPPFLAGS64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
 lib64/crt1.o: crt/crtexe.c
@@ -415,11 +411,9 @@ lib64_libkernel32_a_AR = $(DTDEF64) lib64/kernel32.def && $(AR) $(ARFLAGS)
 EXTRA_lib64_libkernel32_a_DEPENDENCIES=lib64/kernel32.def
 
 lib64_DATA =
-if !W32API
 lib64_DATA += lib64/libmsvcrt.a
 lib64/libmsvcrt.a: lib64/libucrt.a
 	cp $< $@
-endif
 
 lib64_LIBRARIES += lib64/libbits.a
 lib64_libbits_a_SOURCES = $(src_libbits)
@@ -550,7 +544,6 @@ lib64_LIBRARIES += lib64/libdloadhelper.a
 lib64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 lib64_libdloadhelper_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
 
-if !W32API
 lib64_LIBRARIES += lib64/libdelayimp.a
 lib64_libdelayimp_a_SOURCES =
 
@@ -591,11 +584,8 @@ processed_defs += lib64/ucrtbase.def \
 				  lib64/api-ms-win-crt-math-l1-1-0.def lib64/api-ms-win-crt-private-l1-1-0.def lib64/api-ms-win-crt-runtime-l1-1-0.def \
 				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def
 
-endif
-
 include lib64/Makefile.am
 
-if !W32API
 lib64_DATA += lib64/libucrtbase.a
 lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
@@ -606,8 +596,6 @@ lib64_libucrt_extra_a_SOURCES = $(src_ucrtbase64)
 lib64_libucrt_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 lib64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
 lib64_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-
-endif
 
 lib64/lib%.a: lib64/%.def
 	$(DTDEF64) $<
@@ -664,14 +652,10 @@ crt64dir=$(libarm64dir)
 winrt64dir=$(libarm64dir)
 dx64dir=$(libarm64dir)
 
-if !W32API
 crt64_DATA = \
   libarm64/crt1.o    libarm64/crt2.o     libarm64/crt1u.o   libarm64/crt2u.o    libarm64/dllcrt1.o    libarm64/dllcrt2.o \
   libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
   libarm64/gcrt0.o   libarm64/gcrt1.o    libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
-else
-crt64_DATA =
-endif
 
 COMPILE64=$(COMPILE) $(CPPFLAGSARM64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
 libarm64/crt1.o: crt/crtexe.c
@@ -712,11 +696,9 @@ libarm64_libkernel32_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
 EXTRA_libarm64_libkernel32_a_DEPENDENCIES=libarm64/kernel32.def
 
 libarm64_DATA =
-if !W32API
 libarm64_DATA += libarm64/libmsvcrt.a
 libarm64/libmsvcrt.a: libarm64/libucrt.a
 	cp $< $@
-endif
 
 libarm64_LIBRARIES += libarm64/libbits.a
 libarm64_libbits_a_SOURCES = $(src_libbits)
@@ -843,7 +825,6 @@ libarm64_LIBRARIES += libarm64/libdloadhelper.a
 libarm64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 libarm64_libdloadhelper_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
 
-if !W32API
 libarm64_LIBRARIES += libarm64/libdelayimp.a
 libarm64_libdelayimp_a_SOURCES =
 
@@ -884,11 +865,8 @@ processed_defs += libarm64/ucrtbase.def \
 				  libarm64/api-ms-win-crt-math-l1-1-0.def libarm64/api-ms-win-crt-private-l1-1-0.def libarm64/api-ms-win-crt-runtime-l1-1-0.def \
 				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def
 
-endif
-
 include libarm64/Makefile.am
 
-if !W32API
 libarm64_DATA += libarm64/libucrtbase.a
 libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libarm64/libucrt_extra.a
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
@@ -899,8 +877,6 @@ libarm64_libucrt_extra_a_SOURCES = $(src_ucrtbasearm64)
 libarm64_libucrt_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 libarm64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
 libarm64_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-
-endif
 
 libarm64/lib%.a: libarm64/%.def
 	$(DTDEFARM64) $<

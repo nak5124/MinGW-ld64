@@ -13,23 +13,13 @@
 # endif
 #endif
 
+#ifndef _WIN32
+# error Only Win32 target is supported!
+#endif
+
 #include "_mingw_mac.h"
 
-/* Include _cygwin.h if we're building a Cygwin application. */
-#ifdef __CYGWIN__
-#include "_cygwin.h"
-#endif
-
-/* Target specific macro replacement for type "long".  In the Windows API,
-   the type long is always 32 bit, even if the target is 64 bit (LLP64).
-   On 64 bit Cygwin, the type long is 64 bit (LP64).  So, to get the right
-   sized definitions and declarations, all usage of type long in the Windows
-   headers have to be replaced by the below defined macro __LONG32. */
-#ifndef __LP64__  /* 32 bit target, 64 bit Mingw target */
-# define __LONG32 long
-#else  /* 64 bit Cygwin target */
-# define __LONG32 int
-#endif
+#define __LONG32 long
 
 /* C/C++ specific language defines.  */
 #ifdef __declspec
@@ -86,11 +76,9 @@ limitations in handling dllimport attribute.  */
 # define __MINGW_INTRIN_INLINE extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
 #endif
 
-#ifndef __CYGWIN__
-# ifdef __NO_INLINE__
-#   undef __CRT__NO_INLINE
-#   define __CRT__NO_INLINE 1
-# endif
+#ifdef __NO_INLINE__
+# undef __CRT__NO_INLINE
+# define __CRT__NO_INLINE 1
 #endif
 
 #ifdef __cplusplus
@@ -157,10 +145,6 @@ limitations in handling dllimport attribute.  */
 #else
 # define __forceinline extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
 #endif  /* __cplusplus */
-
-#if !defined(_WIN32) && !defined(__CYGWIN__)
-# error Only Win32 target is supported!
-#endif
 
 #ifndef __nothrow
 # ifdef __cplusplus
