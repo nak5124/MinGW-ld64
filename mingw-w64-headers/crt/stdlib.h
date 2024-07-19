@@ -266,7 +266,7 @@ extern "C" {
   _CRTIMP double __cdecl __MINGW_NOTHROW strtod(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
   _CRTIMP double __cdecl _strtod_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
   _LDCRTIMP long double __cdecl __MINGW_NOTHROW strtold(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
-#if defined(__arm__) || defined(__aarch64__) || defined(_ARM_) || defined(_ARM64_)
+#if defined(__aarch64__) || defined(_ARM64_)
   _LDCRTIMP long double __cdecl _strtold_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
 #endif
   _CRTIMP long __cdecl strtol(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);

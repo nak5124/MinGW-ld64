@@ -16,13 +16,8 @@
 extern "C" {
 #endif
 
-#ifdef _USE_32BIT_TIME_T
-  #define _finddata_t    _finddata32_t
-  #define _finddatai64_t _finddata32i64_t
-#else
-  #define _finddata_t    _finddata64i32_t
-  #define _finddatai64_t __finddata64_t
-#endif
+#define _finddata_t    _finddata64i32_t
+#define _finddatai64_t __finddata64_t
 
   struct _finddata32_t
   {
@@ -73,17 +68,10 @@ extern "C" {
 #define _A_ARCH   0x20
 #endif
 
-#ifdef _USE_32BIT_TIME_T
-# define _findfirst    _findfirst32
-# define _findnext     _findnext32
-# define _findfirsti64 _findfirst32i64
-# define _findnexti64  _findnext32i64
-#else
-# define _findfirst    _findfirst64i32
-# define _findnext     _findnext64i32
-# define _findfirsti64 _findfirst64
-# define _findnexti64  _findnext64
-#endif  /* _USE_32BIT_TIME_T */
+#define _findfirst    _findfirst64i32
+#define _findnext     _findnext64i32
+#define _findfirsti64 _findfirst64
+#define _findnexti64  _findnext64
 
   /* Some defines for _access nAccessMode (MS doesn't define them, but
    * it doesn't seem to hurt to add them). */

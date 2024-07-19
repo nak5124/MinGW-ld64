@@ -29,7 +29,7 @@ __asm__(
 // jmp instruction is not included as a valid call target for CFGuard.
 extern void *__guard_dispatch_icall_dummy;
 
-#elif defined(__i386__) || defined(__aarch64__) || defined(__arm__)
+#elif defined(__aarch64__)
 
 // The target address is passed via %ecx (x86), X15 (aarch64) or R0 (arm),
 // but it doesn't really matter here because this is a no-op anyway.

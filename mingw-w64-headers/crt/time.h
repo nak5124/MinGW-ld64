@@ -101,19 +101,6 @@ extern "C" {
 
   void __cdecl tzset(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
-#ifdef _USE_32BIT_TIME_T
-  char *__cdecl ctime(const time_t *_Time) __MINGW_ASM_CALL(_ctime32) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  double __cdecl difftime(time_t _Time1, time_t _Time2) __MINGW_ASM_CALL(_difftime32);
-  struct tm *__cdecl gmtime(const time_t *_Time) __MINGW_ASM_CALL(_gmtime32) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  struct tm *__cdecl localtime(const time_t *_Time) __MINGW_ASM_CALL(_localtime32) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  time_t __cdecl _mkgmtime(struct tm *_Tm) __MINGW_ASM_CALL(_mkgmtime32);
-  time_t __cdecl mktime(struct tm *_Tm) __MINGW_ASM_CALL(_mktime32);
-  time_t __cdecl time(time_t *_Time) __MINGW_ASM_CALL(_time32);
-  int __cdecl timespec_get(struct timespec* _Ts, int _Base) __MINGW_ASM_CALL(_timespec32_get);
-  errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime32_s);
-  errno_t __cdecl gmtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_gmtime32_s);
-  errno_t __cdecl localtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_localtime32_s);
-#else
   char *__cdecl ctime(const time_t *_Time) __MINGW_ASM_CALL(_ctime64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   double __cdecl difftime(time_t _Time1, time_t _Time2) __MINGW_ASM_CALL(_difftime64);
   struct tm *__cdecl gmtime(const time_t *_Time) __MINGW_ASM_CALL(_gmtime64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -125,8 +112,6 @@ extern "C" {
   errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime64_s);
   errno_t __cdecl gmtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_gmtime64_s);
   errno_t __cdecl localtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_localtime64_s);
-#endif
-
 
 #define CLK_TCK CLOCKS_PER_SEC
 

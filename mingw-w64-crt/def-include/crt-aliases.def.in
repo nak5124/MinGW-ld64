@@ -1,8 +1,6 @@
 #include "func.def.in"
 
 #define ADD_UNDERSCORE(symbol) symbol == _ ## symbol
-#define ADD_UNDERSCORE_DATA(symbol) symbol DATA == _ ## symbol
-#define ADD_UNDERSCORE_DATA_DLL(symbol) symbol DATA == _ ## symbol ## _dll
 #define ADD_DOUBLE_UNDERSCORE(symbol) symbol == __ ## symbol
 
 ; This is list of symbol aliases from the Visual C++ 1.0 oldnames.lib library
@@ -136,7 +134,7 @@ ADD_UNDERSCORE(yn)
 ; ADD_UNDERSCORE(nextafter)
 ADD_UNDERSCORE(hypotf)
 
-#if defined(DEF_ARM32) || defined(DEF_ARM64)
+#if defined(DEF_ARM64)
 ; This is list of symbol aliases for C99 ARM long double functions
 ; They are defined as aliases to regular double symbols as on ARM, long double is equal to regular double
 acosl == acos
@@ -166,8 +164,7 @@ _hypotl == _hypot
 #endif
 
 ; This is list of symbol aliases for C11 functions
-F32(timespec_get == _timespec32_get)
-F64(timespec_get == _timespec64_get)
+timespec_get == _timespec64_get
 
 ; This is list of symbol aliases for POSIX functions
 ADD_DOUBLE_UNDERSCORE(isascii)
@@ -201,70 +198,40 @@ wtoll == _wtoi64
 _strcmpi == _stricmp
 
 ; This is list of find symbol aliases
-F32(_findfirst == _findfirst32)
-F64(_findfirst == _findfirst64i32)
-F32(_findfirsti64 == _findfirst32i64)
-F64(_findfirsti64 == _findfirst64)
-F32(_findnext == _findnext32)
-F64(_findnext == _findnext64i32)
-F32(_findnexti64 == _findnext32i64)
-F64(_findnexti64 == _findnext64)
-F32(_wfindfirst == _wfindfirst32)
-F64(_wfindfirst == _wfindfirst64i32)
-F32(_wfindfirsti64 == _wfindfirst32i64)
-F64(_wfindfirsti64 == _wfindfirst64)
-F32(_wfindnext == _wfindnext32)
-F64(_wfindnext == _wfindnext64i32)
-F32(_wfindnexti64 == _wfindnext32i64)
-F64(_wfindnexti64 == _wfindnext64)
+_findfirst == _findfirst64i32
+_findfirsti64 == _findfirst64
+_findnext == _findnext64i32
+_findnexti64 == _findnext64
+_wfindfirst == _wfindfirst64i32
+_wfindfirsti64 == _wfindfirst64
+_wfindnext == _wfindnext64i32
+_wfindnexti64 == _wfindnext64
 
 ; This is list of stat symbol aliases
-F32(_fstat == _fstat32)
-F64(_fstat == _fstat64i32)
-F32(_fstati64 == _fstat32i64)
-F64(_fstati64 == _fstat64)
-F32(_stat == _stat32)
-F64(_stat == _stat64i32)
-F32(_stati64 == _stat32i64)
-F64(_stati64 == _stat64)
-F32(_wstat == _wstat32)
-F64(_wstat == _wstat64i32)
-F32(_wstati64 == _wstat32i64)
-F64(_wstati64 == _wstat64)
+_fstat == _fstat64i32
+_fstati64 == _fstat64
+_stat == _stat64i32
+_stati64 == _stat64
+_wstat == _wstat64i32
+_wstati64 == _wstat64
 
 ; This is list of time symbol aliases
-F32(ctime == _ctime32)
-F64(ctime == _ctime64)
-F32(ctime_s == _ctime32_s)
-F64(ctime_s == _ctime64_s)
-F32(difftime == _difftime32)
-F64(difftime == _difftime64)
-F32(_ftime == _ftime32)
-F64(_ftime == _ftime64)
-F32(_futime == _futime32)
-F64(_futime == _futime64)
-F32(gmtime == _gmtime32)
-F64(gmtime == _gmtime64)
-F32(gmtime_s == _gmtime32_s)
-F64(gmtime_s == _gmtime64_s)
-F32(localtime == _localtime32)
-F64(localtime == _localtime64)
-F32(localtime_s == _localtime32_s)
-F64(localtime_s == _localtime64_s)
-F32(_mkgmtime == _mkgmtime32)
-F64(_mkgmtime == _mkgmtime64)
-F32(mktime == _mktime32)
-F64(mktime == _mktime64)
-F32(time == _time32)
-F64(time == _time64)
-F32(_utime == _utime32)
-F64(_utime == _utime64)
-F32(_wctime == _wctime32)
-F64(_wctime == _wctime64)
-F32(_wctime_s == _wctime32_s)
-F64(_wctime_s == _wctime64_s)
-F32(_wutime == _wutime32)
-F64(_wutime == _wutime64)
+ctime == _ctime64
+ctime_s == _ctime64_s
+difftime == _difftime64
+_ftime == _ftime64
+_futime == _futime64
+gmtime == _gmtime64
+gmtime_s == _gmtime64_s
+localtime == _localtime64
+localtime_s == _localtime64_s
+_mkgmtime == _mkgmtime64
+mktime == _mktime64
+time == _time64
+_utime == _utime64
+_wctime == _wctime64
+_wctime_s == _wctime64_s
+_wutime == _wutime64
 
 ; This is list of additional symbol aliases not available in any library as neither native symbols nor aliases
 ; FIXME: check if these really are needed

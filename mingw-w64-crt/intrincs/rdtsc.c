@@ -17,11 +17,7 @@
 #if !__has_builtin(__rdtsc)
 unsigned __int64 __rdtsc(void)
 {
-#ifdef _WIN64
       unsigned __int64 val1, val2;
-#else
-      unsigned int val1, val2;
-#endif
       __asm__ __volatile__ (
           "rdtsc" 
           : "=a" (val1), "=d" (val2));

@@ -14,27 +14,7 @@
 extern "C" {
 #endif
 
-#if (defined(_X86_) && !defined(__x86_64))
-
-#define _JBLEN 16
-#define _JBTYPE int
-
-  typedef struct __JUMP_BUFFER
-  {
-    unsigned long Ebp;
-    unsigned long Ebx;
-    unsigned long Edi;
-    unsigned long Esi;
-    unsigned long Esp;
-    unsigned long Eip;
-    unsigned long Registration;
-    unsigned long TryLevel;
-    unsigned long Cookie;
-    unsigned long UnwindFunc;
-    unsigned long UnwindData[6];
-  } _JUMP_BUFFER;
-
-#elif defined(__x86_64)
+#ifdef __x86_64__
 
   typedef _CRT_ALIGN(16) struct _SETJMP_FLOAT128
   {
@@ -72,29 +52,7 @@ extern "C" {
     SETJMP_FLOAT128 Xmm15;
   } _JUMP_BUFFER;
 
-#elif defined(_ARM_)
-
-#define _JBLEN 28
-#define _JBTYPE int
-
-  typedef struct __JUMP_BUFFER
-  {
-    unsigned long Frame;
-    unsigned long R4;
-    unsigned long R5;
-    unsigned long R6;
-    unsigned long R7;
-    unsigned long R8;
-    unsigned long R9;
-    unsigned long R10;
-    unsigned long R11;
-    unsigned long Sp;
-    unsigned long Pc;
-    unsigned long Fpscr;
-    unsigned long long D[8];
-  } _JUMP_BUFFER;
-
-#elif defined(_ARM64_)
+#elif defined(__aarch64__)
 
 #define _JBLEN 24
 #define _JBTYPE unsigned __int64
@@ -142,21 +100,15 @@ extern "C" {
 # define __has_builtin(x) 0
 #endif
 
-#ifdef _WIN64
-# define _setjmp __intrinsic_setjmpex
-#else
-# define _setjmp __intrinsic_setjmp
-#endif
+#define _setjmp __intrinsic_setjmpex
 #ifndef _INC_SETJMPEX
-# if defined(_X86_) || defined(__i386__)
-#   define setjmp(BUF) _setjmp3((BUF), NULL)
-# elif ((defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)) && (!defined(__SEH__) || !__has_builtin(__builtin_sponentry) || defined(__USE_MINGW_SETJMP_NON_SEH)))
+# if (defined(__aarch64__) || defined(_ARM64_)) && (!defined(__SEH__) || !__has_builtin(__builtin_sponentry) || defined(__USE_MINGW_SETJMP_NON_SEH))
 #   define setjmp(BUF) __mingw_setjmp((BUF))
 #   define longjmp     __mingw_longjmp
     int __cdecl __attribute__((__nothrow__, __returns_twice__)) __mingw_setjmp(jmp_buf _Buf);
     __MINGW_ATTRIB_NORETURN __attribute__((__nothrow__)) void __mingw_longjmp(jmp_buf _Buf, int _Value);
 # elif defined(__SEH__) && !defined(__USE_MINGW_SETJMP_NON_SEH)
-#   if defined(__aarch64__) || defined(_ARM64_) || defined(__arm__) || defined(_ARM_)
+#   if defined(__aarch64__) || defined(_ARM64_)
 #     define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())
 #   elif (__MINGW_GCC_VERSION < 40702) && !defined(__clang__)
 #     define setjmp(BUF) _setjmp((BUF), mingw_getsp())

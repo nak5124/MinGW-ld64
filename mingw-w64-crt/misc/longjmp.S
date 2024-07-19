@@ -10,17 +10,7 @@
         .def    __MINGW_USYMBOL(longjmp); .scl 2; .type 32; .endef
 
 __MINGW_USYMBOL(longjmp):
-#if defined(__i386__)
-        movl    4(%esp),%ecx         /* jmp_buf */
-        movl    8(%esp),%eax         /* retval */
-        movl    0(%ecx),%ebp         /* jmp_buf.Ebp */
-        movl    4(%ecx),%ebx         /* jmp_buf.Ebx */
-        movl    8(%ecx),%edi         /* jmp_buf.Edi */
-        movl    12(%ecx),%esi        /* jmp_buf.Esi */
-        movl    16(%ecx),%esp        /* jmp_buf.Esp */
-        addl    $4,%esp              /* get rid of return address */
-        jmp     *20(%ecx)            /* jmp_buf.Eip */
-#elif defined(__x86_64__)
+#if defined(__x86_64__)
         movq    %rdx,%rax            /* retval */
         movq    0x8(%rcx),%rbx       /* jmp_buf->Rbx */
         movq    0x18(%rcx),%rbp      /* jmp_buf->Rbp */
@@ -46,29 +36,6 @@ __MINGW_USYMBOL(longjmp):
         movq    0x50(%rcx),%rdx      /* jmp_buf->Rip */
         movq    0x10(%rcx),%rsp      /* jmp_buf->Rsp */
         jmp     *%rdx
-#elif defined(__arm__)
-        ldr     r4,  [r0, #0x4]      /* jmp_buf->R4 */
-        ldr     r5,  [r0, #0x8]      /* jmp_buf->R5 */
-        ldr     r6,  [r0, #0xc]      /* jmp_buf->R6 */
-        ldr     r7,  [r0, #0x10]     /* jmp_buf->R7 */
-        ldr     r8,  [r0, #0x14]     /* jmp_buf->R8 */
-        ldr     r9,  [r0, #0x18]     /* jmp_buf->R9 */
-        ldr     r10, [r0, #0x1c]     /* jmp_buf->R10 */
-        ldr     r11, [r0, #0x20]     /* jmp_buf->R11 */
-        ldr     sp,  [r0, #0x24]     /* jmp_buf->Sp */
-        ldr     r2,  [r0, #0x28]     /* jmp_buf->Pc */
-        ldr     r3,  [r0, #0x2c]     /* jmp_buf->Fpscr */
-        vmsr    fpscr, r3
-        vldr    d8,  [r0, #0x30]     /* jmp_buf->D[0] */
-        vldr    d9,  [r0, #0x38]     /* jmp_buf->D[1] */
-        vldr    d10, [r0, #0x40]     /* jmp_buf->D[2] */
-        vldr    d11, [r0, #0x48]     /* jmp_buf->D[3] */
-        vldr    d12, [r0, #0x50]     /* jmp_buf->D[4] */
-        vldr    d13, [r0, #0x58]     /* jmp_buf->D[5] */
-        vldr    d14, [r0, #0x60]     /* jmp_buf->D[6] */
-        vldr    d15, [r0, #0x68]     /* jmp_buf->D[7] */
-        mov     r0,  r1              /* retval */
-        bx      r2
 #elif defined(__aarch64__)
         ldp     x19, x20, [x0, #0x10] /* jmp_buf->X19, X20 */
         ldp     x21, x22, [x0, #0x20] /* jmp_buf->X21, X22 */
@@ -93,8 +60,4 @@ __MINGW_USYMBOL(longjmp):
         .data
         .globl  __MINGW_IMP_LSYMBOL(longjmp)
 __MINGW_IMP_LSYMBOL(longjmp):
-#ifdef _WIN64
         .quad   __MINGW_USYMBOL(longjmp)
-#else
-        .long   __MINGW_USYMBOL(longjmp)
-#endif

@@ -6,9 +6,9 @@
 
 #include <fenv.h> 
 
-#if !(defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__))
+#if defined(__x86_64__) || defined(_AMD64_)
 extern int __mingw_has_sse (void);
-#endif /* !(defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)) */
+#endif /* defined(__x86_64__) || defined(_AMD64_) */
 
 /* 7.6.2.5 
    The fetestexcept function determines which of a specified subset of
@@ -20,11 +20,7 @@ extern int __mingw_has_sse (void);
 
 int fetestexcept (int excepts)
 {
-#if defined(_ARM_) || defined(__arm__)
-  fenv_t _env;
-  __asm__ volatile ("fmrx %0, FPSCR" : "=r" (_env));
-  return _env.__cw & excepts & FE_ALL_EXCEPT;
-#elif defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
   __asm__ volatile ("mrs %0, fpcr" : "=r" (fpcr));
   return fpcr & excepts & FE_ALL_EXCEPT;
@@ -39,5 +35,5 @@ int fetestexcept (int excepts)
       _sw |= sse_sw;
     }
   return _sw & excepts & FE_ALL_EXCEPT;
-#endif /* defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__) */
+#endif  /* defined(__aarch64__) || defined(_ARM64_) */
 }

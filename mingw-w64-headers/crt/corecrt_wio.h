@@ -15,13 +15,8 @@
 extern "C" {
 #endif
 
-#ifdef _USE_32BIT_TIME_T
-# define _wfinddata_t    _wfinddata32_t
-# define _wfinddatai64_t _wfinddata32i64_t
-#else
-# define _wfinddata_t    _wfinddata64i32_t
-# define _wfinddatai64_t _wfinddata64_t
-#endif
+#define _wfinddata_t    _wfinddata64i32_t
+#define _wfinddatai64_t _wfinddata64_t
 
 #ifndef _FSIZE_T_DEFINED
 # define _FSIZE_T_DEFINED
@@ -68,17 +63,10 @@ extern "C" {
     wchar_t name[260];
   };
 
-#ifdef _USE_32BIT_TIME_T
-# define _wfindfirst      _wfindfirst32
-# define _wfindnext       _wfindnext32
-# define _wfindfirst32i64 _wfindfirsti64
-# define _wfindnext32i64  _wfindnexti64
-#else
-# define _wfindfirst    _wfindfirst64i32
-# define _wfindnext     _wfindnext64i32
-# define _wfindfirsti64 _wfindfirst64
-# define _wfindnexti64  _wfindnext64
-#endif  /* _USE_32BIT_TIME_T */
+#define _wfindfirst    _wfindfirst64i32
+#define _wfindnext     _wfindnext64i32
+#define _wfindfirsti64 _wfindfirst64
+#define _wfindnexti64  _wfindnext64
 
   _CRTIMP int __cdecl _waccess(const wchar_t *_Filename, int _AccessMode);
   _CRTIMP errno_t __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);

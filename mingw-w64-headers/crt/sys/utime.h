@@ -58,17 +58,10 @@ extern "C" {
   _CRTIMP int __cdecl _futime64(int _FileDes, struct __utimbuf64 *_Time);
   _CRTIMP int __cdecl _wutime64(const wchar_t *_Filename, struct __utimbuf64 *_Time);
 
-#ifdef _USE_32BIT_TIME_T
-  int __cdecl _utime(const char *_Filename, struct _utimbuf *_Time) __MINGW_ASM_CALL(_utime32);
-  int __cdecl _futime(int _FileDes, struct _utimbuf *_Time) __MINGW_ASM_CALL(_futime32);
-  int __cdecl _wutime(const wchar_t *_Filename, struct _utimbuf *_Time) __MINGW_ASM_CALL(_wutime32);
-  int __cdecl utime(const char *_Filename, struct utimbuf *_Time) __MINGW_ASM_CALL(_utime32);
-#else
   int __cdecl _utime(const char *_Filename, struct _utimbuf *_Time) __MINGW_ASM_CALL(_utime64);
   int __cdecl _futime(int _FileDes, struct _utimbuf *_Time) __MINGW_ASM_CALL(_futime64);
   int __cdecl _wutime(const wchar_t *_Filename, struct _utimbuf *_Time) __MINGW_ASM_CALL(_wutime64);
   int __cdecl utime(const char *_Filename, struct utimbuf *_Time) __MINGW_ASM_CALL(_utime64);
-#endif
 
 #ifdef __cplusplus
 }

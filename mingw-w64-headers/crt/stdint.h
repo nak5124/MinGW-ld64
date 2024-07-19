@@ -115,15 +115,9 @@
 
 /* 7.18.2.4  Limits of integer types capable of holding
     object pointers */
-#ifdef _WIN64
-# define INTPTR_MIN  INT64_MIN
-# define INTPTR_MAX  INT64_MAX
-# define UINTPTR_MAX UINT64_MAX
-#else
-# define INTPTR_MIN  INT32_MIN
-# define INTPTR_MAX  INT32_MAX
-# define UINTPTR_MAX UINT32_MAX
-#endif
+#define INTPTR_MIN  INT64_MIN
+#define INTPTR_MAX  INT64_MAX
+#define UINTPTR_MAX UINT64_MAX
 
 /* 7.18.2.5  Limits of greatest-width integer types */
 #define INTMAX_MIN  INT64_MIN
@@ -131,23 +125,14 @@
 #define UINTMAX_MAX UINT64_MAX
 
 /* 7.18.3  Limits of other integer types */
-#ifdef _WIN64
-# define PTRDIFF_MIN INT64_MIN
-# define PTRDIFF_MAX INT64_MAX
-#else
-# define PTRDIFF_MIN INT32_MIN
-# define PTRDIFF_MAX INT32_MAX
-#endif
+#define PTRDIFF_MIN INT64_MIN
+#define PTRDIFF_MAX INT64_MAX
 
 #define SIG_ATOMIC_MIN INT32_MIN
 #define SIG_ATOMIC_MAX INT32_MAX
 
 #ifndef SIZE_MAX
-# ifdef _WIN64
-#   define SIZE_MAX UINT64_MAX
-# else
-#   define SIZE_MAX UINT32_MAX
-# endif
+# define SIZE_MAX UINT64_MAX
 #endif
 
 #ifndef WCHAR_MIN  /* Also in wchar.h */

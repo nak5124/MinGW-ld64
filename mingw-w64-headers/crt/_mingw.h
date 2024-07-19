@@ -11,6 +11,9 @@
 # ifndef __GNUC__
 #   error Only GNU compatible compilers are supported!
 # endif
+# if !defined(__x86_64__) && !defined(__aarch64__)
+#   error Only x86_64 and aarch64 are supported!
+# endif
 #endif
 
 #ifndef _WIN32
@@ -49,7 +52,7 @@ limitations in handling dllimport attribute.  */
 #endif  /* __declspec */
 
 #ifndef _LDCRTIMP
-# if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+# if defined(__aarch64__) || defined(_ARM64_)
 #   define _LDCRTIMP _CRTIMP
 # else
 #   define _LDCRTIMP
@@ -121,15 +124,13 @@ limitations in handling dllimport attribute.  */
 # define __int16 short
 # define __int32 int
 # define __int64 long long
-# ifdef _WIN64
-#   if (__clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 1)) && !defined(__SIZEOF_INT128__)
-      /* clang >= 3.1 has __int128 but no size macro */
-#     define __SIZEOF_INT128__ 16
-#   endif
-#   ifndef __SIZEOF_INT128__
-      typedef int __int128 __attribute__((__mode__ (TI)));
-#   endif
-# endif  /* _WIN64 */
+# if (__clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 1)) && !defined(__SIZEOF_INT128__)
+    /* clang >= 3.1 has __int128 but no size macro */
+#   define __SIZEOF_INT128__ 16
+# endif
+# ifndef __SIZEOF_INT128__
+    typedef int __int128 __attribute__((__mode__ (TI)));
+# endif
 #endif  /* _INT128_DEFINED */
 
 #define __ptr32
@@ -424,15 +425,13 @@ extern "C" {
   void __cdecl __debugbreak(void);
   __MINGW_INTRIN_INLINE void __cdecl __debugbreak(void)
   {
-#if defined(__i386__) || defined(__x86_64__)
+#ifdef __x86_64__
     __asm__ __volatile__("int {$}3":);
-#elif defined(__arm__)
-    __asm__ __volatile__("udf #0xfe");
 #elif defined(__aarch64__)
     __asm__ __volatile__("brk #0xf000");
 #else
     __asm__ __volatile__("unimplemented");
-#endif  /* defined(__i386__) || defined(__x86_64__) */
+#endif  /* __x86_64__ */
 }
 #endif  /* __MINGW_DEBUGBREAK_IMPL == 1 */
 
@@ -445,17 +444,14 @@ extern "C" {
   __MINGW_ATTRIB_NORETURN void __cdecl __fastfail(unsigned int code);
   __MINGW_ATTRIB_NORETURN __MINGW_INTRIN_INLINE void __cdecl __fastfail(unsigned int code)
   {
-#if defined(__i386__) || defined(__x86_64__)
+#ifdef __x86_64__
     __asm__ __volatile__("int {$}0x29"::"c"(code));
-#elif defined(__arm__)
-    register unsigned int r0 __asm__("r0") = code;
-    __asm__ __volatile__("udf #0xfb"::"r"(r0));
 #elif defined(__aarch64__)
     register unsigned int w0 __asm__("w0") = code;
     __asm__ __volatile__("brk #0xf003"::"r"(w0));
 #else
     __asm__ __volatile__("unimplemented");
-#endif  /* defined(__i386__) || defined(__x86_64__) */
+#endif  /* __x86_64__ */
     __builtin_unreachable();
   }
 #endif  /* __MINGW_FASTFAIL_IMPL == 1 */
@@ -465,17 +461,13 @@ extern "C" {
 #else
 # define __MINGW_PREFETCH_IMPL 1
 #endif  /* __has_builtin */
-#if __MINGW_PREFETCH_IMPL == 1 && (defined(__arm__) || defined(__aarch64__))
+#if __MINGW_PREFETCH_IMPL == 1 && defined(__aarch64__)
   void __cdecl __prefetch(const void *addr);
   __MINGW_INTRIN_INLINE void __cdecl __prefetch(const void *addr)
   {
-#if defined(__arm__)
-    __asm__ __volatile__("pld [%0]"::"r"(addr));
-#elif defined(__aarch64__)
     __asm__ __volatile__("prfm pldl1keep, [%0]"::"r"(addr));
-#endif  /* defined(__arm__) */
   }
-#endif  /* __MINGW_PREFETCH_IMPL == 1 && (defined(__arm__) || defined(__aarch64__)) */
+#endif  /* __MINGW_PREFETCH_IMPL == 1 && defined(__aarch64__) */
 
 #endif  /* __MINGW_INTRIN_INLINE */
 

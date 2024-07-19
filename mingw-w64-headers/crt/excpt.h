@@ -25,19 +25,11 @@ extern "C" {
 #define ExceptionCollidedUnwind    3
 #define ExceptionExecuteHandler    4
 
-#if defined(_X86_) && !defined(__x86_64)
-  struct _EXCEPTION_RECORD;
-  struct _CONTEXT;
-
-  EXCEPTION_DISPOSITION __cdecl _except_handler(struct _EXCEPTION_RECORD *_ExceptionRecord, void *_EstablisherFrame, struct _CONTEXT *_ContextRecord, void *_DispatcherContext);
-#elif defined(__x86_64) || defined(__arm__) || defined(__aarch64__)
-
   struct _EXCEPTION_RECORD;
   struct _CONTEXT;
   struct _DISPATCHER_CONTEXT;
 
   __MINGW_EXTENSION _CRTIMP EXCEPTION_DISPOSITION __cdecl __C_specific_handler(struct _EXCEPTION_RECORD *_ExceptionRecord, void *_EstablisherFrame, struct _CONTEXT *_ContextRecord, struct _DISPATCHER_CONTEXT *_DispatcherContext);
-#endif
 
 #define GetExceptionCode          _exception_code
 #define exception_code            _exception_code
@@ -94,14 +86,7 @@ extern "C" {
   typedef PEXCEPTION_REGISTRATION PEXCEPTION_REGISTRATION_RECORD;
 #endif
 
-#if defined(_X86_) && !defined(__x86_64)
-#define __try1(pHandler) \
-  __asm__ __volatile__ ("pushl %0;pushl %%fs:0;movl %%esp,%%fs:0;" : : "g" (pHandler));
-
-#define __except1 \
-  __asm__ __volatile__ ("movl (%%esp),%%eax;movl %%eax,%%fs:0;addl $8,%%esp;" \
-  : : : "%eax");
-#elif defined(__x86_64)
+#ifdef __x86_64__
 #define __try1(pHandler) \
   __asm__ __volatile__ ("\t.l_startw:\n" \
   "\t.seh_handler __C_specific_handler, @except\n" \

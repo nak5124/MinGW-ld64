@@ -50,7 +50,7 @@
 #define __MINGW_FORCE_SYS_INTRINS
 #endif
 
-#if defined(__i386__) || defined(__x86_64__)
+#ifdef __x86_64__
 #ifndef _MM_MALLOC_H_INCLUDED
 #include <stdlib.h>
 #include <errno.h>
@@ -91,14 +91,10 @@ typedef union __m128i { char v[16]; } __m128i;
 #endif
 
 #ifndef WINAPI
-#if defined(_ARM_)
-#define WINAPI
-#else
-#define WINAPI __stdcall
-#endif
+# define WINAPI __stdcall
 #endif
 
-#if (defined(_X86_) || defined(__x86_64))
+#ifdef __x86_64__
 
 #if defined(__MMX__) || defined(__MINGW_FORCE_SYS_INTRINS)
 #ifdef __cplusplus
@@ -153,102 +149,38 @@ extern "C" {
 
 #endif
 
-#if (defined(_X86_) && !defined(__x86_64))
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <mm3dnow.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif
-
-#define __MACHINEX64 __MACHINE
-#define __MACHINEARMX __MACHINE
-#define __MACHINECC __MACHINE
-#define __MACHINEI __MACHINE
-#define __MACHINEIA32 __MACHINE
-#define __MACHINEX86X __MACHINE
-#define __MACHINEX86X_NOX64 __MACHINE
+#define __MACHINEX64         __MACHINE
+#define __MACHINEI           __MACHINE
+#define __MACHINEX86X        __MACHINE
 #define __MACHINEX86X_NOIA64 __MACHINE
-#define __MACHINEX86X_NOWIN64 __MACHINE
-#define __MACHINESA __MACHINE
-#define __MACHINEIW64 __MACHINE
-#define __MACHINEW64 __MACHINE
-#define __MACHINEARM __MACHINE
-#define __MACHINEARM64 __MACHINE
-#define __MACHINEARM_ARM64 __MACHINE
+#define __MACHINEIW64        __MACHINE
+#define __MACHINEW64         __MACHINE
+#define __MACHINEARM64       __MACHINE
+#define __MACHINEARM_ARM64   __MACHINE
 
 #define __MACHINE(X) X;
 #define __MACHINEZ(X)
 
-#if !(defined(_X86_) && !defined(__x86_64))
-#undef __MACHINEIA32
-#define __MACHINEIA32 __MACHINEZ
+#ifndef __x86_64__
+# undef  __MACHINEX64
+# undef  __MACHINEI
+# undef  __MACHINEX86X
+# undef  __MACHINEX86X_NOIA64
+# undef  __MACHINEIW64
+# undef  __MACHINEW64
+# define __MACHINEX64         __MACHINEZ
+# define __MACHINEI           __MACHINEZ
+# define __MACHINEX86X        __MACHINEZ
+# define __MACHINEX86X_NOIA64 __MACHINEZ
+# define __MACHINEIW64        __MACHINEZ
+# define __MACHINEW64         __MACHINEZ
 #endif
 
-#if !(defined(_X86_) || defined(__x86_64))
-#undef __MACHINEIW64
-#define __MACHINEIW64 __MACHINEZ
-#endif
-
-#if !defined(__x86_64)
-#undef __MACHINEW64
-#define __MACHINEW64 __MACHINEZ
-#endif
-
-#if !(defined(_X86_) || defined(__x86_64))
-#undef __MACHINEI
-#define __MACHINEI __MACHINEZ
-#endif
-
-#if !(defined(_X86_) || defined(__x86_64))
-#undef __MACHINEX86X
-#define __MACHINEX86X __MACHINEZ
-#endif
-
-#if !(defined(_X86_)) || defined(__x86_64)
-#undef __MACHINEX86X_NOX64
-#define __MACHINEX86X_NOX64 __MACHINEZ
-#endif
-
-#if !(defined(_X86_) || defined(__x86_64))
-#undef __MACHINEX86X_NOIA64
-#define __MACHINEX86X_NOIA64 __MACHINEZ
-#endif
-
-#if !(defined(_X86_)) || defined(__x86_64)
-#undef __MACHINEX86X_NOWIN64
-#define __MACHINEX86X_NOWIN64 __MACHINEZ
-#endif
-
-#if !(defined(__arm__))
-#undef __MACHINESA
-#undef __MACHINEARM
-#undef __MACHINEARMX
-#undef __MACHINECC
-#define __MACHINESA __MACHINEZ
-#define __MACHINEARM __MACHINEZ
-#define __MACHINEARMX __MACHINEZ
-#define __MACHINECC __MACHINEZ
-#endif
-
-#if !(defined(__aarch64__))
-#undef __MACHINEARM64
-#define __MACHINEARM64 __MACHINEZ
-#endif
-
-#if !(defined(__arm__) || defined(__aarch64__))
-#undef __MACHINEARM_ARM64
-#define __MACHINEARM_ARM64 __MACHINEZ
-#endif
-
-#if !(defined(__x86_64))
-#undef __MACHINEX64
-#define __MACHINEX64 __MACHINEZ
+#ifndef __aarch64__
+# undef  __MACHINEARM64
+# undef  __MACHINEARM_ARM64
+# define __MACHINEARM64     __MACHINEZ
+# define __MACHINEARM_ARM64 __MACHINEZ
 #endif
 
 #ifdef __cplusplus
@@ -287,7 +219,6 @@ extern "C" {
     /* __MACHINEI(__LONG32 __cdecl _InterlockedDecrement(__LONG32 volatile *)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION __int64 _InterlockedDecrement64(__int64 volatile *)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEI(__LONG32 _InterlockedExchange(__LONG32 volatile *,__LONG32)) moved to psdk_inc/intrin-impl.h */
-    __MACHINESA(long WINAPI _InterlockedExchange(long volatile *,long))
     /* __MACHINEX64(__MINGW_EXTENSION __int64 _InterlockedExchange64(__int64 volatile *,__int64)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(void *_InterlockedExchangePointer(void *volatile *,void *)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEI(__LONG32 _InterlockedExchangeAdd(__LONG32 volatile *,__LONG32)) moved to psdk_inc/intrin-impl.h */
@@ -312,7 +243,6 @@ extern "C" {
     __MACHINEIW64(char _InterlockedAnd8(char volatile *,char))
     __MACHINEIW64(short _InterlockedAnd16(short volatile *,short))
     /* __MACHINEW64(__MINGW_EXTENSION __int64 _InterlockedAnd64(__int64 volatile *,__int64)) moved to psdk_inc/intrin-impl.h */
-    __MACHINEIA32(__MINGW_EXTENSION __LONG32 _InterlockedAddLargeStatistic(__int64 volatile *,__LONG32))
     __MACHINEI(int __cdecl _inp(unsigned short))
     __MACHINEI(int __cdecl inp(unsigned short))
     __MACHINEI(unsigned __LONG32 __cdecl _inpd(unsigned short))
@@ -333,9 +263,7 @@ extern "C" {
     __MACHINEI(unsigned short __cdecl _outpw(unsigned short,unsigned short))
     __MACHINEI(unsigned short __cdecl outpw(unsigned short,unsigned short))
     __MACHINEARM_ARM64(void __cdecl __prefetch(const void *addr))
-    __MACHINESA(int _ReadStatusReg(int))
     __MACHINEI(void *_ReturnAddress(void))
-    __MACHINESA(void *_ReturnAddress(void))
 #pragma push_macro ("_rotl")
 #undef _rotl
     __MACHINE(unsigned int __cdecl _rotl(unsigned int,int))
@@ -357,111 +285,11 @@ extern "C" {
     __MACHINE(int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmp(jmp_buf))
     __MACHINEX64(int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmpex(jmp_buf))
 #endif
-    __MACHINEARMX(void _SmulAdd_SL_ACC(int,int))
-    __MACHINEARMX(void _SmulAddPack_2SW_ACC(int,int))
-    __MACHINEARMX(void _SmulAddLo_SW_ACC(int,int))
-    __MACHINEARMX(void _SmulAddHi_SW_ACC(int,int))
-    __MACHINEARMX(void _SmulAddHiLo_SW_ACC(int,int))
-    __MACHINEARMX(void _SmulAddLoHi_SW_ACC(int,int))
     __MACHINE(char *__cdecl _strset(char *,int))
     __MACHINE(char *__cdecl strset(char *,int))
-    __MACHINESA(int __swi(unsigned,...))
     __MACHINEI(__MINGW_EXTENSION unsigned __int64 __ull_rshift(unsigned __int64,int))
-    __MACHINESA(void _WriteStatusReg(int,int,int))
     __MACHINEI(void *_AddressOfReturnAddress(void))
 
-#if !defined(__MMX__) && !defined(__MINGW_FORCE_SYS_INTRINS)
-    __MACHINEX86X_NOX64(void _m_empty(void))
-    __MACHINEX86X_NOX64(__m64 _m_from_int(int))
-    __MACHINEX86X_NOX64(int _m_to_int(__m64))
-    __MACHINEX86X_NOX64(__m64 _m_packsswb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_packssdw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_packuswb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_punpckhbw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_punpckhwd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_punpckhdq(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_punpcklbw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_punpcklwd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_punpckldq(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddsb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddsw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddusb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_paddusw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubsb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubsw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubusb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psubusw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pmaddwd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pmulhw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pmullw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psllw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psllwi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_pslld(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pslldi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_psllq(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psllqi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_psraw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psrawi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_psrad(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psradi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_psrlw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psrlwi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_psrld(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psrldi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_psrlq(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psrlqi(__m64,int))
-    __MACHINEX86X_NOX64(__m64 _m_pand(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pandn(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_por(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pxor(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pcmpeqb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pcmpeqw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pcmpeqd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pcmpgtb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pcmpgtw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pcmpgtd(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _mm_setzero_si64(void))
-    __MACHINEX86X_NOX64(__m64 _mm_set_pi32(int,int))
-    __MACHINEX86X_NOX64(__m64 _mm_set_pi16(short,short,short,short))
-    __MACHINEX86X_NOX64(__m64 _mm_set_pi8(char,char,char,char,char,char,char,char))
-    __MACHINEX86X_NOX64(__m64 _mm_set1_pi32(int))
-    __MACHINEX86X_NOX64(__m64 _mm_set1_pi16(short))
-    __MACHINEX86X_NOX64(__m64 _mm_set1_pi8(char))
-    __MACHINEX86X_NOX64(__m64 _mm_setr_pi32(int,int))
-    __MACHINEX86X_NOX64(__m64 _mm_setr_pi16(short,short,short,short))
-    __MACHINEX86X_NOX64(__m64 _mm_setr_pi8(char,char,char,char,char,char,char,char))
-#endif
-#if !defined(__SSE__) && !defined(__MINGW_FORCE_SYS_INTRINS)
-#pragma push_macro ("_m_pextrw")
-#undef _m_pextrw
-    __MACHINEX86X_NOX64(int _m_pextrw(__m64,int))
-    __MACHINECC(__MINGW_EXTENSION int _m_pextrw(unsigned __int64 m1,const int c))
-#pragma pop_macro ("_m_pextrw")
-#pragma push_macro ("_m_pinsrw")
-#undef _m_pinsrw
-    __MACHINEX86X_NOX64(__m64 _m_pinsrw(__m64,int,int))
-#pragma pop_macro ("_m_pinsrw")
-    __MACHINEX86X_NOX64(__m64 _m_pmaxsw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pmaxub(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pminsw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pminub(__m64,__m64))
-    __MACHINEX86X_NOX64(int _m_pmovmskb(__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pmulhuw(__m64,__m64))
-#pragma push_macro ("_m_pshufw")
-#undef _m_pshufw
-    __MACHINEX86X_NOX64(__m64 _m_pshufw(__m64,int))
-#pragma pop_macro ("_m_pshufw")
-    __MACHINEX86X_NOX64(void _m_maskmovq(__m64,__m64,char*))
-    __MACHINEX86X_NOX64(__m64 _m_pavgb(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_pavgw(__m64,__m64))
-    __MACHINEX86X_NOX64(__m64 _m_psadbw(__m64,__m64))
-#endif
 #if !defined(__SSE__) && !defined(__MINGW_FORCE_SYS_INTRINS)
     __MACHINEX86X_NOIA64(__m128 _mm_add_ss(__m128,__m128))
     __MACHINEX86X_NOIA64(__m128 _mm_add_ps(__m128,__m128))
@@ -522,11 +350,8 @@ extern "C" {
     __MACHINEX86X_NOIA64(int _mm_ucomige_ss(__m128,__m128))
     __MACHINEX86X_NOIA64(int _mm_ucomineq_ss(__m128,__m128))
     __MACHINEX86X_NOIA64(int _mm_cvt_ss2si(__m128))
-    __MACHINEX86X_NOWIN64(__m64 _mm_cvt_ps2pi(__m128))
     __MACHINEX86X_NOIA64(int _mm_cvtt_ss2si(__m128))
-    __MACHINEX86X_NOWIN64(__m64 _mm_cvtt_ps2pi(__m128))
     __MACHINEX86X_NOIA64(__m128 _mm_cvt_si2ss(__m128,int))
-    __MACHINEX86X_NOWIN64(__m128 _mm_cvt_pi2ps(__m128,__m64))
 #pragma push_macro ("_mm_shuffle_ps")
 #undef _mm_shuffle_ps
     __MACHINEX86X_NOIA64(__m128 _mm_shuffle_ps(__m128,__m128,int const))
@@ -555,7 +380,6 @@ extern "C" {
     __MACHINEX86X_NOIA64(void _mm_storer_ps(float*,__m128))
     __MACHINEX86X_NOIA64(void _mm_storeu_ps(float*,__m128))
 /*    __MACHINEX86X_NOIA64(void _mm_prefetch(char const*,int)) */
-    __MACHINEX86X_NOWIN64(void _mm_stream_pi(__m64*,__m64))
     __MACHINEX86X_NOIA64(void _mm_stream_ps(float*,__m128))
     __MACHINEX86X_NOIA64(void _mm_sfence(void))
     __MACHINEX86X_NOIA64(unsigned int _mm_getcsr(void))
@@ -564,36 +388,9 @@ extern "C" {
     __MACHINEX86X_NOIA64(__m128 _mm_movehl_ps(__m128,__m128))
 #endif
 #if !defined(__3dNOW__) && !defined(__MINGW_FORCE_SYS_INTRINS)
-    __MACHINEX86X_NOWIN64(__m64 _m_from_float(float))
-    __MACHINEX86X_NOWIN64(float _m_to_float(__m64))
     __MACHINEX86X_NOIA64(void _m_prefetch(void*))
     __MACHINEX86X_NOIA64(void _m_prefetchw(void*_Source))
-    __MACHINEX86X_NOWIN64(void _m_femms(void))
-    __MACHINEX86X_NOWIN64(__m64 _m_pavgusb(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pf2id(__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfacc(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfadd(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfcmpeq(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfcmpge(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfcmpgt(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfmax(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfmin(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfmul(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfrcp(__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfrcpit1(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfrcpit2(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfrsqrt(__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfrsqit1(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfsub(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfsubr(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pi2fd(__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pmulhrw(__m64,__m64))
 #endif
-    __MACHINEX86X_NOWIN64(__m64 _m_pf2iw(__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfnacc(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pfpnacc(__m64,__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pi2fw(__m64))
-    __MACHINEX86X_NOWIN64(__m64 _m_pswapd(__m64))
 #if !defined(__SSE2__) && !defined(__MINGW_FORCE_SYS_INTRINS)
     __MACHINEX86X(__m128d _mm_add_sd(__m128d,__m128d))
     __MACHINEX86X(__m128d _mm_add_pd(__m128d,__m128d))
@@ -662,9 +459,6 @@ extern "C" {
     __MACHINEX86X(__m128 _mm_cvtepi32_ps(__m128i))
     __MACHINEX86X(__m128i _mm_cvtps_epi32(__m128))
     __MACHINEX86X(__m128i _mm_cvttps_epi32(__m128))
-    __MACHINEX86X_NOX64(__m64 _mm_cvtpd_pi32(__m128d))
-    __MACHINEX86X_NOX64(__m64 _mm_cvttpd_pi32(__m128d))
-    __MACHINEX86X_NOX64(__m128d _mm_cvtpi32_pd(__m64))
     __MACHINEX86X(__m128d _mm_unpackhi_pd(__m128d,__m128d))
     __MACHINEX86X(__m128d _mm_unpacklo_pd(__m128d,__m128d))
     __MACHINEX86X(int _mm_movemask_pd(__m128d))
@@ -694,10 +488,6 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_add_epi32(__m128i,__m128i))
 #endif
 
-#if !defined(__MMX__) && !defined(__MINGW_FORCE_SYS_INTRINS)
-    __MACHINEX86X_NOX64(__m64 _mm_add_si64(__m64,__m64))
-#endif
-
 #if !defined(__SSE2__) && !defined(__MINGW_FORCE_SYS_INTRINS)
     __MACHINEX86X(__m128i _mm_add_epi64(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_adds_epi8(__m128i,__m128i))
@@ -714,15 +504,11 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_mulhi_epi16(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_mulhi_epu16(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_mullo_epi16(__m128i,__m128i))
-    __MACHINEX86X_NOX64(__m64 _mm_mul_su32(__m64,__m64))
     __MACHINEX86X(__m128i _mm_mul_epu32(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_sad_epu8(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_sub_epi8(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_sub_epi16(__m128i,__m128i))
     __MACHINEX86X(__m128i _mm_sub_epi32(__m128i,__m128i))
-#endif
-#if !defined(__MMX__) && !defined(__MINGW_FORCE_SYS_INTRINS)
-    __MACHINEX86X_NOX64(__m64 _mm_sub_si64(__m64,__m64))
 #endif
 #if !defined(__SSE2__) && !defined(__MINGW_FORCE_SYS_INTRINS)
     __MACHINEX86X(__m128i _mm_sub_epi64(__m128i,__m128i))
@@ -783,16 +569,13 @@ extern "C" {
     __MACHINEX86X(__m128i _mm_load_si128(__m128i const*))
     __MACHINEX86X(__m128i _mm_loadu_si128(__m128i const*))
     __MACHINEX86X(__m128i _mm_loadl_epi64(__m128i const*))
-    __MACHINEX86X_NOX64(__m128i _mm_set_epi64(__m64,__m64))
     __MACHINEX86X(__m128i _mm_set_epi32(int,int,int,int))
     __MACHINEX86X(__m128i _mm_set_epi16(short,short,short,short,short,short,short,short))
     __MACHINEX86X(__m128i _mm_set_epi8(char,char,char,char,char,char,char,char,char,char,char,char,char,char,char,char))
-    __MACHINEX86X_NOX64(__m128i _mm_set1_epi64(__m64))
     __MACHINEX86X(__m128i _mm_set1_epi32(int))
     __MACHINEX86X(__m128i _mm_set1_epi16(short))
     __MACHINEX86X(__m128i _mm_set1_epi8(char))
     __MACHINEX86X(__m128i _mm_setl_epi64(__m128i))
-    __MACHINEX86X_NOX64(__m128i _mm_setr_epi64(__m64,__m64))
     __MACHINEX86X(__m128i _mm_setr_epi32(int,int,int,int))
     __MACHINEX86X(__m128i _mm_setr_epi16(short,short,short,short,short,short,short,short))
     __MACHINEX86X(__m128i _mm_setr_epi8(char,char,char,char,char,char,char,char,char,char,char,char,char,char,char,char))
@@ -802,8 +585,6 @@ extern "C" {
     __MACHINEX86X(void _mm_storel_epi64(__m128i*,__m128i))
     __MACHINEX86X(void _mm_maskmoveu_si128(__m128i,__m128i,char*))
     __MACHINEX86X(__m128i _mm_move_epi64(__m128i))
-    __MACHINEX86X_NOX64(__m128i _mm_movpi64_epi64(__m64))
-    __MACHINEX86X_NOX64(__m64 _mm_movepi64_pi64(__m128i))
     __MACHINEX86X(void _mm_stream_pd(double*,__m128d))
     __MACHINEX86X(void _mm_stream_si128(__m128i*,__m128i))
     __MACHINEX86X(void _mm_clflush(void const *))
@@ -839,19 +620,10 @@ extern "C" {
     /* __MACHINEX64(__MINGW_EXTENSION unsigned __int64 __readcr3(void)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION unsigned __int64 __readcr4(void)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION unsigned __int64 __readcr8(void)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned __LONG32 __readcr0(void)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned __LONG32 __readcr2(void)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned __LONG32 __readcr3(void)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned __LONG32 __readcr4(void)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned __LONG32 __readcr8(void)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION void __writecr0(unsigned __int64)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION void __writecr3(unsigned __int64)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION void __writecr4(unsigned __int64)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION void __writecr8(unsigned __int64)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(void __writecr0(unsigned)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(void __writecr3(unsigned)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(void __writecr4(unsigned)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(void __writecr8(unsigned)) moved to psdk_inc/intrin-impl.h */
     __MACHINEI(void __wbinvd(void))
     __MACHINEI(void __invlpg(void*))
     /* __MACHINEI(__MINGW_EXTENSION unsigned __int64 __readmsr(unsigned __LONG32)) moved to psdk_inc/intrin-impl.h */
@@ -922,15 +694,6 @@ extern "C" {
     __MACHINEI(__MINGW_EXTENSION unsigned __int64 __readpmc(unsigned __LONG32 a))
     __MACHINEI(unsigned __LONG32 __segmentlimit(unsigned __LONG32 a))
 
-    /* __MACHINEIA32(unsigned char __readfsbyte(unsigned __LONG32 Offset)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned short __readfsword(unsigned __LONG32 Offset)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(unsigned __LONG32 __readfsdword(unsigned __LONG32 Offset)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(__MINGW_EXTENSION unsigned __int64 __readfsqword(unsigned __LONG32 Offset)) intrinsic doesn't actually exist */
-    /* __MACHINEIA32(void __writefsbyte(unsigned __LONG32 Offset,unsigned char Data)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(void __writefsword(unsigned __LONG32 Offset,unsigned short Data)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(void __writefsdword(unsigned __LONG32 Offset,unsigned __LONG32 Data)) moved to psdk_inc/intrin-impl.h */
-    /* __MACHINEIA32(__MINGW_EXTENSION void __writefsqword(unsigned __LONG32 Offset,unsigned __int64 Data)) intrinsic doesn't actually exist */
-
     __MACHINE(__MINGW_EXTENSION __int64 __cdecl _abs64(__int64))
 
     /* __MACHINEIW64(unsigned char _BitScanForward(unsigned __LONG32 *Index,unsigned __LONG32 Mask)) moved to psdk_inc/intrin-impl.h */
@@ -951,151 +714,6 @@ extern "C" {
     /* __MACHINEIW64(short _InterlockedIncrement16(short volatile *Addend)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEIW64(short _InterlockedDecrement16(short volatile *Addend)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEIW64(short _InterlockedCompareExchange16(short volatile *Destination,short Exchange,short Comparand)) moved to psdk_inc/intrin-impl.h */
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddsb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddsw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddsd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddusb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddusw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paddusd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubsb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubsw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubsd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubusb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubusw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psubusd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaddwd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmadduwd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmulhw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmulhuw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmullw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmullw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmacsw(unsigned __int64 m1,unsigned __int64 m2,unsigned __int64 m3))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmacuw(unsigned __int64 m1,unsigned __int64 m2,unsigned __int64 m3))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmacszw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_padduzw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paccb(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paccw(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paccd(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmia(unsigned __int64 m1,int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmiaph(unsigned __int64 m1,int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmiabb(unsigned __int64 m1,int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmiabt(unsigned __int64 m1,int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmiatb(unsigned __int64 m1,int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmiatt(unsigned __int64 m1,int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psllw(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psllwi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pslld(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pslldi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psllq(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psllqi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psraw(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrawi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrad(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psradi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psraq(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psraqi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrlw(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrlwi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrld(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrldi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrlq(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psrlqi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_prorw(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_prorwi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_prord(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_prordi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_prorq(unsigned __int64 m1,unsigned __int64 count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_prorqi(unsigned __int64 m1,int count))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pand(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pandn(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_por(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pxor(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpeqb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpeqw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpeqd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpgtb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpgtub(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpgtw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpgtuw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpgtd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pcmpgtud(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_packsswb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_packssdw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_packssqd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_packuswb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_packusdw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_packusqd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckhbw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckhwd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckhdq(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpcklbw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpcklwd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckldq(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckehsbw(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckehswd(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckehsdq(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckehubw(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckehuwd(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckehudq(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckelsbw(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckelswd(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckelsdq(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckelubw(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckeluwd(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_punpckeludq(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_setzero_si64())
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_set_pi32(int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_set_pi16(short s3,short s2,short s1,short s0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_set_pi8(char b7,char b6,char b5,char b4,char b3,char b2,char b1,char b0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_set1_pi32(int i))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_set1_pi16(short s))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_set1_pi8(char b))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_setr_pi32(int i1,int i0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_setr_pi16(short s3,short s2,short s1,short s0))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _mm_setr_pi8(char b7,char b6,char b5,char b4,char b3,char b2,char b1,char b0))
-    __MACHINECC(void _mm_setwcx(int i1,int i0))
-    __MACHINECC(int _mm_getwcx(int i))
-    __MACHINECC(__MINGW_EXTENSION int _m_pextrb(unsigned __int64 m1,const int c))
-    __MACHINECC(__MINGW_EXTENSION int _m_pextrd(unsigned __int64 m1,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned int _m_pextrub(unsigned __int64 m1,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned int _m_pextruw(unsigned __int64 m1,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned int _m_pextrud(unsigned __int64 m1,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pinsrb(unsigned __int64 m1,int i,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pinsrw(unsigned __int64 m1,int i,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pinsrd(unsigned __int64 m1,int i,const int c))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaxsb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaxsw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaxsd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaxub(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaxuw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pmaxud(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pminsb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pminsw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pminsd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pminub(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pminuw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pminud(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION int _m_pmovmskb(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION int _m_pmovmskw(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION int _m_pmovmskd(unsigned __int64 m1))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pshufw(unsigned __int64 m1,int i))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pavgb(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pavgw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pavg2b(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_pavg2w(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psadbw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psadwd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psadzbw(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_psadzwd(unsigned __int64 m1,unsigned __int64 m2))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_paligniq(unsigned __int64 m1,unsigned __int64 m2,int i))
-    __MACHINECC(__MINGW_EXTENSION unsigned __int64 _m_cvt_si2pi(__int64 i))
-    __MACHINECC(__MINGW_EXTENSION __int64 _m_cvt_pi2si(unsigned __int64 m1))
     __MACHINEIW64(void __nvreg_save_fence(void))
     __MACHINEIW64(void __nvreg_restore_fence(void))
 
@@ -1120,7 +738,7 @@ extern "C" {
     __MACHINEX64(__MINGW_EXTENSION __int64 _InterlockedXor64_np(__int64 *,__int64))
 
 #if defined(_NO_PREFETCHW)
-#if defined(__x86_64)
+#ifdef __x86_64__
 
 #define _InterlockedCompareExchange16 _InterlockedCompareExchange16_np
 #define _InterlockedCompareExchange _InterlockedCompareExchange_np

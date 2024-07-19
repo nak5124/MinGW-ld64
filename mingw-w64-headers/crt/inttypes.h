@@ -217,7 +217,6 @@ extern "C" {
 
 #define SCNuMAX PRIu64
 
-#ifdef _WIN64
 #define PRIdPTR PRId64
 #define PRIiPTR PRIi64
 #define PRIoPTR PRIo64
@@ -229,19 +228,6 @@ extern "C" {
 #define SCNoPTR PRIo64
 #define SCNxPTR PRIx64
 #define SCNuPTR PRIu64
-#else
-#define PRIdPTR "d"
-#define PRIiPTR "i"
-#define PRIoPTR "o"
-#define PRIuPTR "u"
-#define PRIxPTR "x"
-#define PRIXPTR "X"
-#define SCNdPTR "d"
-#define SCNiPTR "i"
-#define SCNoPTR "o"
-#define SCNxPTR "x"
- #define SCNuPTR "u"
-#endif
 
 /*
  * no length modifier for char types prior to C9x

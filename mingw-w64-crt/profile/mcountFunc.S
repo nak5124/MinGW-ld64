@@ -7,11 +7,7 @@
 
 	.file "mcountFunc.S"
 	.text
-#ifdef _WIN64
 	.align 8
-#else
-	.align 4
-#endif
 
 /* gcc always assumes the mcount public symbol has a single leading underscore
    for our target.  See gcc/config/i386.h; it isn't overridden in
@@ -19,25 +15,6 @@
 .globl _mcount
         .def    _mcount;  .scl    2;      .type   32;     .endef
 _mcount:
-#ifndef _WIN64
-	push %ebp
-	mov %esp, %ebp
-	push %eax
-	push %ecx
-	push %edx
-	movl 4(%ebp),%edx
-	movl (%ebp),%eax
-	movl 4(%eax),%eax
-	push %edx
-	push %eax
-	call __MINGW_USYMBOL(_mcount_private)
-	add $8, %esp
-	pop %edx
-	pop %ecx
-	pop %eax
-	leave
-	ret
-#else
 	push %rbp
 	mov %rsp, %rbp
 	push %rax
@@ -62,7 +39,6 @@ _mcount:
 	pop %rax
 	leave
 	ret
-#endif
 
 /* gcc always assumes the mcount public symbol has a single leading underscore
    for our target.  See gcc/config/i386.h; it isn't overridden in
@@ -71,24 +47,6 @@ _mcount:
 .globl __fentry__
         .def    _mcount_top;  .scl    2;      .type   32;     .endef
 __fentry__:
-#ifndef _WIN64
-	push %ebp
-	mov %esp, %ebp
-	push %eax
-	push %ecx
-	push %edx
-	movl 4(%ebp),%edx
-	movl 8(%ebp),%eax
-	push %edx
-	push %eax
-	call __MINGW_USYMBOL(_mcount_private)
-	add $8, %esp
-	pop %edx
-	pop %ecx
-	pop %eax
-	leave
-	ret
-#else
 	push %rbp
 	mov %rsp, %rbp
 	push %rax
@@ -112,4 +70,3 @@ __fentry__:
 	pop %rax
 	leave
 	ret
-#endif

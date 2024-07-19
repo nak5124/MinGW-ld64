@@ -18,10 +18,10 @@ float scalbnf(float x, int exp)
 
 long double scalbnl(long double x, int exp)
 {
-#if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#if defined(__aarch64__) || defined(_ARM64_)
     return scalbn(x, exp);
 #else
-#error Not supported on your platform yet
+# error Not supported on your platform yet
 #endif
 }
 
@@ -37,10 +37,10 @@ float scalblnf(float x, long exp)
 
 long double scalblnl(long double x, long exp)
 {
-#if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#if defined(__aarch64__) || defined(_ARM64_)
     return scalbln(x, exp);
 #else
-#error Not supported on your platform yet
+# error Not supported on your platform yet
 #endif
 }
 

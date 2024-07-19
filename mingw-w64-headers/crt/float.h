@@ -206,11 +206,7 @@
 #define _FPE_STACKUNDERFLOW 0x8b
 #define _FPE_EXPLICITGEN    0x8c  /* raise( SIGFPE ); */
 
-#if defined(__i386__)
-# define _CW_DEFAULT (_RC_NEAR + _PC_53 + _EM_INVALID + _EM_ZERODIVIDE + _EM_OVERFLOW + _EM_UNDERFLOW + _EM_INEXACT + _EM_DENORMAL)
-#elif defined(__x86_64__) || defined(__arm__) || defined(__aarch64__)
-# define _CW_DEFAULT (_RC_NEAR + _EM_INVALID + _EM_ZERODIVIDE + _EM_OVERFLOW + _EM_UNDERFLOW + _EM_INEXACT + _EM_DENORMAL)
-#endif
+#define _CW_DEFAULT (_RC_NEAR + _EM_INVALID + _EM_ZERODIVIDE + _EM_OVERFLOW + _EM_UNDERFLOW + _EM_INEXACT + _EM_DENORMAL)
 
 #define CW_DEFAULT _CW_DEFAULT
 #define MCW_PC     _MCW_PC

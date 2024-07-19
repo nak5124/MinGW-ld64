@@ -16,9 +16,6 @@ been constructed with LLVM/LLD in mind.
 #if defined(__x86_64__) || defined(__aarch64__)
 #  define PTR .8byte
 #  define ALIGN 8
-#elif defined(__i386__) || defined(__arm__)
-#  define PTR .4byte
-#  define ALIGN 4
 #else
 #  error "Load config structure is unimplemented for the current architecture."
 #endif
@@ -31,22 +28,7 @@ Ref: https://docs.microsoft.com/en-us/windows/win32/secbp/pe-metadata
 #  define CFGUARD_USE_DISPATCH
 #endif
 
-#if defined(__i386__)
-#  define SYM(x) _##x
-#else
-#  define SYM(x) x
-#endif
-
-#if defined(INCLUDE_MSVC_FEATURES)
-/*
-These features are specific to MSVC as far as I am aware.
-*/
-#  define HAS_GS_SECURITY_COOKIE
-#  if defined(__i386__)
-#    define HAS_SAFE_SE_HANDLER
-#  endif
-#  define HAS_ENCLAVE_CONFIG
-#endif
+#define SYM(x) x
 
 	.section	.rdata,"dr"
 	.globl	SYM(_load_config_used)
@@ -69,18 +51,9 @@ SYM(_load_config_used):
 	.2byte	0 /* CSDVersion */
 	.2byte	0 /* DependentLoadFlags */
 	PTR	0 /* EditList */
-#if defined(HAS_GS_SECURITY_COOKIE)
-	PTR	SYM(__security_cookie) /* SecurityCookie */
-#else
 	PTR	0 /* SecurityCookie */
-#endif
-#if defined(HAS_SAFE_SE_HANDLER)
-	PTR	SYM(__safe_se_handler_table) /* SEHandlerTable */
-	PTR	SYM(__safe_se_handler_count) /* SEHandlerCount */
-#else
 	PTR	0 /* SEHandlerTable */
 	PTR	0 /* SEHandlerCount */
-#endif
 	PTR	SYM(__guard_check_icall_fptr) /* GuardCFCheckFunction */
 #if defined(CFGUARD_USE_DISPATCH)
 	PTR	SYM(__guard_dispatch_icall_fptr) /* GuardCFCheckDispatch */
@@ -108,11 +81,7 @@ SYM(_load_config_used):
 	PTR	0 /* GuardRFVerifyStackPointerFunctionPointer */
 	.4byte	0 /* HotPatchTableOffset */
 	.4byte	0 /* Reserved3 */
-#if defined(HAS_ENCLAVE_CONFIG)
-	PTR	SYM(__enclave_config) /* EnclaveConfigurationPointer */
-#else
 	PTR	0 /* EnclaveConfigurationPointer */
-#endif
 	PTR	0 /* VolatileMetadataPointer */
 	PTR	SYM(__guard_eh_cont_table) /* GuardEHContinuationTable */
 	PTR	SYM(__guard_eh_cont_count) /* GuardEHContinuationCount */

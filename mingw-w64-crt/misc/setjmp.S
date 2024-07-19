@@ -9,28 +9,10 @@
         .globl  __MINGW_USYMBOL(__intrinsic_setjmp)
         .def    __MINGW_USYMBOL(__intrinsic_setjmp); .scl 2; .type 32; .endef
 
-#if defined(_WIN64)
         .globl  __MINGW_USYMBOL(__intrinsic_setjmpex)
         .def    __MINGW_USYMBOL(__intrinsic_setjmpex); .scl 2; .type 32; .endef
-#endif
 
-#if defined(__i386__)
-        .globl  __MINGW_USYMBOL(_setjmp3)
-        .def    __MINGW_USYMBOL(_setjmp3); .scl 2; .type 32; .endef
-__MINGW_USYMBOL(_setjmp3):
-__MINGW_USYMBOL(__intrinsic_setjmp):
-        movl    4(%esp),%ecx         /* jmp_buf */
-        movl    %ebp,0(%ecx)         /* jmp_buf.Ebp */
-        movl    %ebx,4(%ecx)         /* jmp_buf.Ebx */
-        movl    %edi,8(%ecx)         /* jmp_buf.Edi */
-        movl    %esi,12(%ecx)        /* jmp_buf.Esi */
-        movl    %esp,16(%ecx)        /* jmp_buf.Esp */
-        movl    0(%esp),%eax
-        movl    %eax,20(%ecx)        /* jmp_buf.Eip */
-        xorl    %eax, %eax
-        retl
-
-#elif defined(__x86_64__)
+#if defined(__x86_64__)
         .globl  __MINGW_USYMBOL(setjmp)
         .def    __MINGW_USYMBOL(setjmp); .scl 2; .type 32; .endef
 __MINGW_USYMBOL(setjmp):
@@ -65,32 +47,6 @@ __MINGW_USYMBOL(__intrinsic_setjmpex):
         xorq    %rax,%rax
         retq
 
-#elif defined(__arm__)
-__MINGW_USYMBOL(__intrinsic_setjmp):
-        mov     r1,  #0
-        str     r1,  [r0]            /* jmp_buf->Frame */
-        str     r4,  [r0, #0x4]      /* jmp_buf->R4 */
-        str     r5,  [r0, #0x8]      /* jmp_buf->R5 */
-        str     r6,  [r0, #0xc]      /* jmp_buf->R6 */
-        str     r7,  [r0, #0x10]     /* jmp_buf->R7 */
-        str     r8,  [r0, #0x14]     /* jmp_buf->R8 */
-        str     r9,  [r0, #0x18]     /* jmp_buf->R9 */
-        str     r10, [r0, #0x1c]     /* jmp_buf->R10 */
-        str     r11, [r0, #0x20]     /* jmp_buf->R11 */
-        str     sp,  [r0, #0x24]     /* jmp_buf->Sp */
-        str     lr,  [r0, #0x28]     /* jmp_buf->Pc */
-        vmrs    r2,  fpscr
-        str     r2,  [r0, #0x2c]     /* jmp_buf->Fpscr */
-        vstr    d8,  [r0, #0x30]     /* jmp_buf->D[0] */
-        vstr    d9,  [r0, #0x38]     /* jmp_buf->D[1] */
-        vstr    d10, [r0, #0x40]     /* jmp_buf->D[2] */
-        vstr    d11, [r0, #0x48]     /* jmp_buf->D[3] */
-        vstr    d12, [r0, #0x50]     /* jmp_buf->D[4] */
-        vstr    d13, [r0, #0x58]     /* jmp_buf->D[5] */
-        vstr    d14, [r0, #0x60]     /* jmp_buf->D[6] */
-        vstr    d15, [r0, #0x68]     /* jmp_buf->D[7] */
-        mov     r0,  #0
-        bx      lr
 #elif defined(__aarch64__)
 __MINGW_USYMBOL(__intrinsic_setjmp):
         mov     x1,  #0

@@ -28,7 +28,6 @@
 	.globl __MINGW_USYMBOL(_chgsignl)
 	.def	__MINGW_USYMBOL(_chgsignl);	.scl	2;	.type	32;	.endef
 __MINGW_USYMBOL(_chgsignl):
-#if defined(_AMD64_) || defined(__x86_64__)
 	movq	(%rdx), %rax
 	movq	8(%rdx), %rdx
 	xorq	$0x8000, %rdx
@@ -36,11 +35,3 @@ __MINGW_USYMBOL(_chgsignl):
 	movq	%rdx, 8(%rcx)
 	movq	%rcx, %rax
 	ret
-#elif defined(_X86_) || defined(__i386__)
-	movl	12(%esp),%eax
-	xorl	$0x8000,%eax
-	movl	%eax,12(%esp)
-	fldt	4(%esp)
-	ret
-#endif
-

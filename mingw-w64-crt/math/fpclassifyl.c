@@ -23,15 +23,7 @@ int __fpclassifyl (long double _x){
       return (((hlp.lh.high & 0x7fffffff) | hlp.lh.low) == 0 ?
 	      FP_INFINITE : FP_NAN);
     return FP_NORMAL;
-#elif defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#elif defined(__aarch64__) || defined(_ARM64_)
     return __fpclassify(_x);
-#elif defined(__i386__) || defined(_X86_)
-  unsigned short sw;
-  __asm__ __volatile__ (
-	"fxam; fstsw %%ax;"
-	: "=a" (sw)
-	: "t" (_x)
-	);
-  return sw & (FP_NAN | FP_NORMAL | FP_ZERO );
 #endif
 }

@@ -18,14 +18,8 @@ __isnanl (long double _x)
   signexp |= (unsigned int) (xx | (-xx)) >> 31;
   signexp = 0xfffe - signexp;
   return (int) ((unsigned int) signexp) >> 16;
-#elif defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#elif defined(__aarch64__) || defined(_ARM64_)
     return __isnan(_x);
-#elif defined(__i386__) || defined(_X86_)
-  unsigned short _sw;
-  __asm__ __volatile__ ("fxam;"
-	   "fstsw %%ax": "=a" (_sw) : "t" (_x));
-  return (_sw & (FP_NAN | FP_NORMAL | FP_INFINITE | FP_ZERO | FP_SUBNORMAL))
-    == FP_NAN;
 #endif
 }
 

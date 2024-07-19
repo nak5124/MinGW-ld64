@@ -5,7 +5,7 @@
  */
 long double fmal(long double x, long double y, long double z);
 
-#if defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
 
 double fma(double x, double y, double z);
 
@@ -14,7 +14,7 @@ long double fmal(long double x, long double y, long double z){
   return fma(x, y, z);
 }
 
-#elif defined(_AMD64_) || defined(__x86_64__) || defined(_X86_) || defined(__i386__)
+#elif defined(__x86_64__) || defined(_AMD64_)
 
 /**
  * x87-specific software-emulated FMA by LH_Mouse (lh_mouse at 126 dot com).

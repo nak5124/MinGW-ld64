@@ -12,7 +12,7 @@ modfl (long double value, long double* iptr)
 {
   long double int_part = 0.0L;
   /* truncate */
-#if defined(_AMD64_) || defined(__x86_64__)
+#if defined(__x86_64__) || defined(_AMD64_)
   asm volatile ("subq $8, %%rsp\n"
     "fnstcw 4(%%rsp)\n"
     "movzwl 4(%%rsp), %%eax\n"
@@ -22,16 +22,6 @@ modfl (long double value, long double* iptr)
     "frndint\n"
     "fldcw 4(%%rsp)\n"
     "addq $8, %%rsp\n" : "=t" (int_part) : "0" (value) : "eax"); /* round */
-#elif defined(_X86_) || defined(__i386__)
-  asm volatile ("push %%eax\n\tsubl $8, %%esp\n"
-    "fnstcw 4(%%esp)\n"
-    "movzwl 4(%%esp), %%eax\n"
-    "orb $12, %%ah\n"
-    "movw %%ax, (%%esp)\n"
-    "fldcw (%%esp)\n"
-    "frndint\n"
-    "fldcw 4(%%esp)\n"
-    "addl $8, %%esp\n\tpop %%eax\n" : "=t" (int_part) : "0" (value) : "eax"); /* round */
 #else
   int_part = truncl(value);
 #endif

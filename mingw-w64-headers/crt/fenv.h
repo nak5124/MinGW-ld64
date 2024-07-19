@@ -8,7 +8,7 @@
 
 #include <corecrt.h>
 
-#if defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
 
 /* FPU status word exception flags */
 #define FE_INVALID    0x01
@@ -55,9 +55,9 @@
    to get MXCSR rounding flags,  */
 #define __MXCSR_ROUND_FLAG_SHIFT 3
 
-#endif  /* defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__) */
+#endif  /* defined(__aarch64__) || defined(_ARM64_) */
 
-#if defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
 
   /* Type representing exception flags. */
   typedef unsigned int fexcept_t;
@@ -115,7 +115,7 @@
   fesetenv will use the environment set at app startup.*/
 #define FE_DFL_ENV ((const fenv_t *) 0)
 
-#endif  /* defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__) */
+#endif  /* defined(__aarch64__) || defined(_ARM64_) */
 
 #ifdef __cplusplus
 extern "C" {

@@ -13,14 +13,8 @@ int __signbitl (long double x) {
     __mingw_ldbl_type_t ld;
     ld.x = x;
     return ((ld.lh.sign_exponent & 0x8000) != 0);
-#elif defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#elif defined(__aarch64__) || defined(_ARM64_)
     return __signbit(x);
-#elif defined(__i386__) || defined(_X86_)
-  unsigned short sw;
-  __asm__ __volatile__ ("fxam; fstsw %%ax;"
-	   : "=a" (sw)
-	   : "t" (x) );
-  return (sw & __FP_SIGNBIT) != 0;
 #endif
 }
 

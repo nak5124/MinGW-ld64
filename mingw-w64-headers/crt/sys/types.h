@@ -28,11 +28,7 @@
 
 #ifndef _PID_T_
 # define _PID_T_
-# ifdef _WIN64
-    __MINGW_EXTENSION typedef __int64 _pid_t;
-# else
-    typedef int _pid_t;
-# endif
+  __MINGW_EXTENSION typedef __int64 _pid_t;
 # undef pid_t
   typedef _pid_t pid_t;
 #endif
@@ -62,11 +58,7 @@
 
 #ifndef _SIGSET_T_
 # define _SIGSET_T_
-# ifdef _WIN64
-    __MINGW_EXTENSION typedef unsigned long long _sigset_t;
-# else
-    typedef unsigned long _sigset_t;
-# endif
+  __MINGW_EXTENSION typedef unsigned long long _sigset_t;
   typedef _sigset_t sigset_t;
 #endif
 

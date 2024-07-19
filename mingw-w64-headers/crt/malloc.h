@@ -14,11 +14,7 @@
 extern "C" {
 #endif
 
-#ifdef _WIN64
-# define _HEAP_MAXREQ 0xFFFFFFFFFFFFFFE0
-#else
-# define _HEAP_MAXREQ 0xFFFFFFE0
-#endif
+#define _HEAP_MAXREQ 0xFFFFFFFFFFFFFFE0
 /* Return codes for _heapwalk()  */
 #define _HEAPEMPTY    (-1)
 #define _HEAPOK       (-2)
@@ -83,11 +79,7 @@ extern "C" {
 #define _ALLOCA_S_STACK_MARKER 0xCCCC
 #define _ALLOCA_S_HEAP_MARKER  0xDDDD
 
-#ifdef _WIN64
-# define _ALLOCA_S_MARKER_SIZE 16
-#else
-# define _ALLOCA_S_MARKER_SIZE 8
-#endif
+#define _ALLOCA_S_MARKER_SIZE 16
 
   static __inline void *_MarkAllocaS(void *_Ptr,unsigned int _Marker)
   {

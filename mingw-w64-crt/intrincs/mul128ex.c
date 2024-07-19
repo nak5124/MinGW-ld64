@@ -4,7 +4,7 @@
 #define __CRT__NO_INLINE
 #include <windows.h>
 
-/* for __x86_64 only */
+/* for __x86_64__ only */
 
 LONG64 MultiplyExtract128(LONG64 Multiplier,LONG64 Multiplicand,BYTE Shift) {
       LONG64 extractedProduct;

@@ -45,26 +45,16 @@ extern "C" {
   };
 #endif
 
-#ifdef _USE_32BIT_TIME_T
-# define _timeb   __timeb32
-# define _ftime   _ftime32
-# define _ftime_s _ftime32_s
-#else
-# define _timeb   __timeb64
-# define _ftime   _ftime64
-# define _ftime_s _ftime64_s
-#endif
+#define _timeb   __timeb64
+#define _ftime   _ftime64
+#define _ftime_s _ftime64_s
 
   _CRTIMP void __cdecl _ftime32(struct __timeb32 *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _ftime32_s(struct __timeb32 *_Time);
   _CRTIMP void __cdecl _ftime64(struct __timeb64 *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _ftime64_s(struct __timeb64 *_Time);
 
-#ifdef _USE_32BIT_TIME_T
-  void __cdecl ftime(struct timeb *) __MINGW_ASM_CALL(_ftime32);
-#else
   void __cdecl ftime(struct timeb *) __MINGW_ASM_CALL(_ftime64);
-#endif
 
   struct _timespec32
   {

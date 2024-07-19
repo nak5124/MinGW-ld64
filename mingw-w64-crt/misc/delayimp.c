@@ -125,12 +125,6 @@ static int WINAPI FLoadedAtPreferredAddress(PIMAGE_NT_HEADERS pinh,HMODULE hmod)
   return ((UINT_PTR)(hmod)) == pinh->OptionalHeader.ImageBase;
 }
 
-#if(defined(_X86_) && !defined(__x86_64))
-#undef InterlockedExchangePointer
-#define InterlockedExchangePointer(Target,Value) (PVOID)(LONG_PTR)InterlockedExchange((PLONG)(Target),(LONG)(LONG_PTR)(Value))
-/*typedef unsigned long *PULONG_PTR;*/
-#endif
-
 FARPROC WINAPI __delayLoadHelper2(PCImgDelayDescr pidd,FARPROC *ppfnIATEntry);
 
 FARPROC WINAPI __delayLoadHelper2(PCImgDelayDescr pidd,FARPROC *ppfnIATEntry)

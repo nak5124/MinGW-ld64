@@ -51,11 +51,7 @@ extern "C" {
 #ifndef _SIZE_T_DEFINED
 # define _SIZE_T_DEFINED
 # undef size_t
-# ifdef _WIN64
-    __MINGW_EXTENSION typedef unsigned __int64 size_t;
-# else
-    typedef unsigned int size_t;
-#endif  /* _WIN64 */
+  __MINGW_EXTENSION typedef unsigned __int64 size_t;
 #endif  /* _SIZE_T_DEFINED */
 
 #ifndef _PTRDIFF_T_DEFINED
@@ -63,11 +59,7 @@ extern "C" {
 # ifndef _PTRDIFF_T_
 #   define _PTRDIFF_T_
 #   undef ptrdiff_t
-#   ifdef _WIN64
-      __MINGW_EXTENSION typedef __int64 ptrdiff_t;
-#   else
-      typedef int ptrdiff_t;
-#   endif  /* _WIN64 */
+    __MINGW_EXTENSION typedef __int64 ptrdiff_t;
 # endif  /* _PTRDIFF_T_ */
 #endif  /* _PTRDIFF_T_DEFINED */
 
@@ -76,11 +68,7 @@ extern "C" {
 # ifndef __intptr_t_defined
 #   define __intptr_t_defined
 #   undef intptr_t
-#   ifdef _WIN64
-      __MINGW_EXTENSION typedef __int64 intptr_t;
-#   else
-      typedef int intptr_t;
-#   endif  /* _WIN64 */
+    __MINGW_EXTENSION typedef __int64 intptr_t;
 # endif  /* __intptr_t_defined */
 #endif  /* _INTPTR_T_DEFINED */
 
@@ -93,11 +81,7 @@ extern "C" {
 
 #ifndef NULL
 # ifdef __cplusplus
-#   ifndef _WIN64
-#     define NULL 0
-#   else
-#     define NULL 0LL
-#   endif  /* W64 */
+#   define NULL 0LL
 # else
 #   define NULL ((void *)0)
 # endif  /* __cplusplus */
@@ -105,11 +89,7 @@ extern "C" {
 
 #ifndef __WIDL__
 # ifndef _UNALIGNED
-#   if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__)
-#     define _UNALIGNED __unaligned
-#   else
-#     define _UNALIGNED
-#   endif
+#   define _UNALIGNED __unaligned
 # endif  /* _UNALIGNED */
 #endif  /* __WIDL__ */
 
@@ -224,11 +204,7 @@ extern "C" {
 #ifndef _SSIZE_T_DEFINED
 # define _SSIZE_T_DEFINED
 # undef ssize_t
-# ifdef _WIN64
-    __MINGW_EXTENSION typedef __int64 ssize_t;
-# else
-    typedef int ssize_t;
-#endif  /* _WIN64 */
+  __MINGW_EXTENSION typedef __int64 ssize_t;
 #endif  /* _SSIZE_T_DEFINED */
 
 #ifndef _RSIZE_T_DEFINED
@@ -242,11 +218,7 @@ extern "C" {
 # ifndef __uintptr_t_defined
 #   define __uintptr_t_defined
 #   undef uintptr_t
-#   ifdef _WIN64
-      __MINGW_EXTENSION typedef unsigned __int64 uintptr_t;
-#   else
-      typedef unsigned int uintptr_t;
-#   endif  /* _WIN64 */
+    __MINGW_EXTENSION typedef unsigned __int64 uintptr_t;
 # endif  /* __uintptr_t_defined */
 #endif  /* _UINTPTR_T_DEFINED */
 
@@ -275,19 +247,13 @@ extern "C" {
 #endif  /* _TIME64_T_DEFINED */
 
 #ifdef _USE_32BIT_TIME_T
-# ifdef _WIN64
-#   error You cannot use 32-bit time_t (_USE_32BIT_TIME_T) with _WIN64
-#   undef _USE_32BIT_TIME_T
-# endif
+# error You cannot use 32-bit time_t (_USE_32BIT_TIME_T) with _WIN64
+# undef _USE_32BIT_TIME_T
 #endif  /* _USE_32BIT_TIME_T */
 
 #ifndef _TIME_T_DEFINED
 # define _TIME_T_DEFINED
-# ifdef _USE_32BIT_TIME_T
-    typedef __time32_t time_t;
-# else
-    typedef __time64_t time_t;
-# endif
+  typedef __time64_t time_t;
 #endif  /* _TIME_T_DEFINED */
 
   typedef struct __crt_locale_data_public

@@ -17,26 +17,20 @@ _findfirst32
 _findfirst32i64
 _findfirst64
 _findfirst64i32
-F32(_findfirst == _findfirst32)
-F64(_findfirst == _findfirst64i32)
-F32(_findfirsti64 == _findfirst32i64)
-F64(_findfirsti64 == _findfirst64)
+_findfirst == _findfirst64i32
+_findfirsti64 == _findfirst64
 _findnext32
 _findnext32i64
 _findnext64
 _findnext64i32
-F32(_findnext == _findnext32)
-F64(_findnext == _findnext64i32)
-F32(_findnexti64 == _findnext32i64)
-F64(_findnexti64 == _findnext64)
+_findnext == _findnext64i32
+_findnexti64 == _findnext64
 _fstat32
 _fstat32i64
 _fstat64
 _fstat64i32
-F32(_fstat == _fstat32)
-F64(_fstat == _fstat64i32)
-F32(_fstati64 == _fstat32i64)
-F64(_fstati64 == _fstat64)
+_fstat == _fstat64i32
+_fstati64 == _fstat64
 fstat == _fstat
 _fullpath
 _getdiskfree
@@ -55,10 +49,8 @@ _stat32
 _stat32i64
 _stat64
 _stat64i32
-F32(_stat == _stat32)
-F64(_stat == _stat64i32)
-F32(_stati64 == _stat32i64)
-F64(_stati64 == _stat64)
+_stat == _stat64i32
+_stati64 == _stat64
 stat == _stat
 _umask
 umask == _umask
@@ -74,18 +66,14 @@ _wfindfirst32
 _wfindfirst32i64
 _wfindfirst64
 _wfindfirst64i32
-F32(_wfindfirst == _wfindfirst32)
-F64(_wfindfirst == _wfindfirst64i32)
-F32(_wfindfirsti64 == _wfindfirst32i64)
-F64(_wfindfirsti64 == _wfindfirst64)
+_wfindfirst == _wfindfirst64i32
+_wfindfirsti64 == _wfindfirst64
 _wfindnext32
 _wfindnext32i64
 _wfindnext64
 _wfindnext64i32
-F32(_wfindnext == _wfindnext32)
-F64(_wfindnext == _wfindnext64i32)
-F32(_wfindnexti64 == _wfindnext32i64)
-F64(_wfindnexti64 == _wfindnext64)
+_wfindnext == _wfindnext64i32
+_wfindnexti64 == _wfindnext64
 _wfullpath
 _wmakepath
 _wmakepath_s
@@ -99,10 +87,8 @@ _wstat32
 _wstat32i64
 _wstat64
 _wstat64i32
-F32(_wstat == _wstat32)
-F64(_wstat == _wstat64i32)
-F32(_wstati64 == _wstat32i64)
-F64(_wstati64 == _wstat64)
+_wstat == _wstat64i32
+_wstati64 == _wstat64
 _wunlink
 remove
 rename

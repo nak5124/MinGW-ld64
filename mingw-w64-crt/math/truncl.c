@@ -9,7 +9,7 @@
 long double
 truncl (long double _x)
 {
-#if defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
   return trunc(_x);
 #else
   long double retval = 0.0L;
@@ -22,5 +22,5 @@ truncl (long double _x)
   __asm__ __volatile__ ("frndint;" : "=t" (retval)  : "0" (_x)); /* round towards zero */
   __asm__ __volatile__ ("fldcw %0;" : : "m" (saved_cw) ); /* restore saved control word */
   return retval;
-#endif /* defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__) */
+#endif  /* defined(__aarch64__) || defined(_ARM64_) */
 }

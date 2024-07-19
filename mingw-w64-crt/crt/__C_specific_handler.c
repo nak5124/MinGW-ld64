@@ -6,7 +6,6 @@
 
 #include <excpt.h>
 
-#if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__)
 EXCEPTION_DISPOSITION __cdecl
 __C_specific_handler(struct _EXCEPTION_RECORD *_ExceptionRecord,
                      void *_EstablisherFrame,
@@ -31,4 +30,3 @@ EXCEPTION_DISPOSITION
     void *_EstablisherFrame,
     struct _CONTEXT *_ContextRecord,
     struct _DISPATCHER_CONTEXT *_DispatcherContext) = __C_specific_handler;
-#endif

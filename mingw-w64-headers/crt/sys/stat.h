@@ -113,21 +113,12 @@ extern "C" {
 #define S_IWRITE _S_IWRITE
 #define S_IEXEC  _S_IEXEC
 
-#ifdef _USE_32BIT_TIME_T
-# define _fstat    _fstat32
-# define _fstati64 _fstat32i64
-# define _stat     _stat32
-# define _stati64  _stat32i64
-# define _wstat    _wstat32
-# define _wstati64 _wstat32i64
-#else
-# define _fstat    _fstat64i32
-# define _fstati64 _fstat64
-# define _stat     _stat64i32
-# define _stati64  _stat64
-# define _wstat    _wstat64i32
-# define _wstati64 _wstat64
-#endif  /* _USE_32BIT_TIME_T */
+#define _fstat    _fstat64i32
+#define _fstati64 _fstat64
+#define _stat     _stat64i32
+#define _stati64  _stat64
+#define _wstat    _wstat64i32
+#define _wstati64 _wstat64
 
   _CRTIMP int __cdecl _fstat32(int _FileDes, struct _stat32 *_Stat);
   _CRTIMP int __cdecl _fstat32i64(int _FileDes, struct _stat32i64 *_Stat);
@@ -147,15 +138,9 @@ extern "C" {
   int __cdecl wstat(const wchar_t *_Filename,struct stat *_Stat) __MINGW_ASM_CALL(_wstat);
 
 #if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
-# ifdef _USE_32BIT_TIME_T
-#   define fstat _fstat32i64
-#   define stat  _stat32i64
-#   define wstat _wstat32i64
-# else
-#   define fstat _fstat64
-#   define stat  _stat64
-#   define wstat _wstat64
-# endif
+# define fstat   _fstat64
+# define stat    _stat64
+# define wstat   _wstat64
 # define fstat64 _fstat64
 # define stat64  _stat64
 # define wstat64 _wstat64

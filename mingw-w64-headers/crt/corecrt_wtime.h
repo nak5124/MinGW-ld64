@@ -48,13 +48,8 @@ extern "C" {
   _CRTIMP errno_t __cdecl _wstrtime_s(wchar_t *_Buf, size_t _SizeInWords);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _wstrtime_s, wchar_t, _Buffer)
 
-#ifdef _USE_32BIT_TIME_T
-  wchar_t *__cdecl _wctime(const time_t *_Time) __MINGW_ASM_CALL(_wctime32) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  errno_t __cdecl _wctime_s(wchar_t *_Buffer, size_t _SizeInWords, const time_t *_Time) __MINGW_ASM_CALL(_wctime32_s);
-#else
   wchar_t *__cdecl _wctime(const time_t *_Time) __MINGW_ASM_CALL(_wctime64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   errno_t __cdecl _wctime_s(wchar_t *_Buffer, size_t _SizeInWords, const time_t *_Time) __MINGW_ASM_CALL(_wctime64_s);
-#endif
 
 #ifdef __cplusplus
 }

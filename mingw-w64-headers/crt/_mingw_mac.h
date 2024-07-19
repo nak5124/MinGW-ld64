@@ -39,75 +39,35 @@
 #define __MINGW32_MINOR_VERSION 11
 
 /* Set VC specific compiler target macros.  */
-#if defined(__x86_64) && defined(_X86_)
-# undef _X86_  /* _X86_ is not for __x86_64 */
+#if defined(__x86_64__) && defined(_X86_)
+# undef _X86_  /* _X86_ is not for __x86_64__ */
 #endif
 
-#if defined(_X86_) && !defined(_M_IX86) && !defined(_M_AMD64) && !defined(__x86_64)
-#  if defined(__i486__)
-#    define _M_IX86 400
-#  elif defined(__i586__)
-#    define _M_IX86 500
-#  elif defined(__i686__)
-#    define _M_IX86 600
-#  else
-#    define _M_IX86 300
-#  endif
-#endif  /* defined(_X86_) && !defined(_M_IX86) && !defined(_M_AMD64) && !defined(__x86_64) */
-
-#if defined(__x86_64) && !defined(_M_IX86) && !defined(_M_AMD64)
+#ifdef __x86_64__
 # define _M_AMD64 100
 # define _M_X64   100
+# define _AMD64_  1
 #endif
 
-#if defined(__arm__) && !defined(_M_ARM) && !defined(_M_ARMT) && !defined(_M_THUMB)
-# define _M_ARM   100
-# define _M_ARMT  100
-# define _M_THUMB 100
-# ifndef _ARM_
-#   define _ARM_ 1
-# endif
-# ifndef _M_ARM_NT
-#   define _M_ARM_NT 1
-# endif
-#endif
-
-#if defined(__aarch64__) && !defined(_M_ARM64)
+#ifdef __aarch64__
 # define _M_ARM64 1
-# ifndef _ARM64_
-#   define _ARM64_ 1
-# endif
+# define _ARM64_  1
 #endif
 
-#ifndef _X86_
 # define __MINGW_IMP_SYMBOL(sym)  __imp_##sym
 # define __MINGW_IMP_LSYMBOL(sym) __imp_##sym
 # define __MINGW_USYMBOL(sym)     sym
 # define __MINGW_LSYMBOL(sym)     _##sym
-#else
-# define __MINGW_IMP_SYMBOL(sym)  _imp__##sym
-# define __MINGW_IMP_LSYMBOL(sym) __imp__##sym
-# define __MINGW_USYMBOL(sym)     _##sym
-# define __MINGW_LSYMBOL(sym)     sym
-#endif  /* _X86_ */
 
 #define __MINGW_ASM_CALL(func)     __asm__(__MINGW64_STRINGIFY(__MINGW_USYMBOL(func)))
 #define __MINGW_ASM_CRT_CALL(func) __asm__(__STRINGIFY(func))
 
 #ifndef __PTRDIFF_TYPE__
-# ifdef _WIN64
-#   define __PTRDIFF_TYPE__ long long int
-# else
-#   define __PTRDIFF_TYPE__ long int
-# endif
+# define __PTRDIFF_TYPE__ long long int
 #endif  /* __PTRDIFF_TYPE__ */
 
 #ifndef __SIZE_TYPE__
-# ifdef _WIN64
-#   define __SIZE_TYPE__ long long unsigned int
-# else
-#   define __SIZE_TYPE__ long unsigned int
-# endif
+# define __SIZE_TYPE__ long long unsigned int
 #endif  /* __SIZE_TYPE__ */
 
 #ifndef __WCHAR_TYPE__

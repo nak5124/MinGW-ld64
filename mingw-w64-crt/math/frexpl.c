@@ -5,7 +5,7 @@
  */
 long double frexpl(long double value, int* exp);
 
-#if defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
 
 double frexp(double value, int* exp);
 
@@ -15,7 +15,7 @@ long double frexpl(long double value, int* exp)
   return frexp(value, exp);
 }
 
-#elif defined(_AMD64_) || defined(__x86_64__) || defined(_X86_) || defined(__i386__)
+#elif defined(__x86_64__) || defined(_AMD64_)
 
 #include <stdint.h>
 

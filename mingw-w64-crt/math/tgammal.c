@@ -5,7 +5,7 @@
  */
 #include "cephes_mconf.h"
 
-#if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#if defined(__aarch64__) || defined(_ARM64_)
 double tgamma(double x);
 
 long double tgammal(long double x)

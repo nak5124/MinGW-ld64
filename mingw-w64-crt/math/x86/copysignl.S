@@ -21,7 +21,6 @@
 	.globl __MINGW_USYMBOL(copysignl)
 	.def	__MINGW_USYMBOL(copysignl);	.scl	2;	.type	32;	.endef
 __MINGW_USYMBOL(copysignl):
-#if defined(_AMD64_) || defined(__x86_64__)
 	movq	(%rdx), %rax
 	movq	%rax, (%rcx)
 	movq	8(%rdx), %rax
@@ -32,16 +31,6 @@ __MINGW_USYMBOL(copysignl):
 	movq	%rax, 8(%rcx)
 	movq	%rcx, %rax
 	ret
-#elif defined(_X86_) || defined(__i386__)
-	movl	24(%esp),%edx
-	movl	12(%esp),%eax
-	andl	$0x8000,%edx
-	andl	$0x7fff,%eax
-	orl	%edx,%eax
-	movl	%eax,12(%esp)
-	fldt	4(%esp)
-	ret
-#endif
 
 .globl __MINGW_USYMBOL(_copysignl)
 	.set	__MINGW_USYMBOL(_copysignl),__MINGW_USYMBOL(copysignl)

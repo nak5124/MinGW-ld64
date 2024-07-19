@@ -50,11 +50,7 @@ static char rcsid[] = "$OpenBSD: gmon.c,v 1.8 1997/07/23 21:11:27 kstailey Exp $
 /* XXX needed? */
 //extern char *minbrk __asm ("minbrk");
 
-#ifdef _WIN64
 #define MINUS_ONE_P (-1LL)
-#else
-#define MINUS_ONE_P (-1)
-#endif
 
 #ifdef __MINGW32__
 #include <string.h>

@@ -4,7 +4,7 @@
 #define __CRT__NO_INLINE
 #include <windows.h>
 
-/* for __x86_64 only */
+/* for __x86_64__ only */
 
 DWORD64 UnsignedMultiplyExtract128(DWORD64 Multiplier,DWORD64 Multiplicand,BYTE Shift) {
       DWORD64 extractedProduct;

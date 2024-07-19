@@ -70,19 +70,11 @@
 #define _UI64_MAX 0xffffffffffffffffull
 
 #ifndef SIZE_MAX
-# ifdef _WIN64
-#   define SIZE_MAX _UI64_MAX
-# else
-#   define SIZE_MAX UINT_MAX
-# endif
+# define SIZE_MAX _UI64_MAX
 #endif
 
 #ifndef SSIZE_MAX
-# ifdef _WIN64
-#   define SSIZE_MAX _I64_MAX
-# else
-#   define SSIZE_MAX INT_MAX
-# endif
+# define SSIZE_MAX _I64_MAX
 #endif
 
 #ifndef RSIZE_MAX

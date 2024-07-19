@@ -39,11 +39,7 @@
 #include <corecrt.h>
 
 /* If compiler doesn't inline, at least avoid passing args on the stack. */
-#ifndef _WIN64
-#define _MCOUNT_CALL __attribute__ ((regparm (2)))
-#else
 #define _MCOUNT_CALL
-#endif
 
 #define _MCOUNT_DECL __attribute__((gnu_inline)) __inline__ \
    void _MCOUNT_CALL _mcount_private

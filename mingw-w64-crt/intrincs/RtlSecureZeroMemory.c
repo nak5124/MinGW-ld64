@@ -4,7 +4,7 @@
 PVOID WINAPI RtlSecureZeroMemory(PVOID ptr,SIZE_T cnt)
 {
   volatile char *vptr = (volatile char *)ptr;
-#ifdef __x86_64
+#ifdef __x86_64__
   __stosb ((PBYTE)((DWORD64)vptr),0,cnt);
 #else
   while (cnt != 0)
@@ -12,6 +12,6 @@ PVOID WINAPI RtlSecureZeroMemory(PVOID ptr,SIZE_T cnt)
       *vptr++ = 0;
       cnt--;
     }
-#endif /* __x86_64 */
+#endif  /* __x86_64__ */
   return ptr;
 }

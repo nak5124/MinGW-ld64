@@ -5,9 +5,9 @@
  */
 #include <fenv.h>
 
-#if !(defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__))
+#if defined(__x86_64__) || defined(_AMD64_)
 int __mingw_has_sse (void);
-#endif /* !(defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__)) */
+#endif  /* defined(__x86_64__) || defined(_AMD64_) */
 
 /* 7.6.4.1
    The fegetenv function stores the current floating-point environment
@@ -15,9 +15,7 @@ int __mingw_has_sse (void);
 
 int fegetenv (fenv_t * envp)
 {
-#if defined(_ARM_) || defined(__arm__)
-  __asm__ volatile ("fmrx %0, FPSCR" : "=r" (*envp));
-#elif defined(_ARM64_) || defined(__aarch64__)
+#if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
   __asm__ volatile ("mrs %0, fpcr" : "=r" (fpcr));
   envp->__cw = fpcr;
@@ -33,7 +31,7 @@ int fegetenv (fenv_t * envp)
       envp->__unused0 = (((unsigned int) _mxcsr) >> 16);
       envp->__unused1 = (((unsigned int) _mxcsr) & 0xffff);
     }
-#endif /* defined(_ARM_) || defined(__arm__) || defined(_ARM64_) || defined(__aarch64__) */
+#endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
 
