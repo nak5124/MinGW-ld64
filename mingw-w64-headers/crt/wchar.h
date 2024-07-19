@@ -7,6 +7,7 @@
 #define _INC_WCHAR
 
 #include <corecrt.h>
+#include <memory.h>
 #include <corecrt_wconio.h>
 #include <corecrt_wctype.h>
 #include <corecrt_wdirect.h>

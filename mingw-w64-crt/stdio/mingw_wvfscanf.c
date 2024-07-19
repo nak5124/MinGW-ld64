@@ -1247,19 +1247,19 @@ __mingw_swformat (_IFP *s, const wchar_t *format, va_list argp)
 
 	  if ((flags & IS_LL) != 0)
 	    {
-	      long double d = __mingw_wcstold (wbuf, &tmp_wbuf_ptr/*, flags & USE_GROUP*/);
+	      long double d = wcstold (wbuf, &tmp_wbuf_ptr/*, flags & USE_GROUP*/);
 	      if ((flags & IS_SUPPRESSED) == 0 && tmp_wbuf_ptr != wbuf)
 		*(npos != 0 ? (long double *) get_va_nth (argp, npos) : va_arg (arg, long double *)) = is_neg ? -d : d;
 	    }
 	  else if ((flags & IS_L) != 0)
 	    {
-	      double d = __mingw_wcstod (wbuf, &tmp_wbuf_ptr/*, flags & USE_GROUP*/);
+	      double d = wcstod (wbuf, &tmp_wbuf_ptr/*, flags & USE_GROUP*/);
 	      if ((flags & IS_SUPPRESSED) == 0 && tmp_wbuf_ptr != wbuf)
 		*(npos != 0 ? (double *) get_va_nth (argp, npos) : va_arg (arg, double *)) = is_neg ? -d : d;
 	    }
 	  else
 	    {
-	      float d = __mingw_wcstof (wbuf, &tmp_wbuf_ptr/*, flags & USE_GROUP*/);
+	      float d = wcstof (wbuf, &tmp_wbuf_ptr/*, flags & USE_GROUP*/);
 	      if ((flags & IS_SUPPRESSED) == 0 && tmp_wbuf_ptr != wbuf)
 		*(npos != 0 ? (float *) get_va_nth (argp, npos) : va_arg (arg, float *)) = is_neg ? -d : d;
 	    }

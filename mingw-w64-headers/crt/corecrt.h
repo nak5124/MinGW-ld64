@@ -151,15 +151,6 @@ extern "C" {
 # define _CRT_UNUSED(x) (void)x
 #endif
 
-  _CRTIMP_ALTERNATIVE void __cdecl _invalid_parameter_noinfo(void);
-  _CRTIMP __MINGW_ATTRIB_NORETURN void __cdecl _invalid_parameter_noinfo_noreturn(void);
-
-  _CRTIMP __MINGW_ATTRIB_NORETURN
-  void __cdecl _invoke_watson
-  (
-    wchar_t const* _Expression, wchar_t const* _FunctionName, wchar_t const* _FileName, unsigned int _LineNo, uintptr_t _Reserved
-  );
-
 #ifndef _PGLOBAL
 # define _PGLOBAL
 #endif
@@ -256,20 +247,14 @@ extern "C" {
   typedef __time64_t time_t;
 #endif  /* _TIME_T_DEFINED */
 
-  typedef struct __crt_locale_data_public
-  {
-    unsigned short const* _locale_pctype;
-    int _locale_mb_cur_max;
-    unsigned int _locale_lc_codepage;
-  } __crt_locale_data_public;
+  _CRTIMP_ALTERNATIVE void __cdecl _invalid_parameter_noinfo(void);
+  _CRTIMP __MINGW_ATTRIB_NORETURN void __cdecl _invalid_parameter_noinfo_noreturn(void);
 
-  typedef struct __crt_locale_pointers
-  {
-    struct __crt_locale_data*    locinfo;
-    struct __crt_multibyte_data* mbcinfo;
-  } __crt_locale_pointers;
-
-  typedef __crt_locale_pointers* _locale_t;
+  _CRTIMP __MINGW_ATTRIB_NORETURN
+  void __cdecl _invoke_watson
+  (
+    wchar_t const* _Expression, wchar_t const* _FunctionName, wchar_t const* _FileName, unsigned int _LineNo, uintptr_t _Reserved
+  );
 
   typedef struct _Mbstatet
   {
@@ -439,14 +424,16 @@ extern "C" {
   typedef struct threadmbcinfostruct *pthreadmbcinfo;
   struct __lc_time_data;
 
-  typedef struct localeinfo_struct {
+  typedef struct localeinfo_struct
+  {
     pthreadlocinfo locinfo;
     pthreadmbcinfo mbcinfo;
   } _locale_tstruct, *_locale_t;
 
 #ifndef _TAGLC_ID_DEFINED
 # define _TAGLC_ID_DEFINED
-  typedef struct tagLC_ID {
+  typedef struct tagLC_ID
+  {
     unsigned short wLanguage;
     unsigned short wCountry;
     unsigned short wCodePage;
@@ -455,7 +442,8 @@ extern "C" {
 
 #ifndef _THREADLOCALEINFO
 # define _THREADLOCALEINFO
-  typedef struct threadlocaleinfostruct {
+  typedef struct threadlocaleinfostruct
+  {
     const unsigned short *_locale_pctype;
     int _locale_mb_cur_max;
     unsigned int _locale_lc_codepage;

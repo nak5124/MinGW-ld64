@@ -45,13 +45,6 @@ _CRTIMP wchar_t*** __cdecl __p___wargv(void);
 _CRTIMP char*** __cdecl __p__environ(void);
 _CRTIMP wchar_t*** __cdecl __p__wenviron(void);
 
-typedef enum _crt_argv_mode
-{
-  _crt_argv_no_arguments,
-  _crt_argv_unexpanded_arguments,
-  _crt_argv_expanded_arguments,
-} _crt_argv_mode;
-
 _CRTIMP int __cdecl _initialize_narrow_environment(void);
 _CRTIMP int __cdecl _initialize_wide_environment(void);
 _CRTIMP int __cdecl _configure_narrow_argv(_crt_argv_mode mode);

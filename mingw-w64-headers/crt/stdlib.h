@@ -429,6 +429,11 @@ extern "C" {
 
 #ifndef _CRT_ALLOCATION_DEFINED  /* Also in malloc.h */
 # define _CRT_ALLOCATION_DEFINED
+# undef  _alloca
+# define _alloca(x) __builtin_alloca((x))
+# undef   alloca
+# define  alloca _alloca
+
   _CRTIMP void *__cdecl _calloc_base(size_t _Count, size_t _Size);
   _CRTIMP void *__cdecl calloc(size_t _NumOfElements, size_t _SizeOfElements);
   _CRTIMP int __cdecl _callnewh(size_t _Size);

@@ -51,16 +51,16 @@
 #endif
 
 #ifdef __x86_64__
-#ifndef _MM_MALLOC_H_INCLUDED
 #include <stdlib.h>
 #include <errno.h>
 /* Make sure _mm_malloc and _mm_free are defined.  */
 #include <malloc.h>
-#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#define _MM_MALLOC_H_INCLUDED
 #include <x86intrin.h>
 #include <cpuid.h>
 
