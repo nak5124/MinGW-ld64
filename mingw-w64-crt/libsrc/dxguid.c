@@ -10,12 +10,8 @@
 
 */
 
-#if defined(__LCC__) || defined(__GNUC__)
 #define INITGUID 1
 #include <windows.h>
-#else
-#include <basetyps.h>
-#endif 
 
 #include <d3d9.h>
 #include <d3d10.h>

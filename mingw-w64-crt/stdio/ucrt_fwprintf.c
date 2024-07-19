@@ -8,10 +8,8 @@
 // libmingwex doesn't use the ucrt version of headers, and wassert.c can
 // end up requiring a concrete version of it.
 
-#ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Winline"
-#endif
 
 #undef __MSVCRT_VERSION__
 #define _UCRT
@@ -36,6 +34,5 @@ int __cdecl fwprintf(FILE *ptr, const wchar_t *fmt, ...)
 }
 
 int __cdecl (*__MINGW_IMP_SYMBOL(fwprintf))(FILE *, const wchar_t *, ...) = fwprintf;
-#ifdef __GNUC__
+
 #pragma GCC diagnostic pop
-#endif

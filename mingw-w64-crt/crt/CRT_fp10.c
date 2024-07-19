@@ -15,18 +15,8 @@ void _fpreset (void)
   __asm__ __volatile__ (
     "msr	fpcr, %0\n\t" : : "r"(0LL /* INITIAL_FPSCR */));
 #else
-#ifdef __GNUC__
   __asm__ ("fninit");
-#else /* msvc: */
-  __asm fninit;
-#endif
 #endif
 }
 
-#ifdef __GNUC__
 void __attribute__ ((alias ("_fpreset"))) fpreset(void);
-#else
-void fpreset(void) {
-    _fpreset();
-}
-#endif

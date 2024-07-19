@@ -4,8 +4,4 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#ifdef __GNUC__
-# define _CRTALLOC(x) __attribute__((section(x), used))
-#else
-# error Your compiler is not supported.
-#endif
+#define _CRTALLOC(x) __attribute__((section(x), used))

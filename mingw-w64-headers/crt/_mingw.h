@@ -7,6 +7,12 @@
 #ifndef _INC__MINGW_H
 #define _INC__MINGW_H
 
+#ifndef __WIDL__
+# ifndef __GNUC__
+#   error Only GNU compatible compilers are supported!
+# endif
+#endif
+
 #include "_mingw_mac.h"
 
 /* Include _cygwin.h if we're building a Cygwin application. */
@@ -26,42 +32,31 @@
 #endif
 
 /* C/C++ specific language defines.  */
-#ifndef __GNUC__
-# ifndef __MINGW_IMPORT
-#   define __MINGW_IMPORT __declspec(dllimport)
-# endif
-# ifndef _CRTIMP
-#   define _CRTIMP __declspec(dllimport)
-# endif
-# define __DECLSPEC_SUPPORTED
-# define __attribute__(x)  /* nothing */
-#else
-# ifdef __declspec
-#   ifndef __MINGW_IMPORT
+#ifdef __declspec
+#  ifndef __MINGW_IMPORT
 /* Note the extern. This is needed to work around GCC's
 limitations in handling dllimport attribute.  */
-#     define __MINGW_IMPORT extern __attribute__((__dllimport__))
-#   endif
-#   ifndef _CRTIMP
-#     undef __USE_CRTIMP
-#     if !defined(_CRTBLD) && !defined(_SYSCRT)
-#       define __USE_CRTIMP 1
-#     endif
-#     ifdef __USE_CRTIMP
-#       define _CRTIMP __attribute__((__dllimport__))
-#     else
-#       define _CRTIMP
-#     endif
-#   endif
-#   define __DECLSPEC_SUPPORTED
-# else
-#   undef __DECLSPEC_SUPPORTED
-#   undef __MINGW_IMPORT
-#   ifndef _CRTIMP
-#     define _CRTIMP
-#   endif
-# endif  /* __declspec */
-#endif  /* __GNUC__ */
+#    define __MINGW_IMPORT extern __attribute__((__dllimport__))
+#  endif
+#  ifndef _CRTIMP
+#    undef __USE_CRTIMP
+#    if !defined(_CRTBLD) && !defined(_SYSCRT)
+#      define __USE_CRTIMP 1
+#    endif
+#    ifdef __USE_CRTIMP
+#      define _CRTIMP __attribute__((__dllimport__))
+#    else
+#      define _CRTIMP
+#    endif
+#  endif
+#  define __DECLSPEC_SUPPORTED
+#else
+# undef __DECLSPEC_SUPPORTED
+# undef __MINGW_IMPORT
+# ifndef _CRTIMP
+#   define _CRTIMP
+# endif
+#endif  /* __declspec */
 
 #ifndef _LDCRTIMP
 # if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
@@ -87,8 +82,8 @@ limitations in handling dllimport attribute.  */
 # endif
 #endif
 
-#if !defined(__MINGW_INTRIN_INLINE) && defined(__GNUC__)
-#define __MINGW_INTRIN_INLINE extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
+#ifndef __MINGW_INTRIN_INLINE
+# define __MINGW_INTRIN_INLINE extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
 #endif
 
 #ifndef __CYGWIN__
@@ -101,29 +96,13 @@ limitations in handling dllimport attribute.  */
 #ifdef __cplusplus
 # define __UNUSED_PARAM(x)
 #else
-# ifdef __GNUC__
-#   define __UNUSED_PARAM(x) x __attribute__((__unused__))
-# else
-#   define __UNUSED_PARAM(x) x
-# endif
+# define __UNUSED_PARAM(x) x __attribute__((__unused__))
 #endif
 
-#ifndef __GNUC__
-# define __restrict__  /* nothing */
-#endif
-
-#if __MINGW_GNUC_PREREQ(3, 1) && !defined(__GNUG__)
+#if __MINGW_GNUC_PREREQ(3, 1) && !defined(__cplusplus)
 # define __restrict_arr __restrict
 #else
-# ifdef __GNUC__
-#   define __restrict_arr /* Not supported in old GCC.  */
-# else
-#   if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-#     define __restrict_arr restrict
-#   else
-#     define __restrict_arr /* Not supported.  */
-#   endif
-# endif
+# define __restrict_arr
 #endif
 
 #ifndef _CRT_STRINGIZE
@@ -150,38 +129,34 @@ limitations in handling dllimport attribute.  */
 
 #ifndef _INT128_DEFINED
 # define _INT128_DEFINED
-# ifdef __GNUC__
-#   define __int8  char
-#   define __int16 short
-#   define __int32 int
-#   define __int64 long long
-#   ifdef _WIN64
-#     if (__clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 1)) && !defined(__SIZEOF_INT128__)
-        /* clang >= 3.1 has __int128 but no size macro */
-#       define __SIZEOF_INT128__ 16
-#     endif
-#     ifndef __SIZEOF_INT128__
-        typedef int __int128 __attribute__((__mode__ (TI)));
-#     endif
-#   endif  /* _WIN64 */
-# endif  /* __GNUC__ */
+# define __int8  char
+# define __int16 short
+# define __int32 int
+# define __int64 long long
+# ifdef _WIN64
+#   if (__clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 1)) && !defined(__SIZEOF_INT128__)
+      /* clang >= 3.1 has __int128 but no size macro */
+#     define __SIZEOF_INT128__ 16
+#   endif
+#   ifndef __SIZEOF_INT128__
+      typedef int __int128 __attribute__((__mode__ (TI)));
+#   endif
+# endif  /* _WIN64 */
 #endif  /* _INT128_DEFINED */
 
-#ifdef __GNUC__
-# define __ptr32
-# define __ptr64
-# ifndef __unaligned
-#   define __unaligned
-# endif
-# ifndef __w64
-#   define __w64
-# endif
-# ifdef __cplusplus
-#   define __forceinline inline __attribute__((__always_inline__))
-# else
-#   define __forceinline extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
-# endif  /* __cplusplus */
-#endif  /* __GNUC__ */
+#define __ptr32
+#define __ptr64
+#ifndef __unaligned
+# define __unaligned
+#endif
+#ifndef __w64
+# define __w64
+#endif
+#ifdef __cplusplus
+# define __forceinline inline __attribute__((__always_inline__))
+#else
+# define __forceinline extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
+#endif  /* __cplusplus */
 
 #if !defined(_WIN32) && !defined(__CYGWIN__)
 # error Only Win32 target is supported!
@@ -204,7 +179,7 @@ limitations in handling dllimport attribute.  */
    DLL-base runtime, therefore this define has to be set.
    As our headers are possibly used by windows compiler having a static
    C-runtime, we make this definition gnu compiler specific here.  */
-#if !defined(_DLL) && defined(__GNUC__)
+#ifndef _DLL
 # define _DLL
 #endif
 
@@ -229,13 +204,6 @@ limitations in handling dllimport attribute.  */
 
 #ifndef _CRT_OBSOLETE
 # define _CRT_OBSOLETE(_NewItem)
-#endif
-
-/* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
-#if __MINGW_GNUC_PREREQ(4, 6)
-# if defined(__GNUC__) && (defined(__GXX_EXPERIMENTAL_CXX0X__) || __cplusplus >= 201103L)
-#   define _NATIVE_NULLPTR_SUPPORTED
-# endif
 #endif
 
 #if (defined(_BSD_SOURCE) || defined(_SVID_SOURCE)) && !defined(_DEFAULT_SOURCE)
@@ -301,6 +269,13 @@ limitations in handling dllimport attribute.  */
 # if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
 #  define __MINGW_USE_ISOCXX11 1
 #  define __MINGW_USE_ISOC99   1
+# endif
+#endif
+
+/* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
+#if __MINGW_GNUC_PREREQ(4, 6)
+# if __MINGW_USE_ISOCXX11
+#   define _NATIVE_NULLPTR_SUPPORTED
 # endif
 #endif
 

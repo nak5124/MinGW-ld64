@@ -58,14 +58,12 @@
 #define _I32_MAX  2147483647
 #define _UI32_MAX 0xffffffffu
 
-#ifdef __GNUC__
-# undef  LONG_LONG_MAX
-# define LONG_LONG_MAX 9223372036854775807ll
-# undef  LONG_LONG_MIN
-# define LONG_LONG_MIN (-LONG_LONG_MAX-1)
-# undef  ULONG_LONG_MAX
-# define ULONG_LONG_MAX (2ull * LONG_LONG_MAX + 1ull)
-#endif
+#undef  LONG_LONG_MAX
+#define LONG_LONG_MAX 9223372036854775807ll
+#undef  LONG_LONG_MIN
+#define LONG_LONG_MIN (-LONG_LONG_MAX-1)
+#undef  ULONG_LONG_MAX
+#define ULONG_LONG_MAX (2ull * LONG_LONG_MAX + 1ull)
 
 #define _I64_MIN  (-9223372036854775807ll - 1)
 #define _I64_MAX  9223372036854775807ll

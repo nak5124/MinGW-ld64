@@ -688,10 +688,8 @@ extern "C" {
     return _Ret;
   }
 
-#ifdef __GNUC__
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wshadow"
-#endif
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow"
 
 #if __USE_MINGW_ANSI_STDIO && !defined(_CRTBLD)
 
@@ -1021,9 +1019,7 @@ extern "C++" {
 
 #endif  /* __USE_MINGW_ANSI_STDIO */
 
-#ifdef __GNUC__
-# pragma GCC diagnostic pop
-#endif
+#pragma GCC diagnostic pop
 
   _CRTIMP errno_t __cdecl _get_stream_buffer_pointers(FILE *_Stream, char ** *_Base, char ** *_Pointer, int ** _Count);
 

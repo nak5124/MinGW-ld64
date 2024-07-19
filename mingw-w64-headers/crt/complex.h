@@ -138,7 +138,6 @@ extern "C" {
   long double _Complex ctanhl(long double _Complex _Z);
   long double norml(long double _Complex _Z);
 
-#ifdef __GNUC__
 #ifndef __CRT__NO_INLINE
 #include <math.h>
 /* double */
@@ -220,7 +219,6 @@ extern "C" {
   }
 
 #endif  /* __CRT__NO_INLINE */
-#endif  /* __GNUC__ */
 
 #ifdef __cplusplus
 }

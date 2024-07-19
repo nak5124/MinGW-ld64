@@ -99,9 +99,7 @@ extern "C" {
   _CRTIMP unsigned __cdecl _setsystime(struct tm *_Tm,unsigned _MilliSec) __MINGW_ATTRIB_DEPRECATED;
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-#if defined(__GNUC__)
   void __cdecl tzset(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-#endif
 
 #ifdef _USE_32BIT_TIME_T
   char *__cdecl ctime(const time_t *_Time) __MINGW_ASM_CALL(_ctime32) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;

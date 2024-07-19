@@ -133,11 +133,7 @@ extern "C" {
 # define _HUGE _HUGE
 #endif
 
-#ifdef __GNUC__
-# define HUGE_VAL __builtin_huge_val()
-#else
-# define HUGE_VAL _HUGE
-#endif  /* __GNUC__ */
+#define HUGE_VAL __builtin_huge_val()
 
 #ifndef _EXCEPTION_DEFINED  /* Also in corecrt_startup.h */
 # define _EXCEPTION_DEFINED
@@ -316,20 +312,10 @@ extern "C" {
 
 #if defined(__MINGW_USE_ISOC99) || !defined(__STRICT_ANSI__) || defined(__cplusplus)
 
-#ifdef __GNUC__
-# define HUGE_VALF __builtin_huge_valf()
-# define HUGE_VALL __builtin_huge_vall()
-# define INFINITY  __builtin_inff()
-# define NAN       __builtin_nanf("")
-#else
-  extern const float __INFF;
-# define HUGE_VALF __INFF
-  extern const long double  __INFL;
-# define HUGE_VALL __INFL
-# define INFINITY HUGE_VALF
-  extern const double __QNANF;
-# define NAN __QNANF
-#endif  /* __GNUC__ */
+#define HUGE_VALF __builtin_huge_valf()
+#define HUGE_VALL __builtin_huge_vall()
+#define INFINITY  __builtin_inff()
+#define NAN       __builtin_nanf("")
 
 /* Use the compiler's builtin define for FLT_EVAL_METHOD to
    set float_t and double_t.  */
@@ -893,29 +879,12 @@ __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
  *  false whenever a NaN is involved, with the exception of the != op,
  *  which always returns true: yes, (NaN != NaN) is true).
  */
-#ifdef __GNUC__
-# define isgreater(x, y)      __builtin_isgreater(x, y)
-# define isgreaterequal(x, y) __builtin_isgreaterequal(x, y)
-# define isless(x, y)         __builtin_isless(x, y)
-# define islessequal(x, y)    __builtin_islessequal(x, y)
-# define islessgreater(x, y)  __builtin_islessgreater(x, y)
-# define isunordered(x, y)    __builtin_isunordered(x, y)
-#else
-#ifndef __CRT__NO_INLINE
-  __CRT_INLINE int __cdecl __fp_unordered_compare(long double _X, long double _Y)
-  {
-    unsigned short retval;
-    __asm__ __volatile__("fucom %%st(1);" "fnstsw;": "=a" (retval) : "t" (_X), "u" (_Y));
-    return retval;
-  }
-#endif  /* __CRT__NO_INLINE */
-# define isgreater(x, y)      ((__fp_unordered_compare(x, y) & 0x4500) == 0)
-# define isless(x, y)         ((__fp_unordered_compare(y, x) & 0x4500) == 0)
-# define isgreaterequal(x, y) ((__fp_unordered_compare(x, y) & FP_INFINITE) == 0)
-# define islessequal(x, y)    ((__fp_unordered_compare(y, x) & FP_INFINITE) == 0)
-# define islessgreater(x, y)  ((__fp_unordered_compare(x, y) & FP_SUBNORMAL) == 0)
-# define isunordered(x, y)    ((__fp_unordered_compare(x, y) & 0x4500) == 0x4500)
-#endif
+#define isgreater(x, y)      __builtin_isgreater(x, y)
+#define isgreaterequal(x, y) __builtin_isgreaterequal(x, y)
+#define isless(x, y)         __builtin_isless(x, y)
+#define islessequal(x, y)    __builtin_islessequal(x, y)
+#define islessgreater(x, y)  __builtin_islessgreater(x, y)
+#define isunordered(x, y)    __builtin_isunordered(x, y)
 
 #endif  /* defined(__MINGW_USE_ISOC99) || !defined(__STRICT_ANSI__) || defined(__cplusplus) */
 

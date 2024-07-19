@@ -42,12 +42,8 @@ extern "C" {
 #define _mm_free(a)      _aligned_free(a)
 #define _mm_malloc(a, b) _aligned_malloc(a, b)
 
-#ifdef __GNUC__
-# undef _alloca
-# define _alloca(x) __builtin_alloca((x))
-#else
-  void *__cdecl _alloca(size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#endif
+#undef _alloca
+#define _alloca(x) __builtin_alloca((x))
 
 #ifndef _CRT_ALLOCATION_DEFINED  /* Also in stdlib.h */
 # define _CRT_ALLOCATION_DEFINED

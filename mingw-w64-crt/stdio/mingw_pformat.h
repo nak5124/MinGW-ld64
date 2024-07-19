@@ -26,24 +26,16 @@
  * other than the MinGW implementation of GCC.
  */
 #ifndef __cdecl
-# ifdef __GNUC__
-#  define __cdecl __attribute__((__cdecl__))
-# else
-#  define __cdecl
-# endif
+# define __cdecl __attribute__((__cdecl__))
 #endif
 
 #ifndef __MINGW_GNUC_PREREQ
-# if defined __GNUC__ && defined __GNUC_MINOR__
-#  define __MINGW_GNUC_PREREQ( major, minor )\
-     (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
-# else
-#  define __MINGW_GNUC_PREREQ( major, minor )
-# endif
+# define __MINGW_GNUC_PREREQ( major, minor ) \
+    (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
 #endif
 
 #ifndef  __MINGW_NOTHROW
-# if __MINGW_GNUC_PREREQ( 3, 3 )
+# if __MINGW_GNUC_PREREQ(3, 3)
 #  define __MINGW_NOTHROW  __attribute__((__nothrow__))
 # else
 #  define __MINGW_NOTHROW

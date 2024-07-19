@@ -12,8 +12,7 @@
 #include <stdlib.h>
 #include <windows.h>
 
-#if defined(__GNUC__) && ((__GNUC__ > 4) \
-  || (__GNUC__ == 4 && __GNUC_MINOR__ >= 3))
+#if __MINGW_GNUC_PREREQ(4, 3)
 /* gcc >= 4.3, also needs binutils >= 2.19 */
 #define __threadlocal__ __thread
 #else

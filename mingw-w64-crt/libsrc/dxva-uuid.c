@@ -9,12 +9,8 @@
  * warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-#if defined(__LCC__) || defined(__GNUC__)
 #define INITGUID 1
 #include <windows.h>
-#else
-#include <basetyps.h>
-#endif
 
 DEFINE_GUID(IID_IDirectXVideoDecoderService, 0xfc51a551, 0xd5e7, 0x11d9, 0xaf,0x55,0x00,0x05,0x4e,0x43,0xff,0x02);
 DEFINE_GUID(IID_IDirectXVideoAccelerationService, 0xfc51a550, 0xd5e7, 0x11d9, 0xaf,0x55,0x00,0x05,0x4e,0x43,0xff,0x02);

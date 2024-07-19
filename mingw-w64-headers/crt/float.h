@@ -10,8 +10,6 @@
  * point controller.
  *
  */
-#if (defined(__GNUC__) && defined(__GNUC_MINOR__)) || \
-  (defined(__clang__) && defined(__clang_major__))
 #if (__GNUC__ < 4  || (__GNUC__ == 4 && __GNUC_MINOR__ < 6)) || (__clang_major__ >=3)
 # if !defined(_FLOAT_H___) && !defined(__FLOAT_H) && !defined(__CLANG_FLOAT_H)
 #   include_next <float.h>
@@ -105,7 +103,6 @@
 
 #   define _FLOAT_H___
 # endif
-#endif
 #endif
 
 #ifndef _MINGW_FLOAT_H_

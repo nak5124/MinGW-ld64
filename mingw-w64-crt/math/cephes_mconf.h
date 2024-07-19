@@ -55,7 +55,7 @@ typedef union uD { unsigned short sh[4]; double d; } uD;
 #define NEGZERO (-0.0)
 #undef NAN
 #undef INFINITY
-#if (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ > 2))
+#if __MINGW_GNUC_PREREQ(3, 3)
 #define INFINITY __builtin_huge_val()
 #define NAN __builtin_nan("")
 #else
@@ -95,7 +95,7 @@ extern double __QNAN;
 
 #undef NANL
 #undef INFINITYL
-#if (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ > 2))
+#if __MINGW_GNUC_PREREQ(3, 3)
 #define INFINITYL __builtin_huge_vall()
 #define NANL __builtin_nanl("")
 #else
@@ -125,7 +125,7 @@ extern long double __QNANL;
 
 #undef NANF
 #undef INFINITYF
-#if (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ > 2))
+#if __MINGW_GNUC_PREREQ(3, 3)
 #define INFINITYF __builtin_huge_valf()
 #define NANF __builtin_nanf("")
 #else

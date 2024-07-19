@@ -122,11 +122,7 @@
 #ifdef __WIDL__
 # define __MINGW_EXTENSION
 #else
-# if defined(__GNUC__) || defined(__GNUG__)
-#   define __MINGW_EXTENSION __extension__
-# else
-#   define __MINGW_EXTENSION
-# endif
+# define __MINGW_EXTENSION __extension__
 #endif  /* __WIDL__ */
 
 /* Special case nameless struct/union.  */
@@ -174,17 +170,9 @@
 # endif
 #endif  /* __MSABI_LONG */
 
-#ifdef __GNUC__
-# define __MINGW_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-#else
-# define __MINGW_GCC_VERSION 0
-#endif
+#define __MINGW_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
-#if defined(__GNUC__) && defined(__GNUC_MINOR__)
-# define __MINGW_GNUC_PREREQ(major, minor) (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
-#else
-# define __MINGW_GNUC_PREREQ(major, minor) 0
-#endif
+#define __MINGW_GNUC_PREREQ(major, minor) (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
 
 #if __MINGW_GNUC_PREREQ(3, 3)
 # define __MINGW_ATTRIB_NONNULL(arg) __attribute__((__nonnull__(arg)))
@@ -192,11 +180,7 @@
 # define __MINGW_ATTRIB_NONNULL(arg)
 #endif
 
-#ifdef __GNUC__
-# define __MINGW_ATTRIB_UNUSED __attribute__((__unused__))
-#else
-# define __MINGW_ATTRIB_UNUSED
-#endif
+#define __MINGW_ATTRIB_UNUSED __attribute__((__unused__))
 
 #if __MINGW_GNUC_PREREQ(3, 1)
 # define __MINGW_ATTRIB_USED __attribute__((__used__))
@@ -241,13 +225,8 @@
 # define __MINGW_ATTRIB_DEPRECATED_SEC_WARN
 #endif
 
-#ifdef __GNUC__
-# define __MINGW_ATTRIB_NORETURN __attribute__((__noreturn__))
-# define __MINGW_ATTRIB_CONST    __attribute__((__const__))
-#else
-# define __MINGW_ATTRIB_NORETURN
-# define __MINGW_ATTRIB_CONST
-#endif
+#define __MINGW_ATTRIB_NORETURN __attribute__((__noreturn__))
+#define __MINGW_ATTRIB_CONST    __attribute__((__const__))
 
 #if __MINGW_GNUC_PREREQ(3, 0)
 # define __MINGW_ATTRIB_MALLOC __attribute__((__malloc__))
@@ -273,6 +252,14 @@
 # define __MINGW_PRAGMA_PARAM(x) _Pragma (#x)
 #else
 # define __MINGW_PRAGMA_PARAM(x)
+#endif
+
+#ifdef __clang__
+# define __MINGW_PRINTF_FORMAT __printf__
+# define __MINGW_SCANF_FORMAT  __scanf__
+#else
+# define __MINGW_PRINTF_FORMAT __gnu_printf__
+# define __MINGW_SCANF_FORMAT  __gnu_scanf__
 #endif
 
 #ifdef __clang__
@@ -304,10 +291,8 @@
 #undef __mingw_ovr
 #ifdef __cplusplus
 # define __mingw_ovr inline __cdecl
-#elif defined(__GNUC__)
-# define __mingw_ovr static __attribute__((__unused__)) __inline__ __cdecl
 #else
-# define __mingw_ovr static __cdecl
+# define __mingw_ovr static __attribute__((__unused__)) __inline__ __cdecl
 #endif  /* __cplusplus */
 
 #if __MINGW_GNUC_PREREQ(4, 3) || defined(__clang__)
@@ -391,7 +376,7 @@
 
 /* Enable workaround for ABI incompatibility on affected platforms */
 #ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
-# if defined(__GNUC__) && defined(__cplusplus)
+# ifdef __cplusplus
 #   define  WIDL_EXPLICIT_AGGREGATE_RETURNS
 # endif
 #endif

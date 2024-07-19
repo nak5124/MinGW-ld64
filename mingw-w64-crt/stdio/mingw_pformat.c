@@ -77,7 +77,7 @@
 
 #include <pshpack1.h>
 /* workaround gcc bug */
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #define ATTRIB_GCC_STRUCT __attribute__((gcc_struct))
 #else
 #define ATTRIB_GCC_STRUCT
@@ -213,7 +213,6 @@ typedef enum
  * collapse this to a simple assignment.
  */
 
-#ifdef __GNUC__
 /* provides for some deadcode elimination via compile time eval */
 #define __pformat_arg_length(x) \
 __builtin_choose_expr (                                         \
@@ -247,16 +246,6 @@ __builtin_choose_expr (                                         \
       __builtin_types_compatible_p (typeof (x), unsigned char),          \
         PFORMAT_LENGTH_CHAR,                                             \
   PFORMAT_LENGTH_INT))))))))))
-
-#else
-#define __pformat_arg_length( type )    \
-  sizeof( type ) == sizeof( __tI128 )   ? PFORMAT_LENGTH_LLONG128 : \
-  sizeof( type ) == sizeof( long long ) ? PFORMAT_LENGTH_LLONG : \
-  sizeof( type ) == sizeof( long )      ? PFORMAT_LENGTH_LONG  : \
-  sizeof( type ) == sizeof( short )     ? PFORMAT_LENGTH_SHORT : \
-  sizeof( type ) == sizeof( char )      ? PFORMAT_LENGTH_CHAR  : \
-  /* should never need this default */    PFORMAT_LENGTH_INT
-#endif
 
 typedef struct
 {

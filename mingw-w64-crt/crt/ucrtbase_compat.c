@@ -4,10 +4,8 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Winline"
-#endif
 
 #undef __MSVCRT_VERSION__
 #define _UCRT
@@ -171,6 +169,4 @@ void __cdecl (*__MINGW_IMP_SYMBOL(_amsg_exit))(int) = _amsg_exit;
 unsigned int __cdecl (*__MINGW_IMP_SYMBOL(_get_output_format))(void) = _get_output_format;
 void __cdecl (*__MINGW_IMP_SYMBOL(tzset))(void) = tzset;
 int __cdecl (*__MINGW_IMP_SYMBOL(__ms_fwprintf))(FILE *, const wchar_t *, ...) = __ms_fwprintf;
-#ifdef __GNUC__
 #pragma GCC diagnostic pop
-#endif
