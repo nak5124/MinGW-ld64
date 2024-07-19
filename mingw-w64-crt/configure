@@ -6447,12 +6447,12 @@ fi
 if test "x$enable_libarm64" = xyes
 then :
 
-  test ${LIB64+y}
-else case e in #(
-  e) { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Building the runtime to use libarm64 with lib64 is unsupported." >&5
-printf "%s\n" "$as_me: WARNING: Building the runtime to use libarm64 with lib64 is unsupported." >&2;} ;;
-esac
-fi])
+  if test ${LIB64+y}
+then :
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Building the runtime to use libarm64 with lib64 is unsupported." >&5
+printf "%s\n" "$as_me: WARNING: Building the runtime to use libarm64 with lib64 is unsupported." >&2;}
+fi
+fi
 
 case $host_cpu in #(
   x86_64) :

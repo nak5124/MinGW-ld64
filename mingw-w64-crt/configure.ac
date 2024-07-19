@@ -118,7 +118,7 @@ AS_CASE([$enable_libarm64],
 AM_CONDITIONAL([LIBARM64], [AS_VAR_TEST_SET([LIBARM64])])
 
 AS_VAR_IF([enable_libarm64],[yes],[
-  AS_VAR_TEST_SET([LIB64])],
+  AS_IF([AS_VAR_TEST_SET([LIB64])],
     [AC_MSG_WARN([Building the runtime to use libarm64 with lib64 is unsupported.])])])
 
 AS_CASE([$host_cpu],
