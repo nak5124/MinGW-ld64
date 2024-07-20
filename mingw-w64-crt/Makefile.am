@@ -232,7 +232,8 @@ src_ucrtbase64=\
   math/x86/remquol.S \
   math/x86/scalbn.S math/x86/scalbnf.S math/x86/scalbnl.S \
   math/x86/sinl.c math/x86/sin.def.h math/x86/sinl_internal.S \
-  math/x86/tanl.S
+  math/x86/tanl.S \
+  misc/wcstold.c
 
 # Files included in libucrt*.a on arm64
 src_ucrtbasearm64=\
@@ -326,8 +327,7 @@ src_libmingwex_x86=\
   \
   math/x86/cossin.c   \
   math/x86/fastmath.h \
-  math/x86/fucom.c    \
-  misc/mb_wc_common.h  misc/mingw_wcstold.c
+  math/x86/fucom.c
 
 src_libmingwex64=$(src_libmingwex_x86)
 

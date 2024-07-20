@@ -18,14 +18,10 @@
 #endif
 #include <windows.h>
 #include <locale.h>
-#include <wchar.h>
 #include <stdlib.h>
 #include <string.h>
-#include <mbstring.h>
 
-#include "mb_wc_common.h"
-
-long double __mingw_wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse)
+long double __cdecl wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse)
 {
   char * cs;
   char * cse;
@@ -73,6 +69,4 @@ long double __mingw_wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __rest
   return ret;
 }
 
-long double __cdecl
-wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse)
-  __attribute__((alias("__mingw_wcstold")));
+long double __cdecl (*__MINGW_IMP_SYMBOL(wcstold))(const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse) = wcstold;
