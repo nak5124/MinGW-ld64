@@ -644,8 +644,7 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	gdtoa/hexnan.c gdtoa/misc.c gdtoa/qnan.c gdtoa/smisc.c \
 	gdtoa/strtodg.c gdtoa/strtodnrp.c gdtoa/strtof.c \
 	gdtoa/strtopx.c gdtoa/sum.c gdtoa/ulp.c math/x86/cossin.c \
-	math/x86/fastmath.h math/x86/fucom.c misc/mb_wc_common.h \
-	misc/mingw_wcstold.c
+	math/x86/fastmath.h math/x86/fucom.c
 @CFGUARD_TRUE@am__objects_21 = cfguard/lib64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
 am__objects_22 =  \
 	cfguard/lib64_libmingwex_a-mingw_cfguard_support.$(OBJEXT) \
@@ -827,8 +826,7 @@ am__objects_23 = gdtoa/lib64_libmingwex_a-arithchk.$(OBJEXT) \
 	gdtoa/lib64_libmingwex_a-sum.$(OBJEXT) \
 	gdtoa/lib64_libmingwex_a-ulp.$(OBJEXT) \
 	math/x86/lib64_libmingwex_a-cossin.$(OBJEXT) \
-	math/x86/lib64_libmingwex_a-fucom.$(OBJEXT) \
-	misc/lib64_libmingwex_a-mingw_wcstold.$(OBJEXT)
+	math/x86/lib64_libmingwex_a-fucom.$(OBJEXT)
 am__objects_24 = $(am__objects_23)
 @LIB64_TRUE@am_lib64_libmingwex_a_OBJECTS = $(am__objects_22) \
 @LIB64_TRUE@	$(am__objects_24)
@@ -944,7 +942,8 @@ am__lib64_libucrt_extra_a_SOURCES_DIST = crt/ucrtbase_compat.c \
 	math/x86/nearbyintl.S math/x86/powl.c math/x86/pow.def.h \
 	math/x86/remainderl.S math/x86/remquol.S math/x86/scalbn.S \
 	math/x86/scalbnf.S math/x86/scalbnl.S math/x86/sinl.c \
-	math/x86/sin.def.h math/x86/sinl_internal.S math/x86/tanl.S
+	math/x86/sin.def.h math/x86/sinl_internal.S math/x86/tanl.S \
+	misc/wcstold.c
 am__objects_36 = crt/lib64_libucrt_extra_a-ucrtbase_compat.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-frexpf.$(OBJEXT) \
@@ -1047,7 +1046,8 @@ am__objects_37 = $(am__objects_36) \
 	math/x86/lib64_libucrt_extra_a-scalbnl.$(OBJEXT) \
 	math/x86/lib64_libucrt_extra_a-sinl.$(OBJEXT) \
 	math/x86/lib64_libucrt_extra_a-sinl_internal.$(OBJEXT) \
-	math/x86/lib64_libucrt_extra_a-tanl.$(OBJEXT)
+	math/x86/lib64_libucrt_extra_a-tanl.$(OBJEXT) \
+	misc/lib64_libucrt_extra_a-wcstold.$(OBJEXT)
 @LIB64_TRUE@am_lib64_libucrt_extra_a_OBJECTS = $(am__objects_37)
 lib64_libucrt_extra_a_OBJECTS = $(am_lib64_libucrt_extra_a_OBJECTS)
 lib64_libucrtapp_extra_a_AR = $(AR) $(ARFLAGS)
@@ -3200,7 +3200,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_mbwc_convert.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_usleep.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-mkstemp.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-sleep.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-strsafe.Po \
@@ -3227,6 +3226,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po \
+	misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Po \
 	misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po \
 	misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po \
 	misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po \
@@ -4372,7 +4372,8 @@ src_ucrtbase64 = \
   math/x86/remquol.S \
   math/x86/scalbn.S math/x86/scalbnf.S math/x86/scalbnl.S \
   math/x86/sinl.c math/x86/sin.def.h math/x86/sinl_internal.S \
-  math/x86/tanl.S
+  math/x86/tanl.S \
+  misc/wcstold.c
 
 
 # Files included in libucrt*.a on arm64
@@ -4456,8 +4457,7 @@ src_libmingwex_x86 = \
   \
   math/x86/cossin.c   \
   math/x86/fastmath.h \
-  math/x86/fucom.c    \
-  misc/mb_wc_common.h  misc/mingw_wcstold.c
+  math/x86/fucom.c
 
 src_libmingwex64 = $(src_libmingwex_x86)
 
@@ -6626,8 +6626,6 @@ math/x86/lib64_libmingwex_a-cossin.$(OBJEXT):  \
 	math/x86/$(am__dirstamp) math/x86/$(DEPDIR)/$(am__dirstamp)
 math/x86/lib64_libmingwex_a-fucom.$(OBJEXT): math/x86/$(am__dirstamp) \
 	math/x86/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-mingw_wcstold.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
 
 lib64/libmingwex.a: $(lib64_libmingwex_a_OBJECTS) $(lib64_libmingwex_a_DEPENDENCIES) $(EXTRA_lib64_libmingwex_a_DEPENDENCIES) lib64/$(am__dirstamp)
 	$(AM_V_at)-rm -f lib64/libmingwex.a
@@ -6919,6 +6917,8 @@ math/x86/lib64_libucrt_extra_a-sinl_internal.$(OBJEXT):  \
 	math/x86/$(am__dirstamp) math/x86/$(DEPDIR)/$(am__dirstamp)
 math/x86/lib64_libucrt_extra_a-tanl.$(OBJEXT):  \
 	math/x86/$(am__dirstamp) math/x86/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libucrt_extra_a-wcstold.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
 
 lib64/libucrt_extra.a: $(lib64_libucrt_extra_a_OBJECTS) $(lib64_libucrt_extra_a_DEPENDENCIES) $(EXTRA_lib64_libucrt_extra_a_DEPENDENCIES) lib64/$(am__dirstamp)
 	$(AM_V_at)-rm -f lib64/libucrt_extra.a
@@ -9634,7 +9634,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_mbwc_convert.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_usleep.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-mkstemp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-sleep.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-strsafe.Po@am__quote@ # am--include-marker
@@ -9661,6 +9660,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po@am__quote@ # am--include-marker
@@ -15185,20 +15185,6 @@ math/x86/lib64_libmingwex_a-fucom.obj: math/x86/fucom.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o math/x86/lib64_libmingwex_a-fucom.obj `if test -f 'math/x86/fucom.c'; then $(CYGPATH_W) 'math/x86/fucom.c'; else $(CYGPATH_W) '$(srcdir)/math/x86/fucom.c'; fi`
 
-misc/lib64_libmingwex_a-mingw_wcstold.o: misc/mingw_wcstold.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-mingw_wcstold.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Tpo -c -o misc/lib64_libmingwex_a-mingw_wcstold.o `test -f 'misc/mingw_wcstold.c' || echo '$(srcdir)/'`misc/mingw_wcstold.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mingw_wcstold.c' object='misc/lib64_libmingwex_a-mingw_wcstold.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-mingw_wcstold.o `test -f 'misc/mingw_wcstold.c' || echo '$(srcdir)/'`misc/mingw_wcstold.c
-
-misc/lib64_libmingwex_a-mingw_wcstold.obj: misc/mingw_wcstold.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-mingw_wcstold.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Tpo -c -o misc/lib64_libmingwex_a-mingw_wcstold.obj `if test -f 'misc/mingw_wcstold.c'; then $(CYGPATH_W) 'misc/mingw_wcstold.c'; else $(CYGPATH_W) '$(srcdir)/misc/mingw_wcstold.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/mingw_wcstold.c' object='misc/lib64_libmingwex_a-mingw_wcstold.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-mingw_wcstold.obj `if test -f 'misc/mingw_wcstold.c'; then $(CYGPATH_W) 'misc/mingw_wcstold.c'; else $(CYGPATH_W) '$(srcdir)/misc/mingw_wcstold.c'; fi`
-
 libsrc/lib64_libmingwthrd_a-mingwthrd_mt.o: libsrc/mingwthrd_mt.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwthrd_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libsrc/lib64_libmingwthrd_a-mingwthrd_mt.o -MD -MP -MF libsrc/$(DEPDIR)/lib64_libmingwthrd_a-mingwthrd_mt.Tpo -c -o libsrc/lib64_libmingwthrd_a-mingwthrd_mt.o `test -f 'libsrc/mingwthrd_mt.c' || echo '$(srcdir)/'`libsrc/mingwthrd_mt.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) libsrc/$(DEPDIR)/lib64_libmingwthrd_a-mingwthrd_mt.Tpo libsrc/$(DEPDIR)/lib64_libmingwthrd_a-mingwthrd_mt.Po
@@ -16528,6 +16514,20 @@ math/x86/lib64_libucrt_extra_a-sinl.obj: math/x86/sinl.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='math/x86/sinl.c' object='math/x86/lib64_libucrt_extra_a-sinl.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o math/x86/lib64_libucrt_extra_a-sinl.obj `if test -f 'math/x86/sinl.c'; then $(CYGPATH_W) 'math/x86/sinl.c'; else $(CYGPATH_W) '$(srcdir)/math/x86/sinl.c'; fi`
+
+misc/lib64_libucrt_extra_a-wcstold.o: misc/wcstold.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-wcstold.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Tpo -c -o misc/lib64_libucrt_extra_a-wcstold.o `test -f 'misc/wcstold.c' || echo '$(srcdir)/'`misc/wcstold.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/wcstold.c' object='misc/lib64_libucrt_extra_a-wcstold.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-wcstold.o `test -f 'misc/wcstold.c' || echo '$(srcdir)/'`misc/wcstold.c
+
+misc/lib64_libucrt_extra_a-wcstold.obj: misc/wcstold.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-wcstold.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Tpo -c -o misc/lib64_libucrt_extra_a-wcstold.obj `if test -f 'misc/wcstold.c'; then $(CYGPATH_W) 'misc/wcstold.c'; else $(CYGPATH_W) '$(srcdir)/misc/wcstold.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/wcstold.c' object='misc/lib64_libucrt_extra_a-wcstold.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-wcstold.obj `if test -f 'misc/wcstold.c'; then $(CYGPATH_W) 'misc/wcstold.c'; else $(CYGPATH_W) '$(srcdir)/misc/wcstold.c'; fi`
 
 crt/lib64_libucrtapp_extra_a-__C_specific_handler.o: crt/__C_specific_handler.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/lib64_libucrtapp_extra_a-__C_specific_handler.o -MD -MP -MF crt/$(DEPDIR)/lib64_libucrtapp_extra_a-__C_specific_handler.Tpo -c -o crt/lib64_libucrtapp_extra_a-__C_specific_handler.o `test -f 'crt/__C_specific_handler.c' || echo '$(srcdir)/'`crt/__C_specific_handler.c
@@ -26907,7 +26907,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_mbwc_convert.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_usleep.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mkstemp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-sleep.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-strsafe.Po
@@ -26934,6 +26933,7 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po
@@ -28063,7 +28063,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_matherr.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_mbwc_convert.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_usleep.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mingw_wcstold.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-mkstemp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-sleep.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-strsafe.Po
@@ -28090,6 +28089,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-wcstold.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po
