@@ -693,12 +693,6 @@ extern "C" {
 
 #if __USE_MINGW_ANSI_STDIO && !defined(_CRTBLD)
 
-/* There seems to be a bug about builtins and static overrides of them
-   in g++.  So we need to do here some trickery.  */
-#ifdef __cplusplus
-extern "C++" {
-#endif
-
   __mingw_ovr
   __MINGW_GNU_PRINTF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int vfprintf(FILE *__stream, const char *__format, __builtin_va_list __local_argv)
@@ -906,10 +900,6 @@ extern "C++" {
 /* Override __builtin_printf-routines ... Kludge for libstdc++ ...*/
 #define __builtin_vsnprintf __mingw_vsnprintf
 #define __builtin_vsprintf  __mingw_vsprintf
-
-#ifdef __cplusplus
-}
-#endif
 
 #else
 
