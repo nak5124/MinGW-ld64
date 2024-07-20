@@ -35,11 +35,13 @@ extern "C" {
     int _useflag;
   } _HEAPINFO;
 
+#ifndef _CRT_ALLOCATION_DEFINED  /* Also in stdlib.h */
+# define _CRT_ALLOCATION_DEFINED
+
+#define _MM_MALLOC_H_INCLUDED
 #define _mm_free(a)      _aligned_free(a)
 #define _mm_malloc(a, b) _aligned_malloc(a, b)
 
-#ifndef _CRT_ALLOCATION_DEFINED  /* Also in stdlib.h */
-# define _CRT_ALLOCATION_DEFINED
 # undef  _alloca
 # define _alloca(x) __builtin_alloca((x))
 # undef   alloca

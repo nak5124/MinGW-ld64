@@ -429,6 +429,11 @@ extern "C" {
 
 #ifndef _CRT_ALLOCATION_DEFINED  /* Also in malloc.h */
 # define _CRT_ALLOCATION_DEFINED
+
+#define _MM_MALLOC_H_INCLUDED
+#define _mm_free(a)      _aligned_free(a)
+#define _mm_malloc(a, b) _aligned_malloc(a, b)
+
 # undef  _alloca
 # define _alloca(x) __builtin_alloca((x))
 # undef   alloca
