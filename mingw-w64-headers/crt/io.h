@@ -9,6 +9,7 @@
 #include <corecrt.h>
 #include <share.h>
 #include <corecrt_wio.h>
+#include <direct.h>
 
 #pragma pack(push, _CRT_PACKING)
 
