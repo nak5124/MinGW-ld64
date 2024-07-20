@@ -5,7 +5,7 @@ EXPORTS
 #include "func.def.in"
 
 _access
-; access is provided as an alias for __mingw_access
+; access is provided by ucrt-access.c
 _access_s
 _chdir
 chdir == _chdir

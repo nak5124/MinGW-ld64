@@ -5,7 +5,7 @@
 
 ; This is list of symbol aliases from the Visual C++ 1.0 oldnames.lib library
 ; FIXME: some of these symbol aliases are commented, check and document why
-; access is provided as an alias for __mingw_access
+; access is provided by ucrt-access.c
 ADD_UNDERSCORE(cgets)
 ADD_UNDERSCORE(chdir)
 ADD_UNDERSCORE(chmod)

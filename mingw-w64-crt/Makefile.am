@@ -288,7 +288,7 @@ src_libmingwex=\
   misc/tsearch.c         misc/twalk.c           \
   misc/wdirent.c         \
   misc/wmemchr.c         misc/wmemcmp.c             misc/wmemcpy.c          misc/wmemmove.c              misc/wmempcpy.c        \
-  misc/wmemset.c         misc/ftw.c                 misc/ftw64.c            misc/mingw-access.c          \
+  misc/wmemset.c         misc/ftw.c                 misc/ftw64.c            \
   \
   ssp/chk_fail.c         ssp/gets_chk.c             ssp/memcpy_chk.c        ssp/memmove_chk.c \
   ssp/mempcpy_chk.c \
