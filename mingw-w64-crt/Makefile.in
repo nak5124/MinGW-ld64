@@ -535,7 +535,8 @@ am__lib64_libmingw32_a_SOURCES_DIST = include/oscalls.h \
 	crt/mingw_helpers.c crt/pseudo-reloc.c crt/udll_argv.c \
 	crt/usermatherr.c crt/xtxtmode.c crt/crt_handler.c \
 	crt/tlsthrd.c crt/tlsmthread.c crt/tlsmcrt.c crt/cxa_atexit.c \
-	crt/cxa_thread_atexit.c crt/tls_atexit.c
+	crt/cxa_thread_atexit.c crt/tls_atexit.c crt/exit_wrappers.c \
+	crt/ucrt_exit_wrappers.c
 am__objects_20 = crt/lib64_libmingw32_a-crtexewin.$(OBJEXT) \
 	crt/lib64_libmingw32_a-dll_argv.$(OBJEXT) \
 	crt/lib64_libmingw32_a-gccmain.$(OBJEXT) \
@@ -566,7 +567,9 @@ am__objects_20 = crt/lib64_libmingw32_a-crtexewin.$(OBJEXT) \
 	crt/lib64_libmingw32_a-tlsmcrt.$(OBJEXT) \
 	crt/lib64_libmingw32_a-cxa_atexit.$(OBJEXT) \
 	crt/lib64_libmingw32_a-cxa_thread_atexit.$(OBJEXT) \
-	crt/lib64_libmingw32_a-tls_atexit.$(OBJEXT)
+	crt/lib64_libmingw32_a-tls_atexit.$(OBJEXT) \
+	crt/lib64_libmingw32_a-exit_wrappers.$(OBJEXT) \
+	crt/lib64_libmingw32_a-ucrt_exit_wrappers.$(OBJEXT)
 @LIB64_TRUE@am_lib64_libmingw32_a_OBJECTS = $(am__objects_20)
 lib64_libmingw32_a_OBJECTS = $(am_lib64_libmingw32_a_OBJECTS)
 lib64_libmingwex_a_AR = $(AR) $(ARFLAGS)
@@ -633,16 +636,17 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	stdio/mingw_vsnprintfw.c stdio/mingw_vsprintf.c \
 	stdio/mingw_vsprintfw.c stdio/mingw_wscanf.c \
 	stdio/mingw_wvfscanf.c stdio/truncate.c stdio/vasprintf.c \
-	stdio/mingw_asprintf.c stdio/mingw_vasprintf.c \
-	cfguard/mingw_cfguard_loadcfg.S gdtoa/gd_arith.h \
-	gdtoa/gd_qnan.h gdtoa/gdtoa.h gdtoa/gdtoaimp.h \
-	gdtoa/arithchk.c gdtoa/dmisc.c gdtoa/dtoa.c gdtoa/g_dfmt.c \
-	gdtoa/gdtoa.c gdtoa/gethex.c gdtoa/g_ffmt.c gdtoa/g__fmt.c \
-	gdtoa/gmisc.c gdtoa/g_xfmt.c gdtoa/hd_init.c gdtoa/hexnan.c \
-	gdtoa/misc.c gdtoa/qnan.c gdtoa/smisc.c gdtoa/strtodg.c \
-	gdtoa/strtodnrp.c gdtoa/strtof.c gdtoa/strtopx.c gdtoa/sum.c \
-	gdtoa/ulp.c math/x86/cossin.c math/x86/fastmath.h \
-	math/x86/fucom.c misc/mb_wc_common.h misc/mingw_wcstold.c
+	stdio/mingw_asprintf.c stdio/mingw_vasprintf.c time/clock.c \
+	time/nanosleep.c cfguard/mingw_cfguard_loadcfg.S \
+	gdtoa/gd_arith.h gdtoa/gd_qnan.h gdtoa/gdtoa.h \
+	gdtoa/gdtoaimp.h gdtoa/arithchk.c gdtoa/dmisc.c gdtoa/dtoa.c \
+	gdtoa/g_dfmt.c gdtoa/gdtoa.c gdtoa/gethex.c gdtoa/g_ffmt.c \
+	gdtoa/g__fmt.c gdtoa/gmisc.c gdtoa/g_xfmt.c gdtoa/hd_init.c \
+	gdtoa/hexnan.c gdtoa/misc.c gdtoa/qnan.c gdtoa/smisc.c \
+	gdtoa/strtodg.c gdtoa/strtodnrp.c gdtoa/strtof.c \
+	gdtoa/strtopx.c gdtoa/sum.c gdtoa/ulp.c math/x86/cossin.c \
+	math/x86/fastmath.h math/x86/fucom.c misc/mb_wc_common.h \
+	misc/mingw_wcstold.c
 @CFGUARD_TRUE@am__objects_21 = cfguard/lib64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
 am__objects_22 =  \
 	cfguard/lib64_libmingwex_a-mingw_cfguard_support.$(OBJEXT) \
@@ -801,7 +805,8 @@ am__objects_22 =  \
 	stdio/lib64_libmingwex_a-vasprintf.$(OBJEXT) \
 	stdio/lib64_libmingwex_a-mingw_asprintf.$(OBJEXT) \
 	stdio/lib64_libmingwex_a-mingw_vasprintf.$(OBJEXT) \
-	$(am__objects_21)
+	time/lib64_libmingwex_a-clock.$(OBJEXT) \
+	time/lib64_libmingwex_a-nanosleep.$(OBJEXT) $(am__objects_21)
 am__objects_23 = gdtoa/lib64_libmingwex_a-arithchk.$(OBJEXT) \
 	gdtoa/lib64_libmingwex_a-dmisc.$(OBJEXT) \
 	gdtoa/lib64_libmingwex_a-dtoa.$(OBJEXT) \
@@ -1470,7 +1475,8 @@ am__libarm64_libmingw32_a_SOURCES_DIST = include/oscalls.h \
 	crt/mingw_helpers.c crt/pseudo-reloc.c crt/udll_argv.c \
 	crt/usermatherr.c crt/xtxtmode.c crt/crt_handler.c \
 	crt/tlsthrd.c crt/tlsmthread.c crt/tlsmcrt.c crt/cxa_atexit.c \
-	crt/cxa_thread_atexit.c crt/tls_atexit.c
+	crt/cxa_thread_atexit.c crt/tls_atexit.c crt/exit_wrappers.c \
+	crt/ucrt_exit_wrappers.c
 am__objects_63 = crt/libarm64_libmingw32_a-crtexewin.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-dll_argv.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-gccmain.$(OBJEXT) \
@@ -1501,7 +1507,9 @@ am__objects_63 = crt/libarm64_libmingw32_a-crtexewin.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-tlsmcrt.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-cxa_atexit.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-cxa_thread_atexit.$(OBJEXT) \
-	crt/libarm64_libmingw32_a-tls_atexit.$(OBJEXT)
+	crt/libarm64_libmingw32_a-tls_atexit.$(OBJEXT) \
+	crt/libarm64_libmingw32_a-exit_wrappers.$(OBJEXT) \
+	crt/libarm64_libmingw32_a-ucrt_exit_wrappers.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libmingw32_a_OBJECTS = $(am__objects_63)
 libarm64_libmingw32_a_OBJECTS = $(am_libarm64_libmingw32_a_OBJECTS)
 libarm64_libmingwex_a_AR = $(AR) $(ARFLAGS)
@@ -1568,9 +1576,9 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	stdio/mingw_vsnprintfw.c stdio/mingw_vsprintf.c \
 	stdio/mingw_vsprintfw.c stdio/mingw_wscanf.c \
 	stdio/mingw_wvfscanf.c stdio/truncate.c stdio/vasprintf.c \
-	stdio/mingw_asprintf.c stdio/mingw_vasprintf.c \
-	cfguard/mingw_cfguard_loadcfg.S math/arm64/sincos.S \
-	math/arm64/sincosf.S
+	stdio/mingw_asprintf.c stdio/mingw_vasprintf.c time/clock.c \
+	time/nanosleep.c cfguard/mingw_cfguard_loadcfg.S \
+	math/arm64/sincos.S math/arm64/sincosf.S
 @CFGUARD_TRUE@am__objects_64 = cfguard/libarm64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
 am__objects_65 =  \
 	cfguard/libarm64_libmingwex_a-mingw_cfguard_support.$(OBJEXT) \
@@ -1729,6 +1737,8 @@ am__objects_65 =  \
 	stdio/libarm64_libmingwex_a-vasprintf.$(OBJEXT) \
 	stdio/libarm64_libmingwex_a-mingw_asprintf.$(OBJEXT) \
 	stdio/libarm64_libmingwex_a-mingw_vasprintf.$(OBJEXT) \
+	time/libarm64_libmingwex_a-clock.$(OBJEXT) \
+	time/libarm64_libmingwex_a-nanosleep.$(OBJEXT) \
 	$(am__objects_64)
 am__objects_66 = math/arm64/libarm64_libmingwex_a-sincos.$(OBJEXT) \
 	math/arm64/libarm64_libmingwex_a-sincosf.$(OBJEXT)
@@ -2573,6 +2583,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-cxa_thread_atexit.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-dll_argv.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-dllargv.Po \
+	crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-gccmain.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-merr.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-mingw_custom.Po \
@@ -2586,6 +2597,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-tlsmthread.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-tlssup.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-tlsthrd.Po \
+	crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-ucrtexewin.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-udll_argv.Po \
 	crt/$(DEPDIR)/lib64_libmingw32_a-udllargc.Po \
@@ -2608,6 +2620,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-cxa_thread_atexit.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-dll_argv.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-dllargv.Po \
+	crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-gccmain.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-merr.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-mingw_custom.Po \
@@ -2621,6 +2634,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-tlsmthread.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-tlssup.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-tlsthrd.Po \
+	crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-ucrtexewin.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-udll_argv.Po \
 	crt/$(DEPDIR)/libarm64_libmingw32_a-udllargc.Po \
@@ -3545,7 +3559,11 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csinh.Po \
 	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po \
 	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po \
-	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po
+	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po \
+	time/$(DEPDIR)/lib64_libmingwex_a-clock.Po \
+	time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po \
+	time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po \
+	time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -4211,7 +4229,7 @@ src_libmingw32 = include/oscalls.h include/internal.h include/sect_attribs.h \
   crt/usermatherr.c   \
   crt/xtxtmode.c      crt/crt_handler.c    \
   crt/tlsthrd.c       crt/tlsmthread.c     crt/tlsmcrt.c   \
-  crt/cxa_atexit.c    crt/cxa_thread_atexit.c crt/tls_atexit.c
+  crt/cxa_atexit.c    crt/cxa_thread_atexit.c   crt/tls_atexit.c   crt/exit_wrappers.c   crt/ucrt_exit_wrappers.c
 
 src_libscrnsave = libsrc/scrnsave.c
 src_libscrnsavw = libsrc/scrnsave.c
@@ -4432,7 +4450,8 @@ src_libmingwex = cfguard/mingw_cfguard_support.c crt/dllentry.c \
 	stdio/mingw_vsnprintfw.c stdio/mingw_vsprintf.c \
 	stdio/mingw_vsprintfw.c stdio/mingw_wscanf.c \
 	stdio/mingw_wvfscanf.c stdio/truncate.c stdio/vasprintf.c \
-	stdio/mingw_asprintf.c stdio/mingw_vasprintf.c $(am__append_3)
+	stdio/mingw_asprintf.c stdio/mingw_vasprintf.c time/clock.c \
+	time/nanosleep.c $(am__append_3)
 
 # these go into both 32 and 64 bit x86 versions:
 src_libmingwex_x86 = \
@@ -6195,6 +6214,10 @@ crt/lib64_libmingw32_a-cxa_thread_atexit.$(OBJEXT):  \
 	crt/$(am__dirstamp) crt/$(DEPDIR)/$(am__dirstamp)
 crt/lib64_libmingw32_a-tls_atexit.$(OBJEXT): crt/$(am__dirstamp) \
 	crt/$(DEPDIR)/$(am__dirstamp)
+crt/lib64_libmingw32_a-exit_wrappers.$(OBJEXT): crt/$(am__dirstamp) \
+	crt/$(DEPDIR)/$(am__dirstamp)
+crt/lib64_libmingw32_a-ucrt_exit_wrappers.$(OBJEXT):  \
+	crt/$(am__dirstamp) crt/$(DEPDIR)/$(am__dirstamp)
 
 lib64/libmingw32.a: $(lib64_libmingw32_a_OBJECTS) $(lib64_libmingw32_a_DEPENDENCIES) $(EXTRA_lib64_libmingw32_a_DEPENDENCIES) lib64/$(am__dirstamp)
 	$(AM_V_at)-rm -f lib64/libmingw32.a
@@ -6542,6 +6565,16 @@ stdio/lib64_libmingwex_a-mingw_asprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libmingwex_a-mingw_vasprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+time/$(am__dirstamp):
+	@$(MKDIR_P) time
+	@: > time/$(am__dirstamp)
+time/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) time/$(DEPDIR)
+	@: > time/$(DEPDIR)/$(am__dirstamp)
+time/lib64_libmingwex_a-clock.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/lib64_libmingwex_a-nanosleep.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
 cfguard/lib64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT):  \
 	cfguard/$(am__dirstamp) cfguard/$(DEPDIR)/$(am__dirstamp)
 gdtoa/$(am__dirstamp):
@@ -7524,6 +7557,10 @@ crt/libarm64_libmingw32_a-cxa_thread_atexit.$(OBJEXT):  \
 	crt/$(am__dirstamp) crt/$(DEPDIR)/$(am__dirstamp)
 crt/libarm64_libmingw32_a-tls_atexit.$(OBJEXT): crt/$(am__dirstamp) \
 	crt/$(DEPDIR)/$(am__dirstamp)
+crt/libarm64_libmingw32_a-exit_wrappers.$(OBJEXT):  \
+	crt/$(am__dirstamp) crt/$(DEPDIR)/$(am__dirstamp)
+crt/libarm64_libmingw32_a-ucrt_exit_wrappers.$(OBJEXT):  \
+	crt/$(am__dirstamp) crt/$(DEPDIR)/$(am__dirstamp)
 
 libarm64/libmingw32.a: $(libarm64_libmingw32_a_OBJECTS) $(libarm64_libmingw32_a_DEPENDENCIES) $(EXTRA_libarm64_libmingw32_a_DEPENDENCIES) libarm64/$(am__dirstamp)
 	$(AM_V_at)-rm -f libarm64/libmingw32.a
@@ -7841,6 +7878,10 @@ stdio/libarm64_libmingwex_a-mingw_asprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libmingwex_a-mingw_vasprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+time/libarm64_libmingwex_a-clock.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/libarm64_libmingwex_a-nanosleep.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
 cfguard/libarm64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT):  \
 	cfguard/$(am__dirstamp) cfguard/$(DEPDIR)/$(am__dirstamp)
 math/arm64/$(am__dirstamp):
@@ -8852,6 +8893,7 @@ mostlyclean-compile:
 	-rm -f string/*.$(OBJEXT)
 	-rm -f testcases/*.$(OBJEXT)
 	-rm -f testcases/complex/*.$(OBJEXT)
+	-rm -f time/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -8982,6 +9024,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-cxa_thread_atexit.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-dll_argv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-dllargv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-gccmain.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-merr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-mingw_custom.Po@am__quote@ # am--include-marker
@@ -8995,6 +9038,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-tlsmthread.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-tlssup.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-tlsthrd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-ucrtexewin.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-udll_argv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/lib64_libmingw32_a-udllargc.Po@am__quote@ # am--include-marker
@@ -9017,6 +9061,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-cxa_thread_atexit.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-dll_argv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-dllargv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-gccmain.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-merr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-mingw_custom.Po@am__quote@ # am--include-marker
@@ -9030,6 +9075,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-tlsmthread.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-tlssup.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-tlsthrd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-ucrtexewin.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-udll_argv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@crt/$(DEPDIR)/libarm64_libmingw32_a-udllargc.Po@am__quote@ # am--include-marker
@@ -9957,6 +10003,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-clock.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -12628,6 +12678,34 @@ crt/lib64_libmingw32_a-tls_atexit.obj: crt/tls_atexit.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/lib64_libmingw32_a-tls_atexit.obj `if test -f 'crt/tls_atexit.c'; then $(CYGPATH_W) 'crt/tls_atexit.c'; else $(CYGPATH_W) '$(srcdir)/crt/tls_atexit.c'; fi`
 
+crt/lib64_libmingw32_a-exit_wrappers.o: crt/exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/lib64_libmingw32_a-exit_wrappers.o -MD -MP -MF crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Tpo -c -o crt/lib64_libmingw32_a-exit_wrappers.o `test -f 'crt/exit_wrappers.c' || echo '$(srcdir)/'`crt/exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Tpo crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/exit_wrappers.c' object='crt/lib64_libmingw32_a-exit_wrappers.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/lib64_libmingw32_a-exit_wrappers.o `test -f 'crt/exit_wrappers.c' || echo '$(srcdir)/'`crt/exit_wrappers.c
+
+crt/lib64_libmingw32_a-exit_wrappers.obj: crt/exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/lib64_libmingw32_a-exit_wrappers.obj -MD -MP -MF crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Tpo -c -o crt/lib64_libmingw32_a-exit_wrappers.obj `if test -f 'crt/exit_wrappers.c'; then $(CYGPATH_W) 'crt/exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/exit_wrappers.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Tpo crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/exit_wrappers.c' object='crt/lib64_libmingw32_a-exit_wrappers.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/lib64_libmingw32_a-exit_wrappers.obj `if test -f 'crt/exit_wrappers.c'; then $(CYGPATH_W) 'crt/exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/exit_wrappers.c'; fi`
+
+crt/lib64_libmingw32_a-ucrt_exit_wrappers.o: crt/ucrt_exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/lib64_libmingw32_a-ucrt_exit_wrappers.o -MD -MP -MF crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Tpo -c -o crt/lib64_libmingw32_a-ucrt_exit_wrappers.o `test -f 'crt/ucrt_exit_wrappers.c' || echo '$(srcdir)/'`crt/ucrt_exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Tpo crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/ucrt_exit_wrappers.c' object='crt/lib64_libmingw32_a-ucrt_exit_wrappers.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/lib64_libmingw32_a-ucrt_exit_wrappers.o `test -f 'crt/ucrt_exit_wrappers.c' || echo '$(srcdir)/'`crt/ucrt_exit_wrappers.c
+
+crt/lib64_libmingw32_a-ucrt_exit_wrappers.obj: crt/ucrt_exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/lib64_libmingw32_a-ucrt_exit_wrappers.obj -MD -MP -MF crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Tpo -c -o crt/lib64_libmingw32_a-ucrt_exit_wrappers.obj `if test -f 'crt/ucrt_exit_wrappers.c'; then $(CYGPATH_W) 'crt/ucrt_exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/ucrt_exit_wrappers.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Tpo crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/ucrt_exit_wrappers.c' object='crt/lib64_libmingw32_a-ucrt_exit_wrappers.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/lib64_libmingw32_a-ucrt_exit_wrappers.obj `if test -f 'crt/ucrt_exit_wrappers.c'; then $(CYGPATH_W) 'crt/ucrt_exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/ucrt_exit_wrappers.c'; fi`
+
 cfguard/lib64_libmingwex_a-mingw_cfguard_support.o: cfguard/mingw_cfguard_support.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cfguard/lib64_libmingwex_a-mingw_cfguard_support.o -MD -MP -MF cfguard/$(DEPDIR)/lib64_libmingwex_a-mingw_cfguard_support.Tpo -c -o cfguard/lib64_libmingwex_a-mingw_cfguard_support.o `test -f 'cfguard/mingw_cfguard_support.c' || echo '$(srcdir)/'`cfguard/mingw_cfguard_support.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) cfguard/$(DEPDIR)/lib64_libmingwex_a-mingw_cfguard_support.Tpo cfguard/$(DEPDIR)/lib64_libmingwex_a-mingw_cfguard_support.Po
@@ -14783,6 +14861,34 @@ stdio/lib64_libmingwex_a-mingw_vasprintf.obj: stdio/mingw_vasprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/mingw_vasprintf.c' object='stdio/lib64_libmingwex_a-mingw_vasprintf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libmingwex_a-mingw_vasprintf.obj `if test -f 'stdio/mingw_vasprintf.c'; then $(CYGPATH_W) 'stdio/mingw_vasprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/mingw_vasprintf.c'; fi`
+
+time/lib64_libmingwex_a-clock.o: time/clock.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-clock.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-clock.Tpo -c -o time/lib64_libmingwex_a-clock.o `test -f 'time/clock.c' || echo '$(srcdir)/'`time/clock.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-clock.Tpo time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/clock.c' object='time/lib64_libmingwex_a-clock.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-clock.o `test -f 'time/clock.c' || echo '$(srcdir)/'`time/clock.c
+
+time/lib64_libmingwex_a-clock.obj: time/clock.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-clock.obj -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-clock.Tpo -c -o time/lib64_libmingwex_a-clock.obj `if test -f 'time/clock.c'; then $(CYGPATH_W) 'time/clock.c'; else $(CYGPATH_W) '$(srcdir)/time/clock.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-clock.Tpo time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/clock.c' object='time/lib64_libmingwex_a-clock.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-clock.obj `if test -f 'time/clock.c'; then $(CYGPATH_W) 'time/clock.c'; else $(CYGPATH_W) '$(srcdir)/time/clock.c'; fi`
+
+time/lib64_libmingwex_a-nanosleep.o: time/nanosleep.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-nanosleep.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Tpo -c -o time/lib64_libmingwex_a-nanosleep.o `test -f 'time/nanosleep.c' || echo '$(srcdir)/'`time/nanosleep.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Tpo time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/nanosleep.c' object='time/lib64_libmingwex_a-nanosleep.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-nanosleep.o `test -f 'time/nanosleep.c' || echo '$(srcdir)/'`time/nanosleep.c
+
+time/lib64_libmingwex_a-nanosleep.obj: time/nanosleep.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-nanosleep.obj -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Tpo -c -o time/lib64_libmingwex_a-nanosleep.obj `if test -f 'time/nanosleep.c'; then $(CYGPATH_W) 'time/nanosleep.c'; else $(CYGPATH_W) '$(srcdir)/time/nanosleep.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Tpo time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/nanosleep.c' object='time/lib64_libmingwex_a-nanosleep.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-nanosleep.obj `if test -f 'time/nanosleep.c'; then $(CYGPATH_W) 'time/nanosleep.c'; else $(CYGPATH_W) '$(srcdir)/time/nanosleep.c'; fi`
 
 gdtoa/lib64_libmingwex_a-arithchk.o: gdtoa/arithchk.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT gdtoa/lib64_libmingwex_a-arithchk.o -MD -MP -MF gdtoa/$(DEPDIR)/lib64_libmingwex_a-arithchk.Tpo -c -o gdtoa/lib64_libmingwex_a-arithchk.o `test -f 'gdtoa/arithchk.c' || echo '$(srcdir)/'`gdtoa/arithchk.c
@@ -19544,6 +19650,34 @@ crt/libarm64_libmingw32_a-tls_atexit.obj: crt/tls_atexit.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/libarm64_libmingw32_a-tls_atexit.obj `if test -f 'crt/tls_atexit.c'; then $(CYGPATH_W) 'crt/tls_atexit.c'; else $(CYGPATH_W) '$(srcdir)/crt/tls_atexit.c'; fi`
 
+crt/libarm64_libmingw32_a-exit_wrappers.o: crt/exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/libarm64_libmingw32_a-exit_wrappers.o -MD -MP -MF crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Tpo -c -o crt/libarm64_libmingw32_a-exit_wrappers.o `test -f 'crt/exit_wrappers.c' || echo '$(srcdir)/'`crt/exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Tpo crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/exit_wrappers.c' object='crt/libarm64_libmingw32_a-exit_wrappers.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/libarm64_libmingw32_a-exit_wrappers.o `test -f 'crt/exit_wrappers.c' || echo '$(srcdir)/'`crt/exit_wrappers.c
+
+crt/libarm64_libmingw32_a-exit_wrappers.obj: crt/exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/libarm64_libmingw32_a-exit_wrappers.obj -MD -MP -MF crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Tpo -c -o crt/libarm64_libmingw32_a-exit_wrappers.obj `if test -f 'crt/exit_wrappers.c'; then $(CYGPATH_W) 'crt/exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/exit_wrappers.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Tpo crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/exit_wrappers.c' object='crt/libarm64_libmingw32_a-exit_wrappers.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/libarm64_libmingw32_a-exit_wrappers.obj `if test -f 'crt/exit_wrappers.c'; then $(CYGPATH_W) 'crt/exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/exit_wrappers.c'; fi`
+
+crt/libarm64_libmingw32_a-ucrt_exit_wrappers.o: crt/ucrt_exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/libarm64_libmingw32_a-ucrt_exit_wrappers.o -MD -MP -MF crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Tpo -c -o crt/libarm64_libmingw32_a-ucrt_exit_wrappers.o `test -f 'crt/ucrt_exit_wrappers.c' || echo '$(srcdir)/'`crt/ucrt_exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Tpo crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/ucrt_exit_wrappers.c' object='crt/libarm64_libmingw32_a-ucrt_exit_wrappers.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/libarm64_libmingw32_a-ucrt_exit_wrappers.o `test -f 'crt/ucrt_exit_wrappers.c' || echo '$(srcdir)/'`crt/ucrt_exit_wrappers.c
+
+crt/libarm64_libmingw32_a-ucrt_exit_wrappers.obj: crt/ucrt_exit_wrappers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT crt/libarm64_libmingw32_a-ucrt_exit_wrappers.obj -MD -MP -MF crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Tpo -c -o crt/libarm64_libmingw32_a-ucrt_exit_wrappers.obj `if test -f 'crt/ucrt_exit_wrappers.c'; then $(CYGPATH_W) 'crt/ucrt_exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/ucrt_exit_wrappers.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Tpo crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crt/ucrt_exit_wrappers.c' object='crt/libarm64_libmingw32_a-ucrt_exit_wrappers.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingw32_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o crt/libarm64_libmingw32_a-ucrt_exit_wrappers.obj `if test -f 'crt/ucrt_exit_wrappers.c'; then $(CYGPATH_W) 'crt/ucrt_exit_wrappers.c'; else $(CYGPATH_W) '$(srcdir)/crt/ucrt_exit_wrappers.c'; fi`
+
 cfguard/libarm64_libmingwex_a-mingw_cfguard_support.o: cfguard/mingw_cfguard_support.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cfguard/libarm64_libmingwex_a-mingw_cfguard_support.o -MD -MP -MF cfguard/$(DEPDIR)/libarm64_libmingwex_a-mingw_cfguard_support.Tpo -c -o cfguard/libarm64_libmingwex_a-mingw_cfguard_support.o `test -f 'cfguard/mingw_cfguard_support.c' || echo '$(srcdir)/'`cfguard/mingw_cfguard_support.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) cfguard/$(DEPDIR)/libarm64_libmingwex_a-mingw_cfguard_support.Tpo cfguard/$(DEPDIR)/libarm64_libmingwex_a-mingw_cfguard_support.Po
@@ -21699,6 +21833,34 @@ stdio/libarm64_libmingwex_a-mingw_vasprintf.obj: stdio/mingw_vasprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/mingw_vasprintf.c' object='stdio/libarm64_libmingwex_a-mingw_vasprintf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libmingwex_a-mingw_vasprintf.obj `if test -f 'stdio/mingw_vasprintf.c'; then $(CYGPATH_W) 'stdio/mingw_vasprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/mingw_vasprintf.c'; fi`
+
+time/libarm64_libmingwex_a-clock.o: time/clock.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-clock.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-clock.Tpo -c -o time/libarm64_libmingwex_a-clock.o `test -f 'time/clock.c' || echo '$(srcdir)/'`time/clock.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-clock.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/clock.c' object='time/libarm64_libmingwex_a-clock.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-clock.o `test -f 'time/clock.c' || echo '$(srcdir)/'`time/clock.c
+
+time/libarm64_libmingwex_a-clock.obj: time/clock.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-clock.obj -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-clock.Tpo -c -o time/libarm64_libmingwex_a-clock.obj `if test -f 'time/clock.c'; then $(CYGPATH_W) 'time/clock.c'; else $(CYGPATH_W) '$(srcdir)/time/clock.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-clock.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/clock.c' object='time/libarm64_libmingwex_a-clock.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-clock.obj `if test -f 'time/clock.c'; then $(CYGPATH_W) 'time/clock.c'; else $(CYGPATH_W) '$(srcdir)/time/clock.c'; fi`
+
+time/libarm64_libmingwex_a-nanosleep.o: time/nanosleep.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-nanosleep.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Tpo -c -o time/libarm64_libmingwex_a-nanosleep.o `test -f 'time/nanosleep.c' || echo '$(srcdir)/'`time/nanosleep.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/nanosleep.c' object='time/libarm64_libmingwex_a-nanosleep.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-nanosleep.o `test -f 'time/nanosleep.c' || echo '$(srcdir)/'`time/nanosleep.c
+
+time/libarm64_libmingwex_a-nanosleep.obj: time/nanosleep.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-nanosleep.obj -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Tpo -c -o time/libarm64_libmingwex_a-nanosleep.obj `if test -f 'time/nanosleep.c'; then $(CYGPATH_W) 'time/nanosleep.c'; else $(CYGPATH_W) '$(srcdir)/time/nanosleep.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/nanosleep.c' object='time/libarm64_libmingwex_a-nanosleep.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-nanosleep.obj `if test -f 'time/nanosleep.c'; then $(CYGPATH_W) 'time/nanosleep.c'; else $(CYGPATH_W) '$(srcdir)/time/nanosleep.c'; fi`
 
 libsrc/libarm64_libmingwthrd_a-mingwthrd_mt.o: libsrc/mingwthrd_mt.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwthrd_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libsrc/libarm64_libmingwthrd_a-mingwthrd_mt.o -MD -MP -MF libsrc/$(DEPDIR)/libarm64_libmingwthrd_a-mingwthrd_mt.Tpo -c -o libsrc/libarm64_libmingwthrd_a-mingwthrd_mt.o `test -f 'libsrc/mingwthrd_mt.c' || echo '$(srcdir)/'`libsrc/mingwthrd_mt.c
@@ -26024,6 +26186,8 @@ distclean-generic:
 	-rm -f testcases/complex/$(DEPDIR)/$(am__dirstamp)
 	-rm -f testcases/complex/$(am__dirstamp)
 	-rm -f tests64/$(am__dirstamp)
+	-rm -f time/$(DEPDIR)/$(am__dirstamp)
+	-rm -f time/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -26163,6 +26327,7 @@ distclean: distclean-am
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-cxa_thread_atexit.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-dll_argv.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-dllargv.Po
+	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-gccmain.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-merr.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-mingw_custom.Po
@@ -26176,6 +26341,7 @@ distclean: distclean-am
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-tlsmthread.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-tlssup.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-tlsthrd.Po
+	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-ucrtexewin.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-udll_argv.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-udllargc.Po
@@ -26198,6 +26364,7 @@ distclean: distclean-am
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-cxa_thread_atexit.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-dll_argv.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-dllargv.Po
+	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-gccmain.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-merr.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-mingw_custom.Po
@@ -26211,6 +26378,7 @@ distclean: distclean-am
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-tlsmthread.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-tlssup.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-tlsthrd.Po
+	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-ucrtexewin.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-udll_argv.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-udllargc.Po
@@ -27138,6 +27306,10 @@ distclean: distclean-am
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -27313,6 +27485,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-cxa_thread_atexit.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-dll_argv.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-dllargv.Po
+	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-gccmain.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-merr.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-mingw_custom.Po
@@ -27326,6 +27499,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-tlsmthread.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-tlssup.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-tlsthrd.Po
+	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-ucrt_exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-ucrtexewin.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-udll_argv.Po
 	-rm -f crt/$(DEPDIR)/lib64_libmingw32_a-udllargc.Po
@@ -27348,6 +27522,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-cxa_thread_atexit.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-dll_argv.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-dllargv.Po
+	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-gccmain.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-merr.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-mingw_custom.Po
@@ -27361,6 +27536,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-tlsmthread.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-tlssup.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-tlsthrd.Po
+	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-ucrt_exit_wrappers.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-ucrtexewin.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-udll_argv.Po
 	-rm -f crt/$(DEPDIR)/libarm64_libmingw32_a-udllargc.Po
@@ -28288,6 +28464,10 @@ maintainer-clean: maintainer-clean-am
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
