@@ -16,6 +16,6 @@ int __cdecl _scprintf(const char * __restrict__ _Format, ...)
   va_start(_ArgList, _Format);
   ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
   va_end(_ArgList);
-  return ret;
+  return ret < 0 ? -1 : ret;
 }
 int __cdecl (*__MINGW_IMP_SYMBOL(_scprintf))(const char *__restrict__, ...) = _scprintf;
