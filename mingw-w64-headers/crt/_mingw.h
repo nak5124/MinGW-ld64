@@ -492,7 +492,7 @@ extern "C" {
 #define __GOT_SECURE_LIB__ __STDC_SECURE_LIB__
 
 #ifndef __WIDL__
-#include "sdks/_mingw_ddk.h"
+#include <sdks/_mingw_ddk.h>
 #endif
 
 #endif  /* MINGW_SDK_INIT */
