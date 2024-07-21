@@ -60,7 +60,11 @@
 extern "C" {
 #endif
 
-#define _MM_MALLOC_H_INCLUDED
+#ifndef _mm_malloc
+# define _MM_MALLOC_H_INCLUDED
+# define _mm_free(a)      _aligned_free(a)
+# define _mm_malloc(a, b) _aligned_malloc(a, b)
+#endif
 #include <x86intrin.h>
 #include <cpuid.h>
 
