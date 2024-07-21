@@ -92,6 +92,11 @@ extern "C" {
 
 #if __MINGW_FORTIFY_LEVEL > 0
 
+#ifndef __MINGW_BOS_DECLARE_DEFINED
+# define __MINGW_BOS_DECLARE_DEFINED
+  __mingw_bos_declare;
+#endif
+
 #if __MINGW_FORTIFY_VA_ARG
 
 #define _O_CREAT 0x0100
