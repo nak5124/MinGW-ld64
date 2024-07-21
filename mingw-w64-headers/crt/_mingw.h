@@ -203,6 +203,8 @@ limitations in handling dllimport attribute.  */
 # define _XOPEN_SOURCE 700
 # undef  _DEFAULT_SOURCE
 # define _DEFAULT_SOURCE 1
+# undef  _LARGEFILE64_SOURCE
+# define _LARGEFILE64_SOURCE 1
 #endif
 
 #if (defined(_POSIX) || defined(_POSIX_SOURCE)) && !defined(_POSIX_C_SOURCE)
@@ -229,6 +231,11 @@ limitations in handling dllimport attribute.  */
 
 #ifndef _FILE_OFFSET_BITS
 # define _FILE_OFFSET_BITS 64
+#endif
+
+#if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+# undef  _LARGEFILE64_SOURCE
+# define _LARGEFILE64_SOURCE 1
 #endif
 
 #if defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L)
