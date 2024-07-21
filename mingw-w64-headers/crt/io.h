@@ -81,9 +81,16 @@ extern "C" {
 #define W_OK 2  /* Check for write permission */
 #define R_OK 4  /* Check for read permission */
 
+#ifndef _CHMOD_UMASK_DEFINED  /* Also in sys/stat.h */
+# define _CHMOD_UMASK_DEFINED
+  _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode);
+  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif
+
   _CRTIMP int __cdecl _access(const char *_Filename, int _AccessMode);
   _CRTIMP errno_t __cdecl _access_s(const char *_Filename, int _AccessMode);
-  _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode);
   _CRTIMP int __cdecl _chsize(int _FileHandle, long _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   __MINGW_EXTENSION _CRTIMP errno_t __cdecl _chsize_s (int _FileHandle, __int64 _Size);
   _CRTIMP int __cdecl _close(int _FileHandle);
@@ -117,7 +124,6 @@ extern "C" {
 #endif  /* _CRT_DIRECTORY_DEFINED */
   _CRTIMP int __cdecl _setmode(int _FileHandle, int _Mode);
   _CRTIMP long __cdecl _tell(int _FileHandle);
-  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _umask_s(int _NewMode, int *_OldMode);
   _CRTIMP int __cdecl _write(int _FileHandle, const void *_Buf, unsigned int _MaxCharCount);
   __MINGW_EXTENSION _CRTIMP __int64 __cdecl _filelengthi64(int _FileHandle);
@@ -136,7 +142,6 @@ extern "C" {
   _CRTIMP errno_t __cdecl _sopen_dispatch(const char *_Filename, int _OpenFlag, int _ShareFlag, int _PMode, int *_PFileHandle, int _BSecure);
 
   int __cdecl access(const char *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP int __cdecl chsize(int _FileHandle, long _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP int __cdecl close(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP int __cdecl creat(const char *_Filename, int _PermissionMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -153,7 +158,6 @@ extern "C" {
   _CRTIMP int __cdecl setmode(int _FileHandle, int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP int __cdecl sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP long __cdecl tell(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP int __cdecl write(int _Filehandle, const void *_Buf, unsigned int _MaxCharCount) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
 #if __MINGW_FORTIFY_LEVEL > 0

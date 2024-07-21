@@ -53,7 +53,11 @@ extern "C" {
 #pragma pop_macro("_getdcwd")
 
   _CRTIMP int __cdecl _chdir(const char *_Path);
+#ifndef _MKDIR_DEFINED  /* Also in sys/stat.h */
+# define _MKDIR_DEFINED
   _CRTIMP int __cdecl _mkdir(const char *_Path);
+  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+#endif
   _CRTIMP int __cdecl _rmdir(const char *_Path);
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
@@ -70,7 +74,6 @@ extern "C" {
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP int __cdecl rmdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
 #ifdef __cplusplus

@@ -177,6 +177,20 @@ extern "C" {
 #define S_ISBLK(m)  (((m) & S_IFMT) == S_IFBLK)
 #define S_ISREG(m)  (((m) & S_IFMT) == S_IFREG)
 
+#ifndef _CHMOD_UMASK_DEFINED  /* Also in io.h */
+# define _CHMOD_UMASK_DEFINED
+  _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode);
+  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif
+
+#ifndef _MKDIR_DEFINED  /* Also in direct.h */
+# define _MKDIR_DEFINED
+  _CRTIMP int __cdecl _mkdir(const char *_Path);
+  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+#endif
+
 #ifdef __cplusplus
 }
 #endif
