@@ -33,10 +33,10 @@ extern "C" {
 
 #ifndef _CRT_TERMINATE_DEFINED  /* Also in stdlib.h */
 # define _CRT_TERMINATE_DEFINED
-  _CRTIMP void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  _CRTIMP void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  _CRTIMP void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
-  _CRTIMP void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+  void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # pragma push_macro("abort")
 # undef abort
   void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
