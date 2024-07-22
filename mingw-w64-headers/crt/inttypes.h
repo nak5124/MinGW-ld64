@@ -12,9 +12,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   typedef struct
   {
@@ -270,9 +268,7 @@ extern "C" {
   _CRTIMP uintmax_t __cdecl wcstoumax(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base);
   _CRTIMP uintmax_t __cdecl _wcstoumax_l(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base, _locale_t _Locale);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

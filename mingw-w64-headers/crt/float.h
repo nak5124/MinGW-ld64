@@ -110,6 +110,10 @@
 
 #include <corecrt.h>
 
+#pragma pack(push, _CRT_PACKING)
+
+__MINGW_BEGIN_C_DECLS
+
 /*
  * Functions and definitions for controlling the FPU.
  */
@@ -214,10 +218,6 @@
 #define PC_53      _PC_53
 #define PC_64      _PC_64
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
   /* Set the FPU control word as cw = (cw & ~unMask) | (unNew & unMask),
    * i.e. change the bits in unMask to have the values they have in unNew,
    * leaving other bits unchanged. */
@@ -275,8 +275,8 @@ extern "C" {
 #define status87  _status87
 #define control87 _control87
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
+
+#pragma pack(pop)
 
 #endif /* _MINGW_FLOAT_H_ */

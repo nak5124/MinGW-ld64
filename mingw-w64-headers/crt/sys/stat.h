@@ -15,9 +15,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   struct _stat32
   {
@@ -191,9 +189,7 @@ extern "C" {
   _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

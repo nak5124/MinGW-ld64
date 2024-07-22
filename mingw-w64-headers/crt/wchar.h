@@ -22,9 +22,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef WCHAR_MIN  /* Also in stdint.h */
 # define WCHAR_MIN 0U
@@ -127,9 +125,7 @@ extern "C" {
   wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size);
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

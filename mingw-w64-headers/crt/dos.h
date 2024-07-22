@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _A_NORMAL
 #define _A_NORMAL 0x00
@@ -48,9 +46,7 @@ extern "C" {
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

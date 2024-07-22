@@ -15,18 +15,14 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   typedef wchar_t wctrans_t;
   _CRTIMP wint_t __cdecl towctrans(wint_t c, wctrans_t value);
   _CRTIMP wctrans_t __cdecl wctrans(const char *name);
   _CRTIMP wctype_t __cdecl wctype(const char *name);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

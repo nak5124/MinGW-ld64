@@ -9,9 +9,7 @@
 #ifndef _INC_STDDEF
 #define _INC_STDDEF
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ERRNO_DEFINED  /* Also in errno.h and stdlib.h */
 # define _CRT_ERRNO_DEFINED
@@ -25,9 +23,7 @@ extern "C" {
 #define _threadid (__threadid())
   _CRTIMP extern uintptr_t __cdecl __threadhandle(void);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #endif  /* _INC_STDDEF */
 

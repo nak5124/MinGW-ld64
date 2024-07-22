@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define LC_ALL      0
 #define LC_COLLATE  1
@@ -96,9 +94,7 @@ extern "C" {
   _CRTIMP size_t __cdecl _Strftime(char *_Buffer, size_t _Max_size, const char * _Format, const struct tm *_Timeptr, void *_Lc_time_arg);
   _CRTIMP size_t __cdecl _Wcsftime(wchar_t *_Buffer, size_t _Max_size, const wchar_t *_Format, const struct tm *_Timeptr, void *_Lc_time_arg);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

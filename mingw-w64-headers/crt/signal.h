@@ -11,9 +11,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _SIG_ATOMIC_T_DEFINED
 # define _SIG_ATOMIC_T_DEFINED
@@ -62,9 +60,7 @@ extern "C" {
   _CRTIMP __p_sig_fn_t __cdecl signal(int _SigNum, __p_sig_fn_t _Func);
   _CRTIMP int __cdecl raise(int _SigNum);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

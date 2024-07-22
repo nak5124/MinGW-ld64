@@ -56,9 +56,7 @@
 /* Make sure _mm_malloc and _mm_free are defined.  */
 #include <malloc.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _mm_malloc
 # define _MM_MALLOC_H_INCLUDED
@@ -75,9 +73,7 @@ extern "C" {
 #undef _lrotl
 #undef _lrotr
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #endif
 
@@ -101,54 +97,34 @@ typedef union __m128i { char v[16]; } __m128i;
 #ifdef __x86_64__
 
 #if defined(__MMX__) || defined(__MINGW_FORCE_SYS_INTRINS)
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 #include <mmintrin.h>
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 #endif
 
 #if defined(__3dNOW__) || defined(__MINGW_FORCE_SYS_INTRINS)
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 #include <mm3dnow.h>
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 #endif
 
 /* NOTE: it's not included by MS version, but we do it to try work around C++/C linkage differences */
 #if defined(__SSE__) || defined(__MINGW_FORCE_SYS_INTRINS)
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 #include <xmmintrin.h>
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 #endif
 
 #if defined(__SSE2__) || defined(__MINGW_FORCE_SYS_INTRINS)
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 #include <emmintrin.h>
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 #endif
 
 #if defined(__SSE3__) || defined(__MINGW_FORCE_SYS_INTRINS)
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 #include <pmmintrin.h>
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 #endif
 
 #endif
@@ -187,9 +163,7 @@ extern "C" {
 # define __MACHINEARM_ARM64 __MACHINEZ
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
  /* Put all declarations potentially colliding with POSIX headers here.
     So far, Cygwin is the only POSIX system using this header file.
@@ -766,8 +740,6 @@ extern "C" {
 #endif
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #endif  /* __INTRIN_H_ */

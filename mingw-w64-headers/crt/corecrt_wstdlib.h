@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define _MAX_ITOSTR_BASE16_COUNT   (8  + 1)
 #define _MAX_ITOSTR_BASE10_COUNT   (1 + 10 + 1)
@@ -123,8 +121,6 @@ extern "C" {
   __MINGW_EXTENSION wchar_t *__cdecl ulltow(unsigned long long _Val, wchar_t *_DstBuf, int _Radix);
 #endif  /* __STRICT_ANSI__ */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #endif  /* _INC_CORECRT_WSTDLIB */

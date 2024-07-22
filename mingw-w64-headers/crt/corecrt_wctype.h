@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef WEOF
 # define WEOF (wint_t)(0xFFFF)
@@ -131,9 +129,7 @@ extern "C" {
 
 #endif  /* _CTYPE_DISABLE_MACROS */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

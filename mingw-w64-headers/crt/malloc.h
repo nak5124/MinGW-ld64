@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define _HEAP_MAXREQ 0xFFFFFFFFFFFFFFE0
 /* Return codes for _heapwalk()  */
@@ -130,9 +128,7 @@ extern "C" {
     }
   }
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

@@ -25,6 +25,10 @@
 #include <corecrt.h>
 #include <stdint.h>  /* uint_leastXX_t */
 
+#pragma pack(push, _CRT_PACKING)
+
+__MINGW_BEGIN_C_DECLS
+
 /* Remember that g++ >= 4.4 defines these types only in c++0x mode */
 #if !(defined(__cplusplus) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || \
   (!defined(__clang__) && (__GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 4)))
@@ -42,18 +46,14 @@
 # define __STDC_UTF_32__ 1
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
   _CRTIMP size_t mbrtoc16(char16_t *__restrict__ pc16, const char *__restrict__ s, size_t n, mbstate_t *__restrict__ ps);
   _CRTIMP size_t c16rtomb(char *__restrict__ s, char16_t c16, mbstate_t *__restrict__ ps);
 
   _CRTIMP size_t mbrtoc32(char32_t *__restrict__ pc32, const char *__restrict__ s, size_t n, mbstate_t *__restrict__ ps);
   _CRTIMP size_t c32rtomb(char *__restrict__ s, char32_t c32, mbstate_t *__restrict__ ps);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
+
+#pragma pack(pop)
 
 #endif  /* __UCHAR_H */

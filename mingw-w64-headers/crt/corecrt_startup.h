@@ -11,9 +11,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   struct _EXCEPTION_POINTERS;
 
@@ -97,9 +95,7 @@ extern "C" {
   _CRTIMP int __cdecl _crt_atexit(_PVFV func);
   _CRTIMP int __cdecl _crt_at_quick_exit(_PVFV func);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

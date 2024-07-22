@@ -11,9 +11,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   _CRTIMP int __cdecl _isctype(int _C, int _Type);
   _CRTIMP int __cdecl _isctype_l(int _C, int _Type, _locale_t _Locale);
@@ -176,9 +174,7 @@ extern "C" {
   pthreadmbcinfo __cdecl __updatetmbcinfo(void);
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

@@ -11,9 +11,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   typedef int (__cdecl* _CoreCrtSecureSearchSortCompareFunction)(void *, const void *, const void *);
   typedef int (__cdecl* _CoreCrtNonSecureSearchSortCompareFunction)(const void *, const void *);
@@ -74,9 +72,7 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
   void __cdecl tdestroy(void *, void (*)(void *)) __MINGW_ATTRIB_NONNULL(2);
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

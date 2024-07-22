@@ -34,9 +34,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   typedef int (__cdecl *_PNH)(size_t);
 
@@ -46,9 +44,7 @@ extern "C" {
   _CRTIMP int __cdecl _query_new_mode(void);
   _CRTIMP int __cdecl _set_new_mode(int _NewMode);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

@@ -14,9 +14,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define _ftcscat  _tcscat
 #define _ftcschr  _tcschr
@@ -1352,9 +1350,7 @@ extern "C" {
 #define _T(x)    __T(x)
 #define _TEXT(x) __T(x)
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

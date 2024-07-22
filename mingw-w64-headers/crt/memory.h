@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_MEMORY_DEFINED  /* Also in string.h */
 # define _CRT_MEMORY_DEFINED
@@ -70,9 +68,7 @@ void * memset(void * __dst, int __val, size_t __n)
 
 #endif  /* _CRT_MEMORY_DEFINED */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

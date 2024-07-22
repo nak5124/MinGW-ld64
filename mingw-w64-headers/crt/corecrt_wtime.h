@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _TM_DEFINED
 # define _TM_DEFINED
@@ -51,9 +49,7 @@ extern "C" {
   wchar_t *__cdecl _wctime(const time_t *_Time) __MINGW_ASM_CALL(_wctime64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   errno_t __cdecl _wctime_s(wchar_t *_Buffer, size_t _SizeInWords, const time_t *_Time) __MINGW_ASM_CALL(_wctime64_s);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

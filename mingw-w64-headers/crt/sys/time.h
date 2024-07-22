@@ -6,15 +6,14 @@
 #ifndef _SYS_TIME_H_
 #define _SYS_TIME_H_
 
+#include <corecrt.h>
 #include <time.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #include <_timeval.h>
 
-#ifndef _TIMEZONE_DEFINED  /* Also in sys/time.h */
+#ifndef _TIMEZONE_DEFINED  /* Also in time.h */
 # define _TIMEZONE_DEFINED
   struct timezone
   {
@@ -34,9 +33,7 @@ extern "C" {
   int __cdecl gettimeofday(struct timeval *__restrict__ p, void *__restrict__  z);
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 /* Adding timespec definition.  */
 #include <sys/timeb.h>

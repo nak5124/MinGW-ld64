@@ -16,9 +16,7 @@
 #pragma push_macro("vsnwprintf")
 #undef vsnwprintf
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _FILE_DEFINED
 # define _FILE_DEFINED
@@ -1139,9 +1137,7 @@ extern "C++"
    */
   void __cdecl __mingw_str_free(void *ptr);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pop_macro("snwprintf")
 #pragma pop_macro("vsnwprintf")

@@ -11,9 +11,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _mbctype
   _CRTIMP unsigned char *__cdecl __p__mbctype(void);
@@ -92,9 +90,7 @@ extern "C" {
   _CRTIMP void __cdecl _mbccpy_l(unsigned char *dest, const unsigned char *src, _locale_t locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #endif  /* _MBCCPY_DEFINED */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

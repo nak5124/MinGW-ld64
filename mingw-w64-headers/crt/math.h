@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define _DOMAIN    1  /* domain error in argument */
 #define _SING      2  /* singularity */
@@ -52,7 +50,6 @@ extern "C" {
 # define _FPCLASS_PINF 0x0200  /* Positive Infinity */
 #endif
 
-
 #ifndef __mingw_types_compatible_p
 # ifdef __cplusplus
     extern "C++"
@@ -91,8 +88,6 @@ extern "C" {
 #   define __mingw_choose_expr __builtin_choose_expr
 # endif
 #endif
-
-
 
 #ifndef __MINGW_SOFTMATH
 #define __MINGW_SOFTMATH
@@ -864,9 +859,7 @@ __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
 # define matherr _matherr
 # define HUGE    _HUGE
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

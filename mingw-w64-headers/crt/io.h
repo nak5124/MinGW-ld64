@@ -13,9 +13,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define _finddata_t    _finddata64i32_t
 #define _finddatai64_t __finddata64_t
@@ -249,9 +247,7 @@ extern "C" {
 #endif
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

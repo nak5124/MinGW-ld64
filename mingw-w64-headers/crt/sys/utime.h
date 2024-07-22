@@ -14,9 +14,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef _UTIMBUF_DEFINED
 # define _UTIMBUF_DEFINED
@@ -63,9 +61,7 @@ extern "C" {
   int __cdecl _wutime(const wchar_t *_Filename, struct _utimbuf *_Time) __MINGW_ASM_CALL(_wutime64);
   int __cdecl utime(const char *_Filename, struct utimbuf *_Time) __MINGW_ASM_CALL(_utime64);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

@@ -12,6 +12,8 @@
 #include <getopt.h>
 #include <sys/types.h>  /* For useconds_t. */
 
+__MINGW_BEGIN_C_DECLS
+
 /* These are also defined in stdio.h. */
 #ifndef SEEK_SET
 # define SEEK_SET 0
@@ -36,10 +38,6 @@
 # define SHUT_RDWR 0x02
 #endif
 
-#endif
-
-#ifdef __cplusplus
-extern "C" {
 #endif
 
 #pragma push_macro("sleep")
@@ -94,9 +92,7 @@ extern "C" {
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #include <pthread_unistd.h>
 

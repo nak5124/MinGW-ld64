@@ -10,9 +10,7 @@
 
 #pragma pack(push, _CRT_PACKING)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   typedef enum
   {
@@ -260,9 +258,7 @@ extern "C" {
 
   _CRTIMP int __cdecl _fpieee_flt(unsigned long _ExceptionCode, struct _EXCEPTION_POINTERS *_PtExceptionPtr, _FpieeFltHandlerType _Handler);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pack(pop)
 

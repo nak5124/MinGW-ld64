@@ -16,9 +16,7 @@
 #pragma push_macro("vsnprintf")
 #undef vsnprintf
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #define BUFSIZ       512
 #define _NFILE       _NSTREAM_
@@ -1210,9 +1208,7 @@ extern "C" {
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #pragma pop_macro("snprintf")
 #pragma pop_macro("vsnprintf")

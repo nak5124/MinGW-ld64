@@ -14,9 +14,7 @@
 # pragma pack(push, _CRT_PACKING)
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifndef __GNUC_VA_LIST
 # define __GNUC_VA_LIST
@@ -40,9 +38,7 @@ extern "C" {
 #define _crt_va_end(v)      __builtin_va_end(v)
 #define _crt_va_copy(d, s)  __builtin_va_copy(d, s)
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #ifndef __WIDL__
 #pragma pack(pop)

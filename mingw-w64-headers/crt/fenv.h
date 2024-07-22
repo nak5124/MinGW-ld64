@@ -7,6 +7,11 @@
 #define _FENV_H_
 
 #include <corecrt.h>
+#include <float.h>
+
+#pragma pack(push, _CRT_PACKING)
+
+__MINGW_BEGIN_C_DECLS
 
 #if defined(__aarch64__) || defined(_ARM64_)
 
@@ -117,10 +122,6 @@
 
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
   /* 7.6.2 Exception */
   extern int __cdecl feclearexcept(int _Flags);
   extern int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags);
@@ -138,8 +139,8 @@ extern "C" {
   extern int __cdecl feupdateenv(const fenv_t *_Penv);
   extern int __cdecl feholdexcept(fenv_t *_Env);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
+
+#pragma pack(pop)
 
 #endif  /* _FENV_H_ */

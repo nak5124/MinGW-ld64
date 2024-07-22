@@ -6,12 +6,11 @@
 #ifndef _FTW_HXX
 #define _FTW_HXX
 
+#include <corecrt.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   struct FTW {
     int base;
@@ -59,8 +58,6 @@ extern "C" {
   int nftw (const char *, int (*) (const char *, const struct stat *, int , struct FTW *), int, int);
   int nftw64 (const char *, int (*) (const char *, const struct stat64 *, int , struct FTW *), int, int);
 
-#ifdef __cplusplus
-}
-#endif
+__MINGW_END_C_DECLS
 
 #endif

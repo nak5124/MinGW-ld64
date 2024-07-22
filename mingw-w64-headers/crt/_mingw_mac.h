@@ -210,6 +210,14 @@
 # define __MINGW_PRAGMA_PARAM(x)
 #endif
 
+#ifdef __cplusplus
+# define __MINGW_BEGIN_C_DECLS extern "C" {
+# define __MINGW_END_C_DECLS   }
+#else
+# define __MINGW_BEGIN_C_DECLS
+# define __MINGW_END_C_DECLS
+#endif
+
 #ifdef __clang__
 # define __MINGW_PRINTF_FORMAT __printf__
 # define __MINGW_SCANF_FORMAT  __scanf__
