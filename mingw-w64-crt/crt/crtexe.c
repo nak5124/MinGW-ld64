@@ -37,6 +37,7 @@ int *__cdecl __p__commode(void);
 
 #undef _fmode
 extern int _fmode;
+#undef _commode
 extern int _commode;
 extern int _dowildcard;
 extern HANDLE __dso_handle;
