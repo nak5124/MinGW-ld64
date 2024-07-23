@@ -124,8 +124,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifndef _HUGE
-  extern double const _HUGE;
-# define _HUGE _HUGE
+  extern double * __MINGW_IMP_SYMBOL(_HUGE);
+#define _HUGE (* __MINGW_IMP_SYMBOL(_HUGE))
 #endif
 
 #define HUGE_VAL __builtin_huge_val()
