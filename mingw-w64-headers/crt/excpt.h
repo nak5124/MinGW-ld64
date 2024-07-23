@@ -44,45 +44,11 @@ __MINGW_BEGIN_C_DECLS
 #define EXCEPTION_CONTINUE_SEARCH     0
 #define EXCEPTION_CONTINUE_EXECUTION -1
 
-  /* CRT stuff */
-  typedef void (__cdecl * _PHNDLR)(int);
-
-  struct _XCPT_ACTION
-  {
-    unsigned long XcptNum;
-    int SigNum;
-    _PHNDLR XcptAction;
-  };
-
-  extern struct _XCPT_ACTION _XcptActTab[];
-  extern int _XcptActTabCount;
-  extern int _XcptActTabSize;
-  extern int _First_FPE_Indx;
-  extern int _Num_FPE;
-
-  int __cdecl __CppXcptFilter(unsigned long _ExceptionNum, struct _EXCEPTION_POINTERS * _ExceptionPtr);
-  int __cdecl _XcptFilter(unsigned long _ExceptionNum, struct _EXCEPTION_POINTERS * _ExceptionPtr);
-
   /*
   * The type of function that is expected as an exception handler to be
   * installed with __try1.
   */
   typedef EXCEPTION_DISPOSITION (*PEXCEPTION_HANDLER)(struct _EXCEPTION_RECORD *, void *, struct _CONTEXT *, void *);
-
-#if !defined (HAVE_NO_SEH) && defined(__MINGW_EXCPT_DEFINE_PSDK)
-  /*
-  * This is not entirely necessary, but it is the structure installed by
-  * the __try1 primitive below.
-  */
-  typedef struct _EXCEPTION_REGISTRATION
-  {
-    struct _EXCEPTION_REGISTRATION *prev;
-    EXCEPTION_DISPOSITION (*handler)(struct _EXCEPTION_RECORD *, void *, struct _CONTEXT *, void *);
-  } EXCEPTION_REGISTRATION, *PEXCEPTION_REGISTRATION;
-
-  typedef EXCEPTION_REGISTRATION EXCEPTION_REGISTRATION_RECORD;
-  typedef PEXCEPTION_REGISTRATION PEXCEPTION_REGISTRATION_RECORD;
-#endif
 
 #ifdef __x86_64__
 #define __try1(pHandler) \
