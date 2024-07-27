@@ -61,16 +61,14 @@ __MINGW_END_C_DECLS
 # endif
 #endif  /* __MINGW_USE_ISOCXX11 */
 
-#ifdef __MINGW_USE_ISOC23
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L
 # ifndef _GCC_NULLPTR_T
 #   define _GCC_NULLPTR_T
     typedef __typeof__(nullptr) nullptr_t;
 # endif
-#endif  /* __MINGW_USE_ISOC23 */
 
-#ifdef __MINGW_USE_ISOC23
 # define unreachable() (__builtin_unreachable())
 # define __STDC_VERSION_STDDEF_H__ 202311L
-#endif  /* __MINGW_USE_ISOC23 */
+#endif  /* defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L */
 
 #endif  /* _STDDEF_H */
