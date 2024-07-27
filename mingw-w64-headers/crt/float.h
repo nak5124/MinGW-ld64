@@ -248,6 +248,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int *__cdecl __MINGW_NOTHROW __fpecode(void);
 #define _fpecode (*(__fpecode()))
 
+  _CRTIMP int __cdecl __fpe_flt_rounds(void);
+
 /*
  * IEEE recommended functions.  MS puts them in float.h
  * but they really belong in math.h.
