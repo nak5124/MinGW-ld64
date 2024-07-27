@@ -77,8 +77,12 @@
 # define SSIZE_MAX _I64_MAX
 #endif
 
+#ifdef __MINGW_USE_SECAPI
+
 #ifndef RSIZE_MAX
 # define RSIZE_MAX (SIZE_MAX >> 1)
+#endif
+
 #endif
 
 #endif  /* _INC_LIMITS */
