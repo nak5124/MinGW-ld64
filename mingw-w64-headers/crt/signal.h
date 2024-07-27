@@ -30,7 +30,7 @@ __MINGW_BEGIN_C_DECLS
 #define SIGABRT        22  /* used by abort, replace SIGIOT in the future */
 #define SIGABRT2       22
 
-#ifdef _POSIX_C_SOURCE
+#ifdef __MINGW_USE_POSIX
 # define SIGHUP  1   /* hangup */
 # define SIGQUIT 3   /* quit */
 # define SIGTRAP 5   /* trace trap (not reset when caught) */
