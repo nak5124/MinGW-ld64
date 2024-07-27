@@ -22,12 +22,6 @@ __MINGW_BEGIN_C_DECLS
 # define _HAS_EXCEPTIONS 1
 #endif
 
-#define _CRT_STRINGIZE_(x) #x
-#define _CRT_STRINGIZE(x) _CRT_STRINGIZE_(x)
-
-#define _CRT_WIDE_(s) L ## s
-#define _CRT_WIDE(s) _CRT_WIDE_(s)
-
 #define _CRT_CONCATENATE_(a, b) a ## b
 #define _CRT_CONCATENATE(a, b)  _CRT_CONCATENATE_(a, b)
 
@@ -197,12 +191,6 @@ __MINGW_BEGIN_C_DECLS
   __MINGW_EXTENSION typedef __int64 ssize_t;
 #endif  /* _SSIZE_T_DEFINED */
 
-#ifndef _RSIZE_T_DEFINED
-# define _RSIZE_T_DEFINED
-# undef rsize_t
-  typedef size_t rsize_t;
-#endif
-
 #ifndef _UINTPTR_T_DEFINED
 # define _UINTPTR_T_DEFINED
 # ifndef __uintptr_t_defined
@@ -212,10 +200,20 @@ __MINGW_BEGIN_C_DECLS
 # endif  /* __uintptr_t_defined */
 #endif  /* _UINTPTR_T_DEFINED */
 
+#ifdef __MINGW_USE_SECAPI
+
+#ifndef _RSIZE_T_DEFINED
+# define _RSIZE_T_DEFINED
+# undef rsize_t
+  typedef size_t rsize_t;
+#endif
+
 #ifndef _ERRCODE_DEFINED
 # define _ERRCODE_DEFINED
   typedef int errno_t;
 #endif  /* _ERRCODE_DEFINED */
+
+#endif
 
 #ifndef _WCTYPE_T_DEFINED
 # define _WCTYPE_T_DEFINED

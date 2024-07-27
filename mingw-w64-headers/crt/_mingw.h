@@ -20,7 +20,7 @@
 # error Only Win32 target is supported!
 #endif
 
-#include "_mingw_mac.h"
+#include <_mingw_mac.h>
 
 #define __LONG32 long
 
@@ -124,7 +124,7 @@ limitations in handling dllimport attribute.  */
 # define __int16 short
 # define __int32 int
 # define __int64 long long
-# if (__clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 1)) && !defined(__SIZEOF_INT128__)
+# if __mingw_clang_prereq(3, 1) && !defined(__SIZEOF_INT128__)
     /* clang >= 3.1 has __int128 but no size macro */
 #   define __SIZEOF_INT128__ 16
 # endif
@@ -191,100 +191,9 @@ limitations in handling dllimport attribute.  */
 # define _CRT_OBSOLETE(_NewItem)
 #endif
 
-#if (defined(_BSD_SOURCE) || defined(_SVID_SOURCE)) && !defined(_DEFAULT_SOURCE)
-# undef  _DEFAULT_SOURCE
-# define _DEFAULT_SOURCE 1
-#endif
-
-#ifdef _GNU_SOURCE
-# undef  _POSIX_C_SOURCE
-# define _POSIX_C_SOURCE 200809L
-# undef  _XOPEN_SOURCE
-# define _XOPEN_SOURCE 700
-# undef  _DEFAULT_SOURCE
-# define _DEFAULT_SOURCE 1
-# undef  _LARGEFILE64_SOURCE
-# define _LARGEFILE64_SOURCE 1
-#endif
-
-#if (defined(_POSIX) || defined(_POSIX_SOURCE)) && !defined(_POSIX_C_SOURCE)
-# define _POSIX_C_SOURCE 1
-#endif
-
-#if (!defined(__STRICT_ANSI__) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) >= 500)) && !defined(_POSIX_C_SOURCE)
-# define _POSIX_C_SOURCE 1
-# if defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 500
-#   define _POSIX_C_SOURCE 2
-# elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 600
-#   define _POSIX_C_SOURCE 199506L
-# elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 700
-#   define _POSIX_C_SOURCE 200112L
-# else
-#   define _POSIX_C_SOURCE 200809L
-# endif
-#endif
-
-#if defined(_THREAD_SAFE) && (!defined(_POSIX_C_SOURCE) || (_POSIX_C_SOURCE - 0) < 199506L)
-# undef  _POSIX_C_SOURCE
-# define _POSIX_C_SOURCE 199506L
-#endif
-
-#ifndef _FILE_OFFSET_BITS
-# define _FILE_OFFSET_BITS 64
-#endif
-
-#if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
-# undef  _LARGEFILE64_SOURCE
-# define _LARGEFILE64_SOURCE 1
-#endif
-
-#if defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L)
-# define __MINGW_USE_ISOC23 1
-#endif
-
-#if defined(_ISOC11_SOURCE) || defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L)
-# define __MINGW_USE_ISOC11 1
-#endif
-
-#if defined(_ISOC99_SOURCE) || defined(_ISOC11_SOURCE) || defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
-# define __MINGW_USE_ISOC99 1
-#endif
-
-#if defined(_ISOC99_SOURCE) || defined(_ISOC11_SOURCE) || defined(_ISOC23_SOURCE) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199409L)
-# define __MINGW_USE_ISOC95 1
-#endif
-
-#ifdef __cplusplus
-# if __cplusplus >= 201703L
-#  define __MINGW_USE_ISOC11 1
-# endif
-# if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
-#  define __MINGW_USE_ISOCXX11 1
-#  define __MINGW_USE_ISOC99   1
-# endif
-#endif
-
 /* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
-#if __MINGW_GNUC_PREREQ(4, 6)
-# if __MINGW_USE_ISOCXX11
-#   define _NATIVE_NULLPTR_SUPPORTED
-# endif
-#endif
-
-/* We are activating __USE_MINGW_ANSI_STDIO for various define indicators. */
-#if (defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_DEFAULT_SOURCE)) && !defined(__USE_MINGW_ANSI_STDIO)
-# define __USE_MINGW_ANSI_STDIO 1
-#endif
-
-/* We are defining __USE_MINGW_ANSI_STDIO as 0 or 1 */
-#if !defined(__USE_MINGW_ANSI_STDIO)
-# define __USE_MINGW_ANSI_STDIO 0      /* was not defined so it should be 0 */
-#elif (__USE_MINGW_ANSI_STDIO + 0) != 0 || (1 - __USE_MINGW_ANSI_STDIO - 1) == 2
-# undef __USE_MINGW_ANSI_STDIO
-# define __USE_MINGW_ANSI_STDIO 1      /* was defined as nonzero or empty so it should be 1 */
-#else
-# undef __USE_MINGW_ANSI_STDIO
-# define __USE_MINGW_ANSI_STDIO 0      /* was defined as (int)zero and non-empty so it should be 0 */
+#if __MINGW_GNUC_PREREQ(4, 6) && defined(__MINGW_USE_ISOCXX11)
+# define _NATIVE_NULLPTR_SUPPORTED
 #endif
 
 /* _dowildcard is an int that controls the globbing of the command line.
@@ -417,9 +326,7 @@ limitations in handling dllimport attribute.  */
 
 #endif  /* defined(__cplusplus) && (USE___UUIDOF == 0) */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_INTRIN_INLINE
 
@@ -481,14 +388,35 @@ extern "C" {
 /* mingw-w64 specific functions: */
   const char *__mingw_get_crt_info(void);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  /* _INC__MINGW_H */
-
-#ifndef MINGW_SDK_INIT
-#define MINGW_SDK_INIT
+#if __MINGW_FORTIFY_LEVEL > 0
+  /* Calling an function with __attribute__((__warning__("...")))
+     from a system include __inline__ function does not print
+     a warning unless caller has __attribute__((__artificial__)). */
+# define __mingw_bos_declare                                              \
+    void __cdecl __chk_fail(void) __attribute__((__noreturn__));          \
+    void __cdecl __mingw_chk_fail_warn(void) __MINGW_ASM_CALL(__chk_fail) \
+    __attribute__((__noreturn__))                                         \
+    __attribute__((__warning__("Buffer overflow detected")))
+# if __MINGW_FORTIFY_LEVEL > 2
+#   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)
+#   define __mingw_bos_known(p)    (__builtin_object_size(p, 0) != (size_t)-1 || !__builtin_constant_p(__mingw_bos(p, 0)))
+# else
+#   define __mingw_bos(p, maxtype) __builtin_object_size((p), ((maxtype) > 0) && (__MINGW_FORTIFY_LEVEL > 1))
+#   define __mingw_bos_known(p)    (__mingw_bos(p, 0) != (size_t)-1)
+# endif
+# define __mingw_bos_cond_chk(c)            (__builtin_expect((c), 1) ? (void)0 : __chk_fail())
+# define __mingw_bos_ptr_chk(p, n, maxtype) __mingw_bos_cond_chk(!__mingw_bos_known(p) || __mingw_bos(p, maxtype) >= (size_t)(n))
+# define __mingw_bos_ptr_chk_warn(p, n, maxtype)                   \
+    ((__mingw_bos_known(p)                                         \
+    && __builtin_constant_p(__mingw_bos(p, maxtype) < (size_t)(n)) \
+    && __mingw_bos(p, maxtype) < (size_t)(n))                      \
+    ? __mingw_chk_fail_warn() : __mingw_bos_ptr_chk(p, n, maxtype))
+# define __mingw_bos_ovr __mingw_ovr __attribute__((__always_inline__)) __mingw_attribute_artificial
+# define __mingw_bos_extern_ovr \
+    extern __inline__ __cdecl __attribute__((__always_inline__, __gnu_inline__)) __mingw_attribute_artificial
+#else
+# define __mingw_bos_ovr __mingw_ovr
+#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
 /* for backward compatibility */
 #ifndef MINGW_HAS_SECURE_API
@@ -496,7 +424,14 @@ extern "C" {
 #endif
 
 #define __STDC_SECURE_LIB__ 200411L
-#define __GOT_SECURE_LIB__ __STDC_SECURE_LIB__
+#define __GOT_SECURE_LIB__  __STDC_SECURE_LIB__
+
+__MINGW_END_C_DECLS
+
+#endif  /* _INC__MINGW_H */
+
+#ifndef MINGW_SDK_INIT
+#define MINGW_SDK_INIT
 
 #ifndef __WIDL__
 #include <sdks/_mingw_ddk.h>

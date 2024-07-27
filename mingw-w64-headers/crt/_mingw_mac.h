@@ -3,9 +3,10 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
 #ifndef _INC_CRTDEFS_MACRO
 #define _INC_CRTDEFS_MACRO
+
+#include <_mingw_features.h>
 
 #define __STRINGIFY(x) #x
 #define __MINGW64_STRINGIFY(x) __STRINGIFY(x)
@@ -54,10 +55,10 @@
 # define _ARM64_  1
 #endif
 
-# define __MINGW_IMP_SYMBOL(sym)  __imp_##sym
-# define __MINGW_IMP_LSYMBOL(sym) __imp_##sym
-# define __MINGW_USYMBOL(sym)     sym
-# define __MINGW_LSYMBOL(sym)     _##sym
+#define __MINGW_IMP_SYMBOL(sym)  __imp_##sym
+#define __MINGW_IMP_LSYMBOL(sym) __imp_##sym
+#define __MINGW_USYMBOL(sym)     sym
+#define __MINGW_LSYMBOL(sym)     _##sym
 
 #define __MINGW_ASM_CALL(func)     __asm__(__MINGW64_STRINGIFY(__MINGW_USYMBOL(func)))
 #define __MINGW_ASM_CRT_CALL(func) __asm__(__STRINGIFY(func))
@@ -128,8 +129,6 @@
 
 #define __MINGW_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
-#define __MINGW_GNUC_PREREQ(major, minor) (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
-
 #if __MINGW_GNUC_PREREQ(3, 3)
 # define __MINGW_ATTRIB_NONNULL(arg) __attribute__((__nonnull__(arg)))
 #else
@@ -139,7 +138,7 @@
 #define __MINGW_ATTRIB_UNUSED __attribute__((__unused__))
 
 #if __MINGW_GNUC_PREREQ(3, 1)
-# define __MINGW_ATTRIB_USED __attribute__((__used__))
+# define __MINGW_ATTRIB_USED       __attribute__((__used__))
 # define __MINGW_ATTRIB_DEPRECATED __attribute__((__deprecated__))
 # if __MINGW_GNUC_PREREQ(4, 5) || defined(__clang__)
 #   define __MINGW_ATTRIB_DEPRECATED_MSG(x) __attribute__((__deprecated__(x)))
@@ -226,31 +225,11 @@
 # define __MINGW_SCANF_FORMAT  __gnu_scanf__
 #endif
 
-#ifdef __clang__
-#define __MINGW_MS_PRINTF(__format, __args) \
-  __attribute__((__format__(__printf__, __format, __args)))
-
-#define __MINGW_MS_SCANF(__format, __args) \
-  __attribute__((__format__(__scanf__,  __format, __args)))
-
 #define __MINGW_GNU_PRINTF(__format, __args) \
-  __attribute__((__format__(__printf__, __format, __args)))
+  __attribute__((__format__(__MINGW_PRINTF_FORMAT, __format, __args)))
 
 #define __MINGW_GNU_SCANF(__format, __args) \
-  __attribute__((__format__(__scanf__, __format, __args)))
-#else
-#define __MINGW_MS_PRINTF(__format, __args) \
-  __attribute__((__format__(__ms_printf__, __format, __args)))
-
-#define __MINGW_MS_SCANF(__format, __args) \
-  __attribute__((__format__(__ms_scanf__,  __format, __args)))
-
-#define __MINGW_GNU_PRINTF(__format, __args) \
-  __attribute__((__format__(__gnu_printf__, __format, __args)))
-
-#define __MINGW_GNU_SCANF(__format, __args) \
-  __attribute__((__format__(__gnu_scanf__, __format, __args)))
-#endif  /* __clang__ */
+  __attribute__((__format__(__MINGW_SCANF_FORMAT, __format, __args)))
 
 #undef __mingw_ovr
 #ifdef __cplusplus
@@ -266,77 +245,6 @@
 #endif
 
 #define __MINGW_SELECTANY __attribute__((__selectany__))
-
-#pragma push_macro("__has_builtin")
-#ifndef __has_builtin
-# define __has_builtin(x) 0
-#endif
-
-#if defined(__MINGW32__) && _FORTIFY_SOURCE > 0 && __OPTIMIZE__ > 0 && __MINGW_GNUC_PREREQ(4, 1)
-# if _FORTIFY_SOURCE > 3
-#   warning Using _FORTIFY_SOURCE=3 (levels > 3 are not supported)
-# endif
-# if _FORTIFY_SOURCE > 2
-#   if __has_builtin(__builtin_dynamic_object_size)
-#     define __MINGW_FORTIFY_LEVEL 3
-#   else
-#     warning Using _FORTIFY_SOURCE=2 (level 3 requires __builtin_dynamic_object_size support)
-#     define __MINGW_FORTIFY_LEVEL 2
-#   endif
-# elif _FORTIFY_SOURCE > 1
-#   define __MINGW_FORTIFY_LEVEL 2
-# else
-#   define __MINGW_FORTIFY_LEVEL 1
-# endif
-#else
-# define __MINGW_FORTIFY_LEVEL 0
-#endif
-
-#if __MINGW_FORTIFY_LEVEL > 0
-  /* Calling an function with __attribute__((__warning__("...")))
-     from a system include __inline__ function does not print
-     a warning unless caller has __attribute__((__artificial__)). */
-# define __mingw_bos_declare \
-    void __cdecl __chk_fail(void) __attribute__((__noreturn__)); \
-    void __cdecl __mingw_chk_fail_warn(void) __MINGW_ASM_CALL(__chk_fail) \
-    __attribute__((__noreturn__)) \
-    __attribute__((__warning__("Buffer overflow detected")))
-# if __MINGW_FORTIFY_LEVEL > 2
-#   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)
-#   define __mingw_bos_known(p) (__builtin_object_size(p, 0) != (size_t)-1 || !__builtin_constant_p(__mingw_bos(p, 0)))
-# else
-#   define __mingw_bos(p, maxtype) __builtin_object_size((p), ((maxtype) > 0) && (__MINGW_FORTIFY_LEVEL > 1))
-#   define __mingw_bos_known(p) (__mingw_bos(p, 0) != (size_t)-1)
-# endif
-# define __mingw_bos_cond_chk(c) (__builtin_expect((c), 1) ? (void)0 : __chk_fail())
-# define __mingw_bos_ptr_chk(p, n, maxtype) __mingw_bos_cond_chk(!__mingw_bos_known(p) || __mingw_bos(p, maxtype) >= (size_t)(n))
-# define __mingw_bos_ptr_chk_warn(p, n, maxtype) \
-    ((__mingw_bos_known(p) \
-    && __builtin_constant_p(__mingw_bos(p, maxtype) < (size_t)(n)) \
-    && __mingw_bos(p, maxtype) < (size_t)(n)) \
-    ? __mingw_chk_fail_warn() : __mingw_bos_ptr_chk(p, n, maxtype))
-# define __mingw_bos_ovr __mingw_ovr __attribute__((__always_inline__)) __mingw_attribute_artificial
-# define __mingw_bos_extern_ovr \
-    extern __inline__ __cdecl __attribute__((__always_inline__, __gnu_inline__)) \
-    __mingw_attribute_artificial
-#else
-# define __mingw_bos_ovr __mingw_ovr
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
-/* If _FORTIFY_SOURCE is enabled, some inline functions may use
-   __builtin_va_arg_pack().  GCC may report an error if the address
-   of such a function is used.  Set _FORTIFY_VA_ARG=0 in this case.
-   Clang doesn't, as of version 15, yet implement __builtin_va_arg_pack().  */
-#if __MINGW_FORTIFY_LEVEL > 0 \
-  && ((__MINGW_GNUC_PREREQ(4, 3) && !defined(__clang__)) \
-  || __has_builtin(__builtin_va_arg_pack)) \
-  && (!defined(_FORTIFY_VA_ARG) || _FORTIFY_VA_ARG > 0)
-# define __MINGW_FORTIFY_VA_ARG 1
-#else
-# define __MINGW_FORTIFY_VA_ARG 0
-#endif
-
-#pragma pop_macro("__has_builtin")
 
 /* Enable workaround for ABI incompatibility on affected platforms */
 #ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
