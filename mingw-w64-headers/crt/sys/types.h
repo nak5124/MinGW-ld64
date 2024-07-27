@@ -24,7 +24,28 @@
   typedef _dev_t dev_t;
 #endif
 
-#include <_mingw_off_t.h>
+#ifndef _OFF_T_DEFINED
+# define _OFF_T_DEFINED
+# ifndef _OFF_T_
+#   define _OFF_T_
+    typedef long _off_t;
+#   ifdef __MINGW_USE_LFS
+      typedef _off_t off32_t;
+#   endif
+# endif
+# ifndef _OFF64_T_DEFINED
+#   define _OFF64_T_DEFINED
+    __MINGW_EXTENSION typedef long long _off64_t;
+#   ifdef __MINGW_USE_LFS64
+      __MINGW_EXTENSION typedef _off64_t off64_t;
+#   endif
+# endif
+# ifdef __MINGW_USE_FOB64
+    typedef _off64_t off_t;
+# else
+    typedef _off_t off_t;
+# endif
+#endif
 
 #ifndef _PID_T_
 # define _PID_T_

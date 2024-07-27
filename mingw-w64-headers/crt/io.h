@@ -10,6 +10,7 @@
 #include <share.h>
 #include <corecrt_wio.h>
 #include <direct.h>
+#include <sys/types.h>>
 
 #pragma pack(push, _CRT_PACKING)
 

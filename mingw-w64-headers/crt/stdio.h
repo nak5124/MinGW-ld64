@@ -8,6 +8,7 @@
 
 #include <corecrt.h>
 #include <corecrt_wstdio.h>
+#include <sys/types.h>
 
 #pragma pack(push, _CRT_PACKING)
 
@@ -49,10 +50,10 @@ __MINGW_BEGIN_C_DECLS
 #define FOPEN_MAX    20
 #define _SYS_OPEN    20
 #define TMP_MAX      2147483647
-#define TMP_MAX_S    TMP_MAX
-#define _TMP_MAX_S   TMP_MAX
-
-#include <_mingw_off_t.h>
+#ifdef __MINGW_USE_SECAPI
+# define TMP_MAX_S  TMP_MAX
+# define _TMP_MAX_S TMP_MAX
+#endif
 
 #ifndef _FPOS_T_DEFINED
 # define _FPOS_T_DEFINED
