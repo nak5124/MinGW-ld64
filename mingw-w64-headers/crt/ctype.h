@@ -29,7 +29,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _isspace_l(int _C, _locale_t _Locale);
   _CRTIMP int __cdecl ispunct(int _C);
   _CRTIMP int __cdecl _ispunct_l(int _C, _locale_t _Locale);
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS)
   _CRTIMP int __cdecl isblank(int _C);
+#endif
   _CRTIMP int __cdecl _isblank_l(int _C, _locale_t _Locale);
   _CRTIMP int __cdecl isalnum(int _C);
   _CRTIMP int __cdecl _isalnum_l(int _C, _locale_t _Locale);
@@ -148,14 +150,16 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* _CTYPE_DISABLE_MACROS */
 
-#ifndef _CTYPE_DEFINED
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
   _CRTIMP int __cdecl isascii(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP int __cdecl toascii(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl iscsymf(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl iscsym(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-#else
 # define isascii __isascii
 # define toascii __toascii
+#endif
+
+#ifdef __MINGW_USE_MS
+  _CRTIMP int __cdecl iscsymf(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl iscsym(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 # define iscsymf __iscsymf
 # define iscsym  __iscsym
 #endif
