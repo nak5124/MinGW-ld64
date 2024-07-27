@@ -1,6 +1,11 @@
-#include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/types.h>
+
+int truncate(const char *__file, _off_t __length);
+int truncate64(const char *__file, _off64_t __length);
+int ftruncate(int __fd, _off_t __length);
+int ftruncate64(int __fd, _off64_t __length);
 
 int truncate(const char *pathname, _off_t len){
   int ret, err;

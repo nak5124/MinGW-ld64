@@ -45,44 +45,43 @@ __MINGW_BEGIN_C_DECLS
   unsigned int __cdecl sleep(unsigned int);
 #pragma pop_macro("sleep")
 
+#if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC)
   int __cdecl __MINGW_NOTHROW usleep(useconds_t);
+#endif
 
-#ifndef FTRUNCATE_DEFINED
-# define FTRUNCATE_DEFINED
-  /* This is defined as a real library function to allow autoconf
-    to verify its existence. */
-# ifdef _POSIX_C_SOURCE
-    int ftruncate(int, off32_t);
-    int ftruncate64(int, off64_t);
-    int truncate(const char *, off32_t);
-    int truncate64(const char *, off64_t);
+#if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
+# ifndef __MINGW_USE_FOB64
+    int truncate(const char *__file, off_t __length);
+# else
+#   define truncate truncate64
+# endif
+# ifdef __MINGW_USE_LFS64
+    int truncate64(const char *__file, off64_t __length);
+# endif
+#endif
+
+#if defined(__MINGW_USE_POSIX199309) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
+# ifndef __MINGW_USE_FOB64
+    int ftruncate(int __fd, off_t __length);
 #   ifndef __CRT__NO_INLINE
-      __CRT_INLINE int ftruncate(int __fd, off32_t __length)
+      __CRT_INLINE int ftruncate(int __fd, off_t __length)
       {
         return _chsize(__fd, __length);
       }
 #   endif
 # else
-    int ftruncate(int, _off_t);
-    int ftruncate64(int, _off64_t);
-    int truncate(const char *, _off_t);
-    int truncate64(const char *, _off64_t);
-#   ifndef __CRT__NO_INLINE
-      __CRT_INLINE int ftruncate(int __fd, _off_t __length)
-      {
-        return _chsize(__fd, __length);
-      }
-#   endif
+#   define ftruncate ftruncate64
 # endif
-#endif  /* FTRUNCATE_DEFINED */
-
-#if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
-# define ftruncate ftruncate64
+# ifdef __MINGW_USE_LFS64
+    int ftruncate64(int __fd, off64_t __length);
+# endif
 #endif
 
 #ifndef _CRT_SWAB_DEFINED  /* Also in stdlib.h */
-#define _CRT_SWAB_DEFINED
-  _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+# define _CRT_SWAB_DEFINED
+# if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
+    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+# endif
 #endif  /* _CRT_SWAB_DEFINED */
 
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
