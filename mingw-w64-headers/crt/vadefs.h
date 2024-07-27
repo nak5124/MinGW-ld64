@@ -21,7 +21,7 @@ __MINGW_BEGIN_C_DECLS
   typedef __builtin_va_list __gnuc_va_list;
 #endif
 
-#ifndef _VA_LIST_DEFINED  /* if stdargs.h didn't define it */
+#ifndef _VA_LIST_DEFINED  /* Also in stdarg.h */
 # define _VA_LIST_DEFINED
   typedef __gnuc_va_list va_list;
 #endif  /* _VA_LIST_DEFINED */
@@ -33,10 +33,14 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* Use GCC builtins */
-#define _crt_va_start(v, l) __builtin_va_start(v, l)
-#define _crt_va_arg(v, l)   __builtin_va_arg(v, l)
-#define _crt_va_end(v)      __builtin_va_end(v)
-#define _crt_va_copy(d, s)  __builtin_va_copy(d, s)
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L
+# define _crt_va_start(v, ...) __builtin_va_start(v, 0)
+#else
+# define _crt_va_start(v, l)   __builtin_va_start(v, l)
+#endif
+#define _crt_va_arg(v, l)  __builtin_va_arg(v, l)
+#define _crt_va_end(v)     __builtin_va_end(v)
+#define _crt_va_copy(d, s) __builtin_va_copy(d, s)
 
 __MINGW_END_C_DECLS
 
