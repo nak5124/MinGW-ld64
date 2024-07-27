@@ -19,7 +19,7 @@ __MINGW_BEGIN_C_DECLS
 #define _TLOSS     5  /* total loss of precision */
 #define _PLOSS     6  /* partial loss of precision */
 
-#if !defined(__STRICT_ANSI__) || defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_DEFAULT_SOURCE) || defined(_USE_MATH_DEFINES)
+#if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS) || defined(_USE_MATH_DEFINES)
 # define M_E        2.71828182845904523536
 # define M_LOG2E    1.44269504088896340736
 # define M_LOG10E   0.434294481903251827651
@@ -164,46 +164,26 @@ __MINGW_BEGIN_C_DECLS
   double __cdecl sqrt(double _X);
   _CRTIMP double __cdecl ceil(double _X);
   _CRTIMP double __cdecl floor(double _X);
-
-/* 7.12.7.2 The fabs functions: Double in C89 */
   double __cdecl fabs(double _X);
-#if defined(__aarch64__) || defined(_ARM64_)
-  _CRTIMP float __cdecl fabsf(float _X);
-#else
-  float __cdecl fabsf(float _X);
-#endif
-  _LDCRTIMP long double __cdecl fabsl(long double _X);
-
-#ifndef __CRT__NO_INLINE
-#if defined(__x86_64__) || defined(_AMD64_)
-  __CRT_INLINE float __cdecl fabsf(float _X)
-  {
-    return __builtin_fabsf(_X);
-  }
-
-  __CRT_INLINE long double __cdecl fabsl(long double _X)
-  {
-    long double res = 0.0l;
-    __asm__ __volatile__("fabs;" : "=t" (res) : "0" (_X));
-    return res;
-  }
-#endif
-#endif  /* __CRT__NO_INLINE */
 
   double __cdecl ldexp(double _X, int _Y);
   _CRTIMP double __cdecl frexp(double _X, int *_Y);
   _CRTIMP double __cdecl modf(double _X, double *_Y);
   double __cdecl fmod(double _X, double _Y);
 
+#ifdef __MINGW_USE_GNU
   void __cdecl sincos(double __x, double *p_sin, double *p_cos);
   void __cdecl sincosf(float __x, float *p_sin, float *p_cos);
   void __cdecl sincosl(long double __x, long double *p_sin, long double *p_cos);
+#endif
 
 #ifndef _CRT_ABS_DEFINED  /* Also in stdlib.h */
 # define _CRT_ABS_DEFINED
   int __cdecl abs(int _X);
   long __cdecl labs(long _X);
-  __MINGW_EXTENSION long long __cdecl llabs(long long _X);
+# ifdef __MINGW_USE_ISOC99
+    __MINGW_EXTENSION long long __cdecl llabs(long long _X);
+# endif
 #endif  /* _CRT_ABS_DEFINED */
 
 #ifndef _CRT_ATOF_DEFINED  /* Also in stdlib.h */
@@ -221,7 +201,7 @@ __MINGW_BEGIN_C_DECLS
     double x;
     double y;
   };
-# ifndef __cplusplus
+# if defined(__MINGW_USE_MS) && !defined(__cplusplus)
 #   define complex _complex
 # endif
 #endif
@@ -265,7 +245,7 @@ __MINGW_BEGIN_C_DECLS
 
 /* END FLOAT.H COPY */
 
-#if !defined(__STRICT_ANSI__) || defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_DEFAULT_SOURCE)
+#if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
 
   _CRTIMP double __cdecl j0(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP double __cdecl j1(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
@@ -274,7 +254,12 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP double __cdecl y1(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
   _CRTIMP double __cdecl yn(int _X, double _Y) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
+#endif
+
+#ifdef __MINGW_USE_MS
   _CRTIMP double __cdecl chgsign(double _X);
+#endif
+
 /*
  * scalb() is a GCC built-in.
  * Exclude this _scalb() stub; the semantics are incompatible
@@ -283,7 +268,12 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP double __cdecl scalb(double _X, long _Y);
  *
  */
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
   _CRTIMP int __cdecl finite(double _X);
+#endif
+
+#ifdef __MINGW_USE_MS
+
   _CRTIMP int __cdecl fpclass(double _X);
 
 #define FP_SNAN    _FPCLASS_SNAN
@@ -297,9 +287,9 @@ __MINGW_BEGIN_C_DECLS
 #define FP_NNORM   _FPCLASS_NN
 #define FP_PNORM   _FPCLASS_PN
 
-#endif  /* !defined(__STRICT_ANSI__) || defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_DEFAULT_SOURCE) */
+#endif
 
-#if defined(__MINGW_USE_ISOC99) || !defined(__STRICT_ANSI__) || defined(__cplusplus)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS) || defined(__cplusplus)
 
 #define HUGE_VALF __builtin_huge_valf()
 #define HUGE_VALL __builtin_huge_vall()
@@ -323,6 +313,10 @@ __MINGW_BEGIN_C_DECLS
   typedef long double float_t;
   typedef long double double_t;
 #endif
+
+#define MATH_ERRNO       1
+#define MATH_ERREXCEPT   2
+#define math_errhandling (MATH_ERRNO | MATH_ERREXCEPT)
 
 /* 7.12.3.1 */
 /*
@@ -404,23 +398,36 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#define fpclassify(_X)                                           \
-  __mingw_choose_expr(                                           \
-    __mingw_types_compatible_p(__typeof__(_X), double),          \
-    __fpclassify(_X),                                            \
-    __mingw_choose_expr(                                         \
-      __mingw_types_compatible_p(__typeof__(_X), float),         \
-      __fpclassifyf(_X),                                         \
-      __mingw_choose_expr(                                       \
-        __mingw_types_compatible_p(__typeof__(_X), long double), \
-        __fpclassifyl(_X),                                       \
-        (__builtin_trap(), 0))))
+#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) \
+  && (!defined(__OPTIMIZE_SIZE__) || defined(__cplusplus))
+# define fpclassify(_X) (__builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, _X))
+#else
+# define fpclassify(_X)                                            \
+    __mingw_choose_expr(                                           \
+      __mingw_types_compatible_p(__typeof__(_X), double),          \
+      __fpclassify(_X),                                            \
+      __mingw_choose_expr(                                         \
+        __mingw_types_compatible_p(__typeof__(_X), float),         \
+        __fpclassifyf(_X),                                         \
+        __mingw_choose_expr(                                       \
+          __mingw_types_compatible_p(__typeof__(_X), long double), \
+          __fpclassifyl(_X),                                       \
+          (__builtin_trap(), 0))))
+#endif
 
 /* 7.12.3.2 */
-#define isfinite(_X) ((fpclassify(_X) & FP_NAN) == 0)
+#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+# define isfinite(_X) __builtin_isfinite(_X)
+#else
+# define isfinite(_X) ((fpclassify(_X) & FP_NAN) == 0)
+#endif
 
 /* 7.12.3.3 */
-#define isinf(_X) (fpclassify(_X) == FP_INFINITE)
+#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+# define isinf(_X) __builtin_isinf_sign(_X)
+#else
+# define isinf(_X) (fpclassify(_X) == FP_INFINITE)
+#endif
 
 /* 7.12.3.4 */
 /* We don't need to worry about truncation here:
@@ -469,20 +476,28 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#define isnan(_X)                                                \
-  __mingw_choose_expr(                                           \
-    __mingw_types_compatible_p(__typeof__(_X), double),          \
-    __isnan(_X),                                                 \
-    __mingw_choose_expr(                                         \
-      __mingw_types_compatible_p(__typeof__(_X), float),         \
-      __isnanf(_X),                                              \
-      __mingw_choose_expr(                                       \
-        __mingw_types_compatible_p(__typeof__(_X), long double), \
-        __isnanl(_X),                                            \
-        (__builtin_trap(), _X))))
+#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+# define isnan(_X) __builtin_isnan(_X)
+#else
+# define isnan(_X)                                                 \
+    __mingw_choose_expr(                                           \
+      __mingw_types_compatible_p(__typeof__(_X), double),          \
+      __isnan(_X),                                                 \
+      __mingw_choose_expr(                                         \
+        __mingw_types_compatible_p(__typeof__(_X), float),         \
+        __isnanf(_X),                                              \
+        __mingw_choose_expr(                                       \
+          __mingw_types_compatible_p(__typeof__(_X), long double), \
+          __isnanl(_X),                                            \
+          (__builtin_trap(), _X))))
+#endif
 
 /* 7.12.3.5 */
-#define isnormal(_X) (fpclassify(_X) == FP_NORMAL)
+#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+# define isnormal(_X) __builtin_isnormal(_X)
+#else
+# define isnormal(_X) (fpclassify(_X) == FP_NORMAL)
+#endif
 
 /* 7.12.3.6 The signbit macro */
   int __cdecl __signbit(double _X);
@@ -516,17 +531,21 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#define signbit(_X)                                              \
-  __mingw_choose_expr(                                           \
-    __mingw_types_compatible_p(__typeof__(_X), double),          \
-    __signbit(_X),                                               \
-    __mingw_choose_expr(                                         \
-      __mingw_types_compatible_p(__typeof__(_X), float),         \
-      __signbitf(_X),                                            \
-      __mingw_choose_expr(                                       \
-        __mingw_types_compatible_p(__typeof__(_X), long double), \
-        __signbitl(_X),                                          \
-        (__builtin_trap(), _X))))
+#if __MINGW_GNUC_PREREQ(6, 0)
+# define signbit(_X) __builtin_signbit(_X)
+#else
+# define signbit(_X)                                               \
+    __mingw_choose_expr(                                           \
+      __mingw_types_compatible_p(__typeof__(_X), double),          \
+      __signbit(_X),                                               \
+      __mingw_choose_expr(                                         \
+        __mingw_types_compatible_p(__typeof__(_X), float),         \
+        __signbitf(_X),                                            \
+        __mingw_choose_expr(                                       \
+          __mingw_types_compatible_p(__typeof__(_X), long double), \
+          __signbitl(_X),                                          \
+          (__builtin_trap(), _X))))
+#endif
 
 /* 7.12.4 Trigonometric functions: Double in C89 */
   _CRTIMP float __cdecl sinf(float _X);
@@ -662,6 +681,30 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP float __cdecl cbrtf(float _X);
   _LDCRTIMP long double __cdecl cbrtl(long double _X);
 
+/* 7.12.7.2 The fabs functions: Double in C89 */
+#if defined(__aarch64__) || defined(_ARM64_)
+  _CRTIMP float __cdecl fabsf(float _X);
+#else
+  float __cdecl fabsf(float _X);
+#endif
+  _LDCRTIMP long double __cdecl fabsl(long double _X);
+
+#ifndef __CRT__NO_INLINE
+#if defined(__x86_64__) || defined(_AMD64_)
+  __CRT_INLINE float __cdecl fabsf(float _X)
+  {
+    return __builtin_fabsf(_X);
+  }
+
+  __CRT_INLINE long double __cdecl fabsl(long double _X)
+  {
+    long double res = 0.0l;
+    __asm__ __volatile__("fabs;" : "=t" (res) : "0" (_X));
+    return res;
+  }
+#endif
+#endif  /* __CRT__NO_INLINE */
+
 /* 7.12.7.3  */
   _CRTIMP double __cdecl hypot(double _X, double _Y);
   _CRTIMP float __cdecl hypotf(float _X, float _Y);
@@ -769,11 +812,9 @@ __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
   _CRTIMP float __cdecl nanf(const char *_X);
   _LDCRTIMP long double __cdecl nanl(const char *_X);
 
-#ifndef __STRICT_ANSI__
-# define _nan()  nan("")
-# define _nanf() nanf("")
-# define _nanl() nanl("")
-#endif
+#define _nan()  nan("")
+#define _nanf() nanf("")
+#define _nanl() nanl("")
 
 /* 7.12.11.3 */
   _CRTIMP double __cdecl nextafter(double _X, double _Y);
@@ -827,7 +868,7 @@ __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
 #define islessgreater(x, y)  __builtin_islessgreater(x, y)
 #define isunordered(x, y)    __builtin_isunordered(x, y)
 
-#endif  /* defined(__MINGW_USE_ISOC99) || !defined(__STRICT_ANSI__) || defined(__cplusplus) */
+#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS) || defined(__cplusplus) */
 
   _CRTIMP float __cdecl _hypotf(float _X, float _Y);
   _LDCRTIMP long double __cdecl _hypotl(long double _X, long double _Y);
@@ -849,6 +890,7 @@ __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
 # define _matherrl _matherr
 #endif
 
+#ifdef __MINGW_USE_MS
 # define DOMAIN    _DOMAIN
 # define SING      _SING
 # define OVERFLOW  _OVERFLOW
@@ -858,6 +900,7 @@ __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
 
 # define matherr _matherr
 # define HUGE    _HUGE
+#endif
 
 __MINGW_END_C_DECLS
 
