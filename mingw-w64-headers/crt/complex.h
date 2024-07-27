@@ -68,9 +68,9 @@ __MINGW_BEGIN_C_DECLS
   double _Complex cexp(double _Complex _Z);
   double __MINGW_ATTRIB_CONST cimag(double _Complex _Z);
   double _Complex clog(double _Complex _Z);
-#ifdef _GNU_SOURCE
+#if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
   double _Complex clog10(double _Complex _Z);
-#endif  /* _GNU_SOURCE */
+#endif
   double _Complex __MINGW_ATTRIB_CONST conj(double _Complex _Z);
   double _Complex cpow(double _Complex _X, double _Complex _Y);
   double _Complex __MINGW_ATTRIB_CONST cproj(double _Complex _Z);
@@ -80,7 +80,9 @@ __MINGW_BEGIN_C_DECLS
   double _Complex csqrt(double _Complex _Z);
   double _Complex ctan(double _Complex _Z);
   double _Complex ctanh(double _Complex _Z);
+#ifdef __MINGW_USE_MS
   double norm(double _Complex _Z);
+#endif
 
   float __MINGW_ATTRIB_CONST cabsf(float _Complex _Z);
   float _Complex cacosf(float _Complex _Z);
@@ -95,9 +97,9 @@ __MINGW_BEGIN_C_DECLS
   float _Complex cexpf(float _Complex _Z);
   float __MINGW_ATTRIB_CONST cimagf(float _Complex _Z);
   float _Complex clogf(float _Complex _Z);
-#ifdef _GNU_SOURCE
+#if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
   float _Complex clog10f(float _Complex _Z);
-#endif  /* _GNU_SOURCE */
+#endif
   float _Complex __MINGW_ATTRIB_CONST conjf(float _Complex _Z);
   float _Complex cpowf(float _Complex _X, float _Complex _Y);
   float _Complex __MINGW_ATTRIB_CONST cprojf(float _Complex _Z);
@@ -107,7 +109,9 @@ __MINGW_BEGIN_C_DECLS
   float _Complex csqrtf(float _Complex _Z);
   float _Complex ctanf(float _Complex _Z);
   float _Complex ctanhf(float _Complex _Z);
+#ifdef __MINGW_USE_MS
   float normf(float _Complex _Z);
+#endif
 
   long double __MINGW_ATTRIB_CONST cabsl(long double _Complex _Z);
   long double _Complex cacosl(long double _Complex _Z);
@@ -122,9 +126,9 @@ __MINGW_BEGIN_C_DECLS
   long double _Complex cexpl(long double _Complex _Z);
   long double __MINGW_ATTRIB_CONST cimagl(long double _Complex _Z);
   long double _Complex clogl(long double _Complex _Z);
-#ifdef _GNU_SOURCE
+#if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
   long double _Complex clog10l(long double _Complex _Z);
-#endif  /* _GNU_SOURCE */
+#endif
   long double _Complex __MINGW_ATTRIB_CONST conjl(long double _Complex _Z);
   long double _Complex cpowl(long double _Complex _X, long double _Complex _Y);
   long double _Complex __MINGW_ATTRIB_CONST cprojl(long double _Complex _Z);
@@ -134,7 +138,9 @@ __MINGW_BEGIN_C_DECLS
   long double _Complex csqrtl(long double _Complex _Z);
   long double _Complex ctanl(long double _Complex _Z);
   long double _Complex ctanhl(long double _Complex _Z);
+#ifdef __MINGW_USE_MS
   long double norml(long double _Complex _Z);
+#endif
 
 #ifndef __CRT__NO_INLINE
 #include <math.h>
