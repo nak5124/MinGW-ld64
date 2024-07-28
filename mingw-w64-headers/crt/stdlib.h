@@ -40,8 +40,12 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_TERMINATE_DEFINED
   void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
   void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
-  void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
+# ifdef __MINGW_USE_ISOC99
+    void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+# endif
+# ifdef __MINGW_USE_ISOC11
+    void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
+# endif
 # pragma push_macro("abort")
 # undef abort
   void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
@@ -58,12 +62,16 @@ __MINGW_BEGIN_C_DECLS
 
   typedef int (__cdecl *_onexit_t)(void);
 
-# define onexit_t _onexit_t
+# ifdef __MINGW_USE_MS
+#   define onexit_t _onexit_t
+# endif
 #endif
 
   int __cdecl atexit(void (__cdecl *)(void));
   _onexit_t __cdecl _onexit(_onexit_t _Func);
+#ifdef __MINGW_USE_ISOC11
   int __cdecl at_quick_exit(void (__cdecl *)(void));
+#endif
 
   typedef void (__cdecl *_purecall_handler)(void);
   typedef void (__cdecl *_invalid_parameter_handler)(const wchar_t *, const wchar_t *, const wchar_t *, unsigned int, uintptr_t);
@@ -137,17 +145,21 @@ __MINGW_BEGIN_C_DECLS
     long rem;
   } ldiv_t;
 
+#ifdef __MINGW_USE_ISOC99
   typedef struct _lldiv_t
   {
     __MINGW_EXTENSION long long quot;
     __MINGW_EXTENSION long long rem;
   } lldiv_t;
+#endif
 
 #ifndef _CRT_ABS_DEFINED  /* Also in math.h */
 # define _CRT_ABS_DEFINED
   int __cdecl abs(int _X);
   long __cdecl labs(long _X);
-  __MINGW_EXTENSION long long __cdecl llabs(long long _X);
+# ifdef __MINGW_USE_ISOC99
+    __MINGW_EXTENSION long long __cdecl llabs(long long _X);
+# endif
 #endif  /* _CRT_ABS_DEFINED */
   __MINGW_EXTENSION __int64 __cdecl _abs64(__int64 _X);
 
@@ -157,7 +169,9 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP div_t __cdecl div(int _Numerator, int _Denominator);
   _CRTIMP ldiv_t __cdecl ldiv(long _Numerator, long _Denominator);
+#ifdef __MINGW_USE_ISOC99
   __MINGW_EXTENSION _CRTIMP lldiv_t __cdecl lldiv(long long _Numerator, long long _Denominator);
+#endif
 
 #pragma push_macro("_rotl")
 #undef _rotl
@@ -188,11 +202,11 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP void __cdecl srand(unsigned int _Seed);
   _CRTIMP int __cdecl rand(void);
-#ifdef _CRT_RAND_S
+#if defined(_CRT_RAND_S) && defined(__MINGW_USE_MS)
   _CRTIMP errno_t __cdecl rand_s(unsigned int *randomValue);
 #endif
 
-#if (defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE - 0) >= 199506L) || defined(_REENTRANT)
+#ifdef __MINGW_USE_POSIX199506
 # ifndef rand_r
 #   define rand_r(__seed) (__seed == __seed ? rand () : rand ())
 # endif
@@ -243,7 +257,9 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_ATOF_DEFINED */
   _CRTIMP int __cdecl atoi(const char *_Str);
   _CRTIMP long __cdecl atol(const char *_Str);
+#ifdef __MINGW_USE_ISOC99
   __MINGW_EXTENSION _CRTIMP long long __cdecl atoll(const char *_Str);
+#endif
   __MINGW_EXTENSION _CRTIMP __int64 __cdecl _atoi64(const char *_String);
 
   _CRTIMP int __cdecl _atoi_l(const char *_Str, _locale_t _Locale);
@@ -259,21 +275,29 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _atodbl_l(_CRT_DOUBLE *_Result, char *_Str, _locale_t _Locale);
   _CRTIMP int __cdecl _atoldbl_l(_LDOUBLE *_Result, char *_Str, _locale_t _Locale);
 
+#ifdef __MINGW_USE_ISOC99
   _CRTIMP float __cdecl __MINGW_NOTHROW strtof(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
+#endif
   _CRTIMP float __cdecl _strtof_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
   _CRTIMP double __cdecl __MINGW_NOTHROW strtod(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
   _CRTIMP double __cdecl _strtod_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
+#ifdef __MINGW_USE_ISOC99
   _LDCRTIMP long double __cdecl __MINGW_NOTHROW strtold(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
+#endif
 #if defined(__aarch64__) || defined(_ARM64_)
   _LDCRTIMP long double __cdecl _strtold_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
 #endif
   _CRTIMP long __cdecl strtol(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
   _CRTIMP long __cdecl _strtol_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
+#ifdef __MINGW_USE_ISOC99
   __MINGW_EXTENSION _CRTIMP long long __cdecl strtoll(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
+#endif
   __MINGW_EXTENSION _CRTIMP long long __cdecl _strtoll_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
   _CRTIMP unsigned long __cdecl strtoul(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
   _CRTIMP unsigned long __cdecl _strtoul_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
+#ifdef __MINGW_USE_ISOC99
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl strtoull(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
+#endif
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl _strtoull_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
   __MINGW_EXTENSION _CRTIMP __int64 __cdecl _strtoi64(const char *_String, char **_EndPtr, int _Radix);
   __MINGW_EXTENSION _CRTIMP __int64 __cdecl _strtoi64_l(const char *_String, char **_EndPtr, int _Radix, _locale_t _Locale);
@@ -324,19 +348,25 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl mbtowc(wchar_t * __restrict__ _DstCh, const char * __restrict__ _SrcCh, size_t _SrcSizeInBytes);
   _CRTIMP int __cdecl _mbtowc_l(wchar_t * __restrict__ _DstCh, const char * __restrict__ _SrcCh, size_t _SrcSizeInBytes, _locale_t _Locale);
   _CRTIMP size_t __cdecl mbstowcs(wchar_t * __restrict__ _Dest, const char * __restrict__ _Source, size_t _MaxCount);
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl mbstowcs_s(size_t *_PtNumOfCharConverted, wchar_t *_DstBuf, size_t _SizeInWords, const char *_SrcBuf, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(errno_t, mbstowcs_s, size_t *, _PtNumOfCharConverted, wchar_t, _Dest, const char *, _Source, size_t, _MaxCount)
+#endif
   _CRTIMP size_t __cdecl _mbstowcs_l(wchar_t * __restrict__ _Dest, const char * __restrict__ _Source, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP errno_t __cdecl _mbstowcs_s_l(size_t *_PtNumOfCharConverted, wchar_t *_DstBuf, size_t _SizeInWords, const char *_SrcBuf, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(errno_t, _mbstowcs_s_l, size_t *, _PtNumOfCharConverted, wchar_t, _Dest, const char *, _Source, size_t, _MaxCount, _locale_t, _Locale)
 
   _CRTIMP int __cdecl wctomb(char *_MbCh, wchar_t _WCh) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wctomb_s(int *_SizeConverted, char *_MbCh, rsize_t _SizeInBytes, wchar_t _WCh);
+#endif
   _CRTIMP int __cdecl _wctomb_l(char *_MbCh, wchar_t _WCh, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _wctomb_s_l(int *_SizeConverted, char *_MbCh, size_t _SizeInBytes, wchar_t _WCh, _locale_t _Locale);
   _CRTIMP size_t __cdecl wcstombs(char * __restrict__ _Dest, const wchar_t * __restrict__ _Source, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wcstombs_s(size_t *_PtNumOfCharConverted, char *_Dst, size_t _DstSizeInBytes, const wchar_t *_Src, size_t _MaxCountInBytes);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(errno_t, wcstombs_s, size_t *, _PtNumOfCharConverted, char, _Dst, const wchar_t *, _Src, size_t, _MaxCountInBytes)
+#endif
   _CRTIMP size_t __cdecl _wcstombs_l(char * __restrict__ _Dest,const wchar_t * __restrict__ _Source,size_t _MaxCount,_locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _wcstombs_s_l(size_t *_PtNumOfCharConverted, char *_Dst, size_t _DstSizeInBytes, const wchar_t *_Src, size_t _MaxCountInBytes, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(errno_t, _wcstombs_s_l, size_t *, _PtNumOfCharConverted, char, _Dst, const wchar_t *, _Src, size_t, _MaxCountInBytes, _locale_t, _Locale)
@@ -386,8 +416,10 @@ __MINGW_BEGIN_C_DECLS
 #define _MAX_ENV 32767
 
   _CRTIMP char *__cdecl getenv(const char *_VarName) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl getenv_s(size_t *_ReturnSize, char *_DstBuf, rsize_t _DstSize, const char *_VarName);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_1(errno_t, getenv_s, size_t *, _ReturnSize, char, _Dest, const char *, _VarName)
+#endif
   _CRTIMP errno_t __cdecl _dupenv_s(char **_PBuffer, size_t *_PBufferSizeInBytes, const char *_VarName);
 
 #ifndef _CRT_SYSTEM_DEFINED  /* Also in process.h */
@@ -405,25 +437,39 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void __cdecl _beep(unsigned _Frequency, unsigned _Duration) __MINGW_ATTRIB_DEPRECATED;
   _CRTIMP void __cdecl _sleep(unsigned long _Duration) __MINGW_ATTRIB_DEPRECATED;
 
-#define sys_errlist _sys_errlist
-#define sys_nerr    _sys_nerr
+#ifdef __MINGW_USE_MS
+# define sys_errlist _sys_errlist
+# define sys_nerr    _sys_nerr
+#endif
 
+#if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
   _CRTIMP char *__cdecl ecvt(double _Val, int _NumOfDigits, int *_PtDec, int *_PtSign) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl fcvt(double _Val, int _NumOfDec, int *_PtDec, int *_PtSign) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl gcvt(double _Val, int _NumOfDigits, char *_DstBuf) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif
+#ifdef __MINGW_USE_MS
   _CRTIMP char *__cdecl itoa(int _Val, char *_DstBuf, int _Radix) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl ltoa(long _Val, char *_DstBuf, int _Radix) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl ultoa(unsigned long _Val, char *_Dstbuf, int _Radix) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif
 
 #ifndef _CRT_SWAB_DEFINED  /* Also in unistd.h */
 # define _CRT_SWAB_DEFINED
-  _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+# if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
+    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+# endif
 #endif  /* _CRT_SWAB_DEFINED */
-  _CRTIMP char *__cdecl ultoa(unsigned long _Val, char *_Dstbuf, int _Radix) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
-#define environ _environ
+#if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
+# define environ _environ
+#endif
 
+#if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
   _CRTIMP int __cdecl putenv(const char *_EnvString) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+#endif
+#ifdef __MINGW_USE_MS
   onexit_t __cdecl onexit(onexit_t _Func);
+#endif
 
 #ifndef _CRT_ALLOCATION_DEFINED  /* Also in malloc.h */
 # define _CRT_ALLOCATION_DEFINED
@@ -461,7 +507,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void *__cdecl _aligned_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment);
 #endif  /* _CRT_ALLOCATION_DEFINED */
 
+#if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MISC)
   int __cdecl mkstemp(char *template_name);
+#endif
 
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);

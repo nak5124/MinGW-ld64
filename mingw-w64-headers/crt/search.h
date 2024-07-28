@@ -17,9 +17,13 @@ __MINGW_BEGIN_C_DECLS
   typedef int (__cdecl* _CoreCrtNonSecureSearchSortCompareFunction)(const void *, const void *);
 
   _CRTIMP void *__cdecl bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP void *__cdecl bsearch_s(const void *_Key, const void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
+#endif
   _CRTIMP void __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP void __cdecl qsort_s(void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
+#endif
   _CRTIMP void *__cdecl _lfind(const void *_Key, const void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
   _CRTIMP void *__cdecl _lfind_s(const void *_Key, const void *_Base, unsigned int *_NumOfElements, size_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
   _CRTIMP void *__cdecl _lsearch(const void *_Key, void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
@@ -68,7 +72,7 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
   void * __cdecl tsearch(const void *, void **, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
   void __cdecl twalk(const void *, void (*)(const void *, VISIT, int));
 
-#ifdef _GNU_SOURCE
+#ifdef __MINGW_USE_GNU
   void __cdecl tdestroy(void *, void (*)(void *)) __MINGW_ATTRIB_NONNULL(2);
 #endif
 
