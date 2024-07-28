@@ -200,8 +200,6 @@ __MINGW_BEGIN_C_DECLS
 # endif  /* __uintptr_t_defined */
 #endif  /* _UINTPTR_T_DEFINED */
 
-#ifdef __MINGW_USE_SECAPI
-
 #ifndef _RSIZE_T_DEFINED
 # define _RSIZE_T_DEFINED
 # undef rsize_t
@@ -212,8 +210,6 @@ __MINGW_BEGIN_C_DECLS
 # define _ERRCODE_DEFINED
   typedef int errno_t;
 #endif  /* _ERRCODE_DEFINED */
-
-#endif
 
 #ifndef _WCTYPE_T_DEFINED
 # define _WCTYPE_T_DEFINED
