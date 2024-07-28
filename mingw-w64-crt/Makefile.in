@@ -909,15 +909,17 @@ lib64_libucrt_extra_a_AR = $(AR) $(ARFLAGS)
 lib64_libucrt_extra_a_LIBADD =
 am__lib64_libucrt_extra_a_SOURCES_DIST = crt/ucrtbase_compat.c \
 	math/_huge.c math/frexpf.c math/ldexpf.c math/lgamma.c \
-	math/lgammaf.c math/lgammal.c math/modfl.c misc/__initenv.c \
-	misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c \
-	misc/fegetround.c misc/feholdexcept.c misc/fesetenv.c \
-	misc/fesetexceptflag.c misc/fesetround.c misc/fetestexcept.c \
-	misc/ucrt-access.c stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c \
-	stdio/ucrt_fwprintf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
-	stdio/ucrt__scprintf.c stdio/ucrt__snprintf.c \
-	stdio/ucrt__snscanf.c stdio/ucrt__snwprintf.c \
-	stdio/ucrt_snprintf.c stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
+	math/lgammaf.c math/lgammal.c math/modfl.c misc/__badioinfo.c \
+	misc/__p___initenv.c misc/__p___winitenv.c misc/__initenv.c \
+	misc/__winitenv.c misc/feclearexcept.c misc/fegetenv.c \
+	misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
+	misc/fesetenv.c misc/fesetexceptflag.c misc/fesetround.c \
+	misc/fetestexcept.c misc/ucrt-access.c stdio/ucrt_fprintf.c \
+	stdio/ucrt_fscanf.c stdio/ucrt_fwprintf.c stdio/ucrt_printf.c \
+	stdio/ucrt_scanf.c stdio/ucrt__scprintf.c \
+	stdio/ucrt__snprintf.c stdio/ucrt__snscanf.c \
+	stdio/ucrt__snwprintf.c stdio/ucrt_snprintf.c \
+	stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
 	stdio/ucrt__vscprintf.c stdio/ucrt__vsnprintf.c \
 	stdio/ucrt__vsnwprintf.c stdio/ucrt_vfprintf.c \
 	stdio/ucrt_vfscanf.c stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
@@ -952,7 +954,11 @@ am__objects_36 = crt/lib64_libucrt_extra_a-ucrtbase_compat.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-lgammaf.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-lgammal.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-modfl.$(OBJEXT) \
+	misc/lib64_libucrt_extra_a-__badioinfo.$(OBJEXT) \
+	misc/lib64_libucrt_extra_a-__p___initenv.$(OBJEXT) \
+	misc/lib64_libucrt_extra_a-__p___winitenv.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-__initenv.$(OBJEXT) \
+	misc/lib64_libucrt_extra_a-__winitenv.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-feclearexcept.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-fegetenv.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-fegetexceptflag.$(OBJEXT) \
@@ -1845,15 +1851,17 @@ libarm64_libucrt_extra_a_AR = $(AR) $(ARFLAGS)
 libarm64_libucrt_extra_a_LIBADD =
 am__libarm64_libucrt_extra_a_SOURCES_DIST = crt/ucrtbase_compat.c \
 	math/_huge.c math/frexpf.c math/ldexpf.c math/lgamma.c \
-	math/lgammaf.c math/lgammal.c math/modfl.c misc/__initenv.c \
-	misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c \
-	misc/fegetround.c misc/feholdexcept.c misc/fesetenv.c \
-	misc/fesetexceptflag.c misc/fesetround.c misc/fetestexcept.c \
-	misc/ucrt-access.c stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c \
-	stdio/ucrt_fwprintf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
-	stdio/ucrt__scprintf.c stdio/ucrt__snprintf.c \
-	stdio/ucrt__snscanf.c stdio/ucrt__snwprintf.c \
-	stdio/ucrt_snprintf.c stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
+	math/lgammaf.c math/lgammal.c math/modfl.c misc/__badioinfo.c \
+	misc/__p___initenv.c misc/__p___winitenv.c misc/__initenv.c \
+	misc/__winitenv.c misc/feclearexcept.c misc/fegetenv.c \
+	misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
+	misc/fesetenv.c misc/fesetexceptflag.c misc/fesetround.c \
+	misc/fetestexcept.c misc/ucrt-access.c stdio/ucrt_fprintf.c \
+	stdio/ucrt_fscanf.c stdio/ucrt_fwprintf.c stdio/ucrt_printf.c \
+	stdio/ucrt_scanf.c stdio/ucrt__scprintf.c \
+	stdio/ucrt__snprintf.c stdio/ucrt__snscanf.c \
+	stdio/ucrt__snwprintf.c stdio/ucrt_snprintf.c \
+	stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
 	stdio/ucrt__vscprintf.c stdio/ucrt__vsnprintf.c \
 	stdio/ucrt__vsnwprintf.c stdio/ucrt_vfprintf.c \
 	stdio/ucrt_vfscanf.c stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
@@ -1869,7 +1877,11 @@ am__objects_78 =  \
 	math/libarm64_libucrt_extra_a-lgammaf.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-lgammal.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-modfl.$(OBJEXT) \
+	misc/libarm64_libucrt_extra_a-__badioinfo.$(OBJEXT) \
+	misc/libarm64_libucrt_extra_a-__p___initenv.$(OBJEXT) \
+	misc/libarm64_libucrt_extra_a-__p___winitenv.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-__initenv.$(OBJEXT) \
+	misc/libarm64_libucrt_extra_a-__winitenv.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-feclearexcept.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-fegetenv.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-fegetexceptflag.$(OBJEXT) \
@@ -3264,7 +3276,11 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-wmemmove.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-wmempcpy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-wmemset.Po \
+	misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Po \
+	misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Po \
+	misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Po \
+	misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po \
@@ -3315,7 +3331,11 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-wmemmove.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-wmempcpy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-wmemset.Po \
+	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Po \
+	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Po \
+	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Po \
+	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po \
@@ -4318,7 +4338,11 @@ src_ucrtbase = \
   math/ldexpf.c \
   math/lgamma.c math/lgammaf.c math/lgammal.c \
   math/modfl.c \
+  misc/__badioinfo.c \
+  misc/__p___initenv.c \
+  misc/__p___winitenv.c \
   misc/__initenv.c \
+  misc/__winitenv.c \
   misc/feclearexcept.c misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c misc/feholdexcept.c \
   misc/fesetenv.c misc/fesetexceptflag.c misc/fesetround.c misc/fetestexcept.c \
   misc/ucrt-access.c \
@@ -4952,29 +4976,30 @@ src_intrincsarm64 =
 @LIB64_TRUE@	lib64/libnormaliz.a lib64/libclfsw32.a \
 @LIB64_TRUE@	lib64/libdwmapi.a lib64/libntoskrnl.a \
 @LIB64_TRUE@	lib64/libuxtheme.a lib64/libwtsapi32.a \
-@LIB64_TRUE@	lib64/libbcrypt.a lib64/libbthprops.a \
-@LIB64_TRUE@	lib64/libdhcpcsvc6.a lib64/libdxva2.a \
-@LIB64_TRUE@	lib64/libeappcfg.a lib64/libeappgnui.a \
-@LIB64_TRUE@	lib64/libeapphost.a lib64/libeappprxy.a \
-@LIB64_TRUE@	lib64/libevr.a lib64/libiscsidsc.a \
-@LIB64_TRUE@	lib64/libktmw32.a lib64/libmf.a lib64/libmfcore.a \
-@LIB64_TRUE@	lib64/libmfplat.a lib64/libmfplay.a \
-@LIB64_TRUE@	lib64/libmsdrm.a lib64/libncrypt.a \
-@LIB64_TRUE@	lib64/libwecapi.a lib64/libwevtapi.a \
-@LIB64_TRUE@	lib64/libwevtfwd.a lib64/libqutil.a \
-@LIB64_TRUE@	lib64/libconnect.a lib64/libfwpuclnt.a \
-@LIB64_TRUE@	lib64/libndfapi.a lib64/libp2p.a \
-@LIB64_TRUE@	lib64/libp2pcollab.a lib64/libp2pgraph.a \
-@LIB64_TRUE@	lib64/libwdstptc.a lib64/libcscapi.a \
-@LIB64_TRUE@	lib64/librstrtmgr.a lib64/libqwave.a \
-@LIB64_TRUE@	lib64/libwsdapi.a lib64/libvfw32.a \
-@LIB64_TRUE@	lib64/librpcdiag.a lib64/librpchttp.a \
-@LIB64_TRUE@	lib64/libresutil.a lib64/libslwga.a lib64/libslc.a \
-@LIB64_TRUE@	lib64/libslcext.a lib64/libmsctfmonitor.a \
-@LIB64_TRUE@	lib64/libtbs.a lib64/libtdh.a lib64/libtxfw32.a \
-@LIB64_TRUE@	lib64/libwlanui.a lib64/libwlanapi.a \
-@LIB64_TRUE@	lib64/libwlanutil.a lib64/libwer.a lib64/libndis.a \
-@LIB64_TRUE@	lib64/libd2d1.a lib64/libwdscsl.a lib64/libpcwum.a \
+@LIB64_TRUE@	lib64/libbcrypt.a lib64/libbcryptprimitives.a \
+@LIB64_TRUE@	lib64/libbthprops.a lib64/libdhcpcsvc6.a \
+@LIB64_TRUE@	lib64/libdxva2.a lib64/libeappcfg.a \
+@LIB64_TRUE@	lib64/libeappgnui.a lib64/libeapphost.a \
+@LIB64_TRUE@	lib64/libeappprxy.a lib64/libevr.a \
+@LIB64_TRUE@	lib64/libiscsidsc.a lib64/libktmw32.a \
+@LIB64_TRUE@	lib64/libmf.a lib64/libmfcore.a lib64/libmfplat.a \
+@LIB64_TRUE@	lib64/libmfplay.a lib64/libmsdrm.a \
+@LIB64_TRUE@	lib64/libncrypt.a lib64/libwecapi.a \
+@LIB64_TRUE@	lib64/libwevtapi.a lib64/libwevtfwd.a \
+@LIB64_TRUE@	lib64/libqutil.a lib64/libconnect.a \
+@LIB64_TRUE@	lib64/libfwpuclnt.a lib64/libndfapi.a \
+@LIB64_TRUE@	lib64/libp2p.a lib64/libp2pcollab.a \
+@LIB64_TRUE@	lib64/libp2pgraph.a lib64/libwdstptc.a \
+@LIB64_TRUE@	lib64/libcscapi.a lib64/librstrtmgr.a \
+@LIB64_TRUE@	lib64/libqwave.a lib64/libwsdapi.a \
+@LIB64_TRUE@	lib64/libvfw32.a lib64/librpcdiag.a \
+@LIB64_TRUE@	lib64/librpchttp.a lib64/libresutil.a \
+@LIB64_TRUE@	lib64/libslwga.a lib64/libslc.a lib64/libslcext.a \
+@LIB64_TRUE@	lib64/libmsctfmonitor.a lib64/libtbs.a \
+@LIB64_TRUE@	lib64/libtdh.a lib64/libtxfw32.a lib64/libwlanui.a \
+@LIB64_TRUE@	lib64/libwlanapi.a lib64/libwlanutil.a \
+@LIB64_TRUE@	lib64/libwer.a lib64/libndis.a lib64/libd2d1.a \
+@LIB64_TRUE@	lib64/libwdscsl.a lib64/libpcwum.a \
 @LIB64_TRUE@	lib64/libwdscore.a lib64/libcryptsp.a \
 @LIB64_TRUE@	lib64/libwdsclient.a lib64/libwdsupgcompl.a \
 @LIB64_TRUE@	lib64/libwdsclientapi.a lib64/libwdsutil.a \
@@ -5192,6 +5217,7 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@	libarm64/libavicap32.a libarm64/libavifil32.a \
 @LIBARM64_TRUE@	libarm64/libavrt.a libarm64/libazroles.a \
 @LIBARM64_TRUE@	libarm64/libbasesrv.a libarm64/libbcrypt.a \
+@LIBARM64_TRUE@	libarm64/libbcryptprimitives.a \
 @LIBARM64_TRUE@	libarm64/libbluetoothapis.a \
 @LIBARM64_TRUE@	libarm64/libbootvid.a libarm64/libbrowcli.a \
 @LIBARM64_TRUE@	libarm64/libbrowser.a libarm64/libbthci.a \
@@ -6779,7 +6805,15 @@ math/lib64_libucrt_extra_a-lgammal.$(OBJEXT): math/$(am__dirstamp) \
 	math/$(DEPDIR)/$(am__dirstamp)
 math/lib64_libucrt_extra_a-modfl.$(OBJEXT): math/$(am__dirstamp) \
 	math/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libucrt_extra_a-__badioinfo.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libucrt_extra_a-__p___initenv.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libucrt_extra_a-__p___winitenv.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libucrt_extra_a-__initenv.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libucrt_extra_a-__winitenv.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libucrt_extra_a-feclearexcept.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
@@ -8073,7 +8107,15 @@ math/libarm64_libucrt_extra_a-lgammal.$(OBJEXT): math/$(am__dirstamp) \
 	math/$(DEPDIR)/$(am__dirstamp)
 math/libarm64_libucrt_extra_a-modfl.$(OBJEXT): math/$(am__dirstamp) \
 	math/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libucrt_extra_a-__badioinfo.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libucrt_extra_a-__p___initenv.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libucrt_extra_a-__p___winitenv.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libucrt_extra_a-__initenv.$(OBJEXT):  \
+	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libucrt_extra_a-__winitenv.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libucrt_extra_a-feclearexcept.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
@@ -9762,7 +9804,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-wmemmove.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-wmempcpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-wmemset.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po@am__quote@ # am--include-marker
@@ -9813,7 +9859,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-wmemmove.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-wmempcpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-wmemset.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po@am__quote@ # am--include-marker
@@ -15578,6 +15628,48 @@ math/lib64_libucrt_extra_a-modfl.obj: math/modfl.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o math/lib64_libucrt_extra_a-modfl.obj `if test -f 'math/modfl.c'; then $(CYGPATH_W) 'math/modfl.c'; else $(CYGPATH_W) '$(srcdir)/math/modfl.c'; fi`
 
+misc/lib64_libucrt_extra_a-__badioinfo.o: misc/__badioinfo.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__badioinfo.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Tpo -c -o misc/lib64_libucrt_extra_a-__badioinfo.o `test -f 'misc/__badioinfo.c' || echo '$(srcdir)/'`misc/__badioinfo.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__badioinfo.c' object='misc/lib64_libucrt_extra_a-__badioinfo.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__badioinfo.o `test -f 'misc/__badioinfo.c' || echo '$(srcdir)/'`misc/__badioinfo.c
+
+misc/lib64_libucrt_extra_a-__badioinfo.obj: misc/__badioinfo.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__badioinfo.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Tpo -c -o misc/lib64_libucrt_extra_a-__badioinfo.obj `if test -f 'misc/__badioinfo.c'; then $(CYGPATH_W) 'misc/__badioinfo.c'; else $(CYGPATH_W) '$(srcdir)/misc/__badioinfo.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__badioinfo.c' object='misc/lib64_libucrt_extra_a-__badioinfo.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__badioinfo.obj `if test -f 'misc/__badioinfo.c'; then $(CYGPATH_W) 'misc/__badioinfo.c'; else $(CYGPATH_W) '$(srcdir)/misc/__badioinfo.c'; fi`
+
+misc/lib64_libucrt_extra_a-__p___initenv.o: misc/__p___initenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__p___initenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Tpo -c -o misc/lib64_libucrt_extra_a-__p___initenv.o `test -f 'misc/__p___initenv.c' || echo '$(srcdir)/'`misc/__p___initenv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___initenv.c' object='misc/lib64_libucrt_extra_a-__p___initenv.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__p___initenv.o `test -f 'misc/__p___initenv.c' || echo '$(srcdir)/'`misc/__p___initenv.c
+
+misc/lib64_libucrt_extra_a-__p___initenv.obj: misc/__p___initenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__p___initenv.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Tpo -c -o misc/lib64_libucrt_extra_a-__p___initenv.obj `if test -f 'misc/__p___initenv.c'; then $(CYGPATH_W) 'misc/__p___initenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___initenv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___initenv.c' object='misc/lib64_libucrt_extra_a-__p___initenv.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__p___initenv.obj `if test -f 'misc/__p___initenv.c'; then $(CYGPATH_W) 'misc/__p___initenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___initenv.c'; fi`
+
+misc/lib64_libucrt_extra_a-__p___winitenv.o: misc/__p___winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__p___winitenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Tpo -c -o misc/lib64_libucrt_extra_a-__p___winitenv.o `test -f 'misc/__p___winitenv.c' || echo '$(srcdir)/'`misc/__p___winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___winitenv.c' object='misc/lib64_libucrt_extra_a-__p___winitenv.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__p___winitenv.o `test -f 'misc/__p___winitenv.c' || echo '$(srcdir)/'`misc/__p___winitenv.c
+
+misc/lib64_libucrt_extra_a-__p___winitenv.obj: misc/__p___winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__p___winitenv.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Tpo -c -o misc/lib64_libucrt_extra_a-__p___winitenv.obj `if test -f 'misc/__p___winitenv.c'; then $(CYGPATH_W) 'misc/__p___winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___winitenv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___winitenv.c' object='misc/lib64_libucrt_extra_a-__p___winitenv.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__p___winitenv.obj `if test -f 'misc/__p___winitenv.c'; then $(CYGPATH_W) 'misc/__p___winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___winitenv.c'; fi`
+
 misc/lib64_libucrt_extra_a-__initenv.o: misc/__initenv.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__initenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Tpo -c -o misc/lib64_libucrt_extra_a-__initenv.o `test -f 'misc/__initenv.c' || echo '$(srcdir)/'`misc/__initenv.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Po
@@ -15591,6 +15683,20 @@ misc/lib64_libucrt_extra_a-__initenv.obj: misc/__initenv.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__initenv.c' object='misc/lib64_libucrt_extra_a-__initenv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__initenv.obj `if test -f 'misc/__initenv.c'; then $(CYGPATH_W) 'misc/__initenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__initenv.c'; fi`
+
+misc/lib64_libucrt_extra_a-__winitenv.o: misc/__winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__winitenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Tpo -c -o misc/lib64_libucrt_extra_a-__winitenv.o `test -f 'misc/__winitenv.c' || echo '$(srcdir)/'`misc/__winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__winitenv.c' object='misc/lib64_libucrt_extra_a-__winitenv.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__winitenv.o `test -f 'misc/__winitenv.c' || echo '$(srcdir)/'`misc/__winitenv.c
+
+misc/lib64_libucrt_extra_a-__winitenv.obj: misc/__winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-__winitenv.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Tpo -c -o misc/lib64_libucrt_extra_a-__winitenv.obj `if test -f 'misc/__winitenv.c'; then $(CYGPATH_W) 'misc/__winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__winitenv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__winitenv.c' object='misc/lib64_libucrt_extra_a-__winitenv.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-__winitenv.obj `if test -f 'misc/__winitenv.c'; then $(CYGPATH_W) 'misc/__winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__winitenv.c'; fi`
 
 misc/lib64_libucrt_extra_a-feclearexcept.o: misc/feclearexcept.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-feclearexcept.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Tpo -c -o misc/lib64_libucrt_extra_a-feclearexcept.o `test -f 'misc/feclearexcept.c' || echo '$(srcdir)/'`misc/feclearexcept.c
@@ -22494,6 +22600,48 @@ math/libarm64_libucrt_extra_a-modfl.obj: math/modfl.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o math/libarm64_libucrt_extra_a-modfl.obj `if test -f 'math/modfl.c'; then $(CYGPATH_W) 'math/modfl.c'; else $(CYGPATH_W) '$(srcdir)/math/modfl.c'; fi`
 
+misc/libarm64_libucrt_extra_a-__badioinfo.o: misc/__badioinfo.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__badioinfo.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Tpo -c -o misc/libarm64_libucrt_extra_a-__badioinfo.o `test -f 'misc/__badioinfo.c' || echo '$(srcdir)/'`misc/__badioinfo.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__badioinfo.c' object='misc/libarm64_libucrt_extra_a-__badioinfo.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__badioinfo.o `test -f 'misc/__badioinfo.c' || echo '$(srcdir)/'`misc/__badioinfo.c
+
+misc/libarm64_libucrt_extra_a-__badioinfo.obj: misc/__badioinfo.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__badioinfo.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Tpo -c -o misc/libarm64_libucrt_extra_a-__badioinfo.obj `if test -f 'misc/__badioinfo.c'; then $(CYGPATH_W) 'misc/__badioinfo.c'; else $(CYGPATH_W) '$(srcdir)/misc/__badioinfo.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__badioinfo.c' object='misc/libarm64_libucrt_extra_a-__badioinfo.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__badioinfo.obj `if test -f 'misc/__badioinfo.c'; then $(CYGPATH_W) 'misc/__badioinfo.c'; else $(CYGPATH_W) '$(srcdir)/misc/__badioinfo.c'; fi`
+
+misc/libarm64_libucrt_extra_a-__p___initenv.o: misc/__p___initenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__p___initenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__p___initenv.o `test -f 'misc/__p___initenv.c' || echo '$(srcdir)/'`misc/__p___initenv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___initenv.c' object='misc/libarm64_libucrt_extra_a-__p___initenv.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__p___initenv.o `test -f 'misc/__p___initenv.c' || echo '$(srcdir)/'`misc/__p___initenv.c
+
+misc/libarm64_libucrt_extra_a-__p___initenv.obj: misc/__p___initenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__p___initenv.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__p___initenv.obj `if test -f 'misc/__p___initenv.c'; then $(CYGPATH_W) 'misc/__p___initenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___initenv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___initenv.c' object='misc/libarm64_libucrt_extra_a-__p___initenv.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__p___initenv.obj `if test -f 'misc/__p___initenv.c'; then $(CYGPATH_W) 'misc/__p___initenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___initenv.c'; fi`
+
+misc/libarm64_libucrt_extra_a-__p___winitenv.o: misc/__p___winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__p___winitenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__p___winitenv.o `test -f 'misc/__p___winitenv.c' || echo '$(srcdir)/'`misc/__p___winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___winitenv.c' object='misc/libarm64_libucrt_extra_a-__p___winitenv.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__p___winitenv.o `test -f 'misc/__p___winitenv.c' || echo '$(srcdir)/'`misc/__p___winitenv.c
+
+misc/libarm64_libucrt_extra_a-__p___winitenv.obj: misc/__p___winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__p___winitenv.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__p___winitenv.obj `if test -f 'misc/__p___winitenv.c'; then $(CYGPATH_W) 'misc/__p___winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___winitenv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__p___winitenv.c' object='misc/libarm64_libucrt_extra_a-__p___winitenv.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__p___winitenv.obj `if test -f 'misc/__p___winitenv.c'; then $(CYGPATH_W) 'misc/__p___winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__p___winitenv.c'; fi`
+
 misc/libarm64_libucrt_extra_a-__initenv.o: misc/__initenv.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__initenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__initenv.o `test -f 'misc/__initenv.c' || echo '$(srcdir)/'`misc/__initenv.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Po
@@ -22507,6 +22655,20 @@ misc/libarm64_libucrt_extra_a-__initenv.obj: misc/__initenv.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__initenv.c' object='misc/libarm64_libucrt_extra_a-__initenv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__initenv.obj `if test -f 'misc/__initenv.c'; then $(CYGPATH_W) 'misc/__initenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__initenv.c'; fi`
+
+misc/libarm64_libucrt_extra_a-__winitenv.o: misc/__winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__winitenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__winitenv.o `test -f 'misc/__winitenv.c' || echo '$(srcdir)/'`misc/__winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__winitenv.c' object='misc/libarm64_libucrt_extra_a-__winitenv.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__winitenv.o `test -f 'misc/__winitenv.c' || echo '$(srcdir)/'`misc/__winitenv.c
+
+misc/libarm64_libucrt_extra_a-__winitenv.obj: misc/__winitenv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-__winitenv.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Tpo -c -o misc/libarm64_libucrt_extra_a-__winitenv.obj `if test -f 'misc/__winitenv.c'; then $(CYGPATH_W) 'misc/__winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__winitenv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/__winitenv.c' object='misc/libarm64_libucrt_extra_a-__winitenv.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-__winitenv.obj `if test -f 'misc/__winitenv.c'; then $(CYGPATH_W) 'misc/__winitenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/__winitenv.c'; fi`
 
 misc/libarm64_libucrt_extra_a-feclearexcept.o: misc/feclearexcept.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-feclearexcept.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-feclearexcept.o `test -f 'misc/feclearexcept.c' || echo '$(srcdir)/'`misc/feclearexcept.c
@@ -27350,7 +27512,11 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-wmemmove.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-wmempcpy.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-wmemset.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po
@@ -27401,7 +27567,11 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-wmemmove.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-wmempcpy.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-wmemset.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po
@@ -28527,7 +28697,11 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-wmemmove.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-wmempcpy.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-wmemset.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__badioinfo.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__initenv.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___initenv.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__p___winitenv.Po
+	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po
@@ -28578,7 +28752,11 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-wmemmove.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-wmempcpy.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-wmemset.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__badioinfo.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__initenv.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___initenv.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p___winitenv.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po
