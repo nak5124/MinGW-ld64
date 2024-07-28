@@ -218,11 +218,13 @@
 #endif
 
 #ifdef __clang__
-# define __MINGW_PRINTF_FORMAT __printf__
-# define __MINGW_SCANF_FORMAT  __scanf__
+# define __MINGW_PRINTF_FORMAT   __printf__
+# define __MINGW_SCANF_FORMAT    __scanf__
+# define __MINGW_STRFTIME_FORMAT __strftime__
 #else
-# define __MINGW_PRINTF_FORMAT __gnu_printf__
-# define __MINGW_SCANF_FORMAT  __gnu_scanf__
+# define __MINGW_PRINTF_FORMAT   __gnu_printf__
+# define __MINGW_SCANF_FORMAT    __gnu_scanf__
+# define __MINGW_STRFTIME_FORMAT __gnu_strftime__
 #endif
 
 #define __MINGW_GNU_PRINTF(__format, __args) \
@@ -230,6 +232,9 @@
 
 #define __MINGW_GNU_SCANF(__format, __args) \
   __attribute__((__format__(__MINGW_SCANF_FORMAT, __format, __args)))
+
+#define __MINGW_GNU_STRFTIME(__format, __args) \
+  __attribute__((__format__(__MINGW_STRFTIME_FORMAT, __format, __args)))
 
 #undef __mingw_ovr
 #ifdef __cplusplus

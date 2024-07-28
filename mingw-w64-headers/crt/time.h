@@ -20,6 +20,10 @@
 
 __MINGW_BEGIN_C_DECLS
 
+#ifndef _CRT_USE_CONFORMING_ANNEX_K_TIME
+# define _CRT_USE_CONFORMING_ANNEX_K_TIME 0
+#endif
+
 #ifndef _CLOCK_T_DEFINED
 # define _CLOCK_T_DEFINED
   typedef long clock_t;
@@ -27,7 +31,9 @@ __MINGW_BEGIN_C_DECLS
 
 #define CLOCKS_PER_SEC ((clock_t)1000)
 
-#define TIME_UTC 1
+#ifdef __MINGW_USE_ISOC11
+# define TIME_UTC 1
+#endif
 
   _CRTIMP int *__cdecl __daylight(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #define _daylight (* __daylight())
@@ -47,8 +53,10 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl _get_tzname(size_t *_ReturnValue, char *_Buffer, size_t _SizeInBytes, int _Index);
 
   _CRTIMP char *__cdecl asctime(const struct tm *_Tm) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, asctime_s, char, _Buffer, const struct tm *, _Time)
+#endif
   _CRTIMP clock_t __cdecl clock(void);
   _CRTIMP char *__cdecl _ctime32(const __time32_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _ctime32_s(char *_Buf, size_t _SizeInBytes, const __time32_t *_Time);
@@ -71,14 +79,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP __time32_t __cdecl _mktime32(struct tm *_Tm);
   _CRTIMP __time64_t __cdecl _mktime64(struct tm *_Tm);
 
-#undef __MINGW_STRFTIME_FORMAT
-#ifdef __clang__
-# define __MINGW_STRFTIME_FORMAT strftime
-#else
-# define __MINGW_STRFTIME_FORMAT gnu_strftime
-#endif
-
-  _CRTIMP size_t __cdecl strftime(char * __restrict__ _Buf, size_t _SizeInBytes, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm) __attribute__((__format__ (__MINGW_STRFTIME_FORMAT, 3, 0)));
+  _CRTIMP size_t __cdecl strftime(char * __restrict__ _Buf, size_t _SizeInBytes, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm) __MINGW_GNU_STRFTIME(3, 0);
   _CRTIMP size_t __cdecl _strftime_l(char * __restrict__ _Buf, size_t _Max_size, const char * __restrict__ _Format,const struct tm * __restrict__ _Tm, _locale_t _Locale);
   _CRTIMP char *__cdecl _strdate(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strdate_s(char *_Buf, size_t _SizeInBytes);
@@ -97,8 +98,6 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP unsigned __cdecl _setsystime(struct tm *_Tm,unsigned _MilliSec) __MINGW_ATTRIB_DEPRECATED;
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-  void __cdecl tzset(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-
   char *__cdecl ctime(const time_t *_Time) __MINGW_ASM_CALL(_ctime64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   double __cdecl difftime(time_t _Time1, time_t _Time2) __MINGW_ASM_CALL(_difftime64);
   struct tm *__cdecl gmtime(const time_t *_Time) __MINGW_ASM_CALL(_gmtime64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -106,14 +105,40 @@ __MINGW_BEGIN_C_DECLS
   time_t __cdecl _mkgmtime(struct tm *_Tm) __MINGW_ASM_CALL(_mkgmtime64);
   time_t __cdecl mktime(struct tm *_Tm) __MINGW_ASM_CALL(_mktime64);
   time_t __cdecl time(time_t *_Time) __MINGW_ASM_CALL(_time64);
+#ifdef __MINGW_USE_ISOC11
   int __cdecl timespec_get(struct timespec* _Ts, int _Base) __MINGW_ASM_CALL(_timespec64_get);
+#endif
+#ifdef __MINGW_USE_SECAPI
   errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime64_s);
+# if _CRT_USE_CONFORMING_ANNEX_K_TIME
+  __mingw_ovr errno_t __cdecl gmtime_s(const time_t *_Time, struct tm *_Tm)
+  {
+    if(_gmtime64_s(_Tm, _Time) == 0)
+    {
+      return _Tm;
+    }
+    return NULL;
+  }
+
+  __mingw_ovr errno_t __cdecl localtime_s(const time_t *_Time, struct tm *_Tm)
+  {
+    if(_localtime64_s(_Tm, _Time) == 0)
+    {
+      return _Tm;
+    }
+    return NULL;
+  }
+# else
   errno_t __cdecl gmtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_gmtime64_s);
   errno_t __cdecl localtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_localtime64_s);
+# endif
+#endif
 
-#define CLK_TCK CLOCKS_PER_SEC
+#if (!defined(__STRICT_ANSI__) || defined(__MINGW_USE_POSIX)) && !defined(__MINGW_USE_XOPEN2K) || defined(__MINGW_USE_MS)
+# define CLK_TCK CLOCKS_PER_SEC
+#endif
 
-#ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
+#if (defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)) && defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP)
   void __cdecl tzset(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 
@@ -122,9 +147,13 @@ __MINGW_BEGIN_C_DECLS
     "Only provided for source compatibility; this variable might " \
     "not always be accurate when linking to UCRT.")
 
+#if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
   _CRTIMP extern int daylight __MINGW_ATTRIB_DEPRECATED_UCRT;
   _CRTIMP extern long timezone __MINGW_ATTRIB_DEPRECATED_UCRT;
+#endif
+#if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
   _CRTIMP extern char *tzname[2] __MINGW_ATTRIB_DEPRECATED_UCRT;
+#endif
 
 #include <_timeval.h>
 
@@ -139,23 +168,23 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl mingw_gettimeofday(struct timeval *p, struct timezone *z);
 #endif  /* _TIMEZONE_DEFINED */
 
-#if (defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE -0) >= 1) || defined(_XOPEN_SOURCE) || defined(_DEFAULT_SOURCE) || defined(__MINGW_USE_ISOC23)
-  __forceinline struct tm *__CRTDECL localtime_r(const time_t *_Time, struct tm *_Tm)
+#if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_POSIX)
+  __forceinline struct tm *__cdecl localtime_r(const time_t *_Time, struct tm *_Tm)
   {
     return localtime_s(_Tm, _Time) ? NULL : _Tm;
   }
 
-  __forceinline struct tm *__CRTDECL gmtime_r(const time_t *_Time, struct tm *_Tm)
+  __forceinline struct tm *__cdecl gmtime_r(const time_t *_Time, struct tm *_Tm)
   {
     return gmtime_s(_Tm, _Time) ? NULL : _Tm;
   }
 
-  __forceinline char *__CRTDECL ctime_r(const time_t *_Time, char *_Str)
+  __forceinline char *__cdecl ctime_r(const time_t *_Time, char *_Str)
   {
     return ctime_s(_Str, 0x7fffffff, _Time) ? NULL : _Str;
   }
 
-  __forceinline char *__CRTDECL asctime_r(const struct tm *_Tm, char * _Str)
+  __forceinline char *__cdecl asctime_r(const struct tm *_Tm, char * _Str)
   {
     return asctime_s(_Str, 0x7fffffff, _Tm) ? NULL : _Str;
   }
@@ -168,9 +197,7 @@ __MINGW_END_C_DECLS
 /* POSIX 2008 says clock_gettime and timespec are defined in time.h header,
    but other systems - like Linux, Solaris, etc - tend to declare such
    recent extensions only if the following guards are met.  */
-#if !defined(IN_WINPTHREAD) && \
- ((!defined(_STRICT_STDC) && !defined(__XOPEN_OR_POSIX)) || \
-  (_POSIX_C_SOURCE > 2) || defined(__EXTENSIONS__))
+#if !defined(IN_WINPTHREAD) && defined(__MINGW_USE_POSIX199309)
 #include <pthread_time.h>
 #endif
 
