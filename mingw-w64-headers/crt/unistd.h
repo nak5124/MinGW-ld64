@@ -53,7 +53,7 @@ __MINGW_BEGIN_C_DECLS
 # ifndef __MINGW_USE_FOB64
     int truncate(const char *__file, off_t __length);
 # else
-#   define truncate truncate64
+    int truncate(const char *__file, off_t __length) __MINGW_ASM_CALL(truncate64);
 # endif
 # ifdef __MINGW_USE_LFS64
     int truncate64(const char *__file, off64_t __length);
@@ -70,7 +70,7 @@ __MINGW_BEGIN_C_DECLS
       }
 #   endif
 # else
-#   define ftruncate ftruncate64
+    int ftruncate(int __fd, off_t __length) __MINGW_ASM_CALL(ftruncate64);
 # endif
 # ifdef __MINGW_USE_LFS64
     int ftruncate64(int __fd, off64_t __length);

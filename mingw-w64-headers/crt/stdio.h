@@ -1109,7 +1109,7 @@ __MINGW_BEGIN_C_DECLS
 #ifndef __MINGW_USE_FOB64
   _CRTIMP FILE *__cdecl fopen(const char * __restrict__ _Filename, const char * __restrict__ _Mode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #else
-# define fopen fopen64
+  _CRTIMP FILE *__cdecl fopen(const char * __restrict__ _Filename, const char * __restrict__ _Mode) __MINGW_ASM_CALL(fopen64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl fopen_s(FILE **_File, const char *_Filename, const char *_Mode);
@@ -1149,7 +1149,7 @@ __MINGW_BEGIN_C_DECLS
 #ifndef __MINGW_USE_FOB64
   _CRTIMP int __cdecl fgetpos(FILE * __restrict__ _File , fpos_t * __restrict__ _Pos);
 #else
-# define fgetpos fgetpos64
+  _CRTIMP int __cdecl fgetpos(FILE * __restrict__ _File , fpos_t * __restrict__ _Pos) __MINGW_ASM_CALL(fgetpos64);
 #endif
   _CRTIMP char *__cdecl fgets(char * __restrict__ _Buf, int _MaxCount, FILE * __restrict__ _File);
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
@@ -1165,7 +1165,7 @@ __MINGW_BEGIN_C_DECLS
 #ifndef __MINGW_USE_FOB64
   _CRTIMP int __cdecl fsetpos(FILE *_File, const fpos_t *_Pos);
 #else
-# define fsetpos fsetpos64
+  _CRTIMP int __cdecl fsetpos(FILE *_File, const fpos_t *_Pos) __MINGW_ASM_CALL(fseeko64);
 #endif
   _CRTIMP int __cdecl fseek(FILE *_File, long _Offset, int _Origin);
   _CRTIMP int __cdecl _fseeki64(FILE *_File, __int64 _Offset, int _Origin);
@@ -1268,8 +1268,8 @@ __MINGW_BEGIN_C_DECLS
     int fseeko(FILE *_File, off_t _Offset, int _Origin);
     off_t ftello(FILE *_File);
 # else
-#   define fseeko fseeko64
-#   define ftello ftello64
+    int fseeko(FILE *_File, off_t _Offset, int _Origin) __MINGW_ASM_CALL(fseeko64);
+    off_t ftello(FILE *_File) __MINGW_ASM_CALL(ftello64);
 # endif
 #endif
 

@@ -161,7 +161,7 @@ __MINGW_BEGIN_C_DECLS
 #ifndef __MINGW_USE_FOB64
   _CRTIMP long __cdecl lseek(int _FileHandle, long _Offset, int _Origin) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #else
-# define lseek lseek64
+  _CRTIMP off_t __cdecl lseek(int _FileHandle, off_t _Offset, int _Origin) __MINGW_ASM_CALL(lseek64) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
   _CRTIMP char *__cdecl mktemp(char *_TemplateName)  __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
