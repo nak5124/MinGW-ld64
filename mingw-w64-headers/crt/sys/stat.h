@@ -135,7 +135,7 @@ __MINGW_BEGIN_C_DECLS
   int __cdecl stat(const char *_Filename, struct stat *_Stat) __MINGW_ASM_CALL(_stat);
   int __cdecl wstat(const wchar_t *_Filename,struct stat *_Stat) __MINGW_ASM_CALL(_wstat);
 
-#if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+#ifdef __MINGW_USE_FOB64
 # define fstat   _fstat64
 # define stat    _stat64
 # define wstat   _wstat64
