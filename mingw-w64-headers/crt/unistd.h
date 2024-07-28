@@ -29,7 +29,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* Used by shutdown(2). */
-#ifdef _POSIX_C_SOURCE
+#ifdef __MINGW_USE_POSIX
 
 /* MySql connector already defined SHUT_RDWR. */
 #ifndef SHUT_RDWR
