@@ -37,7 +37,7 @@ __MINGW_END_C_DECLS
  */
 #endif /* !defined(__GETOPT_H__) */
 
-#if !defined(__GETOPT_BSD_H__) && defined(_BSD_SOURCE)
+#if !defined(__GETOPT_BSD_H__) && defined(__MINGW_USE_MISC)
 #define __GETOPT_BSD_H__
 /*
  * BSD adds the non-standard `optreset' feature, for reinitialisation
@@ -47,7 +47,7 @@ __MINGW_END_C_DECLS
  */
 # define optreset  __mingw_optreset
 extern int optreset;
-#endif /* !defined(__GETOPT_BSD_H__) && defined(_BSD_SOURCE) */
+#endif
 
 #if !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__)
 #define __GETOPT_LONG_H__
