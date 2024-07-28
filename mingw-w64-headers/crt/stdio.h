@@ -949,7 +949,7 @@ __MINGW_BEGIN_C_DECLS
     return __retval;
   }
 
-#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_GNU)
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2)
   __mingw_ovr
   __MINGW_GNU_PRINTF(2, 0) __attribute__((nonnull(1, 2)))
   int vasprintf(char **__ret, const char *__format, __builtin_va_list __local_argv)
@@ -1089,7 +1089,7 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
-#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_GNU)
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2)
   __MINGW_GNU_PRINTF(2, 0)
   int __cdecl vasprintf(char ** __restrict__ _Ret, const char * __restrict__ _Format, va_list _Args);
   __MINGW_GNU_PRINTF(2, 3)

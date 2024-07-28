@@ -30,6 +30,7 @@
 #undef __MINGW_USE_GNU
 #undef __MINGW_USE_MS
 #undef __MINGW_USE_SECAPI
+#undef __MINGW_USE_LIB_EXT2
 #undef __MINGW_FORTIFY_LEVEL
 #undef __MINGW_FORTIFY_VA_ARG
 
@@ -227,6 +228,10 @@
 
 #if defined(_MS_SOURCE) || defined(__STDC_WANT_LIB_EXT1__) || defined(__STDC_WANT_SECURE_LIB__)
 # define __MINGW_USE_SECAPI 1
+#endif
+
+#if defined(__MINGW_USE_GNU) || (defined(__STDC_WANT_LIB_EXT2__) && __STDC_WANT_LIB_EXT2__ > 0)
+# define __MINGW_USE_LIB_EXT2 1
 #endif
 
 #pragma push_macro("__has_builtin")
