@@ -48,8 +48,12 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP int __cdecl iswalnum(wint_t _C);
   _CRTIMP int __cdecl iswalpha(wint_t _C);
+#ifdef __MINGW_USE_MS
   _CRTIMP int __cdecl iswascii(wint_t _C);
+#endif
+#ifdef __MINGW_USE_ISOC99
   _CRTIMP int __cdecl iswblank(wint_t _C);
+#endif
   _CRTIMP int __cdecl iswcntrl(wint_t _C);
   _CRTIMP int __cdecl iswdigit(wint_t _C);
   _CRTIMP int __cdecl iswgraph(wint_t _C);
@@ -85,7 +89,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP wint_t __cdecl _towlower_l(wint_t _C, _locale_t _Locale);
   _CRTIMP int __cdecl _iswctype_l(wint_t _C, wctype_t _Type, _locale_t _Locale);
 
-#ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
+#if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) && defined(__MINGW_USE_MS)
   _CRTIMP int __cdecl isleadbyte(int _C);
   _CRTIMP int __cdecl _isleadbyte_l(int _C, _locale_t _Locale);
 
@@ -102,12 +106,16 @@ __MINGW_BEGIN_C_DECLS
 # define iswxdigit(_c) (iswctype(_c, _HEX))
 # define iswspace(_c)  (iswctype(_c, _SPACE))
 # define iswpunct(_c)  (iswctype(_c, _PUNCT))
-# define iswblank(_c)  (((_c) == '\t') ? _BLANK : iswctype(_c, _BLANK) )
+# ifdef __MINGW_USE_ISOC99
+#   define iswblank(_c)  (((_c) == '\t') ? _BLANK : iswctype(_c, _BLANK) )
+# endif
 # define iswalnum(_c)  (iswctype(_c, _ALPHA | _DIGIT))
 # define iswprint(_c)  (iswctype(_c, _BLANK | _PUNCT | _ALPHA | _DIGIT))
 # define iswgraph(_c)  (iswctype(_c, _PUNCT | _ALPHA | _DIGIT))
 # define iswcntrl(_c)  (iswctype(_c, _CONTROL))
-# define iswascii(_c)  ((unsigned)(_c) < 0x80)
+# ifdef __MINGW_USE_MS
+#   define iswascii(_c)  ((unsigned)(_c) < 0x80)
+# endif
 
 # define _iswalpha_l(_c, _p)  (_iswctype_l(_c, _ALPHA, _p))
 # define _iswupper_l(_c, _p)  (_iswctype_l(_c, _UPPER, _p))
@@ -122,7 +130,7 @@ __MINGW_BEGIN_C_DECLS
 # define _iswgraph_l(_c, _p)  (_iswctype_l(_c, _PUNCT | _ALPHA | _DIGIT, _p))
 # define _iswcntrl_l(_c, _p)  (_iswctype_l(_c, _CONTROL, _p))
 
-# ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
+# if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) && defined(__MINGW_USE_MS)
 #   define isleadbyte(_c) (__PCTYPE_FUNC[(unsigned char)(_c)] & _LEADBYTE)
 # endif
 #endif
