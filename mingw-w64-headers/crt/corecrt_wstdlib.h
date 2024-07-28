@@ -50,17 +50,25 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP double __cdecl _wcstod_l(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, _locale_t _Locale);
   _CRTIMP long __cdecl wcstol(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, int _Radix);
   _CRTIMP long __cdecl _wcstol_l(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
+#ifdef __MINGW_USE_ISOC99
   __MINGW_EXTENSION _CRTIMP long long __cdecl wcstoll(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, int _Radix);
+#endif
   __MINGW_EXTENSION _CRTIMP long long __cdecl _wcstoll_l(const wchar_t * __restrict__ _String, wchar_t ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
   _CRTIMP unsigned long __cdecl wcstoul(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, int _Radix);
   _CRTIMP unsigned long __cdecl _wcstoul_l(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
+#ifdef __MINGW_USE_ISOC99
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl wcstoull(const wchar_t * __restrict__ _String, wchar_t ** __restrict__ _EndPtr, int _Radix);
+#endif
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl _wcstoull_l(const wchar_t * __restrict__ _String, wchar_t ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
+#ifdef __MINGW_USE_ISOC99
   _LDCRTIMP long double __cdecl wcstold(const wchar_t * __restrict__ _String, wchar_t ** __restrict__ _EndPtr);
+#endif
 #if defined(__aarch64__) || defined(_ARM64_)
   _LDCRTIMP long double __cdecl _wcstold_l(const wchar_t * __restrict__ _String, wchar_t ** __restrict__ _EndPtr, _locale_t _Locale);
 #endif
+#ifdef __MINGW_USE_ISOC99
   _CRTIMP float __cdecl wcstof(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr);
+#endif
   _CRTIMP float __cdecl _wcstof_l(const wchar_t * __restrict__ _Str, wchar_t ** __restrict__ _EndPtr, _locale_t _Locale);
   _CRTIMP double __cdecl _wtof(const wchar_t *_Str);
   _CRTIMP double __cdecl _wtof_l(const wchar_t *_Str, _locale_t _Locale);
