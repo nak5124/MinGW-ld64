@@ -59,8 +59,10 @@ extern "C" {
   struct dirent *__cdecl __MINGW_NOTHROW readdir(DIR *);
   int __cdecl __MINGW_NOTHROW closedir(DIR *);
   void __cdecl __MINGW_NOTHROW rewinddir(DIR *);
+#if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC)
   long __cdecl __MINGW_NOTHROW telldir(DIR *);
   void __cdecl __MINGW_NOTHROW seekdir(DIR *, long);
+#endif
 
   /* wide char versions */
   struct _wdirent

@@ -66,8 +66,10 @@ __MINGW_BEGIN_C_DECLS
 #pragma pop_macro("getcwd")
   _CRTIMP int __cdecl chdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
-#ifndef diskfree_t
-# define diskfree_t _diskfree_t
+#ifdef __MINGW_USE_MS
+# ifndef diskfree_t
+#   define diskfree_t _diskfree_t
+# endif
 #endif
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */

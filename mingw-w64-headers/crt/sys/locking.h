@@ -18,10 +18,12 @@
 #define _LK_RLCK   3
 #define _LK_NBRLCK 4
 
-#define LK_UNLCK  _LK_UNLCK
-#define LK_LOCK   _LK_LOCK
-#define LK_NBLCK  _LK_NBLCK
-#define LK_RLCK   _LK_RLCK
-#define LK_NBRLCK _LK_NBRLCK
+#ifdef __MINGW_USE_MS
+# define LK_UNLCK  _LK_UNLCK
+# define LK_LOCK   _LK_LOCK
+# define LK_NBLCK  _LK_NBLCK
+# define LK_RLCK   _LK_RLCK
+# define LK_NBRLCK _LK_NBRLCK
+#endif
 
 #endif  /* _INC_LOCKING */

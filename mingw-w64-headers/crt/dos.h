@@ -40,8 +40,10 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP unsigned __cdecl _getdiskfree(unsigned _Drive, struct _diskfree_t *_DiskFree);
 #endif  /* _GETDISKFREE_DEFINED */
 
-#ifndef diskfree_t
-# define diskfree_t _diskfree_t
+#ifdef __MINGW_USE_MS
+# ifndef diskfree_t
+#   define diskfree_t _diskfree_t
+# endif
 #endif
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */

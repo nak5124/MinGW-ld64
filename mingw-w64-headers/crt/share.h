@@ -19,10 +19,12 @@
 #define _SH_DENYNO 0x40
 #define _SH_SECURE 0x80
 
-#define SH_COMPAT _SH_COMPAT
-#define SH_DENYRW _SH_DENYRW
-#define SH_DENYWR _SH_DENYWR
-#define SH_DENYRD _SH_DENYRD
-#define SH_DENYNO _SH_DENYNO
+#ifdef __MINGW_USE_MS
+# define SH_COMPAT _SH_COMPAT
+# define SH_DENYRW _SH_DENYRW
+# define SH_DENYWR _SH_DENYWR
+# define SH_DENYRD _SH_DENYRD
+# define SH_DENYNO _SH_DENYNO
+#endif
 
 #endif  /* _INC_SHARE */
