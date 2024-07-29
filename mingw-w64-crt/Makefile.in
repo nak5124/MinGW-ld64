@@ -4679,14 +4679,14 @@ src_intrincsarm64 =
 @LIB64_TRUE@dx64dir = $(lib64dir)
 @LIBARM64_TRUE@dx64dir = $(libarm64dir)
 @LIB64_TRUE@crt64_DATA = \
-@LIB64_TRUE@  lib64/crt1.o    lib64/crt2.o     lib64/crt1u.o   lib64/crt2u.o   lib64/dllcrt1.o lib64/dllcrt2.o \
+@LIB64_TRUE@  lib64/crt2.o    lib64/crt2u.o    lib64/dllcrt2.o \
 @LIB64_TRUE@  lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
-@LIB64_TRUE@  lib64/gcrt0.o   lib64/gcrt1.o    lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
+@LIB64_TRUE@  lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
 
 @LIBARM64_TRUE@crt64_DATA = \
-@LIBARM64_TRUE@  libarm64/crt1.o    libarm64/crt2.o     libarm64/crt1u.o   libarm64/crt2u.o    libarm64/dllcrt1.o    libarm64/dllcrt2.o \
+@LIBARM64_TRUE@  libarm64/crt2.o    libarm64/crt2u.o    libarm64/dllcrt2.o \
 @LIBARM64_TRUE@  libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
-@LIBARM64_TRUE@  libarm64/gcrt0.o   libarm64/gcrt1.o    libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
+@LIBARM64_TRUE@  libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
 
 @LIB64_TRUE@COMPILE64 = $(COMPILE) $(CPPFLAGS64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
 @LIBARM64_TRUE@COMPILE64 = $(COMPILE) $(CPPFLAGSARM64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
@@ -29221,25 +29221,15 @@ uninstall-am: uninstall-crt64DATA uninstall-dist_libsrcDATA \
 
 _libm_dummy.c:
 	echo "static int __attribute__((unused)) __mingw_libm_dummy;" > _libm_dummy.c
-@LIB64_TRUE@lib64/crt1.o: crt/crtexe.c
+@LIB64_TRUE@lib64/crt2.o: crt/crtexe.c
 @LIB64_TRUE@	$(COMPILE64) -c $< -o $@
-@LIB64_TRUE@lib64/crt2.o: lib64/crt1.o
-@LIB64_TRUE@	cp $< $@
-@LIB64_TRUE@lib64/crt1u.o: crt/ucrtexe.c
+@LIB64_TRUE@lib64/crt2u.o: crt/ucrtexe.c
 @LIB64_TRUE@	$(COMPILE64) -c $< -o $@
-@LIB64_TRUE@lib64/crt2u.o: lib64/crt1u.o
-@LIB64_TRUE@	cp $< $@
-@LIB64_TRUE@lib64/dllcrt1.o: crt/crtdll.c
+@LIB64_TRUE@lib64/dllcrt2.o: crt/crtdll.c
 @LIB64_TRUE@	$(COMPILE64) -c $< -o $@
-@LIB64_TRUE@lib64/dllcrt2.o: lib64/dllcrt1.o
-@LIB64_TRUE@	cp $< $@
 
-@LIB64_TRUE@lib64/gcrt0.o: profile/gcrt0.c
+@LIB64_TRUE@lib64/gcrt2.o: profile/gcrt0.c
 @LIB64_TRUE@	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
-@LIB64_TRUE@lib64/gcrt1.o: lib64/gcrt0.o
-@LIB64_TRUE@	cp $< $@
-@LIB64_TRUE@lib64/gcrt2.o: lib64/gcrt0.o
-@LIB64_TRUE@	cp $< $@
 
 @LIB64_TRUE@lib64/%.o: crt/%.c
 @LIB64_TRUE@	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
@@ -29276,25 +29266,15 @@ _libm_dummy.c:
 @LIB64_TRUE@	$(DTDEF64) $<
 @LIB64_TRUE@lib64/libd3dcompiler.a: lib-common/$(d3dcompiler).def
 @LIB64_TRUE@	$(DTDEF64) $<
-@LIBARM64_TRUE@libarm64/crt1.o: crt/crtexe.c
+@LIBARM64_TRUE@libarm64/crt2.o: crt/crtexe.c
 @LIBARM64_TRUE@	$(COMPILE64) -c $< -o $@
-@LIBARM64_TRUE@libarm64/crt2.o: libarm64/crt1.o
-@LIBARM64_TRUE@	cp $< $@
-@LIBARM64_TRUE@libarm64/crt1u.o: crt/ucrtexe.c
+@LIBARM64_TRUE@libarm64/crt2u.o: crt/ucrtexe.c
 @LIBARM64_TRUE@	$(COMPILE64) -c $< -o $@
-@LIBARM64_TRUE@libarm64/crt2u.o: libarm64/crt1u.o
-@LIBARM64_TRUE@	cp $< $@
-@LIBARM64_TRUE@libarm64/dllcrt1.o: crt/crtdll.c
+@LIBARM64_TRUE@libarm64/dllcrt2.o: crt/crtdll.c
 @LIBARM64_TRUE@	$(COMPILE64) -c $< -o $@
-@LIBARM64_TRUE@libarm64/dllcrt2.o: libarm64/dllcrt1.o
-@LIBARM64_TRUE@	cp $< $@
 
-@LIBARM64_TRUE@libarm64/gcrt0.o: profile/gcrt0.c
+@LIBARM64_TRUE@libarm64/gcrt2.o: profile/gcrt0.c
 @LIBARM64_TRUE@	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
-@LIBARM64_TRUE@libarm64/gcrt1.o: libarm64/gcrt0.o
-@LIBARM64_TRUE@	cp $< $@
-@LIBARM64_TRUE@libarm64/gcrt2.o: libarm64/gcrt0.o
-@LIBARM64_TRUE@	cp $< $@
 
 @LIBARM64_TRUE@libarm64/%.o: crt/%.c
 @LIBARM64_TRUE@	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
