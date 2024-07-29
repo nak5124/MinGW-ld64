@@ -223,6 +223,8 @@
 #endif
 
 #if defined(_MS_SOURCE) || !defined(__STRICT_ANSI__) || defined(_CRT_DECLARE_NONSTDC_NAMES)
+# undef  _MS_SOURCE
+# define _MS_SOURCE     1
 # define __MINGW_USE_MS 1
 #endif
 
