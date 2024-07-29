@@ -102,11 +102,7 @@ __MINGW_BEGIN_C_DECLS
 __MINGW_END_C_DECLS
 #endif
 
-#if defined(__3dNOW__) || defined(__MINGW_FORCE_SYS_INTRINS)
-__MINGW_BEGIN_C_DECLS
-#include <mm3dnow.h>
-__MINGW_END_C_DECLS
-#endif
+/* Note: mm3dnow.h intentionally not included; 3DNow! is deprecated. */
 
 /* NOTE: it's not included by MS version, but we do it to try work around C++/C linkage differences */
 #if defined(__SSE__) || defined(__MINGW_FORCE_SYS_INTRINS)
