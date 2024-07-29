@@ -382,30 +382,20 @@ winrt64dir=$(lib64dir)
 dx64dir=$(lib64dir)
 
 crt64_DATA = \
-  lib64/crt1.o    lib64/crt2.o     lib64/crt1u.o   lib64/crt2u.o   lib64/dllcrt1.o lib64/dllcrt2.o \
+  lib64/crt2.o    lib64/crt2u.o    lib64/dllcrt2.o \
   lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
-  lib64/gcrt0.o   lib64/gcrt1.o    lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
+  lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
 
 COMPILE64=$(COMPILE) $(CPPFLAGS64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-lib64/crt1.o: crt/crtexe.c
+lib64/crt2.o: crt/crtexe.c
 	$(COMPILE64) -c $< -o $@
-lib64/crt2.o: lib64/crt1.o
-	cp $< $@
-lib64/crt1u.o: crt/ucrtexe.c
+lib64/crt2u.o: crt/ucrtexe.c
 	$(COMPILE64) -c $< -o $@
-lib64/crt2u.o: lib64/crt1u.o
-	cp $< $@
-lib64/dllcrt1.o: crt/crtdll.c
+lib64/dllcrt2.o: crt/crtdll.c
 	$(COMPILE64) -c $< -o $@
-lib64/dllcrt2.o: lib64/dllcrt1.o
-	cp $< $@
 
-lib64/gcrt0.o: profile/gcrt0.c
+lib64/gcrt2.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
-lib64/gcrt1.o: lib64/gcrt0.o
-	cp $< $@
-lib64/gcrt2.o: lib64/gcrt0.o
-	cp $< $@
 
 lib64/%.o: crt/%.c
 	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
@@ -659,30 +649,20 @@ winrt64dir=$(libarm64dir)
 dx64dir=$(libarm64dir)
 
 crt64_DATA = \
-  libarm64/crt1.o    libarm64/crt2.o     libarm64/crt1u.o   libarm64/crt2u.o    libarm64/dllcrt1.o    libarm64/dllcrt2.o \
+  libarm64/crt2.o    libarm64/crt2u.o    libarm64/dllcrt2.o \
   libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
-  libarm64/gcrt0.o   libarm64/gcrt1.o    libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
+  libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
 
 COMPILE64=$(COMPILE) $(CPPFLAGSARM64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-libarm64/crt1.o: crt/crtexe.c
+libarm64/crt2.o: crt/crtexe.c
 	$(COMPILE64) -c $< -o $@
-libarm64/crt2.o: libarm64/crt1.o
-	cp $< $@
-libarm64/crt1u.o: crt/ucrtexe.c
+libarm64/crt2u.o: crt/ucrtexe.c
 	$(COMPILE64) -c $< -o $@
-libarm64/crt2u.o: libarm64/crt1u.o
-	cp $< $@
-libarm64/dllcrt1.o: crt/crtdll.c
+libarm64/dllcrt2.o: crt/crtdll.c
 	$(COMPILE64) -c $< -o $@
-libarm64/dllcrt2.o: libarm64/dllcrt1.o
-	cp $< $@
 
-libarm64/gcrt0.o: profile/gcrt0.c
+libarm64/gcrt2.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
-libarm64/gcrt1.o: libarm64/gcrt0.o
-	cp $< $@
-libarm64/gcrt2.o: libarm64/gcrt0.o
-	cp $< $@
 
 libarm64/%.o: crt/%.c
 	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
