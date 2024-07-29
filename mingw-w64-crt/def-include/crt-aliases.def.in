@@ -208,6 +208,10 @@ _wfindnext == _wfindnext64i32
 _wfindnexti64 == _wfindnext64
 
 ; This is list of stat symbol aliases
+ADD_UNDERSCORE(wstat)
+ADD_UNDERSCORE(fstat64)
+ADD_UNDERSCORE(stat64)
+ADD_UNDERSCORE(wstat64)
 _fstat == _fstat64i32
 _fstati64 == _fstat64
 _stat == _stat64i32

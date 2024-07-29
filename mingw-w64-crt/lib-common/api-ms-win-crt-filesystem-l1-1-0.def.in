@@ -32,6 +32,7 @@ _fstat64i32
 _fstat == _fstat64i32
 _fstati64 == _fstat64
 fstat == _fstat
+fstat64 == _fstat64
 _fullpath
 _getdiskfree
 _getdrive
@@ -52,6 +53,7 @@ _stat64i32
 _stat == _stat64i32
 _stati64 == _stat64
 stat == _stat
+stat64 == _stat64
 _umask
 umask == _umask
 _umask_s
@@ -89,6 +91,8 @@ _wstat64
 _wstat64i32
 _wstat == _wstat64i32
 _wstati64 == _wstat64
+wstat == _wstat
+wstat64 == _wstat64
 _wunlink
 remove
 rename

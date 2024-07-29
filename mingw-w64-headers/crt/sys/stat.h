@@ -88,11 +88,28 @@ __MINGW_BEGIN_C_DECLS
     short          st_uid;
     short          st_gid;
     _dev_t         st_rdev;
-    _off_t         st_size;
+    off_t          st_size;
     time_t         st_atime;
     time_t         st_mtime;
     time_t         st_ctime;
   };
+
+#ifdef __MINGW_USE_LFS64
+  struct stat64
+  {
+    _dev_t         st_dev;
+    _ino_t         st_ino;
+    unsigned short st_mode;
+    short          st_nlink;
+    short          st_uid;
+    short          st_gid;
+    _dev_t         st_rdev;
+    off64_t        st_size;
+    __time64_t     st_atime;
+    __time64_t     st_mtime;
+    __time64_t     st_ctime;
+  };
+#endif
 
 #define _S_IFMT   0xF000
 #define _S_IFDIR  0x4000
@@ -131,17 +148,20 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _wstat64i32(const wchar_t *_Name, struct _stat64i32 *_Stat);
   _CRTIMP int __cdecl _wstat64(const wchar_t *_Name, struct _stat64 *_Stat);
 
-  int __cdecl fstat(int _Desc, struct stat *_Stat) __MINGW_ASM_CALL(_fstat);
-  int __cdecl stat(const char *_Filename, struct stat *_Stat) __MINGW_ASM_CALL(_stat);
-  int __cdecl wstat(const wchar_t *_Filename,struct stat *_Stat) __MINGW_ASM_CALL(_wstat);
+#ifndef __MINGW_USE_FOB64
+  int __cdecl fstat(int _Desc, struct stat *_Stat);
+  int __cdecl stat(const char *_Filename, struct stat *_Stat);
+  int __cdecl wstat(const wchar_t *_Filename, struct stat *_Stat);
+#else
+  int __cdecl fstat(int _Desc, struct stat *_Stat) __MINGW_ASM_CALL(fstat64);
+  int __cdecl stat(const char *_Filename, struct stat *_Stat) __MINGW_ASM_CALL(stat64);
+  int __cdecl wstat(const wchar_t *_Filename, struct stat *_Stat) __MINGW_ASM_CALL(wstat64);
+#endif
 
-#ifdef __MINGW_USE_FOB64
-# define fstat   _fstat64
-# define stat    _stat64
-# define wstat   _wstat64
-# define fstat64 _fstat64
-# define stat64  _stat64
-# define wstat64 _wstat64
+#ifdef __MINGW_USE_LFS64
+  int __cdecl fstat64(int _FileDes, struct stat64 *_Stat);
+  int __cdecl stat64(const char *_Name, struct stat64 *_Stat);
+  int __cdecl wstat64(const wchar_t *_Name, struct stat64 *_Stat);
 #endif
 
 #define _S_IFBLK 0x3000
