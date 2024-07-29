@@ -151,19 +151,6 @@ AS_CASE([$enable_wildcard],
 AC_DEFINE_UNQUOTED([__ENABLE_GLOBBING],[$enable_wildcard_value],[Define as -1 to enable command line globbing or 0 to disable it.])
 AC_MSG_RESULT([$enable_wildcard])
 
-AC_MSG_CHECKING([whether to enable private exports])
-AC_ARG_ENABLE([private-exports],
-  [AS_HELP_STRING([--enable-private-exports],
-    [Enable exporting private internal functions])],
-  [],
-  [enable_private_exports=no])
-AS_CASE([$enable_private_exports],
-  [yes],[],
-  [no],[],
-  [AC_MSG_ERROR([Please only use --enable-private-exports  or --disable-private-exports, without any additional arguments.])])
-AM_CONDITIONAL([PRIVATE_EXPORTS],[test $enable_private_exports = yes])
-AC_MSG_RESULT([$enable_private_exports])
-
 AC_MSG_CHECKING([whether to enable delay import libs])
 AC_ARG_ENABLE([delay-import-libs],
   [AS_HELP_STRING([--enable-delay-import-libs],
@@ -209,27 +196,6 @@ AC_ARG_ENABLE([tests-unicode],
     CFLAGS="$saved_CFLAGS"])
 AM_CONDITIONAL([ENABLE_TESTS_UNICODE],[test x$enable_tests_unicode = xyes])
 AC_MSG_RESULT([$enable_tests_unicode])
-
-# Checks for libraries.
-
-# Checks for header files.
-#AC_HEADER_DIRENT
-#AC_HEADER_STDC
-#AC_CHECK_HEADERS([fcntl.h fenv.h float.h inttypes.h limits.h locale.h malloc.h stddef.h stdint.h stdlib.h string.h sys/ioctl.h sys/time.h sys/timeb.h termios.h unistd.h wchar.h wctype.h])
-
-# Checks for typedefs, structures, and compiler characteristics.
-#AC_C_INLINE
-#AC_HEADER_TIME
-#AC_C_VOLATILE
-#AC_CHECK_TYPES([ptrdiff_t])
-
-# Checks for library functions.
-#AC_FUNC_MALLOC
-#AC_FUNC_MBRTOWC
-#AC_FUNC_REALLOC
-#AC_FUNC_STRTOD
-#AC_FUNC_VPRINTF
-#AC_CHECK_FUNCS([alarm atexit btowc fesetround floor ftruncate gettimeofday isascii localeconv mbrlen memmove memset pow rint setlocale sqrt strcasecmp strchr strncasecmp strtoull strtoumax])
 
 # Check for __ImageBase linker symbol.
 AC_MSG_CHECKING([whether the linker provides __ImageBase symbol])
