@@ -171,22 +171,23 @@ __MINGW_BEGIN_C_DECLS
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_POSIX)
   __forceinline struct tm *__cdecl localtime_r(const time_t *_Time, struct tm *_Tm)
   {
-    return localtime_s(_Tm, _Time) ? NULL : _Tm;
+    return _localtime64_s(_Tm, _Time) ? NULL : _Tm;
   }
 
   __forceinline struct tm *__cdecl gmtime_r(const time_t *_Time, struct tm *_Tm)
   {
-    return gmtime_s(_Tm, _Time) ? NULL : _Tm;
+    return _gmtime64_s(_Tm, _Time) ? NULL : _Tm;
   }
 
   __forceinline char *__cdecl ctime_r(const time_t *_Time, char *_Str)
   {
-    return ctime_s(_Str, 0x7fffffff, _Time) ? NULL : _Str;
+    return _ctime64_s(_Str, 0x7fffffff, _Time) ? NULL : _Str;
   }
 
+  _CRTIMP errno_t __cdecl _asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm) __MINGW_ASM_CALL(asctime_s);
   __forceinline char *__cdecl asctime_r(const struct tm *_Tm, char * _Str)
   {
-    return asctime_s(_Str, 0x7fffffff, _Tm) ? NULL : _Str;
+    return _asctime_s(_Str, 0x7fffffff, _Tm) ? NULL : _Str;
   }
 #endif
 
