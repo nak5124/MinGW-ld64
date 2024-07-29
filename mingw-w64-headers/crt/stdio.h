@@ -1165,7 +1165,7 @@ __MINGW_BEGIN_C_DECLS
 #ifndef __MINGW_USE_FOB64
   _CRTIMP int __cdecl fsetpos(FILE *_File, const fpos_t *_Pos);
 #else
-  _CRTIMP int __cdecl fsetpos(FILE *_File, const fpos_t *_Pos) __MINGW_ASM_CALL(fseeko64);
+  _CRTIMP int __cdecl fsetpos(FILE *_File, const fpos_t *_Pos) __MINGW_ASM_CALL(fsetpos64);
 #endif
   _CRTIMP int __cdecl fseek(FILE *_File, long _Offset, int _Origin);
   _CRTIMP int __cdecl _fseeki64(FILE *_File, __int64 _Offset, int _Origin);
