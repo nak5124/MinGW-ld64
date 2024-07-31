@@ -1138,7 +1138,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl fclose(FILE *_File);
   _CRTIMP int __cdecl _fcloseall(void);
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
+# ifndef __MINGW_USE_FOB64
   _CRTIMP FILE *__cdecl fdopen(int _FileHandle, const char *_Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+# else
+  _CRTIMP FILE *__cdecl fdopen(int _FileHandle, const char *_Mode) __MINGW_ASM_CALL(fdopen64) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+# endif
 #endif
   _CRTIMP FILE *__cdecl _fdopen(int _FileHandle, const char *_Mode);
   _CRTIMP int __cdecl feof(FILE *_File);
@@ -1274,6 +1278,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_LFS64
+  FILE *__cdecl fdopen64(int _FileHandle, const char *_Mode);
   FILE *fopen64(const char * __restrict__ filename, const char * __restrict__  mode);
   int __cdecl fgetpos64(FILE * __restrict__ _File, fpos_t * __restrict__ _Pos);
   int __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos);

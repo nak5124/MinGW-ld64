@@ -172,6 +172,7 @@ ADD_DOUBLE_UNDERSCORE(toascii)
 ADD_UNDERSCORE(pclose)
 ADD_UNDERSCORE(popen)
 ; ADD_UNDERSCORE(scalb)
+fdopen64 == fdopen
 fgetpos64 == fgetpos
 fsetpos64 == fsetpos
 fseeko == fseek
