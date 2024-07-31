@@ -1115,7 +1115,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl fopen_s(FILE **_File, const char *_Filename, const char *_Mode);
   _CRTIMP size_t __cdecl fread_s(void *_DstBuf, size_t _DstSize, size_t _ElementSize, size_t _Count, FILE *_File);
 #endif
+#ifndef __MINGW_USE_FOB64
   _CRTIMP FILE *__cdecl freopen(const char * __restrict__ _Filename, const char * __restrict__ _Mode, FILE * __restrict__ _File) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#else
+  _CRTIMP FILE *__cdecl freopen(const char * __restrict__ _Filename, const char * __restrict__ _Mode, FILE * __restrict__ _File) __MINGW_ASM_CALL(freopen64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl freopen_s(FILE** _File, const char *_Filename, const char *_Mode, FILE *_Stream);
 #endif
@@ -1280,6 +1284,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_LFS64
   FILE *__cdecl fdopen64(int _FileHandle, const char *_Mode);
   FILE *__cdecl fopen64(const char * __restrict__ filename, const char * __restrict__  mode);
+  FILE *__cdecl freopen64(const char * __restrict__ _Filename, const char * __restrict__ _Mode, FILE * __restrict__ _File);
   int __cdecl fgetpos64(FILE * __restrict__ _File, fpos_t * __restrict__ _Pos);
   int __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos);
   int __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin);
