@@ -1269,21 +1269,21 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_LFS) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    int fseeko(FILE *_File, off_t _Offset, int _Origin);
-    off_t ftello(FILE *_File);
+    int __cdecl fseeko(FILE *_File, off_t _Offset, int _Origin);
+    off_t __cdecl ftello(FILE *_File);
 # else
-    int fseeko(FILE *_File, off_t _Offset, int _Origin) __MINGW_ASM_CALL(fseeko64);
-    off_t ftello(FILE *_File) __MINGW_ASM_CALL(ftello64);
+    int __cdecl fseeko(FILE *_File, off_t _Offset, int _Origin) __MINGW_ASM_CALL(fseeko64);
+    off_t __cdecl ftello(FILE *_File) __MINGW_ASM_CALL(ftello64);
 # endif
 #endif
 
 #ifdef __MINGW_USE_LFS64
   FILE *__cdecl fdopen64(int _FileHandle, const char *_Mode);
-  FILE *fopen64(const char * __restrict__ filename, const char * __restrict__  mode);
+  FILE *__cdecl fopen64(const char * __restrict__ filename, const char * __restrict__  mode);
   int __cdecl fgetpos64(FILE * __restrict__ _File, fpos_t * __restrict__ _Pos);
   int __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos);
-  int fseeko64(FILE *_File, off64_t _Offset, int _Origin);
-  off64_t ftello64(FILE *_File);
+  int __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin);
+  off64_t __cdecl ftello64(FILE *_File);
 #endif
 
   unsigned int __cdecl _get_output_format(void);

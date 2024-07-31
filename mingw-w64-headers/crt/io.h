@@ -249,7 +249,7 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
 #ifdef __MINGW_USE_LFS64
-  off64_t lseek64(int fd, off64_t offset, int whence);
+  off64_t __cdecl lseek64(int fd, off64_t offset, int whence);
 #endif
 
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_XOPEN)
