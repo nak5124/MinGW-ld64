@@ -40,39 +40,39 @@ __MINGW_BEGIN_C_DECLS
 #endif
 #endif
 
-  /* __attribute__((__format__(gnu_wprintf, 2, 0))) */__MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_vfwprintf(FILE * __restrict__ _File, const wchar_t * __restrict__ _Format, va_list _ArgList);
-  /*__attribute__((__format__(gnu_wprintf, 1, 0))) */ __MINGW_ATTRIB_NONNULL(1)
+  /* __attribute__((__format__(gnu_wprintf, 1, 0))) */ extern __MINGW_ATTRIB_NONNULL(1)
   int __cdecl __mingw_vwprintf(const wchar_t * __restrict__ _Format, va_list _ArgList);
-  /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_fwprintf(FILE * __restrict__ _File, const wchar_t * __restrict__ _Format, ...);
-  /* __attribute__((__format__(gnu_wprintf, 1, 2))) */ __MINGW_ATTRIB_NONNULL(1)
+  /* __attribute__((__format__(gnu_wprintf, 1, 2))) */ extern __MINGW_ATTRIB_NONNULL(1)
   int __cdecl __mingw_wprintf(const wchar_t * __restrict__ _Format, ...);
 
-  /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_vfwscanf(FILE * __restrict__ fp, const wchar_t * __restrict__ Format, va_list argp);
-  /* __attribute__((__format__(gnu_wscanf, 1, 0))) */ __MINGW_ATTRIB_NONNULL(1)
+  /* __attribute__((__format__(gnu_wscanf, 1, 0))) */ extern __MINGW_ATTRIB_NONNULL(1)
   int __cdecl __mingw_vwscanf(const wchar_t * __restrict__ Format, va_list argp);
-  /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_fwscanf(FILE * __restrict__ _File, const wchar_t * __restrict__ _Format, ...);
-  /* __attribute__((__format__(gnu_wscanf, 1, 2))) */ __MINGW_ATTRIB_NONNULL(1)
+  /* __attribute__((__format__(gnu_wscanf, 1, 2))) */ extern __MINGW_ATTRIB_NONNULL(1)
   int __cdecl __mingw_wscanf(const wchar_t * __restrict__ _Format, ...);
 
-  /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_ATTRIB_NONNULL(3)
+  /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ extern __MINGW_ATTRIB_NONNULL(3)
   int __cdecl __mingw_vsnwprintf(wchar_t * __restrict__ , size_t, const wchar_t * __restrict__ , va_list);
-  /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_vswprintf(wchar_t * __restrict__ , const wchar_t * __restrict__ , va_list);
-  /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_swprintf(wchar_t * __restrict__ , const wchar_t * __restrict__ , ...);
-  /* __attribute__((__format__(gnu_wprintf, 3, 4))) */ __MINGW_ATTRIB_NONNULL(3)
+  /* __attribute__((__format__(gnu_wprintf, 3, 4))) */ extern __MINGW_ATTRIB_NONNULL(3)
   int __cdecl __mingw_snwprintf(wchar_t * __restrict__ s, size_t n, const wchar_t * __restrict__ format, ...);
 
-  /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_vswscanf(const wchar_t * __restrict__ _Str, const wchar_t * __restrict__ Format, va_list argp);
-  /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __mingw_swscanf(const wchar_t * __restrict__ _Src, const wchar_t * __restrict__ _Format, ...);
 
-  /* __attribute__((__format__(ms_wprintf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
+  /* __attribute__((__format__(ms_wprintf, 2, 3))) */ extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl __ms_fwprintf(FILE * __restrict__ _File, const wchar_t * __restrict__ _Format, ...);
 
   _CRTIMP int __cdecl __stdio_common_vfwprintf(unsigned __int64 options, FILE *file, const wchar_t *format, _locale_t locale, va_list valist);
@@ -367,7 +367,7 @@ __MINGW_BEGIN_C_DECLS
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(int, _vsnwprintf_s, wchar_t, _Buffer, size_t, _BufferCount, const wchar_t *, _Format, va_list, _ArgList)
 
-  int __cdecl _vsnwprintf(wchar_t * __restrict__ _Buffer, size_t _BufferCount, const wchar_t * __restrict__ _Format, va_list _ArgList) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  extern int __cdecl _vsnwprintf(wchar_t * __restrict__ _Buffer, size_t _BufferCount, const wchar_t * __restrict__ _Format, va_list _ArgList) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   __mingw_ovr int __cdecl _vswprintf_c_l(wchar_t * __restrict__ _Buffer, size_t _BufferCount, const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
   {
@@ -567,7 +567,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  int __cdecl _snwprintf(wchar_t * __restrict__ _Buffer, size_t _BufferCount, const wchar_t * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  extern int __cdecl _snwprintf(wchar_t * __restrict__ _Buffer, size_t _BufferCount, const wchar_t * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   __mingw_ovr int __cdecl _snwprintf_s_l(wchar_t * __restrict__ _Buffer, size_t _BufferCount, size_t _MaxCount, const wchar_t * __restrict__ _Format, _locale_t _Locale, ...)
   {
@@ -898,7 +898,7 @@ __MINGW_BEGIN_C_DECLS
     return __stdio_common_vfwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
   }
 
-  __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_ATTRIB_NONNULL(2)
   int __cdecl fwprintf(FILE * __restrict__ _Stream, const wchar_t * __restrict__ _Format, ...);
 
   __mingw_ovr
@@ -1161,7 +1161,7 @@ extern "C++"
    *
    * WideCharToMultiByte - http://msdn.microsoft.com/en-us/library/dd374130(VS.85).aspx
    */
-  int __cdecl __mingw_str_wide_utf8(const wchar_t * const wptr, char **mbptr, size_t * buflen);
+  extern int __cdecl __mingw_str_wide_utf8(const wchar_t * const wptr, char **mbptr, size_t * buflen);
 
   /**
    * __mingw_str_utf8_wide
@@ -1175,7 +1175,7 @@ extern "C++"
    * MultiByteToWideChar - http://msdn.microsoft.com/en-us/library/dd319072(VS.85).aspx
    */
 
-  int __cdecl __mingw_str_utf8_wide(const char *const mbptr, wchar_t ** wptr, size_t * buflen);
+  extern int __cdecl __mingw_str_utf8_wide(const char *const mbptr, wchar_t ** wptr, size_t * buflen);
 
   /**
    * __mingw_str_free
@@ -1183,7 +1183,7 @@ extern "C++"
    * @param[in] ptr memory block to free.
    *
    */
-  void __cdecl __mingw_str_free(void *ptr);
+  extern void __cdecl __mingw_str_free(void *ptr);
 
 __MINGW_END_C_DECLS
 

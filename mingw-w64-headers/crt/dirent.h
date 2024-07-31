@@ -55,13 +55,13 @@ extern "C" {
     char dd_name[1];
   } DIR;
 
-  DIR *__cdecl __MINGW_NOTHROW opendir(const char *);
-  struct dirent *__cdecl __MINGW_NOTHROW readdir(DIR *);
-  int __cdecl __MINGW_NOTHROW closedir(DIR *);
-  void __cdecl __MINGW_NOTHROW rewinddir(DIR *);
+  extern DIR *__cdecl __MINGW_NOTHROW opendir(const char *);
+  extern struct dirent *__cdecl __MINGW_NOTHROW readdir(DIR *);
+  extern int __cdecl __MINGW_NOTHROW closedir(DIR *);
+  extern void __cdecl __MINGW_NOTHROW rewinddir(DIR *);
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC)
-  long __cdecl __MINGW_NOTHROW telldir(DIR *);
-  void __cdecl __MINGW_NOTHROW seekdir(DIR *, long);
+  extern long __cdecl __MINGW_NOTHROW telldir(DIR *);
+  extern void __cdecl __MINGW_NOTHROW seekdir(DIR *, long);
 #endif
 
   /* wide char versions */
@@ -102,12 +102,12 @@ extern "C" {
     wchar_t dd_name[1];
   } _WDIR;
 
-  _WDIR *__cdecl __MINGW_NOTHROW _wopendir(const wchar_t *);
-  struct _wdirent *__cdecl __MINGW_NOTHROW _wreaddir(_WDIR *);
-  int __cdecl __MINGW_NOTHROW _wclosedir(_WDIR *);
-  void __cdecl __MINGW_NOTHROW _wrewinddir(_WDIR *);
-  long __cdecl __MINGW_NOTHROW _wtelldir(_WDIR *);
-  void __cdecl __MINGW_NOTHROW _wseekdir(_WDIR *, long);
+  extern _WDIR *__cdecl __MINGW_NOTHROW _wopendir(const wchar_t *);
+  extern struct _wdirent *__cdecl __MINGW_NOTHROW _wreaddir(_WDIR *);
+  extern int __cdecl __MINGW_NOTHROW _wclosedir(_WDIR *);
+  extern void __cdecl __MINGW_NOTHROW _wrewinddir(_WDIR *);
+  extern long __cdecl __MINGW_NOTHROW _wtelldir(_WDIR *);
+  extern void __cdecl __MINGW_NOTHROW _wseekdir(_WDIR *, long);
 
 #ifdef __cplusplus
 }

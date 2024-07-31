@@ -91,7 +91,7 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP __MINGW_ATTRIB_NORETURN __attribute__((__nothrow__)) void __cdecl longjmp(jmp_buf _Buf, int _Value);
 
-  void *__cdecl __attribute__((__nothrow__)) mingw_getsp(void);
+  extern void *__cdecl __attribute__((__nothrow__)) mingw_getsp(void);
 
 #pragma push_macro("__has_builtin")
 #ifndef __has_builtin
@@ -103,8 +103,8 @@ __MINGW_BEGIN_C_DECLS
 # if (defined(__aarch64__) || defined(_ARM64_)) && (!defined(__SEH__) || !__has_builtin(__builtin_sponentry) || defined(__USE_MINGW_SETJMP_NON_SEH))
 #   define setjmp(BUF) __mingw_setjmp((BUF))
 #   define longjmp     __mingw_longjmp
-    int __cdecl __attribute__((__nothrow__, __returns_twice__)) __mingw_setjmp(jmp_buf _Buf);
-    __MINGW_ATTRIB_NORETURN __attribute__((__nothrow__)) void __mingw_longjmp(jmp_buf _Buf, int _Value);
+    extern int __cdecl __attribute__((__nothrow__, __returns_twice__)) __mingw_setjmp(jmp_buf _Buf);
+    extern __MINGW_ATTRIB_NORETURN __attribute__((__nothrow__)) void __mingw_longjmp(jmp_buf _Buf, int _Value);
 # elif defined(__SEH__) && !defined(__USE_MINGW_SETJMP_NON_SEH)
 #   if defined(__aarch64__) || defined(_ARM64_)
 #     define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())

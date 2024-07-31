@@ -190,13 +190,13 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_MISC
-  void *__cdecl mempcpy(void *_Dst, const void *_Src, size_t _Size);
+  extern void *__cdecl mempcpy(void *_Dst, const void *_Src, size_t _Size);
 #endif
 
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MISC)
 # pragma push_macro("strtok_r")
 # undef strtok_r
-  char *strtok_r(char * __restrict__ _Str, const char * __restrict__ _Delim, char ** __restrict__ __last);
+  extern char *strtok_r(char * __restrict__ _Str, const char * __restrict__ _Delim, char ** __restrict__ __last);
 # pragma pop_macro("strtok_r")
 #endif
 

@@ -42,27 +42,27 @@ __MINGW_BEGIN_C_DECLS
 
 #pragma push_macro("sleep")
 #undef sleep
-  unsigned int __cdecl sleep(unsigned int);
+  extern unsigned int __cdecl sleep(unsigned int);
 #pragma pop_macro("sleep")
 
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC)
-  int __cdecl __MINGW_NOTHROW usleep(useconds_t);
+  extern int __cdecl __MINGW_NOTHROW usleep(useconds_t);
 #endif
 
 #if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    int truncate(const char *__file, off_t __length);
+    extern int truncate(const char *__file, off_t __length);
 # else
     int truncate(const char *__file, off_t __length) __MINGW_ASM_CALL(truncate64);
 # endif
 # ifdef __MINGW_USE_LFS64
-    int truncate64(const char *__file, off64_t __length);
+    extern int truncate64(const char *__file, off64_t __length);
 # endif
 #endif
 
 #if defined(__MINGW_USE_POSIX199309) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    int ftruncate(int __fd, off_t __length);
+    extern int ftruncate(int __fd, off_t __length);
 #   ifndef __CRT__NO_INLINE
       __CRT_INLINE int ftruncate(int __fd, off_t __length)
       {
@@ -73,7 +73,7 @@ __MINGW_BEGIN_C_DECLS
     int ftruncate(int __fd, off_t __length) __MINGW_ASM_CALL(ftruncate64);
 # endif
 # ifdef __MINGW_USE_LFS64
-    int ftruncate64(int __fd, off64_t __length);
+    extern int ftruncate64(int __fd, off64_t __length);
 # endif
 #endif
 
@@ -87,7 +87,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
 # ifndef _CRT_GETPID_DEFINED  /* Also in process.h */
 #   define _CRT_GETPID_DEFINED
-    int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+    _CRTIMP int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 

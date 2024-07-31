@@ -172,9 +172,9 @@ __MINGW_BEGIN_C_DECLS
   double __cdecl fmod(double _X, double _Y);
 
 #ifdef __MINGW_USE_GNU
-  void __cdecl sincos(double __x, double *p_sin, double *p_cos);
-  void __cdecl sincosf(float __x, float *p_sin, float *p_cos);
-  void __cdecl sincosl(long double __x, long double *p_sin, long double *p_cos);
+  extern void __cdecl sincos(double __x, double *p_sin, double *p_cos);
+  extern void __cdecl sincosf(float __x, float *p_sin, float *p_cos);
+  extern void __cdecl sincosl(long double __x, long double *p_sin, long double *p_cos);
 #endif
 
 #ifndef _CRT_ABS_DEFINED  /* Also in stdlib.h */
@@ -338,9 +338,9 @@ __MINGW_BEGIN_C_DECLS
   (A normal long double value might become subnormal when
   converted to double, and zero when converted to float.)
 */
-  int __cdecl __fpclassify(double _X);
-  int __cdecl __fpclassifyf(float _X);
-  int __cdecl __fpclassifyl(long double _X);
+  extern int __cdecl __fpclassify(double _X);
+  extern int __cdecl __fpclassifyf(float _X);
+  extern int __cdecl __fpclassifyl(long double _X);
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE int __cdecl __fpclassify(double _X)
@@ -432,9 +432,9 @@ __MINGW_BEGIN_C_DECLS
 /* 7.12.3.4 */
 /* We don't need to worry about truncation here:
    A NaN stays a NaN. */
-  int __cdecl __isnan(double _X);
-  int __cdecl __isnanf(float _X);
-  int __cdecl __isnanl(long double _X);
+  extern int __cdecl __isnan(double _X);
+  extern int __cdecl __isnanf(float _X);
+  extern int __cdecl __isnanl(long double _X);
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE int __cdecl __isnan(double _X)
@@ -500,9 +500,9 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.3.6 The signbit macro */
-  int __cdecl __signbit(double _X);
-  int __cdecl __signbitf(float _X);
-  int __cdecl __signbitl(long double _X);
+  extern int __cdecl __signbit(double _X);
+  extern int __cdecl __signbitf(float _X);
+  extern int __cdecl __signbitl(long double _X);
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE int __cdecl __signbit(double _X)
@@ -611,7 +611,7 @@ __MINGW_BEGIN_C_DECLS
   _LDCRTIMP long double __cdecl expm1l(long double _X);
 
 /* 7.12.6.4 Double in C89 */
-  float __cdecl frexpf(float _X, int *_Y);
+  extern float __cdecl frexpf(float _X, int *_Y);
   _LDCRTIMP long double __cdecl frexpl(long double _X, int *_Y);
 
 #ifndef __CRT__NO_INLINE
@@ -629,8 +629,8 @@ __MINGW_BEGIN_C_DECLS
   _LDCRTIMP int __cdecl ilogbl(long double _X);
 
 /* 7.12.6.6  Double in C89 */
-  float __cdecl ldexpf(float _X, int _Y);
-  long double __cdecl ldexpl(long double _X, int _Y);
+  extern float __cdecl ldexpf(float _X, int _Y);
+  extern long double __cdecl ldexpl(long double _X, int _Y);
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE float __cdecl ldexpf(float _X, int _Y)
@@ -664,16 +664,16 @@ __MINGW_BEGIN_C_DECLS
 
 /* 7.12.6.12  Double in C89 */
   _CRTIMP float __cdecl modff(float _X, float *_Y);
-  long double __cdecl modfl(long double _X, long double *_Y);
+  extern long double __cdecl modfl(long double _X, long double *_Y);
 
 /* 7.12.6.13 */
-  double __cdecl scalbn(double _X, int _Y);
-  float __cdecl scalbnf(float _X, int _Y);
-  long double __cdecl scalbnl(long double _X, int _Y);
+  extern double __cdecl scalbn(double _X, int _Y);
+  extern float __cdecl scalbnf(float _X, int _Y);
+  extern long double __cdecl scalbnl(long double _X, int _Y);
 
-  double __cdecl scalbln(double _X, long _Y);
-  float __cdecl scalblnf(float _X, long _Y);
-  long double __cdecl scalblnl(long double _X, long _Y);
+  extern double __cdecl scalbln(double _X, long _Y);
+  extern float __cdecl scalblnf(float _X, long _Y);
+  extern long double __cdecl scalblnl(long double _X, long _Y);
 
 /* 7.12.7.1 */
 /* Implementations adapted from Cephes versions */
@@ -685,7 +685,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(__aarch64__) || defined(_ARM64_)
   _CRTIMP float __cdecl fabsf(float _X);
 #else
-  float __cdecl fabsf(float _X);
+  extern float __cdecl fabsf(float _X);
 #endif
   _LDCRTIMP long double __cdecl fabsl(long double _X);
 
@@ -729,9 +729,9 @@ __MINGW_BEGIN_C_DECLS
   _LDCRTIMP long double __cdecl erfcl(long double _X);
 
 /* 7.12.8.3 The lgamma functions */
-  double __cdecl lgamma(double _X);
-  float __cdecl lgammaf(float _X);
-  long double __cdecl lgammal(long double _X);
+  extern double __cdecl lgamma(double _X);
+  extern float __cdecl lgammaf(float _X);
+  extern long double __cdecl lgammal(long double _X);
 
   extern int signgam;
 
@@ -764,9 +764,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long __cdecl lrintf(float _X);
   _LDCRTIMP long __cdecl lrintl(long double _X);
 
-__MINGW_EXTENSION _CRTIMP long long __cdecl llrint(double _X);
-__MINGW_EXTENSION _CRTIMP long long __cdecl llrintf(float _X);
-__MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
+  __MINGW_EXTENSION _CRTIMP long long __cdecl llrint(double _X);
+  __MINGW_EXTENSION _CRTIMP long long __cdecl llrintf(float _X);
+  __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
 
 /* 7.12.9.6 */
 /* round away from zero, regardless of fpu control word settings */

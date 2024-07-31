@@ -250,7 +250,6 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP unsigned int __cdecl _mbctolower_l(unsigned int _Ch, _locale_t _Locale);
   _CRTIMP unsigned int __cdecl _mbctoupper_l(unsigned int _Ch, _locale_t _Locale);
 
-
   _CRTIMP int __cdecl _ismbchira(unsigned int _Ch);
   _CRTIMP int __cdecl _ismbckata(unsigned int _Ch);
   _CRTIMP int __cdecl _ismbcsymbol(unsigned int _Ch);

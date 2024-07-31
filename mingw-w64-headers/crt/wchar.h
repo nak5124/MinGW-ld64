@@ -62,7 +62,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
-  int __cdecl fwide(FILE *stream, int mode);
+  extern int __cdecl fwide(FILE *stream, int mode);
 #endif
 
   __mingw_ovr int __cdecl mbsinit(const mbstate_t *_P)
@@ -71,10 +71,10 @@ __MINGW_BEGIN_C_DECLS
   }
 
   _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *s, wchar_t c, size_t n);
-  int __cdecl wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n);
-  wchar_t *__cdecl wmemcpy(wchar_t * __restrict__ s1, const wchar_t * __restrict__ s2, size_t n) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  wchar_t *__cdecl wmemmove(wchar_t *s1, const wchar_t *s2, size_t n) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  wchar_t *__cdecl wmemset(wchar_t *s, wchar_t c, size_t n);
+  extern int __cdecl wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n);
+  extern wchar_t *__cdecl wmemcpy(wchar_t * __restrict__ s1, const wchar_t * __restrict__ s2, size_t n) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  extern wchar_t *__cdecl wmemmove(wchar_t *s1, const wchar_t *s2, size_t n) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  extern wchar_t *__cdecl wmemset(wchar_t *s, wchar_t c, size_t n);
 
 #ifndef __CRT__NO_INLINE
 
@@ -134,7 +134,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_GNU
-  wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size);
+  extern wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size);
 #endif
 
 __MINGW_END_C_DECLS

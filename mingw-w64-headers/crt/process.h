@@ -31,17 +31,17 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_TERMINATE_DEFINED  /* Also in stdlib.h */
 # define _CRT_TERMINATE_DEFINED
-  void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # ifdef __MINGW_USE_ISOC99
-    void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+    extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 # endif
 # ifdef __MINGW_USE_ISOC11
-    void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
+    extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # endif
 # pragma push_macro("abort")
 # undef abort
-  void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
+  _CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
 # pragma pop_macro("abort")
 #endif  /* _CRT_TERMINATE_DEFINED */
 
@@ -160,7 +160,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
 # ifndef _CRT_GETPID_DEFINED  /* Also in unistd.h */
 #   define _CRT_GETPID_DEFINED
-    int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+    _CRTIMP int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 

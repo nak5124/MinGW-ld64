@@ -55,7 +55,7 @@ limitations in handling dllimport attribute.  */
 # if defined(__aarch64__) || defined(_ARM64_)
 #   define _LDCRTIMP _CRTIMP
 # else
-#   define _LDCRTIMP
+#   define _LDCRTIMP extern
 # endif
 #endif
 

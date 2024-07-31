@@ -93,7 +93,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _timespec64_get(struct _timespec64 *_Ts, int _Base);
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
-  void __cdecl _tzset(void);
+  extern void __cdecl _tzset(void);
   _CRTIMP unsigned __cdecl _getsystime(struct tm *_Tm) __MINGW_ATTRIB_DEPRECATED;
   _CRTIMP unsigned __cdecl _setsystime(struct tm *_Tm,unsigned _MilliSec) __MINGW_ATTRIB_DEPRECATED;
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
@@ -139,7 +139,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if (defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)) && defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP)
-  void __cdecl tzset(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  extern void __cdecl tzset(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 
 #define __MINGW_ATTRIB_DEPRECATED_UCRT \

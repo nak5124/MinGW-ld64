@@ -67,13 +67,13 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
   } node_t;
 #endif
 
-  void * __cdecl tdelete(const void * __restrict__, void ** __restrict__, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
-  void * __cdecl tfind(const void *, void * const *, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
-  void * __cdecl tsearch(const void *, void **, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
-  void __cdecl twalk(const void *, void (*)(const void *, VISIT, int));
+  extern void * __cdecl tdelete(const void * __restrict__, void ** __restrict__, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
+  extern void * __cdecl tfind(const void *, void * const *, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
+  extern void * __cdecl tsearch(const void *, void **, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
+  extern void __cdecl twalk(const void *, void (*)(const void *, VISIT, int));
 
 #ifdef __MINGW_USE_GNU
-  void __cdecl tdestroy(void *, void (*)(void *)) __MINGW_ATTRIB_NONNULL(2);
+  extern void __cdecl tdestroy(void *, void (*)(void *)) __MINGW_ATTRIB_NONNULL(2);
 #endif
 
 __MINGW_END_C_DECLS

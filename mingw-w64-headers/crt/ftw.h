@@ -52,11 +52,11 @@ __MINGW_BEGIN_C_DECLS
   /* Continue with FTW_DP callback for current directory (if FTW_DEPTH) and then its siblings.  */
 #define FTW_SKIP_SIBLINGS 3
 
-  int ftw (const char *, int (*) (const char *, const struct stat *, int), int);
-  int ftw64 (const char *, int (*) (const char *, const struct stat64 *, int), int);
+  extern int ftw (const char *, int (*) (const char *, const struct stat *, int), int);
+  extern int ftw64 (const char *, int (*) (const char *, const struct stat64 *, int), int);
 
-  int nftw (const char *, int (*) (const char *, const struct stat *, int , struct FTW *), int, int);
-  int nftw64 (const char *, int (*) (const char *, const struct stat64 *, int , struct FTW *), int, int);
+  extern int nftw (const char *, int (*) (const char *, const struct stat *, int , struct FTW *), int, int);
+  extern int nftw64 (const char *, int (*) (const char *, const struct stat64 *, int , struct FTW *), int, int);
 
 __MINGW_END_C_DECLS
 

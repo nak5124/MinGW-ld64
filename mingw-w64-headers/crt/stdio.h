@@ -401,7 +401,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
+  extern __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl _vsnprintf(char * __restrict__ _Buffer, size_t _BufferCount, const char * __restrict__ _Format, va_list _ArgList);
 
   __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
@@ -479,7 +479,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  __MINGW_ATTRIB_PURE __MINGW_GNU_PRINTF(1, 0) __MINGW_ATTRIB_NONNULL(1)
+  extern __MINGW_ATTRIB_PURE __MINGW_GNU_PRINTF(1, 0) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl _vscprintf(const char * __restrict__ _Format, va_list _ArgList);
 
   __mingw_ovr int __cdecl _vscprintf_p_l(const char * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
@@ -577,7 +577,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  __MINGW_GNU_PRINTF(3, 4) __MINGW_ATTRIB_NONNULL(3)
+  extern __MINGW_GNU_PRINTF(3, 4) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl _snprintf(char * __restrict__ _Buffer, size_t _BufferCount, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   __mingw_ovr int __cdecl _snprintf_c_l(char * __restrict__ _Buffer, size_t _BufferCount, const char * __restrict__ _Format, _locale_t _Locale, ...)
@@ -631,7 +631,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  __MINGW_ATTRIB_PURE __MINGW_GNU_PRINTF(1, 2) __MINGW_ATTRIB_NONNULL(1)
+  extern __MINGW_ATTRIB_PURE __MINGW_GNU_PRINTF(1, 2) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl _scprintf(const char * __restrict__ _Format, ...);
 
   __mingw_ovr int __cdecl _scprintf_p_l(const char * __restrict__ _Format, _locale_t _Locale, ...)
@@ -722,7 +722,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __MINGW_GNU_SCANF(3, 4) __MINGW_ATTRIB_NONNULL(3)
+  extern __MINGW_GNU_SCANF(3, 4) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl _snscanf(const char * __restrict__ _Buffer, size_t _BufferCount, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   __mingw_ovr int __cdecl _snscanf_s_l(const char * __restrict__ _Buffer, size_t _BufferCount, const char * __restrict__ _Format, _locale_t _Locale, ...)
@@ -983,43 +983,43 @@ __MINGW_BEGIN_C_DECLS
  * Default configuration: simply direct all calls to UCRT...
  */
 
-  __MINGW_GNU_PRINTF(2, 0) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_PRINTF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vfprintf(FILE * __restrict__ _File, const char * __restrict__ _Format, va_list _ArgList);
-  __MINGW_GNU_PRINTF(1, 0) __MINGW_ATTRIB_NONNULL(1)
+  extern __MINGW_GNU_PRINTF(1, 0) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl vprintf(const char * __restrict__ _Format, va_list _ArgList);
-  __MINGW_GNU_PRINTF(2, 3) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_PRINTF(2, 3) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl fprintf(FILE * __restrict__ _File, const char * __restrict__ _Format, ...);
-  __MINGW_GNU_PRINTF(1, 2) __MINGW_ATTRIB_NONNULL(1)
+  extern __MINGW_GNU_PRINTF(1, 2) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl printf(const char * __restrict__ _Format, ...);
 
 #ifdef __MINGW_USE_ISOC99
-  __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vfscanf(FILE *__stream,  const char *__format, __builtin_va_list __local_argv);
-  __MINGW_GNU_SCANF(1, 0) __MINGW_ATTRIB_NONNULL(1)
+  extern __MINGW_GNU_SCANF(1, 0) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl vscanf(const char *__format,  __builtin_va_list __local_argv);
 #endif
-  __MINGW_GNU_SCANF(2, 3) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_SCANF(2, 3) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl fscanf(FILE * __restrict__ _File, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  __MINGW_GNU_SCANF(1, 2) __MINGW_ATTRIB_NONNULL(1)
+  extern __MINGW_GNU_SCANF(1, 2) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl scanf(const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
-  __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
+  extern __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl vsnprintf(char * __restrict__ __stream, size_t __n, const char * __restrict__ __format, va_list __local_argv);
 #endif
-  __MINGW_GNU_PRINTF(2, 0) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_PRINTF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vsprintf(char * __restrict__ _Dest, const char * __restrict__ _Format, va_list _Args) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  __MINGW_GNU_PRINTF(2, 3) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_PRINTF(2, 3) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl sprintf(char * __restrict__ _Dest, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
-  __MINGW_GNU_PRINTF(3, 4) __MINGW_ATTRIB_NONNULL(3)
+  extern __MINGW_GNU_PRINTF(3, 4) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl snprintf(char * __restrict__ __stream, size_t __n, const char * __restrict__ __format, ...);
 #endif
 
-  __MINGW_GNU_SCANF(2, 3) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_SCANF(2, 3) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl sscanf(const char * __restrict__ _Src, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_ISOC99
-  __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
+  extern __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vsscanf(const char * __restrict__ __source, const char * __restrict__ __format, __builtin_va_list __local_argv);
 #endif
 
@@ -1090,9 +1090,9 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2)
-  __MINGW_GNU_PRINTF(2, 0)
+  extern __MINGW_GNU_PRINTF(2, 0)
   int __cdecl vasprintf(char ** __restrict__ _Ret, const char * __restrict__ _Format, va_list _Args);
-  __MINGW_GNU_PRINTF(2, 3)
+  extern __MINGW_GNU_PRINTF(2, 3)
   int __cdecl asprintf(char ** __restrict__ _Ret, const char * __restrict__ _Format, ...);
 #endif
 
@@ -1286,7 +1286,7 @@ __MINGW_BEGIN_C_DECLS
   off64_t __cdecl ftello64(FILE *_File);
 #endif
 
-  unsigned int __cdecl _get_output_format(void);
+  extern unsigned int __cdecl _get_output_format(void);
 
 #if __MINGW_FORTIFY_LEVEL > 0
 

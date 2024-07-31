@@ -38,17 +38,17 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_TERMINATE_DEFINED  /* Also in process.h */
 # define _CRT_TERMINATE_DEFINED
-  void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # ifdef __MINGW_USE_ISOC99
-    void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+    extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 # endif
 # ifdef __MINGW_USE_ISOC11
-    void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
+    extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # endif
 # pragma push_macro("abort")
 # undef abort
-  void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
+  _CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
 # pragma pop_macro("abort")
 #endif  /* _CRT_TERMINATE_DEFINED */
 
@@ -67,10 +67,10 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif
 
-  int __cdecl atexit(void (__cdecl *)(void));
-  _onexit_t __cdecl _onexit(_onexit_t _Func);
+  extern int __cdecl atexit(void (__cdecl *)(void));
+  extern _onexit_t __cdecl _onexit(_onexit_t _Func);
 #ifdef __MINGW_USE_ISOC11
-  int __cdecl at_quick_exit(void (__cdecl *)(void));
+  extern int __cdecl at_quick_exit(void (__cdecl *)(void));
 #endif
 
   typedef void (__cdecl *_purecall_handler)(void);
@@ -91,7 +91,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ERRNO_DEFINED  /* Also in errno.h and stddef.h */
 # define _CRT_ERRNO_DEFINED
-  _CRTIMP extern int *__cdecl _errno(void);
+  _CRTIMP int *__cdecl _errno(void);
 # define errno (*_errno())
   _CRTIMP errno_t __cdecl _set_errno(int _Value);
   _CRTIMP errno_t __cdecl _get_errno(int *_Value);
@@ -109,7 +109,7 @@ __MINGW_BEGIN_C_DECLS
 #define _sys_nerr (*__sys_nerr())
 #ifndef _CRT_PERROR_DEFINED  /* Also in stdio.h */
 # define _CRT_PERROR_DEFINED
-  void __cdecl perror(const char *_ErrMsg);
+  _CRTIMP void __cdecl perror(const char *_ErrMsg);
 #endif  /* _CRT_PERROR_DEFINED */
 
   _CRTIMP char **__cdecl __p__pgmptr(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -468,7 +468,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl putenv(const char *_EnvString) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
-  onexit_t __cdecl onexit(onexit_t _Func);
+  extern onexit_t __cdecl onexit(onexit_t _Func);
 #endif
 
 #ifndef _CRT_ALLOCATION_DEFINED  /* Also in malloc.h */
@@ -508,7 +508,7 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_ALLOCATION_DEFINED */
 
 #if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MISC)
-  int __cdecl mkstemp(char *template_name);
+  extern int __cdecl mkstemp(char *template_name);
 #endif
 
 #ifndef __STRICT_ANSI__

@@ -142,7 +142,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl _sopen_s_nolock(int *_FileHandle, const char *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionMode);
   _CRTIMP errno_t __cdecl _sopen_dispatch(const char *_Filename, int _OpenFlag, int _ShareFlag, int _PMode, int *_PFileHandle, int _BSecure);
 
-  int __cdecl access(const char *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  extern int __cdecl access(const char *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
   _CRTIMP int __cdecl chsize(int _FileHandle, long _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
@@ -254,9 +254,9 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_XOPEN)
   /* Misc stuff */
-  char *getlogin(void);
+  extern char *getlogin(void);
 #ifdef __USE_MINGW_ALARM
-  unsigned int alarm(unsigned int seconds);
+  extern unsigned int alarm(unsigned int seconds);
 #endif
 #endif
 
