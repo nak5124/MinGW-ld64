@@ -86,6 +86,13 @@ _onexit_t __cdecl _onexit(_onexit_t func)
 
 _onexit_t __cdecl (*__MINGW_IMP_SYMBOL(_onexit))(_onexit_t func) = _onexit;
 
+onexit_t __cdecl onexit(onexit_t func)
+{
+  return _crt_atexit((_PVFV)func) == 0 ? func : NULL;
+}
+
+onexit_t __cdecl (*__MINGW_IMP_SYMBOL(onexit))(onexit_t func) = onexit;
+
 // When using mcfgthread, `at_quick_exit()` is provided in 'exit_wrappers.c'.
 #ifndef __USING_MCFGTHREAD__
 extern char __mingw_module_is_dll;
