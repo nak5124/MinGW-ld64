@@ -198,6 +198,7 @@ rewind
 setbuf
 setvbuf
 tmpfile
+tmpfile64 == tmpfile
 tmpfile_s
 tmpnam
 tmpnam_s

@@ -1130,7 +1130,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char *__cdecl gets_s(char *_Buffer, rsize_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(char *, gets_s, char, _Buffer)
 #endif
+#ifndef __MINGW_USE_FOB64
   _CRTIMP FILE *__cdecl tmpfile(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#else
+  _CRTIMP FILE *__cdecl tmpfile(void) __MINGW_ASM_CALL(tmpfile64) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl tmpfile_s(FILE **_File);
 #endif
@@ -1289,6 +1293,7 @@ __MINGW_BEGIN_C_DECLS
   int __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos);
   int __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin);
   off64_t __cdecl ftello64(FILE *_File);
+  FILE *__cdecl tmpfile64(void);
 #endif
 
   extern unsigned int __cdecl _get_output_format(void);
