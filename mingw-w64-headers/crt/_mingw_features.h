@@ -23,7 +23,6 @@
 #undef __MINGW_USE_XOPEN2K8
 #undef __MINGW_USE_XOPEN2K8XSI
 #undef __MINGW_USE_MISC
-#undef __MINGW_USE_ATFILE
 #undef __MINGW_USE_FOB64
 #undef __MINGW_USE_LFS
 #undef __MINGW_USE_LFS64
@@ -52,7 +51,6 @@
 # undef  _XOPEN_SOURCE
 # undef  _XOPEN_SOURCE_EXTENDED
 # undef  _DEFAULT_SOURCE
-# undef  _ATFILE_SOURCE
 # undef  _LARGEFILE_SOURCE
 # undef  _LARGEFILE64_SOURCE
 # define _ISOC95_SOURCE         1
@@ -63,7 +61,6 @@
 # define _XOPEN_SOURCE          700
 # define _XOPEN_SOURCE_EXTENDED 1
 # define _DEFAULT_SOURCE        1
-# define _ATFILE_SOURCE         1
 # define _LARGEFILE_SOURCE      1
 # define _LARGEFILE64_SOURCE    1
 # define __MINGW_USE_GNU        1
@@ -143,8 +140,6 @@
 #         define __MINGW_USE_XOPEN2K 1
 #         if (_POSIX_C_SOURCE - 0) >= 200809L
 #           define __MINGW_USE_XOPEN2K8 1
-#           undef  _ATFILE_SOURCE
-#           define _ATFILE_SOURCE       1
 #         endif
 #       endif
 #     endif
@@ -184,10 +179,6 @@
 
 #ifdef _DEFAULT_SOURCE
 # define __MINGW_USE_MISC 1
-#endif
-
-#ifdef _ATFILE_SOURCE
-# define __MINGW_USE_ATFILE 1
 #endif
 
 #ifndef _FILE_OFFSET_BITS
