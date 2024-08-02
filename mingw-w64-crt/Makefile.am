@@ -123,19 +123,19 @@ src_libws2_32=\
 
 # Files included in libucrt*.a
 src_ucrtbase=\
-  math/_huge.c             math/frexpf.c             math/ldexpf.c           math/lgamma.c            math/lgammaf.c          \
-  math/lgammal.c           math/modfl.c              math/signgam.c          \
+  math/_huge.c               math/frexpf.c             math/ldexpf.c           math/lgamma.c            math/lgammaf.c           \
+  math/lgammal.c             math/modfl.c              math/signgam.c          \
   \
-  misc/__badioinfo.c       misc/__initenv.c          misc/__p___initenv.c    misc/__p___winitenv.c    misc/__winitenv.c       \
-  misc/feclearexcept.c     misc/fegetenv.c           misc/fegetexceptflag.c  misc/fegetround.c        misc/feholdexcept.c     \
-  misc/fesetenv.c          misc/fesetexceptflag.c    misc/fesetround.c       misc/fetestexcept.c      misc/ucrt_compat.c      \
-  misc/ucrt-access.c       \
+  misc/__badioinfo.c         misc/__initenv.c          misc/__p___initenv.c    misc/__p___winitenv.c    misc/__winitenv.c        \
+  misc/feclearexcept.c       misc/fegetenv.c           misc/fegetexceptflag.c  misc/fegetround.c        misc/feholdexcept.c      \
+  misc/fesetenv.c            misc/fesetexceptflag.c    misc/fesetround.c       misc/fetestexcept.c      misc/ucrt__getmainargs.c \
+  misc/ucrt__wgetmainargs.c  misc/ucrt_compat.c        misc/ucrt-access.c      \
   \
-  stdio/ucrt__scprintf.c   stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c   stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c \
-  stdio/ucrt__vsnprintf.c  stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c    stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c   \
-  stdio/ucrt_printf.c      stdio/ucrt_scanf.c        stdio/ucrt_snprintf.c   stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c     \
-  stdio/ucrt_vfprintf.c    stdio/ucrt_vfscanf.c      stdio/ucrt_vprintf.c    stdio/ucrt_vscanf.c      stdio/ucrt_vsnprintf.c  \
-  stdio/ucrt_vsprintf.c    stdio/ucrt_vsscanf.c
+  stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c   stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c  \
+  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c    stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c    \
+  stdio/ucrt_printf.c        stdio/ucrt_scanf.c        stdio/ucrt_snprintf.c   stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c      \
+  stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c      stdio/ucrt_vprintf.c    stdio/ucrt_vscanf.c      stdio/ucrt_vsnprintf.c   \
+  stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c
 
 # Files included in libucrtapp.a
 src_ucrtapp=\
