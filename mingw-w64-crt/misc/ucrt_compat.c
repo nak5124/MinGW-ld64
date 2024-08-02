@@ -22,8 +22,6 @@
 #undef _amsg_exit
 #undef _get_output_format
 
-
-
 // Declarations of non-static functions implemented within this file (that aren't
 // declared in any of the included headers, and that isn't mapped away with a define
 // to get rid of the _CRTIMP in headers).
@@ -31,17 +29,6 @@ void __cdecl _amsg_exit(int ret) __MINGW_NORETURN;
 unsigned int __cdecl _get_output_format(void);
 
 int __cdecl __ms_fwprintf(FILE *, const wchar_t *, ...);
-
-_onexit_t __cdecl _onexit(_onexit_t func)
-{
-  return _crt_atexit((_PVFV)func) == 0 ? func : NULL;
-}
-
-_onexit_t __cdecl (*__MINGW_IMP_SYMBOL(_onexit))(_onexit_t func) = _onexit;
-
-onexit_t __attribute__ ((alias ("_onexit"))) __cdecl onexit(onexit_t func);
-extern onexit_t __attribute__ ((alias (__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(_onexit)))))
-(__cdecl *__MINGW_IMP_SYMBOL(onexit))(onexit_t func);
 
 // When using mcfgthread, `at_quick_exit()` is provided in 'exit_wrappers.c'.
 #ifndef __USING_MCFGTHREAD__
