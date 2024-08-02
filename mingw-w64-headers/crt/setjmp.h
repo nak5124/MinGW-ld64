@@ -117,7 +117,6 @@ __MINGW_BEGIN_C_DECLS
 #   define setjmp(BUF) _setjmp((BUF), NULL)
 # endif
   int __cdecl __MINGW_NOTHROW __attribute__((__returns_twice__)) _setjmp(jmp_buf _Buf, void *_Ctx);
-  int __cdecl __MINGW_NOTHROW __attribute__((__returns_twice__)) _setjmp3(jmp_buf _Buf, void *_Ctx);
 #else
 # undef setjmp
 # ifdef __SEH__
