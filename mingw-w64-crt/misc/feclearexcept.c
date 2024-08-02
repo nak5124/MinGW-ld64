@@ -11,7 +11,7 @@ int __mingw_has_sse (void);
 int __mingw_has_sse(void)
 {
   int cpuInfo[4],infoType = 1;
-  
+
   __asm__ __volatile__ (
     "cpuid"
     : "=a" (cpuInfo[0]), "=b" (cpuInfo[1]), "=c" (cpuInfo[2]),
@@ -27,7 +27,7 @@ int __mingw_has_sse(void)
    The feclearexcept function clears the supported exceptions
    represented by its argument.  */
 
-int feclearexcept (int excepts)
+int __cdecl feclearexcept (int excepts)
 {
   fenv_t _env;
 #if defined(__aarch64__) || defined(_ARM64_)
@@ -57,3 +57,5 @@ int feclearexcept (int excepts)
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return (0);
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(feclearexcept))(int) = feclearexcept;

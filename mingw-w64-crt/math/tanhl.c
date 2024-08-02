@@ -59,7 +59,7 @@ static uLD Q[] = {
 };
 #endif
 
-long double tanhl(long double x)
+long double __cdecl tanhl(long double x)
 {
   long double s, z;
 
@@ -98,4 +98,6 @@ long double tanhl(long double x)
   }
   return (z);
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(tanhl))(long double) = tanhl;
 #endif

@@ -13,7 +13,7 @@
 
 #include <math.h>
 
-double
+double __cdecl
 nexttoward (double x, long double y)
 {
   union
@@ -45,3 +45,5 @@ nexttoward (double x, long double y)
     u.ll--;
   return u.d;
 }
+
+double __cdecl (*__MINGW_IMP_SYMBOL(nexttoward))(double, long double) = nexttoward;

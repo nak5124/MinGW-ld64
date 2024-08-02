@@ -6,9 +6,7 @@
 #include "cephes_mconf.h"
 
 #if defined(__aarch64__) || defined(_ARM64_)
-double lgamma(double x);
-
-long double lgammal(long double x)
+long double __cdecl lgammal(long double x)
 {
 	return lgamma(x);
 }
@@ -214,7 +212,7 @@ static const long double LS2PI  =  0.91893853320467274178L;
 #endif /* defined(__aarch64__) || defined(_ARM64_) */
 
 /* Logarithm of gamma function */
-/* Reentrant version */ 
+/* Reentrant version */
 long double __lgammal_r(long double x, int* sgngaml);
 
 long double __lgammal_r(long double x, int* sgngaml)
@@ -339,8 +337,10 @@ lsmall:
 }
 
 /* This is the C99 version */
-long double lgammal(long double x)
+long double __cdecl lgammal(long double x)
 {
 	return (__lgammal_r (x, &signgam));
 }
 #endif
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(lgammal))(long double) = lgammal;

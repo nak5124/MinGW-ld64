@@ -15,7 +15,7 @@ int __mingw_has_sse (void);
     to the value of a rounding direction macro, the rounding direction
     is not changed.  */
 
-int fesetround (int mode)
+int __cdecl fesetround (int mode)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
@@ -34,7 +34,7 @@ int fesetround (int mode)
   _cw &= ~0xc00;
   _cw |= mode;
   __asm__ volatile ("fldcw %0;" : : "m" (*&_cw));
-  
+
   if (__mingw_has_sse ())
     {
       int mxcsr;
@@ -47,3 +47,5 @@ int fesetround (int mode)
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(fesetround))(int) = fesetround;

@@ -3,9 +3,9 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-long double fmodl (long double x, long double y);
+#include <math.h>
 
-long double
+long double __cdecl
 fmodl (long double x, long double y)
 {
   long double res = 0.0L;
@@ -19,3 +19,5 @@ fmodl (long double x, long double y)
        : "=t" (res) : "0" (x), "u" (y) : "ax", "st(1)");
   return res;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(fmodl))(long double, long double) = fmodl;

@@ -5,65 +5,72 @@
  */
 #include <_mingw_mac.h>
 
-	.file	"ilogbl.S"
-	.text
+  .file "ilogbl.S"
+  .text
 #ifdef __x86_64__
-	.align 8
+  .align 8
 #else
-	.align 4
+  .align 4
 #endif
-.globl __MINGW_USYMBOL(ilogbl)
-	.def	__MINGW_USYMBOL(ilogbl);	.scl	2;	.type	32;	.endef
+  .globl __MINGW_USYMBOL(ilogbl)
+  .def __MINGW_USYMBOL(ilogbl); .scl 2; .type 32; .endef
 __MINGW_USYMBOL(ilogbl):
 #ifdef __x86_64__
-	fldt	(%rcx)
-	fxam			/* Is NaN or +-Inf?  */
-	fstsw   %ax
-	movb    $0x45, %dh
-	andb    %ah, %dh
-	cmpb    $0x05, %dh
-	je      1f		/* Is +-Inf, jump.  */
-	cmpb    $0x01, %dh
-	je      1f		/* Is NaN, jump.  */
+  fldt    (%rcx)
+  fxam    /* Is NaN or +-Inf?  */
+  fstsw   %ax
+  movb    $0x45, %dh
+  andb    %ah,   %dh
+  cmpb    $0x05, %dh
+  je      1f  /* Is +-Inf, jump.  */
+  cmpb    $0x01, %dh
+  je      1f  /* Is NaN, jump.  */
 
-	fxtract
-	pushq	%rax
-	fstp	%st
+  fxtract
+  pushq %rax
+  fstp  %st
 
-	fistpl	(%rsp)
-	fwait
-	popq	%rax
+  fistpl (%rsp)
+  fwait
+  popq   %rax
 
-	ret
+  ret
 
-1:	fstp	%st
-	movl	$0x7fffffff, %eax
-	ret
+1: fstp %st
+  movl $0x7fffffff, %eax
+  ret
+
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(ilogbl)
+__MINGW_IMP_LSYMBOL(ilogbl):
+  .quad  __MINGW_USYMBOL(ilogbl)
+
 #else
-	fldt	4(%esp)
+  fldt 4(%esp)
 /* I added the following ugly construct because ilogb(+-Inf) is
    required to return INT_MAX in ISO C99.
    -- jakub@redhat.com.  */
-	fxam			/* Is NaN or +-Inf?  */
-	fstsw   %ax
-	movb    $0x45, %dh
-	andb    %ah, %dh
-	cmpb    $0x05, %dh
-	je      1f		/* Is +-Inf, jump.  */
-	cmpb    $0x01, %dh
-	je      1f		/* Is NaN, jump.  */
+  fxam   /* Is NaN or +-Inf?  */
+  fstsw   %ax
+  movb    $0x45, %dh
+  andb    %ah,   %dh
+  cmpb    $0x05, %dh
+  je      1f  /* Is +-Inf, jump.  */
+  cmpb    $0x01, %dh
+  je      1f  /* Is NaN, jump.  */
 
-	fxtract
-	pushl	%eax
-	fstp	%st
+  fxtract
+  pushl %eax
+  fstp  %st
 
-	fistpl	(%esp)
-	fwait
-	popl	%eax
+  fistpl (%esp)
+  fwait
+  popl   %eax
 
-	ret
+  ret
 
-1:	fstp	%st
-	movl	$0x7fffffff, %eax
-	ret
+1: fstp %st
+  movl $0x7fffffff, %eax
+  ret
 #endif

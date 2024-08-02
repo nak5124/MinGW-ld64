@@ -3,9 +3,9 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-long double acosl (long double x);
+#include <math.h>
 
-long double acosl (long double x)
+long double __cdecl acosl (long double x)
 {
   long double res = 0.0L;
 
@@ -21,3 +21,5 @@ long double acosl (long double x)
 	: "=t" (res) : "0" (x) : "st(1)");
   return res;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(acosl))(long double) = acosl;

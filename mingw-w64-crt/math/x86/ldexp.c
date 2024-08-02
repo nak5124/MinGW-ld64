@@ -6,18 +6,20 @@
 #include <math.h>
 #include <errno.h>
 
-double ldexp(double x, int expn)
+double __cdecl ldexp(double x, int expn)
 {
   double res = 0.0;
   if (!isfinite (x) || x == 0.0)
     return x;
 
   __asm__ __volatile__ ("fscale"
-  	    : "=t" (res)
-	    : "0" (x), "u" ((double) expn));
+    : "=t" (res)
+    : "0" (x), "u" ((double) expn));
 
   if (!isfinite (res) || res == 0.0L)
     errno = ERANGE;
 
   return res;
 }
+
+double __cdecl (*__MINGW_IMP_SYMBOL(ldexp))(double, int) = ldexp;

@@ -6,7 +6,7 @@
 #include <math.h>
 #include <fenv.h>
 
-long long llrintl (long double x) 
+long long __cdecl llrintl (long double x)
 {
   long long retval = 0ll;
 #if defined(__x86_64__) || defined(_AMD64_)
@@ -40,3 +40,4 @@ long long llrintl (long double x)
   return retval;
 }
 
+long long __cdecl (*__MINGW_IMP_SYMBOL(llrintl))(long double) = llrintl;

@@ -34,7 +34,7 @@ static const float PIINV =  0.318309886183790671538;
 
 #include "cephes_mconf.h"
 
-/* Reentrant version */ 
+/* Reentrant version */
 /* Logarithm of gamma function */
 float __lgammaf_r(float x, int* sgngamf);
 
@@ -180,8 +180,9 @@ contz:
 }
 
 /* This is the C99 version */
-float lgammaf(float x)
+float __cdecl lgammaf(float x)
 {
 	return (__lgammaf_r(x, &signgam));
 }
 
+float __cdecl (*__MINGW_IMP_SYMBOL(lgammaf))(float) = lgammaf;

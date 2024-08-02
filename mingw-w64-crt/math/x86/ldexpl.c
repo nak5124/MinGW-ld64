@@ -6,18 +6,20 @@
 #include <math.h>
 #include <errno.h>
 
-long double ldexpl(long double x, int expn)
+long double __cdecl ldexpl(long double x, int expn)
 {
   long double res = 0.0L;
   if (!isfinite (x) || x == 0.0L)
     return x;
 
   __asm__ __volatile__ ("fscale"
-  	    : "=t" (res)
-	    : "0" (x), "u" ((long double) expn));
+      : "=t" (res)
+      : "0" (x), "u" ((long double) expn));
 
   if (!isfinite (res) || res == 0.0L)
     errno = ERANGE;
 
   return res;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(ldexpl))(long double, int) = ldexpl;

@@ -21,7 +21,7 @@
  *
  * The integral is
  *
- *                           x 
+ *                           x
  *                            -
  *                 2         | |          2
  *   erf(x)  =  --------     |    exp( - t  ) dt.
@@ -64,7 +64,7 @@
  *
  *  1 - erf(x) =
  *
- *                           inf. 
+ *                           inf.
  *                             -
  *                  2         | |          2
  *   erfc(x)  =  --------     |    exp( - t  ) dt
@@ -247,7 +247,7 @@ static long double expx2l (long double x)
 	return (u);
 }
 
-long double erfcl(long double a)
+long double __cdecl erfcl(long double a)
 {
 	long double p, q, x, y, z;
 
@@ -298,7 +298,7 @@ under:
 	return (y);
 }
 
-long double erfl(long double x)
+long double __cdecl erfl(long double x)
 {
 	long double y, z;
 
@@ -315,4 +315,7 @@ long double erfl(long double x)
 	y = x * polevll(z, T, 6) / p1evll(z, U, 6);
 	return (y);
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(erfcl))(long double) = erfcl;
+long double __cdecl (*__MINGW_IMP_SYMBOL(erfl))(long double) = erfl;
 #endif

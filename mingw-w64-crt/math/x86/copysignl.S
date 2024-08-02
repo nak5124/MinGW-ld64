@@ -10,27 +10,39 @@
  */
 #include <_mingw_mac.h>
 
-	.file	"copysignl.S"
-	.text
+  .file "copysignl.S"
+  .text
 #ifdef __x86_64__
-	.align 8
+  .align 8
 #else
-	.align 4
+  .align 4
 #endif
 
-	.globl __MINGW_USYMBOL(copysignl)
-	.def	__MINGW_USYMBOL(copysignl);	.scl	2;	.type	32;	.endef
+  .globl __MINGW_USYMBOL(copysignl)
+  .def __MINGW_USYMBOL(copysignl); .scl 2; .type 32; .endef
 __MINGW_USYMBOL(copysignl):
-	movq	(%rdx), %rax
-	movq	%rax, (%rcx)
-	movq	8(%rdx), %rax
-	movq	8(%r8), %rdx
-	andq	$0x7fff, %rax
-	andq	$0x8000, %rdx
-	orq	%rdx, %rax
-	movq	%rax, 8(%rcx)
-	movq	%rcx, %rax
-	ret
+  movq (%rdx),  %rax
+  movq %rax,    (%rcx)
+  movq 8(%rdx), %rax
+  movq 8(%r8),  %rdx
+  andq $0x7fff, %rax
+  andq $0x8000, %rdx
+  orq  %rdx,    %rax
+  movq %rax,    8(%rcx)
+  movq %rcx,    %rax
+  ret
 
-.globl __MINGW_USYMBOL(_copysignl)
-	.set	__MINGW_USYMBOL(_copysignl),__MINGW_USYMBOL(copysignl)
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(copysignl)
+__MINGW_IMP_LSYMBOL(copysignl):
+  .quad  __MINGW_USYMBOL(copysignl)
+
+  .globl __MINGW_USYMBOL(_copysignl)
+  .set __MINGW_USYMBOL(_copysignl),__MINGW_USYMBOL(copysignl)
+
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(_copysignl)
+__MINGW_IMP_LSYMBOL(_copysignl):
+  .quad  __MINGW_USYMBOL(_copysignl)

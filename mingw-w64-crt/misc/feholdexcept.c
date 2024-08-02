@@ -11,7 +11,7 @@
    flags, and then installs a non-stop (continue on exceptions) mode,
    if available, for all exceptions.  */
 
-int feholdexcept (fenv_t * envp)
+int __cdecl feholdexcept (fenv_t * envp)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
@@ -27,3 +27,5 @@ int feholdexcept (fenv_t * envp)
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(feholdexcept))(fenv_t *) = feholdexcept;

@@ -155,7 +155,7 @@ static const union
 
 
 /* Logarithm of gamma function */
-/* Reentrant version */ 
+/* Reentrant version */
 double __lgamma_r(double x, int* sgngam);
 
 double __lgamma_r(double x, int* sgngam)
@@ -269,8 +269,9 @@ lgsing:
 }
 
 /* This is the C99 version */
-double lgamma(double x)
+double __cdecl lgamma(double x)
 {
 	return (__lgamma_r(x, &signgam));
 }
 
+double __cdecl (*__MINGW_IMP_SYMBOL(lgamma))(double) = lgamma;

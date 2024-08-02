@@ -3,14 +3,14 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-long double frexpl(long double value, int* exp);
+long double __cdecl frexpl(long double value, int* exp);
 
 #if defined(__aarch64__) || defined(_ARM64_)
 
 double frexp(double value, int* exp);
 
 /* On ARM `long double` is 64 bits. */
-long double frexpl(long double value, int* exp)
+long double __cdecl frexpl(long double value, int* exp)
 {
   return frexp(value, exp);
 }
@@ -29,7 +29,7 @@ typedef union x87reg_ {
   long double f;
 } x87reg;
 
-long double frexpl(long double value, int* exp)
+long double __cdecl frexpl(long double value, int* exp)
 {
   int n;
   x87reg reg;
@@ -63,6 +63,8 @@ long double frexpl(long double value, int* exp)
   reg.exp = 0x3FFE;
   return reg.f;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(frexpl))(long double, int *) = frexpl;
 
 #else
 

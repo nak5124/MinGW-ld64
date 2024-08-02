@@ -5,8 +5,10 @@
  */
 #include <math.h>
 
-long double
+long double __cdecl
 fminl (long double _x, long double _y)
 {
   return ((islessequal(_x, _y) || __isnanl (_y)) ? _x : _y );
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(fminl))(long double, long double) = fminl;

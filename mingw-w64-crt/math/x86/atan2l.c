@@ -3,12 +3,14 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-long double atan2l (long double y, long double x);
+#include <math.h>
 
-long double
+long double __cdecl
 atan2l (long double y, long double x)
 {
   long double res = 0.0L;
   asm volatile ("fpatan" : "=t" (res) : "u" (y), "0" (x) : "st(1)");
   return res;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(atan2l))(long double, long double) = atan2l;

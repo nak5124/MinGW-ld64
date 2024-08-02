@@ -45,7 +45,7 @@
 #include "../complex/complex_internal.h"
 #include <errno.h>
 
-__FLT_TYPE
+__FLT_TYPE __cdecl
 __FLT_ABI(expm1) (__FLT_TYPE x)
 {
   int x_class = fpclassify (x);
@@ -70,3 +70,6 @@ __FLT_ABI(expm1) (__FLT_TYPE x)
     }
   return __FLT_ABI (exp) (x) - __FLT_CST (1.0);
 }
+
+#define __IMP_NAME(x) __MINGW_IMP_SYMBOL(x)
+__FLT_TYPE __cdecl (*__IMP_NAME(__FLT_ABI(expm1)))(__FLT_TYPE) = __FLT_ABI(expm1);

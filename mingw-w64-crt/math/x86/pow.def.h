@@ -217,3 +217,6 @@ __FLT_ABI(pow) (__FLT_TYPE x, __FLT_TYPE y)
     rslt = -rslt;
   return rslt;
 }
+
+#define __IMP_NAME(x) __MINGW_IMP_SYMBOL(x)
+__FLT_TYPE __cdecl (*__IMP_NAME(__FLT_ABI(pow)))(__FLT_TYPE, __FLT_TYPE) = __FLT_ABI(pow);

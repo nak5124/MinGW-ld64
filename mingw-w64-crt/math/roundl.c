@@ -5,7 +5,7 @@
  */
 #include <math.h>
 
-long double
+long double __cdecl
 roundl (long double x)
 {
   long double res = 0.0L;
@@ -24,3 +24,5 @@ roundl (long double x)
     }
   return res;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(roundl))(long double) = roundl;

@@ -5,37 +5,49 @@
  */
 #include <_mingw_mac.h>
 
-	.file	"scalbnl.S"
-	.text
+  .file  "scalbnl.S"
+  .text
 #ifdef __x86_64__
-	.align 8
+  .align 8
 #else
-	.align 4
+  .align 4
 #endif
 .globl __MINGW_USYMBOL(scalbnl)
-	.def	__MINGW_USYMBOL(scalbnl);	.scl	2;	.type	32;	.endef
+  .def  __MINGW_USYMBOL(scalbnl);  .scl  2;  .type  32;  .endef
 __MINGW_USYMBOL(scalbnl):
 #ifdef __x86_64__
-	subq  $24, %rsp
-	andl    $-1, %r8d
-	movq	%r8, (%rsp)
-	fildl	(%rsp)
-	fldt	(%rdx)
-	fscale
-	fstp	%st(1)
-	movq	%rcx,%rax
-	movq	$0,8(%rcx)
-	fstpt	(%rcx)
-	addq $24, %rsp
-	ret
+  subq  $24, %rsp
+  andl    $-1, %r8d
+  movq  %r8, (%rsp)
+  fildl  (%rsp)
+  fldt  (%rdx)
+  fscale
+  fstp  %st(1)
+  movq  %rcx,%rax
+  movq  $0,8(%rcx)
+  fstpt  (%rcx)
+  addq $24, %rsp
+  ret
+
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(scalbnl)
+__MINGW_IMP_LSYMBOL(scalbnl):
+  .quad  __MINGW_USYMBOL(scalbnl)
+
 #else
-	fildl	16(%esp)
-	fldt	4(%esp)
-	fscale
-	fstp	%st(1)
-	ret
+  fildl  16(%esp)
+  fldt  4(%esp)
+  fscale
+  fstp  %st(1)
+  ret
 #endif
 
-.globl __MINGW_USYMBOL(scalblnl)
-	.set	__MINGW_USYMBOL(scalblnl),__MINGW_USYMBOL(scalbnl)
+  .globl __MINGW_USYMBOL(scalblnl)
+  .set  __MINGW_USYMBOL(scalblnl),__MINGW_USYMBOL(scalbnl)
 
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(scalblnl)
+__MINGW_IMP_LSYMBOL(scalblnl):
+  .quad  __MINGW_USYMBOL(scalblnl)

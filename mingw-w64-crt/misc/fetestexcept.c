@@ -4,13 +4,13 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#include <fenv.h> 
+#include <fenv.h>
 
 #if defined(__x86_64__) || defined(_AMD64_)
 extern int __mingw_has_sse (void);
 #endif /* defined(__x86_64__) || defined(_AMD64_) */
 
-/* 7.6.2.5 
+/* 7.6.2.5
    The fetestexcept function determines which of a specified subset of
    the exception flags are currently set. The excepts argument
    specifies the exception flags to be queried.
@@ -18,7 +18,7 @@ extern int __mingw_has_sse (void);
    exception macros corresponding to the currently set exceptions
    included in excepts. */
 
-int fetestexcept (int excepts)
+int __cdecl fetestexcept (int excepts)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
@@ -37,3 +37,5 @@ int fetestexcept (int excepts)
   return _sw & excepts & FE_ALL_EXCEPT;
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(fetestexcept))(int) = fetestexcept;

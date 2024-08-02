@@ -35,7 +35,7 @@
  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
  EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY DIRECT, INDIRECT,
  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
@@ -93,18 +93,18 @@ __expl_internal (long double x)
        "fldt %3\n\t"            /* 4                  */
        "fmul %%st(4),%%st\n\t"  /* 4  c1 * x          */
        "faddp %%st,%%st(1)\n\t" /* 3  f = f + c1 * x  */
-       "f2xm1\n\t"		/* 3 2^(fract(x * log2(e))) - 1 */
+       "f2xm1\n\t"  /* 3 2^(fract(x * log2(e))) - 1 */
        "fld1\n\t"               /* 4 1.0              */
-       "faddp\n\t"		/* 3 2^(fract(x * log2(e))) */
-       "fstp	%%st(1)\n\t"    /* 2  */
-       "fscale\n\t"	        /* 2 scale factor is st(1); e^x */
-       "fstp	%%st(1)\n\t"    /* 1  */
-       "fstp	%%st(1)\n\t"    /* 0  */
+       "faddp\n\t"  /* 3 2^(fract(x * log2(e))) */
+       "fstp %%st(1)\n\t"    /* 2  */
+       "fscale\n\t"         /* 2 scale factor is st(1); e^x */
+       "fstp %%st(1)\n\t"    /* 1  */
+       "fstp %%st(1)\n\t"    /* 0  */
        : "=t" (res) : "0" (x), "m" (c0), "m" (c1) : "ax", "dx");
   return res;
 }
 
-__FLT_TYPE
+__FLT_TYPE __cdecl
 __FLT_ABI(exp) (__FLT_TYPE x)
 {
   int x_class = fpclassify (x);
@@ -135,3 +135,6 @@ __FLT_ABI(exp) (__FLT_TYPE x)
   else
     return (__FLT_TYPE) __expl_internal ((long double) x);
 }
+
+#define __IMP_NAME(x) __MINGW_IMP_SYMBOL(x)
+__FLT_TYPE __cdecl (*__IMP_NAME(__FLT_ABI(exp)))(__FLT_TYPE) = __FLT_ABI(exp);

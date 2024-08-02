@@ -9,7 +9,7 @@
    The fegetround function returns the value of the rounding direction
    macro representing the current rounding direction.  */
 
-int
+int __cdecl
 fegetround (void)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
@@ -22,3 +22,5 @@ fegetround (void)
   return (_control & (FE_TONEAREST | FE_DOWNWARD |  FE_UPWARD | FE_TOWARDZERO));
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(fegetround))(void) = fegetround;

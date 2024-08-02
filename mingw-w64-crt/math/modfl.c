@@ -7,7 +7,7 @@
 #include <math.h>
 #include <errno.h>
 
-long double
+long double __cdecl
 modfl (long double value, long double* iptr)
 {
   long double int_part = 0.0L;
@@ -29,3 +29,5 @@ modfl (long double value, long double* iptr)
     *iptr = int_part;
   return (isinf (value) ?  0.0L : value - int_part);
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(modfl))(long double, long double *) = modfl;

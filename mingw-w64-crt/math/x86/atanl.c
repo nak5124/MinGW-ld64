@@ -3,9 +3,9 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-long double atanl (long double x);
+#include <math.h>
 
-long double
+long double __cdecl
 atanl (long double x)
 {
   long double res = 0.0L;
@@ -16,3 +16,5 @@ atanl (long double x)
        : "=t" (res) : "0" (x));
   return res;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(atanl))(long double) = atanl;

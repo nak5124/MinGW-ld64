@@ -3,11 +3,10 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-long double fmal(long double x, long double y, long double z);
+#include <math.h>
+#include <stdint.h>
 
 #if defined(__aarch64__) || defined(_ARM64_)
-
-double fma(double x, double y, double z);
 
 /* On ARM `long double` is 64 bits. And ARM has hardware FMA. */
 long double fmal(long double x, long double y, long double z){
@@ -21,9 +20,6 @@ long double fmal(long double x, long double y, long double z){
  * This file is donated to the mingw-w64 project.
  * Note: This file requires C99 support to compile.
  */
-
-#include <math.h>
-#include <stdint.h>
 
 /* See <https://en.wikipedia.org/wiki/Extended_precision#x86_extended_precision_format>.
  * Note the higher half of the mantissa has fewer significant bits than the lower
@@ -50,7 +46,7 @@ static inline void break_down(x87reg *restrict lo, x87reg *restrict hi, long dou
   lo->sgn = hi->sgn;
 }
 
-long double fmal(long double x, long double y, long double z) {
+long double __cdecl fmal(long double x, long double y, long double z) {
   /*
     POSIX-2013:
     1. If x or y are NaN, a NaN shall be returned.
@@ -80,6 +76,8 @@ long double fmal(long double x, long double y, long double z) {
   ret += xlo.f * ylo.f;                 /* The least significant item comes last. */
   return ret;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(fmal))(long double, long double, long double) = fmal;
 
 #else
 

@@ -5,7 +5,7 @@
  */
 #include <math.h>
 
-long double rintl (long double x) {
+long double __cdecl rintl (long double x) {
   long double retval = 0.0L;
 #if defined(__x86_64__) || defined(_AMD64_)
   __asm__ __volatile__ ("frndint;": "=t" (retval) : "0" (x));
@@ -14,3 +14,5 @@ long double rintl (long double x) {
 #endif
   return retval;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(rintl))(long double) = rintl;

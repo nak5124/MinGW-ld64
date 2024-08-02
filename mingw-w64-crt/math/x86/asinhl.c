@@ -9,7 +9,7 @@
 #include "fastmath.h"
 
  /* asinh(x) = copysign(log(fabs(x) + sqrt(x * x + 1.0)), x) */
-long double asinhl(long double x)
+long double __cdecl asinhl(long double x)
 {
   long double z;
   if (!isfinite (x))
@@ -32,3 +32,5 @@ long double asinhl(long double x)
     z = __fast_logl(2) + __fast_logl(z);
   return copysignl(z, x); //ensure 0.0 -> 0.0 and -0.0 -> -0.0.
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(asinhl))(long double) = asinhl;

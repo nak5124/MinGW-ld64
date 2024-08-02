@@ -6,17 +6,17 @@
 
 #include <math.h>
 
-double scalbn(double x, int exp)
+double __cdecl scalbn(double x, int exp)
 {
     return x * exp2(exp);
 }
 
-float scalbnf(float x, int exp)
+float __cdecl scalbnf(float x, int exp)
 {
     return x * exp2f(exp);
 }
 
-long double scalbnl(long double x, int exp)
+long double __cdecl scalbnl(long double x, int exp)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
     return scalbn(x, exp);
@@ -25,17 +25,17 @@ long double scalbnl(long double x, int exp)
 #endif
 }
 
-double scalbln(double x, long exp)
+double __cdecl scalbln(double x, long exp)
 {
     return x * exp2(exp);
 }
 
-float scalblnf(float x, long exp)
+float __cdecl scalblnf(float x, long exp)
 {
     return x * exp2f(exp);
 }
 
-long double scalblnl(long double x, long exp)
+long double __cdecl scalblnl(long double x, long exp)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
     return scalbln(x, exp);
@@ -44,4 +44,12 @@ long double scalblnl(long double x, long exp)
 #endif
 }
 
-double ldexp(double x, int exp) __attribute__((alias("scalbn")));
+double __cdecl (*__MINGW_IMP_SYMBOL(scalbn))(double, int) = scalbn;
+float __cdecl (*__MINGW_IMP_SYMBOL(scalbnf))(float, int) = scalbnf;
+long double __cdecl (*__MINGW_IMP_SYMBOL(scalbnl))(long double, int) = scalbnl;
+double __cdecl (*__MINGW_IMP_SYMBOL(scalbln))(double, int) = scalbln;
+float __cdecl (*__MINGW_IMP_SYMBOL(scalblnf))(float, int) = scalblnf;
+long double __cdecl (*__MINGW_IMP_SYMBOL(scalblnl))(long double, int) = scalblnl;
+double __cdecl ldexp(double x, int exp) __attribute__((alias("scalbn")));
+extern double __attribute__ ((alias (__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))))
+(__cdecl *__MINGW_IMP_SYMBOL(ldexp))(double x, int exp);

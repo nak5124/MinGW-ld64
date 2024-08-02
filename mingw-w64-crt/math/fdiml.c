@@ -6,7 +6,7 @@
 #include <errno.h>
 #include <math.h>
 
-long double
+long double __cdecl
 fdiml (long double x, long double y)
 {
   int cx = fpclassify (x), cy = fpclassify (y);
@@ -22,3 +22,5 @@ fdiml (long double x, long double y)
     errno = ERANGE;
   return r;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(fdiml))(long double, long double) = fdiml;

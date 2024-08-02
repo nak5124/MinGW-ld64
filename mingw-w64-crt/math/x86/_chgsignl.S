@@ -18,20 +18,26 @@
 
 #include <_mingw_mac.h>
 
-	.file	"_chgignl.S"
-	.text
+  .file "_chgsignl.S"
+  .text
 #ifdef __x86_64__
-	.align 8
+  .align 8
 #else
-	.align 4
+  .align 4
 #endif
-	.globl __MINGW_USYMBOL(_chgsignl)
-	.def	__MINGW_USYMBOL(_chgsignl);	.scl	2;	.type	32;	.endef
+  .globl __MINGW_USYMBOL(_chgsignl)
+  .def __MINGW_USYMBOL(_chgsignl);  .scl  2;  .type  32;  .endef
 __MINGW_USYMBOL(_chgsignl):
-	movq	(%rdx), %rax
-	movq	8(%rdx), %rdx
-	xorq	$0x8000, %rdx
-	movq	%rax, (%rcx)
-	movq	%rdx, 8(%rcx)
-	movq	%rcx, %rax
-	ret
+  movq  (%rdx), %rax
+  movq  8(%rdx), %rdx
+  xorq  $0x8000, %rdx
+  movq  %rax, (%rcx)
+  movq  %rdx, 8(%rcx)
+  movq  %rcx, %rax
+  ret
+
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(_chgsignl)
+__MINGW_IMP_LSYMBOL(_chgsignl):
+  .quad  __MINGW_USYMBOL(_chgsignl)

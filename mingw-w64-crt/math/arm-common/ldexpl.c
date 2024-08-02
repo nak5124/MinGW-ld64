@@ -6,7 +6,7 @@
 
 #include <math.h>
 
-long double ldexpl(long double x, int n)
+long double __cdecl ldexpl(long double x, int n)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
     return ldexp(x, n);
@@ -14,3 +14,5 @@ long double ldexpl(long double x, int n)
 # error Not supported on your platform yet
 #endif
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(ldexpl))(long double, int) = ldexpl;

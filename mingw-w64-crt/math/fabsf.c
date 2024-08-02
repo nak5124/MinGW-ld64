@@ -3,10 +3,12 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-float fabsf (float x);
+#include <math.h>
 
-float
+float __cdecl
 fabsf (float x)
 {
   return __builtin_fabsf (x);
 }
+
+float __cdecl (*__MINGW_IMP_SYMBOL(fabsf))(float) = fabsf;

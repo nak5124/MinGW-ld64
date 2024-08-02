@@ -3,11 +3,11 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-extern double __cdecl frexp(double _X,int *_Y);
+#include <math.h>
 
-float frexpf (float, int *);
-float frexpf (float x, int *expn)
+float __cdecl frexpf (float x, int *expn)
 {
   return (float)frexp(x, expn);
 }
 
+float __cdecl (*__MINGW_IMP_SYMBOL(frexpf))(float, int *) = frexpf;

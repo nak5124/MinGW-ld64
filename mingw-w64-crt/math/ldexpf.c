@@ -3,11 +3,11 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-extern double __cdecl ldexp(double _X,int _Y);
+#include <math.h>
 
-float ldexpf (float x, int expn);
-float ldexpf (float x, int expn)
+float __cdecl ldexpf (float x, int expn)
 {
   return (float) ldexp (x, expn);
 }
 
+float __cdecl (*__MINGW_IMP_SYMBOL(ldexpf))(float, int) = ldexpf;

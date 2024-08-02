@@ -9,12 +9,12 @@
 extern int __mingw_has_sse (void);
 #endif  /* defined(__x86_64__) || defined(_AMD64_) */
 
-/* 7.6.2.2  
+/* 7.6.2.2
    The fegetexceptflag function stores an implementation-defined
    representation of the exception flags indicated by the argument
    excepts in the object pointed to by the argument flagp.  */
 
-int fegetexceptflag (fexcept_t * flagp, int excepts)
+int __cdecl fegetexceptflag (fexcept_t * flagp, int excepts)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
@@ -28,8 +28,10 @@ int fegetexceptflag (fexcept_t * flagp, int excepts)
   _mxcsr = 0;
   if (__mingw_has_sse ())
     __asm__ volatile ("stmxcsr %0" : "=m" (_mxcsr));
-    
+
   *flagp = (_mxcsr | _status) & excepts & FE_ALL_EXCEPT;
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(fegetexceptflag))(fexcept_t *, int) = fegetexceptflag;

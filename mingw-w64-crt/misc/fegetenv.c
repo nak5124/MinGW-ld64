@@ -13,7 +13,7 @@ int __mingw_has_sse (void);
    The fegetenv function stores the current floating-point environment
    in the object pointed to by envp.  */
 
-int fegetenv (fenv_t * envp)
+int __cdecl fegetenv (fenv_t * envp)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
@@ -35,3 +35,4 @@ int fegetenv (fenv_t * envp)
   return 0;
 }
 
+int __cdecl (*__MINGW_IMP_SYMBOL(fegetenv))(fenv_t *) = fegetenv;

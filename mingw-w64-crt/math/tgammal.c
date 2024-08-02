@@ -396,9 +396,11 @@ Small:
 }
 
 /* This is the C99 version. */
-long double tgammal(long double x)
+long double __cdecl tgammal(long double x)
 {
 	int local_sgngaml = 0;
 	return (__tgammal_r(x, &local_sgngaml));
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(tgammal))(long double) = tgammal;
 #endif

@@ -63,7 +63,7 @@ static uLD Q[] = {
 };
 #endif
 
-long double sinhl(long double x)
+long double __cdecl sinhl(long double x)
 {
   long double a;
   int x_class = fpclassify (x);
@@ -106,4 +106,7 @@ long double sinhl(long double x)
   a *= a;
   return (x + x * a * (polevll(a,P,3)/polevll(a,Q,4)));
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(sinhl))(long double) = sinhl;
+
 #endif

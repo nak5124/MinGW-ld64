@@ -25,7 +25,7 @@ Direct inquiries to 30 Frost Street, Cambridge, MA 02140
 
 #define PRECL 32
 
-long double
+long double __cdecl
 hypotl (long double x, long double y)
 {
   int exx;
@@ -60,18 +60,18 @@ hypotl (long double x, long double y)
   /* Exponent of approximate geometric mean (x 2) */
   scale = (exx + eyy) >> 1;
 
-  /*  Rescale: Geometric mean is now about 2 */  
+  /*  Rescale: Geometric mean is now about 2 */
   x = scalbnl(xx, -scale);
   y = scalbnl(yy, -scale);
 
   xx = sqrtl(x * x  + y * y);
 
   /* Check for overflow and underflow */
-  exx = logbl(xx);   
+  exx = logbl(xx);
   exx += scale;
     if (exx > LDBL_MAX_EXP)
     {
-      errno = ERANGE; 
+      errno = ERANGE;
       return INFINITY;
     }
   if (exx < LDBL_MIN_EXP)
@@ -81,5 +81,10 @@ hypotl (long double x, long double y)
   return (scalbnl (xx, scale));
 }
 
-long double
+long double __cdecl (*__MINGW_IMP_SYMBOL(hypotl))(long double, long double) = hypotl;
+
+long double __cdecl
 _hypotl(long double x, long double y) __attribute__((alias("hypotl")));
+
+extern long double __attribute__ ((alias (__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(hypotl)))))
+(__cdecl *__MINGW_IMP_SYMBOL(_hypotl))(long double, long double);

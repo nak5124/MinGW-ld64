@@ -5,7 +5,7 @@
  */
 #include <math.h>
 
-long lrintl (long double x) 
+long __cdecl lrintl (long double x)
 {
   long retval = 0l;
 #if defined(__x86_64__) || defined(_AMD64_)
@@ -16,3 +16,4 @@ long lrintl (long double x)
   return retval;
 }
 
+long __cdecl (*__MINGW_IMP_SYMBOL(lrintl))(long double) = lrintl;

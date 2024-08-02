@@ -5,8 +5,10 @@
  */
 #include <math.h>
 
-long double
+long double __cdecl
 fmaxl (long double _x, long double  _y)
 {
   return (( isgreaterequal(_x, _y) || __isnanl (_y)) ?  _x : _y );
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(fmaxl))(long double, long double) = fmaxl;

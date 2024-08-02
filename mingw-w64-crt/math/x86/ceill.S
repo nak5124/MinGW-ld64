@@ -5,36 +5,42 @@
  */
 #include <_mingw_mac.h>
 
-	.file	"ceill.S"
-	.text
+  .file "ceill.S"
+  .text
 #ifdef __x86_64__
-	.align 8
+  .align 8
 #else
-	.align 4
+  .align 4
 #endif
-	.globl __MINGW_USYMBOL(ceill)
-	.def	__MINGW_USYMBOL(ceill);	.scl	2;	.type	32;	.endef
+  .globl __MINGW_USYMBOL(ceill)
+  .def __MINGW_USYMBOL(ceill); .scl 2; .type 32; .endef
 __MINGW_USYMBOL(ceill):
-	fldt	(%rdx)
-	subq	$24,%rsp
+  fldt  (%rdx)
+  subq  $24, %rsp
 
-	fstcw	8(%rsp)			/* store fpu control word */
+  fstcw 8(%rsp)   /* store fpu control word */
 
-	/* We use here %edx although only the low 1 bits are defined.
-	   But none of the operations should care and they are faster
-	   than the 16 bit operations.  */
-	movl	$0x0800,%edx		/* round towards +oo */
-	orl	8(%rsp),%edx
-	andl	$0xfbff,%edx
-	movl	%edx,(%rsp)
-	fldcw	(%rsp)			/* load modified control word */
+  /* We use here %edx although only the low 1 bits are defined.
+     But none of the operations should care and they are faster
+     than the 16 bit operations.  */
+  movl  $0x0800, %edx  /* round towards +oo */
+  orl   8(%rsp), %edx
+  andl  $0xfbff, %edx
+  movl  %edx,    (%rsp)
+  fldcw (%rsp)   /* load modified control word */
 
-	frndint				/* round */
+  frndint    /* round */
 
-	fldcw	8(%rsp)			/* restore original control word */
+  fldcw 8(%rsp)   /* restore original control word */
 
-	addq	$24,%rsp
-	movq	%rcx,%rax
-	movq	$0,8(%rcx)
-	fstpt	(%rcx)
-	ret
+  addq  $24,  %rsp
+  movq  %rcx, %rax
+  movq  $0,   8(%rcx)
+  fstpt (%rcx)
+  ret
+
+  .data
+  .align 8
+  .globl __MINGW_IMP_LSYMBOL(ceill)
+__MINGW_IMP_LSYMBOL(ceill):
+  .quad  __MINGW_USYMBOL(ceill)

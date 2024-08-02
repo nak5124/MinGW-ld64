@@ -12,7 +12,7 @@ static const long double CBRT4I = 0.62996052494743658238361L;
 
 extern long double ldexpl(long double,int);
 
-long double cbrtl(long double x)
+long double __cdecl cbrtl(long double x)
 {
 	int e, rem, sign;
 	long double z;
@@ -80,3 +80,5 @@ long double cbrtl(long double x)
 		x = -x;
 	return (x);
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(cbrtl))(long double) = cbrtl;

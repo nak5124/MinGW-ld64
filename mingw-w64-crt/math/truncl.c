@@ -6,7 +6,7 @@
 #include <fenv.h>
 #include <math.h>
 
-long double
+long double __cdecl
 truncl (long double _x)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
@@ -24,3 +24,5 @@ truncl (long double _x)
   return retval;
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(truncl))(long double) = truncl;

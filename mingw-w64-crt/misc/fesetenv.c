@@ -24,7 +24,7 @@ extern int __mingw_has_sse (void);
 extern void (* __MINGW_IMP_SYMBOL(_fpreset))(void);
 extern void _fpreset(void);
 
-int fesetenv (const fenv_t * envp)
+int __cdecl fesetenv (const fenv_t * envp)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   if (envp == FE_DFL_ENV) {
@@ -53,7 +53,7 @@ int fesetenv (const fenv_t * envp)
    (* __MINGW_IMP_SYMBOL(_fpreset))();
 
   else if (envp == FE_DFL_ENV)
-    /* Use the choice made at app startup */ 
+    /* Use the choice made at app startup */
     _fpreset();
 
   else
@@ -76,3 +76,5 @@ int fesetenv (const fenv_t * envp)
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(fesetenv))(const fenv_t *) = fesetenv;

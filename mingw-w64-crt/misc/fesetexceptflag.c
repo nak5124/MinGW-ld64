@@ -16,9 +16,9 @@ extern int __mingw_has_sse (void);
    *flagp shall have been set by a previous call to fegetexceptflag
    whose second argument represented at least those exceptions
    represented by the argument excepts. This function does not raise
-   exceptions, but only sets the state of the flags. */ 
+   exceptions, but only sets the state of the flags. */
 
-int fesetexceptflag (const fexcept_t * flagp, int excepts) 
+int __cdecl fesetexceptflag (const fexcept_t * flagp, int excepts)
 {
   fenv_t _env;
 
@@ -49,3 +49,5 @@ int fesetexceptflag (const fexcept_t * flagp, int excepts)
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(fesetexceptflag))(const fexcept_t *, int) = fesetexceptflag;

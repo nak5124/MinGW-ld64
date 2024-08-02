@@ -18,7 +18,7 @@ long double coshl(long double x)
 #define _SET_ERRNO(x)
 #endif
 
-long double coshl(long double x)
+long double __cdecl coshl(long double x)
 {
   long double y;
   int x_class = fpclassify (x);
@@ -52,4 +52,7 @@ long double coshl(long double x)
   y = 0.5L * (y + 1.0L / y);
   return y;
 }
+
+long double __cdecl (*__MINGW_IMP_SYMBOL(coshl))(long double) = coshl;
+
 #endif

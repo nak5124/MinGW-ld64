@@ -13,7 +13,7 @@
 
 #include <math.h>
 
-float
+float __cdecl
 nexttowardf (float x, long double y)
 {
   union
@@ -29,7 +29,7 @@ nexttowardf (float x, long double y)
   if (xx == y )
      /* nextafter (0.0, -O.0) should return -0.0.  */
      return y;
-  u.f = x; 
+  u.f = x;
   if (x == 0.0F)
     {
       u.i = 1;
@@ -41,3 +41,5 @@ nexttowardf (float x, long double y)
     u.i--;
   return u.f;
 }
+
+float __cdecl (*__MINGW_IMP_SYMBOL(nexttowardf))(float, long double) = nexttowardf;

@@ -7,7 +7,7 @@
 #include <limits.h>
 #include <errno.h>
 
-long long
+long long __cdecl
 llroundl (long double x)
 {
   long double res;
@@ -36,3 +36,4 @@ llroundl (long double x)
   return (long long) res;
 }
 
+long long __cdecl (*__MINGW_IMP_SYMBOL(llroundl))(long double) = llroundl;

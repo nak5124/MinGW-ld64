@@ -67,3 +67,6 @@ __FLT_ABI(log) (__FLT_TYPE x)
     return __FLT_HUGE_VAL;
   return (__FLT_TYPE) __logl_internal ((long double) x);
 }
+
+#define __IMP_NAME(x) __MINGW_IMP_SYMBOL(x)
+__FLT_TYPE __cdecl (*__IMP_NAME(__FLT_ABI(log)))(__FLT_TYPE) = __FLT_ABI(log);

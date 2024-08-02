@@ -13,7 +13,7 @@
 
 #include <math.h>
 
-long double
+long double __cdecl
 nextafterl (long double x, long double y)
 {
   union {
@@ -65,7 +65,10 @@ nextafterl (long double x, long double y)
   return u.ld;
 }
 
+long double __cdecl (*__MINGW_IMP_SYMBOL(nextafterl))(long double, long double) = nextafterl;
 /* nexttowardl is the same function with a different name.  */
-long double
+long double __cdecl
 nexttowardl (long double, long double) __attribute__ ((alias("nextafterl")));
 
+extern long double __attribute__ ((alias (__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(nextafterl)))))
+(__cdecl *__MINGW_IMP_SYMBOL(nexttowardl))(long double, long double);
