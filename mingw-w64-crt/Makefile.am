@@ -231,7 +231,7 @@ src_ucrtbase64=\
   math/x86/logbl.c \
   math/x86/logl.c math/x86/log.def.h math/x86/internal_logl.S \
   math/x86/nearbyintl.S \
-  math/x86/powl.c math/x86/pow.def.h \
+  math/x86/powl.c math/x86/pow.def.h math/x86/powil.c math/x86/powi.def.h \
   math/x86/remainderl.S \
   math/x86/remquol.S \
   math/x86/scalbn.S math/x86/scalbnf.S math/x86/scalbnl.S \
@@ -276,10 +276,8 @@ src_libmingwex=\
   math/fp_consts.c      math/fp_constsf.c     \
   math/fp_constsl.c     math/fpclassify.c  math/fpclassifyf.c    math/fpclassifyl.c      \
   math/isnan.c          math/isnanf.c      math/isnanl.c        \
-  math/powi.c           math/powif.c       math/powil.c          \
   math/signbit.c        math/signbitf.c    math/signbitl.c       \
   math/signgam.c        \
-  math/powi.def.h       \
   math/cephes_mconf.h   math/fp_consts.h   \
   \
   misc/mingw_longjmp.S \
