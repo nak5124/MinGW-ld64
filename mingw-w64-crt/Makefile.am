@@ -328,7 +328,7 @@ endif
 
 # these go into both 32 and 64 bit x86 versions:
 src_libmingwex_x86=\
-  math/x86/cossin.c
+  math/x86/sincos.c
 
 src_libmingwex64=$(src_libmingwex_x86)
 
