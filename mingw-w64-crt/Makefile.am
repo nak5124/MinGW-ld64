@@ -221,6 +221,7 @@ src_ucrtbase64=\
   math/x86/exp2l.S \
   math/x86/expl.c math/x86/exp.def.h \
   math/x86/expm1l.c math/x86/expm1.def.h \
+  math/x86/fastmath.h \
   math/x86/floorl.S \
   math/x86/fmodl.c \
   math/x86/ilogbl.S \
@@ -327,8 +328,7 @@ endif
 
 # these go into both 32 and 64 bit x86 versions:
 src_libmingwex_x86=\
-  math/x86/cossin.c   \
-  math/x86/fastmath.h
+  math/x86/cossin.c
 
 src_libmingwex64=$(src_libmingwex_x86)
 
