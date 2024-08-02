@@ -129,7 +129,7 @@ src_ucrtbase=\
   math/_huge.c \
   math/frexpf.c \
   math/ldexpf.c \
-  math/lgamma.c math/lgammaf.c math/lgammal.c \
+  math/lgamma.c math/lgammaf.c math/lgammal.c math/signgam.c \
   math/modfl.c \
   misc/__badioinfo.c \
   misc/__p___initenv.c \
@@ -183,68 +183,66 @@ src_ucrtapp=\
 # Files included in libucrt*.a on x86_64
 src_ucrtbase64=\
   $(src_ucrtbase) \
-  math/erfl.c \
-  math/cbrtl.c \
-  math/fabsf.c \
-  math/fdiml.c \
-  math/fmal.c \
-  math/fmaxl.c \
-  math/fminl.c \
-  math/frexpl.c \
-  math/hypotl.c \
-  math/llrintl.c \
-  math/llroundl.c \
-  math/lrintl.c \
-  math/lroundl.c \
-  math/nextafterl.c \
-  math/nexttoward.c math/nexttowardf.c \
-  math/coshl.c \
-  math/fabsl.c \
-  math/rintl.c \
-  math/roundl.c \
-  math/sinhl.c \
-  math/sqrtl.c \
-  math/tanhl.c \
-  math/tgammal.c \
-  math/truncl.c \
-  math/x86/_chgsignl.S \
-  math/x86/acoshl.c math/x86/acosh.def.h \
-  math/x86/acosl.c \
-  math/x86/asinhl.c \
-  math/x86/asinl.c \
-  math/x86/atan2l.c \
-  math/x86/atanhl.c \
-  math/x86/atanl.c \
-  math/x86/ceill.S \
-  math/x86/copysignl.S \
-  math/x86/cosl.c math/x86/cos.def.h math/x86/cosl_internal.S \
-  math/x86/exp2l.S \
-  math/x86/expl.c math/x86/exp.def.h \
-  math/x86/expm1l.c math/x86/expm1.def.h \
-  math/x86/fastmath.h \
-  math/x86/floorl.S \
-  math/x86/fmodl.c \
-  math/x86/ilogbl.S \
-  math/x86/ldexp.c math/x86/ldexpl.c \
-  math/x86/log1pl.S\
-  math/x86/log2l.S \
-  math/x86/log10l.S \
-  math/x86/logbl.c \
-  math/x86/logl.c math/x86/log.def.h math/x86/internal_logl.S \
-  math/x86/nearbyintl.S \
-  math/x86/powl.c math/x86/pow.def.h math/x86/powil.c math/x86/powi.def.h \
-  math/x86/remainderl.S \
-  math/x86/remquol.S \
-  math/x86/scalbn.S math/x86/scalbnf.S math/x86/scalbnl.S \
-  math/x86/sinl.c math/x86/sin.def.h math/x86/sinl_internal.S \
-  math/x86/tanl.S \
+  math/x64/_chgsignl.S \
+  math/x64/acoshl.c \
+  math/x64/acosl.c \
+  math/x64/asinhl.c \
+  math/x64/asinl.c \
+  math/x64/atan2l.c \
+  math/x64/atanhl.c \
+  math/x64/atanl.c \
+  math/x64/cbrtl.c \
+  math/x64/ceill.S \
+  math/x64/copysignl.S \
+  math/x64/coshl.c \
+  math/x64/cosl.c math/x64/cosl_internal.S \
+  math/x64/erfl.c \
+  math/x64/exp2l.S \
+  math/x64/expl.c \
+  math/x64/expm1l.c \
+  math/x64/fabsf.c \
+  math/x64/fabsl.c \
+  math/x64/fdiml.c \
+  math/x64/floorl.S \
+  math/x64/fmal.c \
+  math/x64/fmaxl.c \
+  math/x64/fminl.c \
+  math/x64/fmodl.c \
+  math/x64/frexpl.c \
+  math/x64/hypotl.c \
+  math/x64/ilogbl.S \
+  math/x64/ldexp.c math/x64/ldexpl.c \
+  math/x64/llrintl.c \
+  math/x64/llroundl.c \
+  math/x64/log1pl.S\
+  math/x64/log2l.S \
+  math/x64/log10l.S \
+  math/x64/logbl.c \
+  math/x64/logl.c math/x64/logl_internal.S \
+  math/x64/lrintl.c \
+  math/x64/lroundl.c \
+  math/x64/nearbyintl.S \
+  math/x64/nextafterl.c \
+  math/x64/nexttoward.c math/x64/nexttowardf.c \
+  math/x64/powl.c \
+  math/x64/remainderl.S \
+  math/x64/remquol.S \
+  math/x64/rintl.c \
+  math/x64/roundl.c \
+  math/x64/scalbn.S math/x64/scalbnf.S math/x64/scalbnl.S \
+  math/x64/sinhl.c \
+  math/x64/sinl.c math/x64/sinl_internal.S \
+  math/x64/sqrtl.c \
+  math/x64/tanhl.c \
+  math/x64/tanl.S \
+  math/x64/tgammal.c \
+  math/x64/truncl.c \
   misc/wcstold.c
 
 # Files included in libucrt*.a on arm64
 src_ucrtbasearm64=\
   $(src_ucrtbase) \
-  math/arm-common/ldexpl.c \
-  math/arm-common/scalbn.c
+  math/arm64/scalbn.c
 
 # These mingwex sources are target independent:
 src_libmingwex=\
@@ -274,12 +272,9 @@ src_libmingwex=\
   gdtoa/misc.c      gdtoa/qnan.c     gdtoa/smisc.c  gdtoa/strtodg.c  gdtoa/strtodnrp.c  gdtoa/strtof.c     \
   gdtoa/strtopx.c   gdtoa/sum.c      gdtoa/ulp.c    \
   \
-  math/fp_consts.c      math/fp_constsf.c     \
-  math/fp_constsl.c     math/fpclassify.c  math/fpclassifyf.c    math/fpclassifyl.c      \
-  math/isnan.c          math/isnanf.c      math/isnanl.c        \
-  math/signbit.c        math/signbitf.c    math/signbitl.c       \
-  math/signgam.c        \
-  math/cephes_mconf.h   math/fp_consts.h   \
+  math/fp_consts.c   math/fp_constsf.c math/fp_constsl.c   math/fpclassify.c math/fpclassifyf.c \
+  math/fpclassifyl.c math/isnan.c      math/isnanf.c       math/isnanl.c     math/signbit.c     \
+  math/signbitf.c    math/signbitl.c   \
   \
   misc/mingw_longjmp.S \
   misc/mingw_getsp.S \
@@ -326,11 +321,9 @@ src_libmingwex+=\
   cfguard/mingw_cfguard_loadcfg.S
 endif
 
-# these go into both 32 and 64 bit x86 versions:
-src_libmingwex_x86=\
-  math/x86/sincos.c
-
-src_libmingwex64=$(src_libmingwex_x86)
+# these only go into the x64 version:
+src_libmingwex64=\
+  math/x64/sincos.c
 
 # these only go into the ARM64 version:
 src_libmingwexarm64=\

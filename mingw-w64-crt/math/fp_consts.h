@@ -15,36 +15,35 @@ exponent of all 1 values. A denormal value has all exponent bits of 0.
 */
 
 
-#define __DOUBLE_INF_REP { 0, 0, 0, 0x7ff0 }
-#define __DOUBLE_QNAN_REP { 0, 0, 0, 0x7ff8 }
-#define __DOUBLE_SNAN_REP { 0, 0, 0, 0x7ff0 }
-#define __DOUBLE_DENORM_REP {1, 0, 0, 0}
+#define __DOUBLE_INF_REP    { 0, 0, 0, 0x7ff0 }
+#define __DOUBLE_QNAN_REP   { 0, 0, 0, 0x7ff8 }
+#define __DOUBLE_SNAN_REP   { 0, 0, 0, 0x7ff0 }
+#define __DOUBLE_DENORM_REP { 1, 0, 0, 0      }
 
 #define D_NAN_MASK 0x7ff0000000000000LL /* this will mask NaN's and Inf's */
 
-#define __FLOAT_INF_REP { 0, 0x7f80 }
-#define __FLOAT_QNAN_REP { 0, 0x7fc0 }
-#define __FLOAT_SNAN_REP { 0, 0x7f80 }
-#define __FLOAT_DENORM_REP {1,0}
+#define __FLOAT_INF_REP    { 0, 0x7f80 }
+#define __FLOAT_QNAN_REP   { 0, 0x7fc0 }
+#define __FLOAT_SNAN_REP   { 0, 0x7f80 }
+#define __FLOAT_DENORM_REP { 1, 0      }
 
 #define F_NAN_MASK 0x7f800000
 
 /*
-   This assumes no implicit (hidden) bit in extended mode.
-   Padded to 96 bits
+ * This assumes no implicit (hidden) bit in extended mode.
+ * Padded to 96 bits
  */
-#define __LONG_DOUBLE_INF_REP { 0, 0, 0, 0x8000, 0x7fff, 0 }
-#define __LONG_DOUBLE_QNAN_REP { 0, 0, 0, 0xc000, 0x7fff, 0 }
-#define __LONG_DOUBLE_SNAN_REP { 0, 0, 0, 0x8000, 0x7fff, 0 }
-#define __LONG_DOUBLE_DENORM_REP {1, 0, 0, 0, 0, 0}
+#define __LONG_DOUBLE_INF_REP    { 0, 0, 0, 0x8000, 0x7fff, 0 }
+#define __LONG_DOUBLE_QNAN_REP   { 0, 0, 0, 0xc000, 0x7fff, 0 }
+#define __LONG_DOUBLE_SNAN_REP   { 0, 0, 0, 0x8000, 0x7fff, 0 }
+#define __LONG_DOUBLE_DENORM_REP { 1, 0, 0, 0,      0,      0 }
 
 union _ieee_rep
 {
-	unsigned short rep[6];
-	float float_val;
-	double double_val;
-	long double ldouble_val;
+  unsigned short rep[6];
+  float float_val;
+  double double_val;
+  long double ldouble_val;
 };
 
-#endif	/* _FP_CONSTS_H */
-
+#endif  /* _FP_CONSTS_H */

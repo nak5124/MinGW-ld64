@@ -1,0 +1,42 @@
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+#include <_mingw_mac.h>
+
+  .file "logl_internal.S"
+  .text
+  .align 8
+one: .double 1.0
+  /* It is not important that this constant is precise.  It is only
+   * a value which is known to be on the safe side for using the
+   * fyl2xp1 instruction. */
+limit: .double 0.29
+
+  .globl __MINGW_USYMBOL(__logl_internal)
+  .def   __MINGW_USYMBOL(__logl_internal); .scl 2; .type 32; .endef
+__MINGW_USYMBOL(__logl_internal):
+  fldln2              // log(2)
+  fldt   (%rdx)       // x : log(2)
+  fld    %st          // x : x : log(2)
+  fsubl  one(%rip)    // x-1 : x : log(2)
+  fld    %st          // x-1 : x-1 : x : log(2)
+  fabs                // |x-1| : x-1 : x : log(2)
+  fcompl limit(%rip)  // x-1 : x : log(2)
+  fnstsw              // x-1 : x : log(2)
+  andb   $0x45, %ah
+  jz     2f
+  fstp   %st(1)       // x-1 : log(2)
+  fyl2xp1             // log(x)
+  movq   %rcx,  %rax
+  movq   $0,    8(%rcx)
+  fstpt  (%rcx)
+  ret
+
+2: fstp %st(0)  // x : log(2)
+  fyl2x         // log(x)
+  movq  %rcx, %rax
+  movq  $0,   8(%rcx)
+  fstpt (%rcx)
+  ret

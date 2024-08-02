@@ -3,9 +3,10 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
+#define __CRT__NO_INLINE
 #include <math.h>
 
-float __cdecl frexpf (float x, int *expn)
+float __cdecl frexpf(float x, int *expn)
 {
   return (float)frexp(x, expn);
 }

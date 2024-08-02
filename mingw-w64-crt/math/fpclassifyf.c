@@ -6,17 +6,17 @@
 #define __CRT__NO_INLINE
 #include <math.h>
 
-int __fpclassifyf (float _x)
+int __fpclassifyf(float _x)
 {
-    __mingw_flt_type_t hlp;
+  __mingw_flt_type_t hlp;
 
-    hlp.x = _x;
-    hlp.val &= 0x7fffffff;
-    if (hlp.val == 0)
-      return FP_ZERO;
-    if (hlp.val < 0x800000)
-      return FP_SUBNORMAL;
-    if (hlp.val >= 0x7f800000)
-      return (hlp.val > 0x7f800000 ? FP_NAN : FP_INFINITE);
-    return FP_NORMAL;
+  hlp.x = _x;
+  hlp.val &= 0x7fffffff;
+  if(hlp.val == 0)
+    return FP_ZERO;
+  if(hlp.val < 0x800000)
+    return FP_SUBNORMAL;
+  if(hlp.val >= 0x7f800000)
+    return (hlp.val > 0x7f800000 ? FP_NAN : FP_INFINITE);
+  return FP_NORMAL;
 }

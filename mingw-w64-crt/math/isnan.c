@@ -5,19 +5,18 @@
  */
 #include <math.h>
 
-int
-__isnan (double _x)
+int __isnan(double _x)
 {
-    __mingw_dbl_type_t hlp;
-    int l, h;
+  __mingw_dbl_type_t hlp;
+  int l, h;
 
-    hlp.x = _x;
-    l = hlp.lh.low;
-    h = hlp.lh.high & 0x7fffffff;
-    h |= (unsigned int) (l | -l) >> 31;
-    h = 0x7ff00000 - h;
-    return (int) ((unsigned int) h) >> 31;
+  hlp.x = _x;
+  l = hlp.lh.low;
+  h = hlp.lh.high & 0x7fffffff;
+  h |= (unsigned int)(l | -l) >> 31;
+  h = 0x7ff00000 - h;
+  return (int)((unsigned int)h) >> 31;
 }
 
 #undef isnan
-int __attribute__ ((alias ("__isnan"))) isnan (double);
+int __attribute__((alias("__isnan"))) isnan(double);

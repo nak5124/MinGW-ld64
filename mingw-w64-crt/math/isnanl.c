@@ -5,8 +5,7 @@
  */
 #include <math.h>
 
-int
-__isnanl (long double _x)
+int __isnanl(long double _x)
 {
 #if defined(__x86_64__) || defined(_AMD64_)
   __mingw_ldbl_type_t ld;
@@ -14,13 +13,13 @@ __isnanl (long double _x)
 
   ld.x = _x;
   signexp = (ld.lh.sign_exponent & 0x7fff) << 1;
-  xx = (int) (ld.lh.low | (ld.lh.high & 0x7fffffffu)); /* explicit */
-  signexp |= (unsigned int) (xx | (-xx)) >> 31;
+  xx = (int)(ld.lh.low | (ld.lh.high & 0x7fffffffu)); /* explicit */
+  signexp |= (unsigned int)(xx | (-xx)) >> 31;
   signexp = 0xfffe - signexp;
-  return (int) ((unsigned int) signexp) >> 16;
+  return (int)((unsigned int)signexp) >> 16;
 #elif defined(__aarch64__) || defined(_ARM64_)
-    return __isnan(_x);
+  return __isnan(_x);
 #endif
 }
 
-int __attribute__ ((alias ("__isnanl"))) isnanl (long double);
+int __attribute__((alias("__isnanl"))) isnanl(long double);
