@@ -87,7 +87,7 @@ limitations in handling dllimport attribute.  */
 #ifdef __cplusplus
 # define __UNUSED_PARAM(x)
 #else
-# define __UNUSED_PARAM(x) x __attribute__((__unused__))
+# define __UNUSED_PARAM(x) x __MINGW_ATTRIB_UNUSED
 #endif
 
 #if __MINGW_GNUC_PREREQ(3, 1) && !defined(__cplusplus)
@@ -393,9 +393,9 @@ __MINGW_BEGIN_C_DECLS
      from a system include __inline__ function does not print
      a warning unless caller has __attribute__((__artificial__)). */
 # define __mingw_bos_declare                                              \
-    void __cdecl __chk_fail(void) __attribute__((__noreturn__));          \
+    void __cdecl __chk_fail(void) __MINGW_ATTRIB_NORETURN;                \
     void __cdecl __mingw_chk_fail_warn(void) __MINGW_ASM_CALL(__chk_fail) \
-    __attribute__((__noreturn__))                                         \
+    __MINGW_ATTRIB_NORETURN                                               \
     __attribute__((__warning__("Buffer overflow detected")))
 # if __MINGW_FORTIFY_LEVEL > 2
 #   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)

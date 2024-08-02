@@ -240,7 +240,7 @@
 #ifdef __cplusplus
 # define __mingw_ovr inline __cdecl
 #else
-# define __mingw_ovr static __attribute__((__unused__)) __inline__ __cdecl
+# define __mingw_ovr static __MINGW_ATTRIB_UNUSED __inline__ __cdecl
 #endif  /* __cplusplus */
 
 #if __MINGW_GNUC_PREREQ(4, 3) || defined(__clang__)
