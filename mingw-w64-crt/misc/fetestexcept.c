@@ -6,34 +6,27 @@
 
 #include <fenv.h>
 
-#if defined(__x86_64__) || defined(_AMD64_)
-extern int __mingw_has_sse (void);
-#endif /* defined(__x86_64__) || defined(_AMD64_) */
-
 /* 7.6.2.5
-   The fetestexcept function determines which of a specified subset of
-   the exception flags are currently set. The excepts argument
-   specifies the exception flags to be queried.
-   The fetestexcept function returns the value of the bitwise OR of the
-   exception macros corresponding to the currently set exceptions
-   included in excepts. */
+ * The fetestexcept function determines which of a specified subset of
+ * the exception flags are currently set. The excepts argument
+ * specifies the exception flags to be queried.
+ * The fetestexcept function returns the value of the bitwise OR of the
+ * exception macros corresponding to the currently set exceptions
+ * included in excepts. */
 
-int __cdecl fetestexcept (int excepts)
+int __cdecl fetestexcept(int excepts)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
-  __asm__ volatile ("mrs %0, fpcr" : "=r" (fpcr));
+  __asm__ __volatile__("mrs %0, fpcr" : "=r" (fpcr));
   return fpcr & excepts & FE_ALL_EXCEPT;
 #else
   unsigned short _sw;
-  __asm__ __volatile__ ("fnstsw %%ax" : "=a" (_sw));
+  __asm__ __volatile__("fnstsw %%ax" : "=a" (_sw));
 
-  if (__mingw_has_sse ())
-    {
-      int sse_sw;
-      __asm__ __volatile__ ("stmxcsr %0;" : "=m" (sse_sw));
-      _sw |= sse_sw;
-    }
+  int sse_sw;
+  __asm__ __volatile__("stmxcsr %0;" : "=m" (sse_sw));
+  _sw |= sse_sw;
   return _sw & excepts & FE_ALL_EXCEPT;
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 }

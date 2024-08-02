@@ -5,20 +5,16 @@
  */
 #include <fenv.h>
 
-#if defined(__x86_64__) || defined(_AMD64_)
-extern int __mingw_has_sse (void);
-#endif  /* defined(__x86_64__) || defined(_AMD64_) */
-
 /* 7.6.2.4
-   The fesetexceptflag function sets the complete status for those
-   exception flags indicated by the argument excepts, according to the
-   representation in the object pointed to by flagp. The value of
-   *flagp shall have been set by a previous call to fegetexceptflag
-   whose second argument represented at least those exceptions
-   represented by the argument excepts. This function does not raise
-   exceptions, but only sets the state of the flags. */
+ * The fesetexceptflag function sets the complete status for those
+ * exception flags indicated by the argument excepts, according to the
+ * representation in the object pointed to by flagp. The value of
+ * *flagp shall have been set by a previous call to fegetexceptflag
+ * whose second argument represented at least those exceptions
+ * represented by the argument excepts. This function does not raise
+ * exceptions, but only sets the state of the flags. */
 
-int __cdecl fesetexceptflag (const fexcept_t * flagp, int excepts)
+int __cdecl fesetexceptflag(const fexcept_t * flagp, int excepts)
 {
   fenv_t _env;
 
@@ -26,25 +22,22 @@ int __cdecl fesetexceptflag (const fexcept_t * flagp, int excepts)
 
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
-  (void) _env;
-  __asm__ volatile ("mrs %0, fpcr" : "=r" (fpcr));
+  (void)_env;
+  __asm__ __volatile__("mrs %0, fpcr" : "=r" (fpcr));
   fpcr &= ~excepts;
   fpcr |= (*flagp & excepts);
-  __asm__ volatile ("msr fpcr, %0" : : "r" (fpcr));
+  __asm__ __volatile__("msr fpcr, %0" : : "r" (fpcr));
 #else
-  __asm__ volatile ("fnstenv %0;" : "=m" (_env));
+  __asm__ __volatile__("fnstenv %0;" : "=m" (_env));
   _env.__status_word &= ~excepts;
   _env.__status_word |= (*flagp & excepts);
-  __asm__ volatile ("fldenv %0;" : : "m" (_env));
+  __asm__ __volatile__("fldenv %0;" : : "m" (_env));
 
-  if (__mingw_has_sse ())
-    {
-      int sse_cw;
-      __asm__ volatile ("stmxcsr %0;" : "=m" (sse_cw));
-      sse_cw &= ~(excepts << 7);
-      sse_cw |= ((*flagp & excepts) << 7);
-      __asm__ volatile ("ldmxcsr %0" : : "m" (sse_cw));
-    }
+  int sse_cw;
+  __asm__ __volatile__("stmxcsr %0;" : "=m" (sse_cw));
+  sse_cw &= ~(excepts << 7);
+  sse_cw |= ((*flagp & excepts) << 7);
+  __asm__ __volatile__("ldmxcsr %0" : : "m" (sse_cw));
 
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;

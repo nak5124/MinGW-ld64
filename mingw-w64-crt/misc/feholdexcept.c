@@ -6,24 +6,24 @@
 #include <fenv.h>
 
 /* 7.6.4.2
-   The feholdexcept function saves the current floating-point
-   environment in the object pointed to by envp, clears the exception
-   flags, and then installs a non-stop (continue on exceptions) mode,
-   if available, for all exceptions.  */
+ * The feholdexcept function saves the current floating-point
+ * environment in the object pointed to by envp, clears the exception
+ * flags, and then installs a non-stop (continue on exceptions) mode,
+ * if available, for all exceptions. */
 
-int __cdecl feholdexcept (fenv_t * envp)
+int __cdecl feholdexcept(fenv_t * envp)
 {
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
-  __asm__ volatile ("mrs %0, fpcr" : "=r" (fpcr));
+  __asm__ __volatile__("mrs %0, fpcr" : "=r" (fpcr));
   envp->__cw = fpcr;
   fpcr &= ~(FE_ALL_EXCEPT);
-  __asm__ volatile ("msr fpcr, %0" : : "r" (fpcr));
+  __asm__ __volatile__("msr fpcr, %0" : : "r" (fpcr));
 #else
-  __asm__ __volatile__ ("fnstenv %0;" : "=m" (* envp)); /* save current into envp */
- /* fnstenv sets control word to non-stop for all exceptions, so all we
-    need to do is clear the exception flags.  */
-  __asm__ __volatile__ ("fnclex");
+  __asm__ __volatile__("fnstenv %0;" : "=m" (* envp));  /* save current into envp */
+  /* fnstenv sets control word to non-stop for all exceptions, so all we
+   * need to do is clear the exception flags. */
+  __asm__ __volatile__("fnclex");
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }

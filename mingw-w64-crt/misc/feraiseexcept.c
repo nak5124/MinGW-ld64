@@ -3,30 +3,29 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#include <fenv.h> 
+#include <fenv.h>
 
 /* 7.6.2.3
-   The feraiseexcept function raises the supported exceptions
-   represented by its argument The order in which these exceptions
-   are raised is unspecified, except as stated in F.7.6.
-   Whether the feraiseexcept function additionally raises
-   the inexact exception whenever it raises the overflow
-   or underflow exception is implementation-defined. */
+ * The feraiseexcept function raises the supported exceptions
+ * represented by its argument The order in which these exceptions
+ * are raised is unspecified, except as stated in F.7.6.
+ * Whether the feraiseexcept function additionally raises
+ * the inexact exception whenever it raises the overflow
+ * or underflow exception is implementation-defined. */
 
-int feraiseexcept (int excepts)
+int feraiseexcept(int excepts)
 {
   fenv_t _env;
 #if defined(__aarch64__) || defined(_ARM64_)
   unsigned __int64 fpcr;
-  (void) _env;
-  __asm__ volatile ("mrs %0, fpcr" : "=r" (fpcr));
+  (void)_env;
+  __asm__ __volatile__("mrs %0, fpcr" : "=r" (fpcr));
   fpcr |= excepts & FE_ALL_EXCEPT;
-  __asm__ volatile ("msr fpcr, %0" : : "r" (fpcr));
+  __asm__ __volatile__("msr fpcr, %0" : : "r" (fpcr));
 #else
-  __asm__ volatile ("fnstenv %0;" : "=m" (_env));
+  __asm__ __volatile__("fnstenv %0;" : "=m" (_env));
   _env.__status_word |= excepts & FE_ALL_EXCEPT;
-  __asm__ volatile ("fldenv %0;"
-		    "fwait;" : : "m" (_env));
+  __asm__ __volatile__("fldenv %0;" "fwait;" : : "m" (_env));
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
   return 0;
 }
