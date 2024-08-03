@@ -36,7 +36,7 @@ __MINGW_BEGIN_C_DECLS
 # ifdef __MINGW_USE_ISOC99
     extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 # endif
-# ifdef __MINGW_USE_ISOC11
+# if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
     extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # endif
 # pragma push_macro("abort")

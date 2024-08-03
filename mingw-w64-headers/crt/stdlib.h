@@ -43,7 +43,7 @@ __MINGW_BEGIN_C_DECLS
 # ifdef __MINGW_USE_ISOC99
     extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 # endif
-# ifdef __MINGW_USE_ISOC11
+# if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
     extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
 # endif
 # pragma push_macro("abort")
@@ -69,7 +69,7 @@ __MINGW_BEGIN_C_DECLS
 
   extern int __cdecl atexit(void (__cdecl *)(void));
   extern _onexit_t __cdecl _onexit(_onexit_t _Func);
-#ifdef __MINGW_USE_ISOC11
+#if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
   extern int __cdecl at_quick_exit(void (__cdecl *)(void));
 #endif
 
