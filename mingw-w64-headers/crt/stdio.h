@@ -1123,7 +1123,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl freopen_s(FILE** _File, const char *_Filename, const char *_Mode, FILE *_Stream);
 #endif
-#ifndef __MINGW_USE_ISOC11
+#if (!defined(__cplusplus) && !defined(__MINGW_USE_ISOC11)) || (defined(__cplusplus) && __cplusplus < 201402L)
   _CRTIMP char *__cdecl gets(char *_Buffer) __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
 #endif
 #ifdef __MINGW_USE_SECAPI
@@ -1300,14 +1300,11 @@ __MINGW_BEGIN_C_DECLS
 
 #if __MINGW_FORTIFY_LEVEL > 0
 
+#if (!defined(__cplusplus) && !defined(__MINGW_USE_ISOC11)) || (defined(__cplusplus) && __cplusplus < 201402L)
   char * __cdecl __gets_chk(char *, size_t);
   char * __cdecl __mingw_call_gets_warn(char *) __MINGW_ASM_CALL(gets)
     __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
-  char * __cdecl __mingw_call_fgets(char * __restrict__, int, FILE * __restrict__) __MINGW_ASM_CALL(fgets);
-  size_t __cdecl __mingw_call_fread(void * __restrict__, size_t, size_t, FILE * __restrict__) __MINGW_ASM_CALL(fread);
-  char * __cdecl __mingw_call_tmpnam(char *) __MINGW_ASM_CALL(tmpnam);
 
-#ifndef __MINGW_USE_ISOC11
   __mingw_bos_extern_ovr
   char * gets(char * __dst)
   {
@@ -1316,6 +1313,10 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_call_gets_warn(__dst);
   }
 #endif
+
+  char * __cdecl __mingw_call_fgets(char * __restrict__, int, FILE * __restrict__) __MINGW_ASM_CALL(fgets);
+  size_t __cdecl __mingw_call_fread(void * __restrict__, size_t, size_t, FILE * __restrict__) __MINGW_ASM_CALL(fread);
+  char * __cdecl __mingw_call_tmpnam(char *) __MINGW_ASM_CALL(tmpnam);
 
   __mingw_bos_extern_ovr
   char * fgets(char * __restrict__ __dst, int __n, FILE * __restrict__ __f)
