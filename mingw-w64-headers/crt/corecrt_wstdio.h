@@ -738,7 +738,7 @@ __MINGW_BEGIN_C_DECLS
 
 #if __USE_MINGW_ANSI_STDIO && !defined(_CRTBLD)
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ __MINGW_ATTRIB_NONNULL(2)
   int vfwprintf(FILE *__stream, const wchar_t *__format, __builtin_va_list __local_argv)
@@ -778,7 +778,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_ATTRIB_NONNULL(2)
   int vfwscanf(FILE *__stream, const wchar_t *__format, __builtin_va_list __local_argv)
@@ -794,7 +794,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
   int fwscanf(FILE *__stream, const wchar_t *__format, ...)
@@ -858,7 +858,7 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_ATTRIB_NONNULL(2)
   int vswscanf(const wchar_t * __restrict__ __source, const wchar_t * __restrict__ __format, __builtin_va_list __local_argv)
@@ -867,7 +867,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_ATTRIB_NONNULL(2)
   int swscanf(const wchar_t *__source, const wchar_t *__format, ...)
@@ -883,7 +883,7 @@ __MINGW_BEGIN_C_DECLS
 
 #else
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vfwprintf(FILE * __restrict__ _Stream, const wchar_t * __restrict__ _Format, va_list _ArgList)
@@ -914,7 +914,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   __MINGW_ATTRIB_NONNULL(2)
   int vfwscanf(FILE *_Stream,  const wchar_t *_Format, va_list _ArgList)
@@ -930,7 +930,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_DEPRECATED_SEC_WARN
   int __cdecl fwscanf(FILE * __restrict__ _Stream, const wchar_t * __restrict__ _Format, ...)
@@ -977,7 +977,7 @@ __MINGW_BEGIN_C_DECLS
     return __ret;
   }
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   __MINGW_ATTRIB_NONNULL(2)
   int vswscanf(const wchar_t * __restrict__ __source, const wchar_t * __restrict__ __format, va_list __local_argv)
@@ -986,7 +986,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_DEPRECATED_SEC_WARN
   int __cdecl swscanf(const wchar_t * __restrict__ _Src, const wchar_t * __restrict__ _Format, ...)
@@ -1002,7 +1002,7 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __USE_MINGW_ANSI_STDIO */
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
   /* __attribute__((__format__ (gnu_wprintf, 3, 0))) */ __MINGW_ATTRIB_NONNULL(3)
   int vswprintf(wchar_t *__stream, size_t __count, const wchar_t *__format, __builtin_va_list __local_argv)

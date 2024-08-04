@@ -788,7 +788,7 @@ __MINGW_BEGIN_C_DECLS
     return __retval;
   }
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 
   __mingw_ovr
   __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
@@ -830,7 +830,7 @@ __MINGW_BEGIN_C_DECLS
     return __retval;
   }
 
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
 
   __mingw_bos_ovr
   __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
@@ -894,7 +894,7 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
 
 #if __MINGW_FORTIFY_VA_ARG
 
@@ -926,7 +926,7 @@ __MINGW_BEGIN_C_DECLS
 
 #endif
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 
   __mingw_ovr
   __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
@@ -935,7 +935,7 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_vsscanf(__source, __format, __local_argv);
   }
 
-#endif  /* __MINGW_USE_ISOC99 */
+#endif
 
   __mingw_ovr
   __MINGW_GNU_SCANF(2, 3) __MINGW_ATTRIB_NONNULL(2)
@@ -992,7 +992,7 @@ __MINGW_BEGIN_C_DECLS
   extern __MINGW_GNU_PRINTF(1, 2) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl printf(const char * __restrict__ _Format, ...);
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   extern __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vfscanf(FILE *__stream,  const char *__format, __builtin_va_list __local_argv);
   extern __MINGW_GNU_SCANF(1, 0) __MINGW_ATTRIB_NONNULL(1)
@@ -1003,7 +1003,7 @@ __MINGW_BEGIN_C_DECLS
   extern __MINGW_GNU_SCANF(1, 2) __MINGW_ATTRIB_NONNULL(1)
   int __cdecl scanf(const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   extern __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl vsnprintf(char * __restrict__ __stream, size_t __n, const char * __restrict__ __format, va_list __local_argv);
 #endif
@@ -1011,14 +1011,14 @@ __MINGW_BEGIN_C_DECLS
   int __cdecl vsprintf(char * __restrict__ _Dest, const char * __restrict__ _Format, va_list _Args) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   extern __MINGW_GNU_PRINTF(2, 3) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl sprintf(char * __restrict__ _Dest, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   extern __MINGW_GNU_PRINTF(3, 4) __MINGW_ATTRIB_NONNULL(3)
   int __cdecl snprintf(char * __restrict__ __stream, size_t __n, const char * __restrict__ __format, ...);
 #endif
 
   extern __MINGW_GNU_SCANF(2, 3) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl sscanf(const char * __restrict__ _Src, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   extern __MINGW_GNU_SCANF(2, 0) __MINGW_ATTRIB_NONNULL(2)
   int __cdecl vsscanf(const char * __restrict__ __source, const char * __restrict__ __format, __builtin_va_list __local_argv);
 #endif
@@ -1042,7 +1042,7 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_call_vsprintf(__stream, __format, __local_argv);
   }
 
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
 
   __mingw_bos_extern_ovr
   __MINGW_GNU_PRINTF(3, 0) __MINGW_ATTRIB_NONNULL(3)
@@ -1075,7 +1075,7 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_call_sprintf(__stream, __format, __builtin_va_arg_pack());
   }
 
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
 
   __mingw_bos_extern_ovr
   __MINGW_GNU_PRINTF(3, 4) __MINGW_ATTRIB_NONNULL(3)
@@ -1123,7 +1123,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl freopen_s(FILE** _File, const char *_Filename, const char *_Mode, FILE *_Stream);
 #endif
-#if (!defined(__cplusplus) && !defined(__MINGW_USE_ISOC11)) || (defined(__cplusplus) && __cplusplus < 201402L)
+#ifdef __MINGW_USE_DEPRECATED_GETS
   _CRTIMP char *__cdecl gets(char *_Buffer) __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
 #endif
 #ifdef __MINGW_USE_SECAPI
@@ -1300,7 +1300,7 @@ __MINGW_BEGIN_C_DECLS
 
 #if __MINGW_FORTIFY_LEVEL > 0
 
-#if (!defined(__cplusplus) && !defined(__MINGW_USE_ISOC11)) || (defined(__cplusplus) && __cplusplus < 201402L)
+#ifdef __MINGW_USE_DEPRECATED_GETS
   char * __cdecl __gets_chk(char *, size_t);
   char * __cdecl __mingw_call_gets_warn(char *) __MINGW_ASM_CALL(gets)
     __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));

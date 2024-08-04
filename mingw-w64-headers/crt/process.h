@@ -33,7 +33,7 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_TERMINATE_DEFINED
   extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
   extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
-# ifdef __MINGW_USE_ISOC99
+# if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
     extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 # endif
 # if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)

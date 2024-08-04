@@ -40,7 +40,7 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_TERMINATE_DEFINED
   extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
   extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
-# ifdef __MINGW_USE_ISOC99
+# if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
     extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 # endif
 # if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
@@ -145,7 +145,7 @@ __MINGW_BEGIN_C_DECLS
     long rem;
   } ldiv_t;
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   typedef struct _lldiv_t
   {
     __MINGW_EXTENSION long long quot;
@@ -157,7 +157,7 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_ABS_DEFINED
   int __cdecl abs(int _X);
   long __cdecl labs(long _X);
-# ifdef __MINGW_USE_ISOC99
+# if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
     __MINGW_EXTENSION long long __cdecl llabs(long long _X);
 # endif
 #endif  /* _CRT_ABS_DEFINED */
@@ -169,7 +169,7 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP div_t __cdecl div(int _Numerator, int _Denominator);
   _CRTIMP ldiv_t __cdecl ldiv(long _Numerator, long _Denominator);
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __MINGW_EXTENSION _CRTIMP lldiv_t __cdecl lldiv(long long _Numerator, long long _Denominator);
 #endif
 
@@ -257,7 +257,7 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_ATOF_DEFINED */
   _CRTIMP int __cdecl atoi(const char *_Str);
   _CRTIMP long __cdecl atol(const char *_Str);
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __MINGW_EXTENSION _CRTIMP long long __cdecl atoll(const char *_Str);
 #endif
   __MINGW_EXTENSION _CRTIMP __int64 __cdecl _atoi64(const char *_String);
@@ -275,13 +275,13 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _atodbl_l(_CRT_DOUBLE *_Result, char *_Str, _locale_t _Locale);
   _CRTIMP int __cdecl _atoldbl_l(_LDOUBLE *_Result, char *_Str, _locale_t _Locale);
 
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   _CRTIMP float __cdecl __MINGW_NOTHROW strtof(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
 #endif
   _CRTIMP float __cdecl _strtof_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
   _CRTIMP double __cdecl __MINGW_NOTHROW strtod(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
   _CRTIMP double __cdecl _strtod_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, _locale_t _Locale);
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   _LDCRTIMP long double __cdecl __MINGW_NOTHROW strtold(const char * __restrict__ _Str, char ** __restrict__ _EndPtr);
 #endif
 #if defined(__aarch64__) || defined(_ARM64_)
@@ -289,13 +289,13 @@ __MINGW_BEGIN_C_DECLS
 #endif
   _CRTIMP long __cdecl strtol(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
   _CRTIMP long __cdecl _strtol_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __MINGW_EXTENSION _CRTIMP long long __cdecl strtoll(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
 #endif
   __MINGW_EXTENSION _CRTIMP long long __cdecl _strtoll_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
   _CRTIMP unsigned long __cdecl strtoul(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
   _CRTIMP unsigned long __cdecl _strtoul_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl strtoull(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix);
 #endif
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl _strtoull_l(const char * __restrict__ _Str, char ** __restrict__ _EndPtr, int _Radix, _locale_t _Locale);

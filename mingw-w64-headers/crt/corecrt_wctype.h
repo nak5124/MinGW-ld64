@@ -51,7 +51,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_MS
   _CRTIMP int __cdecl iswascii(wint_t _C);
 #endif
-#ifdef __MINGW_USE_ISOC99
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   _CRTIMP int __cdecl iswblank(wint_t _C);
 #endif
   _CRTIMP int __cdecl iswcntrl(wint_t _C);
@@ -106,7 +106,7 @@ __MINGW_BEGIN_C_DECLS
 # define iswxdigit(_c) (iswctype(_c, _HEX))
 # define iswspace(_c)  (iswctype(_c, _SPACE))
 # define iswpunct(_c)  (iswctype(_c, _PUNCT))
-# ifdef __MINGW_USE_ISOC99
+# if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 #   define iswblank(_c)  (((_c) == '\t') ? _BLANK : iswctype(_c, _BLANK) )
 # endif
 # define iswalnum(_c)  (iswctype(_c, _ALPHA | _DIGIT))

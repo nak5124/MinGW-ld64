@@ -61,7 +61,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl wmemmove_s(wchar_t *_dest, size_t _numberOfElements, const wchar_t *_src, size_t _count);
 #endif
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   extern int __cdecl fwide(FILE *stream, int mode);
 #endif
 
@@ -78,7 +78,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef __CRT__NO_INLINE
 
-#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
+#if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __CRT_INLINE int __cdecl fwide(FILE *_F,int _M)
   {
     (void)_F;

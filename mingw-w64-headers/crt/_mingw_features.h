@@ -32,6 +32,8 @@
 #undef __MINGW_USE_LIB_EXT2
 #undef __MINGW_FORTIFY_LEVEL
 #undef __MINGW_FORTIFY_VA_ARG
+#undef __MINGW_USE_C99FORGXX
+#undef __MINGW_USE_DEPRECATED_GETS
 
 #define __MINGW_GNUC_PREREQ(major, minor)  (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
 #define __mingw_clang_prereq(major, minor) (__clang_major__ > (major) || (__clang_major__ == (major) && __clang_minor__ >= (minor)))
@@ -99,6 +101,14 @@
 #if defined(__cplusplus) && ((__cplusplus - 0) >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__))
 # undef  __MINGW_USE_ISOCXX11
 # define __MINGW_USE_ISOCXX11 1
+#endif
+
+#ifdef __cplusplus
+# define __MINGW_USE_C99FORGXX 1
+#endif
+
+#if (!defined(__cplusplus) && !defined(__MINGW_USE_ISOC11)) || (defined(__cplusplus) && __cplusplus < 201402L)
+# define __MINGW_USE_DEPRECATED_GETS 1
 #endif
 
 #ifdef _DEFAULT_SOURCE

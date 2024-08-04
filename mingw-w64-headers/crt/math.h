@@ -181,7 +181,7 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_ABS_DEFINED
   int __cdecl abs(int _X);
   long __cdecl labs(long _X);
-# ifdef __MINGW_USE_ISOC99
+# if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
     __MINGW_EXTENSION long long __cdecl llabs(long long _X);
 # endif
 #endif  /* _CRT_ABS_DEFINED */
@@ -289,7 +289,59 @@ __MINGW_BEGIN_C_DECLS
 
 #endif
 
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS) || defined(__cplusplus)
+#if ((defined(__MINGW_USE_XOPEN) && !defined(__MINGW_USE_XOPEN2K)) || defined(__MINGW_USE_MISC)) \
+  && (!defined(__cplusplus) || !defined(__MINGW_USE_ISOCXX11))
+  extern int __cdecl isnan(double _X);
+
+# ifndef __CRT__NO_INLINE
+  __CRT_INLINE int __cdecl isnan(double _X)
+  {
+    __mingw_dbl_type_t hlp;
+    unsigned int l, h;
+    hlp.x = _X;
+    l = hlp.lh.low;
+    h = hlp.lh.high & 0x7fffffff;
+    h |= (l | -l) >> 31;
+    h = 0x7ff00000 - h;
+    return (int)h >> 31;
+  }
+# endif
+#endif
+
+#ifdef __MINGW_USE_MISC
+  extern int __cdecl isnanf(float _X);
+  extern int __cdecl isnanl(long double _X);
+
+# ifndef __CRT__NO_INLINE
+  __CRT_INLINE int __cdecl isnanf(float _X)
+  {
+    __mingw_flt_type_t hlp;
+    unsigned int i;
+    hlp.x = _X;
+    i = hlp.val & 0x7fffffff;
+    i = 0x7f800000 - i;
+    return (int)(i >> 31);
+  }
+
+  __CRT_INLINE int __cdecl isnanl(long double _X)
+  {
+#if defined(__x86_64__) || defined(_AMD64_)
+    __mingw_ldbl_type_t ld;
+    unsigned int xx, signexp;
+    ld.x = _X;
+    signexp = (ld.lh.sign_exponent & 0x7fff) << 1;
+    xx = ld.lh.low | (ld.lh.high & 0x7fffffffu);
+    signexp |= (xx | (-xx)) >> 31;
+    signexp = 0xfffe - signexp;
+    return (int)signexp >> 16;
+#elif defined(__aarch64__) || defined(_ARM64_)
+    return __isnan(_X);
+#endif
+  }
+# endif  /* __CRT__NO_INLINE */
+#endif
+
+#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS) || defined(__MINGW_USE_C99FORGXX)
 
 #define HUGE_VALF __builtin_huge_valf()
 #define HUGE_VALL __builtin_huge_vall()
@@ -868,7 +920,7 @@ __MINGW_BEGIN_C_DECLS
 #define islessgreater(x, y)  __builtin_islessgreater(x, y)
 #define isunordered(x, y)    __builtin_isunordered(x, y)
 
-#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS) || defined(__cplusplus) */
+#endif
 
   _CRTIMP float __cdecl _hypotf(float _X, float _Y);
   _LDCRTIMP long double __cdecl _hypotl(long double _X, long double _Y);
