@@ -52,7 +52,7 @@ __MINGW_BEGIN_C_DECLS
   /* Continue with FTW_DP callback for current directory (if FTW_DEPTH) and then its siblings.  */
 #define FTW_SKIP_SIBLINGS 3
 
-#ifndef __MINGW_USE_FOB64
+#if !defined(__MINGW_USE_FOB64) || defined(_CRTBLD)
   extern int ftw (const char *, int (*) (const char *, const struct stat *, int), int);
 #else
   extern int ftw (const char *, int (*) (const char *, const struct stat *, int), int) __MINGW_ASM_CALL(ftw64);
@@ -62,7 +62,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_XOPEN_EXT
-# ifndef __MINGW_USE_FOB64
+# if !defined(__MINGW_USE_FOB64) || defined(_CRTBLD)
   extern int nftw (const char *, int (*) (const char *, const struct stat *, int , struct FTW *), int, int);
 # else
   extern int nftw (const char *, int (*) (const char *, const struct stat *, int , struct FTW *), int, int) __MINGW_ASM_CALL(nftw64);
