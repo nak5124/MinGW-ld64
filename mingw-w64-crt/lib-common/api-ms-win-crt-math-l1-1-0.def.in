@@ -83,7 +83,7 @@ _fdlog
 _fdnorm
 _fdopen
 fdopen == _fdopen
-fdopen64 == fdopen
+fdopen64 == _fdopen
 _fdpcomp
 _fdpoly
 _fdscale

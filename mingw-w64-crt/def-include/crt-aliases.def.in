@@ -38,8 +38,8 @@ ADD_UNDERSCORE(filelength)
 ADD_UNDERSCORE(fileno)
 ADD_UNDERSCORE(flushall)
 ADD_UNDERSCORE(fputchar)
-ADD_UNDERSCORE(fstat)
-ADD_UNDERSCORE(ftime)
+; ADD_UNDERSCORE(fstat)
+; ADD_UNDERSCORE(ftime)
 ; _HUGE variable is not available in ucrtbase.dll and there is no replacement for it
 ADD_UNDERSCORE(gcvt)
 ADD_UNDERSCORE(getch)
@@ -77,7 +77,7 @@ ADD_UNDERSCORE(spawnv)
 ADD_UNDERSCORE(spawnve)
 ADD_UNDERSCORE(spawnvp)
 ADD_UNDERSCORE(spawnvpe)
-ADD_UNDERSCORE(stat)
+; ADD_UNDERSCORE(stat)
 ; Symbol _strcmpi is not present in the library, it provides only _stricmp symbol
 ; So define strcmpi as an alias to _stricmp
 strcmpi == _stricmp
@@ -101,7 +101,7 @@ ADD_UNDERSCORE(ultoa)
 ADD_UNDERSCORE(umask)
 ADD_UNDERSCORE(ungetch)
 ADD_UNDERSCORE(unlink)
-ADD_UNDERSCORE(utime)
+; ADD_UNDERSCORE(utime)
 ADD_UNDERSCORE(write)
 
 ; This is list of symbol aliases added in the Visual C++ 2.0 oldnames.lib library
@@ -172,7 +172,7 @@ ADD_DOUBLE_UNDERSCORE(toascii)
 ADD_UNDERSCORE(pclose)
 ADD_UNDERSCORE(popen)
 ; ADD_UNDERSCORE(scalb)
-fdopen64 == fdopen
+fdopen64 == _fdopen
 fgetpos64 == fgetpos
 freopen64 == freopen
 fsetpos64 == fsetpos
@@ -211,15 +211,17 @@ _wfindnext == _wfindnext64i32
 _wfindnexti64 == _wfindnext64
 
 ; This is list of stat symbol aliases
-ADD_UNDERSCORE(wstat)
 ADD_UNDERSCORE(fstat64)
 ADD_UNDERSCORE(stat64)
 ADD_UNDERSCORE(wstat64)
 _fstat == _fstat64i32
+fstat == _fstat64i32
 _fstati64 == _fstat64
 _stat == _stat64i32
+stat == _stat64i32
 _stati64 == _stat64
 _wstat == _wstat64i32
+wstat == _wstat64i32
 _wstati64 == _wstat64
 
 ; This is list of time symbol aliases
@@ -227,6 +229,7 @@ ctime == _ctime64
 ctime_s == _ctime64_s
 difftime == _difftime64
 _ftime == _ftime64
+ftime == _ftime64
 _futime == _futime64
 gmtime == _gmtime64
 gmtime_s == _gmtime64_s
@@ -236,6 +239,7 @@ _mkgmtime == _mkgmtime64
 mktime == _mktime64
 time == _time64
 _utime == _utime64
+utime == _utime64
 _wctime == _wctime64
 _wctime_s == _wctime64_s
 _wutime == _wutime64

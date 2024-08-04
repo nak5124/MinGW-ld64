@@ -22,7 +22,7 @@ _ftime32_s
 _ftime64
 _ftime64_s
 _ftime == _ftime64
-ftime == _ftime
+ftime == _ftime64
 _futime32
 _futime64
 _futime == _futime64
@@ -70,7 +70,7 @@ _tzset DATA
 _utime32
 _utime64
 _utime == _utime64
-utime == _utime
+utime == _utime64
 _W_Getdays
 _W_Getmonths
 _W_Gettnames

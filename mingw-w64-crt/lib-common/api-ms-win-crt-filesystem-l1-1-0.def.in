@@ -31,7 +31,7 @@ _fstat64
 _fstat64i32
 _fstat == _fstat64i32
 _fstati64 == _fstat64
-fstat == _fstat
+fstat == _fstat64i32
 fstat64 == _fstat64
 _fullpath
 _getdiskfree
@@ -52,7 +52,7 @@ _stat64
 _stat64i32
 _stat == _stat64i32
 _stati64 == _stat64
-stat == _stat
+stat == _stat64i32
 stat64 == _stat64
 _umask
 umask == _umask
@@ -91,7 +91,7 @@ _wstat64
 _wstat64i32
 _wstat == _wstat64i32
 _wstati64 == _wstat64
-wstat == _wstat
+wstat == _wstat64i32
 wstat64 == _wstat64
 _wunlink
 remove
