@@ -2,7 +2,7 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
-
+#define _XOPEN_SOURCE 500
 #include <stdlib.h>
 #include <unistd.h>
 #include <malloc.h>
