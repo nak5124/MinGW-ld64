@@ -3,10 +3,9 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
+#define _GNU_SOURCE
 #include <assert.h>
 #define _SEARCH_PRIVATE
-#define _GNU_SOURCE
 #include <stdlib.h>
 #include <search.h>
 
