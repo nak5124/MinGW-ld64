@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   _CRTIMP wchar_t *__cdecl wcscat(wchar_t * __restrict__ _Dest, const wchar_t * __restrict__ _Source) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -172,7 +170,5 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_WSTRING */

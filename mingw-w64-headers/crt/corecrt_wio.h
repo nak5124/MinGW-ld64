@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <share.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #define _wfinddata_t    _wfinddata64i32_t
@@ -140,7 +138,5 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_WIO */

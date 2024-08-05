@@ -12,8 +12,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   struct __timeb32
@@ -82,7 +80,5 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _TIMEB_H_ */

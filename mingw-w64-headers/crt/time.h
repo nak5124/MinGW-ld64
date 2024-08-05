@@ -16,8 +16,6 @@
 /* Adding timespec definition. */
 #include <sys/timeb.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_USE_CONFORMING_ANNEX_K_TIME
@@ -192,8 +190,6 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 /* POSIX 2008 says clock_gettime and timespec are defined in time.h header,
    but other systems - like Linux, Solaris, etc - tend to declare such

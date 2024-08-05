@@ -13,8 +13,6 @@
 #include <corecrt.h>
 #include <corecrt_wctype.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   typedef wchar_t wctrans_t;
@@ -23,7 +21,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP wctype_t __cdecl wctype(const char *name);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_WCTYPE */

@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <corecrt_wconio.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   _CRTIMP char *_cgets(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -221,7 +219,5 @@ __MINGW_BEGIN_C_DECLS
   }
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CONIO */

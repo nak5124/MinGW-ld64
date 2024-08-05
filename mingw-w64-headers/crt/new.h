@@ -32,8 +32,6 @@
 #pragma pop_macro("new")
 #endif
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   typedef int (__cdecl *_PNH)(size_t);
@@ -45,7 +43,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _set_new_mode(int _NewMode);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_NEW */

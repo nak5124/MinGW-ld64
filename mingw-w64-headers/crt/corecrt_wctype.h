@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef WEOF
@@ -138,7 +136,5 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CTYPE_DISABLE_MACROS */
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_WCTYPE */

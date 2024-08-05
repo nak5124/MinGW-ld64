@@ -12,8 +12,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef _UTIMBUF_DEFINED
@@ -62,7 +60,5 @@ __MINGW_BEGIN_C_DECLS
   int __cdecl utime(const char *_Filename, struct utimbuf *_Time) __MINGW_ASM_CALL(_utime64);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_UTIME */

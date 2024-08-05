@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <stddef.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   typedef int (__cdecl* _CoreCrtSecureSearchSortCompareFunction)(void *, const void *, const void *);
@@ -77,7 +75,5 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
 #endif
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_SEARCH */

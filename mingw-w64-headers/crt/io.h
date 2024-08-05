@@ -12,8 +12,6 @@
 #include <direct.h>
 #include <sys/types.h>>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #define _finddata_t    _finddata64i32_t
@@ -261,7 +259,5 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _IO_H_ */

@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <corecrt_stdio_config.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 #pragma push_macro("snwprintf")
 #undef snwprintf
 #pragma push_macro("vsnwprintf")
@@ -1189,7 +1187,5 @@ __MINGW_END_C_DECLS
 
 #pragma pop_macro("snwprintf")
 #pragma pop_macro("vsnwprintf")
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_WSTDIO */

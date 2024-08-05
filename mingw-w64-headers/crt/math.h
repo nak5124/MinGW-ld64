@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #define _DOMAIN    1  /* domain error in argument */
@@ -955,7 +953,5 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _MATH_H_ */

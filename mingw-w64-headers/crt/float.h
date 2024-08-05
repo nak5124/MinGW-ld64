@@ -110,8 +110,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 /*
@@ -278,7 +276,5 @@ __MINGW_BEGIN_C_DECLS
 #define control87 _control87
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif /* _MINGW_FLOAT_H_ */

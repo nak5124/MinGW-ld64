@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   struct _EXCEPTION_POINTERS;
@@ -68,7 +66,5 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_EXCPT */

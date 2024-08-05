@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #define _HEAP_MAXREQ 0xFFFFFFFFFFFFFFE0
@@ -129,7 +127,5 @@ __MINGW_BEGIN_C_DECLS
   }
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _MALLOC_H_ */

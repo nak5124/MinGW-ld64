@@ -8,12 +8,6 @@
 
 #include <_mingw.h>
 
-#ifndef __WIDL__
-# undef _CRT_PACKING
-# define _CRT_PACKING 8
-# pragma pack(push, _CRT_PACKING)
-#endif
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef __GNUC_VA_LIST
@@ -43,9 +37,5 @@ __MINGW_BEGIN_C_DECLS
 #define _crt_va_copy(d, s) __builtin_va_copy(d, s)
 
 __MINGW_END_C_DECLS
-
-#ifndef __WIDL__
-#pragma pack(pop)
-#endif
 
 #endif  /* _INC_VADEFS */

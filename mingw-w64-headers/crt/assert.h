@@ -14,8 +14,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_ISOC11) && !defined(__cplusplus)
@@ -28,8 +26,6 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN _assert(const char *_Message, const char *_File, unsigned _Line);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* __ASSERT_H_ */
 

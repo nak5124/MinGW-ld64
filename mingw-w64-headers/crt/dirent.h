@@ -11,11 +11,7 @@
 #include <corecrt.h>
 #include <io.h>
 
-#pragma pack(push, _CRT_PACKING)
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+__MINGW_BEGIN_C_DECLS
 
   struct dirent
   {
@@ -109,10 +105,6 @@ extern "C" {
   extern long __cdecl __MINGW_NOTHROW _wtelldir(_WDIR *);
   extern void __cdecl __MINGW_NOTHROW _wseekdir(_WDIR *, long);
 
-#ifdef __cplusplus
-}
-#endif
-
-#pragma pack(pop)
+__MINGW_END_C_DECLS
 
 #endif  /* _DIRENT_H_ */

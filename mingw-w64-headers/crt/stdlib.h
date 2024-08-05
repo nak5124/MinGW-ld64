@@ -11,8 +11,6 @@
 #include <corecrt_wstdlib.h>
 #include <limits.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef _countof
@@ -517,7 +515,5 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __STRICT_ANSI__ */
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_STDLIB */

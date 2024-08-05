@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <math.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   struct _EXCEPTION_POINTERS;
@@ -96,7 +94,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _crt_at_quick_exit(_PVFV func);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_STARTUP */

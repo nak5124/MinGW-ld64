@@ -12,8 +12,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #define _ftcscat  _tcscat
@@ -1351,7 +1349,5 @@ extern "C" {
 #define _TEXT(x) __T(x)
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_TCHAR */

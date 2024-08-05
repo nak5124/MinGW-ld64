@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <pthread_signal.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef _SIG_ATOMIC_T_DEFINED
@@ -61,7 +59,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl raise(int _SigNum);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_SIGNAL */

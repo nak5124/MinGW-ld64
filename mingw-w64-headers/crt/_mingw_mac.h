@@ -204,17 +204,24 @@
 #endif
 
 #if __MINGW_GNUC_PREREQ(4, 4)
-# define __MINGW_PRAGMA_PARAM(x) _Pragma (#x)
+# define __MINGW_PRAGMA_PARAM(x) _Pragma(#x)
 #else
 # define __MINGW_PRAGMA_PARAM(x)
 #endif
 
+#undef  _CRT_PACKING
+#define _CRT_PACKING 8
+#define __MINGW_ALIGN(_N) __MINGW_PRAGMA_PARAM(pack(push, _N))
 #ifdef __cplusplus
-# define __MINGW_BEGIN_C_DECLS extern "C" {
-# define __MINGW_END_C_DECLS   }
+# define __MINGW_BEGIN_C_DECLS  \
+    __MINGW_ALIGN(_CRT_PACKING) \
+    extern "C" {
+# define __MINGW_END_C_DECLS        \
+    }                               \
+    __MINGW_PRAGMA_PARAM(pack(pop))
 #else
-# define __MINGW_BEGIN_C_DECLS
-# define __MINGW_END_C_DECLS
+# define __MINGW_BEGIN_C_DECLS __MINGW_ALIGN(_CRT_PACKING)
+# define __MINGW_END_C_DECLS   __MINGW_PRAGMA_PARAM(pack(pop))
 #endif
 
 #ifdef __clang__

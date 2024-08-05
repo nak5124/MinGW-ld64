@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   typedef enum
@@ -259,7 +257,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _fpieee_flt(unsigned long _ExceptionCode, struct _EXCEPTION_POINTERS *_PtExceptionPtr, _FpieeFltHandlerType _Handler);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_FPIEEE */

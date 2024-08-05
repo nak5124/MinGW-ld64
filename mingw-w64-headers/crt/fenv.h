@@ -9,8 +9,6 @@
 #include <corecrt.h>
 #include <float.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #if defined(__aarch64__) || defined(_ARM64_)
@@ -140,7 +138,5 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl feholdexcept(fenv_t *_Env);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _FENV_H_ */

@@ -13,8 +13,6 @@
 /* Includes a definition of _pid_t and pid_t */
 #include <sys/types.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef _P_WAIT
@@ -165,7 +163,5 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_PROCESS */

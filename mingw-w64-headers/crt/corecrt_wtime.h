@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #ifndef _TM_DEFINED
@@ -50,7 +48,5 @@ __MINGW_BEGIN_C_DECLS
   errno_t __cdecl _wctime_s(wchar_t *_Buffer, size_t _SizeInWords, const time_t *_Time) __MINGW_ASM_CALL(_wctime64_s);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_WTIME */

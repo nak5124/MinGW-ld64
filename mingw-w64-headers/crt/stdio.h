@@ -10,8 +10,6 @@
 #include <corecrt_wstdio.h>
 #include <sys/types.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 #pragma push_macro("snprintf")
 #undef snprintf
 #pragma push_macro("vsnprintf")
@@ -1369,7 +1367,5 @@ __MINGW_END_C_DECLS
 
 #pragma pop_macro("snprintf")
 #pragma pop_macro("vsnprintf")
-
-#pragma pack(pop)
 
 #endif  /* _INC_STDIO */

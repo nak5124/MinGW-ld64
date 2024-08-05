@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #pragma push_macro("_wgetcwd")
@@ -30,7 +28,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _wrmdir(const wchar_t *_Path);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_CORECRT_WDIRECT */

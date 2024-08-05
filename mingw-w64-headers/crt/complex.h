@@ -27,8 +27,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 /* These macros are specified by C99 standard */
@@ -225,7 +223,5 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __CRT__NO_INLINE */
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _COMPLEX_H_ */

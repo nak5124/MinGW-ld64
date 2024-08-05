@@ -10,8 +10,6 @@
 #include <corecrt.h>
 #include <stdint.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
   typedef struct
@@ -269,7 +267,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP uintmax_t __cdecl _wcstoumax_l(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base, _locale_t _Locale);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INTTYPES_H_ */

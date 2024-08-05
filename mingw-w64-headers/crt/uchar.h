@@ -25,8 +25,6 @@
 #include <corecrt.h>
 #include <stdint.h>  /* uint_leastXX_t */
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 /* Remember that g++ >= 4.4 defines these types only in c++0x mode */
@@ -53,7 +51,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t c32rtomb(char *__restrict__ s, char32_t c32, mbstate_t *__restrict__ ps);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* __UCHAR_H */

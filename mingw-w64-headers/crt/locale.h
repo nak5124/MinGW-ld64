@@ -8,8 +8,6 @@
 
 #include <corecrt.h>
 
-#pragma pack(push, _CRT_PACKING)
-
 __MINGW_BEGIN_C_DECLS
 
 #define LC_ALL      0
@@ -95,7 +93,5 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t __cdecl _Wcsftime(wchar_t *_Buffer, size_t _Max_size, const wchar_t *_Format, const struct tm *_Timeptr, void *_Lc_time_arg);
 
 __MINGW_END_C_DECLS
-
-#pragma pack(pop)
 
 #endif  /* _INC_LOCALE */
