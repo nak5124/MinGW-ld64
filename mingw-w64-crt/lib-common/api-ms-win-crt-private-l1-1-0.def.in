@@ -47,7 +47,7 @@ __current_exception_context
 __dcrt_get_wide_environment_from_os
 __dcrt_initial_narrow_environment DATA
 F_I386(__intrinsic_abnormal_termination)
-F_X64(__intrinsic_setjmp)
+F_NON_ARM64(__intrinsic_setjmp)
 F64(__intrinsic_setjmpex)
 F_ARM32(__jump_unwind)
 __processing_throw
@@ -71,7 +71,7 @@ _get_purecall_handler
 _get_unexpected
 F_I386(_global_unwind2)
 _is_exception_typeof
-F_X64(_local_unwind)
+F64(_local_unwind)
 F_I386(_local_unwind2)
 F_I386(_local_unwind4)
 F_I386(_longjmpex)
