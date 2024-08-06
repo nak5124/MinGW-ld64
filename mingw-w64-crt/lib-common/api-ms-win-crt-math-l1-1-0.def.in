@@ -28,6 +28,7 @@ _Cmulcr
 _FCbuild
 _FCmulcc
 _FCmulcr
+F_ARM32(_FPE_Raise)
 _LCbuild
 _LCmulcc
 _LCmulcr
