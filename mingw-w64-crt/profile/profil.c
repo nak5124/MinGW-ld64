@@ -66,9 +66,9 @@ print_prof (struct profinfo *p)
 /* Everytime we wake up use the main thread pc to hash into the cell in the
    profile buffer ARG. */
 
-static void CALLBACK profthr_func (LPVOID);
+static DWORD CALLBACK profthr_func (LPVOID);
 
-static void CALLBACK
+static DWORD CALLBACK
 profthr_func (LPVOID arg)
 {
   struct profinfo *p = (struct profinfo *) arg;
@@ -87,7 +87,7 @@ profthr_func (LPVOID arg)
 #endif
       /* Check quit condition, WAIT_OBJECT_0 or WAIT_TIMEOUT */
       if (WaitForSingleObject (p->quitevt, SLEEPTIME) == WAIT_OBJECT_0)
-	return;
+	return 0;
     }
 }
 
@@ -133,8 +133,7 @@ profile_on (struct profinfo *p)
       return -1;
     }
 
-  p->profthr = CreateThread (0, 0, (DWORD (WINAPI *)(LPVOID)) profthr_func,
-                             (void *) p, 0, &thrid);
+  p->profthr = CreateThread (0, 0, profthr_func, (void *) p, 0, &thrid);
 
   if (!p->profthr)
     {
