@@ -35,8 +35,12 @@
 #undef __MINGW_USE_C99FORGXX
 #undef __MINGW_USE_DEPRECATED_GETS
 
-#define __MINGW_GNUC_PREREQ(major, minor)  (__GNUC__ > (major) || (__GNUC__ == (major) && __GNUC_MINOR__ >= (minor)))
-#define __mingw_clang_prereq(major, minor) (__clang_major__ > (major) || (__clang_major__ == (major) && __clang_minor__ >= (minor)))
+#define __MINGW_GNUC_PREREQ(maj, min) ((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
+#if defined(__clang_major__) && defined(__clang_minor__)
+# define __mingw_clang_prereq(maj, min) ((__clang_major__ << 16) + __clang_minor__ >= ((maj) << 16) + (min))
+#else
+# define __mingw_clang_prereq(maj, min) 0
+#endif
 
 #ifdef _ISOC2X_SOURCE
 # undef  _ISOC2X_SOURCE

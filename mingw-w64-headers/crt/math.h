@@ -448,7 +448,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) \
+#if ((__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)) \
   && (!defined(__OPTIMIZE_SIZE__) || defined(__cplusplus))
 # define fpclassify(_X) (__builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, _X))
 #else
@@ -466,14 +466,14 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.3.2 */
-#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)
 # define isfinite(_X) __builtin_isfinite(_X)
 #else
 # define isfinite(_X) ((fpclassify(_X) & FP_NAN) == 0)
 #endif
 
 /* 7.12.3.3 */
-#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(3, 7)
 # define isinf(_X) __builtin_isinf_sign(_X)
 #else
 # define isinf(_X) (fpclassify(_X) == FP_INFINITE)
@@ -526,7 +526,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)
 # define isnan(_X) __builtin_isnan(_X)
 #else
 # define isnan(_X)                                                 \
@@ -543,7 +543,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.3.5 */
-#if __MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)
+#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)
 # define isnormal(_X) __builtin_isnormal(_X)
 #else
 # define isnormal(_X) (fpclassify(_X) == FP_NORMAL)
@@ -581,7 +581,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#if __MINGW_GNUC_PREREQ(6, 0)
+#if __MINGW_GNUC_PREREQ(6, 0) || __mingw_clang_prereq(3, 3)
 # define signbit(_X) __builtin_signbit(_X)
 #else
 # define signbit(_X)                                               \
