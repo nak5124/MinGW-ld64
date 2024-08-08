@@ -13,23 +13,23 @@
 #include <vadefs.h>
 
 #ifndef va_start
-# define va_start _crt_va_start
+# define va_start __crt_va_start
 #endif
 
 #ifndef va_arg
-# define va_arg _crt_va_arg
+# define va_arg __crt_va_arg
 #endif
 
 #ifndef va_end
-# define va_end _crt_va_end
+# define va_end __crt_va_end
 #endif
 
 #ifndef __va_copy
-# define __va_copy _crt_va_copy
+# define __va_copy __crt_va_copy
 #endif
 
 #if !defined(va_copy) && (defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_MS) || defined(__MINGW_USE_ISOCXX11))
-# define va_copy _crt_va_copy
+# define va_copy __crt_va_copy
 #endif
 
 #endif /* _INC_STDARG */

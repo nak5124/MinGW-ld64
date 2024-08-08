@@ -28,13 +28,13 @@ __MINGW_BEGIN_C_DECLS
 
 /* Use GCC builtins */
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ > 201710L
-# define _crt_va_start(v, ...) __builtin_va_start(v, 0)
+# define __crt_va_start(v, ...) __builtin_va_start(v, 0)
 #else
-# define _crt_va_start(v, l)   __builtin_va_start(v, l)
+# define __crt_va_start(v, l)   __builtin_va_start(v, l)
 #endif
-#define _crt_va_arg(v, l)  __builtin_va_arg(v, l)
-#define _crt_va_end(v)     __builtin_va_end(v)
-#define _crt_va_copy(d, s) __builtin_va_copy(d, s)
+#define __crt_va_arg(v, l)  __builtin_va_arg(v, l)
+#define __crt_va_end(v)     __builtin_va_end(v)
+#define __crt_va_copy(d, s) __builtin_va_copy(d, s)
 
 __MINGW_END_C_DECLS
 

@@ -353,9 +353,9 @@ __MINGW_BEGIN_C_DECLS
     inline __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, ...) _CRT_SECURE_CPP_NOTHROW         \
     {                                                                                                            \
       va_list __vaargs;                                                                                          \
-      _crt_va_start(__vaargs, __arg1);                                                                           \
+      __crt_va_start(__vaargs, __arg1);                                                                           \
       __ret __retval = __vfunc(__dst, __size, __arg1, __vaargs);                                                 \
-      _crt_va_end(__vaargs);                                                                                     \
+      __crt_va_end(__vaargs);                                                                                     \
       return __retval;                                                                                           \
     }                                                                                                            \
   }
@@ -367,9 +367,9 @@ __MINGW_BEGIN_C_DECLS
     inline __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2, ...) _CRT_SECURE_CPP_NOTHROW          \
     {                                                                                                                             \
       va_list __vaargs;                                                                                                           \
-      _crt_va_start(__vaargs, __arg2);                                                                                            \
+      __crt_va_start(__vaargs, __arg2);                                                                                            \
       __ret __retval = __vfunc(__dst, __size, __arg1, __arg2, __vaargs);                                                          \
-      _crt_va_end(__vaargs);                                                                                                      \
+      __crt_va_end(__vaargs);                                                                                                      \
       return __retval;                                                                                                            \
     }                                                                                                                             \
   }
