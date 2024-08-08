@@ -124,11 +124,11 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_MS
   _CRTIMP intptr_t __cdecl cwait(int *_TermStat, intptr_t _ProcHandle, int _Action) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int __cdecl execl(const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execle(const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execlp(const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execl(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execle(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execlp(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl execlpe(const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execlpe(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP intptr_t __cdecl spawnl(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
@@ -140,11 +140,11 @@ __MINGW_BEGIN_C_DECLS
      stupid warnings, define them in POSIX way.  This is save, because those
      methods do not return in success case, so that the return value is not
      really dependent to its scalar width. */
-  _CRTIMP int __cdecl execv(const char *_Filename, char *const _ArgList[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execve(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execvp(const char *_Filename, char *const _ArgList[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execv(const char *_Filename, char *const _ArgList[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execve(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execvp(const char *_Filename, char *const _ArgList[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl execvpe(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execvpe(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP intptr_t __cdecl spawnv(int _Mode,const char *_Filename, char *const _ArgList[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;

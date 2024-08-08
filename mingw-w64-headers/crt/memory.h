@@ -13,28 +13,28 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _CRT_MEMORY_DEFINED  /* Also in string.h */
 # define _CRT_MEMORY_DEFINED
 
-  _CRTIMP void *__cdecl _memccpy(void *_Dst, const void *_Src, int _Val, size_t _MaxCount);
+  _CRTIMP void *__cdecl _memccpy(void *_Dst, const void *_Src, int _Val, size_t _MaxCount) __MINGW_NONNULL((1, 2));
   _CRTIMP int __cdecl _memicmp(const void *_Buf1, const void *_Buf2, size_t _Size);
   _CRTIMP int __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP void * __cdecl memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP void * __cdecl memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP int __cdecl memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 
-  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memcpy_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
-  _CRTIMP void *__cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memmove_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
-  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount);
-  _CRTIMP int __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size);
-  _CRTIMP void *__cdecl memset(void *_Dst, int _Val, size_t _Size);
+  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __MINGW_NONNULL((1));
+  _CRTIMP int __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_NONNULL((1, 2));
+  _CRTIMP void *__cdecl memset(void *_Dst, int _Val, size_t _Size) __MINGW_NONNULL((1));
 
 #if __MINGW_FORTIFY_LEVEL > 0
 
@@ -43,7 +43,7 @@ __MINGW_BEGIN_C_DECLS
   __mingw_bos_declare;
 #endif
 
-  __mingw_bos_extern_ovr
+  __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))
   void * memcpy(void * __restrict__ __dst, const void * __restrict__ __src, size_t __n)
   {
     return __builtin___memcpy_chk(__dst, __src, __n, __mingw_bos(__dst, 0));
@@ -60,13 +60,13 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  __mingw_bos_extern_ovr
+  __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))
   void * memmove(void * __dst, const void * __src, size_t __n)
   {
     return __builtin___memmove_chk(__dst, __src, __n, __mingw_bos(__dst, 0));
   }
 
-  __mingw_bos_extern_ovr
+  __mingw_bos_extern_ovr __MINGW_NONNULL((1))
   void * memset(void * __dst, int __val, size_t __n)
   {
     return __builtin___memset_chk(__dst, __val, __n, __mingw_bos(__dst, 0));

@@ -186,7 +186,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ATOF_DEFINED  /* Also in stdlib.h */
 # define _CRT_ATOF_DEFINED
-  _CRTIMP double __cdecl atof(const char *_String);
+  _CRTIMP double __cdecl atof(const char *_String) __MINGW_NONNULL((1));
   _CRTIMP double __cdecl _atof_l(const char *_String, _locale_t _Locale);
 #endif  /* _CRT_ATOF_DEFINED */
 

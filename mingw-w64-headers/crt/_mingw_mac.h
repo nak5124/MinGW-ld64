@@ -130,9 +130,9 @@
 #define __MINGW_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
 #if __MINGW_GNUC_PREREQ(3, 3)
-# define __MINGW_ATTRIB_NONNULL(arg) __attribute__((__nonnull__(arg)))
+# define __MINGW_NONNULL(args) __attribute__((__nonnull__ args))
 #else
-# define __MINGW_ATTRIB_NONNULL(arg)
+# define __MINGW_NONNULL(args)
 #endif
 
 #define __MINGW_ATTRIB_UNUSED __attribute__((__unused__))

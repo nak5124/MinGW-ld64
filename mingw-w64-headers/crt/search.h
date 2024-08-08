@@ -14,11 +14,11 @@ __MINGW_BEGIN_C_DECLS
   typedef int (__cdecl* _CoreCrtSecureSearchSortCompareFunction)(void *, const void *, const void *);
   typedef int (__cdecl* _CoreCrtNonSecureSearchSortCompareFunction)(const void *, const void *);
 
-  _CRTIMP void *__cdecl bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
+  _CRTIMP void *__cdecl bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 2, 5));
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP void *__cdecl bsearch_s(const void *_Key, const void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 #endif
-  _CRTIMP void __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
+  _CRTIMP void __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 4));
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP void __cdecl qsort_s(void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 #endif
@@ -65,13 +65,16 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
   } node_t;
 #endif
 
-  extern void * __cdecl tdelete(const void * __restrict__, void ** __restrict__, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
-  extern void * __cdecl tfind(const void *, void * const *, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
-  extern void * __cdecl tsearch(const void *, void **, int (*)(const void *, const void *)) __MINGW_ATTRIB_NONNULL(2) __MINGW_ATTRIB_NONNULL(3);
-  extern void __cdecl twalk(const void *, void (*)(const void *, VISIT, int));
+  typedef int (*__compar_fn_t) (const void *, const void *);
+  extern void *__cdecl tdelete(const void * __restrict__ _key, void ** __restrict__ _rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
+  extern void *__cdecl tfind(const void *_key, void * const *_rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
+  extern void *__cdecl tsearch(const void *_key, void **_rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
+  typedef void (*__action_fn_t) (const void *_nodep, VISIT _value, int _level);
+  extern void __cdecl twalk(const void *_root, __action_fn_t _action);
 
 #ifdef __MINGW_USE_GNU
-  extern void __cdecl tdestroy(void *, void (*)(void *)) __MINGW_ATTRIB_NONNULL(2);
+  typedef void (*__free_fn_t) (void *_nodep);
+  extern void __cdecl tdestroy(void *_root, __free_fn_t _freenode) __MINGW_NONNULL((2));
 #endif
 
 __MINGW_END_C_DECLS

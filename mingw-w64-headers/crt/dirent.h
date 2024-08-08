@@ -51,13 +51,13 @@ __MINGW_BEGIN_C_DECLS
     char dd_name[1];
   } DIR;
 
-  extern DIR *__cdecl __MINGW_NOTHROW opendir(const char *);
-  extern struct dirent *__cdecl __MINGW_NOTHROW readdir(DIR *);
-  extern int __cdecl __MINGW_NOTHROW closedir(DIR *);
-  extern void __cdecl __MINGW_NOTHROW rewinddir(DIR *);
+  extern DIR *__cdecl __MINGW_NOTHROW opendir(const char *_name) __MINGW_NONNULL((1));
+  extern struct dirent *__cdecl __MINGW_NOTHROW readdir(DIR *_dirp) __MINGW_NONNULL((1));
+  extern int __cdecl __MINGW_NOTHROW closedir(DIR *_dirp) __MINGW_NONNULL((1));
+  extern void __cdecl __MINGW_NOTHROW rewinddir(DIR *_dirp) __MINGW_NONNULL((1));
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC)
-  extern long __cdecl __MINGW_NOTHROW telldir(DIR *);
-  extern void __cdecl __MINGW_NOTHROW seekdir(DIR *, long);
+  extern long __cdecl __MINGW_NOTHROW telldir(DIR *_dirp) __MINGW_NONNULL((1));
+  extern void __cdecl __MINGW_NOTHROW seekdir(DIR *_dirp, long _pos) __MINGW_NONNULL((1));
 #endif
 
   /* wide char versions */
@@ -98,12 +98,12 @@ __MINGW_BEGIN_C_DECLS
     wchar_t dd_name[1];
   } _WDIR;
 
-  extern _WDIR *__cdecl __MINGW_NOTHROW _wopendir(const wchar_t *);
-  extern struct _wdirent *__cdecl __MINGW_NOTHROW _wreaddir(_WDIR *);
-  extern int __cdecl __MINGW_NOTHROW _wclosedir(_WDIR *);
-  extern void __cdecl __MINGW_NOTHROW _wrewinddir(_WDIR *);
-  extern long __cdecl __MINGW_NOTHROW _wtelldir(_WDIR *);
-  extern void __cdecl __MINGW_NOTHROW _wseekdir(_WDIR *, long);
+  extern _WDIR *__cdecl __MINGW_NOTHROW _wopendir(const wchar_t *_name) __MINGW_NONNULL((1));
+  extern struct _wdirent *__cdecl __MINGW_NOTHROW _wreaddir(_WDIR *_dirp) __MINGW_NONNULL((1));
+  extern int __cdecl __MINGW_NOTHROW _wclosedir(_WDIR *_dirp) __MINGW_NONNULL((1));
+  extern void __cdecl __MINGW_NOTHROW _wrewinddir(_WDIR *_dirp) __MINGW_NONNULL((1));
+  extern long __cdecl __MINGW_NOTHROW _wtelldir(_WDIR *_dirp) __MINGW_NONNULL((1));
+  extern void __cdecl __MINGW_NOTHROW _wseekdir(_WDIR *_dirp, long _pos) __MINGW_NONNULL((1));
 
 __MINGW_END_C_DECLS
 

@@ -10,8 +10,8 @@
 
 __MINGW_BEGIN_C_DECLS
 
-  extern char *__cdecl __MINGW_NOTHROW basename(char *);
-  extern char *__cdecl __MINGW_NOTHROW dirname(char *);
+  extern char *__cdecl __MINGW_NOTHROW basename(char *_path) __MINGW_NONNULL((1));
+  extern char *__cdecl __MINGW_NOTHROW dirname(char *_path);
 
 __MINGW_END_C_DECLS
 

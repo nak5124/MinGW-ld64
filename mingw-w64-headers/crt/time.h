@@ -77,7 +77,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP __time32_t __cdecl _mktime32(struct tm *_Tm);
   _CRTIMP __time64_t __cdecl _mktime64(struct tm *_Tm);
 
-  _CRTIMP size_t __cdecl strftime(char * __restrict__ _Buf, size_t _SizeInBytes, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm) __MINGW_GNU_STRFTIME(3, 0);
+  _CRTIMP size_t __cdecl strftime(char * __restrict__ _Buf, size_t _SizeInBytes, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm)
+    __MINGW_GNU_STRFTIME(3, 0) __MINGW_NONNULL((1, 3, 4));
   _CRTIMP size_t __cdecl _strftime_l(char * __restrict__ _Buf, size_t _Max_size, const char * __restrict__ _Format,const struct tm * __restrict__ _Tm, _locale_t _Locale);
   _CRTIMP char *__cdecl _strdate(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strdate_s(char *_Buf, size_t _SizeInBytes);
@@ -87,8 +88,8 @@ __MINGW_BEGIN_C_DECLS
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strtime_s, char, _Str)
   _CRTIMP __time32_t __cdecl _time32(__time32_t *_Time);
   _CRTIMP __time64_t __cdecl _time64(__time64_t *_Time);
-  _CRTIMP int __cdecl _timespec32_get(struct _timespec32 *_Ts, int _Base);
-  _CRTIMP int __cdecl _timespec64_get(struct _timespec64 *_Ts, int _Base);
+  _CRTIMP int __cdecl _timespec32_get(struct _timespec32 *_Ts, int _Base) __MINGW_NONNULL((1));
+  _CRTIMP int __cdecl _timespec64_get(struct _timespec64 *_Ts, int _Base) __MINGW_NONNULL((1));
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   extern void __cdecl _tzset(void);
@@ -104,7 +105,7 @@ __MINGW_BEGIN_C_DECLS
   time_t __cdecl mktime(struct tm *_Tm) __MINGW_ASM_CALL(_mktime64);
   time_t __cdecl time(time_t *_Time) __MINGW_ASM_CALL(_time64);
 #ifdef __MINGW_USE_ISOC11
-  int __cdecl timespec_get(struct timespec* _Ts, int _Base) __MINGW_ASM_CALL(_timespec64_get);
+  int __cdecl timespec_get(struct timespec* _Ts, int _Base) __MINGW_ASM_CALL(_timespec64_get) __MINGW_NONNULL((1));
 #endif
 #ifdef __MINGW_USE_SECAPI
   errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime64_s);
@@ -163,7 +164,7 @@ __MINGW_BEGIN_C_DECLS
     int tz_dsttime;
   };
 
-  extern int __cdecl mingw_gettimeofday(struct timeval *p, struct timezone *z);
+  extern int __cdecl mingw_gettimeofday(struct timeval *p, struct timezone *z) __MINGW_NONNULL((1));
 #endif  /* _TIMEZONE_DEFINED */
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_POSIX)

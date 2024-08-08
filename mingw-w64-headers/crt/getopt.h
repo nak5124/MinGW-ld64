@@ -23,7 +23,7 @@ extern int opterr;  /* flag to enable built-in diagnostics... */
 
 extern char *optarg;  /* pointer to argument of current option  */
 
-extern int getopt(int nargc, char * const *nargv, const char *options);
+extern int getopt(int nargc, char * const *nargv, const char *options) __MINGW_NONNULL((2, 3));
 
 __MINGW_END_C_DECLS
 /*
@@ -70,9 +70,9 @@ enum      /* permitted values for its `has_arg' field... */
 };
 
 extern int getopt_long(int nargc, char * const *nargv, const char *options,
-    const struct option *long_options, int *idx);
+    const struct option *long_options, int *idx) __MINGW_NONNULL((2, 3));
 extern int getopt_long_only(int nargc, char * const *nargv, const char *options,
-    const struct option *long_options, int *idx);
+    const struct option *long_options, int *idx) __MINGW_NONNULL((2, 3));
 /*
  * Previous MinGW implementation had...
  */

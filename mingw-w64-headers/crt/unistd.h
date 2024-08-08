@@ -51,12 +51,12 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    extern int truncate(const char *__file, off_t __length);
+    extern int truncate(const char *__file, off_t __length) __MINGW_NONNULL((1));
 # else
-    int truncate(const char *__file, off_t __length) __MINGW_ASM_CALL(truncate64);
+    int truncate(const char *__file, off_t __length) __MINGW_ASM_CALL(truncate64) __MINGW_NONNULL((1));
 # endif
 # ifdef __MINGW_USE_LFS64
-    extern int truncate64(const char *__file, off64_t __length);
+    extern int truncate64(const char *__file, off64_t __length) __MINGW_NONNULL((1));
 # endif
 #endif
 
@@ -80,7 +80,8 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _CRT_SWAB_DEFINED  /* Also in stdlib.h */
 # define _CRT_SWAB_DEFINED
 # if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes)
+      __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 # endif
 #endif  /* _CRT_SWAB_DEFINED */
 

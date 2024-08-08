@@ -16,9 +16,7 @@
 #include <search.h>
 #include <stdlib.h>
 
-static void trecurse (const node_t *, void (*action)(const void *, VISIT, int),
-	              int level)  __MINGW_ATTRIB_NONNULL (1)
-				  __MINGW_ATTRIB_NONNULL (2);
+static void trecurse(const node_t *, void (*action)(const void *, VISIT, int), int level) __MINGW_NONNULL((1, 2));
 /* Walk the nodes of a tree */
 static void
 trecurse (const node_t *root,	/* Root of the tree to be walked */

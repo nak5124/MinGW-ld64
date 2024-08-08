@@ -23,8 +23,8 @@ __MINGW_BEGIN_C_DECLS
 #pragma pop_macro("_wgetcwd")
 #pragma pop_macro("_wgetdcwd")
 
-  _CRTIMP int __cdecl _wchdir(const wchar_t *_Path);
-  _CRTIMP int __cdecl _wmkdir(const wchar_t *_Path);
+  _CRTIMP int __cdecl _wchdir(const wchar_t *_Path) __MINGW_NONNULL((1));
+  _CRTIMP int __cdecl _wmkdir(const wchar_t *_Path) __MINGW_NONNULL((1));
   _CRTIMP int __cdecl _wrmdir(const wchar_t *_Path);
 
 __MINGW_END_C_DECLS
