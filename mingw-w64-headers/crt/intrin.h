@@ -189,7 +189,7 @@ __MINGW_BEGIN_C_DECLS
     __MACHINEI(__MINGW_EXTENSION __int64 __emul(int,int))
     __MACHINEI(__MINGW_EXTENSION unsigned __int64 __emulu(unsigned int,unsigned int))
     __MACHINEI(void __cdecl _enable(void))
-    __MACHINE(void __cdecl __MINGW_ATTRIB_NORETURN __fastfail(unsigned int code))
+    __MACHINE(void __cdecl __fastfail(unsigned int code) __MINGW_NORETURN)
     /* __MACHINEI(__LONG32 __cdecl _InterlockedDecrement(__LONG32 volatile *)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEX64(__MINGW_EXTENSION __int64 _InterlockedDecrement64(__int64 volatile *)) moved to psdk_inc/intrin-impl.h */
     /* __MACHINEI(__LONG32 _InterlockedExchange(__LONG32 volatile *,__LONG32)) moved to psdk_inc/intrin-impl.h */

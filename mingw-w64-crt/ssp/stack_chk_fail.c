@@ -9,9 +9,10 @@
 #include <stdlib.h>
 #include <windows.h>
 
-void __cdecl __attribute__((__noreturn__)) __stack_chk_fail(void);
+void __cdecl __stack_chk_fail(void) __MINGW_NORETURN;
 
-void __cdecl __attribute__((__noreturn__)) __stack_chk_fail(void) {
+__MINGW_NORETURN
+void __cdecl __stack_chk_fail(void) {
   static const char msg[] = "*** stack smashing detected ***: terminated\n";
   write(STDERR_FILENO, msg, strlen(msg));
   if (IsProcessorFeaturePresent(PF_FASTFAIL_AVAILABLE)) {

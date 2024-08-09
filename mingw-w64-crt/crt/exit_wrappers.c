@@ -11,8 +11,8 @@
 #endif
 
 /* `exit()`, C89  */
-void exit(int status) __attribute__((__noreturn__));
-extern void (*__MINGW_IMP_SYMBOL(exit))(int) __attribute__((__noreturn__));
+void exit(int status) __MINGW_NORETURN;
+extern void (*__MINGW_IMP_SYMBOL(exit))(int) __MINGW_NORETURN;
 
 void exit(int status)
 {
@@ -24,8 +24,8 @@ void exit(int status)
 }
 
 /* `_exit()`, POSIX  */
-void _exit(int status) __attribute__((__noreturn__));
-extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __attribute__((__noreturn__));
+void _exit(int status) __MINGW_NORETURN;
+extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __MINGW_NORETURN;
 
 void _exit(int status)
 {

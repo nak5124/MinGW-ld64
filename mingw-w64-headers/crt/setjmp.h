@@ -87,9 +87,9 @@ __MINGW_BEGIN_C_DECLS
   typedef _JBTYPE jmp_buf[_JBLEN];
 #endif
 
-  _CRTIMP __MINGW_ATTRIB_NORETURN __MINGW_NOTHROW void __cdecl longjmp(jmp_buf _Buf, int _Value);
+  _CRTIMP void __cdecl longjmp(jmp_buf _Buf, int _Value) __MINGW_NORETURN __MINGW_NOTHROW;
 
-  extern void *__cdecl __MINGW_NOTHROW mingw_getsp(void);
+  extern void *__cdecl mingw_getsp(void) __MINGW_NOTHROW;
 
 #pragma push_macro("__has_builtin")
 #ifndef __has_builtin
@@ -101,20 +101,20 @@ __MINGW_BEGIN_C_DECLS
 # if (defined(__aarch64__) || defined(_ARM64_)) && (!defined(__SEH__) || !__has_builtin(__builtin_sponentry) || defined(__USE_MINGW_SETJMP_NON_SEH))
 #   define setjmp(BUF) __mingw_setjmp((BUF))
 #   define longjmp     __mingw_longjmp
-    extern int __cdecl __MINGW_NOTHROW __attribute__((__returns_twice__)) __mingw_setjmp(jmp_buf _Buf);
-    extern __MINGW_ATTRIB_NORETURN __MINGW_NOTHROW void __mingw_longjmp(jmp_buf _Buf, int _Value);
+    extern int __cdecl __mingw_setjmp(jmp_buf _Buf) __MINGW_NOTHROW __attribute__((__returns_twice__));
+    extern void __mingw_longjmp(jmp_buf _Buf, int _Value) __MINGW_NORETURN __MINGW_NOTHROW;
 # elif defined(__SEH__) && !defined(__USE_MINGW_SETJMP_NON_SEH)
 #   if defined(__aarch64__) || defined(_ARM64_)
 #     define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())
 #   elif (__MINGW_GCC_VERSION < 40702) && !defined(__clang__)
 #     define setjmp(BUF) _setjmp((BUF), mingw_getsp())
 #   else
-#     define setjmp(BUF) _setjmp((BUF), __builtin_frame_address (0))
+#     define setjmp(BUF) _setjmp((BUF), __builtin_frame_address(0))
 #   endif
 # else
 #   define setjmp(BUF) _setjmp((BUF), NULL)
 # endif
-  int __cdecl __MINGW_NOTHROW __attribute__((__returns_twice__)) _setjmp(jmp_buf _Buf, void *_Ctx);
+  int __cdecl _setjmp(jmp_buf _Buf, void *_Ctx) __MINGW_NOTHROW __attribute__((__returns_twice__));
 #else
 # undef setjmp
 # ifdef __SEH__
@@ -129,7 +129,7 @@ __MINGW_BEGIN_C_DECLS
 #   define setjmp(BUF)   _setjmpex((BUF), NULL)
 #   define setjmpex(BUF) _setjmpex((BUF), NULL)
 # endif
-  int __cdecl __MINGW_NOTHROW __attribute__((__returns_twice__)) _setjmpex(jmp_buf _Buf, void *_Ctx);
+  int __cdecl __attribute__((__returns_twice__)) _setjmpex(jmp_buf _Buf, void *_Ctx) __MINGW_NOTHROW;
 #endif
 
 #pragma pop_macro("__has_builtin")

@@ -6,7 +6,7 @@
 
 #include <string.h>
 
-void __cdecl __chk_fail(void) __attribute__((__noreturn__));
+void __cdecl __chk_fail(void) __MINGW_NORETURN;
 
 void *__cdecl __memmove_chk(void *dst, const void *src, size_t n, size_t bufsize);
 

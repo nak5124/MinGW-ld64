@@ -238,13 +238,12 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _TIME_T_DEFINED */
 
   _CRTIMP_ALTERNATIVE void __cdecl _invalid_parameter_noinfo(void);
-  _CRTIMP __MINGW_ATTRIB_NORETURN void __cdecl _invalid_parameter_noinfo_noreturn(void);
+  _CRTIMP void __cdecl _invalid_parameter_noinfo_noreturn(void) __MINGW_NORETURN;
 
-  _CRTIMP __MINGW_ATTRIB_NORETURN
-  void __cdecl _invoke_watson
+  _CRTIMP void __cdecl _invoke_watson
   (
     wchar_t const* _Expression, wchar_t const* _FunctionName, wchar_t const* _FileName, unsigned int _LineNo, uintptr_t _Reserved
-  );
+  ) __MINGW_NORETURN;
 
   typedef struct _Mbstatet
   {

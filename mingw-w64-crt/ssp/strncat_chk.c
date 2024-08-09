@@ -6,7 +6,7 @@
 
 #include <string.h>
 
-void __cdecl __chk_fail(void) __attribute__((__noreturn__));
+void __cdecl __chk_fail(void) __MINGW_NORETURN;
 
 char *__cdecl __strncat_chk(char *dst, const char *src, size_t n, size_t bufsize);
 

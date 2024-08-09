@@ -36,17 +36,17 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_TERMINATE_DEFINED  /* Also in process.h */
 # define _CRT_TERMINATE_DEFINED
-  extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_NORETURN;
+  extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_NORETURN;
 # if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-    extern void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+    extern void __cdecl _Exit(int) __MINGW_NORETURN;
 # endif
 # if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
-    extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_ATTRIB_NORETURN;
+    extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_NORETURN;
 # endif
 # pragma push_macro("abort")
 # undef abort
-  _CRTIMP void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
+  _CRTIMP void __cdecl abort(void) __MINGW_NORETURN;
 # pragma pop_macro("abort")
 #endif  /* _CRT_TERMINATE_DEFINED */
 

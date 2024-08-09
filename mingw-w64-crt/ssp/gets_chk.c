@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void __cdecl __chk_fail(void) __attribute__((__noreturn__));
+void __cdecl __chk_fail(void) __MINGW_NORETURN;
 
 char *__cdecl __gets_chk(char *dst, size_t bufsize);
 

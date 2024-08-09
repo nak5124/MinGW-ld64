@@ -33,7 +33,7 @@
 // to get rid of the _CRTIMP in headers).
 int __cdecl __getmainargs(int * _Argc, char *** _Argv, char ***_Env, int _DoWildCard, _startupinfo *_StartInfo);
 int __cdecl __wgetmainargs(int * _Argc, wchar_t *** _Argv, wchar_t ***_Env, int _DoWildCard, _startupinfo *_StartInfo);
-void __cdecl __MINGW_ATTRIB_NORETURN _amsg_exit(int ret);
+void __cdecl _amsg_exit(int ret) __MINGW_NORETURN;
 unsigned int __cdecl _get_output_format(void);
 
 int __cdecl __ms_fwprintf(FILE *, const wchar_t *, ...);
@@ -107,9 +107,10 @@ int __cdecl at_quick_exit(void (__cdecl *func)(void))
 int __cdecl (*__MINGW_IMP_SYMBOL(at_quick_exit))(void (__cdecl *)(void)) = at_quick_exit;
 #endif  // __USING_MCFGTHREAD__
 
-extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __attribute__((__noreturn__));
+extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __MINGW_NORETURN;
 
-void __cdecl __MINGW_ATTRIB_NORETURN _amsg_exit(int ret) {
+__MINGW_NORETURN
+void __cdecl _amsg_exit(int ret) {
   fprintf(stderr, "runtime error %d\n", ret);
   (*__MINGW_IMP_SYMBOL(_exit))(255);
 }

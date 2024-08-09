@@ -355,8 +355,9 @@ __MINGW_BEGIN_C_DECLS
 # define __MINGW_FASTFAIL_IMPL 1
 #endif  /* __has_builtin */
 #if __MINGW_FASTFAIL_IMPL == 1
-  __MINGW_ATTRIB_NORETURN void __cdecl __fastfail(unsigned int code);
-  __MINGW_ATTRIB_NORETURN __MINGW_INTRIN_INLINE void __cdecl __fastfail(unsigned int code)
+  void __cdecl __fastfail(unsigned int code) __MINGW_NORETURN;
+  __MINGW_INTRIN_INLINE __MINGW_NORETURN
+  void __cdecl __fastfail(unsigned int code)
   {
 #ifdef __x86_64__
     __asm__ __volatile__("int {$}0x29"::"c"(code));
@@ -390,13 +391,12 @@ __MINGW_BEGIN_C_DECLS
 
 #if __MINGW_FORTIFY_LEVEL > 0
   /* Calling an function with __attribute__((__warning__("...")))
-     from a system include __inline__ function does not print
-     a warning unless caller has __attribute__((__artificial__)). */
-# define __mingw_bos_declare                                              \
-    void __cdecl __chk_fail(void) __MINGW_ATTRIB_NORETURN;                \
-    void __cdecl __mingw_chk_fail_warn(void) __MINGW_ASM_CALL(__chk_fail) \
-    __MINGW_ATTRIB_NORETURN                                               \
-    __attribute__((__warning__("Buffer overflow detected")))
+   * from a system include __inline__ function does not print
+   * a warning unless caller has __attribute__((__artificial__)). */
+# define __mingw_bos_declare                                                  \
+    void __cdecl __chk_fail(void) __MINGW_NORETURN;                           \
+    void __cdecl __mingw_chk_fail_warn(void) __MINGW_ASM_CALL(__chk_fail)     \
+    __MINGW_NORETURN __attribute__((__warning__("Buffer overflow detected")))
 # if __MINGW_FORTIFY_LEVEL > 2
 #   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)
 #   define __mingw_bos_known(p)    (__builtin_object_size(p, 0) != (size_t)-1 || !__builtin_constant_p(__mingw_bos(p, 0)))

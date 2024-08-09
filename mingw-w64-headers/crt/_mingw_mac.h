@@ -175,7 +175,7 @@
 # define __MINGW_DEPRECATED_SEC_WARN
 #endif
 
-#define __MINGW_ATTRIB_NORETURN __attribute__((__noreturn__))
+#define __MINGW_NORETURN __attribute__((__noreturn__))
 #define __MINGW_ATTRIB_CONST    __attribute__((__const__))
 
 #if __MINGW_GNUC_PREREQ(3, 0)
