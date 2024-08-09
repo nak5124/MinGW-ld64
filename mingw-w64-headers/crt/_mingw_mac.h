@@ -138,13 +138,13 @@
 #define __MINGW_UNUSED __attribute__((__unused__))
 
 #if __MINGW_GNUC_PREREQ(3, 1)
-# define __MINGW_ATTRIB_USED       __attribute__((__used__))
+# define __MINGW_USED       __attribute__((__used__))
 # define __MINGW_ATTRIB_DEPRECATED __attribute__((__deprecated__))
 # if __MINGW_GNUC_PREREQ(4, 5) || defined(__clang__)
 #   define __MINGW_ATTRIB_DEPRECATED_MSG(x) __attribute__((__deprecated__(x)))
 # endif
 #else
-# define __MINGW_ATTRIB_USED
+# define __MINGW_USED
 # define __MINGW_ATTRIB_DEPRECATED
 #endif
 
