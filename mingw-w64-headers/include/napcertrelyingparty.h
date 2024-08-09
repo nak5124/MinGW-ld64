@@ -49,8 +49,8 @@ extern "C" {
 
 #include <wincrypt.h>
 
-__MINGW_ATTRIB_UNUSED static const UINT32 NapAfwZonePropId = CERT_FIRST_USER_PROP_ID;
-__MINGW_ATTRIB_UNUSED static const UINT32 NapAfwProtectionLevelPropId = CERT_FIRST_USER_PROP_ID + 1;
+__MINGW_UNUSED static const UINT32 NapAfwZonePropId = CERT_FIRST_USER_PROP_ID;
+__MINGW_UNUSED static const UINT32 NapAfwProtectionLevelPropId = CERT_FIRST_USER_PROP_ID + 1;
 
 EXTERN_C const CLSID CLSID_NapCertRelyingParty;
 /*****************************************************************************

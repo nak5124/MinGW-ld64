@@ -87,7 +87,7 @@ limitations in handling dllimport attribute.  */
 #ifdef __cplusplus
 # define __UNUSED_PARAM(x)
 #else
-# define __UNUSED_PARAM(x) x __MINGW_ATTRIB_UNUSED
+# define __UNUSED_PARAM(x) x __MINGW_UNUSED
 #endif
 
 #if __MINGW_GNUC_PREREQ(3, 1) && !defined(__cplusplus)
