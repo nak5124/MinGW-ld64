@@ -53,10 +53,10 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif  /* __MINGW_USE_ISOC11 */
 
-  extern double __MINGW_ATTRIB_CONST cabs(double _Complex _Z);
+  extern double          cabs(double _Complex _Z) __MINGW_CONST;
   extern double _Complex cacos(double _Complex _Z);
   extern double _Complex cacosh(double _Complex _Z);
-  extern double __MINGW_ATTRIB_CONST carg(double _Complex _Z);
+  extern double          carg(double _Complex _Z) __MINGW_CONST;
   extern double _Complex casin(double _Complex _Z);
   extern double _Complex casinh(double _Complex _Z);
   extern double _Complex catan(double _Complex _Z);
@@ -64,15 +64,15 @@ __MINGW_BEGIN_C_DECLS
   extern double _Complex ccos(double _Complex _Z);
   extern double _Complex ccosh(double _Complex _Z);
   extern double _Complex cexp(double _Complex _Z);
-  extern double __MINGW_ATTRIB_CONST cimag(double _Complex _Z);
+  extern double          cimag(double _Complex _Z) __MINGW_CONST;
   extern double _Complex clog(double _Complex _Z);
 #if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
   extern double _Complex clog10(double _Complex _Z);
 #endif
-  extern double _Complex __MINGW_ATTRIB_CONST conj(double _Complex _Z);
+  extern double _Complex conj(double _Complex _Z) __MINGW_CONST;
   extern double _Complex cpow(double _Complex _X, double _Complex _Y);
-  extern double _Complex __MINGW_ATTRIB_CONST cproj(double _Complex _Z);
-  extern double __MINGW_ATTRIB_CONST creal(double _Complex _Z);
+  extern double _Complex cproj(double _Complex _Z) __MINGW_CONST;
+  extern double          creal(double _Complex _Z) __MINGW_CONST;
   extern double _Complex csin(double _Complex _Z);
   extern double _Complex csinh(double _Complex _Z);
   extern double _Complex csqrt(double _Complex _Z);
@@ -82,10 +82,10 @@ __MINGW_BEGIN_C_DECLS
   extern double norm(double _Complex _Z);
 #endif
 
-  extern float __MINGW_ATTRIB_CONST cabsf(float _Complex _Z);
+  extern float          cabsf(float _Complex _Z) __MINGW_CONST;
   extern float _Complex cacosf(float _Complex _Z);
   extern float _Complex cacoshf(float _Complex _Z);
-  extern float __MINGW_ATTRIB_CONST cargf(float _Complex _Z);
+  extern float          cargf(float _Complex _Z) __MINGW_CONST;
   extern float _Complex casinf(float _Complex _Z);
   extern float _Complex casinhf(float _Complex _Z);
   extern float _Complex catanf(float _Complex _Z);
@@ -93,15 +93,15 @@ __MINGW_BEGIN_C_DECLS
   extern float _Complex ccosf(float _Complex _Z);
   extern float _Complex ccoshf(float _Complex _Z);
   extern float _Complex cexpf(float _Complex _Z);
-  extern float __MINGW_ATTRIB_CONST cimagf(float _Complex _Z);
+  extern float          cimagf(float _Complex _Z) __MINGW_CONST;
   extern float _Complex clogf(float _Complex _Z);
 #if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
   extern float _Complex clog10f(float _Complex _Z);
 #endif
-  extern float _Complex __MINGW_ATTRIB_CONST conjf(float _Complex _Z);
+  extern float _Complex conjf(float _Complex _Z) __MINGW_CONST;
   extern float _Complex cpowf(float _Complex _X, float _Complex _Y);
-  extern float _Complex __MINGW_ATTRIB_CONST cprojf(float _Complex _Z);
-  extern float __MINGW_ATTRIB_CONST crealf(float _Complex _Z);
+  extern float _Complex cprojf(float _Complex _Z) __MINGW_CONST;
+  extern float          crealf(float _Complex _Z) __MINGW_CONST;
   extern float _Complex csinf(float _Complex _Z);
   extern float _Complex csinhf(float _Complex _Z);
   extern float _Complex csqrtf(float _Complex _Z);
@@ -111,10 +111,10 @@ __MINGW_BEGIN_C_DECLS
   extern float normf(float _Complex _Z);
 #endif
 
-  extern long double __MINGW_ATTRIB_CONST cabsl(long double _Complex _Z);
+  extern long double          cabsl(long double _Complex _Z) __MINGW_CONST;
   extern long double _Complex cacosl(long double _Complex _Z);
   extern long double _Complex cacoshl(long double _Complex _Z);
-  extern long double __MINGW_ATTRIB_CONST cargl(long double _Complex _Z);
+  extern long double          cargl(long double _Complex _Z) __MINGW_CONST;
   extern long double _Complex casinl(long double _Complex _Z);
   extern long double _Complex casinhl(long double _Complex _Z);
   extern long double _Complex catanl(long double _Complex _Z);
@@ -122,15 +122,15 @@ __MINGW_BEGIN_C_DECLS
   extern long double _Complex ccosl(long double _Complex _Z);
   extern long double _Complex ccoshl(long double _Complex _Z);
   extern long double _Complex cexpl(long double _Complex _Z);
-  extern long double __MINGW_ATTRIB_CONST cimagl(long double _Complex _Z);
+  extern long double          cimagl(long double _Complex _Z) __MINGW_CONST;
   extern long double _Complex clogl(long double _Complex _Z);
 #if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
   extern long double _Complex clog10l(long double _Complex _Z);
 #endif
-  extern long double _Complex __MINGW_ATTRIB_CONST conjl(long double _Complex _Z);
+  extern long double _Complex conjl(long double _Complex _Z) __MINGW_CONST;
   extern long double _Complex cpowl(long double _Complex _X, long double _Complex _Y);
-  extern long double _Complex __MINGW_ATTRIB_CONST cprojl(long double _Complex _Z);
-  extern long double __MINGW_ATTRIB_CONST creall(long double _Complex _Z);
+  extern long double _Complex cprojl(long double _Complex _Z) __MINGW_CONST;
+  extern long double          creall(long double _Complex _Z) __MINGW_CONST;
   extern long double _Complex csinl(long double _Complex _Z);
   extern long double _Complex csinhl(long double _Complex _Z);
   extern long double _Complex csqrtl(long double _Complex _Z);
@@ -143,79 +143,94 @@ __MINGW_BEGIN_C_DECLS
 #ifndef __CRT__NO_INLINE
 #include <math.h>
 /* double */
-  __CRT_INLINE double __MINGW_ATTRIB_CONST cabs(double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  double cabs(double _Complex _Z)
   {
     return hypot(__real__ _Z, __imag__ _Z);
   }
 
-  __CRT_INLINE double __MINGW_ATTRIB_CONST carg(double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  double carg(double _Complex _Z)
   {
     return atan2(__imag__ _Z, __real__ _Z);
   }
 
-  __CRT_INLINE double __MINGW_ATTRIB_CONST cimag(double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  double cimag(double _Complex _Z)
   {
     return __imag__ _Z;
   }
 
-  __CRT_INLINE double _Complex __MINGW_ATTRIB_CONST conj(double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  double _Complex conj(double _Complex _Z)
   {
-    return __extension__ ~_Z;
+    return __MINGW_EXTENSION ~_Z;
   }
 
-  __CRT_INLINE double __MINGW_ATTRIB_CONST creal(double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  double creal(double _Complex _Z)
   {
     return __real__ _Z;
   }
 
 /* float */
-  __CRT_INLINE float __MINGW_ATTRIB_CONST cabsf(float _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  float cabsf(float _Complex _Z)
   {
     return hypotf(__real__ _Z, __imag__ _Z);
   }
 
-  __CRT_INLINE float __MINGW_ATTRIB_CONST cargf(float _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  float cargf(float _Complex _Z)
   {
     return atan2f(__imag__ _Z, __real__ _Z);
   }
 
-  __CRT_INLINE float __MINGW_ATTRIB_CONST cimagf(float _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  float cimagf(float _Complex _Z)
   {
     return __imag__ _Z;
   }
 
-  __CRT_INLINE float _Complex __MINGW_ATTRIB_CONST conjf(float _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  float _Complex conjf(float _Complex _Z)
   {
-    return __extension__ ~_Z;
+    return __MINGW_EXTENSION ~_Z;
   }
 
-  __CRT_INLINE float __MINGW_ATTRIB_CONST crealf(float _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  float crealf(float _Complex _Z)
   {
     return __real__ _Z;
   }
 
 /* long double */
-  __CRT_INLINE long double __MINGW_ATTRIB_CONST cabsl(long double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  long double cabsl(long double _Complex _Z)
   {
     return hypotl(__real__ _Z, __imag__ _Z);
   }
 
-  __CRT_INLINE long double __MINGW_ATTRIB_CONST cargl(long double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  long double cargl(long double _Complex _Z)
   {
     return atan2l(__imag__ _Z, __real__ _Z);
   }
 
-  __CRT_INLINE long double __MINGW_ATTRIB_CONST cimagl(long double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  long double cimagl(long double _Complex _Z)
   {
     return __imag__ _Z;
   }
 
-  __CRT_INLINE long double _Complex __MINGW_ATTRIB_CONST conjl(long double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  long double _Complex conjl(long double _Complex _Z)
   {
-    return __extension__ ~_Z;
+    return __MINGW_EXTENSION ~_Z;
   }
 
-  __CRT_INLINE long double __MINGW_ATTRIB_CONST creall(long double _Complex _Z)
+  __CRT_INLINE __MINGW_CONST
+  long double creall(long double _Complex _Z)
   {
     return __real__ _Z;
   }

@@ -255,14 +255,14 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _SIGN_DEFINED  /* Also in math.h */
 # define _SIGN_DEFINED
-  _CRTIMP double __cdecl __MINGW_NOTHROW _copysign(double _Number, double _Sign);
-  _CRTIMP double __cdecl __MINGW_NOTHROW _chgsign(double _X);
-  _CRTIMP double __cdecl __MINGW_NOTHROW _scalb(double _X, long _Y);
-  _CRTIMP double __cdecl __MINGW_NOTHROW _logb(double _X);
-  _CRTIMP double __cdecl __MINGW_NOTHROW _nextafter(double _X, double _Y);
-  _CRTIMP int __cdecl __MINGW_NOTHROW _finite(double _X);
-  _CRTIMP int __cdecl __MINGW_NOTHROW _isnan(double _X);
-  _CRTIMP int __cdecl __MINGW_NOTHROW _fpclass(double _X);
+  _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _chgsign(double _X) __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _scalb(double _X, long _Y) __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _logb(double _X) __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl _finite(double _X) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP int __cdecl _isnan(double _X) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl _fpclass(double _X) __MINGW_NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
   _CRTIMP float __cdecl _scalbf(float _X, long _Y);
 #endif

@@ -153,10 +153,10 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ABS_DEFINED  /* Also in math.h */
 # define _CRT_ABS_DEFINED
-  int __cdecl abs(int _X);
-  long __cdecl labs(long _X);
+  int __cdecl abs(int _X) __MINGW_CONST;
+  long __cdecl labs(long _X) __MINGW_CONST;
 # if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-    __MINGW_EXTENSION long long __cdecl llabs(long long _X);
+    __MINGW_EXTENSION long long __cdecl llabs(long long _X) __MINGW_CONST;
 # endif
 #endif  /* _CRT_ABS_DEFINED */
   __MINGW_EXTENSION __int64 __cdecl _abs64(__int64 _X);
@@ -165,10 +165,10 @@ __MINGW_BEGIN_C_DECLS
   unsigned long __cdecl _byteswap_ulong(unsigned long _Long);
   __MINGW_EXTENSION unsigned __int64 __cdecl _byteswap_uint64(unsigned __int64 _Int64);
 
-  _CRTIMP div_t __cdecl div(int _Numerator, int _Denominator);
-  _CRTIMP ldiv_t __cdecl ldiv(long _Numerator, long _Denominator);
+  _CRTIMP div_t __cdecl div(int _Numerator, int _Denominator) __MINGW_CONST;
+  _CRTIMP ldiv_t __cdecl ldiv(long _Numerator, long _Denominator) __MINGW_CONST;
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-  __MINGW_EXTENSION _CRTIMP lldiv_t __cdecl lldiv(long long _Numerator, long long _Denominator);
+  __MINGW_EXTENSION _CRTIMP lldiv_t __cdecl lldiv(long long _Numerator, long long _Denominator) __MINGW_CONST;
 #endif
 
 #pragma push_macro("_rotl")

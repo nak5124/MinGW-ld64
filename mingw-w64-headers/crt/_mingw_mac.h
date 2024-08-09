@@ -176,7 +176,7 @@
 #endif
 
 #define __MINGW_NORETURN __attribute__((__noreturn__))
-#define __MINGW_ATTRIB_CONST    __attribute__((__const__))
+#define __MINGW_CONST    __attribute__((__const__))
 
 #if __MINGW_GNUC_PREREQ(3, 0)
 # define __MINGW_ATTRIB_MALLOC __attribute__((__malloc__))
