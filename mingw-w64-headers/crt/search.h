@@ -27,8 +27,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void *__cdecl _lsearch(const void *_Key, void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
   _CRTIMP void *__cdecl _lsearch_s(const void *_Key, void *_Base, unsigned int *_NumOfElements, size_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 
-  _CRTIMP void *__cdecl lfind(const void *_Key, const void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP void *__cdecl lsearch(const void *_Key, void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP void *__cdecl lfind(const void *_Key, const void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP void *__cdecl lsearch(const void *_Key, void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_DEPRECATED_MSVC2005;
 
 /*
 Documentation for these POSIX definitions and prototypes can be found in

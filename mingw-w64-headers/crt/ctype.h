@@ -149,15 +149,15 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CTYPE_DISABLE_MACROS */
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl isascii(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl toascii(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl isascii(int _C) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl toascii(int _C) __MINGW_DEPRECATED_MSVC2005;
 # define isascii __isascii
 # define toascii __toascii
 #endif
 
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl iscsymf(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl iscsym(int _C) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl iscsymf(int _C) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl iscsym(int _C) __MINGW_DEPRECATED_MSVC2005;
 # define iscsymf __iscsymf
 # define iscsym  __iscsym
 #endif

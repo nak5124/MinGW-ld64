@@ -81,14 +81,14 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_SWAB_DEFINED
 # if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
     _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes)
-      __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+      __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* _CRT_SWAB_DEFINED */
 
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
 # ifndef _CRT_GETPID_DEFINED  /* Also in process.h */
 #   define _CRT_GETPID_DEFINED
-    _CRTIMP int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+    _CRTIMP int __cdecl getpid(void) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 

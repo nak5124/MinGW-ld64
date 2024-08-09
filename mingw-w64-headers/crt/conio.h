@@ -11,7 +11,7 @@
 
 __MINGW_BEGIN_C_DECLS
 
-  _CRTIMP char *_cgets(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *_cgets(char *_Buffer) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _cgets_s(char *_Buffer, size_t _Size, size_t *_SizeRead);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _cgets_s, char, _Buffer, size_t*, _SizeRead)
   _CRTIMP int __cdecl _cputs(const char *_Str);
@@ -112,13 +112,13 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP int __cdecl __conio_common_vcscanf(unsigned __int64 _Options, const char *_Format, _locale_t _Locale, va_list _ArgList);
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _vcscanf_l(const char * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcscanf(0, _Format, _Locale, _ArgList);
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _vcscanf(const char * __restrict__ _Format, va_list _ArgList)
   {
     return __conio_common_vcscanf(0, _Format, NULL, _ArgList);
@@ -134,7 +134,7 @@ __MINGW_BEGIN_C_DECLS
     return __conio_common_vcscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _cscanf_l(const char * __restrict__ _Format, _locale_t _Locale, ...)
   {
     __builtin_va_list _ArgList;
@@ -145,7 +145,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _cscanf(const char * __restrict__ _Format, ...)
   {
     __builtin_va_list _ArgList;
@@ -188,15 +188,15 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _putch_nolock(int _Ch);
   _CRTIMP int __cdecl _ungetch_nolock(int _Ch);
 
-  _CRTIMP char* __cdecl cgets(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl cputs(const char *_Str) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl getch(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl getche(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl kbhit(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl putch(int _Ch) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl ungetch(int _Ch) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP char* __cdecl cgets(char *_Buffer) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl cputs(const char *_Str) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl getch(void) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl getche(void) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl kbhit(void) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl putch(int _Ch) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl ungetch(int _Ch) __MINGW_DEPRECATED_MSVC2005;
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_MSVC2005
+  __mingw_ovr __MINGW_DEPRECATED_MSVC2005
   int __cdecl cprintf(const char * __restrict__ _Format, ...)
   {
     __builtin_va_list _ArgList;
@@ -207,7 +207,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_MSVC2005
+  __mingw_ovr __MINGW_DEPRECATED_MSVC2005
   int __cdecl cscanf(const char * __restrict__ _Format, ...)
   {
     __builtin_va_list _ArgList;

@@ -84,8 +84,8 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _MBCCPY_DEFINED  /* Also in mbstring.h */
 # define _MBCCPY_DEFINED
-  _CRTIMP void __cdecl _mbccpy(unsigned char *dest, const unsigned char *src) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP void __cdecl _mbccpy_l(unsigned char *dest, const unsigned char *src, _locale_t locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void __cdecl _mbccpy(unsigned char *dest, const unsigned char *src) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void __cdecl _mbccpy_l(unsigned char *dest, const unsigned char *src, _locale_t locale) __MINGW_DEPRECATED_SEC_WARN;
 #endif  /* _MBCCPY_DEFINED */
 
 __MINGW_END_C_DECLS

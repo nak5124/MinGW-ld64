@@ -8,7 +8,7 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl sprintf(char * __restrict__ _Dest,const char * __restrict__ _Format,...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+int __cdecl sprintf(char * __restrict__ _Dest,const char * __restrict__ _Format,...) __MINGW_DEPRECATED_SEC_WARN
 {
   __builtin_va_list ap;
   int ret;

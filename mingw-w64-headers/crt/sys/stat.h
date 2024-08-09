@@ -199,15 +199,15 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _CHMOD_UMASK_DEFINED  /* Also in io.h */
 # define _CHMOD_UMASK_DEFINED
   _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl umask(int _Mode) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
 
 #ifndef _MKDIR_DEFINED  /* Also in direct.h */
 # define _MKDIR_DEFINED
   _CRTIMP int __cdecl _mkdir(const char *_Path) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
 __MINGW_END_C_DECLS

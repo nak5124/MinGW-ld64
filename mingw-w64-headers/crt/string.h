@@ -21,17 +21,17 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP void * __cdecl memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP void * __cdecl memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
-  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memcpy_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
-  _CRTIMP void *__cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memmove_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
@@ -75,36 +75,36 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_MEMORY_DEFINED */
 
   _CRTIMP char *__cdecl strcpy(char * __restrict__ _Dest, const char * __restrict__ _Source)
-    __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+    __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl strcpy_s(char *_Dst, rsize_t _SizeInBytes, const char *_Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, strcpy_s, char, _Dest, const char *, _Source)
 #endif
   _CRTIMP char *__cdecl strcat(char * __restrict__ _Dest, const char * __restrict__ _Source)
-    __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+    __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl strcat_s(char *_Dst, rsize_t _SizeInBytes, const char * _Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, strcat_s, char, _Dest, const char *, _Source)
 #endif
-  _CRTIMP char *__cdecl strerror(int _ErrMsg) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl strerror(int _ErrMsg) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl strerror_s(char *_Buf, size_t _SizeInBytes, int _ErrNum);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, strerror_s, char, _Buf, int, _ErrNum)
 #endif
   _CRTIMP char *__cdecl strncat(char * __restrict__ _Dest, const char * __restrict__ _Source, size_t _Count)
-    __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+    __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl strncat_s(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, strncat_s, char, _Dst, const char *, _Src, size_t, _MaxCount)
 #endif
   _CRTIMP char *strncpy(char * __restrict__ _Dest, const char * __restrict__ _Source, size_t _Count)
-    __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+    __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl strncpy_s(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, strncpy_s, char, _Dest, const char *, _Source, size_t, _MaxCount)
 #endif
   _CRTIMP char *__cdecl strtok(char * __restrict__ _Str, const char * __restrict__ _Delim)
-    __MINGW_NONNULL((2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+    __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP char *__cdecl strtok_s(char *_Str, const char *_Delim, char **_Context);
 #endif
@@ -115,7 +115,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _strcoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
   _CRTIMP size_t __cdecl strcspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
   _CRTIMP char *__cdecl _strdup(const char *_Src);
-  _CRTIMP char *__cdecl _strerror(const char *_ErrMsg) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _strerror(const char *_ErrMsg) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strerror_s(char *_Buf, size_t _SizeInBytes, const char *_ErrMsg);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strerror_s, char, _Buf, const char *, _ErrMsg)
   _CRTIMP int __cdecl _stricmp(const char *_Str1, const char *_Str2);
@@ -123,7 +123,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _stricoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
   _CRTIMP int __cdecl _stricmp_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
   _CRTIMP size_t __cdecl strlen(const char *_Str) __MINGW_NONNULL((1));
-  _CRTIMP char *__cdecl _strlwr(char *_String) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _strlwr(char *_String) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strlwr_s(char *_Str, size_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strlwr_s, char, _Str)
   _CRTIMP char *__cdecl _strlwr_l(char *_String, _locale_t _Locale);
@@ -148,19 +148,19 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  _CRTIMP char *__cdecl _strnset(char *_Str, int _Val, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _strnset(char *_Str, int _Val, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strnset_s(char *_Str, size_t _Size, int _Val, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _strnset_s, char, _Str, int, _Val, size_t, _MaxCount)
   _CRTIMP _CONST_RETURN char *__cdecl strpbrk(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
   _CRTIMP char *__cdecl _strrev(char *_Str);
-  _CRTIMP char * __cdecl _strset(char *_Str, int _Val) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char * __cdecl _strset(char *_Str, int _Val) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strset_s(char *_Dst, size_t _DstSize, int _Value);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strset_s, char, _Dst, int, _Value)
   _CRTIMP size_t __cdecl strspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
-  _CRTIMP char *__cdecl _strupr(char *_String) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _strupr(char *_String) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strupr_s(char *_Str, size_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strupr_s, char, _Str)
-  _CRTIMP char *_strupr_l(char *_String, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *_strupr_l(char *_String, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strupr_s_l(char *_Str, size_t _Size, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strupr_s_l, char, _Str, _locale_t, _Locale)
   _CRTIMP size_t __cdecl strxfrm(char * __restrict__ _Dst, const char * __restrict__ _Src, size_t _MaxCount) __MINGW_NONNULL((2));
@@ -173,18 +173,18 @@ __MINGW_BEGIN_C_DECLS
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_MS)
 # pragma push_macro("strdup")
 # undef strdup
-  _CRTIMP char *__cdecl strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 # pragma pop_macro("strdup")
 #endif
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl strcmpi(const char *_Str1, const char *_Str2) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl stricmp(const char *_Str1,const char *_Str2) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP char *__cdecl strlwr(char *_Str) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl strnicmp(const char *_Str1, const char *_Str, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP char *__cdecl strnset(char *_Str, int _Val, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP char *__cdecl strrev(char *_Str) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP char *__cdecl strset(char *_Str, int _Val) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP char *__cdecl strupr(char *_Str) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl strcmpi(const char *_Str1, const char *_Str2) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl stricmp(const char *_Str1,const char *_Str2) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strlwr(char *_Str) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl strnicmp(const char *_Str1, const char *_Str, size_t _MaxCount) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strnset(char *_Str, int _Val, size_t _MaxCount) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strrev(char *_Str) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strset(char *_Str, int _Val) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strupr(char *_Str) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)

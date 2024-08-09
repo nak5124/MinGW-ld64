@@ -245,12 +245,12 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
 
-  _CRTIMP double __cdecl j0(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl j1(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl jn(int _X, double _Y) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl y0(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl y1(double _X) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl yn(int _X, double _Y) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl j0(double _X) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl j1(double _X) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl jn(int _X, double _Y) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl y0(double _X) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl y1(double _X) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl yn(int _X, double _Y) __MINGW_DEPRECATED_MSVC2005;
 
 #endif
 

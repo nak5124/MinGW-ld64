@@ -139,27 +139,22 @@
 
 #if __MINGW_GNUC_PREREQ(3, 1)
 # define __MINGW_USED       __attribute__((__used__))
-# define __MINGW_ATTRIB_DEPRECATED __attribute__((__deprecated__))
-# if __MINGW_GNUC_PREREQ(4, 5) || defined(__clang__)
-#   define __MINGW_ATTRIB_DEPRECATED_MSG(x) __attribute__((__deprecated__(x)))
-# endif
+# define __MINGW_DEPRECATED __attribute__((__deprecated__))
 #else
 # define __MINGW_USED
-# define __MINGW_ATTRIB_DEPRECATED
+# define __MINGW_DEPRECATED
 #endif
 
-#ifndef __MINGW_ATTRIB_DEPRECATED_MSG
-#define __MINGW_ATTRIB_DEPRECATED_MSG(x) __MINGW_ATTRIB_DEPRECATED
+#if __MINGW_GNUC_PREREQ(4, 5) || defined(__clang__)
+# define __MINGW_DEPRECATED_MSG(x) __attribute__((__deprecated__(x)))
+#else
+# define __MINGW_DEPRECATED_MSG(x) __MINGW_DEPRECATED
 #endif
 
 #ifdef __MINGW_MSVC_COMPAT_WARNINGS
-# if __MINGW_GNUC_PREREQ(4, 5)
-#   define __MINGW_ATTRIB_DEPRECATED_STR(X) __attribute__((__deprecated__(X)))
-# else
-#   define __MINGW_ATTRIB_DEPRECATED_STR(X) __MINGW_ATTRIB_DEPRECATED
-# endif
+# define __MINGW_DEPRECATED_STR(x) __MINGW_DEPRECATED_MSG(x)
 #else
-# define __MINGW_ATTRIB_DEPRECATED_STR(X)
+# define __MINGW_DEPRECATED_STR(x)
 #endif  /* __MINGW_MSVC_COMPAT_WARNINGS */
 
 #define __MINGW_SEC_WARN_STR \
@@ -169,15 +164,15 @@
   "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
 
 #ifndef _CRT_NONSTDC_NO_DEPRECATE
-# define __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_STR(__MINGW_MSVC2005_DEPREC_STR)
+# define __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_STR(__MINGW_MSVC2005_DEPREC_STR)
 #else
-# define __MINGW_ATTRIB_DEPRECATED_MSVC2005
+# define __MINGW_DEPRECATED_MSVC2005
 #endif
 
 #ifndef _CRT_SECURE_NO_WARNINGS
-# define __MINGW_ATTRIB_DEPRECATED_SEC_WARN __MINGW_ATTRIB_DEPRECATED_STR(__MINGW_SEC_WARN_STR)
+# define __MINGW_DEPRECATED_SEC_WARN __MINGW_DEPRECATED_STR(__MINGW_SEC_WARN_STR)
 #else
-# define __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+# define __MINGW_DEPRECATED_SEC_WARN
 #endif
 
 #define __MINGW_ATTRIB_NORETURN __attribute__((__noreturn__))

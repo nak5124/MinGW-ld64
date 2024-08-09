@@ -18,17 +18,17 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP void * __cdecl memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP void * __cdecl memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
-  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memcpy_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
-  _CRTIMP void *__cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memmove_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif

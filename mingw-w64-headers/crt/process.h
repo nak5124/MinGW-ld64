@@ -100,11 +100,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP intptr_t __cdecl _spawnvpe(int _Mode, const char *_Filename, const char *const *_ArgList, const char *const *_Env);
 #endif  /* _SPAWNV_DEFINED */
 
-  _CRTIMP intptr_t __cdecl _loaddll(char *_Filename) __MINGW_ATTRIB_DEPRECATED;
-  _CRTIMP int __cdecl _unloaddll(intptr_t _Handle) __MINGW_ATTRIB_DEPRECATED;
+  _CRTIMP intptr_t __cdecl _loaddll(char *_Filename) __MINGW_DEPRECATED;
+  _CRTIMP int __cdecl _unloaddll(intptr_t _Handle) __MINGW_DEPRECATED;
 
   typedef int (__cdecl* _GetDllProcAddrProcType)(void);
-  _CRTIMP _GetDllProcAddrProcType __cdecl _getdllprocaddr(intptr_t _Handle, char *_ProcedureName, intptr_t _Ordinal) __MINGW_ATTRIB_DEPRECATED;
+  _CRTIMP _GetDllProcAddrProcType __cdecl _getdllprocaddr(intptr_t _Handle, char *_ProcedureName, intptr_t _Ordinal) __MINGW_DEPRECATED;
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
@@ -122,35 +122,35 @@ __MINGW_BEGIN_C_DECLS
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
 
 #ifdef __MINGW_USE_MS
-  _CRTIMP intptr_t __cdecl cwait(int *_TermStat, intptr_t _ProcHandle, int _Action) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl cwait(int *_TermStat, intptr_t _ProcHandle, int _Action) __MINGW_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int __cdecl execl(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execle(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execlp(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execl(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execle(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execlp(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl execlpe(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execlpe(const char *_Filename, const char *_ArgList, ...) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
-  _CRTIMP intptr_t __cdecl spawnl(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP intptr_t __cdecl spawnle(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP intptr_t __cdecl spawnlp(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP intptr_t __cdecl spawnlpe(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnl(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnle(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnlp(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnlpe(int _Mode, const char *_Filename, const char *_ArgList, ...) __MINGW_DEPRECATED_MSVC2005;
 #endif
   /* Those methods are predefined by gcc builtins to return int. So to prevent
      stupid warnings, define them in POSIX way.  This is save, because those
      methods do not return in success case, so that the return value is not
      really dependent to its scalar width. */
-  _CRTIMP int __cdecl execv(const char *_Filename, char *const _ArgList[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execve(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execvp(const char *_Filename, char *const _ArgList[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execv(const char *_Filename, char *const _ArgList[]) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execve(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execvp(const char *_Filename, char *const _ArgList[]) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl execvpe(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_NONNULL((1, 2)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execvpe(const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
-  _CRTIMP intptr_t __cdecl spawnv(int _Mode,const char *_Filename, char *const _ArgList[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP intptr_t __cdecl spawnve(int _Mode,const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP intptr_t __cdecl spawnvp(int _Mode,const char *_Filename, char *const _ArgList[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP intptr_t __cdecl spawnvpe(int _Mode,const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnv(int _Mode,const char *_Filename, char *const _ArgList[]) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnve(int _Mode,const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnvp(int _Mode,const char *_Filename, char *const _ArgList[]) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP intptr_t __cdecl spawnvpe(int _Mode,const char *_Filename, char *const _ArgList[], char *const _Env[]) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
@@ -158,7 +158,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
 # ifndef _CRT_GETPID_DEFINED  /* Also in unistd.h */
 #   define _CRT_GETPID_DEFINED
-    _CRTIMP int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+    _CRTIMP int __cdecl getpid(void) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 

@@ -17,7 +17,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
 
-  _CRTIMP wchar_t *_cgetws(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *_cgetws(wchar_t *_Buffer) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _cgetws_s(wchar_t *_Buffer, size_t _SizeInWords, size_t *_SizeRead);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _cgetws_s, wchar_t, _Buffer, size_t*, _SizeRead)
   _CRTIMP int __cdecl _cputws(const wchar_t *_String);
@@ -128,13 +128,13 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP int __cdecl __conio_common_vcwscanf(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _vcwscanf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Format, _Locale, _ArgList);
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _vcwscanf(const wchar_t * __restrict__ _Format, va_list _ArgList)
   {
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Format, NULL, _ArgList);
@@ -150,7 +150,7 @@ __MINGW_BEGIN_C_DECLS
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _cwscanf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...)
   {
     __builtin_va_list _ArgList;
@@ -161,7 +161,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr __MINGW_ATTRIB_DEPRECATED_SEC_WARN
+  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int __cdecl _cwscanf(const wchar_t * __restrict__ _Format, ...)
   {
     __builtin_va_list _ArgList;

@@ -1018,30 +1018,30 @@ extern "C" {
 
   _CRTIMP _CONST_RETURN char *__cdecl _tcschr(const char *_Str, unsigned int _Val);
   _CRTIMP size_t __cdecl _tcscspn(const char *_Str, const char *_Control);
-  _CRTIMP char *__cdecl _tcsncat(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsncat(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsncat_s(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount);
-  _CRTIMP char *__cdecl _tcsncat_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsncat_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsncat_s_l(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP char *__cdecl _tcsncpy(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsncpy(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsncpy_s(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount);
-  _CRTIMP char *__cdecl _tcsncpy_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsncpy_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsncpy_s_l(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP _CONST_RETURN char *__cdecl _tcspbrk(const char *_Str, const char *_Control);
   _CRTIMP _CONST_RETURN char *__cdecl _tcsrchr(const char *_Str, unsigned int _Ch);
   _CRTIMP size_t __cdecl _tcsspn(const char *_Str, const char *_Control);
   _CRTIMP _CONST_RETURN char *__cdecl _tcsstr(const char *_Str, const char *_Substr);
-  _CRTIMP char *__cdecl _tcstok(char *_Str, const char *_Delim) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcstok(char *_Str, const char *_Delim) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcstok_s(char *_Str, const char *_Delim, char **_Context);
-  _CRTIMP char *__cdecl _tcstok_l(char *_Str, const char *_Delim, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcstok_l(char *_Str, const char *_Delim, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcstok_s_l(char *_Str, const char *_Delim, char **_Context, _locale_t _Locale);
 
-  _CRTIMP char *__cdecl _tcsnset(char *_Str, unsigned int _Val, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsnset(char *_Str, unsigned int _Val, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _tcsnset_s(char *_Str, size_t _SizeInChars, unsigned int _Val , size_t _MaxCount);
-  _CRTIMP char *__cdecl _tcsnset_l(char *_Str, unsigned int _Val, size_t _MaxCount, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsnset_l(char *_Str, unsigned int _Val, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _tcsnset_s_l(char *_Str, size_t _SizeInChars, unsigned int _Val , size_t _MaxCount, _locale_t _Locale);
   _CRTIMP char *__cdecl _tcsrev(char *_Str);
-  _CRTIMP char *__cdecl _tcsset(char *_Str, unsigned int _Val) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP char *__cdecl _tcsset_l(char *_Str, unsigned int _Val, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsset(char *_Str, unsigned int _Val) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsset_l(char *_Str, unsigned int _Val, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _tcsset_s(char *_Str, size_t _SizeInChars, unsigned int _Val);
   _CRTIMP errno_t __cdecl _tcsset_s_l(char *_Str, size_t _SizeInChars, unsigned int, _locale_t _Locale);
 
@@ -1073,17 +1073,17 @@ extern "C" {
   _CRTIMP size_t __cdecl _tcsclen_l(const char *_Str, _locale_t _Locale);
   _CRTIMP size_t __cdecl _tcscnlen_l(const char *_Str, size_t _MaxCount, _locale_t _Locale);
 
-  _CRTIMP char *__cdecl _tcsnccat(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsnccat(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsnccat_s(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount);
-  _CRTIMP char *__cdecl _tcsnccat_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsnccat_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsnccat_s_l(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP char *__cdecl _tcsnccpy(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsnccpy(char *_Dst, const char *_Src, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsnccpy_s(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount);
-  _CRTIMP char *__cdecl _tcsnccpy_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsnccpy_l(char *_Dst, const char *_Src, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsnccpy_s_l(char *_Dst, size_t _DstSizeInChars, const char *_Src, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP char *__cdecl _tcsncset(char *_Str, unsigned int _Val, size_t _MaxCount) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsncset(char *_Str, unsigned int _Val, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsncset_s(char *_Str, size_t _SizeInChars, unsigned int _Val, size_t _MaxCount);
-  _CRTIMP char *__cdecl _tcsncset_l(char *_Str, unsigned int _Val, size_t _MaxCount, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsncset_l(char *_Str, unsigned int _Val, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsncset_s_l(char *_Str, size_t _SizeInChars, unsigned int _Val, size_t _MaxCount, _locale_t _Locale);
 
   _CRTIMP char *__cdecl _tcsdec(const char *_Start, const char *_Pos);
@@ -1094,18 +1094,18 @@ extern "C" {
   _CRTIMP char *__cdecl _tcsninc(const char * _Ptr, size_t _Count);
   _CRTIMP char *__cdecl _tcsspnp(const char * _Str1, const char * _Str2);
 
-  _CRTIMP char *__cdecl _tcslwr(char *_Str) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP char *__cdecl _tcslwr_l(char *_Str, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcslwr(char *_Str) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcslwr_l(char *_Str, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcslwr_s(char *_Str, size_t _SizeInChars);
   _CRTIMP char *__cdecl _tcslwr_s_l(char *_Str, size_t _SizeInChars, _locale_t _Locale);
-  _CRTIMP char *__cdecl _tcsupr(char *_Str) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP char *__cdecl _tcsupr_l(char *_Str, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsupr(char *_Str) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _tcsupr_l(char *_Str, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _tcsupr_s(char *_Str, size_t _SizeInChars);
   _CRTIMP char *__cdecl _tcsupr_s_l(char *_Str, size_t _SizeInChars, _locale_t _Locale);
 
   _CRTIMP size_t __cdecl _tclen(const char *_Str);
-  _CRTIMP void __cdecl _tccpy(char *_DstCh, const char *_SrcCh) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP void __cdecl _tccpy_l(char *_DstCh, const char *_SrcCh, _locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP void __cdecl _tccpy(char *_DstCh, const char *_SrcCh) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void __cdecl _tccpy_l(char *_DstCh, const char *_SrcCh, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _tccpy_s(char *_DstCh, size_t _SizeInBytes, int *_PCopied, const char *_SrcCh);
   _CRTIMP errno_t __cdecl _tccpy_s_l(char *_DstCh, size_t _SizeInBytes, int *_PCopied, const char *_SrcCh, _locale_t _Locale);
 

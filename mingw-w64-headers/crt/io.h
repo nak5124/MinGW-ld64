@@ -81,18 +81,18 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _CHMOD_UMASK_DEFINED  /* Also in sys/stat.h */
 # define _CHMOD_UMASK_DEFINED
   _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl umask(int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl chmod(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl umask(int _Mode) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
 
   _CRTIMP int __cdecl _access(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1));
   _CRTIMP errno_t __cdecl _access_s(const char *_Filename, int _AccessMode);
-  _CRTIMP int __cdecl _chsize(int _FileHandle, long _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _chsize(int _FileHandle, long _Size) __MINGW_DEPRECATED_SEC_WARN;
   __MINGW_EXTENSION _CRTIMP errno_t __cdecl _chsize_s (int _FileHandle, __int64 _Size);
   _CRTIMP int __cdecl _close(int _FileHandle);
   _CRTIMP int __cdecl _commit(int _FileHandle);
-  _CRTIMP int __cdecl _creat(const char *_Filename, int _PermissionMode) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _creat(const char *_Filename, int _PermissionMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP int __cdecl _dup(int _FileHandle);
   _CRTIMP int __cdecl _dup2(int _FileHandleSrc, int _FileHandleDst);
   _CRTIMP int __cdecl _eof(int _FileHandle);
@@ -104,7 +104,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _isatty(int _FileHandle);
   _CRTIMP int __cdecl _locking(int _FileHandle, int _LockMode, long _NumOfBytes);
   _CRTIMP long __cdecl _lseek(int _FileHandle, long _Offset, int _Origin);
-  _CRTIMP char *__cdecl _mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _mktemp_s (char *_TemplateName, size_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _mktemp_s, char, _TemplateName)
   _CRTIMP int __cdecl _open_osfhandle(intptr_t _OSFileHandle, int _Flags);
@@ -118,7 +118,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl rename(const char *_OldFilename, const char *_NewFilename);
   _CRTIMP int __cdecl _unlink(const char *_Filename);
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl unlink(const char *_Filename) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl unlink(const char *_Filename) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #endif  /* _CRT_DIRECTORY_DEFINED */
   _CRTIMP int __cdecl _setmode(int _FileHandle, int _Mode);
@@ -134,44 +134,44 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _findnext64(intptr_t _FindHandle, struct __finddata64_t *_FindData);
   __MINGW_EXTENSION __int64 __cdecl _lseeki64(int _FileHandle, __int64 _Offset,int _Origin);
   __MINGW_EXTENSION __int64 __cdecl _telli64(int _FileHandle);
-  _CRTIMP int __cdecl _open(const char *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl _sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _open(const char *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _sopen_s(int *_FileHandle, const char *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionMode);
   _CRTIMP errno_t __cdecl _sopen_s_nolock(int *_FileHandle, const char *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionMode);
   _CRTIMP errno_t __cdecl _sopen_dispatch(const char *_Filename, int _OpenFlag, int _ShareFlag, int _PMode, int *_PFileHandle, int _BSecure);
 
-  extern int __cdecl access(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  extern int __cdecl access(const char *_Filename, int _AccessMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl chsize(int _FileHandle, long _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl chsize(int _FileHandle, long _Size) __MINGW_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int __cdecl close(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl creat(const char *_Filename, int _PermissionMode) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl dup(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl dup2(int _FileHandleSrc, int _FileHandleDst) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl close(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl creat(const char *_Filename, int _PermissionMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl dup(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl dup2(int _FileHandleSrc, int _FileHandleDst) __MINGW_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl eof(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP long __cdecl filelength(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl eof(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP long __cdecl filelength(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int __cdecl isatty(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl isatty(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl locking(int _FileHandle, int _LockMode, long _NumOfBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl locking(int _FileHandle, int _LockMode, long _NumOfBytes) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifndef __MINGW_USE_FOB64
-  _CRTIMP long __cdecl lseek(int _FileHandle, long _Offset, int _Origin) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP long __cdecl lseek(int _FileHandle, long _Offset, int _Origin) __MINGW_DEPRECATED_MSVC2005;
 #else
-  _CRTIMP off_t __cdecl lseek(int _FileHandle, off_t _Offset, int _Origin) __MINGW_ASM_CALL(lseek64) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP off_t __cdecl lseek(int _FileHandle, off_t _Offset, int _Origin) __MINGW_ASM_CALL(lseek64) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP char *__cdecl mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
-  _CRTIMP int __cdecl open(const char *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount)  __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl setmode(int _FileHandle, int _Mode) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl open(const char *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount)  __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl setmode(int _FileHandle, int _Mode) __MINGW_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_ATTRIB_DEPRECATED_MSVC2005 __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP long __cdecl tell(int _FileHandle) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP long __cdecl tell(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int __cdecl write(int _Filehandle, const void *_Buf, unsigned int _MaxCharCount) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl write(int _Filehandle, const void *_Buf, unsigned int _MaxCharCount) __MINGW_DEPRECATED_MSVC2005;
 
 #if __MINGW_FORTIFY_LEVEL > 0
 

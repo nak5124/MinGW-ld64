@@ -52,7 +52,7 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _MKDIR_DEFINED  /* Also in sys/stat.h */
 # define _MKDIR_DEFINED
   _CRTIMP int __cdecl _mkdir(const char *_Path) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl mkdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #endif
   _CRTIMP int __cdecl _rmdir(const char *_Path);
 
@@ -60,9 +60,9 @@ __MINGW_BEGIN_C_DECLS
 
 #pragma push_macro("getcwd")
 #undef getcwd
-  _CRTIMP char *__cdecl getcwd(char *_DstBuf, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl getcwd(char *_DstBuf, int _SizeInBytes) __MINGW_DEPRECATED_MSVC2005;
 #pragma pop_macro("getcwd")
-  _CRTIMP int __cdecl chdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl chdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 
 #ifdef __MINGW_USE_MS
 # ifndef diskfree_t
@@ -72,7 +72,7 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-  _CRTIMP int __cdecl rmdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl rmdir(const char *_Path) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 
 __MINGW_END_C_DECLS
 

@@ -91,7 +91,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl isleadbyte(int _C);
   _CRTIMP int __cdecl _isleadbyte_l(int _C, _locale_t _Locale);
 
-  _CRTIMP int __cdecl is_wctype(wint_t _C, wctype_t _Type) __MINGW_ATTRIB_DEPRECATED;
+  _CRTIMP int __cdecl is_wctype(wint_t _C, wctype_t _Type) __MINGW_DEPRECATED;
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
 #ifndef _CTYPE_DISABLE_MACROS

@@ -219,7 +219,7 @@ __MINGW_BEGIN_C_DECLS
   /* Set the FPU control word as cw = (cw & ~unMask) | (unNew & unMask),
    * i.e. change the bits in unMask to have the values they have in unNew,
    * leaving other bits unchanged. */
-  _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
   _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _control87(unsigned int _NewValue, unsigned int _Mask);
 
