@@ -8,7 +8,7 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl sprintf(char * __restrict__ _Dest,const char * __restrict__ _Format,...) __MINGW_DEPRECATED_SEC_WARN
+int __cdecl sprintf(char * __restrict _Dest,const char * __restrict _Format,...) __MINGW_DEPRECATED_SEC_WARN
 {
   __builtin_va_list ap;
   int ret;
@@ -17,4 +17,4 @@ int __cdecl sprintf(char * __restrict__ _Dest,const char * __restrict__ _Format,
   __builtin_va_end(ap);
   return ret < 0 ? -1 : ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(sprintf))(char *__restrict__, const char *__restrict__, ...) = sprintf;
+int __cdecl (*__MINGW_IMP_SYMBOL(sprintf))(char *__restrict, const char *__restrict, ...) = sprintf;

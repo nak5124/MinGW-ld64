@@ -8,10 +8,10 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl vsprintf(char * __restrict__ _Dest,const char * __restrict__ _Format,va_list _Args) __MINGW_DEPRECATED_SEC_WARN
+int __cdecl vsprintf(char * __restrict _Dest,const char * __restrict _Format,va_list _Args) __MINGW_DEPRECATED_SEC_WARN
 {
   int ret;
   ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, _Dest, (size_t)-1, _Format, NULL, _Args);
   return ret < 0 ? -1 : ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(vsprintf))(char *__restrict__, const char *__restrict__, va_list) = vsprintf;
+int __cdecl (*__MINGW_IMP_SYMBOL(vsprintf))(char *__restrict, const char *__restrict, va_list) = vsprintf;

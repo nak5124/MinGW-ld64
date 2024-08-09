@@ -8,7 +8,7 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl fprintf(FILE * __restrict__ _File,const char * __restrict__ _Format,...)
+int __cdecl fprintf(FILE * __restrict _File,const char * __restrict _Format,...)
 {
   __builtin_va_list ap;
   int ret;
@@ -17,4 +17,4 @@ int __cdecl fprintf(FILE * __restrict__ _File,const char * __restrict__ _Format,
   __builtin_va_end(ap);
   return ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(fprintf))(FILE *__restrict__, const char *__restrict__, ...) = fprintf;
+int __cdecl (*__MINGW_IMP_SYMBOL(fprintf))(FILE *__restrict, const char *__restrict, ...) = fprintf;

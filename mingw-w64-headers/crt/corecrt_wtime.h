@@ -29,8 +29,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP wchar_t *__cdecl _wasctime(const struct tm *_Tm) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _wasctime_s(wchar_t *_Buf, size_t _SizeInWords, const struct tm *_Tm);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _wasctime_s, wchar_t, _Buffer, const struct tm *, _Time)
-  _CRTIMP size_t __cdecl wcsftime(wchar_t * __restrict__ _Buf, size_t _SizeInWords, const wchar_t * __restrict__ _Format, const struct tm * __restrict__ _Tm) __MINGW_NONNULL((1, 3, 4));
-  _CRTIMP size_t __cdecl _wcsftime_l(wchar_t * __restrict__ _Buf, size_t _SizeInWords, const wchar_t * __restrict__ _Format, const struct tm * __restrict__ _Tm, _locale_t _Locale);
+  _CRTIMP size_t __cdecl wcsftime(wchar_t * __restrict _Buf, size_t _SizeInWords, const wchar_t * __restrict _Format, const struct tm * __restrict _Tm) __MINGW_NONNULL((1, 3, 4));
+  _CRTIMP size_t __cdecl _wcsftime_l(wchar_t * __restrict _Buf, size_t _SizeInWords, const wchar_t * __restrict _Format, const struct tm * __restrict _Tm, _locale_t _Locale);
   _CRTIMP wchar_t *__cdecl _wctime32(const __time32_t *_Time) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _wctime32_s(wchar_t *_Buf, size_t _SizeInWords, const __time32_t *_Time);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _wctime32_s, wchar_t, _Buffer, const __time32_t *, _Time)

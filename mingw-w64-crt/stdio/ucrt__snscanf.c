@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int __cdecl _snscanf(const char * __restrict__ _Src, size_t _MaxCount, const char * __restrict__ _Format, ...)
+int __cdecl _snscanf(const char * __restrict _Src, size_t _MaxCount, const char * __restrict _Format, ...)
 {
   int ret;
   va_list _ArgList;
@@ -18,4 +18,4 @@ int __cdecl _snscanf(const char * __restrict__ _Src, size_t _MaxCount, const cha
   va_end(_ArgList);
   return ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(_snscanf))(const char *__restrict__, size_t, const char * __restrict__, ...) = _snscanf;
+int __cdecl (*__MINGW_IMP_SYMBOL(_snscanf))(const char *__restrict, size_t, const char * __restrict, ...) = _snscanf;

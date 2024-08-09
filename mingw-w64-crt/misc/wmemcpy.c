@@ -10,8 +10,8 @@
 #if 0
 wchar_t *
 wmemcpy(s1, s2, n)
-	register wchar_t * __restrict__		s1;
-	register const wchar_t * __restrict__	s2;
+	register wchar_t * __restrict		s1;
+	register const wchar_t * __restrict	s2;
 	register size_t					n;
 {
 	wchar_t						*orig_s1 = s1;

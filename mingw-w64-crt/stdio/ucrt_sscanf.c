@@ -8,7 +8,7 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl sscanf(const char * __restrict__ _Src,const char * __restrict__ _Format,...) {
+int __cdecl sscanf(const char * __restrict _Src,const char * __restrict _Format,...) {
   __builtin_va_list __ap;
   int __ret;
   __builtin_va_start(__ap, _Format);
@@ -17,4 +17,4 @@ int __cdecl sscanf(const char * __restrict__ _Src,const char * __restrict__ _For
   return __ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(sscanf))(const char *__restrict__, const char *__restrict__, ...) = sscanf;
+int __cdecl (*__MINGW_IMP_SYMBOL(sscanf))(const char *__restrict, const char *__restrict, ...) = sscanf;

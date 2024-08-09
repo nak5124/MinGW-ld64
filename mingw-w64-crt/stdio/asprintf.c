@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int asprintf(char ** __restrict__ ret,
-                     const char * __restrict__ format,
+int asprintf(char ** __restrict ret,
+                     const char * __restrict format,
                      ...) {
   va_list ap;
   int len;

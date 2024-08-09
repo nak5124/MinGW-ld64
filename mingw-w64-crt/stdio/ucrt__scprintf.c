@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int __cdecl _scprintf(const char * __restrict__ _Format, ...)
+int __cdecl _scprintf(const char * __restrict _Format, ...)
 {
   int ret;
   va_list _ArgList;
@@ -18,4 +18,4 @@ int __cdecl _scprintf(const char * __restrict__ _Format, ...)
   va_end(_ArgList);
   return ret < 0 ? -1 : ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(_scprintf))(const char *__restrict__, ...) = _scprintf;
+int __cdecl (*__MINGW_IMP_SYMBOL(_scprintf))(const char *__restrict, ...) = _scprintf;

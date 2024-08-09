@@ -36,19 +36,19 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
   _CRTIMP wint_t __cdecl btowc(int);
-  _CRTIMP size_t __cdecl mbrlen(const char * __restrict__ _Ch, size_t _SizeInBytes, mbstate_t * __restrict__ _State);
-  _CRTIMP size_t __cdecl mbrtowc(wchar_t * __restrict__ _DstCh, const char * __restrict__ _SrcCh, size_t _SizeInBytes, mbstate_t * __restrict__ _State);
-  _CRTIMP size_t __cdecl mbsrtowcs(wchar_t * __restrict__ _Dest, const char ** __restrict__ _PSrc, size_t _Count, mbstate_t * __restrict__ _State) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP size_t __cdecl mbrlen(const char * __restrict _Ch, size_t _SizeInBytes, mbstate_t * __restrict _State);
+  _CRTIMP size_t __cdecl mbrtowc(wchar_t * __restrict _DstCh, const char * __restrict _SrcCh, size_t _SizeInBytes, mbstate_t * __restrict _State);
+  _CRTIMP size_t __cdecl mbsrtowcs(wchar_t * __restrict _Dest, const char ** __restrict _PSrc, size_t _Count, mbstate_t * __restrict _State) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl mbsrtowcs_s(size_t *_Retval, wchar_t *_Dst, size_t _SizeInWords, const char **_PSrc, size_t _N, mbstate_t *_State);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(errno_t, mbsrtowcs_s, size_t *, _Retval, wchar_t, _Dst, const char **, _PSrc, size_t, _N, mbstate_t *, _State)
 #endif
-  _CRTIMP size_t __cdecl wcrtomb(char * __restrict__ _Dest, wchar_t _Source, mbstate_t * __restrict__ _State) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP size_t __cdecl wcrtomb(char * __restrict _Dest, wchar_t _Source, mbstate_t * __restrict _State) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wcrtomb_s(size_t *_Retval, char *_Dst, size_t _SizeInBytes, wchar_t _Ch, mbstate_t *_State);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(errno_t, wcrtomb_s, size_t *, _Retval, char, _Dst, wchar_t, _Ch, mbstate_t *, _State)
 #endif
-  _CRTIMP size_t __cdecl wcsrtombs(char * __restrict__ _Dest, const wchar_t ** __restrict__ _PSource, size_t _Count, mbstate_t * __restrict__ _State) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP size_t __cdecl wcsrtombs(char * __restrict _Dest, const wchar_t ** __restrict _PSource, size_t _Count, mbstate_t * __restrict _State) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wcsrtombs_s(size_t *_Retval, char *_Dst, size_t _SizeInBytes, const wchar_t **_Src, size_t _Size, mbstate_t *_State);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(errno_t, wcsrtombs_s, size_t *, _Retval, char, _Dst, const wchar_t **, _Src, size_t, _Size, mbstate_t *, _State)
@@ -70,7 +70,7 @@ __MINGW_BEGIN_C_DECLS
 
   _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *s, wchar_t c, size_t n) __MINGW_NONNULL((1));
   extern int __cdecl wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n) __MINGW_NONNULL((1, 2));
-  extern wchar_t *__cdecl wmemcpy(wchar_t * __restrict__ s1, const wchar_t * __restrict__ s2, size_t n)
+  extern wchar_t *__cdecl wmemcpy(wchar_t * __restrict s1, const wchar_t * __restrict s2, size_t n)
     __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
   extern wchar_t *__cdecl wmemmove(wchar_t *s1, const wchar_t *s2, size_t n)
     __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
@@ -112,7 +112,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
   __CRT_INLINE __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN
-  wchar_t *__cdecl wmemcpy(wchar_t * __restrict__ _S1, const wchar_t * __restrict__ _S2, size_t _N)
+  wchar_t *__cdecl wmemcpy(wchar_t * __restrict _S1, const wchar_t * __restrict _S2, size_t _N)
   {
     return (wchar_t *)memcpy(_S1, _S2, _N * sizeof(wchar_t));
   }

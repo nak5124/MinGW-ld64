@@ -8,7 +8,7 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl scanf(const char * __restrict__ _Format,...) {
+int __cdecl scanf(const char * __restrict _Format,...) {
   __builtin_va_list __ap;
   int __ret;
   __builtin_va_start(__ap, _Format);
@@ -16,4 +16,4 @@ int __cdecl scanf(const char * __restrict__ _Format,...) {
   __builtin_va_end(__ap);
   return __ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(scanf))(const char *__restrict__, ...) = scanf;
+int __cdecl (*__MINGW_IMP_SYMBOL(scanf))(const char *__restrict, ...) = scanf;

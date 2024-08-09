@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int __cdecl _snprintf(char * __restrict__ _Dest, size_t _Count, const char * __restrict__ _Format, ...)
+int __cdecl _snprintf(char * __restrict _Dest, size_t _Count, const char * __restrict _Format, ...)
 {
   int ret;
   va_list _Args;
@@ -18,4 +18,4 @@ int __cdecl _snprintf(char * __restrict__ _Dest, size_t _Count, const char * __r
   va_end(_Args);
   return ret < 0 ? -1 : ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(_snprintf))(char *__restrict__, size_t, const char *__restrict__, ...) = _snprintf;
+int __cdecl (*__MINGW_IMP_SYMBOL(_snprintf))(char *__restrict, size_t, const char *__restrict, ...) = _snprintf;

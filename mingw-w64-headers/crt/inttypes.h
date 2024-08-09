@@ -257,14 +257,14 @@ __MINGW_BEGIN_C_DECLS
 
 /* 7.8.2 Conversion functions for greatest-width integer types */
 
-  _CRTIMP intmax_t __cdecl strtoimax(const char * __restrict__ nptr, char ** __restrict__ endptr, int base);
-  _CRTIMP intmax_t __cdecl _strtoimax_l(const char * __restrict__ nptr, char ** __restrict__ endptr, int base, _locale_t _Locale);
-  _CRTIMP uintmax_t __cdecl strtoumax(const char * __restrict__ nptr, char ** __restrict__ endptr, int base);
-  _CRTIMP uintmax_t __cdecl _strtoumax_l(const char * __restrict__ nptr, char ** __restrict__ endptr, int base, _locale_t _Locale);
-  _CRTIMP intmax_t __cdecl wcstoimax(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base);
-  _CRTIMP intmax_t __cdecl _wcstoimax_l(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base, _locale_t _Locale);
-  _CRTIMP uintmax_t __cdecl wcstoumax(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base);
-  _CRTIMP uintmax_t __cdecl _wcstoumax_l(const wchar_t * __restrict__ nptr, wchar_t ** __restrict__ endptr, int base, _locale_t _Locale);
+  _CRTIMP intmax_t __cdecl strtoimax(const char * __restrict nptr, char ** __restrict endptr, int base);
+  _CRTIMP intmax_t __cdecl _strtoimax_l(const char * __restrict nptr, char ** __restrict endptr, int base, _locale_t _Locale);
+  _CRTIMP uintmax_t __cdecl strtoumax(const char * __restrict nptr, char ** __restrict endptr, int base);
+  _CRTIMP uintmax_t __cdecl _strtoumax_l(const char * __restrict nptr, char ** __restrict endptr, int base, _locale_t _Locale);
+  _CRTIMP intmax_t __cdecl wcstoimax(const wchar_t * __restrict nptr, wchar_t ** __restrict endptr, int base);
+  _CRTIMP intmax_t __cdecl _wcstoimax_l(const wchar_t * __restrict nptr, wchar_t ** __restrict endptr, int base, _locale_t _Locale);
+  _CRTIMP uintmax_t __cdecl wcstoumax(const wchar_t * __restrict nptr, wchar_t ** __restrict endptr, int base);
+  _CRTIMP uintmax_t __cdecl _wcstoumax_l(const wchar_t * __restrict nptr, wchar_t ** __restrict endptr, int base, _locale_t _Locale);
 
 __MINGW_END_C_DECLS
 

@@ -30,7 +30,7 @@ __MINGW_BEGIN_C_DECLS
      The timezone pointer arg is ignored.  Errors are ignored. */
 #ifndef _GETTIMEOFDAY_DEFINED
 # define _GETTIMEOFDAY_DEFINED
-  extern int __cdecl gettimeofday(struct timeval *__restrict__ p, void *__restrict__  z) __MINGW_NONNULL((1));
+  extern int __cdecl gettimeofday(struct timeval *__restrict p, void *__restrict  z) __MINGW_NONNULL((1));
 #endif
 
 __MINGW_END_C_DECLS

@@ -8,7 +8,7 @@
 #define _UCRT
 #include <stdio.h>
 
-int __cdecl fscanf(FILE * __restrict__ _File,const char * __restrict__ _Format,...) {
+int __cdecl fscanf(FILE * __restrict _File,const char * __restrict _Format,...) {
   __builtin_va_list __ap;
   int __ret;
   __builtin_va_start(__ap, _Format);
@@ -16,4 +16,4 @@ int __cdecl fscanf(FILE * __restrict__ _File,const char * __restrict__ _Format,.
   __builtin_va_end(__ap);
   return __ret;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(fscanf))(FILE *__restrict__, const char *__restrict__, ...) = fscanf;
+int __cdecl (*__MINGW_IMP_SYMBOL(fscanf))(FILE *__restrict, const char *__restrict, ...) = fscanf;

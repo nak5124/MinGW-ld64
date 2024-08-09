@@ -24,7 +24,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
-  _CRTIMP void *__cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void *__cdecl memcpy(void * __restrict _Dst, const void * __restrict _Src, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memcpy_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
@@ -44,7 +44,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
   __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))
-  void * memcpy(void * __restrict__ __dst, const void * __restrict__ __src, size_t __n)
+  void * memcpy(void * __restrict __dst, const void * __restrict __src, size_t __n)
   {
     return __builtin___memcpy_chk(__dst, __src, __n, __mingw_bos(__dst, 0));
   }

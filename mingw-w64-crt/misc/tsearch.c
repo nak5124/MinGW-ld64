@@ -19,8 +19,8 @@
 
 /* find or insert datum into search tree */
 void *
-tsearch (const void * __restrict__ vkey,		/* key to be located */
-	 void ** __restrict__ vrootp,		/* address of tree root */
+tsearch (const void * __restrict vkey,		/* key to be located */
+	 void ** __restrict vrootp,		/* address of tree root */
 	 int (*compar) (const void *, const void *))
 {
   node_t *q, **n;

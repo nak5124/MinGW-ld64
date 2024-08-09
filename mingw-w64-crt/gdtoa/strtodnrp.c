@@ -82,7 +82,7 @@ double __strtod (const char *s, char **sp)
 }
 
 double __cdecl
-__mingw_strtod (const char * __restrict__ src, char ** __restrict__ endptr)
+__mingw_strtod (const char * __restrict src, char ** __restrict endptr)
   __attribute__((alias("__strtod")));
 
 #if !(defined(_AMD64_) || defined(__x86_64__) || \
@@ -91,6 +91,6 @@ __mingw_strtod (const char * __restrict__ src, char ** __restrict__ endptr)
  * long double functions as aliases to __strtod. */
 
 long double __cdecl
-__mingw_strtold (const char * __restrict__ src, char ** __restrict__ endptr)
+__mingw_strtold (const char * __restrict src, char ** __restrict endptr)
   __attribute__((alias("__strtod")));
 #endif

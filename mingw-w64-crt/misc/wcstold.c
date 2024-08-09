@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-long double __cdecl wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse)
+long double __cdecl wcstold (const wchar_t * __restrict wcs, wchar_t ** __restrict wcse)
 {
   char * cs;
   char * cse;
@@ -69,4 +69,4 @@ long double __cdecl wcstold (const wchar_t * __restrict__ wcs, wchar_t ** __rest
   return ret;
 }
 
-long double __cdecl (*__MINGW_IMP_SYMBOL(wcstold))(const wchar_t * __restrict__ wcs, wchar_t ** __restrict__ wcse) = wcstold;
+long double __cdecl (*__MINGW_IMP_SYMBOL(wcstold))(const wchar_t * __restrict wcs, wchar_t ** __restrict wcse) = wcstold;

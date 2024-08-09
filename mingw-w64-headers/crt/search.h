@@ -66,7 +66,7 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
 #endif
 
   typedef int (*__compar_fn_t) (const void *, const void *);
-  extern void *__cdecl tdelete(const void * __restrict__ _key, void ** __restrict__ _rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
+  extern void *__cdecl tdelete(const void * __restrict _key, void ** __restrict _rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
   extern void *__cdecl tfind(const void *_key, void * const *_rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
   extern void *__cdecl tsearch(const void *_key, void **_rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
   typedef void (*__action_fn_t) (const void *_nodep, VISIT _value, int _level);

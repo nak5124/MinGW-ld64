@@ -77,9 +77,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP __time32_t __cdecl _mktime32(struct tm *_Tm);
   _CRTIMP __time64_t __cdecl _mktime64(struct tm *_Tm);
 
-  _CRTIMP size_t __cdecl strftime(char * __restrict__ _Buf, size_t _SizeInBytes, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm)
+  _CRTIMP size_t __cdecl strftime(char * __restrict _Buf, size_t _SizeInBytes, const char * __restrict _Format, const struct tm * __restrict _Tm)
     __MINGW_GNU_STRFTIME(3, 0) __MINGW_NONNULL((1, 3, 4));
-  _CRTIMP size_t __cdecl _strftime_l(char * __restrict__ _Buf, size_t _Max_size, const char * __restrict__ _Format,const struct tm * __restrict__ _Tm, _locale_t _Locale);
+  _CRTIMP size_t __cdecl _strftime_l(char * __restrict _Buf, size_t _Max_size, const char * __restrict _Format,const struct tm * __restrict _Tm, _locale_t _Locale);
   _CRTIMP char *__cdecl _strdate(char *_Buffer) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strdate_s(char *_Buf, size_t _SizeInBytes);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strdate_s, char, _Str)

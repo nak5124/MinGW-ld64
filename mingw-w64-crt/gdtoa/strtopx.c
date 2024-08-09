@@ -116,7 +116,7 @@ static int __strtopx (const char *s, char **sp, lD *V)
 }
 
 long double __cdecl
-__strtold (const char * __restrict__ src, char ** __restrict__ endptr)
+__strtold (const char * __restrict src, char ** __restrict endptr)
 {
 	lD ret;
 	ret.D = 0.0L;
@@ -125,11 +125,11 @@ __strtold (const char * __restrict__ src, char ** __restrict__ endptr)
 }
 
 long double __cdecl
-__mingw_strtold (const char * __restrict__ src, char ** __restrict__ endptr)
+__mingw_strtold (const char * __restrict src, char ** __restrict endptr)
   __attribute__((alias("__strtold")));
 
 long double __cdecl
-strtold (const char * __restrict__ src, char ** __restrict__ endptr)
+strtold (const char * __restrict src, char ** __restrict endptr)
   __attribute__((alias("__strtold")));
 
 #endif

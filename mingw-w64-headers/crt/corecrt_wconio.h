@@ -36,37 +36,37 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl __conio_common_vcwprintf_s(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP int __cdecl __conio_common_vcwprintf_p(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
 
-  __mingw_ovr int __cdecl _vcwprintf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwprintf_l(const wchar_t * __restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, _Locale, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwprintf(const wchar_t * __restrict__ _Format, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwprintf(const wchar_t * __restrict _Format, va_list _ArgList)
   {
     return __conio_common_vcwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, NULL, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwprintf_s_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwprintf_s_l(const wchar_t * __restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcwprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, _Locale, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwprintf_s(const wchar_t * __restrict__ _Format, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwprintf_s(const wchar_t * __restrict _Format, va_list _ArgList)
   {
     return __conio_common_vcwprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, NULL, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwprintf_p_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwprintf_p_l(const wchar_t * __restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcwprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, _Locale, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwprintf_p(const wchar_t * __restrict__ _Format, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwprintf_p(const wchar_t * __restrict _Format, va_list _ArgList)
   {
     return __conio_common_vcwprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, NULL, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _cwprintf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...)
+  __mingw_ovr int __cdecl _cwprintf_l(const wchar_t * __restrict _Format, _locale_t _Locale, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -76,7 +76,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwprintf(const wchar_t * __restrict__ _Format, ...)
+  __mingw_ovr int __cdecl _cwprintf(const wchar_t * __restrict _Format, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -86,7 +86,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwprintf_s_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...)
+  __mingw_ovr int __cdecl _cwprintf_s_l(const wchar_t * __restrict _Format, _locale_t _Locale, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -96,7 +96,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwprintf_s(const wchar_t * __restrict__ _Format, ...)
+  __mingw_ovr int __cdecl _cwprintf_s(const wchar_t * __restrict _Format, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -106,7 +106,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwprintf_p_l(const wchar_t * __restrict__ _Format, _locale_t _Locale,...)
+  __mingw_ovr int __cdecl _cwprintf_p_l(const wchar_t * __restrict _Format, _locale_t _Locale,...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -116,7 +116,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwprintf_p(const wchar_t * __restrict__ _Format, ...)
+  __mingw_ovr int __cdecl _cwprintf_p(const wchar_t * __restrict _Format, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -129,29 +129,29 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl __conio_common_vcwscanf(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
-  int __cdecl _vcwscanf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
+  int __cdecl _vcwscanf_l(const wchar_t * __restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
-  int __cdecl _vcwscanf(const wchar_t * __restrict__ _Format, va_list _ArgList)
+  int __cdecl _vcwscanf(const wchar_t * __restrict _Format, va_list _ArgList)
   {
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Format, NULL, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwscanf_s_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwscanf_s_l(const wchar_t * __restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, _Locale, _ArgList);
   }
 
-  __mingw_ovr int __cdecl _vcwscanf_s(const wchar_t * __restrict__ _Format, va_list _ArgList)
+  __mingw_ovr int __cdecl _vcwscanf_s(const wchar_t * __restrict _Format, va_list _ArgList)
   {
     return __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
   }
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
-  int __cdecl _cwscanf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...)
+  int __cdecl _cwscanf_l(const wchar_t * __restrict _Format, _locale_t _Locale, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -162,7 +162,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
-  int __cdecl _cwscanf(const wchar_t * __restrict__ _Format, ...)
+  int __cdecl _cwscanf(const wchar_t * __restrict _Format, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -172,7 +172,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwscanf_s_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...)
+  __mingw_ovr int __cdecl _cwscanf_s_l(const wchar_t * __restrict _Format, _locale_t _Locale, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
@@ -182,7 +182,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-  __mingw_ovr int __cdecl _cwscanf_s(const wchar_t * __restrict__ _Format, ...)
+  __mingw_ovr int __cdecl _cwscanf_s(const wchar_t * __restrict _Format, ...)
   {
     __builtin_va_list _ArgList;
     int _Ret;
