@@ -250,13 +250,13 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ATOF_DEFINED  /* Also in math.h */
 # define _CRT_ATOF_DEFINED
-  _CRTIMP double __cdecl atof(const char *_String) __MINGW_NONNULL((1));
+  _CRTIMP double __cdecl atof(const char *_String) __MINGW_NONNULL((1)) __MINGW_PURE;
   _CRTIMP double __cdecl _atof_l(const char *_String, _locale_t _Locale);
 #endif  /* _CRT_ATOF_DEFINED */
-  _CRTIMP int __cdecl atoi(const char *_Str) __MINGW_NONNULL((1));
-  _CRTIMP long __cdecl atol(const char *_Str) __MINGW_NONNULL((1));
+  _CRTIMP int __cdecl atoi(const char *_Str) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP long __cdecl atol(const char *_Str) __MINGW_NONNULL((1)) __MINGW_PURE;
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-  __MINGW_EXTENSION _CRTIMP long long __cdecl atoll(const char *_Str) __MINGW_NONNULL((1));
+  __MINGW_EXTENSION _CRTIMP long long __cdecl atoll(const char *_Str) __MINGW_NONNULL((1)) __MINGW_PURE;
 #endif
   __MINGW_EXTENSION _CRTIMP __int64 __cdecl _atoi64(const char *_String);
 

@@ -32,8 +32,8 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memmove_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
-  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_NONNULL((1, 2));
+  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP int __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP void *__cdecl memset(void *_Dst, int _Val, size_t _Size) __MINGW_NONNULL((1));
 
 #if __MINGW_FORTIFY_LEVEL > 0

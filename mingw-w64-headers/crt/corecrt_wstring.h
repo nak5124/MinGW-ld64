@@ -41,11 +41,11 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
   _CRTIMP wchar_t *__cdecl _wcsdup(const wchar_t *_Str) __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC_FREE;
-  _CRTIMP int __cdecl wcscmp(const wchar_t *_Str1, const wchar_t *_Str2) __MINGW_NONNULL((1, 2));
-  _CRTIMP size_t __cdecl wcscspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2));
-  _CRTIMP size_t __cdecl wcslen(const wchar_t *_Str) __MINGW_NONNULL((1));
+  _CRTIMP int __cdecl wcscmp(const wchar_t *_Str1, const wchar_t *_Str2) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+  _CRTIMP size_t __cdecl wcscspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+  _CRTIMP size_t __cdecl wcslen(const wchar_t *_Str) __MINGW_NONNULL((1)) __MINGW_PURE;
 #if defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MS)
-  _CRTIMP size_t __cdecl wcsnlen(const wchar_t *_Src, size_t _MaxCount) __MINGW_NONNULL((1));
+  _CRTIMP size_t __cdecl wcsnlen(const wchar_t *_Src, size_t _MaxCount) __MINGW_NONNULL((1)) __MINGW_PURE;
 #endif
 
 #ifdef __MINGW_USE_SECAPI
@@ -55,9 +55,9 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  _CRTIMP int __cdecl wcsncmp(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount) __MINGW_NONNULL((1, 2));
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2));
-  _CRTIMP size_t __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2));
+  _CRTIMP int __cdecl wcsncmp(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+  _CRTIMP size_t __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   wchar_t *__cdecl _wcstok(wchar_t * __restrict _Str, const wchar_t * __restrict _Delim)
@@ -119,9 +119,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _wcsnicoll(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount);
   _CRTIMP int __cdecl _wcsnicoll_l(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount, _locale_t _Locale);
 
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch) __MINGW_NONNULL((1));
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsrchr(const wchar_t *_Str, wchar_t _Ch) __MINGW_NONNULL((1));
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr) __MINGW_NONNULL((1, 2));
+  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsrchr(const wchar_t *_Str, wchar_t _Ch) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
 
 #if defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MS)
   _CRTIMP wchar_t *__cdecl wcsdup(const wchar_t *_Str)

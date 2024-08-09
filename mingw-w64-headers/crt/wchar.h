@@ -63,13 +63,14 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl fwide(FILE *stream, int mode);
 #endif
 
-  __mingw_ovr int __cdecl mbsinit(const mbstate_t *_P)
+  __mingw_ovr __MINGW_PURE
+  int __cdecl mbsinit(const mbstate_t *_P)
   {
     return (!_P || _P->_Wchar == 0);
   }
 
-  _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *s, wchar_t c, size_t n) __MINGW_NONNULL((1));
-  extern int __cdecl wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n) __MINGW_NONNULL((1, 2));
+  _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *s, wchar_t c, size_t n) __MINGW_NONNULL((1)) __MINGW_PURE;
+  extern int __cdecl wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   extern wchar_t *__cdecl wmemcpy(wchar_t * __restrict s1, const wchar_t * __restrict s2, size_t n)
     __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
   extern wchar_t *__cdecl wmemmove(wchar_t *s1, const wchar_t *s2, size_t n)
@@ -86,7 +87,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  __CRT_INLINE __MINGW_NONNULL((1))
+  __CRT_INLINE __MINGW_NONNULL((1)) __MINGW_PURE
   _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N)
   {
     if(_S)
@@ -98,7 +99,7 @@ __MINGW_BEGIN_C_DECLS
     return (_CONST_RETURN wchar_t *)NULL;
   }
 
-  __CRT_INLINE __MINGW_NONNULL((1, 2))
+  __CRT_INLINE __MINGW_NONNULL((1, 2)) __MINGW_PURE
   int __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N)
   {
     if(_N == 0 || _S1 == _S2)

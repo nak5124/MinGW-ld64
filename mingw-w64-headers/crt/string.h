@@ -35,8 +35,8 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memmove_s(void *_dest, size_t _numberOfElements, const void *_src, size_t _count);
 #endif
-  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_NONNULL((1, 2));
+  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP int __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP void *__cdecl memset(void *_Dst, int _Val, size_t _Size) __MINGW_NONNULL((1));
 
 #if __MINGW_FORTIFY_LEVEL > 0
@@ -109,11 +109,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char *__cdecl strtok_s(char *_Str, const char *_Delim, char **_Context);
 #endif
 
-  _CRTIMP int __cdecl strcmp(const char *_Str1, const char *_Str2) __MINGW_NONNULL((1, 2));
+  _CRTIMP int __cdecl strcmp(const char *_Str1, const char *_Str2) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP int __cdecl _strcmpi(const char *_Str1, const char *_Str2);
-  _CRTIMP int __cdecl strcoll(const char *_Str1, const char *_Str2) __MINGW_NONNULL((1, 2));
+  _CRTIMP int __cdecl strcoll(const char *_Str1, const char *_Str2) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP int __cdecl _strcoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
-  _CRTIMP size_t __cdecl strcspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
+  _CRTIMP size_t __cdecl strcspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP char *__cdecl _strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_MALLOC;
   _CRTIMP char *__cdecl _strerror(const char *_ErrMsg) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strerror_s(char *_Buf, size_t _SizeInBytes, const char *_ErrMsg);
@@ -122,14 +122,14 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _stricoll(const char *_Str1, const char *_Str2);
   _CRTIMP int __cdecl _stricoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
   _CRTIMP int __cdecl _stricmp_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
-  _CRTIMP size_t __cdecl strlen(const char *_Str) __MINGW_NONNULL((1));
+  _CRTIMP size_t __cdecl strlen(const char *_Str) __MINGW_NONNULL((1)) __MINGW_PURE;
   _CRTIMP char *__cdecl _strlwr(char *_String) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strlwr_s(char *_Str, size_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strlwr_s, char, _Str)
   _CRTIMP char *__cdecl _strlwr_l(char *_String, _locale_t _Locale);
   _CRTIMP errno_t __cdecl _strlwr_s_l(char *_Str, size_t _Size, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strlwr_s_l, char, _Str, _locale_t, _Locale)
-  _CRTIMP int __cdecl strncmp(const char *_Str1, const char *_Str2, size_t _MaxCount) __MINGW_NONNULL((1, 2));
+  _CRTIMP int __cdecl strncmp(const char *_Str1, const char *_Str2, size_t _MaxCount) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP int __cdecl _strnicmp(const char *_Str1, const char *_Str2, size_t _MaxCount);
   _CRTIMP int __cdecl _strnicmp_l(const char *_Str1, const char *_Str2, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP int __cdecl _strnicoll(const char *_Str1, const char *_Str2, size_t _MaxCount);
@@ -138,7 +138,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _strncoll_l(const char *_Str1, const char *_Str2, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP size_t __cdecl __strncnt(const char *_String, size_t _Count);
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-  _CRTIMP size_t __cdecl strnlen(const char *_Str, size_t _MaxCount) __MINGW_NONNULL((1));
+  _CRTIMP size_t __cdecl strnlen(const char *_Str, size_t _MaxCount) __MINGW_NONNULL((1)) __MINGW_PURE;
 #endif
 
 #ifdef __MINGW_USE_SECAPI
@@ -151,12 +151,12 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char *__cdecl _strnset(char *_Str, int _Val, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strnset_s(char *_Str, size_t _Size, int _Val, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _strnset_s, char, _Str, int, _Val, size_t, _MaxCount)
-  _CRTIMP _CONST_RETURN char *__cdecl strpbrk(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
+  _CRTIMP _CONST_RETURN char *__cdecl strpbrk(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP char *__cdecl _strrev(char *_Str);
   _CRTIMP char * __cdecl _strset(char *_Str, int _Val) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strset_s(char *_Dst, size_t _DstSize, int _Value);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strset_s, char, _Dst, int, _Value)
-  _CRTIMP size_t __cdecl strspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
+  _CRTIMP size_t __cdecl strspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP char *__cdecl _strupr(char *_String) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strupr_s(char *_Str, size_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strupr_s, char, _Str)
@@ -166,9 +166,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t __cdecl strxfrm(char * __restrict _Dst, const char * __restrict _Src, size_t _MaxCount) __MINGW_NONNULL((2));
   _CRTIMP size_t __cdecl _strxfrm_l(char * __restrict _Dst, const char * __restrict _Src, size_t _MaxCount, _locale_t _Locale);
 
-  _CRTIMP _CONST_RETURN char *__cdecl strchr(const char *_Str, int _Val) __MINGW_NONNULL((1));
-  _CRTIMP _CONST_RETURN char *__cdecl strrchr(const char *_Str, int _Ch) __MINGW_NONNULL((1));
-  _CRTIMP _CONST_RETURN char *__cdecl strstr(const char *_Str, const char *_SubStr) __MINGW_NONNULL((1, 2));
+  _CRTIMP _CONST_RETURN char *__cdecl strchr(const char *_Str, int _Val) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP _CONST_RETURN char *__cdecl strrchr(const char *_Str, int _Ch) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP _CONST_RETURN char *__cdecl strstr(const char *_Str, const char *_SubStr) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_MS)
 # pragma push_macro("strdup")
@@ -188,8 +188,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl strcasecmp(const char *_Str1, const char *_Str2);
-  _CRTIMP int __cdecl strncasecmp(const char *_Str1, const char *_Str2, size_t _MaxCount);
+  _CRTIMP int __cdecl strcasecmp(const char *_Str1, const char *_Str2) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+  _CRTIMP int __cdecl strncasecmp(const char *_Str1, const char *_Str2, size_t _MaxCount) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
 #endif
 
 #ifdef __MINGW_USE_MISC

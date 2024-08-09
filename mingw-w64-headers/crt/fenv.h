@@ -128,7 +128,7 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl fetestexcept(int _Flags);
 
   /* 7.6.3 Rounding */
-  extern int __cdecl fegetround(void);
+  extern int __cdecl fegetround(void) __MINGW_PURE;
   extern int __cdecl fesetround(int _Round);
 
   /* 7.6.4 Environment */

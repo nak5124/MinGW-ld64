@@ -477,7 +477,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  extern __MINGW_ATTRIB_PURE __MINGW_GNU_PRINTF(1, 0) __MINGW_NONNULL((1))
+  extern __MINGW_PURE __MINGW_GNU_PRINTF(1, 0) __MINGW_NONNULL((1))
   int __cdecl _vscprintf(const char * __restrict _Format, va_list _ArgList);
 
   __mingw_ovr int __cdecl _vscprintf_p_l(const char * __restrict _Format, _locale_t _Locale, va_list _ArgList)
@@ -629,7 +629,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
 
-  extern __MINGW_ATTRIB_PURE __MINGW_GNU_PRINTF(1, 2) __MINGW_NONNULL((1))
+  extern __MINGW_PURE __MINGW_GNU_PRINTF(1, 2) __MINGW_NONNULL((1))
   int __cdecl _scprintf(const char * __restrict _Format, ...);
 
   __mingw_ovr int __cdecl _scprintf_p_l(const char * __restrict _Format, _locale_t _Locale, ...)
