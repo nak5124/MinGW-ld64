@@ -1105,9 +1105,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl clearerr_s(FILE *_File);
 #endif
 #ifndef __MINGW_USE_FOB64
-  _CRTIMP FILE *__cdecl fopen(const char * __restrict _Filename, const char * __restrict _Mode) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP FILE *__cdecl fopen(const char * __restrict _Filename, const char * __restrict _Mode)
+    __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_SEC_WARN;
 #else
-  _CRTIMP FILE *__cdecl fopen(const char * __restrict _Filename, const char * __restrict _Mode) __MINGW_ASM_CALL(fopen64) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP FILE *__cdecl fopen(const char * __restrict _Filename, const char * __restrict _Mode)
+    __MINGW_ASM_CALL(fopen64) __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_SEC_WARN;
 #endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl fopen_s(FILE **_File, const char *_Filename, const char *_Mode);
@@ -1131,9 +1133,11 @@ __MINGW_BEGIN_C_DECLS
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(char *, gets_s, char, _Buffer)
 #endif
 #ifndef __MINGW_USE_FOB64
-  _CRTIMP FILE *__cdecl tmpfile(void) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP FILE *__cdecl tmpfile(void)
+    __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_SEC_WARN;
 #else
-  _CRTIMP FILE *__cdecl tmpfile(void) __MINGW_ASM_CALL(tmpfile64) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP FILE *__cdecl tmpfile(void)
+    __MINGW_ASM_CALL(tmpfile64) __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_SEC_WARN;
 #endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl tmpfile_s(FILE **_File);
@@ -1147,12 +1151,14 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _fcloseall(void);
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
 # ifndef __MINGW_USE_FOB64
-  _CRTIMP FILE *__cdecl fdopen(int _FileHandle, const char *_Mode) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP FILE *__cdecl fdopen(int _FileHandle, const char *_Mode)
+    __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_MSVC2005;
 # else
-  _CRTIMP FILE *__cdecl fdopen(int _FileHandle, const char *_Mode) __MINGW_ASM_CALL(fdopen64) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP FILE *__cdecl fdopen(int _FileHandle, const char *_Mode)
+    __MINGW_ASM_CALL(fdopen64) __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif
-  _CRTIMP FILE *__cdecl _fdopen(int _FileHandle, const char *_Mode);
+  _CRTIMP FILE *__cdecl _fdopen(int _FileHandle, const char *_Mode) __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1);
   _CRTIMP int __cdecl feof(FILE *_File) __MINGW_NONNULL((1));
   _CRTIMP int __cdecl ferror(FILE *_File) __MINGW_NONNULL((1));
   _CRTIMP int __cdecl fflush(FILE *_File);
@@ -1195,7 +1201,7 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_PERROR_DEFINED */
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   _CRTIMP int __cdecl _pclose(FILE *_File) __MINGW_NONNULL((1));
-  _CRTIMP FILE *__cdecl _popen(const char *_Command, const char *_Mode);
+  _CRTIMP FILE *__cdecl _popen(const char *_Command, const char *_Mode) __MINGW_MALLOC __MINGW_DEALLOC(_pclose, 1);
 # ifdef __MINGW_USE_POSIX2
 #   ifndef popen
 #     define popen  _popen
@@ -1221,7 +1227,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void __cdecl setbuf(FILE * __restrict _File, char * __restrict _Buffer) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP int __cdecl _setmaxstdio(int _Max);
   _CRTIMP int __cdecl setvbuf(FILE * __restrict _File, char * __restrict _Buf, int _Mode, size_t _Size) __MINGW_NONNULL((1));
-  _CRTIMP char *__cdecl _tempnam(const char *_DirName, const char *_FilePrefix);
+  _CRTIMP char *__cdecl _tempnam(const char *_DirName, const char *_FilePrefix) __MINGW_MALLOC __MINGW_DEALLOC_FREE;
   _CRTIMP int __cdecl ungetc(int _Ch, FILE *_File) __MINGW_NONNULL((2));
 
   _CRTIMP void __cdecl _lock_file(FILE *_File);
@@ -1257,7 +1263,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_XOPEN2K) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP char *__cdecl tempnam(const char *_Directory, const char *_FilePrefix) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl tempnam(const char *_Directory, const char *_FilePrefix)
+    __MINGW_MALLOC __MINGW_DEALLOC_FREE __MINGW_DEPRECATED_MSVC2005;
 #endif
 
 #if defined(__MINGW_USE_MS) || defined(__MINGW_USE_GNU)
@@ -1287,15 +1294,16 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_LFS64
-  FILE *__cdecl fdopen64(int _FileHandle, const char *_Mode);
-  FILE *__cdecl fopen64(const char * __restrict filename, const char * __restrict  mode);
+  FILE *__cdecl fdopen64(int _FileHandle, const char *_Mode) __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1);
+  FILE *__cdecl fopen64(const char * __restrict filename, const char * __restrict mode)
+    __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1);
   FILE *__cdecl freopen64(const char * __restrict _Filename, const char * __restrict _Mode, FILE * __restrict _File)
     __MINGW_NONNULL((3));
   int __cdecl fgetpos64(FILE * __restrict _File, fpos_t * __restrict _Pos) __MINGW_NONNULL((1));
   int __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos) __MINGW_NONNULL((1));
   int __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin) __MINGW_NONNULL((1));
   off64_t __cdecl ftello64(FILE *_File) __MINGW_NONNULL((1));
-  FILE *__cdecl tmpfile64(void);
+  FILE *__cdecl tmpfile64(void) __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1);
 #endif
 
   extern unsigned int __cdecl _get_output_format(void);

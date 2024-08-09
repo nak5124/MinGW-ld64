@@ -114,7 +114,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl strcoll(const char *_Str1, const char *_Str2) __MINGW_NONNULL((1, 2));
   _CRTIMP int __cdecl _strcoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale);
   _CRTIMP size_t __cdecl strcspn(const char *_Str, const char *_Control) __MINGW_NONNULL((1, 2));
-  _CRTIMP char *__cdecl _strdup(const char *_Src);
+  _CRTIMP char *__cdecl _strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_MALLOC;
   _CRTIMP char *__cdecl _strerror(const char *_ErrMsg) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _strerror_s(char *_Buf, size_t _SizeInBytes, const char *_ErrMsg);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strerror_s, char, _Buf, const char *, _ErrMsg)
@@ -173,7 +173,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_MS)
 # pragma push_macro("strdup")
 # undef strdup
-  _CRTIMP char *__cdecl strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP char *__cdecl strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEPRECATED_MSVC2005;
 # pragma pop_macro("strdup")
 #endif
 #ifdef __MINGW_USE_MS

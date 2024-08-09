@@ -40,7 +40,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP wchar_t *__cdecl wcstok_s(wchar_t *_Str, const wchar_t *_Delim, wchar_t **_Context);
 #endif
 
-  _CRTIMP wchar_t *__cdecl _wcsdup(const wchar_t *_Str);
+  _CRTIMP wchar_t *__cdecl _wcsdup(const wchar_t *_Str) __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC_FREE;
   _CRTIMP int __cdecl wcscmp(const wchar_t *_Str1, const wchar_t *_Str2) __MINGW_NONNULL((1, 2));
   _CRTIMP size_t __cdecl wcscspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2));
   _CRTIMP size_t __cdecl wcslen(const wchar_t *_Str) __MINGW_NONNULL((1));
@@ -124,7 +124,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr) __MINGW_NONNULL((1, 2));
 
 #if defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MS)
-  _CRTIMP wchar_t *__cdecl wcsdup(const wchar_t *_Str) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP wchar_t *__cdecl wcsdup(const wchar_t *_Str)
+    __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC_FREE __MINGW_DEPRECATED_MSVC2005;
 #endif
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
 # define wcswcs wcsstr

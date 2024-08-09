@@ -489,13 +489,13 @@ __MINGW_BEGIN_C_DECLS
 # define  alloca _alloca
 
   _CRTIMP void *__cdecl _calloc_base(size_t _Count, size_t _Size);
-  _CRTIMP void *__cdecl calloc(size_t _NumOfElements, size_t _SizeOfElements);
+  _CRTIMP void *__cdecl calloc(size_t _NumOfElements, size_t _SizeOfElements) __MINGW_MALLOC;
   _CRTIMP int __cdecl _callnewh(size_t _Size);
   _CRTIMP void *__cdecl _expand(void *_Memory, size_t _NewSize);
   _CRTIMP void __cdecl _free_base(void *_Block);
   _CRTIMP void __cdecl free(void *_Memory);
   _CRTIMP void *__cdecl _malloc_base(size_t _Size);
-  _CRTIMP void *__cdecl malloc(size_t _Size);
+  _CRTIMP void *__cdecl malloc(size_t _Size) __MINGW_MALLOC;
   _CRTIMP size_t __cdecl _msize_base(void *_Block);
   _CRTIMP size_t __cdecl _msize(void *_Memory);
   _CRTIMP void *__cdecl _realloc_base(void *_Block, size_t _Size);

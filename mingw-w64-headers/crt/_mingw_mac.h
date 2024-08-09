@@ -179,11 +179,19 @@
 #define __MINGW_CONST    __attribute__((__const__))
 
 #if __MINGW_GNUC_PREREQ(3, 0)
-# define __MINGW_ATTRIB_MALLOC __attribute__((__malloc__))
+# define __MINGW_MALLOC __attribute__((__malloc__))
 # define __MINGW_ATTRIB_PURE   __attribute__((__pure__))
 #else
-# define __MINGW_ATTRIB_MALLOC
+# define __MINGW_MALLOC
 # define __MINGW_ATTRIB_PURE
+#endif
+
+#if __MINGW_GNUC_PREREQ(11, 0)
+# define __MINGW_DEALLOC(dealloc, argno) __attribute__((__malloc__(dealloc, argno)))
+# define __MINGW_DEALLOC_FREE            __MINGW_DEALLOC(__builtin_free, 1)
+#else
+# define __MINGW_DEALLOC(dealloc, argno)
+# define __MINGW_DEALLOC_FREE
 #endif
 
 #if __MINGW_GNUC_PREREQ(3, 3)

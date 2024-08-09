@@ -51,7 +51,8 @@ __MINGW_BEGIN_C_DECLS
     char dd_name[1];
   } DIR;
 
-  extern DIR *__cdecl __MINGW_NOTHROW opendir(const char *_name) __MINGW_NONNULL((1));
+  extern DIR *__cdecl __MINGW_NOTHROW opendir(const char *_name)
+    __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC(closedir, 1);
   extern struct dirent *__cdecl __MINGW_NOTHROW readdir(DIR *_dirp) __MINGW_NONNULL((1));
   extern int __cdecl __MINGW_NOTHROW closedir(DIR *_dirp) __MINGW_NONNULL((1));
   extern void __cdecl __MINGW_NOTHROW rewinddir(DIR *_dirp) __MINGW_NONNULL((1));
@@ -98,7 +99,8 @@ __MINGW_BEGIN_C_DECLS
     wchar_t dd_name[1];
   } _WDIR;
 
-  extern _WDIR *__cdecl __MINGW_NOTHROW _wopendir(const wchar_t *_name) __MINGW_NONNULL((1));
+  extern _WDIR *__cdecl __MINGW_NOTHROW _wopendir(const wchar_t *_name)
+    __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC(_wclosedir, 1);
   extern struct _wdirent *__cdecl __MINGW_NOTHROW _wreaddir(_WDIR *_dirp) __MINGW_NONNULL((1));
   extern int __cdecl __MINGW_NOTHROW _wclosedir(_WDIR *_dirp) __MINGW_NONNULL((1));
   extern void __cdecl __MINGW_NOTHROW _wrewinddir(_WDIR *_dirp) __MINGW_NONNULL((1));
