@@ -201,9 +201,9 @@
 #endif
 
 #if __MINGW_GNUC_PREREQ(4, 4)
-# define __MINGW_ATTRIB_NO_OPTIMIZE __attribute__((__optimize__("0")))
+# define __MINGW_NO_OPTIMIZE __attribute__((__optimize__("0")))
 #else
-# define __MINGW_ATTRIB_NO_OPTIMIZE
+# define __MINGW_NO_OPTIMIZE
 #endif
 
 #if __MINGW_GNUC_PREREQ(4, 4)
