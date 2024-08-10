@@ -29,17 +29,17 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_TERMINATE_DEFINED  /* Also in stdlib.h */
 # define _CRT_TERMINATE_DEFINED
-  extern void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_NORETURN;
-  extern void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_NORETURN;
+  extern void __cdecl exit(int _Code) __MINGW_NORETURN __MINGW_NOTHROW;
+  extern void __cdecl _exit(int _Code) __MINGW_NORETURN __MINGW_NOTHROW;
 # if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-    extern void __cdecl _Exit(int) __MINGW_NORETURN;
+    extern void __cdecl _Exit(int) __MINGW_NORETURN __MINGW_NOTHROW;
 # endif
 # if defined(__MINGW_USE_ISOC11) || defined(__MINGW_USE_ISOCXX11)
-    extern void __cdecl __MINGW_NOTHROW quick_exit(int _Code) __MINGW_NORETURN;
+    extern void __cdecl quick_exit(int _Code) __MINGW_NORETURN __MINGW_NOTHROW;
 # endif
 # pragma push_macro("abort")
 # undef abort
-  _CRTIMP void __cdecl abort(void) __MINGW_NORETURN;
+  _CRTIMP void __cdecl abort(void) __MINGW_NORETURN __MINGW_NOTHROW;
 # pragma pop_macro("abort")
 #endif  /* _CRT_TERMINATE_DEFINED */
 
@@ -48,8 +48,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl system(const char *_Command);
 #endif  /* _CRT_SYSTEM_DEFINED */
 
-  _CRTIMP void __cdecl __MINGW_NOTHROW _cexit(void);
-  _CRTIMP void __cdecl __MINGW_NOTHROW _c_exit(void);
+  _CRTIMP void __cdecl _cexit(void) __MINGW_NOTHROW;
+  _CRTIMP void __cdecl _c_exit(void) __MINGW_NOTHROW;
 
   typedef void (__stdcall *_tls_callback_type)(void *, unsigned long, void *);
   _CRTIMP void __cdecl _register_thread_local_exe_atexit_callback(_tls_callback_type callback);

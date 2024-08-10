@@ -40,15 +40,15 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl iscntrl(int _C);
   _CRTIMP int __cdecl _iscntrl_l(int _C, _locale_t _Locale);
 
-  _CRTIMP int __cdecl toupper(int _C);
-  _CRTIMP int __cdecl tolower(int _C);
+  _CRTIMP int __cdecl toupper(int _C) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl tolower(int _C) __MINGW_NOTHROW;
   _CRTIMP int __cdecl _tolower(int _C);
   _CRTIMP int __cdecl _tolower_l(int _C, _locale_t _Locale);
   _CRTIMP int __cdecl _toupper(int _C);
   _CRTIMP int __cdecl _toupper_l(int _C, _locale_t _Locale);
 
-  _CRTIMP int __cdecl __isascii(int _C);
-  _CRTIMP int __cdecl __toascii(int _C);
+  _CRTIMP int __cdecl __isascii(int _C) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl __toascii(int _C) __MINGW_NOTHROW;
   _CRTIMP int __cdecl __iscsymf(int _C);
   _CRTIMP int __cdecl __iscsym(int _C);
 
@@ -149,8 +149,8 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CTYPE_DISABLE_MACROS */
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl isascii(int _C) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl toascii(int _C) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl isascii(int _C) __MINGW_NOTHROW __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl toascii(int _C) __MINGW_NOTHROW __MINGW_DEPRECATED_MSVC2005;
 # define isascii __isascii
 # define toascii __toascii
 #endif

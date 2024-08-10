@@ -219,31 +219,31 @@ __MINGW_BEGIN_C_DECLS
   /* Set the FPU control word as cw = (cw & ~unMask) | (unNew & unMask),
    * i.e. change the bits in unMask to have the values they have in unNew,
    * leaving other bits unchanged. */
-  _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP unsigned int __cdecl _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
-  _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _control87(unsigned int _NewValue, unsigned int _Mask);
+  _CRTIMP unsigned int __cdecl _control87(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW;
 
-  _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _clearfp(void);  /* Clear the FPU status word */
-  _CRTIMP unsigned int __cdecl __MINGW_NOTHROW _statusfp(void);  /* Report the FPU status word */
+  _CRTIMP unsigned int __cdecl _clearfp(void) __MINGW_NOTHROW;   /* Clear the FPU status word */
+  _CRTIMP unsigned int __cdecl _statusfp(void) __MINGW_NOTHROW;  /* Report the FPU status word */
 #define _clear87  _clearfp
 #define _status87 _statusfp
 
   _CRTIMP void __cdecl _set_controlfp(unsigned int _NewValue, unsigned int _Mask);
 
   /*
-     MSVCRT.dll _fpreset initializes the control register to 0x27f,
-     the status register to zero and the tag word to 0FFFFh.
-     This differs from asm instruction finit/fninit which set control
-     word to 0x37f (64 bit mantissa precison rather than 53 bit).
-     By default, the mingw version of _fpreset sets fp control as
-     per fninit. To use the MSVCRT.dll _fpreset, include CRT_fp8.o when
-     building your application.
-  */
-  void __cdecl __MINGW_NOTHROW _fpreset(void);
-  void __cdecl __MINGW_NOTHROW fpreset(void);
+   *  MSVCRT.dll _fpreset initializes the control register to 0x27f,
+   *  the status register to zero and the tag word to 0FFFFh.
+   *  This differs from asm instruction finit/fninit which set control
+   *  word to 0x37f (64 bit mantissa precison rather than 53 bit).
+   *  By default, the mingw version of _fpreset sets fp control as
+   *  per fninit. To use the MSVCRT.dll _fpreset, include CRT_fp8.o when
+   *  building your application.
+   */
+  void __cdecl _fpreset(void) __MINGW_NOTHROW;
+  void __cdecl fpreset(void) __MINGW_NOTHROW;
 
   /* Global 'variable' for the current floating point error code. */
-  _CRTIMP int *__cdecl __MINGW_NOTHROW __fpecode(void);
+  _CRTIMP int *__cdecl __fpecode(void) __MINGW_NOTHROW;
 #define _fpecode (*(__fpecode()))
 
   _CRTIMP int __cdecl __fpe_flt_rounds(void);

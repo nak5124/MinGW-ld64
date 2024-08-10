@@ -44,7 +44,7 @@ __MINGW_BEGIN_C_DECLS
 #define _LEADBYTE 0x8000
 #define _ALPHA   (0x0100 | _UPPER | _LOWER)
 
-  _CRTIMP int __cdecl iswalnum(wint_t _C) __MINGW_PURE;
+  _CRTIMP int __cdecl iswalnum(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
   _CRTIMP int __cdecl iswalpha(wint_t _C);
 #ifdef __MINGW_USE_MS
   _CRTIMP int __cdecl iswascii(wint_t _C);
@@ -55,7 +55,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl iswcntrl(wint_t _C);
   _CRTIMP int __cdecl iswdigit(wint_t _C);
   _CRTIMP int __cdecl iswgraph(wint_t _C);
-  _CRTIMP int __cdecl iswlower(wint_t _C) __MINGW_PURE;
+  _CRTIMP int __cdecl iswlower(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
   _CRTIMP int __cdecl iswprint(wint_t _C);
   _CRTIMP int __cdecl iswpunct(wint_t _C);
   _CRTIMP int __cdecl iswspace(wint_t _C);
@@ -79,8 +79,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _iswcsymf_l(wint_t _C, _locale_t _Locale);
   _CRTIMP int __cdecl _iswcsym_l(wint_t _C, _locale_t _Locale);
 
-  _CRTIMP wint_t __cdecl towupper(wint_t _C) __MINGW_PURE;
-  _CRTIMP wint_t __cdecl towlower(wint_t _C) __MINGW_PURE;
+  _CRTIMP wint_t __cdecl towupper(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP wint_t __cdecl towlower(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
   _CRTIMP int __cdecl iswctype(wint_t _C, wctype_t _Type);
 
   _CRTIMP wint_t __cdecl _towupper_l(wint_t _C, _locale_t _Locale);

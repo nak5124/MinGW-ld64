@@ -46,7 +46,7 @@ __MINGW_BEGIN_C_DECLS
 #pragma pop_macro("sleep")
 
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC)
-  extern int __cdecl __MINGW_NOTHROW usleep(useconds_t);
+  extern int __cdecl usleep(useconds_t) __MINGW_NOTHROW;
 #endif
 
 #if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)

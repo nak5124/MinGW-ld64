@@ -104,7 +104,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _isatty(int _FileHandle);
   _CRTIMP int __cdecl _locking(int _FileHandle, int _LockMode, long _NumOfBytes);
   _CRTIMP long __cdecl _lseek(int _FileHandle, long _Offset, int _Origin);
-  _CRTIMP char *__cdecl _mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl _mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _mktemp_s (char *_TemplateName, size_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _mktemp_s, char, _TemplateName)
   _CRTIMP int __cdecl _open_osfhandle(intptr_t _OSFileHandle, int _Flags);
@@ -162,7 +162,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP off_t __cdecl lseek(int _FileHandle, off_t _Offset, int _Origin) __MINGW_ASM_CALL(lseek64) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP char *__cdecl mktemp(char *_TemplateName) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl mktemp(char *_TemplateName)
+    __MINGW_NONNULL((1)) __MINGW_NOTHROW __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
   _CRTIMP int __cdecl open(const char *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP int __cdecl read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount)  __MINGW_DEPRECATED_MSVC2005;

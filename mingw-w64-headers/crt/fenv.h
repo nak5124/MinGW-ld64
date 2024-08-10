@@ -121,21 +121,21 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 
   /* 7.6.2 Exception */
-  extern int __cdecl feclearexcept(int _Flags);
-  extern int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags);
-  extern int __cdecl feraiseexcept(int _Except);
-  extern int __cdecl fesetexceptflag(const fexcept_t *_Except, int _SetFlags);
-  extern int __cdecl fetestexcept(int _Flags);
+  extern int __cdecl feclearexcept(int _Flags) __MINGW_NOTHROW;
+  extern int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags) __MINGW_NOTHROW;
+  extern int __cdecl feraiseexcept(int _Except) __MINGW_NOTHROW;
+  extern int __cdecl fesetexceptflag(const fexcept_t *_Except, int _SetFlags) __MINGW_NOTHROW;
+  extern int __cdecl fetestexcept(int _Flags) __MINGW_NOTHROW;
 
   /* 7.6.3 Rounding */
-  extern int __cdecl fegetround(void) __MINGW_PURE;
-  extern int __cdecl fesetround(int _Round);
+  extern int __cdecl fegetround(void) __MINGW_PURE __MINGW_NOTHROW;
+  extern int __cdecl fesetround(int _Round) __MINGW_NOTHROW;
 
   /* 7.6.4 Environment */
-  extern int __cdecl fegetenv(fenv_t *_Env);
-  extern int __cdecl fesetenv(const fenv_t *_Env);
-  extern int __cdecl feupdateenv(const fenv_t *_Penv);
-  extern int __cdecl feholdexcept(fenv_t *_Env);
+  extern int __cdecl fegetenv(fenv_t *_Env) __MINGW_NOTHROW;
+  extern int __cdecl fesetenv(const fenv_t *_Env) __MINGW_NOTHROW;
+  extern int __cdecl feupdateenv(const fenv_t *_Penv) __MINGW_NOTHROW;
+  extern int __cdecl feholdexcept(fenv_t *_Env) __MINGW_NOTHROW;
 
 __MINGW_END_C_DECLS
 

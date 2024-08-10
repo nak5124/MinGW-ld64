@@ -177,16 +177,16 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ABS_DEFINED  /* Also in stdlib.h */
 # define _CRT_ABS_DEFINED
-  int __cdecl abs(int _X) __MINGW_CONST;
-  long __cdecl labs(long _X) __MINGW_CONST;
+  int __cdecl abs(int _X) __MINGW_CONST __MINGW_NOTHROW;
+  long __cdecl labs(long _X) __MINGW_CONST __MINGW_NOTHROW;
 # if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-    __MINGW_EXTENSION long long __cdecl llabs(long long _X) __MINGW_CONST;
+    __MINGW_EXTENSION long long __cdecl llabs(long long _X) __MINGW_CONST __MINGW_NOTHROW;
 # endif
 #endif  /* _CRT_ABS_DEFINED */
 
 #ifndef _CRT_ATOF_DEFINED  /* Also in stdlib.h */
 # define _CRT_ATOF_DEFINED
-  _CRTIMP double __cdecl atof(const char *_String) __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP double __cdecl atof(const char *_String) __MINGW_NONNULL((1)) __MINGW_PURE __MINGW_NOTHROW;
   _CRTIMP double __cdecl _atof_l(const char *_String, _locale_t _Locale);
 #endif  /* _CRT_ATOF_DEFINED */
 
@@ -229,7 +229,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP double __cdecl _chgsign(double _X) __MINGW_NOTHROW;
   _CRTIMP double __cdecl _scalb(double _X, long _Y) __MINGW_NOTHROW;
   _CRTIMP double __cdecl _logb(double _X) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _nextafter(double _X, double _Y) __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y) __MINGW_CONST __MINGW_NOTHROW;
   _CRTIMP int __cdecl _finite(double _X) __MINGW_CONST __MINGW_NOTHROW;
   _CRTIMP int __cdecl _isnan(double _X) __MINGW_CONST __MINGW_NOTHROW;
   _CRTIMP int __cdecl _fpclass(double _X) __MINGW_NOTHROW;
@@ -881,14 +881,14 @@ __MINGW_BEGIN_C_DECLS
 #define _nanl() nanl("")
 
 /* 7.12.11.3 */
-  _CRTIMP double __cdecl nextafter(double _X, double _Y) __MINGW_CONST;
-  _CRTIMP float __cdecl nextafterf(float _X, float _Y) __MINGW_CONST;
-  _LDCRTIMP long double __cdecl nextafterl(long double _X, long double _Y) __MINGW_CONST;
+  _CRTIMP double __cdecl nextafter(double _X, double _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP float __cdecl nextafterf(float _X, float _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _LDCRTIMP long double __cdecl nextafterl(long double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
 
 /* 7.12.11.4 The nexttoward functions */
-  _LDCRTIMP double __cdecl nexttoward(double _X, long double _Y) __MINGW_CONST;
-  _LDCRTIMP float __cdecl nexttowardf(float _X,  long double _Y) __MINGW_CONST;
-  _LDCRTIMP long double __cdecl nexttowardl(long double _X, long double _Y) __MINGW_CONST;
+  _LDCRTIMP double __cdecl nexttoward(double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _LDCRTIMP float __cdecl nexttowardf(float _X,  long double _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _LDCRTIMP long double __cdecl nexttowardl(long double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
 
 /* 7.12.12.1 */
 /*  x > y ? (x - y) : 0.0  */
@@ -943,7 +943,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _finitef(float _X) __MINGW_CONST;
 
 #if defined(__x86_64__) || defined(_AMD64_)
-  _CRTIMP float __cdecl _nextafterf(float _X, float _Y);
+  _CRTIMP float __cdecl _nextafterf(float _X, float _Y) __MINGW_CONST __MINGW_NOTHROW;
   _CRTIMP int __cdecl _isnanf(float _X) __MINGW_CONST;
   _CRTIMP int __cdecl _fpclassf(float _X);
   _CRTIMP int __cdecl _set_FMA3_enable(int _Flag);
