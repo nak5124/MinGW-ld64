@@ -111,7 +111,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime64_s);
 # if _CRT_USE_CONFORMING_ANNEX_K_TIME
-  __mingw_ovr errno_t __cdecl gmtime_s(const time_t *_Time, struct tm *_Tm)
+  __mingw_ovr errno_t gmtime_s(const time_t *_Time, struct tm *_Tm)
   {
     if(_gmtime64_s(_Tm, _Time) == 0)
     {
@@ -120,7 +120,7 @@ __MINGW_BEGIN_C_DECLS
     return NULL;
   }
 
-  __mingw_ovr errno_t __cdecl localtime_s(const time_t *_Time, struct tm *_Tm)
+  __mingw_ovr errno_t localtime_s(const time_t *_Time, struct tm *_Tm)
   {
     if(_localtime64_s(_Tm, _Time) == 0)
     {

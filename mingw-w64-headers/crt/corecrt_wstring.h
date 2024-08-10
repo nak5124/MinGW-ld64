@@ -49,7 +49,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_SECAPI
-  __mingw_ovr size_t __cdecl wcsnlen_s(const wchar_t * _src, size_t _count)
+  __mingw_ovr size_t wcsnlen_s(const wchar_t * _src, size_t _count)
   {
     return _src ? wcsnlen(_src, _count) : 0;
   }
@@ -60,7 +60,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
-  wchar_t *__cdecl _wcstok(wchar_t * __restrict _Str, const wchar_t * __restrict _Delim)
+  wchar_t *_wcstok(wchar_t * __restrict _Str, const wchar_t * __restrict _Delim)
   {
     return wcstok(_Str, _Delim, 0);
   }

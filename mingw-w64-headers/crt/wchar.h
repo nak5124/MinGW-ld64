@@ -64,7 +64,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
   __mingw_ovr __MINGW_PURE
-  int __cdecl mbsinit(const mbstate_t *_P)
+  int mbsinit(const mbstate_t *_P)
   {
     return (!_P || _P->_Wchar == 0);
   }

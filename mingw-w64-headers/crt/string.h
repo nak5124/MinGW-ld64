@@ -142,7 +142,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_SECAPI
-  __mingw_ovr size_t __cdecl strnlen_s(const char * _src, size_t _count)
+  __mingw_ovr size_t strnlen_s(const char * _src, size_t _count)
   {
     return _src ? strnlen(_src, _count) : 0;
   }
