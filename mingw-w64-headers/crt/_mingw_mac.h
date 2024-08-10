@@ -254,9 +254,9 @@
 #endif  /* __cplusplus */
 
 #if __MINGW_GNUC_PREREQ(4, 3) || defined(__clang__)
-# define __mingw_attribute_artificial __attribute__((__artificial__))
+# define __MINGW_ARTIFICIAL __attribute__((__artificial__))
 #else
-# define __mingw_attribute_artificial
+# define __MINGW_ARTIFICIAL
 #endif
 
 #define __MINGW_SELECTANY __attribute__((__selectany__))

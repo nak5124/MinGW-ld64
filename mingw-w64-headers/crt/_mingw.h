@@ -411,9 +411,9 @@ __MINGW_BEGIN_C_DECLS
     && __builtin_constant_p(__mingw_bos(p, maxtype) < (size_t)(n)) \
     && __mingw_bos(p, maxtype) < (size_t)(n))                      \
     ? __mingw_chk_fail_warn() : __mingw_bos_ptr_chk(p, n, maxtype))
-# define __mingw_bos_ovr __mingw_ovr __attribute__((__always_inline__)) __mingw_attribute_artificial
+# define __mingw_bos_ovr __mingw_ovr __attribute__((__always_inline__)) __MINGW_ARTIFICIAL
 # define __mingw_bos_extern_ovr \
-    extern __inline__ __cdecl __attribute__((__always_inline__, __gnu_inline__)) __mingw_attribute_artificial
+    extern __inline__ __cdecl __attribute__((__always_inline__, __gnu_inline__)) __MINGW_ARTIFICIAL
 #else
 # define __mingw_bos_ovr __mingw_ovr
 #endif  /* __MINGW_FORTIFY_LEVEL > 0 */
