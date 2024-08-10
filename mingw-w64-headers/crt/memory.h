@@ -10,9 +10,6 @@
 
 __MINGW_BEGIN_C_DECLS
 
-#ifndef _CRT_MEMORY_DEFINED  /* Also in string.h */
-# define _CRT_MEMORY_DEFINED
-
   _CRTIMP void *__cdecl _memccpy(void *_Dst, const void *_Src, int _Val, size_t _MaxCount) __MINGW_NONNULL((1, 2));
   _CRTIMP int __cdecl _memicmp(const void *_Buf1, const void *_Buf2, size_t _Size);
   _CRTIMP int __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
@@ -73,8 +70,6 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
-#endif  /* _CRT_MEMORY_DEFINED */
 
 __MINGW_END_C_DECLS
 
