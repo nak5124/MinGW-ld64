@@ -1104,6 +1104,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl clearerr_s(FILE *_File);
 #endif
+  _CRTIMP int __cdecl fclose(FILE *_File) __MINGW_NONNULL((1));
 #ifndef __MINGW_USE_FOB64
   _CRTIMP FILE *__cdecl fopen(const char * __restrict _Filename, const char * __restrict _Mode)
     __MINGW_MALLOC __MINGW_DEALLOC(fclose, 1) __MINGW_DEPRECATED_SEC_WARN;
@@ -1147,7 +1148,6 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl tmpnam_s(char *_Buffer, rsize_t _Size);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, tmpnam_s, char, _Buffer)
 #endif
-  _CRTIMP int __cdecl fclose(FILE *_File) __MINGW_NONNULL((1));
   _CRTIMP int __cdecl _fcloseall(void);
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
 # ifndef __MINGW_USE_FOB64
