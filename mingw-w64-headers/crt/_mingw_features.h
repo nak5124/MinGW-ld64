@@ -271,9 +271,9 @@
 #endif
 
 /* If _FORTIFY_SOURCE is enabled, some inline functions may use
-   __builtin_va_arg_pack().  GCC may report an error if the address
-   of such a function is used.  Set _FORTIFY_VA_ARG=0 in this case.
-   Clang doesn't, as of version 15, yet implement __builtin_va_arg_pack().  */
+ * __builtin_va_arg_pack().  GCC may report an error if the address
+ * of such a function is used.  Set _FORTIFY_VA_ARG=0 in this case.
+ * Clang doesn't, as of version 15, yet implement __builtin_va_arg_pack().  */
 #if __MINGW_FORTIFY_LEVEL > 0 \
   && ((__MINGW_GNUC_PREREQ(4, 3) && !defined(__clang__)) || __has_builtin(__builtin_va_arg_pack)) \
   && (!defined(_FORTIFY_VA_ARG) || _FORTIFY_VA_ARG > 0)

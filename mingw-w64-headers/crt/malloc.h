@@ -26,49 +26,49 @@ __MINGW_BEGIN_C_DECLS
  /* The structure used to walk through the heap with _heapwalk.  */
   typedef struct _heapinfo
   {
-    int *_pentry;
-    size_t _size;
-    int _useflag;
+    int    *_pentry;
+    size_t  _size;
+    int     _useflag;
   } _HEAPINFO;
 
 #ifndef _CRT_ALLOCATION_DEFINED  /* Also in stdlib.h */
 # define _CRT_ALLOCATION_DEFINED
 
-#define _MM_MALLOC_H_INCLUDED
-#define _mm_free(a)      _aligned_free(a)
-#define _mm_malloc(a, b) _aligned_malloc(a, b)
+# define _MM_MALLOC_H_INCLUDED
+# define _mm_free(a)      _aligned_free(a)
+# define _mm_malloc(a, b) _aligned_malloc(a, b)
 
 # undef  _alloca
 # define _alloca(x) __builtin_alloca((x))
 # undef   alloca
 # define  alloca _alloca
 
-  _CRTIMP void *__cdecl _calloc_base(size_t _Count, size_t _Size);
-  _CRTIMP void *__cdecl calloc(size_t _NumOfElements, size_t _SizeOfElements) __MINGW_MALLOC __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _callnewh(size_t _Size);
-  _CRTIMP void *__cdecl _expand(void *_Memory, size_t _NewSize);
-  _CRTIMP void __cdecl _free_base(void *_Block);
-  _CRTIMP void __cdecl free(void *_Memory) __MINGW_NOTHROW;
-  _CRTIMP void *__cdecl _malloc_base(size_t _Size);
-  _CRTIMP void *__cdecl malloc(size_t _Size) __MINGW_MALLOC __MINGW_NOTHROW;
+  _CRTIMP void  *__cdecl _calloc_base(size_t _Count, size_t _Size);
+  _CRTIMP void  *__cdecl  calloc(size_t _NumOfElements, size_t _SizeOfElements) __MINGW_MALLOC __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _callnewh(size_t _Size);
+  _CRTIMP void  *__cdecl _expand(void *_Memory, size_t _NewSize);
+  _CRTIMP void   __cdecl _free_base(void *_Block);
+  _CRTIMP void   __cdecl  free(void *_Memory) __MINGW_NOTHROW;
+  _CRTIMP void  *__cdecl _malloc_base(size_t _Size);
+  _CRTIMP void  *__cdecl  malloc(size_t _Size) __MINGW_MALLOC __MINGW_NOTHROW;
   _CRTIMP size_t __cdecl _msize_base(void *_Block);
   _CRTIMP size_t __cdecl _msize(void *_Memory);
-  _CRTIMP void *__cdecl _realloc_base(void *_Block, size_t _Size);
-  _CRTIMP void *__cdecl realloc(void *_Memory, size_t _NewSize) __MINGW_NOTHROW;
-  _CRTIMP void *__cdecl _recalloc_base(void *_Block, size_t _Count, size_t _Size);
-  _CRTIMP void *__cdecl _recalloc(void *_Memory, size_t _Count, size_t _Size);
-  _CRTIMP void __cdecl _aligned_free(void *_Memory);
-  _CRTIMP void *__cdecl _aligned_malloc(size_t _Size, size_t _Alignment);
-  _CRTIMP void *__cdecl _aligned_offset_malloc(size_t _Size, size_t _Alignment, size_t _Offset);
+  _CRTIMP void  *__cdecl _realloc_base(void *_Block, size_t _Size);
+  _CRTIMP void  *__cdecl  realloc(void *_Memory, size_t _NewSize) __MINGW_NOTHROW;
+  _CRTIMP void  *__cdecl _recalloc_base(void *_Block, size_t _Count, size_t _Size);
+  _CRTIMP void  *__cdecl _recalloc(void *_Memory, size_t _Count, size_t _Size);
+  _CRTIMP void   __cdecl _aligned_free(void *_Memory);
+  _CRTIMP void  *__cdecl _aligned_malloc(size_t _Size, size_t _Alignment);
+  _CRTIMP void  *__cdecl _aligned_offset_malloc(size_t _Size, size_t _Alignment, size_t _Offset);
   _CRTIMP size_t __cdecl _aligned_msize(void *_Block, size_t _Alignment, size_t _Offset);
-  _CRTIMP void *__cdecl _aligned_offset_realloc(void *_Memory, size_t _Size, size_t _Alignment, size_t _Offset);
-  _CRTIMP void *__cdecl _aligned_offset_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment, size_t _Offset);
-  _CRTIMP void *__cdecl _aligned_realloc(void *_Memory, size_t _Size, size_t _Alignment);
-  _CRTIMP void *__cdecl _aligned_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment);
+  _CRTIMP void  *__cdecl _aligned_offset_realloc(void *_Memory, size_t _Size, size_t _Alignment, size_t _Offset);
+  _CRTIMP void  *__cdecl _aligned_offset_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment, size_t _Offset);
+  _CRTIMP void  *__cdecl _aligned_realloc(void *_Memory, size_t _Size, size_t _Alignment);
+  _CRTIMP void  *__cdecl _aligned_recalloc(void *_Memory, size_t _Count, size_t _Size, size_t _Alignment);
 #endif  /* _CRT_ALLOCATION_DEFINED */
 
   _CRTIMP intptr_t __cdecl _get_heap_handle(void);
-  _CRTIMP int __cdecl _heapmin(void);
+  _CRTIMP int      __cdecl _heapmin(void);
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   _CRTIMP int __cdecl _heapwalk(_HEAPINFO *_EntryInfo);
   _CRTIMP int __cdecl _heapchk(void);
@@ -81,7 +81,8 @@ __MINGW_BEGIN_C_DECLS
 
 #define _ALLOCA_S_MARKER_SIZE 16
 
-  static __inline void *_MarkAllocaS(void *_Ptr,unsigned int _Marker)
+  static __inline
+  void *_MarkAllocaS(void *_Ptr, unsigned int _Marker)
   {
     if(_Ptr)
     {
@@ -91,7 +92,8 @@ __MINGW_BEGIN_C_DECLS
     return _Ptr;
   }
 
-  static __inline size_t _MallocaComputeSize(size_t _Size)
+  static __inline
+  size_t _MallocaComputeSize(size_t _Size)
   {
     size_t _MarkedSize = _Size + _ALLOCA_S_MARKER_SIZE;
     return _MarkedSize > _Size ? _MarkedSize : 0;
@@ -106,7 +108,8 @@ __MINGW_BEGIN_C_DECLS
     : NULL)
 
 #undef _freea
-  static __inline void __cdecl _freea(void *_Memory)
+  static __inline
+  void __cdecl _freea(void *_Memory)
   {
     unsigned int _Marker;
     if(_Memory)

@@ -24,23 +24,24 @@ __MINGW_BEGIN_C_DECLS
   } _crt_app_type;
 
   _CRTIMP _crt_app_type __cdecl _query_app_type(void);
-  _CRTIMP void __cdecl _set_app_type(_crt_app_type _Type);
+  _CRTIMP void          __cdecl _set_app_type(_crt_app_type _Type);
 
 #ifndef _EXCEPTION_DEFINED  /* Also in math.h */
 # define _EXCEPTION_DEFINED
   struct _exception
   {
-    int type;
+    int         type;
     const char *name;
-    double arg1;
-    double arg2;
-    double retval;
+    double      arg1;
+    double      arg2;
+    double      retval;
   };
 
-  void __mingw_raise_matherr(int typ, const char *name, double a1, double a2, double rslt);
-  void __mingw_setusermatherr(int (__cdecl *)(struct _exception *));
-  _CRTIMP void __setusermatherr(int (__cdecl *)(struct _exception *));
-  #define __setusermatherr __mingw_setusermatherr
+          void __cdecl __mingw_raise_matherr(int __type, const char *__name, double __arg1, double __arg2, double __retval);
+  typedef int (__cdecl *_UserMathErrorFunctionPointer)(struct _exception *);
+          void __cdecl __mingw_setusermatherr(_UserMathErrorFunctionPointer _UMEFunc);
+  _CRTIMP void __cdecl __setusermatherr(_UserMathErrorFunctionPointer _UMEFunc);
+# define __setusermatherr __mingw_setusermatherr
 #endif  /* _EXCEPTION_DEFINED */
 
   typedef enum _crt_argv_mode
@@ -56,10 +57,10 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _initialize_narrow_environment(void);
   _CRTIMP int __cdecl _initialize_wide_environment(void);
 
-  _CRTIMP char *__cdecl _get_narrow_winmain_command_line(void);
+  _CRTIMP char    *__cdecl _get_narrow_winmain_command_line(void);
   _CRTIMP wchar_t *__cdecl _get_wide_winmain_command_line(void);
 
-  _CRTIMP char **__cdecl __p__acmdln(void);
+  _CRTIMP char    **__cdecl __p__acmdln(void);
   _CRTIMP wchar_t **__cdecl __p__wcmdln(void);
 
 #define _acmdln (*__p__acmdln())
@@ -90,8 +91,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _initialize_onexit_table(_onexit_table_t *_Table);
   _CRTIMP int __cdecl _register_onexit_function(_onexit_table_t *_Table, _onexit_t _Function);
   _CRTIMP int __cdecl _execute_onexit_table(_onexit_table_t *_Table);
-  _CRTIMP int __cdecl _crt_atexit(_PVFV func);
-  _CRTIMP int __cdecl _crt_at_quick_exit(_PVFV func);
+  _CRTIMP int __cdecl _crt_atexit(_PVFV _Function);
+  _CRTIMP int __cdecl _crt_at_quick_exit(_PVFV _Function);
 
 __MINGW_END_C_DECLS
 

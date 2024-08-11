@@ -21,16 +21,16 @@ __MINGW_BEGIN_C_DECLS
     int tz_dsttime;
   };
 
-  extern int __cdecl mingw_gettimeofday(struct timeval *p, struct timezone *z) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  extern int __cdecl mingw_gettimeofday(struct timeval *__tv, struct timezone *__tz) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
 #endif  /* _TIMEZONE_DEFINED */
 
   /* Implementation as per:
-     The Open Group Base Specifications, Issue 6
-     IEEE Std 1003.1, 2004 Edition
-     The timezone pointer arg is ignored.  Errors are ignored. */
+   * The Open Group Base Specifications, Issue 6
+   * IEEE Std 1003.1, 2004 Edition
+   * The timezone pointer arg is ignored.  Errors are ignored. */
 #ifndef _GETTIMEOFDAY_DEFINED
 # define _GETTIMEOFDAY_DEFINED
-  extern int __cdecl gettimeofday(struct timeval *__restrict p, void *__restrict  z) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  extern int __cdecl gettimeofday(struct timeval *__restrict __tv, void *__restrict __tz) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
 #endif
 
 __MINGW_END_C_DECLS

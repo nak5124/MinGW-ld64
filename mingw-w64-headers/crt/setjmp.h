@@ -33,24 +33,24 @@ __MINGW_BEGIN_C_DECLS
     __MINGW_EXTENSION unsigned __int64 R14;
     __MINGW_EXTENSION unsigned __int64 R15;
     __MINGW_EXTENSION unsigned __int64 Rip;
-    unsigned long MxCsr;
-    unsigned short FpCsr;
-    unsigned short Spare;
-    SETJMP_FLOAT128 Xmm6;
-    SETJMP_FLOAT128 Xmm7;
-    SETJMP_FLOAT128 Xmm8;
-    SETJMP_FLOAT128 Xmm9;
-    SETJMP_FLOAT128 Xmm10;
-    SETJMP_FLOAT128 Xmm11;
-    SETJMP_FLOAT128 Xmm12;
-    SETJMP_FLOAT128 Xmm13;
-    SETJMP_FLOAT128 Xmm14;
-    SETJMP_FLOAT128 Xmm15;
+    unsigned long                      MxCsr;
+    unsigned short                     FpCsr;
+    unsigned short                     Spare;
+    SETJMP_FLOAT128                    Xmm6;
+    SETJMP_FLOAT128                    Xmm7;
+    SETJMP_FLOAT128                    Xmm8;
+    SETJMP_FLOAT128                    Xmm9;
+    SETJMP_FLOAT128                    Xmm10;
+    SETJMP_FLOAT128                    Xmm11;
+    SETJMP_FLOAT128                    Xmm12;
+    SETJMP_FLOAT128                    Xmm13;
+    SETJMP_FLOAT128                    Xmm14;
+    SETJMP_FLOAT128                    Xmm15;
   } _JUMP_BUFFER;
 
 #elif defined(__aarch64__)
 
-#define _JBLEN 24
+#define _JBLEN  24
 #define _JBTYPE unsigned __int64
 
   typedef struct __JUMP_BUFFER
@@ -70,14 +70,14 @@ __MINGW_BEGIN_C_DECLS
     unsigned __int64 Fp;
     unsigned __int64 Lr;
     unsigned __int64 Sp;
-    unsigned long Fpcr;
-    unsigned long Fpsr;
-    double D[8];
+    unsigned long    Fpcr;
+    unsigned long    Fpsr;
+    double           D[8];
   } _JUMP_BUFFER;
 
 #else
 
-#define _JBLEN 1
+#define _JBLEN  1
 #define _JBTYPE int
 
 #endif
@@ -87,22 +87,23 @@ __MINGW_BEGIN_C_DECLS
   typedef _JBTYPE jmp_buf[_JBLEN];
 #endif
 
-  _CRTIMP void __cdecl longjmp(jmp_buf _Buf, int _Value) __MINGW_NORETURN __MINGW_NOTHROW;
+  _CRTIMP void  __cdecl longjmp(jmp_buf _Buf, int _Value) __MINGW_NORETURN __MINGW_NOTHROW;
 
-  extern void *__cdecl mingw_getsp(void) __MINGW_NOTHROW;
+  extern  void *__cdecl mingw_getsp(void) __MINGW_NOTHROW;
 
 #pragma push_macro("__has_builtin")
 #ifndef __has_builtin
 # define __has_builtin(x) 0
 #endif
 
-#define _setjmp __intrinsic_setjmpex
+#define _setjmp   __intrinsic_setjmpex
+#define _setjmpex __intrinsic_setjmpex
 #ifndef _INC_SETJMPEX
 # if (defined(__aarch64__) || defined(_ARM64_)) && (!defined(__SEH__) || !__has_builtin(__builtin_sponentry) || defined(__USE_MINGW_SETJMP_NON_SEH))
 #   define setjmp(BUF) __mingw_setjmp((BUF))
 #   define longjmp     __mingw_longjmp
-    extern int __cdecl __mingw_setjmp(jmp_buf _Buf) __MINGW_NOTHROW __attribute__((__returns_twice__));
-    extern void __mingw_longjmp(jmp_buf _Buf, int _Value) __MINGW_NORETURN __MINGW_NOTHROW;
+    extern int  __cdecl __mingw_setjmp(jmp_buf _Buf) __MINGW_NOTHROW __MINGW_RETURN_TWICE;
+    extern void __cdecl __mingw_longjmp(jmp_buf _Buf, int _Value) __MINGW_NORETURN __MINGW_NOTHROW;
 # elif defined(__SEH__) && !defined(__USE_MINGW_SETJMP_NON_SEH)
 #   if defined(__aarch64__) || defined(_ARM64_)
 #     define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())
@@ -114,7 +115,7 @@ __MINGW_BEGIN_C_DECLS
 # else
 #   define setjmp(BUF) _setjmp((BUF), NULL)
 # endif
-  int __cdecl _setjmp(jmp_buf _Buf, void *_Ctx) __MINGW_NOTHROW __attribute__((__returns_twice__));
+  int __cdecl _setjmp(jmp_buf _Buf, void *_Ctx) __MINGW_NOTHROW __MINGW_RETURN_TWICE;
 #else
 # undef setjmp
 # ifdef __SEH__
@@ -129,7 +130,7 @@ __MINGW_BEGIN_C_DECLS
 #   define setjmp(BUF)   _setjmpex((BUF), NULL)
 #   define setjmpex(BUF) _setjmpex((BUF), NULL)
 # endif
-  int __cdecl __attribute__((__returns_twice__)) _setjmpex(jmp_buf _Buf, void *_Ctx) __MINGW_NOTHROW;
+  int __cdecl _setjmpex(jmp_buf _Buf, void *_Ctx) __MINGW_NOTHROW __MINGW_RETURN_TWICE;
 #endif
 
 #pragma pop_macro("__has_builtin")

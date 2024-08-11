@@ -21,42 +21,42 @@ __MINGW_BEGIN_C_DECLS
 
   struct _wfinddata32_t
   {
-    unsigned attrib;
+    unsigned   attrib;
     __time32_t time_create;
     __time32_t time_access;
     __time32_t time_write;
-    _fsize_t size;
-    wchar_t name[260];
+    _fsize_t   size;
+    wchar_t    name[260];
   };
 
   struct _wfinddata32i64_t
   {
-    unsigned attrib;
-    __time32_t time_create;
-    __time32_t time_access;
-    __time32_t time_write;
+    unsigned                  attrib;
+    __time32_t                time_create;
+    __time32_t                time_access;
+    __time32_t                time_write;
     __MINGW_EXTENSION __int64 size;
-    wchar_t name[260];
+    wchar_t                   name[260];
   };
 
   struct _wfinddata64i32_t
   {
-    unsigned attrib;
+    unsigned   attrib;
     __time64_t time_create;
     __time64_t time_access;
     __time64_t time_write;
-    _fsize_t size;
-    wchar_t name[260];
+    _fsize_t   size;
+    wchar_t    name[260];
   };
 
   struct _wfinddata64_t
   {
-    unsigned attrib;
-    __time64_t time_create;
-    __time64_t time_access;
-    __time64_t time_write;
+    unsigned                  attrib;
+    __time64_t                time_create;
+    __time64_t                time_access;
+    __time64_t                time_write;
     __MINGW_EXTENSION __int64 size;
-    wchar_t name[260];
+    wchar_t                   name[260];
   };
 
 #define _wfindfirst    _wfindfirst64i32
@@ -64,27 +64,27 @@ __MINGW_BEGIN_C_DECLS
 #define _wfindfirsti64 _wfindfirst64
 #define _wfindnexti64  _wfindnext64
 
-  _CRTIMP int __cdecl _waccess(const wchar_t *_Filename, int _AccessMode) __MINGW_NONNULL((1));
-  _CRTIMP errno_t __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);
-  _CRTIMP int __cdecl _wchmod(const wchar_t *_Filename, int _Mode) __MINGW_NONNULL((1));
-  _CRTIMP int __cdecl _wcreat(const wchar_t *_Filename, int _PermissionMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int      __cdecl _waccess(const wchar_t *_Filename, int _AccessMode) __MINGW_NONNULL((1));
+  _CRTIMP errno_t  __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);
+  _CRTIMP int      __cdecl _wchmod(const wchar_t *_Filename, int _Mode) __MINGW_NONNULL((1));
+  _CRTIMP int      __cdecl _wcreat(const wchar_t *_Filename, int _PermissionMode) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);
-  _CRTIMP int __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
-  _CRTIMP int __cdecl _wunlink(const wchar_t *_Filename);
-  _CRTIMP int __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename);
+  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
+  _CRTIMP int      __cdecl _wunlink(const wchar_t *_Filename);
+  _CRTIMP int      __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename);
   _CRTIMP wchar_t *__cdecl _wmktemp(wchar_t *_TemplateName) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _wmktemp_s(wchar_t *_TemplateName, size_t _SizeInWords);
+  _CRTIMP errno_t  __cdecl _wmktemp_s(wchar_t *_TemplateName, size_t _SizeInWords);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _wmktemp_s, wchar_t, _TemplateName)
   _CRTIMP intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);
   _CRTIMP intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);
   _CRTIMP intptr_t __cdecl _wfindfirst64(const wchar_t *_Filename, struct _wfinddata64_t *_FindData);
-  _CRTIMP int __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);
-  _CRTIMP int __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);
-  _CRTIMP int __cdecl _wfindnext64(intptr_t _FindHandle, struct _wfinddata64_t *_FindData);
-  _CRTIMP int __cdecl _wopen(const wchar_t *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl _wsopen(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _wsopen_s(int *_FileHandle, const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionFlag);
-  _CRTIMP errno_t __cdecl _wsopen_dispatch(const wchar_t *_FileName, int _OFlag, int _ShFlag, int _PMode, int *_PFileHandle, int _BSecure);
+  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);
+  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);
+  _CRTIMP int      __cdecl _wfindnext64(intptr_t _FindHandle, struct _wfinddata64_t *_FindData);
+  _CRTIMP int      __cdecl _wopen(const wchar_t *_Filename, int _OpenFlag, ...) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int      __cdecl _wsopen(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP errno_t  __cdecl _wsopen_s(int *_FileHandle, const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionFlag);
+  _CRTIMP errno_t  __cdecl _wsopen_dispatch(const wchar_t *_FileName, int _OFlag, int _ShFlag, int _PMode, int *_PFileHandle, int _BSecure);
 
 #if __MINGW_FORTIFY_LEVEL > 0
 
@@ -98,13 +98,13 @@ __MINGW_BEGIN_C_DECLS
 #define _O_CREAT 0x0100
 
   _CRTIMP int __cdecl __mingw_call__wopen(const wchar_t *_Filename, int _OpenFlag, ...) __MINGW_ASM_CRT_CALL(_wopen);
-  _CRTIMP int __cdecl __mingw_call__wopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, ...) __MINGW_ASM_CRT_CALL(_wopen)
-    __attribute__((__warning__("_wopen(): too many arguments")));
-  _CRTIMP int __cdecl __mingw_call__wopen_warn_missing(const wchar_t *_Filename, int _OpenFlag, ...) __MINGW_ASM_CRT_CALL(_wopen)
-    __attribute__((__warning__("_wopen(..._O_CREAT...): missing argument")));
+  _CRTIMP int __cdecl __mingw_call__wopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, ...)
+    __MINGW_ASM_CRT_CALL(_wopen) __attribute__((__warning__("_wopen(): too many arguments")));
+  _CRTIMP int __cdecl __mingw_call__wopen_warn_missing(const wchar_t *_Filename, int _OpenFlag, ...)
+    __MINGW_ASM_CRT_CALL(_wopen) __attribute__((__warning__("_wopen(..._O_CREAT...): missing argument")));
 
   __mingw_bos_extern_ovr __MINGW_NONNULL((1))
-  int _wopen(const wchar_t * __filename, int __flags, ...)
+  int _wopen(const wchar_t *__filename, int __flags, ...)
   {
     if(__builtin_va_arg_pack_len() > 1)
       return __mingw_call__wopen_warn_toomany(__filename, __flags, __builtin_va_arg_pack());
@@ -116,13 +116,13 @@ __MINGW_BEGIN_C_DECLS
   }
 
   _CRTIMP int __cdecl __mingw_call__wsopen(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_ASM_CRT_CALL(_wsopen);
-  _CRTIMP int __cdecl __mingw_call__wsopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_ASM_CRT_CALL(_wsopen)
-    __attribute__((__warning__("_wsopen(): too many arguments")));
-  _CRTIMP int __cdecl __mingw_call__wsopen_warn_missing(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_ASM_CRT_CALL(_wsopen)
-    __attribute__((__warning__("_wsopen(..._O_CREAT...): missing argument")));
+  _CRTIMP int __cdecl __mingw_call__wsopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...)
+    __MINGW_ASM_CRT_CALL(_wsopen) __attribute__((__warning__("_wsopen(): too many arguments")));
+  _CRTIMP int __cdecl __mingw_call__wsopen_warn_missing(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...)
+    __MINGW_ASM_CRT_CALL(_wsopen) __attribute__((__warning__("_wsopen(..._O_CREAT...): missing argument")));
 
   __mingw_bos_extern_ovr
-  int _wsopen(const wchar_t * __filename, int __flags, int __share, ...)
+  int _wsopen(const wchar_t *__filename, int __flags, int __share, ...)
   {
     if(__builtin_va_arg_pack_len() > 1)
       return __mingw_call__wsopen_warn_toomany(__filename, __flags, __share, __builtin_va_arg_pack());

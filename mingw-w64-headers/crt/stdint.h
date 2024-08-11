@@ -154,22 +154,22 @@
 
 /* 7.18.4.1  Macros for minimum-width integer constants
 
-    Accoding to Douglas Gwyn <gwyn@arl.mil>:
- "This spec was changed in ISO/IEC 9899:1999 TC1; in ISO/IEC
- 9899:1999 as initially published, the expansion was required
- to be an integer constant of precisely matching type, which
- is impossible to accomplish for the shorter types on most
- platforms, because C99 provides no standard way to designate
- an integer constant with width less than that of type int.
- TC1 changed this to require just an integer constant
- *expression* with *promoted* type."
+  Accoding to Douglas Gwyn <gwyn@arl.mil>:
+  "This spec was changed in ISO/IEC 9899:1999 TC1; in ISO/IEC
+  9899:1999 as initially published, the expansion was required
+  to be an integer constant of precisely matching type, which
+  is impossible to accomplish for the shorter types on most
+  platforms, because C99 provides no standard way to designate
+  an integer constant with width less than that of type int.
+  TC1 changed this to require just an integer constant
+  *expression* with *promoted* type."
 
- The trick used here is from Clive D W Feather.
+  The trick used here is from Clive D W Feather.
 */
 
-#define INT8_C(val)  (INT_LEAST8_MAX-INT_LEAST8_MAX+(val))
-#define INT16_C(val) (INT_LEAST16_MAX-INT_LEAST16_MAX+(val))
-#define INT32_C(val) (INT_LEAST32_MAX-INT_LEAST32_MAX+(val))
+#define INT8_C(val)  (INT_LEAST8_MAX-INT_LEAST8_MAX   + (val))
+#define INT16_C(val) (INT_LEAST16_MAX-INT_LEAST16_MAX + (val))
+#define INT32_C(val) (INT_LEAST32_MAX-INT_LEAST32_MAX + (val))
 /*  The 'trick' doesn't work in C89 for long long because, without
     suffix, (val) will be evaluated as int, not intmax_t */
 #define INT64_C(val) val##LL

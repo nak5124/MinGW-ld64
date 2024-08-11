@@ -4,12 +4,12 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #ifndef __cplusplus
-#undef try
-#undef except
-#undef finally
-#undef leave
-#define try __try
-#define except __except
-#define finally __finally
-#define leave __leave
+# undef  try
+# undef  except
+# undef  finally
+# undef  leave
+# define try     __try
+# define except  __except
+# define finally __finally
+# define leave   __leave
 #endif

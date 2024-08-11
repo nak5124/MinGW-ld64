@@ -35,8 +35,8 @@ __MINGW_BEGIN_C_DECLS
 #define abnormal_termination      _abnormal_termination
 
   unsigned long __cdecl _exception_code(void);
-  void *__cdecl _exception_info(void);
-  int __cdecl _abnormal_termination(void);
+  void         *__cdecl _exception_info(void);
+  int           __cdecl _abnormal_termination(void);
 
 #define EXCEPTION_EXECUTE_HANDLER     1
 #define EXCEPTION_CONTINUE_SEARCH     0

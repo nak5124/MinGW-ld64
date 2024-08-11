@@ -239,20 +239,20 @@ __MINGW_BEGIN_C_DECLS
 
   typedef struct
   {
-    unsigned int RoundingMode :  2;
-    unsigned int Precision    :  3;
-    unsigned int Operation    : 12;
+    unsigned int            RoundingMode :  2;
+    unsigned int            Precision    :  3;
+    unsigned int            Operation    : 12;
     _FPIEEE_EXCEPTION_FLAGS Cause;
     _FPIEEE_EXCEPTION_FLAGS Enable;
     _FPIEEE_EXCEPTION_FLAGS Status;
-    _FPIEEE_VALUE Operand1;
-    _FPIEEE_VALUE Operand2;
-    _FPIEEE_VALUE Result;
+    _FPIEEE_VALUE           Operand1;
+    _FPIEEE_VALUE           Operand2;
+    _FPIEEE_VALUE           Result;
   } _FPIEEE_RECORD, *_PFPIEEE_RECORD;
 
   struct _EXCEPTION_POINTERS;
 
-  typedef int (__cdecl* _FpieeFltHandlerType)(_FPIEEE_RECORD*);
+  typedef int (__cdecl *_FpieeFltHandlerType)(_FPIEEE_RECORD*);
 
   _CRTIMP int __cdecl _fpieee_flt(unsigned long _ExceptionCode, struct _EXCEPTION_POINTERS *_PtExceptionPtr, _FpieeFltHandlerType _Handler);
 

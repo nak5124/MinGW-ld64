@@ -21,7 +21,7 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP extern unsigned long __cdecl __threadid(void);
 #define _threadid (__threadid())
-  _CRTIMP extern uintptr_t __cdecl __threadhandle(void);
+  _CRTIMP extern uintptr_t     __cdecl __threadhandle(void);
 
 __MINGW_END_C_DECLS
 
@@ -48,7 +48,7 @@ __MINGW_END_C_DECLS
       as great as that of any standard type not using alignment specifiers. */
     typedef struct
     {
-      long long __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
+      long long   __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
       long double __max_align_ld __attribute__((__aligned__(__alignof__(long double))));
     } max_align_t;
 # endif

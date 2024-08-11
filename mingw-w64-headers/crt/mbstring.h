@@ -25,115 +25,107 @@ __MINGW_BEGIN_C_DECLS
 #undef _mbsdup
   _CRTIMP unsigned char *__cdecl _mbsdup(const unsigned char *_Str);
 #pragma pop_macro("_mbsdup")
-  _CRTIMP unsigned int __cdecl _mbbtombc(unsigned int _Ch);
-  _CRTIMP unsigned int __cdecl _mbbtombc_l(unsigned int _Ch, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbbtype(unsigned char _Ch, int _CType);
-  _CRTIMP int __cdecl _mbbtype_l(unsigned char _Ch, int _CType, _locale_t _Locale);
-  _CRTIMP unsigned int __cdecl _mbctombb(unsigned int _Ch);
-  _CRTIMP unsigned int __cdecl _mbctombb_l(unsigned int _Ch, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsbtype(const unsigned char *_Str, size_t _Pos);
-  _CRTIMP int __cdecl _mbsbtype_l(const unsigned char *_Str, size_t _Pos, _locale_t _Locale);
-  /* UCRT does not export _mbscat. */
-  /* _CRTIMP unsigned char *__cdecl _mbscat(unsigned char *_Dest, const unsigned char *_Source); */
-  _CRTIMP errno_t __cdecl _mbscat_s(unsigned char *_Dst, size_t _SizeInBytes, const unsigned char *_Src);
+  _CRTIMP unsigned int   __cdecl _mbbtombc(unsigned int _Ch);
+  _CRTIMP unsigned int   __cdecl _mbbtombc_l(unsigned int _Ch, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbbtype(unsigned char _Ch, int _CType);
+  _CRTIMP int            __cdecl _mbbtype_l(unsigned char _Ch, int _CType, _locale_t _Locale);
+  _CRTIMP unsigned int   __cdecl _mbctombb(unsigned int _Ch);
+  _CRTIMP unsigned int   __cdecl _mbctombb_l(unsigned int _Ch, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsbtype(const unsigned char *_Str, size_t _Pos);
+  _CRTIMP int            __cdecl _mbsbtype_l(const unsigned char *_Str, size_t _Pos, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbscat_s(unsigned char *_Dst, size_t _SizeInBytes, const unsigned char *_Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _mbscat_s, unsigned char, _Dst, const unsigned char *, _DstSizeInBytes)
-  /* UCRT does not export _mbscat_l. */
-  /* _CRTIMP unsigned char *_mbscat_l(unsigned char *_Dest, const unsigned char *_Source, _locale_t _Locale); */
-  _CRTIMP errno_t __cdecl _mbscat_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbscat_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbscat_s_l, unsigned char, _Dest, const unsigned char *, _Source, _locale_t, _Locale)
   _CRTIMP _CONST_RETURN unsigned char *__cdecl _mbschr(const unsigned char *_Str, unsigned int _Ch);
   _CRTIMP _CONST_RETURN unsigned char *__cdecl _mbschr_l(const unsigned char *_Str, unsigned int _Ch, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbscmp(const unsigned char *_Str1, const unsigned char *_Str2);
-  _CRTIMP int __cdecl _mbscmp_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbscoll(const unsigned char *_Str1, const unsigned char *_Str2);
-  _CRTIMP int __cdecl _mbscoll_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
-  /* UCRT does not export _mbscpy. */
-  /* _CRTIMP unsigned char *__cdecl _mbscpy(unsigned char *_Dest, const unsigned char *_Source); */
-  _CRTIMP errno_t __cdecl _mbscpy_s(unsigned char *_Dst, size_t _SizeInBytes, const unsigned char *_Src);
+  _CRTIMP int            __cdecl _mbscmp(const unsigned char *_Str1, const unsigned char *_Str2);
+  _CRTIMP int            __cdecl _mbscmp_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbscoll(const unsigned char *_Str1, const unsigned char *_Str2);
+  _CRTIMP int            __cdecl _mbscoll_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbscpy_s(unsigned char *_Dst, size_t _SizeInBytes, const unsigned char *_Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _mbscpy_s, unsigned char, _Dest, const unsigned char *, _Source)
-  /* UCRT does not export _mbscpy_l */
-  /* _CRTIMP unsigned char *_mbscpy_l(unsigned char *_Dest, const unsigned char *_Source, _locale_t _Locale); */
-  _CRTIMP errno_t __cdecl _mbscpy_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbscpy_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbscpy_s, unsigned char, _Dest, const unsigned char *, _Source, _locale_t, _Locale)
-  _CRTIMP size_t __cdecl _mbscspn(const unsigned char *_Str, const unsigned char *_Control);
-  _CRTIMP size_t __cdecl _mbscspn_l(const unsigned char *_Str, const unsigned char *_Control, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbscspn(const unsigned char *_Str, const unsigned char *_Control);
+  _CRTIMP size_t         __cdecl _mbscspn_l(const unsigned char *_Str, const unsigned char *_Control, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsdec(const unsigned char *_Start, const unsigned char *_Pos);
   _CRTIMP unsigned char *__cdecl _mbsdec_l(const unsigned char *_Start, const unsigned char  _Pos, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsicmp(const unsigned char *_Str1, const unsigned char *_Str2);
-  _CRTIMP int __cdecl _mbsicmp_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsicoll(const unsigned char *_Str1, const unsigned char *_Str2);
-  _CRTIMP int __cdecl _mbsicoll_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsicmp(const unsigned char *_Str1, const unsigned char *_Str2);
+  _CRTIMP int            __cdecl _mbsicmp_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsicoll(const unsigned char *_Str1, const unsigned char *_Str2);
+  _CRTIMP int            __cdecl _mbsicoll_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsinc(const unsigned char *_Ptr);
   _CRTIMP unsigned char *__cdecl _mbsinc_l(const unsigned char *_Ptr, _locale_t _Locale);
-  _CRTIMP size_t __cdecl _mbslen(const unsigned char *_Str);
-  _CRTIMP size_t __cdecl _mbslen_l(const unsigned char *_Str, _locale_t _Locale);
-  _CRTIMP size_t __cdecl _mbsnlen(const unsigned char *_Str, size_t _MaxCount);
-  _CRTIMP size_t __cdecl _mbsnlen_l(const unsigned char *_Str, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbslen(const unsigned char *_Str);
+  _CRTIMP size_t         __cdecl _mbslen_l(const unsigned char *_Str, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbsnlen(const unsigned char *_Str, size_t _MaxCount);
+  _CRTIMP size_t         __cdecl _mbsnlen_l(const unsigned char *_Str, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbslwr(unsigned char *_String) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbslwr_s(unsigned char *_Str, size_t _SizeInBytes);
+  _CRTIMP errno_t        __cdecl _mbslwr_s(unsigned char *_Str, size_t _SizeInBytes);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _mbslwr_s, unsigned char, _String)
   _CRTIMP unsigned char *__cdecl _mbslwr_l(unsigned char *_String, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbslwr_s_l(unsigned char *_Str, size_t _SizeInBytes, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbslwr_s_l(unsigned char *_Str, size_t _SizeInBytes, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _mbslwr_s_l, unsigned char, _String, _locale_t, _Locale)
   _CRTIMP unsigned char *__cdecl _mbsnbcat(unsigned char *_Dest, const unsigned char *_Source, size_t _Count) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnbcat_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
+  _CRTIMP errno_t        __cdecl _mbsnbcat_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsnbcat_s, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count)
   _CRTIMP unsigned char *__cdecl _mbsnbcat_l(unsigned char *_Dest, const unsigned char *_Source, size_t _Count, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnbcat_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbsnbcat_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(errno_t, _mbsnbcat_s_l, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count, _locale_t, _Locale)
-  _CRTIMP int __cdecl _mbsnbcmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsnbcmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsnbcoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsnbcoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP size_t __cdecl _mbsnbcnt(const unsigned char *_Str, size_t _MaxCount);
-  _CRTIMP size_t __cdecl _mbsnbcnt_l(const unsigned char *_Str, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsnbcmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsnbcmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsnbcoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsnbcoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbsnbcnt(const unsigned char *_Str, size_t _MaxCount);
+  _CRTIMP size_t         __cdecl _mbsnbcnt_l(const unsigned char *_Str, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsnbcpy(unsigned char *_Dest, const unsigned char *_Source, size_t _Count) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnbcpy_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
+  _CRTIMP errno_t        __cdecl _mbsnbcpy_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsnbcpy_s, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count)
   _CRTIMP unsigned char *__cdecl _mbsnbcpy_l(unsigned char *_Dest, const unsigned char *_Source, size_t _Count, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _mbsnbcpy_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(errno_t, _mbsnbcpy_s_l, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count, _locale_t, _Locale)
-  _CRTIMP int __cdecl _mbsnbicmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsnbicmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsnbicoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsnbicoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsnbicmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsnbicmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsnbicoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsnbicoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsnbset(unsigned char *_Str, unsigned int _Ch, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnbset_s(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Ch, size_t _MaxCount);
+  _CRTIMP errno_t        __cdecl _mbsnbset_s(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Ch, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsnbset_s, unsigned char, _Dest, unsigned int, _Val, size_t, _MaxCount)
   _CRTIMP unsigned char *__cdecl _mbsnbset_l(unsigned char *_Str, unsigned int _Ch, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnbset_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Ch, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbsnbset_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Ch, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(errno_t, _mbsnbset_s_l, unsigned char, _Dest, unsigned int, _Val, size_t, _MaxCount, _locale_t, _Locale)
   _CRTIMP unsigned char *__cdecl _mbsncat(unsigned char *_Dest, const unsigned char *_Source, size_t _Count) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsncat_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
+  _CRTIMP errno_t        __cdecl _mbsncat_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsncat_s, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count)
   _CRTIMP unsigned char *__cdecl _mbsncat_l(unsigned char *_Dest, const unsigned char *_Source, size_t _Count, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsncat_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbsncat_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(errno_t, _mbsncat_s_l, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count, _locale_t, _Locale)
-  _CRTIMP size_t __cdecl _mbsnccnt(const unsigned char *_Str, size_t _MaxCount);
-  _CRTIMP size_t __cdecl _mbsnccnt_l(const unsigned char *_Str, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsncmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsncmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsncoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsncoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbsnccnt(const unsigned char *_Str, size_t _MaxCount);
+  _CRTIMP size_t         __cdecl _mbsnccnt_l(const unsigned char *_Str, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsncmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsncmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsncoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsncoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsncpy(unsigned char *_Dest, const unsigned char *_Source, size_t _Count) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsncpy_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
+  _CRTIMP errno_t        __cdecl _mbsncpy_s(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsncpy_s, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count)
   _CRTIMP unsigned char *__cdecl _mbsncpy_l(unsigned char *_Dest, const unsigned char *_Source, size_t _Count, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsncpy_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbsncpy_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, const unsigned char *_Src, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(errno_t, _mbsncpy_s_l, unsigned char, _Dest, const unsigned char *, _Source, size_t, _Count, _locale_t, _Locale)
-  _CRTIMP unsigned int __cdecl _mbsnextc(const unsigned char *_Str);
-  _CRTIMP unsigned int __cdecl _mbsnextc_l(const unsigned char *_Str, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsnicmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsnicmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP int __cdecl _mbsnicoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
-  _CRTIMP int __cdecl _mbsnicoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP unsigned int   __cdecl _mbsnextc(const unsigned char *_Str);
+  _CRTIMP unsigned int   __cdecl _mbsnextc_l(const unsigned char *_Str, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsnicmp(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsnicmp_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP int            __cdecl _mbsnicoll(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount);
+  _CRTIMP int            __cdecl _mbsnicoll_l(const unsigned char *_Str1, const unsigned char *_Str2, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsninc(const unsigned char *_Str, size_t _Count);
   _CRTIMP unsigned char *__cdecl _mbsninc_l(const unsigned char *_Str, size_t _Count, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsnset(unsigned char *_Dst, unsigned int _Val, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnset_s(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val, size_t _MaxCount);
+  _CRTIMP errno_t        __cdecl _mbsnset_s(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsnset_s, unsigned char, _Dest, unsigned int, _Val, size_t, _MaxCount)
   _CRTIMP unsigned char *__cdecl _mbsnset_l(unsigned char *_Dst, unsigned int _Val, size_t _MaxCount, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsnset_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val, size_t _MaxCount, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbsnset_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val, size_t _MaxCount, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(errno_t, _mbsnset_s_l, unsigned char, _Dest, unsigned int, _Val, size_t, _MaxCount, _locale_t, _Locale)
   _CRTIMP _CONST_RETURN unsigned char *__cdecl _mbspbrk(const unsigned char *_Str, const unsigned char *_Control);
   _CRTIMP _CONST_RETURN unsigned char *__cdecl _mbspbrk_l(const unsigned char *_Str, const unsigned char *_Control, _locale_t _Locale);
@@ -142,13 +134,13 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP unsigned char *__cdecl _mbsrev(unsigned char *_Str);
   _CRTIMP unsigned char *__cdecl _mbsrev_l(unsigned char *_Str, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsset(unsigned char *_Str, unsigned int _Val) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsset_s(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val);
+  _CRTIMP errno_t        __cdecl _mbsset_s(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _mbsset_s, unsigned char, _Dest, unsigned int, _Val)
   _CRTIMP unsigned char *__cdecl _mbsset_l(unsigned char *_Str, unsigned int _Val, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsset_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val, _locale_t _Locale);
+  _CRTIMP errno_t        __cdecl _mbsset_s_l(unsigned char *_Dst, size_t _DstSizeInBytes, unsigned int _Val, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _mbsset_s_l, unsigned char, _Dest, unsigned int, _Val, _locale_t, _Locale)
-  _CRTIMP size_t __cdecl _mbsspn(const unsigned char *_Str, const unsigned char *_Control);
-  _CRTIMP size_t __cdecl _mbsspn_l(const unsigned char *_Str, const unsigned char *_Control, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbsspn(const unsigned char *_Str, const unsigned char *_Control);
+  _CRTIMP size_t         __cdecl _mbsspn_l(const unsigned char *_Str, const unsigned char *_Control, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsspnp(const unsigned char *_Str1, const unsigned char *_Str2);
   _CRTIMP unsigned char *__cdecl _mbsspnp_l(const unsigned char *_Str1, const unsigned char *_Str2, _locale_t _Locale);
   _CRTIMP _CONST_RETURN unsigned char *__cdecl _mbsstr(const unsigned char *_Str, const unsigned char *_Substr);
@@ -158,13 +150,13 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP unsigned char *__cdecl _mbstok_s(unsigned char *_Str, const unsigned char *_Delim, unsigned char **_Context);
   _CRTIMP unsigned char *__cdecl _mbstok_s_l(unsigned char *_Str, const unsigned char *_Delim, unsigned char **_Context, _locale_t _Locale);
   _CRTIMP unsigned char *__cdecl _mbsupr(unsigned char *_String) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsupr_s(unsigned char *_Str, size_t _SizeInBytes);
+  _CRTIMP errno_t        __cdecl _mbsupr_s(unsigned char *_Str, size_t _SizeInBytes);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _mbsupr_s, unsigned char, _String)
-  _CRTIMP unsigned char *_mbsupr_l(unsigned char *_String, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _mbsupr_s_l(unsigned char *_Str, size_t _SizeInBytes, _locale_t _Locale);
+  _CRTIMP unsigned char *__cdecl _mbsupr_l(unsigned char *_String, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP errno_t        __cdecl _mbsupr_s_l(unsigned char *_Str, size_t _SizeInBytes, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _mbsupr_s_l, unsigned char, _String, _locale_t, _Locale)
-  _CRTIMP size_t __cdecl _mbclen(const unsigned char *_Str);
-  _CRTIMP size_t __cdecl _mbclen_l(const unsigned char *_Str, _locale_t _Locale);
+  _CRTIMP size_t         __cdecl _mbclen(const unsigned char *_Str);
+  _CRTIMP size_t         __cdecl _mbclen_l(const unsigned char *_Str, _locale_t _Locale);
 #ifndef _MBCCPY_DEFINED  /* Also in mbctype.h */
 # define _MBCCPY_DEFINED
   _CRTIMP void __cdecl _mbccpy(unsigned char *_Dst, const unsigned char *_Src) __MINGW_DEPRECATED_SEC_WARN;
@@ -282,10 +274,10 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _ismbblead_l(unsigned int _Ch, _locale_t _Locale);
   _CRTIMP int __cdecl _ismbbtrail_l(unsigned int _Ch, _locale_t _Locale);
 
-  _CRTIMP int __cdecl _ismbslead(const unsigned char *_Str,const unsigned char *_Pos);
-  _CRTIMP int __cdecl _ismbslead_l(const unsigned char *_Str,const unsigned char *_Pos,_locale_t _Locale);
-  _CRTIMP int __cdecl _ismbstrail(const unsigned char *_Str,const unsigned char *_Pos);
-  _CRTIMP int __cdecl _ismbstrail_l(const unsigned char *_Str,const unsigned char *_Pos,_locale_t _Locale);
+  _CRTIMP int __cdecl _ismbslead(const unsigned char *_Str, const unsigned char *_Pos);
+  _CRTIMP int __cdecl _ismbslead_l(const unsigned char *_Str, const unsigned char *_Pos, _locale_t _Locale);
+  _CRTIMP int __cdecl _ismbstrail(const unsigned char *_Str, const unsigned char *_Pos);
+  _CRTIMP int __cdecl _ismbstrail_l(const unsigned char *_Str, const unsigned char *_Pos, _locale_t _Locale);
 #endif  /* _MBLEADTRAIL_DEFINED */
 
 __MINGW_END_C_DECLS

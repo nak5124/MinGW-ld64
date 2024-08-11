@@ -18,9 +18,9 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP void *__cdecl bsearch_s(const void *_Key, const void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 #endif
-  _CRTIMP void __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 4));
+  _CRTIMP void  __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 4));
 #ifdef __MINGW_USE_SECAPI
-  _CRTIMP void __cdecl qsort_s(void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
+  _CRTIMP void  __cdecl qsort_s(void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 #endif
   _CRTIMP void *__cdecl _lfind(const void *_Key, const void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction);
   _CRTIMP void *__cdecl _lfind_s(const void *_Key, const void *_Base, unsigned int *_NumOfElements, size_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
@@ -28,7 +28,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void *__cdecl _lsearch_s(const void *_Key, void *_Base, unsigned int *_NumOfElements, size_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 
   _CRTIMP void *__cdecl lfind(const void *_Key, const void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP void *__cdecl lsearch(const void *_Key, void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP void *__cdecl lsearch(const void *_Key, void *_Base, unsigned int *_NumOfElements, unsigned int _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction)     __MINGW_DEPRECATED_MSVC2005;
 
 /*
 Documentation for these POSIX definitions and prototypes can be found in
@@ -60,21 +60,21 @@ eg:  http://www.opengroup.org/onlinepubs/009695399/functions/twalk.html
 #ifdef _SEARCH_PRIVATE
   typedef struct node
   {
-    char         *key;
-    struct node  *llink, *rlink;
+    char        *key;
+    struct node *llink, *rlink;
   } node_t;
 #endif
 
-  typedef int (*__compar_fn_t) (const void *, const void *);
-  extern void *__cdecl tdelete(const void * __restrict _key, void ** __restrict _rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
-  extern void *__cdecl tfind(const void *_key, void * const *_rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
-  extern void *__cdecl tsearch(const void *_key, void **_rootp, __compar_fn_t _compar) __MINGW_NONNULL((2, 3));
-  typedef void (*__action_fn_t) (const void *_nodep, VISIT _value, int _level);
-  extern void __cdecl twalk(const void *_root, __action_fn_t _action);
+  typedef int (*__compar_fn_t)(const void *, const void *);
+  extern void *__cdecl tdelete(const void *__restrict __key, void **__restrict __rootp, __compar_fn_t __compar) __MINGW_NONNULL((2, 3));
+  extern void *__cdecl tfind(const void *__key, void * const *__rootp, __compar_fn_t __compar) __MINGW_NONNULL((2, 3));
+  extern void *__cdecl tsearch(const void *__key, void **__rootp, __compar_fn_t __compar) __MINGW_NONNULL((2, 3));
+  typedef void (*__action_fn_t)(const void *__nodep, VISIT __value, int __level);
+  extern void  __cdecl twalk(const void *__root, __action_fn_t __action);
 
 #ifdef __MINGW_USE_GNU
-  typedef void (*__free_fn_t) (void *_nodep);
-  extern void __cdecl tdestroy(void *_root, __free_fn_t _freenode) __MINGW_NONNULL((2));
+  typedef void (*__free_fn_t)(void *__nodep);
+  extern void __cdecl tdestroy(void *__root, __free_fn_t __freenode) __MINGW_NONNULL((2));
 #endif
 
 __MINGW_END_C_DECLS

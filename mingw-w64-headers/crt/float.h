@@ -20,10 +20,10 @@
 # else
     /* #include_next <float_ginclude.h> */
     /* Number of decimal digits, q, such that any floating-point number with q
-       decimal digits can be rounded into a floating-point number with p radix b
-       digits and back again without change to the q decimal digits,
-       p * log10(b)   if b is a power of 10
-       floor((p - 1) * log10(b)) otherwise */
+     * decimal digits can be rounded into a floating-point number with p radix b
+     * digits and back again without change to the q decimal digits,
+     * p * log10(b)   if b is a power of 10
+     * floor((p - 1) * log10(b)) otherwise */
 #   undef  FLT_DIG
 #   undef  DBL_DIG
 #   undef  LDBL_DIG
@@ -62,8 +62,8 @@
 #   define LDBL_MIN_EXP __LDBL_MIN_EXP__
 
     /* Minimum negative integer such that 10 raised to that power is in the
-       range of normalized floating-point numbers,
-       ceil(log10(b) * (emin - 1)) */
+     * range of normalized floating-point numbers,
+     * ceil(log10(b) * (emin - 1)) */
 #   undef  FLT_MIN_10_EXP
 #   undef  DBL_MIN_10_EXP
 #   undef  LDBL_MIN_10_EXP
@@ -80,8 +80,8 @@
 #   define LDBL_MAX_EXP __LDBL_MAX_EXP__
 
     /* Maximum integer such that 10 raised to that power is in the range of
-       representable finite floating-point numbers,
-       floor(log10((1 - b**-p) * b**emax)) */
+     * representable finite floating-point numbers,
+     * floor(log10((1 - b**-p) * b**emax)) */
 #   undef  FLT_MAX_10_EXP
 #   undef  DBL_MAX_10_EXP
 #   undef  LDBL_MAX_10_EXP
@@ -135,20 +135,20 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_USE_ISOC99
 /* The floating-point expression evaluation method.
-      -1  indeterminate
-       0  evaluate all operations and constants just to the range and
-   precision of the type
-       1  evaluate operations and constants of type float and double
-   to the range and precision of the double type, evaluate
-   long double operations and constants to the range and
-   precision of the long double type
-       2  evaluate all operations and constants to the range and
-   precision of the long double type
+ *    -1  indeterminate
+ *     0  evaluate all operations and constants just to the range and
+ * precision of the type
+ *     1  evaluate operations and constants of type float and double
+ * to the range and precision of the double type, evaluate
+ * long double operations and constants to the range and
+ * precision of the long double type
+ *     2  evaluate all operations and constants to the range and
+ * precision of the long double type
 
-   ??? This ought to change with the setting of the fp control word;
-   the value provided by the compiler assumes the widest setting.  */
-#undef FLT_EVAL_METHOD
-#define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
+ * ??? This ought to change with the setting of the fp control word;
+ * the value provided by the compiler assumes the widest setting.  */
+# undef  FLT_EVAL_METHOD
+# define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
 
 #endif  /* __MINGW_USE_ISOC99 */
 
@@ -176,17 +176,17 @@ __MINGW_BEGIN_C_DECLS
    GCC build issues.  */
 /* Return values for fpclass. */
 #ifndef __MINGW_FPCLASS_DEFINED
-#define __MINGW_FPCLASS_DEFINED 1
-#define _FPCLASS_SNAN 0x0001  /* Signaling "Not a Number" */
-#define _FPCLASS_QNAN 0x0002  /* Quiet "Not a Number" */
-#define _FPCLASS_NINF 0x0004  /* Negative Infinity */
-#define _FPCLASS_NN   0x0008  /* Negative Normal */
-#define _FPCLASS_ND   0x0010  /* Negative Denormal */
-#define _FPCLASS_NZ   0x0020  /* Negative Zero */
-#define _FPCLASS_PZ   0x0040  /* Positive Zero */
-#define _FPCLASS_PD   0x0080  /* Positive Denormal */
-#define _FPCLASS_PN   0x0100  /* Positive Normal */
-#define _FPCLASS_PINF 0x0200  /* Positive Infinity */
+# define __MINGW_FPCLASS_DEFINED 1
+# define _FPCLASS_SNAN           0x0001  /* Signaling "Not a Number" */
+# define _FPCLASS_QNAN           0x0002  /* Quiet "Not a Number" */
+# define _FPCLASS_NINF           0x0004  /* Negative Infinity */
+# define _FPCLASS_NN             0x0008  /* Negative Normal */
+# define _FPCLASS_ND             0x0010  /* Negative Denormal */
+# define _FPCLASS_NZ             0x0020  /* Negative Zero */
+# define _FPCLASS_PZ             0x0040  /* Positive Zero */
+# define _FPCLASS_PD             0x0080  /* Positive Denormal */
+# define _FPCLASS_PN             0x0100  /* Positive Normal */
+# define _FPCLASS_PINF           0x0200  /* Positive Infinity */
 #endif  /* __MINGW_FPCLASS_DEFINED */
 
 /* invalid subconditions (_SW_INVALID also set) */
@@ -220,10 +220,10 @@ __MINGW_BEGIN_C_DECLS
    * i.e. change the bits in unMask to have the values they have in unNew,
    * leaving other bits unchanged. */
   _CRTIMP unsigned int __cdecl _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
+  _CRTIMP errno_t      __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
   _CRTIMP unsigned int __cdecl _control87(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW;
 
-  _CRTIMP unsigned int __cdecl _clearfp(void) __MINGW_NOTHROW;   /* Clear the FPU status word */
+  _CRTIMP unsigned int __cdecl _clearfp(void)  __MINGW_NOTHROW;  /* Clear the FPU status word */
   _CRTIMP unsigned int __cdecl _statusfp(void) __MINGW_NOTHROW;  /* Report the FPU status word */
 #define _clear87  _clearfp
 #define _status87 _statusfp
@@ -240,7 +240,7 @@ __MINGW_BEGIN_C_DECLS
    *  building your application.
    */
   void __cdecl _fpreset(void) __MINGW_NOTHROW;
-  void __cdecl fpreset(void) __MINGW_NOTHROW;
+  void __cdecl  fpreset(void) __MINGW_NOTHROW;
 
   /* Global 'variable' for the current floating point error code. */
   _CRTIMP int *__cdecl __fpecode(void) __MINGW_NOTHROW;
@@ -256,15 +256,15 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _SIGN_DEFINED  /* Also in math.h */
 # define _SIGN_DEFINED
   _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _chgsign(double _X) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _scalb(double _X, long _Y) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _logb(double _X) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _nextafter(double _X, double _Y) __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _finite(double _X) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _isnan(double _X) __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _fpclass(double _X) __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _chgsign(double _X)                     __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _scalb(double _X, long _Y)              __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _logb(double _X)                        __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _finite(double _X)                      __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _isnan(double _X)                       __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _fpclass(double _X)                     __MINGW_NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
-  _CRTIMP float __cdecl _scalbf(float _X, long _Y);
+  _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
 #endif
 
   _LDCRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign);

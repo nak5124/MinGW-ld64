@@ -18,11 +18,11 @@ the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 Boston, MA 02110-1301, USA.  */
 
 /* As a special exception, if you include this header file into source
-   files compiled by GCC, this header file does not by itself cause
-   the resulting executable to be covered by the GNU General Public
-   License.  This exception does not however invalidate any other
-   reasons why the executable file might be covered by the GNU General
-   Public License.  */
+ * files compiled by GCC, this header file does not by itself cause
+ * the resulting executable to be covered by the GNU General Public
+ * License.  This exception does not however invalidate any other
+ * reasons why the executable file might be covered by the GNU General
+ * Public License.  */
 
 /*
  * ISO C Standard:  7.15  Variable arguments  <stdarg.h>

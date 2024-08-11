@@ -93,7 +93,7 @@ __MINGW_BEGIN_C_DECLS
 /* IEEE float/double type shapes.  */
   typedef union __mingw_dbl_type_t
   {
-    double x;
+    double             x;
     unsigned long long val;
     __C89_NAMELESS struct
     {
@@ -103,7 +103,7 @@ __MINGW_BEGIN_C_DECLS
 
   typedef union __mingw_flt_type_t
   {
-    float x;
+    float        x;
     unsigned int val;
   } __mingw_flt_type_t;
 
@@ -113,9 +113,9 @@ __MINGW_BEGIN_C_DECLS
     __C89_NAMELESS struct
     {
       unsigned int low, high;
-      int sign_exponent : 16;
-      int res1 : 16;
-      int res0 : 32;
+      int          sign_exponent : 16;
+      int          res1          : 16;
+      int          res0          : 32;
     } lh;
   } __mingw_ldbl_type_t;
 
@@ -123,7 +123,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _HUGE
   extern double * __MINGW_IMP_SYMBOL(_HUGE);
-#define _HUGE (* __MINGW_IMP_SYMBOL(_HUGE))
+# define _HUGE (* __MINGW_IMP_SYMBOL(_HUGE))
 #endif
 
 #define HUGE_VAL __builtin_huge_val()
@@ -132,52 +132,53 @@ __MINGW_BEGIN_C_DECLS
 # define _EXCEPTION_DEFINED
   struct _exception
   {
-    int type;
+    int         type;
     const char *name;
-    double arg1;
-    double arg2;
-    double retval;
+    double      arg1;
+    double      arg2;
+    double      retval;
   };
 
-  void __mingw_raise_matherr(int typ, const char *name, double a1, double a2, double rslt);
-  void __mingw_setusermatherr(int (__cdecl *)(struct _exception *));
-  _CRTIMP void __setusermatherr(int (__cdecl *)(struct _exception *));
-  #define __setusermatherr __mingw_setusermatherr
+          void __cdecl __mingw_raise_matherr(int __type, const char *__name, double __arg1, double __arg2, double __retval);
+  typedef int (__cdecl *_UserMathErrorFunctionPointer)(struct _exception *);
+          void __cdecl __mingw_setusermatherr(_UserMathErrorFunctionPointer _UMEFunc);
+  _CRTIMP void __cdecl __setusermatherr(_UserMathErrorFunctionPointer _UMEFunc);
+# define __setusermatherr __mingw_setusermatherr
 #endif  /* _EXCEPTION_DEFINED */
 
-  double __cdecl sin(double _X);
-  double __cdecl cos(double _X);
-  double __cdecl tan(double _X);
-  double __cdecl sinh(double _X);
-  double __cdecl cosh(double _X);
-  double __cdecl tanh(double _X);
-  double __cdecl asin(double _X);
-  double __cdecl acos(double _X);
-  double __cdecl atan(double _X);
-  double __cdecl atan2(double _Y, double _X);
-  double __cdecl exp(double _X);
-  double __cdecl log(double _X);
-  double __cdecl log10(double _X);
-  double __cdecl pow(double _X, double _Y);
-  double __cdecl sqrt(double _X);
+          double __cdecl sin(double _X);
+          double __cdecl cos(double _X);
+          double __cdecl tan(double _X);
+          double __cdecl sinh(double _X);
+          double __cdecl cosh(double _X);
+          double __cdecl tanh(double _X);
+          double __cdecl asin(double _X);
+          double __cdecl acos(double _X);
+          double __cdecl atan(double _X);
+          double __cdecl atan2(double _Y, double _X);
+          double __cdecl exp(double _X);
+          double __cdecl log(double _X);
+          double __cdecl log10(double _X);
+          double __cdecl pow(double _X, double _Y);
+          double __cdecl sqrt(double _X);
   _CRTIMP double __cdecl ceil(double _X) __MINGW_CONST;
   _CRTIMP double __cdecl floor(double _X) __MINGW_CONST;
-  double __cdecl fabs(double _X) __MINGW_CONST;
+          double __cdecl fabs(double _X) __MINGW_CONST;
 
-  double __cdecl ldexp(double _X, int _Y);
+          double __cdecl ldexp(double _X, int _Y);
   _CRTIMP double __cdecl frexp(double _X, int *_Y);
   _CRTIMP double __cdecl modf(double _X, double *_Y);
-  double __cdecl fmod(double _X, double _Y);
+          double __cdecl fmod(double _X, double _Y);
 
 #ifdef __MINGW_USE_GNU
-  extern void __cdecl sincos(double __x, double *p_sin, double *p_cos);
-  extern void __cdecl sincosf(float __x, float *p_sin, float *p_cos);
-  extern void __cdecl sincosl(long double __x, long double *p_sin, long double *p_cos);
+  extern void __cdecl sincos(double __x, double *__sin, double *__cos);
+  extern void __cdecl sincosf(float __x, float *__sin, float *__cos);
+  extern void __cdecl sincosl(long double __x, long double *__sin, long double *__cos);
 #endif
 
 #ifndef _CRT_ABS_DEFINED  /* Also in stdlib.h */
 # define _CRT_ABS_DEFINED
-  int __cdecl abs(int _X) __MINGW_CONST __MINGW_NOTHROW;
+  int  __cdecl abs(int _X)   __MINGW_CONST __MINGW_NOTHROW;
   long __cdecl labs(long _X) __MINGW_CONST __MINGW_NOTHROW;
 # if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
     __MINGW_EXTENSION long long __cdecl llabs(long long _X) __MINGW_CONST __MINGW_NOTHROW;
@@ -186,7 +187,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ATOF_DEFINED  /* Also in stdlib.h */
 # define _CRT_ATOF_DEFINED
-  _CRTIMP double __cdecl atof(const char *_String) __MINGW_NONNULL((1)) __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP double __cdecl  atof(const char *_String) __MINGW_NONNULL((1)) __MINGW_PURE __MINGW_NOTHROW;
   _CRTIMP double __cdecl _atof_l(const char *_String, _locale_t _Locale);
 #endif  /* _CRT_ATOF_DEFINED */
 
@@ -214,7 +215,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP double __cdecl _yn(int _X, double _Y);
 #ifndef _CRT_MATHERR_DEFINED
 # define _CRT_MATHERR_DEFINED
-  int __cdecl _matherr(struct _exception *pexcept);
+  int __cdecl _matherr(struct _exception *__pexcept);
 #endif
 
 /* These are also declared in Mingw float.h; needed here as well to work
@@ -226,15 +227,15 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _SIGN_DEFINED  /* Also in float.h */
 # define _SIGN_DEFINED
   _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _chgsign(double _X) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _scalb(double _X, long _Y) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _logb(double _X) __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _nextafter(double _X, double _Y) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _finite(double _X) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _isnan(double _X) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _fpclass(double _X) __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _chgsign(double _X)                                   __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _scalb(double _X, long _Y)                            __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _logb(double _X)                                      __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _finite(double _X)                      __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _isnan(double _X)                       __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP int    __cdecl _fpclass(double _X)                                   __MINGW_NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
-  _CRTIMP float __cdecl _scalbf(float _X, long _Y);
+  _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
 #endif
 
   _LDCRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __MINGW_CONST;
@@ -245,11 +246,11 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
 
-  _CRTIMP double __cdecl j0(double _X) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl j1(double _X) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl j0(double _X)         __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl j1(double _X)         __MINGW_DEPRECATED_MSVC2005;
   _CRTIMP double __cdecl jn(int _X, double _Y) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl y0(double _X) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP double __cdecl y1(double _X) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl y0(double _X)         __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP double __cdecl y1(double _X)         __MINGW_DEPRECATED_MSVC2005;
   _CRTIMP double __cdecl yn(int _X, double _Y) __MINGW_DEPRECATED_MSVC2005;
 
 #endif
@@ -295,46 +296,46 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_CONST
   int __cdecl isnan(double _X)
   {
-    __mingw_dbl_type_t hlp;
-    unsigned int l, h;
-    hlp.x = _X;
-    l = hlp.lh.low;
-    h = hlp.lh.high & 0x7fffffff;
-    h |= (l | -l) >> 31;
-    h = 0x7ff00000 - h;
-    return (int)h >> 31;
+    __mingw_dbl_type_t __hlp;
+    unsigned int __l, __h;
+    __hlp.x = _X;
+    __l = __hlp.lh.low;
+    __h = __hlp.lh.high & 0x7fffffff;
+    __h |= (__l | -__l) >> 31;
+    __h = 0x7ff00000 - __h;
+    return (int)__h >> 31;
   }
 # endif
 #endif
 
 #ifdef __MINGW_USE_MISC
-  extern int __cdecl isnanf(float _X) __MINGW_CONST;
+  extern int __cdecl isnanf(float _X)       __MINGW_CONST;
   extern int __cdecl isnanl(long double _X) __MINGW_CONST;
 
 # ifndef __CRT__NO_INLINE
   __CRT_INLINE __MINGW_CONST
   int __cdecl isnanf(float _X)
   {
-    __mingw_flt_type_t hlp;
-    unsigned int i;
-    hlp.x = _X;
-    i = hlp.val & 0x7fffffff;
-    i = 0x7f800000 - i;
-    return (int)(i >> 31);
+    __mingw_flt_type_t __hlp;
+    unsigned int __i;
+    __hlp.x = _X;
+    __i = __hlp.val & 0x7fffffff;
+    __i = 0x7f800000 - __i;
+    return (int)(__i >> 31);
   }
 
   __CRT_INLINE __MINGW_CONST
   int __cdecl isnanl(long double _X)
   {
 #if defined(__x86_64__) || defined(_AMD64_)
-    __mingw_ldbl_type_t ld;
-    unsigned int xx, signexp;
-    ld.x = _X;
-    signexp = (ld.lh.sign_exponent & 0x7fff) << 1;
-    xx = ld.lh.low | (ld.lh.high & 0x7fffffffu);
-    signexp |= (xx | (-xx)) >> 31;
-    signexp = 0xfffe - signexp;
-    return (int)signexp >> 16;
+    __mingw_ldbl_type_t __ld;
+    unsigned int __xx, __signexp;
+    __ld.x = _X;
+    __signexp = (__ld.lh.sign_exponent & 0x7fff) << 1;
+    __xx = __ld.lh.low | (__ld.lh.high & 0x7fffffffu);
+    __signexp |= (__xx | (-__xx)) >> 31;
+    __signexp = 0xfffe - __signexp;
+    return (int)__signexp >> 16;
 #elif defined(__aarch64__) || defined(_ARM64_)
     return isnan(_X);
 #endif
@@ -353,7 +354,7 @@ __MINGW_BEGIN_C_DECLS
    set float_t and double_t.  */
 #if defined(__x86_64__) || defined(__FLT_EVAL_METHOD__)
 # if defined(__x86_64__) || __FLT_EVAL_METHOD__== 0
-    typedef float float_t;
+    typedef float  float_t;
     typedef double double_t;
 # elif __FLT_EVAL_METHOD__ == 1
     typedef double float_t;
@@ -391,41 +392,41 @@ __MINGW_BEGIN_C_DECLS
   (A normal long double value might become subnormal when
   converted to double, and zero when converted to float.)
 */
-  extern int __cdecl __fpclassify(double _X) __MINGW_CONST;
-  extern int __cdecl __fpclassifyf(float _X) __MINGW_CONST;
+  extern int __cdecl __fpclassify(double _X)       __MINGW_CONST;
+  extern int __cdecl __fpclassifyf(float _X)       __MINGW_CONST;
   extern int __cdecl __fpclassifyl(long double _X) __MINGW_CONST;
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE __MINGW_CONST
   int __cdecl __fpclassify(double _X)
   {
-    __mingw_dbl_type_t hlp;
-    unsigned int l, h;
-    hlp.x = _X;
-    h = hlp.lh.high;
-    l = hlp.lh.low | (h & 0xfffff);
-    h &= 0x7ff00000;
-    if((h | l) == 0)
+    __mingw_dbl_type_t __hlp;
+    unsigned int __l, __h;
+    __hlp.x = _X;
+    __h = __hlp.lh.high;
+    __l = __hlp.lh.low | (__h & 0xfffff);
+    __h &= 0x7ff00000;
+    if((__h | __l) == 0)
       return FP_ZERO;
-    if(!h)
+    if(!__h)
       return FP_SUBNORMAL;
-    if(h == 0x7ff00000)
-      return l ? FP_NAN : FP_INFINITE;
+    if(__h == 0x7ff00000)
+      return __l ? FP_NAN : FP_INFINITE;
     return FP_NORMAL;
   }
 
   __CRT_INLINE __MINGW_CONST
   int __cdecl __fpclassifyf(float _X)
   {
-    __mingw_flt_type_t hlp;
-    hlp.x = _X;
-    hlp.val &= 0x7fffffff;
-    if(hlp.val == 0)
+    __mingw_flt_type_t __hlp;
+    __hlp.x = _X;
+    __hlp.val &= 0x7fffffff;
+    if(__hlp.val == 0)
       return FP_ZERO;
-    if(hlp.val < 0x800000)
+    if(__hlp.val < 0x800000)
       return FP_SUBNORMAL;
-    if(hlp.val >= 0x7f800000)
-      return hlp.val > 0x7f800000 ? FP_NAN : FP_INFINITE;
+    if(__hlp.val >= 0x7f800000)
+      return __hlp.val > 0x7f800000 ? FP_NAN : FP_INFINITE;
     return FP_NORMAL;
   }
 
@@ -433,20 +434,20 @@ __MINGW_BEGIN_C_DECLS
   int __cdecl __fpclassifyl(long double _X)
   {
 #if defined(__x86_64__) || defined(_AMD64_)
-    __mingw_ldbl_type_t hlp;
-    unsigned int e;
-    hlp.x = _X;
-    e = hlp.lh.sign_exponent & 0x7fff;
-    if(!e)
+    __mingw_ldbl_type_t __hlp;
+    unsigned int __e;
+    __hlp.x = _X;
+    __e = __hlp.lh.sign_exponent & 0x7fff;
+    if(!__e)
     {
-      unsigned int h = hlp.lh.high;
-      if(!(hlp.lh.low | h))
+      unsigned int __h = __hlp.lh.high;
+      if(!(__hlp.lh.low | __h))
         return FP_ZERO;
-      else if(!(h & 0x80000000))
+      else if(!(__h & 0x80000000))
         return FP_SUBNORMAL;
     }
-    else if(e == 0x7fff)
-      return (((hlp.lh.high & 0x7fffffff) | hlp.lh.low) == 0 ? FP_INFINITE : FP_NAN);
+    else if(__e == 0x7fff)
+      return (((__hlp.lh.high & 0x7fffffff) | __hlp.lh.low) == 0 ? FP_INFINITE : FP_NAN);
     return FP_NORMAL;
 #elif defined(__aarch64__) || defined(_ARM64_)
     return __fpclassify(_X);
@@ -488,47 +489,47 @@ __MINGW_BEGIN_C_DECLS
 /* 7.12.3.4 */
 /* We don't need to worry about truncation here:
    A NaN stays a NaN. */
-  extern int __cdecl __isnan(double _X) __MINGW_CONST;
-  extern int __cdecl __isnanf(float _X) __MINGW_CONST;
+  extern int __cdecl __isnan(double _X)       __MINGW_CONST;
+  extern int __cdecl __isnanf(float _X)       __MINGW_CONST;
   extern int __cdecl __isnanl(long double _X) __MINGW_CONST;
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE __MINGW_CONST
   int __cdecl __isnan(double _X)
   {
-    __mingw_dbl_type_t hlp;
-    unsigned int l, h;
-    hlp.x = _X;
-    l = hlp.lh.low;
-    h = hlp.lh.high & 0x7fffffff;
-    h |= (l | -l) >> 31;
-    h = 0x7ff00000 - h;
-    return (int)h >> 31;
+    __mingw_dbl_type_t __hlp;
+    unsigned int __l, __h;
+    __hlp.x = _X;
+    __l = __hlp.lh.low;
+    __h = __hlp.lh.high & 0x7fffffff;
+    __h |= (__l | -__l) >> 31;
+    __h = 0x7ff00000 - __h;
+    return (int)__h >> 31;
   }
 
   __CRT_INLINE __MINGW_CONST
   int __cdecl __isnanf(float _X)
   {
-    __mingw_flt_type_t hlp;
-    unsigned int i;
-    hlp.x = _X;
-    i = hlp.val & 0x7fffffff;
-    i = 0x7f800000 - i;
-    return (int)(i >> 31);
+    __mingw_flt_type_t __hlp;
+    unsigned int __i;
+    __hlp.x = _X;
+    __i = __hlp.val & 0x7fffffff;
+    __i = 0x7f800000 - __i;
+    return (int)(__i >> 31);
   }
 
   __CRT_INLINE __MINGW_CONST
   int __cdecl __isnanl(long double _X)
   {
 #if defined(__x86_64__) || defined(_AMD64_)
-    __mingw_ldbl_type_t ld;
-    unsigned int xx, signexp;
-    ld.x = _X;
-    signexp = (ld.lh.sign_exponent & 0x7fff) << 1;
-    xx = ld.lh.low | (ld.lh.high & 0x7fffffffu);
-    signexp |= (xx | (-xx)) >> 31;
-    signexp = 0xfffe - signexp;
-    return (int)signexp >> 16;
+    __mingw_ldbl_type_t __ld;
+    unsigned int __xx, __signexp;
+    __ld.x = _X;
+    __signexp = (__ld.lh.sign_exponent & 0x7fff) << 1;
+    __xx = __ld.lh.low | (__ld.lh.high & 0x7fffffffu);
+    __signexp |= (__xx | (-__xx)) >> 31;
+    __signexp = 0xfffe - __signexp;
+    return (int)__signexp >> 16;
 #elif defined(__aarch64__) || defined(_ARM64_)
     return __isnan(_X);
 #endif
@@ -559,34 +560,34 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.3.6 The signbit macro */
-  extern int __cdecl __signbit(double _X) __MINGW_CONST;
-  extern int __cdecl __signbitf(float _X) __MINGW_CONST;
+  extern int __cdecl __signbit(double _X)       __MINGW_CONST;
+  extern int __cdecl __signbitf(float _X)       __MINGW_CONST;
   extern int __cdecl __signbitl(long double _X) __MINGW_CONST;
 
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE __MINGW_CONST
   int __cdecl __signbit(double _X)
   {
-    __mingw_dbl_type_t hlp;
-    hlp.x = _X;
-    return ((hlp.lh.high & 0x80000000) != 0);
+    __mingw_dbl_type_t __hlp;
+    __hlp.x = _X;
+    return ((__hlp.lh.high & 0x80000000) != 0);
   }
 
   __CRT_INLINE __MINGW_CONST
   int __cdecl __signbitf(float _X)
   {
-    __mingw_flt_type_t hlp;
-    hlp.x = _X;
-    return (hlp.val & 0x80000000) != 0;
+    __mingw_flt_type_t __hlp;
+    __hlp.x = _X;
+    return (__hlp.val & 0x80000000) != 0;
   }
 
   __CRT_INLINE __MINGW_CONST
   int __cdecl __signbitl(long double _X)
   {
 #if defined(__x86_64__) || defined(_AMD64_)
-    __mingw_ldbl_type_t ld;
-    ld.x = _X;
-    return (ld.lh.sign_exponent & 0x8000) != 0;
+    __mingw_ldbl_type_t __ld;
+    __ld.x = _X;
+    return (__ld.lh.sign_exponent & 0x8000) != 0;
 #elif defined(__aarch64__) || defined(_ARM64_)
     return __signbit(_X);
 #endif
@@ -610,74 +611,75 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.4 Trigonometric functions: Double in C89 */
-  _CRTIMP float __cdecl sinf(float _X);
+  _CRTIMP   float       __cdecl sinf(float _X);
   _LDCRTIMP long double __cdecl sinl(long double _X);
 
-  _CRTIMP float __cdecl cosf(float _X);
+  _CRTIMP   float       __cdecl cosf(float _X);
   _LDCRTIMP long double __cdecl cosl(long double _X);
 
-  _CRTIMP float __cdecl tanf(float _X);
+  _CRTIMP   float       __cdecl tanf(float _X);
   _LDCRTIMP long double __cdecl tanl(long double _X);
 
-  _CRTIMP float __cdecl asinf(float _X);
+  _CRTIMP   float       __cdecl asinf(float _X);
   _LDCRTIMP long double __cdecl asinl(long double _X);
 
-  _CRTIMP float __cdecl acosf(float _X);
+  _CRTIMP   float       __cdecl acosf(float _X);
   _LDCRTIMP long double __cdecl acosl(long double _X);
 
-  _CRTIMP float __cdecl atanf(float _X);
+  _CRTIMP   float       __cdecl atanf(float _X);
   _LDCRTIMP long double __cdecl atanl(long double _X);
 
-  _CRTIMP float __cdecl atan2f(float _Y, float _X);
+  _CRTIMP   float       __cdecl atan2f(float _Y, float _X);
   _LDCRTIMP long double __cdecl atan2l(long double _Y, long double _X);
 
 /* 7.12.5 Hyperbolic functions: Double in C89  */
-  _CRTIMP float __cdecl sinhf(float _X);
+  _CRTIMP   float       __cdecl sinhf(float _X);
   _LDCRTIMP long double __cdecl sinhl(long double _X);
 
-  _CRTIMP float __cdecl coshf(float _X);
+  _CRTIMP   float       __cdecl coshf(float _X);
   _LDCRTIMP long double __cdecl coshl(long double _X);
 
-  _CRTIMP float __cdecl tanhf(float _X);
+  _CRTIMP   float       __cdecl tanhf(float _X);
   _LDCRTIMP long double __cdecl tanhl(long double _X);
 
 /* Inverse hyperbolic trig functions  */
 /* 7.12.5.1 */
-  _CRTIMP double __cdecl acosh(double _X);
-  _CRTIMP float __cdecl acoshf(float _X);
+  _CRTIMP   double      __cdecl acosh(double _X);
+  _CRTIMP   float       __cdecl acoshf(float _X);
   _LDCRTIMP long double __cdecl acoshl(long double _X);
 
 /* 7.12.5.2 */
-  _CRTIMP double __cdecl asinh(double _X);
-  _CRTIMP float __cdecl asinhf(float _X);
+  _CRTIMP   double      __cdecl asinh(double _X);
+  _CRTIMP   float       __cdecl asinhf(float _X);
   _LDCRTIMP long double __cdecl asinhl(long double _X);
 
 /* 7.12.5.3 */
-  _CRTIMP double __cdecl atanh(double _X);
-  _CRTIMP float __cdecl atanhf(float _X);
+  _CRTIMP   double      __cdecl atanh(double _X);
+  _CRTIMP   float       __cdecl atanhf(float _X);
   _LDCRTIMP long double __cdecl atanhl(long double _X);
 
 /* Exponentials and logarithms  */
 /* 7.12.6.1 Double in C89 */
-  _CRTIMP float __cdecl expf(float _X);
+  _CRTIMP   float       __cdecl expf(float _X);
   _LDCRTIMP long double __cdecl expl(long double _X);
 
 /* 7.12.6.2 */
-  _CRTIMP double __cdecl exp2(double _X);
-  _CRTIMP float __cdecl exp2f(float _X);
+  _CRTIMP   double      __cdecl exp2(double _X);
+  _CRTIMP   float       __cdecl exp2f(float _X);
   _LDCRTIMP long double __cdecl exp2l(long double _X);
 
 /* 7.12.6.3 The expm1 functions */
-  _CRTIMP double __cdecl expm1(double _X);
-  _CRTIMP float __cdecl expm1f(float _X);
+  _CRTIMP   double      __cdecl expm1(double _X);
+  _CRTIMP   float       __cdecl expm1f(float _X);
   _LDCRTIMP long double __cdecl expm1l(long double _X);
 
 /* 7.12.6.4 Double in C89 */
-  extern float __cdecl frexpf(float _X, int *_Y);
+  extern    float       __cdecl frexpf(float _X, int *_Y);
   _LDCRTIMP long double __cdecl frexpl(long double _X, int *_Y);
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE float __cdecl frexpf(float _X, int *_Y)
+  __CRT_INLINE
+  float __cdecl frexpf(float _X, int *_Y)
   {
     return (float)frexp(_X, _Y);
   }
@@ -686,68 +688,69 @@ __MINGW_BEGIN_C_DECLS
 /* 7.12.6.5 */
 #define FP_ILOGB0   ((int)0x80000000)
 #define FP_ILOGBNAN ((int)0x7fffffff)
-  _CRTIMP int __cdecl ilogb(double _X);
-  _CRTIMP int __cdecl ilogbf(float _X);
+  _CRTIMP   int __cdecl ilogb(double _X);
+  _CRTIMP   int __cdecl ilogbf(float _X);
   _LDCRTIMP int __cdecl ilogbl(long double _X);
 
 /* 7.12.6.6  Double in C89 */
-  extern float __cdecl ldexpf(float _X, int _Y);
+  extern float       __cdecl ldexpf(float _X, int _Y);
   extern long double __cdecl ldexpl(long double _X, int _Y);
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE float __cdecl ldexpf(float _X, int _Y)
+  __CRT_INLINE
+  float __cdecl ldexpf(float _X, int _Y)
   {
     return (float)ldexp(_X, _Y);
   }
 #endif  /* __CRT__NO_INLINE */
 
 /* 7.12.6.7 Double in C89 */
-  _CRTIMP float __cdecl logf(float _X);
+  _CRTIMP   float       __cdecl logf(float _X);
   _LDCRTIMP long double __cdecl logl(long double _X);
 
 /* 7.12.6.8 Double in C89 */
-  _CRTIMP float __cdecl log10f(float _X);
+  _CRTIMP   float       __cdecl log10f(float _X);
   _LDCRTIMP long double __cdecl log10l(long double _X);
 
 /* 7.12.6.9 */
-  _CRTIMP double __cdecl log1p(double _X);
-  _CRTIMP float __cdecl log1pf(float _X);
+  _CRTIMP   double      __cdecl log1p(double _X);
+  _CRTIMP   float       __cdecl log1pf(float _X);
   _LDCRTIMP long double __cdecl log1pl(long double _X);
 
 /* 7.12.6.10 */
-  _CRTIMP double __cdecl log2(double _X);
-  _CRTIMP float __cdecl log2f(float _X);
+  _CRTIMP   double      __cdecl log2(double _X);
+  _CRTIMP   float       __cdecl log2f(float _X);
   _LDCRTIMP long double __cdecl log2l(long double _X);
 
 /* 7.12.6.11 */
-  _CRTIMP double __cdecl logb(double _X);
-  _CRTIMP float __cdecl logbf(float _X);
+  _CRTIMP   double      __cdecl logb(double _X);
+  _CRTIMP   float       __cdecl logbf(float _X);
   _LDCRTIMP long double __cdecl logbl(long double _X);
 
 /* 7.12.6.12  Double in C89 */
-  _CRTIMP float __cdecl modff(float _X, float *_Y);
-  extern long double __cdecl modfl(long double _X, long double *_Y);
+  _CRTIMP float       __cdecl modff(float _X, float *_Y);
+  extern  long double __cdecl modfl(long double _X, long double *_Y);
 
 /* 7.12.6.13 */
-  extern double __cdecl scalbn(double _X, int _Y);
-  extern float __cdecl scalbnf(float _X, int _Y);
+  extern double      __cdecl scalbn(double _X, int _Y);
+  extern float       __cdecl scalbnf(float _X, int _Y);
   extern long double __cdecl scalbnl(long double _X, int _Y);
 
-  extern double __cdecl scalbln(double _X, long _Y);
-  extern float __cdecl scalblnf(float _X, long _Y);
+  extern double      __cdecl scalbln(double _X, long _Y);
+  extern float       __cdecl scalblnf(float _X, long _Y);
   extern long double __cdecl scalblnl(long double _X, long _Y);
 
 /* 7.12.7.1 */
 /* Implementations adapted from Cephes versions */
-  _CRTIMP double __cdecl cbrt(double _X);
-  _CRTIMP float __cdecl cbrtf(float _X);
+  _CRTIMP   double      __cdecl cbrt(double _X);
+  _CRTIMP   float       __cdecl cbrtf(float _X);
   _LDCRTIMP long double __cdecl cbrtl(long double _X);
 
 /* 7.12.7.2 The fabs functions: Double in C89 */
 #if defined(__aarch64__) || defined(_ARM64_)
-  _CRTIMP float __cdecl fabsf(float _X) __MINGW_CONST;
+  _CRTIMP   float       __cdecl fabsf(float _X) __MINGW_CONST;
 #else
-  extern float __cdecl fabsf(float _X) __MINGW_CONST;
+  extern    float       __cdecl fabsf(float _X) __MINGW_CONST;
 #endif
   _LDCRTIMP long double __cdecl fabsl(long double _X) __MINGW_CONST;
 
@@ -762,118 +765,118 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_CONST
   long double __cdecl fabsl(long double _X)
   {
-    long double res = 0.0l;
-    __asm__ __volatile__("fabs;" : "=t" (res) : "0" (_X));
-    return res;
+    long double __res = 0.0l;
+    __asm__ __volatile__("fabs;" : "=t" (__res) : "0" (_X));
+    return __res;
   }
 #endif
 #endif  /* __CRT__NO_INLINE */
 
 /* 7.12.7.3  */
-  _CRTIMP double __cdecl hypot(double _X, double _Y);
-  _CRTIMP float __cdecl hypotf(float _X, float _Y);
+  _CRTIMP   double      __cdecl hypot(double _X, double _Y);
+  _CRTIMP   float       __cdecl hypotf(float _X, float _Y);
   _LDCRTIMP long double __cdecl hypotl(long double _X, long double _Y);
 
 /* 7.12.7.4 The pow functions. Double in C89 */
-  _CRTIMP float __cdecl powf(float _X, float _Y);
+  _CRTIMP   float       __cdecl powf(float _X, float _Y);
   _LDCRTIMP long double __cdecl powl(long double _X, long double _Y);
 
 /* 7.12.7.5 The sqrt functions. Double in C89. */
-  _CRTIMP float __cdecl sqrtf(float _X);
+  _CRTIMP   float       __cdecl sqrtf(float _X);
   _LDCRTIMP long double __cdecl sqrtl(long double _X);
 
 /* 7.12.8.1 The erf functions  */
-  _CRTIMP double __cdecl erf(double _X);
-  _CRTIMP float __cdecl erff(float _X);
+  _CRTIMP   double      __cdecl erf(double _X);
+  _CRTIMP   float       __cdecl erff(float _X);
   _LDCRTIMP long double __cdecl erfl(long double _X);
 
 /* 7.12.8.2 The erfc functions  */
-  _CRTIMP double __cdecl erfc(double _X);
-  _CRTIMP float __cdecl erfcf(float _X);
+  _CRTIMP   double      __cdecl erfc(double _X);
+  _CRTIMP   float       __cdecl erfcf(float _X);
   _LDCRTIMP long double __cdecl erfcl(long double _X);
 
 /* 7.12.8.3 The lgamma functions */
-  extern double __cdecl lgamma(double _X);
-  extern float __cdecl lgammaf(float _X);
+  extern double      __cdecl lgamma(double _X);
+  extern float       __cdecl lgammaf(float _X);
   extern long double __cdecl lgammal(long double _X);
 
   extern int signgam;
 
 /* 7.12.8.4 The tgamma functions */
-  _CRTIMP double __cdecl tgamma(double _X);
-  _CRTIMP float __cdecl tgammaf(float _X);
+  _CRTIMP   double      __cdecl tgamma(double _X);
+  _CRTIMP   float       __cdecl tgammaf(float _X);
   _LDCRTIMP long double __cdecl tgammal(long double _X);
 
 /* 7.12.9.1 Double in C89 */
-  _CRTIMP float __cdecl ceilf(float _X) __MINGW_CONST;
+  _CRTIMP   float       __cdecl ceilf(float _X)       __MINGW_CONST;
   _LDCRTIMP long double __cdecl ceill(long double _X) __MINGW_CONST;
 
 /* 7.12.9.2 Double in C89 */
-  _CRTIMP float __cdecl floorf(float _X) __MINGW_CONST;
+  _CRTIMP   float       __cdecl floorf(float _X)       __MINGW_CONST;
   _LDCRTIMP long double __cdecl floorl(long double _X) __MINGW_CONST;
 
 /* 7.12.9.3 */
-  _CRTIMP double __cdecl nearbyint(double _X);
-  _CRTIMP float __cdecl nearbyintf(float _X);
+  _CRTIMP   double      __cdecl nearbyint(double _X);
+  _CRTIMP   float       __cdecl nearbyintf(float _X);
   _LDCRTIMP long double __cdecl nearbyintl(long double _X);
 
 /* 7.12.9.4 */
 /* round, using fpu control word settings */
-  _CRTIMP double __cdecl rint(double _X);
-  _CRTIMP float __cdecl rintf(float _X);
+  _CRTIMP   double      __cdecl rint(double _X);
+  _CRTIMP   float       __cdecl rintf(float _X);
   _LDCRTIMP long double __cdecl rintl(long double _X);
 
 /* 7.12.9.5 */
-  _CRTIMP long __cdecl lrint(double _X);
-  _CRTIMP long __cdecl lrintf(float _X);
+  _CRTIMP   long __cdecl lrint(double _X);
+  _CRTIMP   long __cdecl lrintf(float _X);
   _LDCRTIMP long __cdecl lrintl(long double _X);
 
-  __MINGW_EXTENSION _CRTIMP long long __cdecl llrint(double _X);
-  __MINGW_EXTENSION _CRTIMP long long __cdecl llrintf(float _X);
+  __MINGW_EXTENSION _CRTIMP   long long __cdecl llrint(double _X);
+  __MINGW_EXTENSION _CRTIMP   long long __cdecl llrintf(float _X);
   __MINGW_EXTENSION _LDCRTIMP long long __cdecl llrintl(long double _X);
 
 /* 7.12.9.6 */
 /* round away from zero, regardless of fpu control word settings */
-  _CRTIMP double __cdecl round(double _X) __MINGW_CONST;
-  _CRTIMP float __cdecl roundf(float _X) __MINGW_CONST;
+  _CRTIMP   double      __cdecl round(double _X)       __MINGW_CONST;
+  _CRTIMP   float       __cdecl roundf(float _X)       __MINGW_CONST;
   _LDCRTIMP long double __cdecl roundl(long double _X) __MINGW_CONST;
 
 /* 7.12.9.7  */
-  _CRTIMP long __cdecl lround(double _X);
-  _CRTIMP long __cdecl lroundf(float _X);
-  _LDCRTIMP long __cdecl lroundl(long double _X);
-  __MINGW_EXTENSION _CRTIMP long long __cdecl llround(double _X);
-  __MINGW_EXTENSION _CRTIMP long long __cdecl llroundf(float _X);
+                    _CRTIMP   long      __cdecl lround(double _X);
+                    _CRTIMP   long      __cdecl lroundf(float _X);
+                    _LDCRTIMP long      __cdecl lroundl(long double _X);
+  __MINGW_EXTENSION _CRTIMP   long long __cdecl llround(double _X);
+  __MINGW_EXTENSION _CRTIMP   long long __cdecl llroundf(float _X);
   __MINGW_EXTENSION _LDCRTIMP long long __cdecl llroundl(long double _X);
 
 /* 7.12.9.8 */
 /* round towards zero, regardless of fpu control word settings */
-  _CRTIMP double __cdecl trunc(double _X) __MINGW_CONST;
-  _CRTIMP float __cdecl truncf(float _X) __MINGW_CONST;
+  _CRTIMP   double      __cdecl trunc(double _X)       __MINGW_CONST;
+  _CRTIMP   float       __cdecl truncf(float _X)       __MINGW_CONST;
   _LDCRTIMP long double __cdecl truncl(long double _X) __MINGW_CONST;
 
 /* 7.12.10.1 Double in C89 */
-  _CRTIMP float __cdecl fmodf(float _X, float _Y);
+  _CRTIMP   float       __cdecl fmodf(float _X, float _Y);
   _LDCRTIMP long double __cdecl fmodl(long double _X, long double _Y);
 
 /* 7.12.10.2 */
-  _CRTIMP double __cdecl remainder(double _X, double _Y);
-  _CRTIMP float __cdecl remainderf(float _X, float _Y);
+  _CRTIMP   double      __cdecl remainder(double _X, double _Y);
+  _CRTIMP   float       __cdecl remainderf(float _X, float _Y);
   _LDCRTIMP long double __cdecl remainderl(long double _X, long double _Y);
 
 /* 7.12.10.3 */
-  _CRTIMP double __cdecl remquo(double _X, double _Y, int *_Z);
-  _CRTIMP float __cdecl remquof(float _X, float _Y, int *_Z);
+  _CRTIMP   double      __cdecl remquo(double _X, double _Y, int *_Z);
+  _CRTIMP   float       __cdecl remquof(float _X, float _Y, int *_Z);
   _LDCRTIMP long double __cdecl remquol(long double _X, long double _Y, int *_Z);
 
 /* 7.12.11.1 */
-  _CRTIMP double __cdecl copysign(double _Number, double _Sign) __MINGW_CONST;
-  _CRTIMP float __cdecl copysignf(float _Number, float _Sign) __MINGW_CONST;
+  _CRTIMP   double      __cdecl copysign(double _Number, double _Sign)            __MINGW_CONST;
+  _CRTIMP   float       __cdecl copysignf(float _Number, float _Sign)             __MINGW_CONST;
   _LDCRTIMP long double __cdecl copysignl(long double _Number, long double _Sign) __MINGW_CONST;
 
 /* 7.12.11.2 Return a NaN */
-  _CRTIMP double __cdecl nan(const char *_X);
-  _CRTIMP float __cdecl nanf(const char *_X);
+  _CRTIMP   double      __cdecl nan(const char *_X);
+  _CRTIMP   float       __cdecl nanf(const char *_X);
   _LDCRTIMP long double __cdecl nanl(const char *_X);
 
 #define _nan()  nan("")
@@ -881,19 +884,19 @@ __MINGW_BEGIN_C_DECLS
 #define _nanl() nanl("")
 
 /* 7.12.11.3 */
-  _CRTIMP double __cdecl nextafter(double _X, double _Y) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP float __cdecl nextafterf(float _X, float _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP   double      __cdecl nextafter(double _X, double _Y)            __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP   float       __cdecl nextafterf(float _X, float _Y)             __MINGW_CONST __MINGW_NOTHROW;
   _LDCRTIMP long double __cdecl nextafterl(long double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
 
 /* 7.12.11.4 The nexttoward functions */
-  _LDCRTIMP double __cdecl nexttoward(double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
-  _LDCRTIMP float __cdecl nexttowardf(float _X,  long double _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _LDCRTIMP double      __cdecl nexttoward(double _X, long double _Y)       __MINGW_CONST __MINGW_NOTHROW;
+  _LDCRTIMP float       __cdecl nexttowardf(float _X,  long double _Y)      __MINGW_CONST __MINGW_NOTHROW;
   _LDCRTIMP long double __cdecl nexttowardl(long double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
 
 /* 7.12.12.1 */
 /*  x > y ? (x - y) : 0.0  */
-  _CRTIMP double __cdecl fdim(double _X, double _Y);
-  _CRTIMP float __cdecl fdimf(float _X, float _Y);
+  _CRTIMP   double      __cdecl fdim(double _X, double _Y);
+  _CRTIMP   float       __cdecl fdimf(float _X, float _Y);
   _LDCRTIMP long double __cdecl fdiml(long double _X, long double _Y);
 
 /* fmax and fmin.
@@ -902,19 +905,19 @@ __MINGW_BEGIN_C_DECLS
   value. */
 
 /* 7.12.12.2 */
-  _CRTIMP double __cdecl fmax(double _X, double _Y) __MINGW_CONST;
-  _CRTIMP float __cdecl fmaxf(float _X, float _Y) __MINGW_CONST;
+  _CRTIMP   double      __cdecl fmax(double _X, double _Y)            __MINGW_CONST;
+  _CRTIMP   float       __cdecl fmaxf(float _X, float _Y)             __MINGW_CONST;
   _LDCRTIMP long double __cdecl fmaxl(long double _X, long double _Y) __MINGW_CONST;
 
 /* 7.12.12.3 */
-  _CRTIMP double __cdecl fmin(double _X, double _Y) __MINGW_CONST;
-  _CRTIMP float __cdecl fminf(float _X, float _Y) __MINGW_CONST;
+  _CRTIMP   double      __cdecl fmin(double _X, double _Y)            __MINGW_CONST;
+  _CRTIMP   float       __cdecl fminf(float _X, float _Y)             __MINGW_CONST;
   _LDCRTIMP long double __cdecl fminl(long double _X, long double _Y) __MINGW_CONST;
 
 /* 7.12.13.1 */
 /* return x * y + z as a ternary op */
-  _CRTIMP double __cdecl fma(double _X, double _Y, double _Z);
-  _CRTIMP float __cdecl fmaf(float _X, float _Y, float _Z);
+  _CRTIMP   double      __cdecl fma(double _X, double _Y, double _Z);
+  _CRTIMP   float       __cdecl fmaf(float _X, float _Y, float _Z);
   _LDCRTIMP long double __cdecl fmal(long double _X, long double _Y, long double _Z);
 
 /* 7.12.14 */
@@ -934,20 +937,20 @@ __MINGW_BEGIN_C_DECLS
 
 #endif
 
-  _CRTIMP float __cdecl _hypotf(float _X, float _Y);
+  _CRTIMP   float       __cdecl _hypotf(float _X, float _Y);
   _LDCRTIMP long double __cdecl _hypotl(long double _X, long double _Y);
 
   _CRTIMP float __cdecl _copysignf(float _Number, float _Sign) __MINGW_CONST;
   _CRTIMP float __cdecl _chgsignf(float _X);
   _CRTIMP float __cdecl _logbf(float _X);
-  _CRTIMP int __cdecl _finitef(float _X) __MINGW_CONST;
+  _CRTIMP int   __cdecl _finitef(float _X) __MINGW_CONST;
 
 #if defined(__x86_64__) || defined(_AMD64_)
   _CRTIMP float __cdecl _nextafterf(float _X, float _Y) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int __cdecl _isnanf(float _X) __MINGW_CONST;
-  _CRTIMP int __cdecl _fpclassf(float _X);
-  _CRTIMP int __cdecl _set_FMA3_enable(int _Flag);
-  _CRTIMP int __cdecl _get_FMA3_enable(void);
+  _CRTIMP int   __cdecl _isnanf(float _X) __MINGW_CONST;
+  _CRTIMP int   __cdecl _fpclassf(float _X);
+  _CRTIMP int   __cdecl _set_FMA3_enable(int _Flag);
+  _CRTIMP int   __cdecl _get_FMA3_enable(void);
 #endif
 
 #ifndef __cplusplus

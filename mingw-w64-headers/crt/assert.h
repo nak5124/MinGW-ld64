@@ -18,12 +18,12 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_ISOC11) && !defined(__cplusplus)
 /* Static assertion.  Requires support in the compiler. */
-# undef static_assert
+# undef  static_assert
 # define static_assert _Static_assert
 #endif
 
   _CRTIMP void __cdecl _wassert(const wchar_t *_Message, const wchar_t *_File, unsigned _Line) __MINGW_NORETURN;
-  _CRTIMP void __cdecl _assert(const char *_Message, const char *_File, unsigned _Line) __MINGW_NORETURN;
+  _CRTIMP void __cdecl _assert(const char *_Message, const char *_File, unsigned _Line)        __MINGW_NORETURN;
 
 __MINGW_END_C_DECLS
 
@@ -33,10 +33,10 @@ __MINGW_END_C_DECLS
 # define assert(_Expression) ((void)0)
 #elif defined(_UNICODE) || defined(UNICODE)
 # define assert(_Expression) \
-  (void) \
+  (void)                     \
   ((!!(_Expression)) || (_wassert(_CRT_WIDE(#_Expression), _CRT_WIDE(__FILE__), __LINE__), 0))
 #else
 # define assert(_Expression) \
-  (void) \
+  (void)                     \
   ((!!(_Expression)) || (_assert(#_Expression, __FILE__, __LINE__), 0))
 #endif  /* NDEBUG */

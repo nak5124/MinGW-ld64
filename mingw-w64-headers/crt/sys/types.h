@@ -15,13 +15,13 @@
 #ifndef _INO_T_DEFINED
 # define _INO_T_DEFINED
   typedef unsigned short _ino_t;
-  typedef _ino_t ino_t;
+  typedef _ino_t          ino_t;
 #endif
 
 #ifndef _DEV_T_DEFINED
 # define _DEV_T_DEFINED
   typedef unsigned int _dev_t;
-  typedef _dev_t dev_t;
+  typedef _dev_t        dev_t;
 #endif
 
 #ifndef _OFF_T_DEFINED
@@ -43,7 +43,7 @@
 # ifdef __MINGW_USE_FOB64
     typedef _off64_t off_t;
 # else
-    typedef _off_t off_t;
+    typedef _off_t   off_t;
 # endif
 #endif
 
@@ -57,7 +57,7 @@
 #ifndef _MODE_T_
 # define _MODE_T_
   typedef unsigned short _mode_t;
-  typedef _mode_t mode_t;
+  typedef _mode_t         mode_t;
 #endif
 
   typedef unsigned int useconds_t;
@@ -80,7 +80,7 @@
 #ifndef _SIGSET_T_
 # define _SIGSET_T_
   __MINGW_EXTENSION typedef unsigned long long _sigset_t;
-  typedef _sigset_t sigset_t;
+                    typedef _sigset_t           sigset_t;
 #endif
 
 #endif  /* _INC_TYPES */

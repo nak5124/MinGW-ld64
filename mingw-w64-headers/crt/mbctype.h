@@ -76,16 +76,16 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _ismbblead_l(unsigned int _Ch, _locale_t _Locale);
   _CRTIMP int __cdecl _ismbbtrail_l(unsigned int _Ch, _locale_t _Locale);
 
-  _CRTIMP int __cdecl _ismbslead(const unsigned char *_Str,const unsigned char *_Pos);
-  _CRTIMP int __cdecl _ismbslead_l(const unsigned char *_Str,const unsigned char *_Pos,_locale_t _Locale);
-  _CRTIMP int __cdecl _ismbstrail(const unsigned char *_Str,const unsigned char *_Pos);
-  _CRTIMP int __cdecl _ismbstrail_l(const unsigned char *_Str,const unsigned char *_Pos,_locale_t _Locale);
+  _CRTIMP int __cdecl _ismbslead(const unsigned char *_Str, const unsigned char *_Pos);
+  _CRTIMP int __cdecl _ismbslead_l(const unsigned char *_Str, const unsigned char *_Pos, _locale_t _Locale);
+  _CRTIMP int __cdecl _ismbstrail(const unsigned char *_Str, const unsigned char *_Pos);
+  _CRTIMP int __cdecl _ismbstrail_l(const unsigned char *_Str, const unsigned char *_Pos, _locale_t _Locale);
 #endif  /* _MBLEADTRAIL_DEFINED */
 
 #ifndef _MBCCPY_DEFINED  /* Also in mbstring.h */
 # define _MBCCPY_DEFINED
-  _CRTIMP void __cdecl _mbccpy(unsigned char *dest, const unsigned char *src) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP void __cdecl _mbccpy_l(unsigned char *dest, const unsigned char *src, _locale_t locale) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void __cdecl _mbccpy(unsigned char *_Dst, const unsigned char *_Src)                      __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void __cdecl _mbccpy_l(unsigned char *_Dst, const unsigned char *_Src, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
 #endif  /* _MBCCPY_DEFINED */
 
 __MINGW_END_C_DECLS

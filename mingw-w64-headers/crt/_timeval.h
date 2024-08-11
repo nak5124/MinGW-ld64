@@ -10,8 +10,8 @@
 
   struct timeval
   {
-    time_t  tv_sec;
-    __int64 tv_usec;
+                      time_t  tv_sec;
+    __MINGW_EXTENSION __int64 tv_usec;
   };
 
 #ifdef __MINGW_USE_MISC

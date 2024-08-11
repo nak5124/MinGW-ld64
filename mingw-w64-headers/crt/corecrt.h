@@ -33,7 +33,6 @@ __MINGW_BEGIN_C_DECLS
 # ifndef _CONST_RETURN
 #   define _CONST_RETURN
 # endif
-
 # define _WConst_return _CONST_RETURN
 #endif  /* __WIDL__ */
 
@@ -238,16 +237,16 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _TIME_T_DEFINED */
 
   _CRTIMP_ALTERNATIVE void __cdecl _invalid_parameter_noinfo(void);
-  _CRTIMP void __cdecl _invalid_parameter_noinfo_noreturn(void) __MINGW_NORETURN;
+  _CRTIMP             void __cdecl _invalid_parameter_noinfo_noreturn(void) __MINGW_NORETURN;
 
   _CRTIMP void __cdecl _invoke_watson
   (
-    wchar_t const* _Expression, wchar_t const* _FunctionName, wchar_t const* _FileName, unsigned int _LineNo, uintptr_t _Reserved
+    wchar_t const *_Expression, wchar_t const *_FunctionName, wchar_t const *_FileName, unsigned int _LineNo, uintptr_t _Reserved
   ) __MINGW_NORETURN;
 
   typedef struct _Mbstatet
   {
-    unsigned long _Wchar;
+    unsigned long  _Wchar;
     unsigned short _Byte, _State;
   } _Mbstatet;
 
@@ -410,7 +409,7 @@ __MINGW_BEGIN_C_DECLS
   struct threadlocaleinfostruct;
   struct threadmbcinfostruct;
   typedef struct threadlocaleinfostruct *pthreadlocinfo;
-  typedef struct threadmbcinfostruct *pthreadmbcinfo;
+  typedef struct threadmbcinfostruct    *pthreadmbcinfo;
   struct __lc_time_data;
 
   typedef struct localeinfo_struct
@@ -426,7 +425,7 @@ __MINGW_BEGIN_C_DECLS
     unsigned short wLanguage;
     unsigned short wCountry;
     unsigned short wCodePage;
-  } LC_ID,*LPLC_ID;
+  } LC_ID, *LPLC_ID;
 #endif  /* _TAGLC_ID_DEFINED */
 
 #ifndef _THREADLOCALEINFO
@@ -434,8 +433,8 @@ __MINGW_BEGIN_C_DECLS
   typedef struct threadlocaleinfostruct
   {
     const unsigned short *_locale_pctype;
-    int _locale_mb_cur_max;
-    unsigned int _locale_lc_codepage;
+    int                   _locale_mb_cur_max;
+    unsigned int          _locale_lc_codepage;
   } threadlocinfo;
 #endif  /* _THREADLOCALEINFO */
 

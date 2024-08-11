@@ -56,7 +56,7 @@ __MINGW_BEGIN_C_DECLS
 #define _pxcptinfoptrs (*__pxcptinfoptrs())
 
   _CRTIMP __p_sig_fn_t __cdecl signal(int _SigNum, __p_sig_fn_t _Func);
-  _CRTIMP int __cdecl raise(int _SigNum);
+  _CRTIMP int          __cdecl raise(int _SigNum);
 
 __MINGW_END_C_DECLS
 

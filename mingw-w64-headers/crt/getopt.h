@@ -16,14 +16,14 @@
 
 __MINGW_BEGIN_C_DECLS
 
-extern int optind;  /* index of first non-option in argv      */
-extern int optopt;  /* single option character, as parsed     */
-extern int opterr;  /* flag to enable built-in diagnostics... */
-    /* (user may set to zero, to suppress)    */
+  extern int optind;  /* index of first non-option in argv      */
+  extern int optopt;  /* single option character, as parsed     */
+  extern int opterr;  /* flag to enable built-in diagnostics... */
+                      /* (user may set to zero, to suppress)    */
 
-extern char *optarg;  /* pointer to argument of current option  */
+  extern char *optarg;  /* pointer to argument of current option  */
 
-extern int getopt(int nargc, char * const *nargv, const char *options) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
+  extern int getopt(int ___argc, char * const *___argv, const char *__shortopts) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
 
 __MINGW_END_C_DECLS
 /*
@@ -38,7 +38,7 @@ __MINGW_END_C_DECLS
 #endif /* !defined(__GETOPT_H__) */
 
 #if !defined(__GETOPT_BSD_H__) && defined(__MINGW_USE_MISC)
-#define __GETOPT_BSD_H__
+# define __GETOPT_BSD_H__
 /*
  * BSD adds the non-standard `optreset' feature, for reinitialisation
  * of `getopt' parsing.  We support this feature, for applications which
@@ -46,33 +46,31 @@ __MINGW_END_C_DECLS
  * to maintain portability, developers are advised to avoid it.
  */
 # define optreset  __mingw_optreset
-extern int optreset;
+  extern int optreset;
 #endif
 
 #if !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__)
-#define __GETOPT_LONG_H__
+# define __GETOPT_LONG_H__
 
 __MINGW_BEGIN_C_DECLS
 
-struct option  /* specification for a long form option... */
-{
-  const char *name;  /* option name, without leading hyphens */
-  int         has_arg;  /* does it take an argument?  */
-  int        *flag;  /* where to save its status, or NULL */
-  int         val;  /* its associated status value  */
-};
+  struct option  /* specification for a long form option... */
+  {
+    const char *name;     /* option name, without leading hyphens */
+    int         has_arg;  /* does it take an argument?  */
+    int        *flag;     /* where to save its status, or NULL */
+    int         val;      /* its associated status value  */
+  };
 
-enum      /* permitted values for its `has_arg' field... */
-{
-  no_argument = 0,       /* option never takes an argument */
-  required_argument,  /* option always requires an argument */
-  optional_argument  /* option may take an argument  */
-};
+  enum  /* permitted values for its `has_arg' field... */
+  {
+    no_argument = 0,    /* option never takes an argument */
+    required_argument,  /* option always requires an argument */
+    optional_argument   /* option may take an argument  */
+  };
 
-extern int getopt_long(int nargc, char * const *nargv, const char *options,
-    const struct option *long_options, int *idx) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
-extern int getopt_long_only(int nargc, char * const *nargv, const char *options,
-    const struct option *long_options, int *idx) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
+  extern int getopt_long(int ___argc, char *const *___argv, const char *__shortopts, const struct option *__longopts, int *__longidx)      __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
+  extern int getopt_long_only(int ___argc, char *const *___argv, const char *__shortopts, const struct option *__longopts, int *__longidx) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
 /*
  * Previous MinGW implementation had...
  */
@@ -85,4 +83,4 @@ extern int getopt_long_only(int nargc, char * const *nargv, const char *options,
 
 __MINGW_END_C_DECLS
 
-#endif /* !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__) */
+#endif  /* !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__) */

@@ -16,10 +16,10 @@
 #define __MINGW64_VERSION_BUGFIX 0
 
 /* This macro holds an monotonic increasing value, which indicates
-   a specific fix/patch is present on trunk.  This value isn't related to
-   minor/major version-macros.  It is increased on demand, if a big
-   fix was applied to trunk.  This macro gets just increased on trunk.  For
-   other branches its value won't be modified.  */
+ * a specific fix/patch is present on trunk.  This value isn't related to
+ * minor/major version-macros.  It is increased on demand, if a big
+ * fix was applied to trunk.  This macro gets just increased on trunk.  For
+ * other branches its value won't be modified.  */
 
 #define __MINGW64_VERSION_RC 0
 
@@ -33,9 +33,9 @@
 #define __MINGW64_VERSION_STATE "alpha"
 
 /* mingw.org's version macros: these make gcc to define
-   MINGW32_SUPPORTS_MT_EH and to use the _CRT_MT global
-   and the __mingwthr_key_dtor() function from the MinGW
-   CRT in its private gthr-win32.h header. */
+ * MINGW32_SUPPORTS_MT_EH and to use the _CRT_MT global
+ * and the __mingwthr_key_dtor() function from the MinGW
+ * CRT in its private gthr-win32.h header. */
 #define __MINGW32_MAJOR_VERSION 3
 #define __MINGW32_MINOR_VERSION 11
 
@@ -204,6 +204,12 @@
 # define __MINGW_NO_OPTIMIZE __attribute__((__optimize__("0")))
 #else
 # define __MINGW_NO_OPTIMIZE
+#endif
+
+#if __MINGW_GNUC_PREREQ(4, 1)
+# define __MINGW_RETURN_TWICE __attribute__((__returns_twice__))
+#else
+# define __MINGW_RETURN_TWICE
 #endif
 
 #if __MINGW_GNUC_PREREQ(4, 4)

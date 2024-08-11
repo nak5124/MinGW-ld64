@@ -144,93 +144,93 @@ __MINGW_BEGIN_C_DECLS
 #include <math.h>
 /* double */
   __CRT_INLINE __MINGW_CONST
-  double cabs(double _Complex _Z)
+  double __cdecl cabs(double _Complex _Z)
   {
     return hypot(__real__ _Z, __imag__ _Z);
   }
 
   __CRT_INLINE __MINGW_CONST
-  double carg(double _Complex _Z)
+  double __cdecl carg(double _Complex _Z)
   {
     return atan2(__imag__ _Z, __real__ _Z);
   }
 
   __CRT_INLINE __MINGW_CONST
-  double cimag(double _Complex _Z)
+  double __cdecl cimag(double _Complex _Z)
   {
     return __imag__ _Z;
   }
 
   __CRT_INLINE __MINGW_CONST
-  double _Complex conj(double _Complex _Z)
+  double _Complex __cdecl conj(double _Complex _Z)
   {
     return __MINGW_EXTENSION ~_Z;
   }
 
   __CRT_INLINE __MINGW_CONST
-  double creal(double _Complex _Z)
+  double __cdecl creal(double _Complex _Z)
   {
     return __real__ _Z;
   }
 
 /* float */
   __CRT_INLINE __MINGW_CONST
-  float cabsf(float _Complex _Z)
+  float __cdecl cabsf(float _Complex _Z)
   {
     return hypotf(__real__ _Z, __imag__ _Z);
   }
 
   __CRT_INLINE __MINGW_CONST
-  float cargf(float _Complex _Z)
+  float __cdecl cargf(float _Complex _Z)
   {
     return atan2f(__imag__ _Z, __real__ _Z);
   }
 
   __CRT_INLINE __MINGW_CONST
-  float cimagf(float _Complex _Z)
+  float __cdecl cimagf(float _Complex _Z)
   {
     return __imag__ _Z;
   }
 
   __CRT_INLINE __MINGW_CONST
-  float _Complex conjf(float _Complex _Z)
+  float _Complex __cdecl conjf(float _Complex _Z)
   {
     return __MINGW_EXTENSION ~_Z;
   }
 
   __CRT_INLINE __MINGW_CONST
-  float crealf(float _Complex _Z)
+  float __cdecl crealf(float _Complex _Z)
   {
     return __real__ _Z;
   }
 
 /* long double */
   __CRT_INLINE __MINGW_CONST
-  long double cabsl(long double _Complex _Z)
+  long double __cdecl cabsl(long double _Complex _Z)
   {
     return hypotl(__real__ _Z, __imag__ _Z);
   }
 
   __CRT_INLINE __MINGW_CONST
-  long double cargl(long double _Complex _Z)
+  long double __cdecl cargl(long double _Complex _Z)
   {
     return atan2l(__imag__ _Z, __real__ _Z);
   }
 
   __CRT_INLINE __MINGW_CONST
-  long double cimagl(long double _Complex _Z)
+  long double __cdecl cimagl(long double _Complex _Z)
   {
     return __imag__ _Z;
   }
 
   __CRT_INLINE __MINGW_CONST
-  long double _Complex conjl(long double _Complex _Z)
+  long double _Complex __cdecl conjl(long double _Complex _Z)
   {
     return __MINGW_EXTENSION ~_Z;
   }
 
   __CRT_INLINE __MINGW_CONST
-  long double creall(long double _Complex _Z)
+  long double __cdecl creall(long double _Complex _Z)
   {
     return __real__ _Z;
   }

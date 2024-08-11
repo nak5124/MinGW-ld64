@@ -72,10 +72,10 @@ __MINGW_BEGIN_C_DECLS
   typedef struct _CrtMemState
   {
     struct _CrtMemBlockHeader *pBlockHeader;
-    size_t lCounts[_MAX_BLOCKS];
-    size_t lSizes[_MAX_BLOCKS];
-    size_t lHighWaterCount;
-    size_t lTotalCount;
+    size_t                     lCounts[_MAX_BLOCKS];
+    size_t                     lSizes[_MAX_BLOCKS];
+    size_t                     lHighWaterCount;
+    size_t                     lTotalCount;
   } _CrtMemState;
 
 #define _CrtGetAllocHook()  ((_CRT_ALLOC_HOOK)0)
@@ -98,12 +98,12 @@ __MINGW_BEGIN_C_DECLS
 #define _CrtSetBreakAlloc(a)             ((long)0)
 #define _CrtSetDbgFlag(f)                ((int)0)
 
-#define _calloc_dbg(c, s, t, f, l)      calloc(c, s)
+#define _calloc_dbg(c, s, t, f, l)       calloc(c, s)
 #define _expand_dbg(p, s, t, f, l)      _expand(p, s)
-#define _free_dbg(p, t)                 free(p)
-#define _malloc_dbg(s, t, f, l)         malloc(s)
+#define _free_dbg(p, t)                  free(p)
+#define _malloc_dbg(s, t, f, l)          malloc(s)
 #define _msize_dbg(p, t)                _msize(p)
-#define _realloc_dbg(p, s, t, f, l)     realloc(p, s)
+#define _realloc_dbg(p, s, t, f, l)      realloc(p, s)
 #define _recalloc_dbg(p, c, s, t, f, l) _recalloc(p, c, s)
 
 #define _aligned_free_dbg(p)                              _aligned_free(p)

@@ -80,7 +80,7 @@ limitations in handling dllimport attribute.  */
 #endif
 
 #ifdef __NO_INLINE__
-# undef __CRT__NO_INLINE
+# undef  __CRT__NO_INLINE
 # define __CRT__NO_INLINE 1
 #endif
 
@@ -98,12 +98,12 @@ limitations in handling dllimport attribute.  */
 
 #ifndef _CRT_STRINGIZE
 # define __CRT_STRINGIZE(_Value) #_Value
-# define _CRT_STRINGIZE(_Value) __CRT_STRINGIZE(_Value)
+# define  _CRT_STRINGIZE(_Value) __CRT_STRINGIZE(_Value)
 #endif  /* _CRT_STRINGIZE */
 
 #ifndef _CRT_WIDE
 # define __CRT_WIDE(_String) L ## _String
-# define _CRT_WIDE(_String) __CRT_WIDE(_String)
+# define  _CRT_WIDE(_String) __CRT_WIDE(_String)
 #endif  /* _CRT_WIDE */
 
 #define __MINGW_BROKEN_INTERFACE(x) \
@@ -129,7 +129,7 @@ limitations in handling dllimport attribute.  */
 #   define __SIZEOF_INT128__ 16
 # endif
 # ifndef __SIZEOF_INT128__
-    typedef int __int128 __attribute__((__mode__ (TI)));
+    typedef int __int128 __attribute__((__mode__(TI)));
 # endif
 #endif  /* _INT128_DEFINED */
 
@@ -160,10 +160,10 @@ limitations in handling dllimport attribute.  */
 #endif
 
 /* We have to define _DLL for gcc based mingw version. This define is set
-   by VC, when DLL-based runtime is used. So, gcc based runtime just have
-   DLL-base runtime, therefore this define has to be set.
-   As our headers are possibly used by windows compiler having a static
-   C-runtime, we make this definition gnu compiler specific here.  */
+ * by VC, when DLL-based runtime is used. So, gcc based runtime just have
+ * DLL-base runtime, therefore this define has to be set.
+ * As our headers are possibly used by windows compiler having a static
+ * C-runtime, we make this definition gnu compiler specific here.  */
 #ifndef _DLL
 # define _DLL
 #endif
@@ -172,23 +172,63 @@ limitations in handling dllimport attribute.  */
 # define _MT
 #endif
 
-#define _SECURECRT_FILL_BUFFER_PATTERN 0xFD
-#define _CRT_DEPRECATE_TEXT(_Text) __declspec(deprecated)
+#define _CRT_DEPRECATE_TEXT(_Text) __MINGW_DEPRECATED_MSG(_Text)
+
+#if defined(_CRT_SECURE_NO_DEPRECATE) && !defined(_CRT_SECURE_NO_WARNINGS)
+# define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#ifndef _CRT_INSECURE_DEPRECATE
+# ifdef _CRT_SECURE_NO_WARNINGS
+#   define _CRT_INSECURE_DEPRECATE(_Replacement)
+# else
+#   define _CRT_INSECURE_DEPRECATE(_Replacement) _CRT_DEPRECATE_TEXT(   \
+      "This function or variable may be unsafe. Consider using "        \
+      #_Replacement                                                     \
+      " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. " \
+      "See online help for details.")
+# endif
+#endif
+
+#if defined(_CRT_SECURE_DEPRECATE_MEMORY) && !defined(_CRT_SECURE_WARNINGS_MEMORY)
+# define _CRT_SECURE_WARNINGS_MEMORY
+#endif
 
 #ifndef _CRT_INSECURE_DEPRECATE_MEMORY
-# define _CRT_INSECURE_DEPRECATE_MEMORY(_Replacement)
+# ifndef _CRT_SECURE_WARNINGS_MEMORY
+#   define _CRT_INSECURE_DEPRECATE_MEMORY(_Replacement)
+# else
+#   define _CRT_INSECURE_DEPRECATE_MEMORY(_Replacement) _CRT_INSECURE_DEPRECATE(_Replacement)
+# endif
 #endif
 
 #ifndef _CRT_INSECURE_DEPRECATE_GLOBALS
-# define _CRT_INSECURE_DEPRECATE_GLOBALS(_Replacement)
+# ifdef _CRT_SECURE_NO_WARNINGS_GLOBALS
+#   define _CRT_INSECURE_DEPRECATE_GLOBALS(replacement)
+# else
+#   define _CRT_INSECURE_DEPRECATE_GLOBALS(replacement) _CRT_INSECURE_DEPRECATE(replacement)
+# endif
 #endif
 
-#ifndef _CRT_MANAGED_HEAP_DEPRECATE
-# define _CRT_MANAGED_HEAP_DEPRECATE
+#if defined(_CRT_MANAGED_HEAP_NO_DEPRECATE) && !defined(_CRT_MANAGED_HEAP_NO_WARNINGS)
+# define _CRT_MANAGED_HEAP_NO_WARNINGS
+#endif
+
+#define _SECURECRT_FILL_BUFFER_PATTERN 0xFE
+
+#if defined(_CRT_OBSOLETE_NO_DEPRECATE) && !defined(_CRT_OBSOLETE_NO_WARNINGS)
+# define _CRT_OBSOLETE_NO_WARNINGS
 #endif
 
 #ifndef _CRT_OBSOLETE
-# define _CRT_OBSOLETE(_NewItem)
+# ifdef _CRT_OBSOLETE_NO_WARNINGS
+#   define _CRT_OBSOLETE(_NewItem)
+# else
+#   define _CRT_OBSOLETE(_NewItem) _CRT_DEPRECATE_TEXT(                  \
+      "This function or variable has been superceded by newer library "  \
+      "or operating system functionality. Consider using " #_NewItem " " \
+      "instead. See online help for details.")
+# endif
 #endif
 
 /* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
@@ -355,15 +395,15 @@ __MINGW_BEGIN_C_DECLS
 # define __MINGW_FASTFAIL_IMPL 1
 #endif  /* __has_builtin */
 #if __MINGW_FASTFAIL_IMPL == 1
-  void __cdecl __fastfail(unsigned int code) __MINGW_NORETURN;
+  void __cdecl __fastfail(unsigned int __code) __MINGW_NORETURN;
   __MINGW_INTRIN_INLINE __MINGW_NORETURN
-  void __cdecl __fastfail(unsigned int code)
+  void __cdecl __fastfail(unsigned int __code)
   {
 #ifdef __x86_64__
-    __asm__ __volatile__("int {$}0x29"::"c"(code));
+    __asm__ __volatile__("int {$}0x29"::"c"(__code));
 #elif defined(__aarch64__)
-    register unsigned int w0 __asm__("w0") = code;
-    __asm__ __volatile__("brk #0xf003"::"r"(w0));
+    register unsigned int __w0 __asm__("__w0") = __code;
+    __asm__ __volatile__("brk #0xf003"::"r"(__w0));
 #else
     __asm__ __volatile__("unimplemented");
 #endif  /* __x86_64__ */
@@ -377,10 +417,10 @@ __MINGW_BEGIN_C_DECLS
 # define __MINGW_PREFETCH_IMPL 1
 #endif  /* __has_builtin */
 #if __MINGW_PREFETCH_IMPL == 1 && defined(__aarch64__)
-  void __cdecl __prefetch(const void *addr);
-  __MINGW_INTRIN_INLINE void __cdecl __prefetch(const void *addr)
+  void __cdecl __prefetch(const void *__addr);
+  __MINGW_INTRIN_INLINE void __cdecl __prefetch(const void *__addr)
   {
-    __asm__ __volatile__("prfm pldl1keep, [%0]"::"r"(addr));
+    __asm__ __volatile__("prfm pldl1keep, [%0]"::"r"(__addr));
   }
 #endif  /* __MINGW_PREFETCH_IMPL == 1 && defined(__aarch64__) */
 
