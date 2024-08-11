@@ -1,5 +1,6 @@
 CREATE libucrtbase.a
 ADDLIB libucrtbase_def.a
 ADDLIB libucrt_extra.a
+ADDLIB libvcruntime140_threads.a
 SAVE
 END

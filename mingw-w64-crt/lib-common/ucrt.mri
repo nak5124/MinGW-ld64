@@ -15,5 +15,6 @@ ADDLIB libapi-ms-win-crt-string-l1-1-0.a
 ADDLIB libapi-ms-win-crt-time-l1-1-0.a
 ADDLIB libapi-ms-win-crt-utility-l1-1-0.a
 ADDLIB libucrt_extra.a
+ADDLIB libvcruntime140_threads.a
 SAVE
 END
