@@ -28939,7 +28939,7 @@ _libm_dummy.c:
 @LIB64_TRUE@	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
 @LIB64_TRUE@lib64/libmsvcrt.a: lib64/libucrt.a
 @LIB64_TRUE@	cp $< $@
-@LIB64_TRUE@lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a
+@LIB64_TRUE@lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a lib64/libvcruntime140_threads.a
 @LIB64_TRUE@	cd $(dir $@) && $(AR) -M < $(abspath $<)
 
 @LIB64_TRUE@lib64/lib%.a: lib64/%.def
@@ -28984,7 +28984,7 @@ _libm_dummy.c:
 @LIBARM64_TRUE@	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
 @LIBARM64_TRUE@libarm64/libmsvcrt.a: libarm64/libucrt.a
 @LIBARM64_TRUE@	cp $< $@
-@LIBARM64_TRUE@libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libarm64/libucrt_extra.a
+@LIBARM64_TRUE@libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libarm64/libucrt_extra.a libarm64/libvcruntime140_threads.a
 @LIBARM64_TRUE@	cd $(dir $@) && $(AR) -M < $(abspath $<)
 
 @LIBARM64_TRUE@libarm64/lib%.a: libarm64/%.def
@@ -30605,7 +30605,8 @@ _libm_dummy.c:
 		%/libapi-ms-win-crt-filesystem-l1-1-0.a %/libapi-ms-win-crt-heap-l1-1-0.a %/libapi-ms-win-crt-locale-l1-1-0.a \
 		%/libapi-ms-win-crt-math-l1-1-0.a %/libapi-ms-win-crt-multibyte-l1-1-0.a %/libapi-ms-win-crt-private-l1-1-0.a \
 		%/libapi-ms-win-crt-process-l1-1-0.a %/libapi-ms-win-crt-runtime-l1-1-0.a %/libapi-ms-win-crt-stdio-l1-1-0.a \
-		%/libapi-ms-win-crt-string-l1-1-0.a %/libapi-ms-win-crt-time-l1-1-0.a %/libapi-ms-win-crt-utility-l1-1-0.a
+		%/libapi-ms-win-crt-string-l1-1-0.a %/libapi-ms-win-crt-time-l1-1-0.a %/libapi-ms-win-crt-utility-l1-1-0.a \
+		%/libvcruntime140_threads.a
 	rm -f $@
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
 	$(RANLIB) $@
@@ -30617,7 +30618,8 @@ _libm_dummy.c:
 		%/libapi-ms-win-crt-filesystem-l1-1-0.a %/libapi-ms-win-crt-heap-l1-1-0.a %/libapi-ms-win-crt-locale-l1-1-0.a \
 		%/libapi-ms-win-crt-math-l1-1-0.a %/libapi-ms-win-crt-multibyte-l1-1-0.a \
 		%/libapi-ms-win-crt-process-l1-1-0.a %/libapi-ms-win-crt-runtime-l1-1-0.a %/libapi-ms-win-crt-stdio-l1-1-0.a \
-		%/libapi-ms-win-crt-string-l1-1-0.a %/libapi-ms-win-crt-time-l1-1-0.a %/libapi-ms-win-crt-utility-l1-1-0.a
+		%/libapi-ms-win-crt-string-l1-1-0.a %/libapi-ms-win-crt-time-l1-1-0.a %/libapi-ms-win-crt-utility-l1-1-0.a \
+		%/libvcruntime140_threads.a
 	rm -f $@
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
 	$(RANLIB) $@
