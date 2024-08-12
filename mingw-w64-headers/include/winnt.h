@@ -126,11 +126,7 @@ extern "C" {
 #define PROBE_ALIGNMENT32(_s) TYPE_ALIGNMENT (DWORD)
 #endif
 
-#if defined(_MSC_VER)
-# define C_ASSERT(e) typedef char __C_ASSERT__[(e)?1:-1]
-#else
 # define C_ASSERT(e) extern void __C_ASSERT__(int [(e)?1:-1])
-#endif
 
 #include <basetsd.h>
 
@@ -160,13 +156,7 @@ extern "C" {
 
 #ifndef DECLSPEC_ALIGN
 #ifndef __WIDL__
-#if defined(_MSC_VER) && (_MSC_VER >= 1300) && !defined(MIDL_PASS)
-#define DECLSPEC_ALIGN(x) __declspec(align(x))
-#elif defined(__GNUC__)
 #define DECLSPEC_ALIGN(x) __attribute__ ((__aligned__ (x)))
-#else
-#define DECLSPEC_ALIGN(x) /*__declspec (align (x))*/
-#endif
 #else
 #define DECLSPEC_ALIGN(x)
 #endif
@@ -207,11 +197,7 @@ extern "C" {
 #endif
 
 #ifndef NOP_FUNCTION
-#if (_MSC_VER >= 1210)
-#define NOP_FUNCTION __noop
-#else
 #define NOP_FUNCTION (void)0
-#endif
 #endif
 
 #ifndef DECLSPEC_ADDRSAFE
@@ -219,21 +205,11 @@ extern "C" {
 #endif
 
 #ifndef DECLSPEC_NOINLINE
-#if (_MSC_VER >= 1300)
-#define DECLSPEC_NOINLINE  __declspec(noinline)
-#elif defined(__GNUC__)
 #define DECLSPEC_NOINLINE __attribute__((noinline))
-#else
-#define DECLSPEC_NOINLINE
-#endif
 #endif /* DECLSPEC_NOINLINE */
 
 #ifndef FORCEINLINE
-#if !defined(_MSC_VER) || (_MSC_VER >=1200)
 #define FORCEINLINE __forceinline
-#else
-#define FORCEINLINE __inline
-#endif
 #endif /* FORCEINLINE */
 
 #ifndef DECLSPEC_DEPRECATED

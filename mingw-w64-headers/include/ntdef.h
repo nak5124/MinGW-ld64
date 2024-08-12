@@ -151,11 +151,7 @@
 #endif
 
 /* Returns the type's alignment */
-#if defined(_MSC_VER) && (_MSC_VER >= 1300)
-#define TYPE_ALIGNMENT(t) __alignof(t)
-#else
 #define TYPE_ALIGNMENT(t) FIELD_OFFSET(struct { char x; t test; }, test)
-#endif
 
 #ifdef _AMD64_
 #define PROBE_ALIGNMENT(v) TYPE_ALIGNMENT(ULONG)
@@ -168,11 +164,7 @@
 
 
 #ifndef NOP_FUNCTION
-#if (_MSC_VER >= 1210)
-#define NOP_FUNCTION __noop
-#else
 #define NOP_FUNCTION (void)0
-#endif
 #endif
 
 /* Import and Export Specifiers */
@@ -199,21 +191,11 @@
 
 /* Inlines */
 #ifndef FORCEINLINE
-#if !defined(_MSC_VER) || (_MSC_VER >=1200)
 #define FORCEINLINE __forceinline
-#else
-#define FORCEINLINE __inline
-#endif
 #endif /* FORCEINLINE */
 
 #ifndef DECLSPEC_NOINLINE
-#if (_MSC_VER >= 1300)
-#define DECLSPEC_NOINLINE  __declspec(noinline)
-#elif defined(__GNUC__)
 #define DECLSPEC_NOINLINE __attribute__((noinline))
-#else
-#define DECLSPEC_NOINLINE
-#endif
 #endif /* DECLSPEC_NOINLINE */
 
 #if !defined(_M_CEE_PURE)
@@ -224,13 +206,7 @@
 
 /* Use to specify structure alignment */
 #ifndef DECLSPEC_ALIGN
-#if defined(_MSC_VER) && (_MSC_VER >= 1300) && !defined(MIDL_PASS)
-#define DECLSPEC_ALIGN(x) __declspec(align(x))
-#elif defined(__GNUC__)
 #define DECLSPEC_ALIGN(x) __attribute__ ((__aligned__ (x)))
-#else
-#define DECLSPEC_ALIGN(x)
-#endif
 #endif /* DECLSPEC_ALIGN */
 
 #ifndef SYSTEM_CACHE_ALIGNMENT_SIZE
@@ -246,11 +222,7 @@
 #endif
 
 #ifndef DECLSPEC_SELECTANY
-#if (_MSC_VER >= 1100) || defined(__GNUC__)
 #define DECLSPEC_SELECTANY __declspec(selectany)
-#else
-#define DECLSPEC_SELECTANY
-#endif
 #endif
 
 /* Use to silence unused variable warnings when it is intentional */
@@ -466,19 +438,6 @@ typedef const UNICODE_STRING* PCUNICODE_STRING;
 #define UNICODE_STRING_MAX_BYTES ((USHORT) 65534)
 #define UNICODE_STRING_MAX_CHARS (32767)
 
-#ifdef _MSC_VER
-#define DECLARE_UNICODE_STRING_SIZE(_var, _size) \
-  WCHAR _var ## _buffer[_size]; \
-  __pragma(warning(push)) __pragma(warning(disable:4221)) __pragma(warning(disable:4204)) \
-  UNICODE_STRING _var = { 0, (_size) * sizeof(WCHAR) , _var ## _buffer } \
-  __pragma(warning(pop))
-
-#define DECLARE_CONST_UNICODE_STRING(_var, _string) \
-  const WCHAR _var##_buffer[] = _string; \
-  __pragma(warning(push)) __pragma(warning(disable:4221)) __pragma(warning(disable:4204)) \
-  const UNICODE_STRING _var = { sizeof(_string) - sizeof(WCHAR), sizeof(_string), (PWCH)_var##_buffer } \
-  __pragma(warning(pop))
-#else
 #define DECLARE_UNICODE_STRING_SIZE(_var, _size) \
   WCHAR _var ## _buffer[_size]; \
   UNICODE_STRING _var = { 0, (_size) * sizeof(WCHAR) , _var ## _buffer }
@@ -486,7 +445,6 @@ typedef const UNICODE_STRING* PCUNICODE_STRING;
 #define DECLARE_CONST_UNICODE_STRING(_var, _string) \
   const WCHAR _var##_buffer[] = _string; \
   const UNICODE_STRING _var = { sizeof(_string) - sizeof(WCHAR), sizeof(_string), (PWCH)_var##_buffer }
-#endif
 
 typedef struct _CSTRING {
   USHORT Length;

@@ -26,10 +26,6 @@
 #include <stdint.h>
 #ifndef CROSS_PLATFORM_UUIDOF
 // Warning: This macro exists in WinAdapter.h as well
-#if defined(_MSC_VER)
-#define CROSS_PLATFORM_UUIDOF(iface, spec)                                 \
-   struct __declspec(uuid(spec)) iface;
-#else /* defined(_MSC_VER) */
 #if defined(__MINGW32__)
 #include <guiddef.h>
 #include <sal.h>
@@ -113,7 +109,6 @@ constexpr unsigned long word_from_hexstr(const char str[2], unsigned shift)
        byte_from_hexstr(spec + 28), byte_from_hexstr(spec + 30),          \
        byte_from_hexstr(spec + 32), byte_from_hexstr(spec + 34))
 
-#endif /* defined(_MSC_VER) */
 #endif /* CROSS_PLATFORM_UUIDOF */
 
 #ifndef _WIN32
@@ -698,11 +693,7 @@ struct IDxcVersionInfo2 : public IDxcVersionInfo {
 
 // Note: __declspec(selectany) requires 'extern'
 // On Linux __declspec(selectany) is removed and using 'extern' results in link error.
-#ifdef _MSC_VER
-#define CLSID_SCOPE __declspec(selectany) extern
-#else
 #define CLSID_SCOPE
-#endif
 
 CLSID_SCOPE const CLSID CLSID_DxcCompiler = {
     0x73e22d93,
