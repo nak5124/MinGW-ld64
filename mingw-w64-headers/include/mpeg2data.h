@@ -35,11 +35,9 @@ typedef struct IMpeg2Stream IMpeg2Stream;
 
 #undef  INTERFACE
 #define INTERFACE ISectionList
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(ISectionList,IUnknown)
 {
     BEGIN_INTERFACE
@@ -75,11 +73,9 @@ DECLARE_INTERFACE_(ISectionList,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IMpeg2Data
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IMpeg2Data,IUnknown)
 {
     BEGIN_INTERFACE
@@ -107,11 +103,9 @@ DECLARE_INTERFACE_(IMpeg2Data,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IMpeg2Stream
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IMpeg2Stream,IUnknown)
 {
     BEGIN_INTERFACE

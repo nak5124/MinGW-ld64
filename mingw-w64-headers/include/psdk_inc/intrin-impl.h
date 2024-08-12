@@ -1917,7 +1917,7 @@ void __cpuid(int CPUInfo[4], int InfoType) {
 #define __INTRINSIC_DEFINED___cpuid
 #endif /* __INTRINSIC_PROLOG */
 
-#if (!defined(__GNUC__) || __GNUC__ < 11) && (!defined(__clang__) || __clang_major__ < 19)
+#if (__GNUC__ < 11) && (!defined(__clang__) || __clang_major__ < 19)
 #if __INTRINSIC_PROLOG(__cpuidex)
 void __cpuidex(int CPUInfo[4], int, int);
 #if !__has_builtin(__cpuidex)
@@ -2001,7 +2001,7 @@ __buildmov(__movsd, unsigned __LONG32, "l", "d")
 
 /* GCC 8 has already defined _xgetbv, Clang 9 has _xgetbv defined as a macro
  * redirecting to the __builtin_ia32_xgetbv builtin. */
-#if (!defined(__GNUC__) || __GNUC__ < 8) && !defined(_xgetbv)
+#if (__GNUC__ < 8) && !defined(_xgetbv)
 /* NOTE: This should be in immintrin.h */
 #if __INTRINSIC_PROLOG(_xgetbv)
 unsigned __int64 _xgetbv(unsigned int);

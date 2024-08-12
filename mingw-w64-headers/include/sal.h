@@ -482,7 +482,7 @@
 /* FIXME: __in macro conflicts with argument names in libstdc++. For this reason,
  * we disable it for C++. This should be fixed in libstdc++ so we can uncomment
  * it in fixed version here. */
-#if !defined(__cplusplus) || !defined(__GNUC__)
+#if !defined(__cplusplus)
 #define __in
 #define __out
 #endif

@@ -189,11 +189,9 @@ typedef enum _DVB_STRCONV_MODE {
 
 #undef  INTERFACE
 #define INTERFACE IDVB_EIT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_EIT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -257,11 +255,9 @@ DECLARE_INTERFACE_(IDVB_EIT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_EIT2
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_EIT2,IDVB_EIT)
 {
     BEGIN_INTERFACE
@@ -331,11 +327,9 @@ DECLARE_INTERFACE_(IDVB_EIT2,IDVB_EIT)
 
 #undef  INTERFACE
 #define INTERFACE IDvbComponentDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbComponentDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -371,11 +365,9 @@ DECLARE_INTERFACE_(IDvbComponentDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbContentDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbContentDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -407,11 +399,9 @@ DECLARE_INTERFACE_(IDvbContentDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbContentIdentifierDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbContentIdentifierDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -441,11 +431,9 @@ DECLARE_INTERFACE_(IDvbContentIdentifierDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbDataBroadcastDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbDataBroadcastDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -485,11 +473,9 @@ DECLARE_INTERFACE_(IDvbDataBroadcastDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbDataBroadcastIDDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbDataBroadcastIDDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -519,11 +505,9 @@ DECLARE_INTERFACE_(IDvbDataBroadcastIDDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbDefaultAuthorityDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbDefaultAuthorityDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -551,11 +535,9 @@ DECLARE_INTERFACE_(IDvbDefaultAuthorityDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbExtendedEventDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbExtendedEventDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -599,11 +581,9 @@ DECLARE_INTERFACE_(IDvbExtendedEventDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbLogicalChannelDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbLogicalChannelDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -635,11 +615,9 @@ DECLARE_INTERFACE_(IDvbLogicalChannelDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbHDSimulcastLogicalChannelDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbHDSimulcastLogicalChannelDescriptor,IDvbLogicalChannelDescriptor)
 {
     BEGIN_INTERFACE
@@ -673,11 +651,9 @@ DECLARE_INTERFACE_(IDvbHDSimulcastLogicalChannelDescriptor,IDvbLogicalChannelDes
 
 #undef  INTERFACE
 #define INTERFACE IDvbLinkageDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbLinkageDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -715,11 +691,9 @@ DECLARE_INTERFACE_(IDvbLinkageDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbLogicalChannelDescriptor2
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbLogicalChannelDescriptor2,IDvbLogicalChannelDescriptor)
 {
     BEGIN_INTERFACE
@@ -755,11 +729,9 @@ DECLARE_INTERFACE_(IDvbLogicalChannelDescriptor2,IDvbLogicalChannelDescriptor)
 
 #undef  INTERFACE
 #define INTERFACE IDvbLogicalChannel2Descriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbLogicalChannel2Descriptor,IDvbLogicalChannelDescriptor2)
 {
     BEGIN_INTERFACE
@@ -811,11 +783,9 @@ DECLARE_INTERFACE_(IDvbLogicalChannel2Descriptor,IDvbLogicalChannelDescriptor2)
 
 #undef  INTERFACE
 #define INTERFACE IDvbMultilingualServiceNameDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbMultilingualServiceNameDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -849,11 +819,9 @@ DECLARE_INTERFACE_(IDvbMultilingualServiceNameDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbNetworkNameDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbNetworkNameDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -883,11 +851,9 @@ DECLARE_INTERFACE_(IDvbNetworkNameDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbParentalRatingDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbParentalRatingDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -917,11 +883,9 @@ DECLARE_INTERFACE_(IDvbParentalRatingDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbPrivateDataSpecifierDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbPrivateDataSpecifierDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -949,11 +913,9 @@ DECLARE_INTERFACE_(IDvbPrivateDataSpecifierDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbServiceDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbServiceDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -992,11 +954,9 @@ DECLARE_INTERFACE_(IDvbServiceDescriptor,IUnknown)
 /* Fixme: Duplicate GetServiceProviderNameW method */
 #undef  INTERFACE
 #define INTERFACE IDvbServiceDescriptor2
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbServiceDescriptor2,IDvbServiceDescriptor)
 {
     BEGIN_INTERFACE
@@ -1040,11 +1000,9 @@ DECLARE_INTERFACE_(IDvbServiceDescriptor2,IDvbServiceDescriptor)
 
 #undef  INTERFACE
 #define INTERFACE IDvbShortEventDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbShortEventDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1083,11 +1041,9 @@ DECLARE_INTERFACE_(IDvbShortEventDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbSiParser
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbSiParser,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1139,11 +1095,9 @@ DECLARE_INTERFACE_(IDvbSiParser,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_RST
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_RST,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1179,11 +1133,9 @@ DECLARE_INTERFACE_(IDVB_RST,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_SIT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_SIT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1235,11 +1187,9 @@ DECLARE_INTERFACE_(IDVB_SIT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_ST
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_ST,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1267,11 +1217,9 @@ DECLARE_INTERFACE_(IDVB_ST,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_TDT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_TDT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1297,11 +1245,9 @@ DECLARE_INTERFACE_(IDVB_TDT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_TOT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_TOT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1334,11 +1280,9 @@ DECLARE_INTERFACE_(IDVB_TOT,IUnknown)
 /* Fixme: Possibly F6B96EDA-1A94-4476-A85F-4D3DC7B39C3F */
 #undef  INTERFACE
 #define INTERFACE IDvbSiParser2
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbSiParser2,IDvbSiParser)
 {
     BEGIN_INTERFACE
@@ -1394,11 +1338,9 @@ DECLARE_INTERFACE_(IDvbSiParser2,IDvbSiParser)
 
 #undef  INTERFACE
 #define INTERFACE IDvbSubtitlingDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbSubtitlingDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1434,11 +1376,9 @@ DECLARE_INTERFACE_(IDvbSubtitlingDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbServiceListDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbServiceListDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1470,11 +1410,9 @@ DECLARE_INTERFACE_(IDvbServiceListDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDvbTeletextDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDvbTeletextDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1510,11 +1448,9 @@ DECLARE_INTERFACE_(IDvbTeletextDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_BAT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_BAT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1568,11 +1504,9 @@ DECLARE_INTERFACE_(IDVB_BAT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_DIT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_DIT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1598,11 +1532,9 @@ DECLARE_INTERFACE_(IDVB_DIT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_NIT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_NIT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -1658,11 +1590,9 @@ DECLARE_INTERFACE_(IDVB_NIT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDVB_SDT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDVB_SDT,IUnknown)
 {
     BEGIN_INTERFACE

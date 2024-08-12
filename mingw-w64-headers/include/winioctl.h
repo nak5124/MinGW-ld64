@@ -351,8 +351,6 @@ typedef struct _STORAGE_READ_CAPACITY {
     ULONG SupportFlags;
   } STORAGE_PRIORITY_HINT_SUPPORT, *PSTORAGE_PRIORITY_HINT_SUPPORT;
 
-#if defined(_MSC_EXTENSIONS) || defined(__GNUC__)
-
   typedef struct _STORAGE_MEDIA_SERIAL_NUMBER_DATA {
     USHORT Reserved;
     USHORT SerialNumberLength;
@@ -377,8 +375,6 @@ typedef struct _STORAGE_READ_CAPACITY {
       } PR_OUT;
     } DUMMYUNIONNAME;
   } PERSISTENT_RESERVE_COMMAND, *PPERSISTENT_RESERVE_COMMAND;
-
-#endif /* defined(_MSC_EXTENSIONS) */
 
   typedef struct _STORAGE_HOTPLUG_INFO {
     DWORD Size;

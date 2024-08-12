@@ -39,11 +39,9 @@ typedef enum tagSystemVisibilityFlags {
 
 #undef  INTERFACE
 #define INTERFACE IFunctionInstance
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IFunctionInstance,IUnknown)
 {
     BEGIN_INTERFACE
@@ -99,11 +97,9 @@ DECLARE_INTERFACE_(IFunctionInstanceQuery,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IFunctionInstanceCollection
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IFunctionInstanceCollection,IUnknown)
 {
     BEGIN_INTERFACE
@@ -139,11 +135,9 @@ DECLARE_INTERFACE_(IFunctionInstanceCollection,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IFunctionInstanceCollectionQuery
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IFunctionInstanceCollectionQuery,IUnknown)
 {
     BEGIN_INTERFACE
@@ -171,11 +165,9 @@ DECLARE_INTERFACE_(IFunctionInstanceCollectionQuery,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IFunctionDiscovery
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IFunctionDiscovery,IUnknown)
 {
     BEGIN_INTERFACE

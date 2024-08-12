@@ -354,10 +354,8 @@ extern "C" {
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_L16, D3DFMT_L16);
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_D16, D3DFMT_D16);
 
-#ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmultichar"
-#endif
 
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_AI44, FCC ('AI44'));
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_AYUV, FCC ('AYUV'));
@@ -427,9 +425,7 @@ extern "C" {
 DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
 #endif
 
-#ifdef __GNUC__
 #pragma GCC diagnostic pop
-#endif
 
 #ifdef LOCAL_D3DFMT_DEFINES
 #undef D3DFMT_R8G8B8

@@ -88,11 +88,9 @@ typedef struct IAudioOutputEndpointRT IAudioOutputEndpointRT;
 
 #undef  INTERFACE
 #define INTERFACE IAudioDeviceEndpoint
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioDeviceEndpoint,IUnknown)
 {
     BEGIN_INTERFACE
@@ -122,11 +120,9 @@ DECLARE_INTERFACE_(IAudioDeviceEndpoint,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IAudioEndpoint
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioEndpoint,IUnknown)
 {
     BEGIN_INTERFACE
@@ -158,11 +154,9 @@ DECLARE_INTERFACE_(IAudioEndpoint,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IAudioEndpointControl
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioEndpointControl,IUnknown)
 {
     BEGIN_INTERFACE
@@ -190,11 +184,9 @@ DECLARE_INTERFACE_(IAudioEndpointControl,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IAudioEndpointRT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioEndpointRT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -224,11 +216,9 @@ DECLARE_INTERFACE_(IAudioEndpointRT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IAudioEndpointVolumeEx
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioEndpointVolumeEx,IAudioEndpointVolume)
 {
     BEGIN_INTERFACE
@@ -290,11 +280,9 @@ DECLARE_INTERFACE_(IAudioEndpointVolumeEx,IAudioEndpointVolume)
 
 #undef  INTERFACE
 #define INTERFACE IAudioInputEndpointRT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioInputEndpointRT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -322,11 +310,9 @@ DECLARE_INTERFACE_(IAudioInputEndpointRT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IAudioOutputEndpointRT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAudioOutputEndpointRT,IUnknown)
 {
     BEGIN_INTERFACE

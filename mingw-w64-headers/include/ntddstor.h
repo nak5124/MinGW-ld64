@@ -711,8 +711,6 @@ typedef struct _STORAGE_PRIORITY_HINT_SUPPORT {
   ULONG SupportFlags;
 } STORAGE_PRIORITY_HINT_SUPPORT, *PSTORAGE_PRIORITY_HINT_SUPPORT;
 
-#if defined(_MSC_EXTENSIONS) || defined(__GNUC__)
-
 typedef struct _STORAGE_MEDIA_SERIAL_NUMBER_DATA {
   USHORT Reserved;
   USHORT SerialNumberLength;
@@ -737,8 +735,6 @@ typedef struct _PERSISTENT_RESERVE_COMMAND {
     } PR_OUT;
   } DUMMYUNIONNAME;
 } PERSISTENT_RESERVE_COMMAND, *PPERSISTENT_RESERVE_COMMAND;
-
-#endif /* defined(_MSC_EXTENSIONS) */
 
 typedef struct _STORAGE_READ_CAPACITY {
   ULONG Version;
@@ -789,8 +785,6 @@ typedef struct _STORAGE_WRITE_CACHE_PROPERTY {
 #define STORAGE_OFFLOAD_TOKEN_ID_LENGTH          0x1f8
 #define STORAGE_OFFLOAD_TOKEN_TYPE_ZERO_DATA     0xffff0001
 
-#if defined(_MSC_EXTENSIONS) || defined(__GNUC__)
-
 typedef struct _STORAGE_OFFLOAD_TOKEN {
   UCHAR TokenType[4];
   UCHAR Reserved[2];
@@ -802,8 +796,6 @@ typedef struct _STORAGE_OFFLOAD_TOKEN {
     UCHAR Token[STORAGE_OFFLOAD_TOKEN_ID_LENGTH];
   };
 } STORAGE_OFFLOAD_TOKEN, *PSTORAGE_OFFLOAD_TOKEN;
-
-#endif /* defined(_MSC_EXTENSIONS) */
 
 #define MAKE_ZERO_TOKEN(T) (((PSTORAGE_OFFLOAD_TOKEN)T)->TokenType[0] = 0xff, \
                             ((PSTORAGE_OFFLOAD_TOKEN)T)->TokenType[1] = 0xff, \

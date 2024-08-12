@@ -177,11 +177,9 @@ typedef struct ISyncKnowledge ISyncKnowledge;
 
 #undef  INTERFACE
 #define INTERFACE IAsynchronousDataRetriever
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAsynchronousDataRetriever,IUnknown)
 {
     BEGIN_INTERFACE
@@ -211,11 +209,9 @@ DECLARE_INTERFACE_(IAsynchronousDataRetriever,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IDataRetrieverCallback
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IDataRetrieverCallback,IUnknown)
 {
     BEGIN_INTERFACE
@@ -241,11 +237,9 @@ DECLARE_INTERFACE_(IDataRetrieverCallback,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IChangeConflict
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IChangeConflict,IUnknown)
 {
     BEGIN_INTERFACE
@@ -283,11 +277,9 @@ DECLARE_INTERFACE_(IChangeConflict,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IChangeUnitException
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IChangeUnitException,IUnknown)
 {
     BEGIN_INTERFACE
@@ -338,11 +330,9 @@ DECLARE_INTERFACE_(ISyncFilterInfo,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IChangeUnitListFilterInfo
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IChangeUnitListFilterInfo,ISyncFilterInfo)
 {
     BEGIN_INTERFACE
@@ -374,11 +364,9 @@ DECLARE_INTERFACE_(IChangeUnitListFilterInfo,ISyncFilterInfo)
 
 #undef  INTERFACE
 #define INTERFACE IClockVector
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IClockVector,IUnknown)
 {
     BEGIN_INTERFACE
@@ -404,11 +392,9 @@ DECLARE_INTERFACE_(IClockVector,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IClockVectorElement
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IClockVectorElement,IUnknown)
 {
     BEGIN_INTERFACE
@@ -457,11 +443,9 @@ DECLARE_INTERFACE_(IConstructReplicaKeyMap,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE ICoreFragment
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(ICoreFragment,IUnknown)
 {
     BEGIN_INTERFACE
@@ -493,11 +477,9 @@ DECLARE_INTERFACE_(ICoreFragment,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE ILoadChangeContext
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(ILoadChangeContext,IUnknown)
 {
     BEGIN_INTERFACE
@@ -525,11 +507,9 @@ DECLARE_INTERFACE_(ILoadChangeContext,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE ISyncChange
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(ISyncChange,IUnknown)
 {
     BEGIN_INTERFACE
@@ -571,11 +551,9 @@ DECLARE_INTERFACE_(ISyncChange,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE ISyncChangeUnit
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(ISyncChangeUnit,IUnknown)
 {
     BEGIN_INTERFACE
@@ -603,11 +581,9 @@ DECLARE_INTERFACE_(ISyncChangeUnit,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IRecoverableErrorData
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IRecoverableErrorData,IUnknown)
 {
     BEGIN_INTERFACE
@@ -635,11 +611,9 @@ DECLARE_INTERFACE_(IRecoverableErrorData,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IEnumSyncChangeUnits
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IEnumSyncChangeUnits,IUnknown)
 {
     BEGIN_INTERFACE

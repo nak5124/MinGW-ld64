@@ -36,11 +36,9 @@ typedef struct tagHelperAttributeInfo {
 
 #undef  INTERFACE
 #define INTERFACE INetDiagHelperInfo
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(INetDiagHelperInfo,IUnknown)
 {
     BEGIN_INTERFACE
@@ -127,11 +125,9 @@ typedef struct tagHypothesisResult {
 
 #undef  INTERFACE
 #define INTERFACE INetDiagHelperUtilFactory
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(INetDiagHelperUtilFactory,IUnknown)
 {
     BEGIN_INTERFACE
@@ -155,11 +151,9 @@ DECLARE_INTERFACE_(INetDiagHelperUtilFactory,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE INetDiagHelperEx
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(INetDiagHelperEx,IUnknown)
 {
     BEGIN_INTERFACE

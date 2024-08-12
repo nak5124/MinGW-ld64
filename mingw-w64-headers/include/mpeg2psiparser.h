@@ -41,11 +41,9 @@ typedef struct ICAT ICAT;
 
 #undef  INTERFACE
 #define INTERFACE IPAT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IPAT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -112,11 +110,9 @@ DECLARE_INTERFACE_(IPSITables,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IPMT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IPMT,IUnknown)
 {
     BEGIN_INTERFACE
@@ -176,11 +172,9 @@ DECLARE_INTERFACE_(IPMT,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE IGenericDescriptor
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IGenericDescriptor,IUnknown)
 {
     BEGIN_INTERFACE
@@ -210,11 +204,9 @@ DECLARE_INTERFACE_(IGenericDescriptor,IUnknown)
 
 #undef  INTERFACE
 #define INTERFACE ITSDT
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(ITSDT,IUnknown)
 {
     BEGIN_INTERFACE

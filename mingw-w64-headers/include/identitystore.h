@@ -19,11 +19,9 @@ typedef struct IAssociatedIdentityProvider IAssociatedIdentityProvider;
 
 #undef  INTERFACE
 #define INTERFACE IAssociatedIdentityProvider
-#ifdef __GNUC__
 #warning COM interfaces layout in this header has not been verified.
 #warning COM interfaces with incorrect layout may not work at all.
 __MINGW_BROKEN_INTERFACE(INTERFACE)
-#endif
 DECLARE_INTERFACE_(IAssociatedIdentityProvider,IUnknown)
 {
     BEGIN_INTERFACE
