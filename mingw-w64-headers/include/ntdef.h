@@ -29,11 +29,10 @@
 
 #include <_mingw.h>
 
-#if defined(__x86_64) && \
-  !(defined(_X86_) || defined(__i386__))
-#if !defined(_AMD64_)
-#define _AMD64_
-#endif
+#ifdef __x86_64
+# ifndef _AMD64_
+#   define _AMD64_
+# endif
 #endif /* _AMD64_ */
 
 /* Dependencies */
@@ -163,18 +162,14 @@
 #define TYPE_ALIGNMENT(t) FIELD_OFFSET(struct { char x; t test; }, test)
 #endif
 
-#if defined (_X86_) || defined (_AMD64_)
+#ifdef _AMD64_
 #define PROBE_ALIGNMENT(v) TYPE_ALIGNMENT(ULONG)
 #elif defined (_ARM_)
 #define PROBE_ALIGNMENT(v) (TYPE_ALIGNMENT(v) > TYPE_ALIGNMENT(ULONG) ? TYPE_ALIGNMENT(v) : TYPE_ALIGNMENT(ULONG))
 #endif
 
 /* Calling Conventions */
-#if defined(_M_IX86)
-#define FASTCALL __fastcall
-#else
 #define FASTCALL
-#endif
 
 #if defined(_ARM_)
 #define NTAPI
@@ -254,7 +249,7 @@
 #endif /* DECLSPEC_ALIGN */
 
 #ifndef SYSTEM_CACHE_ALIGNMENT_SIZE
-#if defined(_AMD64_) || defined(_X86_)
+#if defined(_AMD64_)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE 64
 #else
 #define SYSTEM_CACHE_ALIGNMENT_SIZE 128

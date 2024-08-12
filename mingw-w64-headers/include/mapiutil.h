@@ -211,16 +211,8 @@ extern "C" {
   STDAPI_(SCODE) ScInitMapiUtil(ULONG ulFlags);
   STDAPI_(VOID) DeinitMapiUtil(VOID);
 
-#ifdef _X86_
-#define szHrDispatchNotifications "_HrDispatchNotifications@4"
-#endif
-
   typedef HRESULT (WINAPI DISPATCHNOTIFICATIONS)(ULONG ulFlags);
   typedef DISPATCHNOTIFICATIONS *LPDISPATCHNOTIFICATIONS;
-
-#ifdef _X86_
-#define szScCreateConversationIndex "_ScCreateConversationIndex@16"
-#endif
 
   typedef SCODE (WINAPI CREATECONVERSATIONINDEX)(ULONG cbParent,LPBYTE lpbParent,ULONG *lpcbConvIndex,LPBYTE *lppbConvIndex);
   typedef CREATECONVERSATIONINDEX *LPCREATECONVERSATIONINDEX;

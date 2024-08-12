@@ -450,11 +450,7 @@ extern "C" {
   void __RPC_API MIDL_user_free(void *);
 #endif
 
-#ifdef _X86_
-  typedef __LONG32 TAPIHWND;
-#else
   typedef LONGLONG TAPIHWND;
-#endif
   typedef __LONG32 TAPI_DIGITMODE;
 
   typedef enum TAPI_TONEMODE {

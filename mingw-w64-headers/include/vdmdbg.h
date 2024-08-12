@@ -59,12 +59,6 @@ extern "C" {
 
 #define VDMCONTEXT_FULL (VDMCONTEXT_CONTROL | VDMCONTEXT_INTEGER | VDMCONTEXT_SEGMENTS)
 
-#ifdef _X86_
-
-  typedef struct _CONTEXT VDMCONTEXT;
-  typedef struct _LDT_ENTRY VDMLDT_ENTRY;
-#else
-
 #define SIZE_OF_80387_REGISTERS 80
 
   typedef struct _FLOATING_SAVE_AREA {
@@ -132,7 +126,6 @@ extern "C" {
       } Bits;
     } HighWord;
   } VDMLDT_ENTRY;
-#endif
 
   typedef VDMCONTEXT *LPVDMCONTEXT;
   typedef VDMLDT_ENTRY *LPVDMLDT_ENTRY;

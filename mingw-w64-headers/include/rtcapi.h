@@ -57,13 +57,7 @@ extern "C" {
   typedef struct _RTC_ALLOCA_NODE {
     __int32 guard1;
     struct _RTC_ALLOCA_NODE *next;
-#if (defined(_X86_) && !defined(__x86_64))
-    __int32 dummypad;
-#endif
     size_t allocaSize;
-#if (defined(_X86_) && !defined(__x86_64))
-    __int32 dummypad2;
-#endif
     __int32 guard2[3];
   } _RTC_ALLOCA_NODE;
 #pragma pack(pop)
@@ -75,9 +69,6 @@ extern "C" {
   short __fastcall _RTC_Check_8_to_2(__int64 _Src);
   int __fastcall _RTC_Check_8_to_4(__int64 _Src);
 
-#if (defined(_X86_) && !defined(__x86_64))
-  void __cdecl _RTC_CheckEsp();
-#endif
   void __fastcall _RTC_CheckStackVars(void *_Esp,_RTC_framedesc *_Fd);
   void __fastcall _RTC_CheckStackVars2(void *_Esp,_RTC_framedesc *_Fd,_RTC_ALLOCA_NODE *_AllocaList);
   void __fastcall _RTC_AllocaHelper(_RTC_ALLOCA_NODE *_PAllocaBase,size_t _CbSize,_RTC_ALLOCA_NODE **_PAllocaInfoList);

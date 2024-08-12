@@ -47,11 +47,10 @@
 #define NOMCX
 #endif
 
-#if defined(__x86_64) && \
-  !(defined(_X86_) || defined(__i386__))
-#if !defined(_AMD64_)
-#define _AMD64_
-#endif
+#ifdef __x86_64
+# ifndef _AMD64_
+#   define _AMD64_
+# endif
 #endif /* _AMD64_ */
 
 #ifndef RC_INVOKED

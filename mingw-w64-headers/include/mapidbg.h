@@ -141,10 +141,6 @@ SCODE EXPORTDBG __cdecl ScodeFromSzFn(char *psz);
 void *EXPORTDBG __cdecl DBGMEM_EncapsulateFn(void *pmalloc,char *pszSubsys,int fCheckOften);
 void EXPORTDBG __cdecl DBGMEM_ShutdownFn(void *pmalloc);
 void EXPORTDBG __cdecl DBGMEM_CheckMemFn(void *pmalloc,int fReportOrphans);
-#ifdef _X86_
-void EXPORTDBG __cdecl DBGMEM_LeakHook(FARPROC pfn);
-void EXPORTDBG __cdecl GetCallStack(DWORD *,int,int);
-#endif
 void EXPORTDBG __cdecl DBGMEM_NoLeakDetectFn(void *pmalloc,void *pv);
 void EXPORTDBG __cdecl DBGMEM_SetFailureAtFn(void *pmalloc,ULONG ulFailureAt);
 SCODE EXPORTDBG __cdecl ScCheckScFn(SCODE,SCODE *,char *,char *,int);

@@ -53,17 +53,6 @@ extern "C" {
     MAKE_ENUM(Commit,IStream),MAKE_ENUM(Revert,IStream),MAKE_ENUM(LockRegion,IStream),MAKE_ENUM(UnlockRegion,IStream),MAKE_ENUM(Stat,IStream),
     MAKE_ENUM(Clone,IStream),MAKE_ENUM(OnNotify,IMAPIAdviseSink)
   } METHODS;
-#if defined(_X86_)
-#ifdef __cplusplus
-#define ValidateParameters(eMethod,First) { HRESULT _hr_; _hr_ = __CPPValidateParameters(eMethod,(LPVOID) &First); if (HR_FAILED(_hr_)) return (_hr_); }
-#define UlValidateParameters(eMethod,First) { HRESULT _hr_; _hr_ = __CPPValidateParameters(eMethod,&First); if (HR_FAILED(_hr_)) return (ULONG) (_hr_); }
-#define CheckParameters(eMethod,First) AssertSz(HR_SUCCEEDED(__CPPValidateParameters(eMethod,&First)),"Parameter validation failed for method called by MAPI!")
-#else
-#define ValidateParameters(eMethod,ppThis) { HRESULT _hr_; _hr_ = __ValidateParameters(eMethod,ppThis); if (HR_FAILED(_hr_)) return (_hr_); }
-#define UlValidateParameters(eMethod,ppThis) { HRESULT _hr_; _hr_ = __ValidateParameters(eMethod,ppThis); if (HR_FAILED(_hr_)) return (ULONG) (_hr_); }
-#define CheckParameters(eMethod,ppThis) AssertSz(HR_SUCCEEDED(__ValidateParameters(eMethod,ppThis)),"Parameter validation failed for method called by MAPI!")
-#endif
-#endif
 
 #define FBadPropVal(lpPropVal) (FAILED(ScCountProps(1,lpPropVal,NULL)))
 #define FBadRgPropVal(lpPropVal,cValues) (FAILED(ScCountProps(cValues,lpPropVal,NULL)))
@@ -103,94 +92,6 @@ extern "C" {
   HRESULT WINAPI __CPPValidateParameters(METHODS eMethod,const LPVOID ppFirst);
   HRESULT WINAPI __ValidateParameters(METHODS eMethod,LPVOID ppThis);
 
-#if defined(_X86_)
-#define ArgSize(T) ((sizeof(T)+3)/4)
-#define MakeArg1(idx,a1) memcpy(__rgArgs+idx,&a1,ArgSize(a1)*4)
-#define MakeArg2(idx,a1,a2) MakeArg1(idx,a1); MakeArg1(idx+ArgSize(a1),a2)
-#define MakeArg3(idx,a1,a2,a3) MakeArg1(idx,a1); MakeArg2(idx+ArgSize(a1),a2,a3)
-#define MakeArg4(idx,a1,a2,a3,a4) MakeArg1(idx,a1); MakeArg3(idx+ArgSize(a1),a2,a3,a4)
-#define MakeArg5(idx,a1,a2,a3,a4,a5) MakeArg1(idx,a1); MakeArg4(idx+ArgSize(a1),a2,a3,a4,a5)
-#define MakeArg6(idx,a1,a2,a3,a4,a5,a6) MakeArg1(idx,a1); MakeArg5(idx+ArgSize(a1),a2,a3,a4,a5,a6)
-#define MakeArg7(idx,a1,a2,a3,a4,a5,a6,a7) MakeArg1(idx,a1); MakeArg6(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7)
-#define MakeArg8(idx,a1,a2,a3,a4,a5,a6,a7,a8) MakeArg1(idx,a1); MakeArg7(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8)
-#define MakeArg9(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9) MakeArg1(idx,a1); MakeArg8(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9)
-#define MakeArg10(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) MakeArg1(idx,a1); MakeArg9(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10)
-#define MakeArg11(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11) MakeArg1(idx,a1); MakeArg10(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10,a11)
-#define MakeArg12(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12) MakeArg1(idx,a1); MakeArg11(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12)
-#define MakeArg13(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13) MakeArg1(idx,a1); MakeArg12(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13)
-#define MakeArg14(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14) MakeArg1(idx,a1); MakeArg13(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14)
-#define MakeArg15(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15) MakeArg1(idx,a1); MakeArg14(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15)
-#define MakeArg16(idx,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16) MakeArg1(idx,a1); MakeArg15(idx+ArgSize(a1),a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16)
-
-#define MakeArray1(a1) DWORD __rgArgs[ArgSize(a1)]; MakeArg1(0,a1)
-#define MakeArray2(a1,a2) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2)]; MakeArg2(0,a1,a2)
-#define MakeArray3(a1,a2,a3) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3)]; MakeArg3(0,a1,a2,a3)
-#define MakeArray4(a1,a2,a3,a4) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4)]; MakeArg4(0,a1,a2,a3,a4)
-#define MakeArray5(a1,a2,a3,a4,a5) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5)]; MakeArg5(0,a1,a2,a3,a4,a5)
-#define MakeArray6(a1,a2,a3,a4,a5,a6) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6)]; MakeArg6(0,a1,a2,a3,a4,a5,a6)
-#define MakeArray7(a1,a2,a3,a4,a5,a6,a7) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7)]; MakeArg7(0,a1,a2,a3,a4,a5,a6,a7)
-#define MakeArray8(a1,a2,a3,a4,a5,a6,a7,a8) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8)]; MakeArg8(0,a1,a2,a3,a4,a5,a6,a7,a8)
-#define MakeArray9(a1,a2,a3,a4,a5,a6,a7,a8,a9) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9)]; MakeArg9(0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
-#define MakeArray10(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10)]; MakeArg10(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10)
-#define MakeArray11(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10) + ArgSize(a11)]; MakeArg11(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11)
-#define MakeArray12(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10) + ArgSize(a11) + ArgSize(a12)]; MakeArg12(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12)
-#define MakeArray13(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10) + ArgSize(a11) + ArgSize(a12) + ArgSize(a13)]; MakeArg13(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13)
-#define MakeArray14(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10) + ArgSize(a11) + ArgSize(a12) + ArgSize(a13) + ArgSize(a14)]; MakeArg14(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14)
-#define MakeArray15(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10) + ArgSize(a11) + ArgSize(a12) + ArgSize(a13) + ArgSize(a14) + ArgSize(a15)]; MakeArg15(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15)
-#define MakeArray16(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16) DWORD __rgArgs[ArgSize(a1) + ArgSize(a2) + ArgSize(a3) + ArgSize(a4) + ArgSize(a5) + ArgSize(a6) + ArgSize(a7) + ArgSize(a8) + ArgSize(a9) + ArgSize(a10) + ArgSize(a11) + ArgSize(a12) + ArgSize(a13) + ArgSize(a14) + ArgSize(a15) + ArgSize(a16)]; MakeArg16(0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16)
-
-#define ValidateParameters1(m,a1)
-#define ValidateParameters2(m,a1,a2) { HRESULT _hr_; MakeArray1(a2); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters3(m,a1,a2,a3) { HRESULT _hr_; MakeArray2(a2,a3); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters4(m,a1,a2,a3,a4) { HRESULT _hr_; MakeArray3(a2,a3,a4); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters5(m,a1,a2,a3,a4,a5) { HRESULT _hr_; MakeArray4(a2,a3,a4,a5); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters6(m,a1,a2,a3,a4,a5,a6) { HRESULT _hr_; MakeArray5(a2,a3,a4,a5,a6); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters7(m,a1,a2,a3,a4,a5,a6,a7) { HRESULT _hr_; MakeArray6(a2,a3,a4,a5,a6,a7); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters8(m,a1,a2,a3,a4,a5,a6,a7,a8) { HRESULT _hr_; MakeArray7(a2,a3,a4,a5,a6,a7,a8); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters9(m,a1,a2,a3,a4,a5,a6,a7,a8,a9) { HRESULT _hr_; MakeArray8(a2,a3,a4,a5,a6,a7,a8,a9); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters10(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) { HRESULT _hr_; MakeArray9(a2,a3,a4,a5,a6,a7,a8,a9,a10); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters11(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11) { HRESULT _hr_; MakeArray10(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters12(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12) { HRESULT _hr_; MakeArray11(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters13(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13) { HRESULT _hr_; MakeArray12(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters14(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14) { HRESULT _hr_; MakeArray13(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters15(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15) { HRESULT _hr_; MakeArray14(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-#define ValidateParameters16(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16) { HRESULT _hr_; MakeArray15(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return (_hr_); }
-
-#define UlValidateParameters1(m,a1)
-#define UlValidateParameters2(m,a1,a2) { HRESULT _hr_; MakeArray1(a2); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters3(m,a1,a2,a3) { HRESULT _hr_; MakeArray2(a2,a3); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters4(m,a1,a2,a3,a4) { HRESULT _hr_; MakeArray3(a2,a3,a4); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters5(m,a1,a2,a3,a4,a5) { HRESULT _hr_; MakeArray4(a2,a3,a4,a5); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters6(m,a1,a2,a3,a4,a5,a6) { HRESULT _hr_; MakeArray5(a2,a3,a4,a5,a6); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters7(m,a1,a2,a3,a4,a5,a6,a7) { HRESULT _hr_; MakeArray6(a2,a3,a4,a5,a6,a7); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters8(m,a1,a2,a3,a4,a5,a6,a7,a8) { HRESULT _hr_; MakeArray7(a2,a3,a4,a5,a6,a7,a8); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters9(m,a1,a2,a3,a4,a5,a6,a7,a8,a9) { HRESULT _hr_; MakeArray8(a2,a3,a4,a5,a6,a7,a8,a9); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters10(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) { HRESULT _hr_; MakeArray9(a2,a3,a4,a5,a6,a7,a8,a9,a10); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters11(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11) { HRESULT _hr_; MakeArray10(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters12(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12) { HRESULT _hr_; MakeArray11(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters13(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13) { HRESULT _hr_; MakeArray12(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters14(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14) { HRESULT _hr_; MakeArray13(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters15(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15) { HRESULT _hr_; MakeArray14(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-#define UlValidateParameters16(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16) { HRESULT _hr_; MakeArray15(a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16); _hr_ = HrValidateParameters(m,(void **)__rgArgs); if (HR_FAILED(_hr_)) return ((ULONG)_hr_); }
-
-#define CheckParameters1(m,a1)
-#define CheckParameters2(m,a1,a2)
-#define CheckParameters3(m,a1,a2,a3)
-#define CheckParameters4(m,a1,a2,a3,a4)
-#define CheckParameters5(m,a1,a2,a3,a4,a5)
-#define CheckParameters6(m,a1,a2,a3,a4,a5,a6)
-#define CheckParameters7(m,a1,a2,a3,a4,a5,a6,a7)
-#define CheckParameters8(m,a1,a2,a3,a4,a5,a6,a7,a8)
-#define CheckParameters9(m,a1,a2,a3,a4,a5,a6,a7,a8,a9)
-#define CheckParameters10(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10)
-#define CheckParameters11(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11)
-#define CheckParameters12(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12)
-#define CheckParameters13(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13)
-#define CheckParameters14(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14)
-#define CheckParameters15(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15)
-#define CheckParameters16(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16)
-
-#else
 #define ValidateParms(x) { HRESULT _hr_ = HrValidateParametersV x; if (HR_FAILED(_hr_)) return (_hr_); }
 #define UlValidateParms(x) { HRESULT _hr_ = HrValidateParametersV x; if (HR_FAILED(_hr_)) return (ULONG)(_hr_); }
 #define CheckParms(x) AssertSz(HR_SUCCEEDED(HrValidateParametersV x),"Parameter validation failed for method called by MAPI!")
@@ -245,7 +146,6 @@ extern "C" {
 #define CheckParameters14(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14) CheckParms((m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14))
 #define CheckParameters15(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15) CheckParms((m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15))
 #define CheckParameters16(m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16) CheckParms((m,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16))
-#endif
 
 #define Validate_IUnknown_QueryInterface(a1,a2,a3) ValidateParameters3(IUnknown_QueryInterface,a1,a2,a3)
 #define UlValidate_IUnknown_QueryInterface(a1,a2,a3) UlValidateParameters3(IUnknown_QueryInterface,a1,a2,a3)
@@ -799,12 +699,8 @@ extern "C" {
 #define UlValidate_IMAPIAdviseSink_OnNotify(a1,a2,a3) UlValidateParameters3(IMAPIAdviseSink_OnNotify,a1,a2,a3)
 #define CheckParameters_IMAPIAdviseSink_OnNotify(a1,a2,a3) CheckParameters3(IMAPIAdviseSink_OnNotify,a1,a2,a3)
 
-#if defined(_X86_)
-  STDAPI HrValidateParameters(METHODS eMethod,LPVOID *ppFirstArg);
-#else
   STDAPIV HrValidateParametersV(METHODS eMethod,...);
   STDAPIV HrValidateParametersValist(METHODS eMethod,va_list arglist);
-#endif
 
 #ifdef __cplusplus
 }

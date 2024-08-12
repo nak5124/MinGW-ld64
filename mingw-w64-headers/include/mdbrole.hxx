@@ -22,11 +22,7 @@
 
 #define ROLDLLEXP __declspec(dllimport)
 
-#if (defined(_X86_) && !defined(__x86_64))
-#define ROLEAPI __fastcall
-#else
 #define ROLEAPI
-#endif
 
 WINBOOL ROLDLLEXP ROLEAPI FRoleSid(PSID psid);
 HRESULT ROLDLLEXP ROLEAPI HrParseRoleSid(PSID psid,long cbNameBuffer,char rgchName[],ULONG *pptagrole,BYTE *prolescope);

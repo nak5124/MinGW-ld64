@@ -12,9 +12,7 @@
 extern "C" {
 #endif
 
-#ifndef _X86_
 #define ALIGNMENT_MACHINE
-#endif
 
 #ifdef ALIGNMENT_MACHINE
 #define IS_ALIGNED(p) (((ULONG_PTR)(p) & (sizeof(*(p))-1))==0)

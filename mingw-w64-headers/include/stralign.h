@@ -22,25 +22,6 @@ extern "C" {
 #endif
 #endif
 
-#if defined(_X86_)
-#define ua_CharUpperW CharUpperW
-#define ua_lstrcmpiW lstrcmpiW
-#define ua_lstrcmpW lstrcmpW
-#define ua_lstrlenW lstrlenW
-#define ua_wcschr wcschr
-#define ua_wcsicmp wcsicmp
-#define ua_wcslen wcslen
-#define ua_wcsrchr wcsrchr
-
-  PUWSTR ua_wcscpy(PUWSTR Destination,PCUWSTR Source);
-#if !defined (__CRT__NO_INLINE) && !defined (__CYGWIN__)
-  __CRT_INLINE PUWSTR ua_wcscpy(PUWSTR Destination,PCUWSTR Source) { return wcscpy(Destination,Source); }
-#else
-#define ua_wcscpy wcscpy
-#endif
-
-#else /* not _X86_ : */
-
 #ifndef WSTR_ALIGNED
 #define WSTR_ALIGNED(s) (((DWORD_PTR)(s) & (sizeof(WCHAR)-1))==0)
 #endif
@@ -150,7 +131,6 @@ extern "C" {
     return uaw_wcslen(String);
   }
 #endif /* !__CRT__NO_INLINE */
-#endif /* _X86_ */
   int ua_wcsicmp(LPCUWSTR String1,LPCUWSTR String2);
 
 #ifndef __CRT__NO_INLINE
@@ -169,7 +149,7 @@ extern "C" {
 #define __UA_WSTRSIZE(s) ((__UA_WCSLEN(s)+1)*sizeof(WCHAR))
 #define __UA_STACKCOPY(p,s) memcpy(_alloca(s),p,s)
 
-#if defined (__x86_64__) || defined (__arm__) || defined (_X86_)
+#if defined (__x86_64__) || defined (__arm__)
 #define WSTR_ALIGNED_STACK_COPY(d,s) (*(d) = (PCWSTR)(s))
 #else
 #define WSTR_ALIGNED_STACK_COPY(d,s) { PCUWSTR __ua_src; ULONG __ua_size; PWSTR __ua_dst; __ua_src = (s); if(WSTR_ALIGNED(__ua_src)) { __ua_dst = (PWSTR)__ua_src; } else { __ua_size = __UA_WSTRSIZE(__ua_src); __ua_dst = (PWSTR)_alloca(__ua_size); memcpy(__ua_dst,__ua_src,__ua_size); } *(d) = (PCWSTR)__ua_dst; }
@@ -177,7 +157,7 @@ extern "C" {
 
 #define ASTR_ALIGNED_STACK_COPY(d,s) (*(d) = (PCSTR)(s))
 
-#if !defined (_X86_) && !defined (__x86_64__) && !defined (__arm__)
+#if !defined (__x86_64__) && !defined (__arm__)
 #define __UA_STRUC_ALIGNED(t,s) (((DWORD_PTR)(s) & (TYPE_ALIGNMENT(t)-1))==0)
 #define STRUC_ALIGNED_STACK_COPY(t,s) __UA_STRUC_ALIGNED(t,s) ? ((t const *)(s)) : ((t const *)__UA_STACKCOPY((s),sizeof(t)))
 #else

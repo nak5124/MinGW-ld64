@@ -123,7 +123,7 @@ __INTRINSICS_USEINLINE
    FunctionName: Any valid function name
    DataType: __LONG32 or __int64
    OffsetConstraint: either "I" for 32bit data types or "J" for 64. */
-#if defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_)
+#if defined(__x86_64__) || defined(_AMD64_)
 #define __buildbittesti(x, y, z, a) unsigned char x(y volatile *Base, y Offset) \
 { \
    unsigned char old; \
@@ -187,7 +187,7 @@ __INTRINSICS_USEINLINE
       : "memory", "cc"); \
    return (old >> Offset) & 1; \
 }
-#endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_) */
+#endif /* defined(__x86_64__) || defined(_AMD64_) */
 
 /* This macro is used by YieldProcessor when compiling x86 w/o SSE2.
 It generates the same opcodes as _mm_pause.  */
@@ -1543,7 +1543,7 @@ unsigned char _bittestandcomplement64(__int64 *__a, __int64 __b)
 
 /* ***************************************************** */
 
-#if defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_) || defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#if defined(__x86_64__) || defined(_AMD64_) || defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
 
 #if __INTRINSIC_PROLOG(__popcnt16)
 unsigned short __popcnt16(unsigned short);
@@ -1751,9 +1751,9 @@ void *_InterlockedExchangePointer(void *volatile *Target,void *Value) {
 #define __INTRINSIC_DEFINED__InterlockedExchangePointer
 #endif /* __INTRINSIC_PROLOG */
 
-#endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_) || defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_) */
+#endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_) */
 
-#if defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_)
+#if defined(__x86_64__) || defined(_AMD64_)
 
 #if __INTRINSIC_PROLOG(__int2c)
 void __int2c(void);
@@ -2133,148 +2133,7 @@ unsigned __int64 _xgetbv(unsigned int index)
 #endif /* __INTRINSIC_PROLOG */
 #endif /* __GNUC__ < 8 */
 
-#endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__i386__) || defined(_X86_) */
-
-/* ***************************************************** */
-
-#if defined(__i386__) || defined(_X86_)
-
-#if __INTRINSIC_PROLOG(__readfsbyte)
-unsigned char __readfsbyte(unsigned __LONG32 Offset);
-#if !__has_builtin(__readfsbyte)
-__INTRINSICS_USEINLINE
-__buildreadseg(__readfsbyte, unsigned char, "fs", "b")
-#endif
-#define __INTRINSIC_DEFINED___readfsbyte
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readfsword)
-unsigned short __readfsword(unsigned __LONG32 Offset);
-#if !__has_builtin(__readfsword)
-__INTRINSICS_USEINLINE
-__buildreadseg(__readfsword, unsigned short, "fs", "w")
-#endif
-#define __INTRINSIC_DEFINED___readfsword
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readfsdword)
-unsigned __LONG32 __readfsdword(unsigned __LONG32 Offset);
-#if !__has_builtin(__readfsdword)
-__INTRINSICS_USEINLINE
-__buildreadseg(__readfsdword, unsigned __LONG32, "fs", "l")
-#endif
-#define __INTRINSIC_DEFINED___readfsdword
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writefsbyte)
-void __writefsbyte(unsigned __LONG32 Offset,unsigned char Data);
-#if !__has_builtin(__writefsbyte)
-__INTRINSICS_USEINLINE
-__buildwriteseg(__writefsbyte, unsigned char, "fs", "b")
-#endif
-#define __INTRINSIC_DEFINED___writefsbyte
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writefsword)
-void __writefsword(unsigned __LONG32 Offset,unsigned short Data);
-#if !__has_builtin(__writefsword)
-__INTRINSICS_USEINLINE
-__buildwriteseg(__writefsword, unsigned short, "fs", "w")
-#endif
-#define __INTRINSIC_DEFINED___writefsword
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writefsdword)
-void __writefsdword(unsigned __LONG32 Offset,unsigned __LONG32 Data);
-#if !__has_builtin(__writefsdword)
-__INTRINSICS_USEINLINE
-__buildwriteseg(__writefsdword, unsigned __LONG32, "fs", "l")
-#endif
-#define __INTRINSIC_DEFINED___writefsdword
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readcr0)
-unsigned __LONG32 __readcr0(void);
-#if !__has_builtin(__readcr0)
-__INTRINSICS_USEINLINE
-__build_readcr(__readcr0, unsigned __LONG32, "0")
-#endif
-#define __INTRINSIC_DEFINED___readcr0
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readcr2)
-unsigned __LONG32 __readcr2(void);
-#if !__has_builtin(__readcr2)
-__INTRINSICS_USEINLINE
-__build_readcr(__readcr2, unsigned __LONG32, "2")
-#endif
-#define __INTRINSIC_DEFINED___readcr2
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readcr3)
-unsigned __LONG32 __readcr3(void);
-#if !__has_builtin(__readcr3)
-__INTRINSICS_USEINLINE
-__build_readcr(__readcr3, unsigned __LONG32, "3")
-#endif
-#define __INTRINSIC_DEFINED___readcr3
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readcr4)
-unsigned __LONG32 __readcr4(void);
-#if !__has_builtin(__readcr4)
-__INTRINSICS_USEINLINE
-__build_readcr(__readcr4, unsigned __LONG32, "4")
-#endif
-#define __INTRINSIC_DEFINED___readcr4
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__readcr8)
-unsigned __LONG32 __readcr8(void);
-#if !__has_builtin(__readcr8)
-__INTRINSICS_USEINLINE
-__build_readcr(__readcr8, unsigned __LONG32, "8")
-#endif
-#define __INTRINSIC_DEFINED___readcr8
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writecr0)
-void __writecr0(unsigned __LONG32);
-#if !__has_builtin(__writecr0)
-__INTRINSICS_USEINLINE
-__build_writecr(__writecr0, unsigned __LONG32, "0")
-#endif
-#define __INTRINSIC_DEFINED___writecr0
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writecr3)
-void __writecr3(unsigned __LONG32);
-#if !__has_builtin(__writecr3)
-__INTRINSICS_USEINLINE
-__build_writecr(__writecr3, unsigned __LONG32, "3")
-#endif
-#define __INTRINSIC_DEFINED___writecr3
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writecr4)
-void __writecr4(unsigned __LONG32);
-#if !__has_builtin(__writecr4)
-__INTRINSICS_USEINLINE
-__build_writecr(__writecr4, unsigned __LONG32, "4")
-#endif
-#define __INTRINSIC_DEFINED___writecr4
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(__writecr8)
-void __writecr8(unsigned __LONG32);
-#if !__has_builtin(__writecr8)
-__INTRINSICS_USEINLINE
-__build_writecr(__writecr8, unsigned __LONG32, "8")
-#endif
-#define __INTRINSIC_DEFINED___writecr8
-#endif /* __INTRINSIC_PROLOG */
-
-#endif /* defined(__i386__) || defined(_X86_) */
+#endif /* defined(__x86_64__) || defined(_AMD64_) */
 
 #ifdef __cplusplus
 }

@@ -53,15 +53,7 @@ extern "C" {
 
 #define GDI_DRIVER_VERSION                0x4000
 
-#ifdef _X86_
-
-typedef DWORD FLOATL;
-
-#else /* !_X86_ */
-
 typedef FLOAT FLOATL;
-
-#endif
 
 typedef SHORT FWORD;
 typedef LONG LDECI4;
@@ -553,15 +545,7 @@ typedef struct _FD_KERNINGPAIR {
   FWORD  fwdKern;
 } FD_KERNINGPAIR;
 
-#if defined(_X86_) && !defined(USERMODE_DRIVER)
-typedef struct _FLOATOBJ
-{
-  ULONG  ul1;
-  ULONG  ul2;
-} FLOATOBJ, *PFLOATOBJ;
-#else
 typedef FLOAT FLOATOBJ, *PFLOATOBJ;
-#endif
 
 typedef struct _FLOATOBJ_XFORM {
   FLOATOBJ  eM11;
@@ -2311,167 +2295,6 @@ EngWritePrinter(
   DWORD  cbBuf,
   LPDWORD  pcWritten);
 
-#if defined(_X86_) && !defined(USERMODE_DRIVER)
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_Add(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_AddFloat(
-  PFLOATOBJ  pf,
-  FLOATL  f);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_AddLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_Div(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_DivFloat(
-  PFLOATOBJ  pf,
-  FLOATL  f);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_DivLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-WINBOOL
-APIENTRY
-FLOATOBJ_Equal(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-WINBOOL
-APIENTRY
-FLOATOBJ_EqualLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-LONG
-APIENTRY
-FLOATOBJ_GetFloat(
-  PFLOATOBJ  pf);
-
-WIN32KAPI
-LONG
-APIENTRY
-FLOATOBJ_GetLong(
-  PFLOATOBJ  pf);
-
-WIN32KAPI
-WINBOOL
-APIENTRY
-FLOATOBJ_GreaterThan(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-WINBOOL
-APIENTRY
-FLOATOBJ_GreaterThanLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-WINBOOL
-APIENTRY
-FLOATOBJ_LessThan(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-WINBOOL
-APIENTRY
-FLOATOBJ_LessThanLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_Mul(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_MulFloat(
-  PFLOATOBJ  pf,
-  FLOATL  f);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_MulLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_Neg(
-  PFLOATOBJ  pf);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_SetFloat(
-  PFLOATOBJ  pf,
-  FLOATL  f);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_SetLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_Sub(
-  PFLOATOBJ  pf,
-  PFLOATOBJ  pf1);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_SubFloat(
-  PFLOATOBJ  pf,
-  FLOATL  f);
-
-WIN32KAPI
-VOID
-APIENTRY
-FLOATOBJ_SubLong(
-  PFLOATOBJ  pf,
-  LONG  l);
-
-#else
-
 #define FLOATOBJ_SetFloat(pf, f)        {*(pf) = (f);}
 #define FLOATOBJ_SetLong(pf, l)         {*(pf) = (FLOAT)(l);}
 #define FLOATOBJ_GetFloat(pf)           (*(PULONG)(pf))
@@ -2495,8 +2318,6 @@ FLOATOBJ_SubLong(
 #define FLOATOBJ_EqualLong(pf, l)       (*(pf) == (FLOAT)(l))
 #define FLOATOBJ_GreaterThanLong(pf, l) (*(pf) > (FLOAT)(l))
 #define FLOATOBJ_LessThanLong(pf, l)    (*(pf) < (FLOAT)(l))
-
-#endif
 
 WIN32KAPI
 ULONG

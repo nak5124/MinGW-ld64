@@ -191,11 +191,7 @@ typedef enum FILE_FLUSH_MODE {
   typedef PFIBER_START_ROUTINE LPFIBER_START_ROUTINE;
   typedef LPVOID (WINAPI *PFIBER_CALLOUT_ROUTINE) (LPVOID lpParameter);
 
-#if defined (__i386__)
-  typedef PLDT_ENTRY LPLDT_ENTRY;
-#else
   typedef LPVOID LPLDT_ENTRY;
-#endif
 
 #define SP_SERIALCOMM ((DWORD)0x1)
 #define PST_UNSPECIFIED ((DWORD)0x0)
@@ -3153,7 +3149,7 @@ WINBASEAPI WINBOOL WINAPI ReadDirectoryChangesExW (HANDLE hDirectory, LPVOID lpB
 #if NTDDI_VERSION >= NTDDI_WIN10_RS5
   WINBASEAPI WINBOOL WINAPI InitializeContext2 (PVOID Buffer, DWORD ContextFlags, PCONTEXT *Context, PDWORD ContextLength, ULONG64 XStateCompactionMask);
 #endif
-#if defined (__x86_64__) || defined (__i386__)
+#if defined (__x86_64__)
   WINBASEAPI DWORD64 WINAPI GetEnabledXStateFeatures (VOID);
   WINBASEAPI WINBOOL WINAPI GetXStateFeaturesMask (PCONTEXT Context, PDWORD64 FeatureMask);
   WINBASEAPI PVOID WINAPI LocateXStateFeature (PCONTEXT Context, DWORD FeatureId, PDWORD Length);
@@ -3161,7 +3157,7 @@ WINBASEAPI WINBOOL WINAPI ReadDirectoryChangesExW (HANDLE hDirectory, LPVOID lpB
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
-#if defined (__x86_64__) || defined (__i386__)
+#if defined (__x86_64__)
   WINBASEAPI WINBOOL WINAPI SetXStateFeaturesMask (PCONTEXT Context, DWORD64 FeatureMask);
 #if NTDDI_VERSION >= NTDDI_WIN10_FE
   WINBASEAPI DWORD64 WINAPI GetThreadEnabledXStateFeatures(VOID);

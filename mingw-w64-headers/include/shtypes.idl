@@ -33,12 +33,6 @@ typedef struct _SHITEMID {
 cpp_quote("#include <poppack.h>")
 
 cpp_quote("")
-cpp_quote("#if (defined(_X86_) && !defined(__x86_64))")
-cpp_quote("#undef __unaligned")
-cpp_quote("#define __unaligned")
-cpp_quote("#endif")
-
-cpp_quote("")
 typedef SHITEMID *LPSHITEMID;
 typedef const SHITEMID *LPCSHITEMID;
 

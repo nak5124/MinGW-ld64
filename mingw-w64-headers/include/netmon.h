@@ -54,11 +54,7 @@ extern "C"{
 
 #pragma pack(1)
 
-#ifdef _X86_
-#pragma pack(1)
-#else
 #pragma pack()
-#endif
 
   typedef BYTE *LPBYTE;
   typedef const void *HBLOB;

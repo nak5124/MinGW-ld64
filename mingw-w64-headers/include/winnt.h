@@ -28,21 +28,21 @@ extern "C" {
 #endif
 
 #if defined(__x86_64) && \
-  !(defined(_X86_) || defined(__i386__) || defined (__arm__) || defined(__aarch64__))
+  !(defined (__arm__) || defined(__aarch64__))
 #if !defined(_AMD64_)
 #define _AMD64_
 #endif
 #endif /* _AMD64_ */
 
 #if defined(__arm__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined(__aarch64__))
+  !(defined(__x86_64) || defined(_AMD64_) || defined(__aarch64__))
 #if !defined(_ARM_)
 #define _ARM_
 #endif
 #endif /* _ARM_ */
 
 #if defined(__aarch64__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined(__arm__))
+  !(defined(__x86_64) || defined(_AMD64_) || defined(__arm__))
 #if !defined(_ARM64_)
 #define _ARM64_
 #endif
@@ -122,7 +122,7 @@ extern "C" {
 #define TYPE_ALIGNMENT(t) FIELD_OFFSET(struct { char x; t test; }, test)
 #endif
 
-#if defined (__x86_64__) || defined (__i386__)
+#if defined (__x86_64__)
 #define PROBE_ALIGNMENT(_s) TYPE_ALIGNMENT (DWORD)
 #elif defined (__arm__) || defined(__aarch64__)
 #define PROBE_ALIGNMENT(_s) (TYPE_ALIGNMENT (_s) > TYPE_ALIGNMENT (DWORD) ? TYPE_ALIGNMENT (_s) : TYPE_ALIGNMENT (DWORD))
@@ -143,7 +143,7 @@ extern "C" {
 #include <basetsd.h>
 
 #ifndef DECLSPEC_IMPORT
-#if (defined (__i386__) || defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)) && !defined (__WIDL__)
+#if (defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)) && !defined (__WIDL__)
 #define DECLSPEC_IMPORT __declspec (dllimport)
 #else
 #define DECLSPEC_IMPORT
@@ -189,7 +189,7 @@ extern "C" {
 #endif
 
 #ifndef SYSTEM_CACHE_ALIGNMENT_SIZE
-#if defined(__x86_64__) || defined(__i386__)
+#if defined(__x86_64__)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE X86_CACHE_ALIGNMENT_SIZE
 #elif defined(__aarch64__) || defined(__arm__)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE ARM_CACHE_ALIGNMENT_SIZE
@@ -261,11 +261,7 @@ extern "C" {
   typedef void *PVOID64;
 
 #ifndef FASTCALL
-#if defined (__i386__) && !defined (__WIDL__)
-#define FASTCALL __fastcall
-#else
 #define FASTCALL
-#endif
 #endif /* FASTCALL */
 
 #if defined(_ARM_) || defined(_ARM64_)
@@ -1507,13 +1503,7 @@ inline ENUMTYPE &operator ^= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((i
       DWORD Length;
       DWORD Reserved1;
       PXSAVE_AREA Area;
-#if defined (__i386__)
-      DWORD Reserved2;
-#endif
       PVOID Buffer;
-#if defined (__i386__)
-      DWORD Reserved3;
-#endif
     } XSTATE_CONTEXT,*PXSTATE_CONTEXT;
 
     typedef struct _KERNEL_CET_CONTEXT {
@@ -2349,187 +2339,6 @@ extern "C" {
 
 #endif /* _ARM64_ */
 
-
-#ifdef _X86_
-
-#if defined(__i386__) && !defined(__x86_64) && !defined(RC_INVOKED)
-#ifdef __cplusplus
-  extern "C" {
-#endif
-
-#define BitTest _bittest
-#define BitTestAndComplement _bittestandcomplement
-#define BitTestAndSet _bittestandset
-#define BitTestAndReset _bittestandreset
-
-#define BitScanForward _BitScanForward
-#define BitScanReverse _BitScanReverse
-
-#define InterlockedIncrement16 _InterlockedIncrement16
-#define InterlockedDecrement16 _InterlockedDecrement16
-#define InterlockedCompareExchange16 _InterlockedCompareExchange16
-
-#define InterlockedAnd _InterlockedAnd
-#define InterlockedOr _InterlockedOr
-#define InterlockedXor _InterlockedXor
-#define InterlockedIncrement _InterlockedIncrement
-#define InterlockedIncrementAcquire InterlockedIncrement
-#define InterlockedIncrementRelease InterlockedIncrement
-#define InterlockedDecrement _InterlockedDecrement
-#define InterlockedDecrementAcquire InterlockedDecrement
-#define InterlockedDecrementRelease InterlockedDecrement
-#define InterlockedAdd _InterlockedAdd
-#define InterlockedExchange _InterlockedExchange
-#define InterlockedExchangeAdd _InterlockedExchangeAdd
-#define InterlockedCompareExchange _InterlockedCompareExchange
-#define InterlockedCompareExchangeAcquire InterlockedCompareExchange
-#define InterlockedCompareExchangeRelease InterlockedCompareExchange
-
-#define InterlockedAnd64 _InterlockedAnd64
-#define InterlockedAndAffinity InterlockedAnd64
-#define InterlockedOr64 _InterlockedOr64
-#define InterlockedOrAffinity InterlockedOr64
-#define InterlockedXor64 _InterlockedXor64
-#define InterlockedIncrement64 _InterlockedIncrement64
-#define InterlockedDecrement64 _InterlockedDecrement64
-#define InterlockedAdd64 _InterlockedAdd64
-#define InterlockedExchange64 _InterlockedExchange64
-#define InterlockedExchangeAcquire64 InterlockedExchange64
-#define InterlockedExchangeAdd64 _InterlockedExchangeAdd64
-#define InterlockedCompareExchange64 _InterlockedCompareExchange64
-#define InterlockedCompareExchangeAcquire64 InterlockedCompareExchange64
-#define InterlockedCompareExchangeRelease64 InterlockedCompareExchange64
-
-#define InterlockedExchangePointer _InterlockedExchangePointer
-#define InterlockedCompareExchangePointer(Destination, ExChange, Comperand) (PVOID) (LONG_PTR)InterlockedCompareExchange ((LONG volatile *) (Destination),(LONG) (LONG_PTR) (ExChange),(LONG) (LONG_PTR) (Comperand))
-#define InterlockedCompareExchangePointerAcquire InterlockedCompareExchangePointer
-#define InterlockedCompareExchangePointerRelease InterlockedCompareExchangePointer
-
-#ifdef _PREFIX_
-    /* BYTE __readfsbyte(DWORD Offset); moved to psdk_inc/intrin-impl.h */
-    /* WORD __readfsword(DWORD Offset); moved to psdk_inc/intrin-impl.h */
-    /* DWORD __readfsdword(DWORD Offset); moved to psdk_inc/intrin-impl.h */
-    /* VOID __writefsbyte(DWORD Offset,BYTE Data); moved to psdk_inc/intrin-impl.h */
-    /* VOID __writefsword(DWORD Offset,WORD Data); moved to psdk_inc/intrin-impl.h */
-    /* VOID __writefsdword(DWORD Offset,DWORD Data); moved to psdk_inc/intrin-impl.h */
-#endif
-
-#ifdef __cplusplus
-  }
-#endif
-#endif /* defined(__i386__) && !defined(__x86_64) && !defined(RC_INVOKED) */
-
-#if defined(__i386__) && !defined(__x86_64)
-
-#ifdef __SSE2__
-#include <emmintrin.h>
-#define YieldProcessor _mm_pause
-#define MemoryBarrier _mm_mfence
-#else
-#define YieldProcessor __buildpause
-VOID MemoryBarrier(VOID);
-FORCEINLINE VOID MemoryBarrier(VOID)
-__buildmemorybarrier()
-#endif
-
-#define PreFetchCacheLine(l,a)
-#define ReadForWriteAccess(p) (*(p))
-
-#define PF_TEMPORAL_LEVEL_1
-#define PF_NON_TEMPORAL_LEVEL_ALL
-
-#define PcTeb 0x18
-  struct _TEB *NtCurrentTeb(void);
-  PVOID GetCurrentFiber(void);
-  PVOID GetFiberData(void);
-
-#define DbgRaiseAssertionFailure __int2c
-
-  FORCEINLINE struct _TEB *NtCurrentTeb(void)
-  {
-    return (struct _TEB *)__readfsdword(PcTeb);
-  }
-  FORCEINLINE PVOID GetCurrentFiber(void)
-  {
-    return(PVOID)__readfsdword(0x10);
-  }
-  FORCEINLINE PVOID GetFiberData(void)
-  {
-      return *(PVOID *)GetCurrentFiber();
-  }
-#endif /* defined(__i386__) && !defined(__x86_64) */
-
-#define EXCEPTION_READ_FAULT 0
-#define EXCEPTION_WRITE_FAULT 1
-#define EXCEPTION_EXECUTE_FAULT 8
-
-#define SIZE_OF_80387_REGISTERS 80
-
-#if !defined(RC_INVOKED)
-
-#define CONTEXT_i386 0x00010000
-#define CONTEXT_i486 0x00010000
-
-#define CONTEXT_CONTROL (CONTEXT_i386 | __MSABI_LONG(0x00000001))
-#define CONTEXT_INTEGER (CONTEXT_i386 | __MSABI_LONG(0x00000002))
-#define CONTEXT_SEGMENTS (CONTEXT_i386 | __MSABI_LONG(0x00000004))
-#define CONTEXT_FLOATING_POINT (CONTEXT_i386 | __MSABI_LONG(0x00000008))
-#define CONTEXT_DEBUG_REGISTERS (CONTEXT_i386 | __MSABI_LONG(0x00000010))
-#define CONTEXT_EXTENDED_REGISTERS (CONTEXT_i386 | __MSABI_LONG(0x00000020))
-
-#define CONTEXT_FULL (CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_SEGMENTS)
-
-#define CONTEXT_ALL (CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_SEGMENTS | CONTEXT_FLOATING_POINT | CONTEXT_DEBUG_REGISTERS | CONTEXT_EXTENDED_REGISTERS)
-#endif /* !defined(RC_INVOKED) */
-
-#define MAXIMUM_SUPPORTED_EXTENSION 512
-
-    typedef struct _FLOATING_SAVE_AREA {
-      DWORD ControlWord;
-      DWORD StatusWord;
-      DWORD TagWord;
-      DWORD ErrorOffset;
-      DWORD ErrorSelector;
-      DWORD DataOffset;
-      DWORD DataSelector;
-      BYTE RegisterArea[SIZE_OF_80387_REGISTERS];
-      DWORD Cr0NpxState;
-    } FLOATING_SAVE_AREA;
-
-    typedef FLOATING_SAVE_AREA *PFLOATING_SAVE_AREA;
-
-    typedef struct _CONTEXT {
-      DWORD ContextFlags;
-      DWORD Dr0;
-      DWORD Dr1;
-      DWORD Dr2;
-      DWORD Dr3;
-      DWORD Dr6;
-      DWORD Dr7;
-      FLOATING_SAVE_AREA FloatSave;
-      DWORD SegGs;
-      DWORD SegFs;
-      DWORD SegEs;
-      DWORD SegDs;
-
-      DWORD Edi;
-      DWORD Esi;
-      DWORD Ebx;
-      DWORD Edx;
-      DWORD Ecx;
-      DWORD Eax;
-      DWORD Ebp;
-      DWORD Eip;
-      DWORD SegCs;
-      DWORD EFlags;
-      DWORD Esp;
-      DWORD SegSs;
-      BYTE ExtendedRegisters[MAXIMUM_SUPPORTED_EXTENSION];
-    } CONTEXT;
-
-    typedef CONTEXT *PCONTEXT;
-
-#endif /* end of _X86_ */
 
   /* LONG WINAPI InterlockedIncrement(LONG volatile *); moved to psdk_inc/intrin-impl.h */
   /* LONG WINAPI InterlockedDecrement(LONG volatile *); moved to psdk_inc/intrin-impl.h */
@@ -4154,8 +3963,8 @@ typedef BYTE SE_SIGNING_LEVEL, *PSE_SIGNING_LEVEL;
       DWORD64 Self;
     } NT_TIB64,*PNT_TIB64;
 
-#if !defined(_X86_) && !defined(_AMD64_)
-#define WX86
+#ifndef _AMD64_
+# define WX86
 #endif
 
 #define THREAD_DYNAMIC_CODE_ALLOW 1
@@ -5261,8 +5070,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
 #define XSTATE_MASK_LWP (1LLU << (XSTATE_LWP))
 #if defined(_AMD64_) || defined(__x86_64__)
 #define XSTATE_MASK_ALLOWED (XSTATE_MASK_LEGACY | XSTATE_MASK_AVX | XSTATE_MASK_MPX | XSTATE_MASK_AVX512 | XSTATE_MASK_IPT | XSTATE_MASK_PASID | XSTATE_MASK_CET_U | XSTATE_MASK_AMX_TILE_CONFIG | XSTATE_MASK_AMX_TILE_DATA | XSTATE_MASK_LWP)
-#elif defined(_X86_) || defined(__i386__)
-#define XSTATE_MASK_ALLOWED (XSTATE_MASK_LEGACY | XSTATE_MASK_AVX | XSTATE_MASK_MPX | XSTATE_MASK_AVX512 | XSTATE_MASK_IPT | XSTATE_MASK_CET_U | XSTATE_MASK_LWP)
 #endif
 #define XSTATE_MASK_PERSISTENT ((1LLU << (XSTATE_MPX_BNDCSR)) | XSTATE_MASK_LWP)
 #define XSTATE_MASK_USER_VISIBLE_SUPERVISOR (XSTATE_MASK_CET_U)
