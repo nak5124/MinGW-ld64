@@ -27,22 +27,14 @@ extern "C" {
 #include <psdk_inc/intrin-impl.h>
 #endif
 
-#if defined(__x86_64) && \
-  !(defined (__arm__) || defined(__aarch64__))
+#if defined(__x86_64) && !defined(__aarch64__)
 #if !defined(_AMD64_)
 #define _AMD64_
 #endif
 #endif /* _AMD64_ */
 
-#if defined(__arm__) && \
-  !(defined(__x86_64) || defined(_AMD64_) || defined(__aarch64__))
-#if !defined(_ARM_)
-#define _ARM_
-#endif
-#endif /* _ARM_ */
-
 #if defined(__aarch64__) && \
-  !(defined(__x86_64) || defined(_AMD64_) || defined(__arm__))
+  !(defined(__x86_64) || defined(_AMD64_))
 #if !defined(_ARM64_)
 #define _ARM64_
 #endif
@@ -94,7 +86,7 @@ extern "C" {
 
 #undef  UNALIGNED	/* avoid redefinition warnings vs _mingw.h */
 #undef  UNALIGNED64
-#if defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)
+#if defined (__x86_64__) || defined(__aarch64__)
 #define ALIGNMENT_MACHINE
 #define UNALIGNED __unaligned
 #if defined (_WIN64)
@@ -124,7 +116,7 @@ extern "C" {
 
 #if defined (__x86_64__)
 #define PROBE_ALIGNMENT(_s) TYPE_ALIGNMENT (DWORD)
-#elif defined (__arm__) || defined(__aarch64__)
+#elif defined(__aarch64__)
 #define PROBE_ALIGNMENT(_s) (TYPE_ALIGNMENT (_s) > TYPE_ALIGNMENT (DWORD) ? TYPE_ALIGNMENT (_s) : TYPE_ALIGNMENT (DWORD))
 #elif !defined (RC_INVOKED) && !defined (__WIDL__)
 #error No supported target architecture.
@@ -143,7 +135,7 @@ extern "C" {
 #include <basetsd.h>
 
 #ifndef DECLSPEC_IMPORT
-#if (defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)) && !defined (__WIDL__)
+#if (defined (__x86_64__) || defined(__aarch64__)) && !defined (__WIDL__)
 #define DECLSPEC_IMPORT __declspec (dllimport)
 #else
 #define DECLSPEC_IMPORT
@@ -191,7 +183,7 @@ extern "C" {
 #ifndef SYSTEM_CACHE_ALIGNMENT_SIZE
 #if defined(__x86_64__)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE X86_CACHE_ALIGNMENT_SIZE
-#elif defined(__aarch64__) || defined(__arm__)
+#elif defined(__aarch64__)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE ARM_CACHE_ALIGNMENT_SIZE
 #else
 #error Must define a target architecture.
@@ -264,7 +256,7 @@ extern "C" {
 #define FASTCALL
 #endif /* FASTCALL */
 
-#if defined(_ARM_) || defined(_ARM64_)
+#if defined(_ARM64_)
 #define NTAPI
 #else
 #define NTAPI __stdcall
@@ -1881,225 +1873,6 @@ extern "C" {
 #define UNW_FLAG_CHAININFO  0x4
 
 #endif /* end of _AMD64_ */
-
-
-#ifdef _ARM_
-
-#if defined(__arm__) && !defined(RC_INVOKED)
-
-#ifdef __cplusplus
-  extern "C" {
-#endif
-
-#define BitTest _bittest
-#define BitTestAndComplement _bittestandcomplement
-#define BitTestAndSet _bittestandset
-#define BitTestAndReset _bittestandreset
-
-#define BitScanForward _BitScanForward
-#define BitScanReverse _BitScanReverse
-
-#define InterlockedIncrement16 _InterlockedIncrement16
-#define InterlockedDecrement16 _InterlockedDecrement16
-#define InterlockedCompareExchange16 _InterlockedCompareExchange16
-
-#define InterlockedAnd _InterlockedAnd
-#define InterlockedOr _InterlockedOr
-#define InterlockedXor _InterlockedXor
-#define InterlockedIncrement _InterlockedIncrement
-#define InterlockedIncrementAcquire InterlockedIncrement
-#define InterlockedIncrementRelease InterlockedIncrement
-#define InterlockedDecrement _InterlockedDecrement
-#define InterlockedDecrementAcquire InterlockedDecrement
-#define InterlockedDecrementRelease InterlockedDecrement
-#define InterlockedAdd _InterlockedAdd
-#define InterlockedExchange _InterlockedExchange
-#define InterlockedExchangeAdd _InterlockedExchangeAdd
-#define InterlockedCompareExchange _InterlockedCompareExchange
-#define InterlockedCompareExchangeAcquire InterlockedCompareExchange
-#define InterlockedCompareExchangeRelease InterlockedCompareExchange
-
-#define InterlockedAnd64 _InterlockedAnd64
-#define InterlockedAndAffinity InterlockedAnd64
-#define InterlockedOr64 _InterlockedOr64
-#define InterlockedOrAffinity InterlockedOr64
-#define InterlockedXor64 _InterlockedXor64
-#define InterlockedIncrement64 _InterlockedIncrement64
-#define InterlockedDecrement64 _InterlockedDecrement64
-#define InterlockedAdd64 _InterlockedAdd64
-#define InterlockedExchange64 _InterlockedExchange64
-#define InterlockedExchangeAcquire64 InterlockedExchange64
-#define InterlockedExchangeAdd64 _InterlockedExchangeAdd64
-#define InterlockedCompareExchange64 _InterlockedCompareExchange64
-#define InterlockedCompareExchangeAcquire64 InterlockedCompareExchange64
-#define InterlockedCompareExchangeRelease64 InterlockedCompareExchange64
-
-#define InterlockedExchangePointer _InterlockedExchangePointer
-#define InterlockedCompareExchangePointer _InterlockedCompareExchangePointer
-#define InterlockedCompareExchangePointerAcquire _InterlockedCompareExchangePointer
-#define InterlockedCompareExchangePointerRelease _InterlockedCompareExchangePointer
-
-#define YieldProcessor() __asm__ __volatile__("dmb ishst\n\tyield":::"memory")
-#define MemoryBarrier() __asm__ __volatile__("dmb":::"memory")
-#define PreFetchCacheLine(l,a) __prefetch((const void *) (a))
-#define PrefetchForWrite(p) __prefetch((const void *) (p))
-#define ReadForWriteAccess(p) (*(p))
-
-#define PF_TEMPORAL_LEVEL_1 0
-#define PF_TEMPORAL_LEVEL_2 1
-#define PF_TEMPORAL_LEVEL_3 2
-#define PF_NON_TEMPORAL_LEVEL_ALL 3
-
-#ifdef __cplusplus
-  }
-#endif
-#endif /* defined(__arm__) && !defined(RC_INVOKED) */
-
-#define EXCEPTION_READ_FAULT    0
-#define EXCEPTION_WRITE_FAULT   1
-#define EXCEPTION_EXECUTE_FAULT 8
-
-#if !defined(RC_INVOKED)
-
-#define CONTEXT_ARM    0x0200000
-
-#define CONTEXT_CONTROL         (CONTEXT_ARM | 0x00000001)
-#define CONTEXT_INTEGER         (CONTEXT_ARM | 0x00000002)
-#define CONTEXT_FLOATING_POINT  (CONTEXT_ARM | 0x00000004)
-#define CONTEXT_DEBUG_REGISTERS (CONTEXT_ARM | 0x00000008)
-
-#define CONTEXT_FULL (CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_FLOATING_POINT)
-
-#define CONTEXT_ALL  (CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_FLOATING_POINT | CONTEXT_DEBUG_REGISTERS)
-
-#define CONTEXT_EXCEPTION_ACTIVE    0x08000000
-#define CONTEXT_SERVICE_ACTIVE      0x10000000
-#define CONTEXT_EXCEPTION_REQUEST   0x40000000
-#define CONTEXT_EXCEPTION_REPORTING 0x80000000
-
-#define CONTEXT_UNWOUND_TO_CALL     0x20000000
-
-#endif /* !defined(RC_INVOKED) */
-
-#define INITIAL_CPSR  0x10
-#define INITIAL_FPSCR 0x00
-
-#define ARM_MAX_BREAKPOINTS 8
-#define ARM_MAX_WATCHPOINTS 1
-
-
-  typedef struct _NEON128 {
-    ULONGLONG Low;
-    LONGLONG High;
-  } NEON128, *PNEON128;
-
-  typedef struct DECLSPEC_ALIGN(8) _CONTEXT {
-    DWORD ContextFlags;
-
-    DWORD R0;
-    DWORD R1;
-    DWORD R2;
-    DWORD R3;
-    DWORD R4;
-    DWORD R5;
-    DWORD R6;
-    DWORD R7;
-    DWORD R8;
-    DWORD R9;
-    DWORD R10;
-    DWORD R11;
-    DWORD R12;
-
-    DWORD Sp;
-    DWORD Lr;
-    DWORD Pc;
-    DWORD Cpsr;
-
-    DWORD Fpscr;
-    DWORD Padding;
-    union {
-        NEON128   Q[16];
-        ULONGLONG D[32];
-        DWORD     S[32];
-    } DUMMYUNIONNAME;
-
-    DWORD Bvr[ARM_MAX_BREAKPOINTS];
-    DWORD Bcr[ARM_MAX_BREAKPOINTS];
-    DWORD Wvr[ARM_MAX_WATCHPOINTS];
-    DWORD Wcr[ARM_MAX_WATCHPOINTS];
-
-    DWORD Padding2[2];
-  } CONTEXT, *PCONTEXT;
-
-  typedef struct _IMAGE_ARM_RUNTIME_FUNCTION_ENTRY RUNTIME_FUNCTION, *PRUNTIME_FUNCTION;
-  typedef PRUNTIME_FUNCTION (*PGET_RUNTIME_FUNCTION_CALLBACK)(DWORD ControlPc,PVOID Context);
-
-#define UNW_FLAG_NHANDLER   0x0
-#define UNW_FLAG_EHANDLER   0x1
-#define UNW_FLAG_UHANDLER   0x2
-
-#define UNWIND_HISTORY_TABLE_SIZE 12
-
-  typedef struct _UNWIND_HISTORY_TABLE_ENTRY {
-    DWORD ImageBase;
-    PRUNTIME_FUNCTION FunctionEntry;
-  } UNWIND_HISTORY_TABLE_ENTRY, *PUNWIND_HISTORY_TABLE_ENTRY;
-
-  typedef struct _UNWIND_HISTORY_TABLE {
-    DWORD Count;
-    BYTE  LocalHint;
-    BYTE  GlobalHint;
-    BYTE  Search;
-    BYTE  Once;
-    DWORD LowAddress;
-    DWORD HighAddress;
-    UNWIND_HISTORY_TABLE_ENTRY Entry[UNWIND_HISTORY_TABLE_SIZE];
-  } UNWIND_HISTORY_TABLE, *PUNWIND_HISTORY_TABLE;
-
-  struct _DISPATCHER_CONTEXT;
-  typedef struct _DISPATCHER_CONTEXT DISPATCHER_CONTEXT;
-  typedef struct _DISPATCHER_CONTEXT *PDISPATCHER_CONTEXT;
-
-  struct _DISPATCHER_CONTEXT {
-    ULONG ControlPc;
-    ULONG ImageBase;
-    PRUNTIME_FUNCTION FunctionEntry;
-    ULONG EstablisherFrame;
-    ULONG TargetPc;
-    PCONTEXT ContextRecord;
-    PEXCEPTION_ROUTINE LanguageHandler;
-    PVOID HandlerData;
-    PUNWIND_HISTORY_TABLE HistoryTable;
-    ULONG ScopeIndex;
-    BOOLEAN ControlPcIsUnwound;
-    PBYTE NonVolatileRegisters;
-    ULONG VirtualVfpHead;
-  };
-
-  typedef struct _KNONVOLATILE_CONTEXT_POINTERS {
-    PDWORD R4;
-    PDWORD R5;
-    PDWORD R6;
-    PDWORD R7;
-    PDWORD R8;
-    PDWORD R9;
-    PDWORD R10;
-    PDWORD R11;
-    PDWORD Lr;
-    PULONGLONG D8;
-    PULONGLONG D9;
-    PULONGLONG D10;
-    PULONGLONG D11;
-    PULONGLONG D12;
-    PULONGLONG D13;
-    PULONGLONG D14;
-    PULONGLONG D15;
-  } KNONVOLATILE_CONTEXT_POINTERS, *PKNONVOLATILE_CONTEXT_POINTERS;
-
-#define OUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK_EXPORT_NAME "OutOfProcessFunctionTableCallback"
-
-#endif /* _ARM_ */
-
 
 #ifdef _ARM64_
 
@@ -8052,18 +7825,7 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
     typedef _IMAGE_RUNTIME_FUNCTION_ENTRY IMAGE_IA64_RUNTIME_FUNCTION_ENTRY;
     typedef _PIMAGE_RUNTIME_FUNCTION_ENTRY PIMAGE_IA64_RUNTIME_FUNCTION_ENTRY;
 
-#if defined (_AXP64_)
-    typedef IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY IMAGE_AXP64_RUNTIME_FUNCTION_ENTRY;
-    typedef PIMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY PIMAGE_AXP64_RUNTIME_FUNCTION_ENTRY;
-    typedef IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY IMAGE_RUNTIME_FUNCTION_ENTRY;
-    typedef PIMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY PIMAGE_RUNTIME_FUNCTION_ENTRY;
-#elif defined (_ALPHA_)
-    typedef IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY IMAGE_RUNTIME_FUNCTION_ENTRY;
-    typedef PIMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY PIMAGE_RUNTIME_FUNCTION_ENTRY;
-#elif defined (__arm__)
-    typedef IMAGE_ARM_RUNTIME_FUNCTION_ENTRY IMAGE_RUNTIME_FUNCTION_ENTRY;
-    typedef PIMAGE_ARM_RUNTIME_FUNCTION_ENTRY PIMAGE_RUNTIME_FUNCTION_ENTRY;
-#elif defined (__aarch64__)
+#if defined (__aarch64__)
     typedef IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY IMAGE_RUNTIME_FUNCTION_ENTRY;
     typedef PIMAGE_ARM64_RUNTIME_FUNCTION_ENTRY PIMAGE_RUNTIME_FUNCTION_ENTRY;
 #else
@@ -8271,17 +8033,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
     NTSYSAPI BOOLEAN __cdecl RtlInstallFunctionTableCallback (DWORD64 TableIdentifier, DWORD64 BaseAddress, DWORD Length, PGET_RUNTIME_FUNCTION_CALLBACK Callback, PVOID Context, PCWSTR OutOfProcessCallbackDll);
     NTSYSAPI VOID __cdecl RtlRestoreContext (PCONTEXT ContextRecord, struct _EXCEPTION_RECORD *ExceptionRecord) __MINGW_NORETURN;
 #endif
-#if defined (__arm__)
-#if _WIN32_WINNT >= 0x0602
-    NTSYSAPI DWORD NTAPI RtlAddGrowableFunctionTable (PVOID *DynamicTable, PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, DWORD MaximumEntryCount, ULONG_PTR RangeBase, ULONG_PTR RangeEnd);
-    NTSYSAPI VOID NTAPI RtlGrowFunctionTable (PVOID DynamicTable, DWORD NewEntryCount);
-    NTSYSAPI VOID NTAPI RtlDeleteGrowableFunctionTable (PVOID DynamicTable);
-#endif
-    NTSYSAPI BOOLEAN __cdecl RtlAddFunctionTable (PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, DWORD BaseAddress);
-    NTSYSAPI BOOLEAN __cdecl RtlDeleteFunctionTable (PRUNTIME_FUNCTION FunctionTable);
-    NTSYSAPI BOOLEAN __cdecl RtlInstallFunctionTableCallback (DWORD TableIdentifier, DWORD BaseAddress, DWORD Length, PGET_RUNTIME_FUNCTION_CALLBACK Callback, PVOID Context, PCWSTR OutOfProcessCallbackDll);
-    NTSYSAPI VOID __cdecl RtlRestoreContext (PCONTEXT ContextRecord, struct _EXCEPTION_RECORD *ExceptionRecord);
-#endif
 #if defined (__aarch64__)
     NTSYSAPI DWORD NTAPI RtlAddGrowableFunctionTable (PVOID *DynamicTable, PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, DWORD MaximumEntryCount, ULONG_PTR RangeBase, ULONG_PTR RangeEnd);
     NTSYSAPI VOID NTAPI RtlGrowFunctionTable (PVOID DynamicTable, DWORD NewEntryCount);
@@ -8300,11 +8051,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
     NTSYSAPI PRUNTIME_FUNCTION NTAPI RtlLookupFunctionEntry (DWORD64 ControlPc, PDWORD64 ImageBase, PUNWIND_HISTORY_TABLE HistoryTable);
     NTSYSAPI VOID NTAPI RtlUnwindEx (PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable);
     NTSYSAPI PEXCEPTION_ROUTINE NTAPI RtlVirtualUnwind (DWORD HandlerType, DWORD64 ImageBase, DWORD64 ControlPc, PRUNTIME_FUNCTION FunctionEntry, PCONTEXT ContextRecord, PVOID *HandlerData, PDWORD64 EstablisherFrame, PKNONVOLATILE_CONTEXT_POINTERS ContextPointers);
-#endif
-#if defined (__arm__)
-    NTSYSAPI PRUNTIME_FUNCTION NTAPI RtlLookupFunctionEntry (ULONG_PTR ControlPc, PDWORD ImageBase, PUNWIND_HISTORY_TABLE HistoryTable);
-    NTSYSAPI VOID NTAPI RtlUnwindEx (PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable);
-    NTSYSAPI PEXCEPTION_ROUTINE NTAPI RtlVirtualUnwind (DWORD HandlerType, DWORD ImageBase, DWORD ControlPc, PRUNTIME_FUNCTION FunctionEntry, PCONTEXT ContextRecord, PVOID *HandlerData, PDWORD EstablisherFrame, PKNONVOLATILE_CONTEXT_POINTERS ContextPointers);
 #endif
 #if defined (__aarch64__)
     NTSYSAPI PRUNTIME_FUNCTION NTAPI RtlLookupFunctionEntry (ULONG_PTR ControlPc, PULONG_PTR ImageBase, PUNWIND_HISTORY_TABLE HistoryTable);
@@ -9506,17 +9252,6 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
       return *(PVOID *)GetCurrentFiber();
     }
 #endif /* __x86_64 */
-
-#if defined (__arm__) && !defined (__WIDL__)
-    struct _TEB *NtCurrentTeb (VOID);
-    PVOID GetCurrentFiber (VOID);
-    PVOID GetFiberData (VOID);
-    FORCEINLINE struct _TEB *NtCurrentTeb(VOID) { struct _TEB *teb;
-    __asm ("mrc p15, 0, %0, c13, c0, 2" : "=r" (teb));
-    return teb; }
-    FORCEINLINE PVOID GetCurrentFiber(VOID) { return (PVOID)(((PNT_TIB)NtCurrentTeb())->FiberData); }
-    FORCEINLINE PVOID GetFiberData (VOID) { return *(PVOID *)GetCurrentFiber (); }
-#endif /* arm */
 
 #if defined (__aarch64__) && !defined (__WIDL__)
     struct _TEB *NtCurrentTeb (VOID);

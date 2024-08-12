@@ -79,11 +79,7 @@ typedef struct __WIDL_dxvahd_generated_name_0000000C {
 } D3DCOLOR;
 #endif
 #ifndef CALLBACK
-#if defined(_ARM_)
-#define CALLBACK
-#else
 #define CALLBACK __stdcall
-#endif
 #endif
 #ifndef __IDXVAHD_Device_FWD_DEFINED__
 #define __IDXVAHD_Device_FWD_DEFINED__

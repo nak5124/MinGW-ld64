@@ -110,7 +110,7 @@
 
 #undef  UNALIGNED	/* avoid redefinition warnings vs _mingw.h */
 #undef  UNALIGNED64
-#if defined(_M_MRX000) || defined(_M_ALPHA) || defined(_M_PPC) || defined(_M_AMD64) || defined (_M_ARM)
+#if defined(_M_AMD64)
 #define ALIGNMENT_MACHINE
 #define UNALIGNED __unaligned
 #if defined(_WIN64)
@@ -124,7 +124,7 @@
 #define UNALIGNED64
 #endif
 
-#if defined(_WIN64) || defined(_M_ALPHA)
+#if defined(_WIN64)
 #define MAX_NATURAL_ALIGNMENT sizeof(ULONGLONG)
 #define MEMORY_ALLOCATION_ALIGNMENT 16
 #else
@@ -132,12 +132,7 @@
 #define MEMORY_ALLOCATION_ALIGNMENT 8
 #endif
 
-#if defined(_M_MRX000) && !(defined(MIDL_PASS) || defined(RC_INVOKED)) && defined(ENABLE_RESTRICTED)
-#define RESTRICTED_POINTER __restrict
-#else
 #define RESTRICTED_POINTER
-#endif
-
 
 #define ARGUMENT_PRESENT(ArgumentPointer) \
   ((CHAR*)((ULONG_PTR)(ArgumentPointer)) != (CHAR*)NULL)
@@ -164,18 +159,12 @@
 
 #ifdef _AMD64_
 #define PROBE_ALIGNMENT(v) TYPE_ALIGNMENT(ULONG)
-#elif defined (_ARM_)
-#define PROBE_ALIGNMENT(v) (TYPE_ALIGNMENT(v) > TYPE_ALIGNMENT(ULONG) ? TYPE_ALIGNMENT(v) : TYPE_ALIGNMENT(ULONG))
 #endif
 
 /* Calling Conventions */
 #define FASTCALL
 
-#if defined(_ARM_)
-#define NTAPI
-#else
 #define NTAPI __stdcall
-#endif
 
 
 #ifndef NOP_FUNCTION
@@ -193,11 +182,7 @@
 #define DECLSPEC_NORETURN __declspec(noreturn)
 
 #ifndef DECLSPEC_ADDRSAFE
-#if (_MSC_VER >= 1200) && (defined(_M_ALPHA) || defined(_M_AXP64))
-#define DECLSPEC_ADDRSAFE  __declspec(address_safe)
-#else
 #define DECLSPEC_ADDRSAFE
-#endif
 #endif /* DECLSPEC_ADDRSAFE */
 
 #if !defined(_NTSYSTEM_)

@@ -126,11 +126,7 @@ extern "C" {
 #endif
 
 #ifdef __RPC_WIN32__
-#if defined(_ARM_)
-#define __RPC_CALLEE
-#else
 #define __RPC_CALLEE __stdcall
-#endif
 #endif
 
 #ifndef __MIDL_USER_DEFINED
@@ -761,9 +757,6 @@ typedef unsigned __LONG32 error_status_t;
   RPCRTAPI void RPC_ENTRY NdrFreeBuffer(PMIDL_STUB_MESSAGE pStubMsg);
   RPCRTAPI RPC_STATUS RPC_ENTRY NdrGetDcomProtocolVersion(PMIDL_STUB_MESSAGE pStubMsg,RPC_VERSION *pVersion);
   CLIENT_CALL_RETURN RPC_VAR_ENTRY NdrClientCall2(PMIDL_STUB_DESC pStubDescriptor,PFORMAT_STRING pFormat,...);
-#if defined (__arm__)
-  CLIENT_CALL_RETURN RPC_VAR_ENTRY NdrpClientCall2(PMIDL_STUB_DESC pStubDescriptor, PFORMAT_STRING pFormat, unsigned char *StartofStack);
-#endif
   CLIENT_CALL_RETURN RPC_VAR_ENTRY NdrClientCall(PMIDL_STUB_DESC pStubDescriptor,PFORMAT_STRING pFormat,...);
   CLIENT_CALL_RETURN RPC_VAR_ENTRY NdrAsyncClientCall(PMIDL_STUB_DESC pStubDescriptor,PFORMAT_STRING pFormat,...);
   CLIENT_CALL_RETURN RPC_VAR_ENTRY NdrDcomAsyncClientCall(PMIDL_STUB_DESC pStubDescriptor,PFORMAT_STRING pFormat,...);

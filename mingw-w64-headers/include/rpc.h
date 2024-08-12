@@ -28,11 +28,7 @@ extern "C" {
 #if defined(__x86_64)
 #define __RPC_WIN64__
 #else
-#if !defined (_ARM_)
 #define __RPC_WIN32__
-#else
-#define __RPC_ARM32__
-#endif
 #endif
 
 #ifdef __RPC_WIN64__
@@ -50,11 +46,7 @@ extern "C" {
 
 #define RPC_UNICODE_SUPPORTED
 #define __RPC_FAR
-#if defined(_ARM_)
-#define __RPC_API
-#else
 #define __RPC_API __stdcall
-#endif
 #define __RPC_USER __RPC_API
 #define __RPC_STUB __RPC_API
 #define RPC_ENTRY __RPC_API

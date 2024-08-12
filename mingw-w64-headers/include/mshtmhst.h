@@ -168,9 +168,7 @@ typedef HRESULT STDAPICALLTYPE IEISXMLNSREGISTEREDFN (LPCWSTR lpszURI, GUID *pCL
 STDAPI ShowHTMLDialog (HWND hwndParent, IMoniker *pMk, VARIANT *pvarArgIn, LPWSTR pchOptions, VARIANT *pvarArgOut);
 STDAPI ShowHTMLDialogEx (HWND hwndParent, IMoniker *pMk, DWORD dwDialogFlags, VARIANT *pvarArgIn, LPWSTR pchOptions, VARIANT *pvarArgOut);
 STDAPI ShowModelessHTMLDialog (HWND hwndParent, IMoniker *pMk, VARIANT *pvarArgIn, VARIANT *pvarOptions, IHTMLWindow2 **ppWindow);
-#if !defined (_ARM_) && !defined (__arm__)
 STDAPI RunHTMLApplication (HINSTANCE hinst, HINSTANCE hPrevInst, LPSTR szCmdLine, int nCmdShow);
-#endif
 STDAPI CreateHTMLPropertyPage (IMoniker *pmk, IPropertyPage **ppPP);
 STDAPI EarlyStartDisplaySystem (void);
 STDAPI IERegisterXMLNS (LPCWSTR lpszURI, GUID clsid, BOOL fMachine);

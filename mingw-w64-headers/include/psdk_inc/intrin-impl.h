@@ -133,24 +133,6 @@ __INTRINSICS_USEINLINE
       : "memory" __FLAGCLOBBER1); \
    return old; \
 }
-#elif defined(__arm__) || defined(_ARM_)
-#define __buildbittesti(x, y, z, a) unsigned char x(y volatile *Base, y Offset) \
-{ \
-   unsigned int old, tmp1, tmp2; \
-   unsigned int bit = 1 << Offset; \
-   __asm__ __volatile__ ("dmb	sy\n\t" \
-        "1: ldrex	%[old], %[Base]\n\t" \
-        "mov	%[tmp1], %[old]\n\t" \
-        z "	%[tmp1], %[tmp1], %[bit]\n\t" \
-        "strex	%[tmp2], %[tmp1], %[Base]\n\t" \
-        "cmp	%[tmp2], #0\n\t" \
-        "bne	1b\n\t" \
-        "dmb	sy" \
-      : [old] "=&r" (old), [tmp1] "=&r" (tmp1), [tmp2] "=&r" (tmp2), [Base] "+m" (*Base) \
-      : [bit] a "r" (bit) \
-      : "memory", "cc"); \
-   return (old >> Offset) & 1; \
-}
 #elif defined(__aarch64__) || defined(_ARM64_)
 #define __buildbittesti(x, y, z, a) unsigned char x(y volatile *Base, y Offset) \
 { \
@@ -1094,94 +1076,6 @@ unsigned __int64 __shiftright128 (unsigned __int64  LowPart, unsigned __int64 Hi
 
 /* ***************************************************** */
 
-#if defined(__arm__) || defined(_ARM_)
-
-#if __INTRINSIC_PROLOG(_interlockedbittestandset)
-unsigned char _interlockedbittestandset(__LONG32 volatile *a, __LONG32 b);
-#if !__has_builtin(_interlockedbittestandset)
-__INTRINSICS_USEINLINE 
-__buildbittesti(_interlockedbittestandset, __LONG32, "orr", /* unused param */)
-#endif
-#define __INTRINSIC_DEFINED__interlockedbittestandset
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(_interlockedbittestandreset)
-unsigned char _interlockedbittestandreset(__LONG32 volatile *a, __LONG32 b);
-__INTRINSICS_USEINLINE 
-#if !__has_builtin(_interlockedbittestandreset)
-__buildbittesti(_interlockedbittestandreset, __LONG32, "bic", /* unused param */)
-#endif
-#define __INTRINSIC_DEFINED__interlockedbittestandreset
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(_interlockedbittestandcomplement)
-unsigned char _interlockedbittestandcomplement(__LONG32 volatile *a, __LONG32 b);
-#if !__has_builtin(_interlockedbittestandcomplement)
-__INTRINSICS_USEINLINE 
-__buildbittesti(_interlockedbittestandcomplement, __LONG32, "eor", /* unused param */)
-#endif
-#define __INTRINSIC_DEFINED__interlockedbittestandcomplement
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(InterlockedBitTestAndSet)
-unsigned char InterlockedBitTestAndSet(volatile __LONG32 *a, __LONG32 b);
-#if !__has_builtin(InterlockedBitTestAndSet)
-__INTRINSICS_USEINLINE 
-__buildbittesti(InterlockedBitTestAndSet, __LONG32, "orr", /* unused param */)
-#endif
-#define __INTRINSIC_DEFINED_InterlockedBitTestAndSet
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(InterlockedBitTestAndReset)
-unsigned char InterlockedBitTestAndReset(volatile __LONG32 *a, __LONG32 b);
-#if !__has_builtin(InterlockedBitTestAndReset)
-__INTRINSICS_USEINLINE 
-__buildbittesti(InterlockedBitTestAndReset, __LONG32, "bic", /* unused param */)
-#endif
-#define __INTRINSIC_DEFINED_InterlockedBitTestAndReset
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(InterlockedBitTestAndComplement)
-unsigned char InterlockedBitTestAndComplement(volatile __LONG32 *a, __LONG32 b);
-#if !__has_builtin(InterlockedBitTestAndComplement)
-__INTRINSICS_USEINLINE 
-__buildbittesti(InterlockedBitTestAndComplement, __LONG32, "eor", /* unused param */)
-#endif
-#define __INTRINSIC_DEFINED_InterlockedBitTestAndComplement
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(_BitScanForward)
-__MINGW_EXTENSION unsigned char _BitScanForward(unsigned __LONG32 *Index, unsigned __LONG32 Mask);
-#if !__has_builtin(_BitScanForward)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE
-unsigned char _BitScanForward(unsigned __LONG32 *Index, unsigned __LONG32 Mask)
-{
-    if (Mask == 0)
-        return 0;
-    *Index = __builtin_ctz(Mask);
-    return 1;
-}
-#endif
-#define __INTRINSIC_DEFINED__BitScanForward
-#endif /* __INTRINSIC_PROLOG */
-
-#if __INTRINSIC_PROLOG(_BitScanReverse)
-__MINGW_EXTENSION unsigned char _BitScanReverse(unsigned __LONG32 *Index, unsigned __LONG32 Mask);
-#if !__has_builtin(_BitScanReverse)
-__MINGW_EXTENSION __INTRINSICS_USEINLINE
-unsigned char _BitScanReverse(unsigned __LONG32 *Index, unsigned __LONG32 Mask)
-{
-    if (Mask == 0)
-        return 0;
-    *Index = 31 - __builtin_clz(Mask);
-    return 1;
-}
-#endif
-#define __INTRINSIC_DEFINED__BitScanReverse
-#endif /* __INTRINSIC_PROLOG */
-
-#endif /* defined(__arm__) || defined(_ARM_) */
-
 #if defined(__aarch64__) || defined(_ARM64_)
 
 #if __INTRINSIC_PROLOG(_interlockedbittestandset)
@@ -1425,7 +1319,7 @@ unsigned char _BitScanReverse64(unsigned __LONG32 *Index, unsigned __int64 Mask)
 
 #endif /* defined(__aarch64__) || define(_ARM64_) */
 
-#if defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#if defined(__aarch64__) || defined(_ARM64_)
 
 #if __INTRINSIC_PROLOG(_bittest)
 unsigned char _bittest(const __LONG32 *__a, __LONG32 __b);
@@ -1481,7 +1375,7 @@ unsigned char _bittestandcomplement(__LONG32 *__a, __LONG32 __b)
 #define __INTRINSIC_DEFINED__bittestandcomplement
 #endif /* __INTRINSIC_PROLOG */
 
-#endif /* defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_) */
+#endif /* defined(__aarch64__) || defined(_ARM64_) */
 
 #if defined(__aarch64__) || defined(_ARM64_)
 
@@ -1543,7 +1437,7 @@ unsigned char _bittestandcomplement64(__int64 *__a, __int64 __b)
 
 /* ***************************************************** */
 
-#if defined(__x86_64__) || defined(_AMD64_) || defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_)
+#if defined(__x86_64__) || defined(_AMD64_) || defined(__aarch64__) || defined(_ARM64_)
 
 #if __INTRINSIC_PROLOG(__popcnt16)
 unsigned short __popcnt16(unsigned short);
@@ -1751,7 +1645,7 @@ void *_InterlockedExchangePointer(void *volatile *Target,void *Value) {
 #define __INTRINSIC_DEFINED__InterlockedExchangePointer
 #endif /* __INTRINSIC_PROLOG */
 
-#endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__arm__) || defined(_ARM_) || defined(__aarch64__) || defined(_ARM64_) */
+#endif /* defined(__x86_64__) || defined(_AMD64_) || defined(__aarch64__) || defined(_ARM64_) */
 
 #if defined(__x86_64__) || defined(_AMD64_)
 
