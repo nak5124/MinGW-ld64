@@ -37,8 +37,6 @@ typedef LPVOID BCRYPT_KEY_HANDLE;
 
 typedef HANDLE HCRYPTXML;
 
-#if (_WIN32_WINNT >= 0x0601)
-
 typedef enum tagCRYPT_XML_CHARSET {
   CRYPT_XML_CHARSET_AUTO      = 0,
   CRYPT_XML_CHARSET_UTF8      = 1,
@@ -546,8 +544,6 @@ CRYPTXMLAPI HRESULT WINAPI CryptXmlVerifySignature(
   BCRYPT_KEY_HANDLE hKey,
   DWORD dwFlags
 );
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }

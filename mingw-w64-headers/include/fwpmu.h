@@ -15,8 +15,6 @@
 extern "C" {
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifndef MAXUINT64
 #define MAXUINT64 (0xFFFFFFFFFFFFFFFFULL)
 #endif /* MAXUINT64 */
@@ -823,10 +821,6 @@ DWORD WINAPI IPsecSaEnum0(
   UINT32 *numEntriesReturned
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-
-#if (_WIN32_WINNT >= 0x0601)
-
 DEFINE_GUID(FWPM_PROVIDER_IPSEC_DOS_CONFIG,0x3C6C0519,0xC05C,0x4BB9,0x83,0x38,0x23,0x27,0x81,0x4C,0xE8,0xBF);
 
 typedef void ( CALLBACK *FWPM_NET_EVENT_CALLBACK0 )(
@@ -1052,7 +1046,6 @@ DWORD WINAPI IPsecSaContextSetSpi0(
   IPSEC_SA_SPI inboundSpi
 );
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }

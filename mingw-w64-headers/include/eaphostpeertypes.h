@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPHOSTPEERTYPES
 #define _INC_EAPHOSTPEERTYPES
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #ifdef __cplusplus
 extern "C" {
@@ -57,16 +56,13 @@ typedef struct _EAPHOST_AUTH_INFO {
   DWORD               dwReasonCode;
 } EAPHOST_AUTH_INFO;
 
-#if (_WIN32_WINNT >= 0x0601)
 typedef struct _tagEapHostPeerNapInfo  {
   ISOLATION_STATE isolationState;
   ProbationTime   probationTime;
   UINT32          stringCorrelationIdLength;
 } EapHostPeerNapInfo, *PEapHostPeerNapInfo;
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPHOSTPEERTYPES*/

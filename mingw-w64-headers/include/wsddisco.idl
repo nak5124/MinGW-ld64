@@ -85,9 +85,7 @@ interface IWSDiscoveryPublisher : IUnknown {
 
 cpp_quote("HRESULT WINAPI WSDCreateDiscoveryProvider(IWSDXMLContext *pContext, IWSDiscoveryProvider **ppProvider);")
 cpp_quote("HRESULT WINAPI WSDCreateDiscoveryPublisher(IWSDXMLContext* pContext, IWSDiscoveryPublisher **ppPublisher);")
-cpp_quote("#if WINVER >= 0x601")
 cpp_quote("HRESULT WINAPI WSDCreateDiscoveryProvider2(IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDiscoveryProvider **ppProvider);")
 cpp_quote("HRESULT WINAPI WSDCreateDiscoveryPublisher2(IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDiscoveryPublisher **ppPublisher);")
-cpp_quote("#endif")
 
 cpp_quote("#endif")

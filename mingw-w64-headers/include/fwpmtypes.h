@@ -12,7 +12,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-#if (_WIN32_WINNT >= 0x0600)
 
 typedef enum FWPM_PROVIDER_CONTEXT_TYPE_ {
   FWPM_IPSEC_KEYING_CONTEXT,
@@ -282,7 +281,6 @@ typedef struct FWPM_NET_EVENT_IPSEC_KERNEL_DROP0_ {
   UINT16        layerId;
 } FWPM_NET_EVENT_IPSEC_KERNEL_DROP0;
 
-#if (_WIN32_WINNT >= 0x0601)
 typedef struct FWPM_NET_EVENT_IPSEC_DOSP_DROP0_ {
   FWP_IP_VERSION ipVersion;
   __C89_NAMELESS union {
@@ -296,7 +294,6 @@ typedef struct FWPM_NET_EVENT_IPSEC_DOSP_DROP0_ {
   INT32          failureStatus;
   FWP_DIRECTION  direction;
 } FWPM_NET_EVENT_IPSEC_DOSP_DROP0;
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 typedef struct FWPM_NET_EVENT_IKEEXT_EM_FAILURE0_ {
   UINT32                            failureErrorCode;
@@ -319,9 +316,7 @@ typedef struct FWPM_NET_EVENT0_ {
     FWPM_NET_EVENT_IKEEXT_EM_FAILURE0 *ikeEmFailure;
     FWPM_NET_EVENT_CLASSIFY_DROP0     *classifyDrop;
     FWPM_NET_EVENT_IPSEC_KERNEL_DROP0 *ipsecDrop;
-#if (_WIN32_WINNT >= 0x0601)
     FWPM_NET_EVENT_IPSEC_DOSP_DROP0   *idpDrop;
-#endif /*(_WIN32_WINNT >= 0x0601)*/
   };
 } FWPM_NET_EVENT0;
 
@@ -408,10 +403,6 @@ typedef struct FWPM_SUBLAYER0_ {
   FWP_BYTE_BLOB      providerData;
   UINT16             weight;
 } FWPM_SUBLAYER0;
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-
-#if (_WIN32_WINNT >= 0x0601)
 
 typedef enum FWPM_SYSTEM_PORT_TYPE_ {
   FWPM_SYSTEM_PORT_RPC_EPMAP,
@@ -569,7 +560,6 @@ typedef struct FWPM_SYSTEM_PORTS0_ {
   FWPM_SYSTEM_PORTS_BY_TYPE0 *types;
 } FWPM_SYSTEM_PORTS0;
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #ifdef __cplusplus
 }
 #endif

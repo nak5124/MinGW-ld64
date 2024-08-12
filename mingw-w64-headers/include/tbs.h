@@ -7,8 +7,6 @@
 #ifndef _INC_TBS
 #define _INC_TBS
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -48,5 +46,4 @@ extern "C" {
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_TBH*/

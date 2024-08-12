@@ -26,19 +26,11 @@
 #endif
 
 #ifndef _WIN32_MSI
-#if _WIN32_WINNT >= 0x0600 || (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_VISTA)
 #if defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_VISTASP1
 #define _WIN32_MSI 450
 #else
 #define _WIN32_MSI 400
 #endif 
-#elif (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WS03SP1)
-#define _WIN32_MSI 310
-#elif defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WINXPSP2
-#define _WIN32_MSI 300
-#else
-#define _WIN32_MSI 200
-#endif
 #endif
 
 #define IPROPNAME_PRODUCTNAME TEXT("ProductName")

@@ -18,7 +18,6 @@ extern "C" {
   WINADVAPI WINBOOL WINAPI ImpersonateNamedPipeClient (HANDLE hNamedPipe);
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
   WINBASEAPI WINBOOL WINAPI CreatePipe (PHANDLE hReadPipe, PHANDLE hWritePipe, LPSECURITY_ATTRIBUTES lpPipeAttributes, DWORD nSize);
   WINBASEAPI WINBOOL WINAPI ConnectNamedPipe (HANDLE hNamedPipe, LPOVERLAPPED lpOverlapped);
   WINBASEAPI WINBOOL WINAPI DisconnectNamedPipe (HANDLE hNamedPipe);
@@ -27,15 +26,12 @@ extern "C" {
   WINBASEAPI WINBOOL WINAPI TransactNamedPipe (HANDLE hNamedPipe, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesRead, LPOVERLAPPED lpOverlapped);
   WINBASEAPI HANDLE WINAPI CreateNamedPipeW (LPCWSTR lpName, DWORD dwOpenMode, DWORD dwPipeMode, DWORD nMaxInstances, DWORD nOutBufferSize, DWORD nInBufferSize, DWORD nDefaultTimeOut, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
   WINBASEAPI WINBOOL WINAPI WaitNamedPipeW (LPCWSTR lpNamedPipeName, DWORD nTimeOut);
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL WINAPI GetNamedPipeClientComputerNameW (HANDLE Pipe, LPWSTR ClientComputerName, ULONG ClientComputerNameLength);
-#endif
 
 #ifdef UNICODE
 #define CreateNamedPipe CreateNamedPipeW
 #define WaitNamedPipe WaitNamedPipeW
 #define GetNamedPipeClientComputerName GetNamedPipeClientComputerNameW
-#endif
 #endif
 
 #ifdef __cplusplus

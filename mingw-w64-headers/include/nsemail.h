@@ -7,8 +7,6 @@
 #ifndef _INC_NSEMAIL
 #define _INC_NSEMAIL
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -42,5 +40,4 @@ typedef struct _NAPI_PROVIDER_INSTALLATION_BLOB {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_NSEMAIL*/

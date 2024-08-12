@@ -45,26 +45,18 @@ extern "C" {
   WINBASEAPI WINBOOL WINAPI FileTimeToSystemTime (CONST FILETIME *lpFileTime, LPSYSTEMTIME lpSystemTime);
   WINBASEAPI WINBOOL WINAPI SystemTimeToFileTime (CONST SYSTEMTIME *lpSystemTime, LPFILETIME lpFileTime);
   WINBASEAPI DWORD WINAPI GetTimeZoneInformation (LPTIME_ZONE_INFORMATION lpTimeZoneInformation);
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI DWORD WINAPI GetDynamicTimeZoneInformation (PDYNAMIC_TIME_ZONE_INFORMATION pTimeZoneInformation);
-#endif
-#if _WIN32_WINNT >= 0x0601
   WINBOOL WINAPI GetTimeZoneInformationForYear (USHORT wYear, PDYNAMIC_TIME_ZONE_INFORMATION pdtzi, LPTIME_ZONE_INFORMATION ptzi);
-#endif
-#if _WIN32_WINNT >= 0x0602
   WINBASEAPI DWORD WINAPI EnumDynamicTimeZoneInformation (CONST DWORD dwIndex, PDYNAMIC_TIME_ZONE_INFORMATION lpTimeZoneInformation);
   WINBASEAPI DWORD WINAPI GetDynamicTimeZoneInformationEffectiveYears (CONST PDYNAMIC_TIME_ZONE_INFORMATION lpTimeZoneInformation, LPDWORD FirstYear, LPDWORD LastYear);
   WINBASEAPI WINBOOL WINAPI SystemTimeToTzSpecificLocalTimeEx (CONST DYNAMIC_TIME_ZONE_INFORMATION *lpTimeZoneInformation, CONST SYSTEMTIME *lpUniversalTime, LPSYSTEMTIME lpLocalTime);
   WINBASEAPI WINBOOL WINAPI TzSpecificLocalTimeToSystemTimeEx (CONST DYNAMIC_TIME_ZONE_INFORMATION *lpTimeZoneInformation, CONST SYSTEMTIME *lpLocalTime, LPSYSTEMTIME lpUniversalTime);
-#endif
 
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
   WINBASEAPI WINBOOL WINAPI SetTimeZoneInformation (CONST TIME_ZONE_INFORMATION *lpTimeZoneInformation);
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL WINAPI SetDynamicTimeZoneInformation (CONST DYNAMIC_TIME_ZONE_INFORMATION *lpTimeZoneInformation);
-#endif
 #endif
 
 #ifdef __cplusplus

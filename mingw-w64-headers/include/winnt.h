@@ -279,7 +279,6 @@ extern "C" {
   typedef WCHAR UNALIGNED *PUNZWCH;
   typedef CONST WCHAR UNALIGNED *PCUNZWCH;
 
-#if _WIN32_WINNT >= 0x0600 || (defined (__cplusplus) && defined (WINDOWS_ENABLE_CPLUSPLUS))
   typedef CONST WCHAR *LPCWCHAR,*PCWCHAR;
   typedef CONST WCHAR UNALIGNED *LPCUWCHAR,*PCUWCHAR;
   typedef unsigned long UCSCHAR;
@@ -296,7 +295,6 @@ extern "C" {
   typedef const UCSCHAR UNALIGNED *PCUUCSSTR;
   typedef UCSCHAR UNALIGNED *PUUCSCHAR;
   typedef const UCSCHAR UNALIGNED *PCUUCSCHAR;
-#endif
 
   typedef CHAR *PCHAR,*LPCH,*PCH;
   typedef CONST CHAR *LPCCH,*PCCH;
@@ -1146,9 +1144,7 @@ inline ENUMTYPE &operator ^= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((i
 #define SUBLANG_LAO_LAO                           0x01
 #define SUBLANG_LAO_LAO_PDR            SUBLANG_LAO_LAO		/* SUBLANG_LAO_LAO is what MS defines */
 #define SUBLANG_LATVIAN_LATVIA                    0x01
-#if (WINVER >= 0x0600)
 #define SUBLANG_LITHUANIAN_LITHUANIA              0x01
-#endif /* WINVER >= 0x0600 */
 #define SUBLANG_LITHUANIAN                        0x01
 #define SUBLANG_LOWER_SORBIAN_GERMANY             0x02
 #define SUBLANG_LUXEMBOURGISH_LUXEMBOURG          0x01
@@ -1174,9 +1170,7 @@ inline ENUMTYPE &operator ^= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((i
 #define SUBLANG_PERSIAN_IRAN                      0x01
 #define SUBLANG_POLISH_POLAND                     0x01
 #define SUBLANG_PORTUGUESE_BRAZILIAN              0x01
-#if (WINVER >= 0x0600)
 #define SUBLANG_PORTUGUESE_PORTUGAL               0x02
-#endif /* WINVER >= 0x0600 */
 #define SUBLANG_PORTUGUESE                        0x02
 #define SUBLANG_PULAR_SENEGAL                     0x02
 #define SUBLANG_PUNJABI_INDIA                     0x01
@@ -1238,9 +1232,7 @@ inline ENUMTYPE &operator ^= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((i
 #define SUBLANG_SPANISH_PUERTO_RICO               0x14
 #define SUBLANG_SPANISH_US                        0x15
 #define SUBLANG_SWAHILI_KENYA                     0x01
-#if (WINVER >= 0x0600)
 #define SUBLANG_SWEDISH_SWEDEN                    0x01
-#endif /* WINVER >= 0x0600 */
 #define SUBLANG_SWEDISH                           0x01
 #define SUBLANG_SWEDISH_FINLAND                   0x02
 #define SUBLANG_SYRIAC                            0x01
@@ -5286,7 +5278,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       WCHAR FileName[1];
     } FILE_NOTIFY_INFORMATION,*PFILE_NOTIFY_INFORMATION;
 
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN10_RS3
     typedef struct _FILE_NOTIFY_EXTENDED_INFORMATION {
       DWORD NextEntryOffset;
       DWORD Action;
@@ -5306,9 +5297,7 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       DWORD FileNameLength;
       WCHAR FileName[1];
     } FILE_NOTIFY_EXTENDED_INFORMATION,*PFILE_NOTIFY_EXTENDED_INFORMATION;
-#endif
 
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN10_NI
 #define FILE_NAME_FLAG_HARDLINK 0
 #define FILE_NAME_FLAG_NTFS 0x01
 #define FILE_NAME_FLAG_DOS 0x02
@@ -5336,7 +5325,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       BYTE Reserved;
       WCHAR FileName[1];
     } FILE_NOTIFY_FULL_INFORMATION,*PFILE_NOTIFY_FULL_INFORMATION;
-#endif
 
 #define FILE_CS_FLAG_CASE_SENSITIVE_DIR 0x00000001
 
@@ -5427,22 +5415,17 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
 #define IO_REPARSE_TAG_WCI_LINK_1 (__MSABI_LONG(0xA0001027))
 #define IO_REPARSE_TAG_DATALESS_CIM (__MSABI_LONG(0xA0000028))
 
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN8
 #define SCRUB_DATA_INPUT_FLAG_RESUME 0x00000001
 #define SCRUB_DATA_INPUT_FLAG_SKIP_IN_SYNC 0x00000002
 #define SCRUB_DATA_INPUT_FLAG_SKIP_NON_INTEGRITY_DATA 0x00000004
 #define SCRUB_DATA_INPUT_FLAG_IGNORE_REDUNDANCY 0x00000008
 #define SCRUB_DATA_INPUT_FLAG_SKIP_DATA 0x00000010
 #define SCRUB_DATA_INPUT_FLAG_SCRUB_BY_OBJECT_ID 0x00000020
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN10_19H2
 #define SCRUB_DATA_INPUT_FLAG_OPLOCK_NOT_ACQUIRED 0x00000040
-#endif
 #define SCRUB_DATA_OUTPUT_FLAG_INCOMPLETE 0x00000001
 #define SCRUB_DATA_OUTPUT_FLAG_NON_USER_DATA_RANGE 0x00010000
-#if _WIN32_WINNT >= _WIN32_WINNT_WINBLUE
 #define SCRUB_DATA_OUTPUT_FLAG_PARITY_EXTENT_DATA_RETURNED 0x00020000
 #define SCRUB_DATA_OUTPUT_FLAG_RESUME_CONTEXT_LENGTH_SPECIFIED 0x00040000
-#endif
 
     typedef struct _SCRUB_DATA_INPUT {
       DWORD Size;
@@ -5453,7 +5436,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       BYTE ResumeContext[1040];
     } SCRUB_DATA_INPUT,*PSCRUB_DATA_INPUT;
 
-#if _WIN32_WINNT >= _WIN32_WINNT_WINBLUE
 
     typedef struct _SCRUB_PARITY_EXTENT {
       LONGLONG Offset;
@@ -5468,8 +5450,6 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       SCRUB_PARITY_EXTENT ParityExtents[ANYSIZE_ARRAY];
     } SCRUB_PARITY_EXTENT_DATA, *PSCRUB_PARITY_EXTENT_DATA;
 
-#endif /* _WIN32_WINNT >= _WIN32_WINNT_WINBLUE */
-
     typedef struct _SCRUB_DATA_OUTPUT {
       DWORD Size;
       DWORD Flags;
@@ -5479,22 +5459,13 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       ULONGLONG NumberOfBytesRepaired;
       ULONGLONG NumberOfBytesFailed;
       ULONGLONG InternalFileReference;
-#if _WIN32_WINNT >= _WIN32_WINNT_WINBLUE
       WORD ResumeContextLength;
       WORD ParityExtentDataOffset;
       DWORD Reserved[9];
-#else
-      DWORD Reserved[10];
-#endif
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN10_RS5
       ULONGLONG NumberOfMetadataBytesProcessed;
       ULONGLONG NumberOfDataBytesProcessed;
       ULONGLONG TotalNumberOfMetadataBytesInUse;
       ULONGLONG TotalNumberOfDataBytesInUse;
-#else
-      ULONGLONG Reserved2[4];
-#endif
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN10_FE
       ULONGLONG DataBytesSkippedDueToNoAllocation;
       ULONGLONG DataBytesSkippedDueToInvalidRun;
       ULONGLONG DataBytesSkippedDueToIntegrityStream;
@@ -5503,12 +5474,8 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
       ULONGLONG DataBytesSkippedDueToNoScrubDataFlag;
       ULONGLONG DataBytesSkippedDueToNoScrubNonIntegrityStreamFlag;
       ULONGLONG DataBytesScrubbed;
-#else
-      ULONGLONG Reserved3[8];
-#endif
       BYTE ResumeContext[1040];
     } SCRUB_DATA_OUTPUT, *PSCRUB_DATA_OUTPUT;
-#endif
 
 #define IO_COMPLETION_MODIFY_STATE 0x0002
 #define IO_COMPLETION_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED|SYNCHRONIZE|0x3)
@@ -5952,13 +5919,8 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
 #define POWER_PLATFORM_ROLE_V2 (0x00000002)
 #define POWER_PLATFORM_ROLE_V2_MAX (PlatformRoleSlate + 1)
 
-#if _WIN32_WINNT >= 0x0602
 #define POWER_PLATFORM_ROLE_VERSION POWER_PLATFORM_ROLE_V2
 #define POWER_PLATFORM_ROLE_VERSION_MAX POWER_PLATFORM_ROLE_V2_MAX
-#else
-#define POWER_PLATFORM_ROLE_VERSION POWER_PLATFORM_ROLE_V1
-#define POWER_PLATFORM_ROLE_VERSION_MAX POWER_PLATFORM_ROLE_V1_MAX
-#endif
 
     typedef struct {
       DWORD Granularity;
@@ -7999,11 +7961,9 @@ DEFINE_ENUM_FLAG_OPERATORS(JOB_OBJECT_IO_RATE_CONTROL_FLAGS)
     NTSYSAPI VOID NTAPI __attribute__((__returns_twice__)) RtlCaptureContext (PCONTEXT ContextRecord);
     NTSYSAPI SIZE_T NTAPI RtlCompareMemory (const VOID *Source1, const VOID *Source2, SIZE_T Length);
 #if defined (__x86_64__)
-#if _WIN32_WINNT >= 0x0602
     NTSYSAPI DWORD NTAPI RtlAddGrowableFunctionTable (PVOID *DynamicTable, PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, DWORD MaximumEntryCount, ULONG_PTR RangeBase, ULONG_PTR RangeEnd);
     NTSYSAPI VOID NTAPI RtlGrowFunctionTable (PVOID DynamicTable, DWORD NewEntryCount);
     NTSYSAPI VOID NTAPI RtlDeleteGrowableFunctionTable (PVOID DynamicTable);
-#endif
     NTSYSAPI BOOLEAN __cdecl RtlAddFunctionTable (PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, DWORD64 BaseAddress);
     NTSYSAPI BOOLEAN __cdecl RtlDeleteFunctionTable (PRUNTIME_FUNCTION FunctionTable);
     NTSYSAPI BOOLEAN __cdecl RtlInstallFunctionTableCallback (DWORD64 TableIdentifier, DWORD64 BaseAddress, DWORD Length, PGET_RUNTIME_FUNCTION_CALLBACK Callback, PVOID Context, PCWSTR OutOfProcessCallbackDll);
@@ -8334,7 +8294,7 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
 
 #define VER_SET_CONDITION(_m_,_t_,_c_) ((_m_) = VerSetConditionMask((_m_),(_t_),(_c_)))
 
-#if _WIN32_WINNT >= 0x0600 && !defined (__WIDL__)
+#if !defined (__WIDL__)
     NTSYSAPI BOOLEAN NTAPI RtlGetProductInfo (DWORD OSMajorVersion, DWORD OSMinorVersion, DWORD SpMajorVersion, DWORD SpMinorVersion, PDWORD ReturnedProductType);
 #endif
 #endif
@@ -8361,7 +8321,6 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
     typedef VOID NTAPI RTL_UMS_SCHEDULER_ENTRY_POINT (RTL_UMS_SCHEDULER_REASON Reason, ULONG_PTR ActivationPayload, PVOID SchedulerParam);
     typedef RTL_UMS_SCHEDULER_ENTRY_POINT *PRTL_UMS_SCHEDULER_ENTRY_POINT;
 
-#if _WIN32_WINNT >= 0x0602
 #ifndef IS_VALIDATION_ENABLED
 #define IS_VALIDATION_ENABLED(C, L) ((L) & (C))
 #define VRL_PREDEFINED_CLASS_BEGIN (1)
@@ -8376,7 +8335,6 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
     NTSYSAPI DWORD NTAPI RtlCrc32 (const void *Buffer, size_t Size, DWORD InitialCrc);
     NTSYSAPI ULONGLONG NTAPI RtlCrc64 (const void *Buffer, size_t Size, ULONGLONG InitialCrc);
-#endif
 #endif
 
     typedef struct _RTL_CRITICAL_SECTION_DEBUG {
@@ -9133,7 +9091,6 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
   typedef struct _TP_CLEANUP_GROUP TP_CLEANUP_GROUP,*PTP_CLEANUP_GROUP;
   typedef VOID (NTAPI *PTP_CLEANUP_GROUP_CANCEL_CALLBACK) (PVOID ObjectContext, PVOID CleanupContext);
 
-#if _WIN32_WINNT >= 0x0601
   typedef struct _TP_CALLBACK_ENVIRON_V3 {
     TP_VERSION Version;
     PTP_POOL Pool;
@@ -9154,26 +9111,6 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
     DWORD Size;
   } TP_CALLBACK_ENVIRON_V3;
   typedef TP_CALLBACK_ENVIRON_V3 TP_CALLBACK_ENVIRON, *PTP_CALLBACK_ENVIRON;
-#else
-  typedef struct _TP_CALLBACK_ENVIRON_V1 {
-    TP_VERSION Version;
-    PTP_POOL Pool;
-    PTP_CLEANUP_GROUP CleanupGroup;
-    PTP_CLEANUP_GROUP_CANCEL_CALLBACK CleanupGroupCancelCallback;
-    PVOID RaceDll;
-    struct _ACTIVATION_CONTEXT *ActivationContext;
-    PTP_SIMPLE_CALLBACK FinalizationCallback;
-    union {
-      DWORD Flags;
-      struct {
-	DWORD LongFunction : 1;
-	DWORD Persistent : 1;
-	DWORD Private : 30;
-      } s;
-    } u;
-  } TP_CALLBACK_ENVIRON_V1;
-  typedef TP_CALLBACK_ENVIRON_V1 TP_CALLBACK_ENVIRON,*PTP_CALLBACK_ENVIRON;
-#endif
 
   typedef struct _TP_WORK TP_WORK,*PTP_WORK;
   typedef VOID (NTAPI *PTP_WORK_CALLBACK) (PTP_CALLBACK_INSTANCE Instance, PVOID Context, PTP_WORK Work);
@@ -9193,13 +9130,9 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
       cbe->ActivationContext = NULL;
       cbe->FinalizationCallback = NULL;
       cbe->u.Flags = 0;
-#if _WIN32_WINNT < 0x0601
-      cbe->Version = 1;
-#else
       cbe->Version = 3;
       cbe->CallbackPriority = TP_CALLBACK_PRIORITY_NORMAL;
       cbe->Size = sizeof (TP_CALLBACK_ENVIRON);
-#endif
     }
     FORCEINLINE VOID TpSetCallbackThreadpool (PTP_CALLBACK_ENVIRON cbe, PTP_POOL pool) { cbe->Pool = pool; }
     FORCEINLINE VOID TpSetCallbackCleanupGroup (PTP_CALLBACK_ENVIRON cbe, PTP_CLEANUP_GROUP cleanup_group, PTP_CLEANUP_GROUP_CANCEL_CALLBACK cleanup_group_cb) {
@@ -9211,9 +9144,7 @@ typedef DWORD (WINAPI *PRTL_RUN_ONCE_INIT_FN)(PRTL_RUN_ONCE, PVOID, PVOID *);
     FORCEINLINE VOID TpSetCallbackLongFunction (PTP_CALLBACK_ENVIRON cbe) { cbe->u.s.LongFunction = 1; }
     FORCEINLINE VOID TpSetCallbackRaceWithDll (PTP_CALLBACK_ENVIRON cbe, PVOID h) { cbe->RaceDll = h; }
     FORCEINLINE VOID TpSetCallbackFinalizationCallback (PTP_CALLBACK_ENVIRON cbe, PTP_SIMPLE_CALLBACK fini_cb) { cbe->FinalizationCallback = fini_cb; }
-#if _WIN32_WINNT >= 0x0601
     FORCEINLINE VOID TpSetCallbackPriority (PTP_CALLBACK_ENVIRON cbe, TP_CALLBACK_PRIORITY prio) { cbe->CallbackPriority = prio; }
-#endif
     FORCEINLINE VOID TpSetCallbackPersistent (PTP_CALLBACK_ENVIRON cbe) { cbe->u.s.Persistent = 1; }
     FORCEINLINE VOID TpDestroyCallbackEnviron (PTP_CALLBACK_ENVIRON cbe) { UNREFERENCED_PARAMETER (cbe); }
 #endif
@@ -9548,8 +9479,6 @@ typedef struct _WOW64_LDT_ENTRY {
       WOW64_LDT_ENTRY Descriptor;
     } WOW64_DESCRIPTOR_TABLE_ENTRY,*PWOW64_DESCRIPTOR_TABLE_ENTRY;
 
-#if (_WIN32_WINNT >= 0x0601)
-
 #ifndef ___PROCESSOR_NUMBER_DEFINED
 #define ___PROCESSOR_NUMBER_DEFINED
 typedef struct _PROCESSOR_NUMBER {
@@ -9560,8 +9489,6 @@ typedef struct _PROCESSOR_NUMBER {
 
 #define ALL_PROCESSOR_GROUPS 0xffff
 #endif /* !___PROCESSOR_NUMBER_DEFINED */
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #define ACTIVATION_CONTEXT_SECTION_ASSEMBLY_INFORMATION (1)
 #define ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION (2)

@@ -6,7 +6,6 @@
 #ifndef _INC_ISCSIDSC
 #define _INC_ISCSIDSC
 #include <ntddscsi.h>
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -763,5 +762,4 @@ HRESULT WINAPI SetupPersistentIScsiDevices(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif

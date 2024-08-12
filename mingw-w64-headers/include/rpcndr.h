@@ -54,34 +54,11 @@ extern "C" {
 #define TARGET_IS_NT102_OR_LATER 0
 #endif
 
-#if _WIN32_WINNT >= 0x0A00
 #define TARGET_IS_NT100_OR_LATER 1
-#else
-#define TARGET_IS_NT100_OR_LATER 0
-#endif
-
-#if _WIN32_WINNT >= 0x603
 #define TARGET_IS_NT63_OR_LATER 1
-#else
-#define TARGET_IS_NT63_OR_LATER 0
-#endif
-
-#if _WIN32_WINNT >= 0x602
 #define TARGET_IS_NT62_OR_LATER 1
-#else
-#define TARGET_IS_NT62_OR_LATER 0
-#endif
-
-#if _WIN32_WINNT >= 0x601
 #define TARGET_IS_NT61_OR_LATER 1
-#else
-#define TARGET_IS_NT61_OR_LATER 0
-#endif
-#if _WIN32_WINNT >= 0x600
 #define TARGET_IS_NT60_OR_LATER 1
-#else
-#define TARGET_IS_NT60_OR_LATER 0
-#endif
 #define TARGET_IS_NT51_OR_LATER 1
 #define TARGET_IS_NT50_OR_LATER 1
 #define TARGET_IS_NT40_OR_LATER 1

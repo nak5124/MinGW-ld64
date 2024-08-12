@@ -193,9 +193,7 @@ typedef struct _RTL_USER_PROCESS_PARAMETERS {
 #define FILE_OPEN_BY_FILE_ID 0x00002000
 #define FILE_OPEN_FOR_BACKUP_INTENT 0x00004000
 #define FILE_NO_COMPRESSION 0x00008000
-#if (_WIN32_WINNT >= _WIN32_WINNT_WIN7)
 #define FILE_OPEN_REQUIRING_OPLOCK 0x00010000
-#endif
 #define FILE_RESERVE_OPFILTER 0x00100000
 #define FILE_OPEN_REPARSE_POINT 0x00200000
 #define FILE_OPEN_NO_RECALL 0x00400000
@@ -1032,9 +1030,7 @@ typedef struct _RTL_USER_PROCESS_PARAMETERS {
     ObjectDataInformation
  } OBJECT_INFORMATION_CLASS, *POBJECT_INFORMATION_CLASS;
 
-#if (_WIN32_WINNT >= 0x0501)
 #define INTERNAL_TS_ACTIVE_CONSOLE_ID (*((volatile ULONG*)(0x7ffe02d8)))
-#endif
 
 #define RtlMoveMemory(Destination,Source,Length) memmove((Destination),(Source),(Length))
 #define RtlFillMemory(Destination,Length,Fill) memset((Destination),(Fill),(Length))

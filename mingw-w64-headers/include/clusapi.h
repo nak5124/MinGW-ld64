@@ -1082,7 +1082,6 @@ typedef HCLUSTER (WINAPI *PCLUSAPI_OPEN_CLUSTER)(
   LPCWSTR lpszClusterName
 );
 
-#if (_WIN32_WINNT >= 0x0600)
 #define FS_CASE_SENSITIVE 1
 #define FS_CASE_IS_PRESERVED 2
 #define FS_UNICODE_STORED_ON_DISK 3
@@ -1431,13 +1430,10 @@ DWORD WINAPI SetClusterResourceDependencyExpression(
   LPCWSTR lpszDependencyExpression
 );
 
-#endif /* (_WIN32_WINNT >= 0x0600) */
-#if (_WIN32_WINNT >= 0x0601)
 typedef enum _CLUSTER_SHARED_VOLUME_BACKUP_STATE {
   VolumeBackupNone         = 0x00000000,
   VolumeBackupInProgress   = 0x00000001 
 } CLUSTER_SHARED_VOLUME_BACKUP_STATE, *PCLUSTER_SHARED_VOLUME_BACKUP_STATE;
-#endif /* (_WIN32_WINNT >= 0x0601) */
 
 #ifdef __cplusplus
 }

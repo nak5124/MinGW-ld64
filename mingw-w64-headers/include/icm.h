@@ -465,7 +465,6 @@ extern "C" {
   WINBOOL WINAPI CMTranslateRGBs(HCMTRANSFORM hcmTransform,LPVOID lpSrcBits,BMFORMAT bmInput,DWORD dwWidth,DWORD dwHeight,DWORD dwStride,LPVOID lpDestBits,BMFORMAT bmOutput,DWORD dwTranslateDirection);
   WINBOOL WINAPI CMTranslateRGBsExt(HCMTRANSFORM hcmTransform,LPVOID lpSrcBits,BMFORMAT bmInput,DWORD dwWidth,DWORD dwHeight,DWORD dwInputStride,LPVOID lpDestBits,BMFORMAT bmOutput,DWORD dwOutputStride,LPBMCALLBACKFN lpfnCallback,LPARAM ulCallbackData);
 
-#if (_WIN32_WINNT >= 0x0600)
   typedef enum tagCOLORDATATYPE {
   COLOR_BYTE                 = 1,
   COLOR_WORD,
@@ -628,7 +627,6 @@ WINBOOL WINAPI WcsTranslateColors(
   PVOID pOutputData
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

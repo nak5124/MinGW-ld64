@@ -311,13 +311,9 @@ extern "C" {
 #define MSG_PEEK 0x2
 #define MSG_DONTROUTE 0x4
 
-#if(_WIN32_WINNT >= 0x0502)
 #define MSG_WAITALL 0x8
-#endif
 
-#if(_WIN32_WINNT >= 0x0603)
 #define MSG_PUSH_IMMEDIATE 0x20
-#endif
 
 #define MSG_PARTIAL 0x8000
 
@@ -554,10 +550,8 @@ typedef unsigned int GROUP;
 #define SIO_ADDRESS_LIST_CHANGE _WSAIO(IOC_WS2,23)
 #define SIO_QUERY_TARGET_PNP_HANDLE _WSAIOR(IOC_WS2,24)
 #define SIO_ADDRESS_LIST_SORT _WSAIORW(IOC_WS2,25)
-#if (_WIN32_WINNT >= 0x0600)
 #define SIO_RESERVED_1 _WSAIOW(IOC_WS2,26)
 #define SIO_RESERVED_2 _WSAIOW(IOC_WS2,33)
-#endif /* _WIN32_WINNT >= 0x0600 */
 
   typedef int (CALLBACK *LPCONDITIONPROC)(LPWSABUF lpCallerId,LPWSABUF lpCallerData,LPQOS lpSQOS,LPQOS lpGQOS,LPWSABUF lpCalleeId,LPWSABUF lpCalleeData,GROUP *g,DWORD_PTR dwCallbackData);
   typedef void (CALLBACK *LPWSAOVERLAPPED_COMPLETION_ROUTINE)(DWORD dwError,DWORD cbTransferred,LPWSAOVERLAPPED lpOverlapped,DWORD dwFlags);
@@ -628,12 +622,8 @@ typedef unsigned int GROUP;
 #define NS_DNS (12)
 #define NS_NETBT (13)
 #define NS_WINS (14)
-#if(_WIN32_WINNT >= 0x0501)
 #define NS_NLA (15)
-#endif
-#if (_WIN32_WINNT >= 0x0600)
 #define NS_BTH (16)
-#endif
 
 #define NS_NBP (20)
 
@@ -641,11 +631,9 @@ typedef unsigned int GROUP;
 #define NS_STDA (31)
 #define NS_NTDS (32)
 
-#if (_WIN32_WINNT >= 0x0600)
 #define NS_EMAIL (37)
 #define NS_PNRPNAME (38)
 #define NS_PNRPCLOUD (39)
-#endif
 
 #define NS_X500 (40)
 #define NS_NIS (41)
@@ -790,11 +778,9 @@ typedef unsigned int GROUP;
 #define LUP_RES_RESERVICE 0x8000 /* FIXME: not in PSDK anymore?? */
 
 #define RESULT_IS_ALIAS 0x0001
-#if(_WIN32_WINNT >= 0x0501)
 #define RESULT_IS_ADDED 0x0010
 #define RESULT_IS_CHANGED 0x0020
 #define RESULT_IS_DELETED 0x0040
-#endif
 
   typedef enum _WSAESETSERVICEOP {
     RNRSERVICE_REGISTER = 0,
@@ -1011,9 +997,7 @@ typedef unsigned int GROUP;
 #ifndef __INSIDE_CYGWIN__
   WINSOCK_API_LINKAGE u_long WSAAPI htonl(u_long hostlong);
   WINSOCK_API_LINKAGE u_short WSAAPI htons(u_short hostshort);
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN8
   __forceinline unsigned __int64 htonll(unsigned __int64 Value) { return (((unsigned __int64)htonl(Value & 0xFFFFFFFFUL)) << 32) | htonl((u_long)(Value >> 32)); }
-#endif
 #endif /* !__INSIDE_CYGWIN__ */
   WINSOCK_API_LINKAGE unsigned __LONG32 WSAAPI inet_addr(const char *cp);
   WINSOCK_API_LINKAGE char *WSAAPI inet_ntoa(struct in_addr in);
@@ -1021,9 +1005,7 @@ typedef unsigned int GROUP;
 #ifndef __INSIDE_CYGWIN__
   WINSOCK_API_LINKAGE u_long WSAAPI ntohl(u_long netlong);
   WINSOCK_API_LINKAGE u_short WSAAPI ntohs(u_short netshort);
-#if _WIN32_WINNT >= _WIN32_WINNT_WIN8
   __forceinline unsigned __int64 ntohll(unsigned __int64 Value) { return (((unsigned __int64)ntohl(Value & 0xFFFFFFFFUL)) << 32) | ntohl((u_long)(Value >> 32)); }
-#endif
 #endif /* !__INSIDE_CYGWIN__ */
   WINSOCK_API_LINKAGE int WSAAPI recv(SOCKET s,char *buf,int len,int flags);
   WINSOCK_API_LINKAGE int WSAAPI recvfrom(SOCKET s,char *buf,int len,int flags,struct sockaddr *from,int *fromlen);
@@ -1119,7 +1101,6 @@ typedef unsigned int GROUP;
 #define WSAGETSELECTEVENT(lParam) LOWORD(lParam)
 #define WSAGETSELECTERROR(lParam) HIWORD(lParam)
 
-#if (_WIN32_WINNT >= 0x0600)
 typedef struct _WSANAMESPACE_INFOEXA {
   GUID NSProviderId;
   DWORD dwNameSpace;
@@ -1256,7 +1237,6 @@ int WSAAPI WSASendMsg(
   LPWSAOVERLAPPED lpOverlapped,
   LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine
 );
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 typedef struct SOCK_NOTIFY_REGISTRATION {
     SOCKET socket;

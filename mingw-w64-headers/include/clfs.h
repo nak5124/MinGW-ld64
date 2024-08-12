@@ -5,7 +5,6 @@
  */
 #ifndef _INC_CLFS
 #define _INC_CLFS
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -159,5 +158,4 @@ WINBOOL WINAPI LsnNull(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_CLFS*/

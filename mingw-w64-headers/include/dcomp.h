@@ -285,8 +285,6 @@ __CRT_UUID_DECL(IDCompositionDevice,0xc37ea93a,0xe7aa,0x450d,0xb1,0x6f,0x97,0x46
 
 STDAPI DCompositionCreateDevice(IDXGIDevice *dxgiDevice, REFIID iid, void **dcompositionDevice);
 
-#if (_WIN32_WINNT >= 0x0603)
-
 STDAPI DCompositionCreateDevice2(IUnknown *renderingDevice, REFIID iid, void **dcompositionDevice);
 
 #undef INTERFACE
@@ -453,10 +451,6 @@ DECLARE_INTERFACE_IID_(IDCompositionDevice3, IDCompositionDevice2, "0987CB06-F91
 __CRT_UUID_DECL(IDCompositionDevice3,0x0987cb06,0xf916,0x48bf,0x8d,0x35,0xce,0x76,0x41,0x78,0x1b,0xd9);
 #endif
 
-#endif /* WINAPI_PARTITION_DESKTOP */
-
-#if (_WIN32_WINNT >= 0x0A00)
-
 STDAPI DCompositionCreateDevice3(IUnknown *renderingDevice, REFIID iid, void **dcompositionDevice);
 
 #endif
@@ -467,6 +461,4 @@ STDAPI DCompositionAttachMouseWheelToHwnd(IDCompositionVisual* visual, HWND hwnd
 
 STDAPI DCompositionAttachMouseDragToHwnd(IDCompositionVisual* visual, HWND hwnd, BOOL enable);
 
-
-#endif
 #endif /* _DCOMP_H_ */

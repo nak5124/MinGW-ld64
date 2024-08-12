@@ -72,9 +72,7 @@ extern "C" {
   USERENVAPI WINBOOL WINAPI LeaveCriticalPolicySection (HANDLE hSection);
   USERENVAPI WINBOOL WINAPI RegisterGPNotification (HANDLE hEvent, WINBOOL bMachine);
   USERENVAPI WINBOOL WINAPI UnregisterGPNotification (HANDLE hEvent);
-#if WINVER >= 0x0600
   USERENVAPI HRESULT WINAPI CreateProfile (LPCWSTR pszUserSid, LPCWSTR pszUserName, LPWSTR pszProfilePath, DWORD cchProfilePath);
-#endif
 
   typedef enum _GPO_LINK {
     GPLinkUnknown = 0,
@@ -227,16 +225,12 @@ extern "C" {
 #define RSOP_COMPUTER_ACCESS_DENIED 0x00000002
 #define RSOP_TEMPNAMESPACE_EXISTS 0x00000004
 
-#if WINVER >= 0x0600
   USERENVAPI DWORD WINAPI GenerateGPNotification (WINBOOL bMachine, LPCWSTR lpwszMgmtProduct, DWORD dwMgmtProductOptions);
-#endif
-#if WINVER >= 0x0602
   USERENVAPI HRESULT WINAPI CreateAppContainerProfile (PCWSTR pszAppContainerName, PCWSTR pszDisplayName, PCWSTR pszDescription, PSID_AND_ATTRIBUTES pCapabilities, DWORD dwCapabilityCount, PSID *ppSidAppContainerSid);
   USERENVAPI HRESULT WINAPI DeleteAppContainerProfile (PCWSTR pszAppContainerName);
   USERENVAPI HRESULT WINAPI GetAppContainerRegistryLocation (REGSAM desiredAccess, PHKEY phAppContainerKey);
   USERENVAPI HRESULT WINAPI GetAppContainerFolderPath (PCWSTR pszAppContainerSid, PWSTR *ppszPath);
   USERENVAPI HRESULT WINAPI DeriveAppContainerSidFromAppContainerName (PCWSTR pszAppContainerName, PSID *ppsidAppContainerSid);
-#endif
 
 #ifdef __cplusplus
 }

@@ -128,11 +128,9 @@ typedef enum _USB_CONTROLLER_FLAVOR {
 #define URB_FUNCTION_RESERVE_0X002F 0x002f
 #define URB_FUNCTION_SYNC_RESET_PIPE 0x0030
 #define URB_FUNCTION_SYNC_CLEAR_STALL 0x0031
-#if _WIN32_WINNT >= 0x0600
 #define URB_FUNCTION_CONTROL_TRANSFER_EX 0x0032
 #define URB_FUNCTION_RESERVE_0X0033 0x0033
 #define URB_FUNCTION_RESERVE_0X0034 0x0034
-#endif
 #if NTDDI_VERSION >= 0x06020000
 #define URB_FUNCTION_OPEN_STATIC_STREAMS 0x0035
 #define URB_FUNCTION_CLOSE_STATIC_STREAMS 0x0036
@@ -463,7 +461,6 @@ struct _URB_CONTROL_TRANSFER {
   UCHAR SetupPacket[8];
 };
 
-#if _WIN32_WINNT >= 0x0600
 struct _URB_CONTROL_TRANSFER_EX {
   struct _URB_HEADER Hdr;
   USBD_PIPE_HANDLE PipeHandle;
@@ -478,7 +475,6 @@ struct _URB_CONTROL_TRANSFER_EX {
   struct _URB_HCD_AREA hca;
   UCHAR SetupPacket[8];
 };
-#endif
 
 struct _URB_BULK_OR_INTERRUPT_TRANSFER {
   struct _URB_HEADER Hdr;
@@ -542,9 +538,7 @@ typedef struct _URB {
     struct _URB_SET_FRAME_LENGTH UrbSetFrameLength;
     struct _URB_GET_CURRENT_FRAME_NUMBER UrbGetCurrentFrameNumber;
     struct _URB_CONTROL_TRANSFER UrbControlTransfer;
-#if _WIN32_WINNT >= 0x0600
     struct _URB_CONTROL_TRANSFER_EX UrbControlTransferEx;
-#endif
     struct _URB_BULK_OR_INTERRUPT_TRANSFER UrbBulkOrInterruptTransfer;
     struct _URB_ISOCH_TRANSFER UrbIsochronousTransfer;
     struct _URB_CONTROL_DESCRIPTOR_REQUEST UrbControlDescriptorRequest;

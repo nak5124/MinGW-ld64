@@ -4203,11 +4203,9 @@ WINIMPM HCERTSTORE WINAPI CertOpenStore (LPCSTR lpszStoreProvider, DWORD dwEncod
   WINIMPM PCCRL_CONTEXT WINAPI CertFindCRLInStore (HCERTSTORE hCertStore, DWORD dwCertEncodingType, DWORD dwFindFlags, DWORD dwFindType, const void *pvFindPara, PCCRL_CONTEXT pPrevCrlContext);
   WINIMPM WINBOOL WINAPI CertFreeCRLContext (PCCRL_CONTEXT pCrlContext);
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00
   WINIMPM WINBOOL WINAPI CertGetCertificateContextProperty (PCCERT_CONTEXT pCertContext, DWORD dwPropId, void *pvData, DWORD *pcbData);
   WINIMPM DWORD WINAPI CertEnumCertificateContextProperties (PCCERT_CONTEXT pCertContext, DWORD dwPropId);
   WINIMPM WINBOOL WINAPI CertDeleteCertificateFromStore (PCCERT_CONTEXT pCertContext);
-#endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
   WINIMPM WINBOOL WINAPI CertCreateCTLEntryFromCertificateContextProperties (PCCERT_CONTEXT pCertContext, DWORD cOptAttr, PCRYPT_ATTRIBUTE rgOptAttr, DWORD dwFlags, void *pvReserved, PCTL_ENTRY pCtlEntry, DWORD *pcbCtlEntry);
@@ -5683,9 +5681,7 @@ WINIMPM HCERTSTORE WINAPI CertOpenStore (LPCSTR lpszStoreProvider, DWORD dwEncod
 
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00
   WINIMPM HCERTSTORE WINAPI PFXImportCertStore (CRYPT_DATA_BLOB *pPFX, LPCWSTR szPassword, DWORD dwFlags);
-#endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 

@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EVCOLL
 #define _INC_EVCOLL
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -217,5 +216,4 @@ WINBOOL WINAPI EcSetSubscriptionProperty(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EVCOLL*/

@@ -7,13 +7,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #ifndef _SAPI_VER
-#if _WIN32_WINNT >= 0x0601
 #define _SAPI_VER 0x54
-#elif _WIN32_WINNT >= 0x0600
-#define _SAPI_VER 0x53
-#else
-#define _SAPI_VER 0x51
-#endif
 #endif
 
 #include <mmsystem.h>

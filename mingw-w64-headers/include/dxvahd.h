@@ -54,7 +54,6 @@ extern "C" {
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-#if (_WIN32_WINNT >= 0x0601)
 #if 0
 #ifndef __IDirect3DSurface9_FWD_DEFINED__
 #define __IDirect3DSurface9_FWD_DEFINED__
@@ -752,7 +751,6 @@ static __WIDL_INLINE HRESULT IDXVAHD_VideoProcessor_VideoProcessBltHD(IDXVAHD_Vi
 
 #endif  /* __IDXVAHD_VideoProcessor_INTERFACE_DEFINED__ */
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
 /* Begin additional prototypes for all interfaces */
 

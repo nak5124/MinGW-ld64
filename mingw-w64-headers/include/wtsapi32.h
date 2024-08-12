@@ -332,7 +332,6 @@ __MINGW_TYPEDEF_AW(PWTSUSERCONFIG)
   WINBOOL WINAPI WTSUnRegisterSessionNotification(HWND hWnd);
   WINBOOL WINAPI WTSQueryUserToken(ULONG SessionId,PHANDLE phToken);
 
-#if (_WIN32_WINNT >= 0x0600)
 typedef struct _WTSCLIENTW {
   WCHAR   ClientName[CLIENTNAME_LENGTH + 1];
   WCHAR   Domain[DOMAIN_LENGTH + 1 ];
@@ -588,10 +587,6 @@ HANDLE WINAPI WTSVirtualChannelOpenEx(
   DWORD flags
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-
-#if (_WIN32_WINNT >= 0x0601)
-
 typedef struct _WTS_SESSION_INFO_1A {
   DWORD ExecEnvId;
   WTS_CONNECTSTATE_CLASS State;
@@ -629,8 +624,6 @@ typedef enum _WTS_TYPE_CLASS {
 WINBOOL WINAPI WTSFreeMemoryExA(WTS_TYPE_CLASS WTSTypeClass,PVOID pMemory,ULONG NumberOfEntries);
 WINBOOL WINAPI WTSFreeMemoryExW(WTS_TYPE_CLASS WTSTypeClass,PVOID pMemory,ULONG NumberOfEntries);
 #define WTSFreeMemoryEx __MINGW_NAME_AW(WTSFreeMemoryEx)
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }

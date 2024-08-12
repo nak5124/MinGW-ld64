@@ -326,7 +326,6 @@ cpp_quote("#endif")
 
 cpp_quote("")
 cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)")
-cpp_quote("#if  (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)")
 typedef struct SChannelHookCallInfo {
   IID iid;
   DWORD cbSize;
@@ -347,10 +346,8 @@ interface IChannelHook : IUnknown {
   void ServerFillBuffer ([in] REFGUID uExtent,[in] REFIID riid,[in, out] ULONG *pDataSize,[in] void *pDataBuffer,[in] HRESULT hrFault);
 };
 cpp_quote("#endif")
-cpp_quote("#endif")
 
 cpp_quote("")
-cpp_quote("#if  (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)")
 cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)")
 [local, object, uuid (0000013d-0000-0000-C000-000000000046)]
 interface IClientSecurity : IUnknown {
@@ -482,7 +479,6 @@ interface IGlobalOptions : IUnknown {
   HRESULT Set ([in] GLOBALOPT_PROPERTIES dwProperty,[in] ULONG_PTR dwValue);
   HRESULT Query ([in] GLOBALOPT_PROPERTIES dwProperty,[out] ULONG_PTR *pdwValue);
 }
-cpp_quote("#endif")
 cpp_quote("#endif")
 
 cpp_quote("")

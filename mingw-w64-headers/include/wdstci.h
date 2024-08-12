@@ -6,7 +6,6 @@
 #ifndef _INC_WDSCLIENTAPI
 #define _INC_WDSCLIENTAPI
 #include <wdstpdi.h>
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -142,5 +141,4 @@ DWORD WDSTCIAPI WdsTransportClientWaitForCompletion(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WDSCLIENTAPI*/

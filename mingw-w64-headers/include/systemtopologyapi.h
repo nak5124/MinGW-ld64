@@ -19,9 +19,7 @@ extern "C" {
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
-#if _WIN32_WINNT >= 0x0601
   WINBASEAPI WINBOOL WINAPI GetNumaNodeProcessorMaskEx (USHORT Node, PGROUP_AFFINITY ProcessorMask);
-#endif
 #endif
 
 #ifdef __cplusplus

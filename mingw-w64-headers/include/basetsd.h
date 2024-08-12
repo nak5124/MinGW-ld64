@@ -147,8 +147,6 @@ extern "C" {
   __MINGW_EXTENSION typedef ULONG_PTR SIZE_T,*PSIZE_T;
   __MINGW_EXTENSION typedef LONG_PTR SSIZE_T,*PSSIZE_T;
 
-#if _WIN32_WINNT >= 0x0600 || (defined (__cplusplus) && defined (WINDOWS_ENABLE_CPLUSPLUS))
-
 #define MAXUINT8 ((UINT8)~ ((UINT8)0))
 #define MAXINT8 ((INT8) (MAXUINT8 >> 1))
 #define MININT8 ((INT8)~MAXINT8)
@@ -186,7 +184,6 @@ extern "C" {
 
 #define MAXDWORD32 ((DWORD32)~ ((DWORD32)0))
 #define MAXDWORD64 ((DWORD64)~ ((DWORD64)0))
-#endif
 
   __MINGW_EXTENSION typedef ULONG_PTR DWORD_PTR,*PDWORD_PTR;
   __MINGW_EXTENSION typedef __int64 LONG64,*PLONG64;

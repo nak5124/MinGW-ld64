@@ -628,7 +628,6 @@ HRESULT WINAPI DRMGetTime(
   SYSTEMTIME *poTimeObject
 );
 
-#if (_WIN32_WINNT >= 0x0600)
 HRESULT WINAPI DRMIsWindowProtected(
   HWND hwnd,
   WINBOOL *pfProtected
@@ -649,8 +648,6 @@ HRESULT WINAPI DRMAcquireIssuanceLicenseTemplate(
   VOID *pvContext
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-#if (_WIN32_WINNT >= 0x0601)
 HRESULT WINAPI DRMGetSignedIssuanceLicenseEx(
   DRMENVHANDLE hEnv,
   DRMPUBHANDLE hIssuanceLicense,
@@ -664,7 +661,6 @@ HRESULT WINAPI DRMGetSignedIssuanceLicenseEx(
   DRMCALLBACK pfnCallback,
   VOID *pvContext
 );
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }

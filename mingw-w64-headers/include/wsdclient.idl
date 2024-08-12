@@ -87,7 +87,6 @@ interface IWSDServiceProxy : IWSDMetadataExchange {
   HRESULT GetEndpointProxy ([out] IWSDEndpointProxy **ppProxy);
 };
 
-cpp_quote("#if WINVER >= 0x601")
 [object, local, restricted, uuid (f9279d6d-1012-4a94-b8cc-fd35d2202bfe), pointer_default (unique)]
 interface IWSDServiceProxyEventing : IWSDServiceProxy {
   HRESULT SubscribeToMultipleOperations ([in] const WSD_OPERATION *pOperations,[in] DWORD dwOperationCount,[in] IUnknown *pUnknown,[in] const WSD_EVENTING_EXPIRES *pExpires,[in] const WSDXML_ELEMENT *pAny,[out] WSD_EVENTING_EXPIRES **ppExpires,[out] WSDXML_ELEMENT **ppAny);
@@ -103,12 +102,9 @@ interface IWSDServiceProxyEventing : IWSDServiceProxy {
   HRESULT BeginGetStatusForMultipleOperations ([in] const WSD_OPERATION *pOperations,[in] DWORD dwOperationCount,[in] const WSDXML_ELEMENT *pAny,[in] IUnknown *pAsyncState,[in] IWSDAsyncCallback *pAsyncCallback,[out] IWSDAsyncResult **ppResult);
   HRESULT EndGetStatusForMultipleOperations ([in] const WSD_OPERATION *pOperations,[in] DWORD dwOperationCount,[in] IWSDAsyncResult *pResult,[out] WSD_EVENTING_EXPIRES **ppExpires,[out] WSDXML_ELEMENT **ppAny);
 };
-cpp_quote("#endif")
 
 cpp_quote("HRESULT WINAPI WSDCreateDeviceProxy(LPCWSTR pszDeviceId, LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDDeviceProxy **ppDeviceProxy);")
 cpp_quote("HRESULT WINAPI WSDCreateDeviceProxyAdvanced(LPCWSTR pszDeviceId, IWSDAddress* pDeviceAddress, LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDDeviceProxy **ppDeviceProxy);")
-cpp_quote("#if WINVER >= 0x601")
 cpp_quote("HRESULT WINAPI WSDCreateDeviceProxy2(LPCWSTR pszDeviceId, LPCWSTR pszLocalId, IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDDeviceProxy **ppDeviceProxy);")
-cpp_quote("#endif")
 
 cpp_quote("#endif")

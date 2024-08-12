@@ -10,8 +10,6 @@
 extern "C" {
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #include <winapifamily.h>
 
 #ifndef DHCPV6_OPTIONS_DEFINED
@@ -134,8 +132,6 @@ DWORD APIENTRY Dhcpv6RequestPrefix(
   LPDHCPV6PrefixLeaseInformation prefixleaseInfo,
   DWORD *pdwTimeToWait
 );
-
-#endif /* (_WIN32_WINNT >= 0x0600) */
 
 #ifdef __cplusplus
 }

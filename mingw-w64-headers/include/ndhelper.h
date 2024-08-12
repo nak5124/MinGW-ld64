@@ -7,8 +7,6 @@
 #define _INC_NDHELPER
 #include <ndattrib.h>
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -117,7 +115,6 @@ DECLARE_INTERFACE_(INetDiagHelper,IUnknown)
 #define INetDiagHelper_Validate(This,problem,pDeferredTime,pStatus) (This)->lpVtbl->Validate(This,problem,pDeferredTime,pStatus)
 #endif /*COBJMACROS*/
 
-#if (_WIN32_WINNT >= 0x0601)
 typedef struct tagHypothesisResult {
   HYPOTHESIS       hypothesis;
   DIAGNOSIS_STATUS pathStatus;
@@ -178,9 +175,5 @@ DECLARE_INTERFACE_(INetDiagHelperEx,IUnknown)
 #define INetDiagHelperEx_ReproduceFailure() (This)->lpVtbl->ReproduceFailure(This)
 #define INetDiagHelperEx_SetUtilities(This,pUtilities) (This)->lpVtbl->SetUtilities(This,pUtilities)
 #endif /*COBJMACROS*/
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /*_INC_NDHELPER*/

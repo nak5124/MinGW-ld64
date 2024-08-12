@@ -17,7 +17,6 @@ extern "C" {
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
   typedef VOID (WINAPI *PTP_WIN32_IO_CALLBACK) (PTP_CALLBACK_INSTANCE Instance, PVOID Context, PVOID Overlapped, ULONG IoResult, ULONG_PTR NumberOfBytesTransferred, PTP_IO Io);
 
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI PTP_POOL WINAPI CreateThreadpool (PVOID reserved);
   WINBASEAPI VOID WINAPI SetThreadpoolThreadMaximum (PTP_POOL ptpp, DWORD cthrdMost);
   WINBASEAPI WINBOOL WINAPI SetThreadpoolThreadMinimum (PTP_POOL ptpp, DWORD cthrdMic);
@@ -55,7 +54,6 @@ extern "C" {
   WINBASEAPI VOID WINAPI CloseThreadpoolIo (PTP_IO pio);
   WINBASEAPI WINBOOL WINAPI SetThreadpoolTimerEx (PTP_TIMER pti, PFILETIME pftDueTime, DWORD msPeriod, DWORD msWindowLength);
   WINBASEAPI WINBOOL WINAPI SetThreadpoolWaitEx (PTP_WAIT pwa, HANDLE h, PFILETIME pftTimeout, PVOID Reserved);
-#endif
 #endif
 
 #ifdef __cplusplus

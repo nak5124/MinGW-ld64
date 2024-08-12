@@ -6,8 +6,6 @@
 #ifndef _INC_TSSBX
 #define _INC_TSSBX
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -101,6 +99,5 @@ typedef struct _WTSSBX_SESSION_INFO {
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /*_INC_TSSBX*/

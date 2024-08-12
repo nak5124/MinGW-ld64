@@ -514,14 +514,10 @@ extern "C" {
     Unlock,
     NetworkCleartext,
     NewCredentials
-#if _WIN32_WINNT >= 0x0501
     ,RemoteInteractive
     ,CachedInteractive
-#endif
-#if _WIN32_WINNT >= 0x0502
     ,CachedRemoteInteractive
     ,CachedUnlock
-#endif
   } SECURITY_LOGON_TYPE, *PSECURITY_LOGON_TYPE;
 
 #endif
@@ -851,9 +847,7 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
   } POLICY_AUDIT_FULL_QUERY_INFO,*PPOLICY_AUDIT_FULL_QUERY_INFO;
 
   typedef enum _POLICY_DOMAIN_INFORMATION_CLASS {
-#if _WIN32_WINNT <= 0x0500
     PolicyDomainQualityOfServiceInformation = 1,
-#endif
     PolicyDomainEfsInformation = 2
     ,PolicyDomainKerberosTicketInformation
   } POLICY_DOMAIN_INFORMATION_CLASS, *PPOLICY_DOMAIN_INFORMATION_CLASS;
@@ -961,19 +955,13 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define TRUST_ATTRIBUTE_WITHIN_FOREST 0x00000020
 #define TRUST_ATTRIBUTE_TREAT_AS_EXTERNAL 0x00000040
 
-#if _WIN32_WINNT >= 0x0600
 #define TRUST_ATTRIBUTE_TRUST_USES_RC4_ENCRYPTION 0x00000080
 #define TRUST_ATTRIBUTE_TRUST_USES_AES_KEYS 0x00000100
-#endif
 
-#if _WIN32_WINNT >= 0x0602
 #define TRUST_ATTRIBUTE_CROSS_ORGANIZATION_NO_TGT_DELEGATION 0x00000200
 #define TRUST_ATTRIBUTE_PIM_TRUST 0x00000400
-#endif
 
-#if _WIN32_WINNT >= 0x0603
 #define TRUST_ATTRIBUTE_CROSS_ORGANIZATION_ENABLE_TGT_DELEGATION 0x00000800
-#endif
 
 #define TRUST_ATTRIBUTES_VALID 0xFF03FFFF
 #define TRUST_ATTRIBUTES_USER 0xFF000000
@@ -1156,13 +1144,11 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
   NTSTATUS NTAPI LsaFreeMemory(PVOID Buffer);
   NTSTATUS NTAPI LsaClose(LSA_HANDLE ObjectHandle);
 
-  #if (_WIN32_WINNT >= 0x0600)
   typedef struct _LSA_LAST_INTER_LOGON_INFO {
     LARGE_INTEGER LastSuccessfulLogon;
     LARGE_INTEGER LastFailedLogon;
     ULONG FailedAttemptCountSinceLastSuccessfulLogon;
   } LSA_LAST_INTER_LOGON_INFO,*PLSA_LAST_INTER_LOGON_INFO;
-  #endif
 
   typedef struct _SECURITY_LOGON_SESSION_DATA {
     ULONG Size;
@@ -1177,7 +1163,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     LSA_UNICODE_STRING LogonServer;
     LSA_UNICODE_STRING DnsDomainName;
     LSA_UNICODE_STRING Upn;
-    #if (_WIN32_WINNT >= 0x0600)
     ULONG UserFlags;
     LSA_LAST_INTER_LOGON_INFO LastLogonInfo;
     LSA_UNICODE_STRING LogonScript;
@@ -1189,7 +1174,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     LARGE_INTEGER PasswordLastSet;
     LARGE_INTEGER PasswordCanChange;
     LARGE_INTEGER PasswordMustChange;
-    #endif
   } SECURITY_LOGON_SESSION_DATA,*PSECURITY_LOGON_SESSION_DATA;
 
   NTSTATUS NTAPI LsaEnumerateLogonSessions(PULONG LogonSessionCount,PLUID *LogonSessionList);
@@ -1356,9 +1340,7 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define DOMAIN_PASSWORD_STORE_CLEARTEXT __MSABI_LONG(0x00000010)
 #define DOMAIN_REFUSE_PASSWORD_CHANGE __MSABI_LONG(0x00000020)
 
-#if _WIN32_WINNT >= 0x0502
 #define DOMAIN_NO_LM_OWF_CHANGE __MSABI_LONG(0x00000040)
-#endif
 
 #ifndef _PASSWORD_NOTIFICATION_DEFINED
 #define _PASSWORD_NOTIFICATION_DEFINED
@@ -1446,14 +1428,10 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define MSV1_0_SUBAUTHENTICATION_DLL_EX 0x00100000
 #define MSV1_0_ALLOW_MSVCHAPV2 0x00010000
 
-#if _WIN32_WINNT >= 0x0600
 #define MSV1_0_S4U2SELF 0x00020000
 #define MSV1_0_CHECK_LOGONHOURS_FOR_S4U 0x00040000
-#endif
 
-#if _WIN32_WINNT >= 0x0602
 #define MSV1_0_INTERNET_DOMAIN 0x00080000
-#endif
 
 #define MSV1_0_SUBAUTHENTICATION_DLL 0xFF000000
 #define MSV1_0_SUBAUTHENTICATION_DLL_SHIFT 24
@@ -1485,8 +1463,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     ULONG SubAuthPackageId;
   } MSV1_0_SUBAUTH_LOGON,*PMSV1_0_SUBAUTH_LOGON;
 
-#if _WIN32_WINNT >= 0x0600
-
 #define MSV1_0_S4U_LOGON_FLAG_CHECK_LOGONHOURS 0x2
 
   typedef struct _MSV1_0_S4U_LOGON {
@@ -1495,8 +1471,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     UNICODE_STRING UserPrincipalName;
     UNICODE_STRING DomainName;
   } MSV1_0_S4U_LOGON, *PMSV1_0_S4U_LOGON;
-
-#endif
 
 #define LOGON_GUEST 0x01
 #define LOGON_NOENCRYPTION 0x02
@@ -1512,17 +1486,13 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define LOGON_LM_V2 0x1000
 #define LOGON_NTLM_V2 0x2000
 
-#if _WIN32_WINNT >= 0x0600
 #define LOGON_OPTIMIZED 0x4000
 #define LOGON_WINLOGON 0x8000
 #define LOGON_PKINIT 0x10000
 #define LOGON_NO_OPTIMIZED 0x20000
-#endif
 
-#if _WIN32_WINNT >= 0x0602
 #define LOGON_NO_ELEVATION 0x40000
 #define LOGON_MANAGED_SERVICE 0x80000
-#endif
 
 #define MSV1_0_SUBAUTHENTICATION_FLAGS 0xFF000000
 
@@ -1619,13 +1589,9 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 
 #define MSV1_0_AV_FLAG_FORCE_GUEST 0x00000001
 
-#if _WIN32_WINNT >= 0x0600
 #define MSV1_0_AV_FLAG_MIC_HANDSHAKE_MESSAGES 0x00000002
-#endif
 
-#if _WIN32_WINNT >= 0x0601
 #define MSV1_0_AV_FLAG_UNVERIFIED_TARGET 0x00000004
-#endif
 
   typedef struct _MSV1_0_NTLM3_RESPONSE {
     UCHAR Response[MSV1_0_NTLM3_RESPONSE_LENGTH];
@@ -1649,17 +1615,13 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     MsvAvNbDomainName,
     MsvAvDnsComputerName,
     MsvAvDnsDomainName
-#if _WIN32_WINNT >= 0x0501
     ,MsvAvDnsTreeName
     ,MsvAvFlags
-#if _WIN32_WINNT >= 0x0600
     ,MsvAvTimestamp
     ,MsvAvRestrictions
     ,MsvAvSingleHost = MsvAvRestrictions
     ,MsvAvTargetName
     ,MsvAvChannelBindings
-#endif
-#endif
   } MSV1_0_AVID;
 
   typedef struct _MSV1_0_AV_PAIR {
@@ -1680,29 +1642,19 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     MsV1_0SubAuth,
     MsV1_0DeriveCredential,
     MsV1_0CacheLookup,
-#if _WIN32_WINNT >= 0x0501
     MsV1_0SetProcessOption,
-#endif
-#if _WIN32_WINNT >= 0x0600
     MsV1_0ConfigLocalAliases,
     MsV1_0ClearCachedCredentials,
-#endif
-#if _WIN32_WINNT >= 0x0601
     MsV1_0LookupToken,
-#endif
-#if _WIN32_WINNT >= 0x0602
     MsV1_0ValidateAuth,
     MsV1_0CacheLookupEx,
     MsV1_0GetCredentialKey,
     MsV1_0SetThreadOption,
-#endif
-#if _WIN32_WINNT >= 0x0A00
     MsV1_0DecryptDpapiMasterKey,
     MsV1_0GetStrongCredentialKey,
     MsV1_0TransferCred,
     MsV1_0ProvisionTbal,
     MsV1_0DeleteTbalSecrets
-#endif
   } MSV1_0_PROTOCOL_MESSAGE_TYPE,*PMSV1_0_PROTOCOL_MESSAGE_TYPE;
 
   typedef struct _MSV1_0_CHANGEPASSWORD_REQUEST {
@@ -1865,9 +1817,7 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define KERB_TICKET_FLAGS_hw_authent 0x00100000
 #define KERB_TICKET_FLAGS_ok_as_delegate 0x00040000
 #define KERB_TICKET_FLAGS_name_canonicalize 0x00010000
-#if _WIN32_WINNT == 0x0501
 #define KERB_TICKET_FLAGS_cname_in_pa_data 0x00040000
-#endif
 #define KERB_TICKET_FLAGS_enc_pa_rep 0x00010000
 #define KERB_TICKET_FLAGS_reserved1 0x00000001
 
@@ -1888,9 +1838,7 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 
 #define KERB_IS_MS_PRINCIPAL(_x_) (((_x_) <= KRB_NT_MS_PRINCIPAL) || ((_x_) >= KRB_NT_ENTERPRISE_PRINCIPAL))
 
-#if _WIN32_WINNT >= 0x0600
 #define KRB_NT_X500_PRINCIPAL 6
-#endif
 
 #define KRB_WELLKNOWN_STRING L"WELLKNOWN"
 #define KRB_ANONYMOUS_STRING L"ANONYMOUS"
@@ -1917,15 +1865,11 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     KerbTicketLogon = 10,
     KerbTicketUnlockLogon = 11,
     KerbS4ULogon = 12,
-#if (_WIN32_WINNT >= 0x0600)
     KerbCertificateLogon = 13,
     KerbCertificateS4ULogon = 14,
     KerbCertificateUnlockLogon = 15,
-#endif
-#if (_WIN32_WINNT >= 0x0602)
     KerbNoElevationLogon = 83,
     KerbLuidLogon = 84
-#endif
   } KERB_LOGON_SUBMIT_TYPE,*PKERB_LOGON_SUBMIT_TYPE;
 
   typedef struct _KERB_INTERACTIVE_LOGON {
@@ -1969,10 +1913,8 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     LUID LogonId;
   } KERB_TICKET_UNLOCK_LOGON,*PKERB_TICKET_UNLOCK_LOGON;
 
-#if _WIN32_WINNT >= 0x0600
 #define KERB_S4U_LOGON_FLAG_CHECK_LOGONHOURS 0x2
 #define KERB_S4U_LOGON_FLAG_IDENTIFY 0x8
-#endif
 
   typedef struct _KERB_S4U_LOGON {
     KERB_LOGON_SUBMIT_TYPE MessageType;
@@ -2041,23 +1983,16 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     KerbAddBindingCacheEntryMessage,
     KerbSetPasswordMessage,
     KerbSetPasswordExMessage,
-#if _WIN32_WINNT >= 0x0501
     KerbVerifyCredentialsMessage,
     KerbQueryTicketCacheExMessage,
     KerbPurgeTicketCacheExMessage,
-#endif
-#if _WIN32_WINNT >= 0x0502
     KerbRefreshSmartcardCredentialsMessage,
     KerbAddExtraCredentialsMessage,
     KerbQuerySupplementalCredentialsMessage,
-#endif
-#if _WIN32_WINNT >= 0x0600
     KerbTransferCredentialsMessage,
     KerbQueryTicketCacheEx2Message,
     KerbSubmitTicketMessage,
     KerbAddExtraCredentialsExMessage,
-#endif
-#if _WIN32_WINNT >= 0x0602
     KerbQueryKdcProxyCacheMessage,
     KerbPurgeKdcProxyCacheMessage,
     KerbQueryTicketCacheEx3Message,
@@ -2069,12 +2004,9 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     KerbUnpinAllKdcsMessage,
     KerbQueryDomainExtendedPoliciesMessage,
     KerbQueryS4U2ProxyCacheMessage
-#endif
-#if _WIN32_WINNT >= 0x0A00
     ,KerbRetrieveKeyTabMessage
     ,KerbRefreshPolicyMessage
     ,KerbPrintCloudKerberosDebugMessage
-#endif
   } KERB_PROTOCOL_MESSAGE_TYPE,*PKERB_PROTOCOL_MESSAGE_TYPE;
 
   typedef struct _KERB_QUERY_TKT_CACHE_REQUEST {
@@ -2117,7 +2049,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     ULONG SessionKeyType;
   } KERB_TICKET_CACHE_INFO_EX2,*PKERB_TICKET_CACHE_INFO_EX2;
 
-#if _WIN32_WINNT >= 0x0602
   typedef struct _KERB_TICKET_CACHE_INFO_EX3 {
     UNICODE_STRING ClientName;
     UNICODE_STRING ClientRealm;
@@ -2133,7 +2064,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     ULONG CacheFlags;
     UNICODE_STRING KdcCalled;
   } KERB_TICKET_CACHE_INFO_EX3, *PKERB_TICKET_CACHE_INFO_EX3;
-#endif
 
   typedef struct _KERB_QUERY_TKT_CACHE_RESPONSE {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
@@ -2153,13 +2083,11 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     KERB_TICKET_CACHE_INFO_EX2 Tickets[ANYSIZE_ARRAY];
   } KERB_QUERY_TKT_CACHE_EX2_RESPONSE,*PKERB_QUERY_TKT_CACHE_EX2_RESPONSE;
 
-#if _WIN32_WINNT >= 0x0602
   typedef struct _KERB_QUERY_TKT_CACHE_EX3_RESPONSE {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
     ULONG CountOfTickets;
     KERB_TICKET_CACHE_INFO_EX3 Tickets[ANYSIZE_ARRAY];
   } KERB_QUERY_TKT_CACHE_EX3_RESPONSE, *PKERB_QUERY_TKT_CACHE_EX3_RESPONSE;
-#endif
 
 #ifndef __SECHANDLE_DEFINED__
   typedef struct _SecHandle {
@@ -2179,13 +2107,9 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define KERB_RETRIEVE_TICKET_AS_KERB_CRED 0x8
 #define KERB_RETRIEVE_TICKET_WITH_SEC_CRED 0x10
 
-#if _WIN32_WINNT >= 0x0600
 #define KERB_RETRIEVE_TICKET_CACHE_TICKET 0x20
-#endif
 
-#if _WIN32_WINNT >= 0x0601
 #define KERB_RETRIEVE_TICKET_MAX_LIFETIME 0x40
-#endif
 
 #define KERB_ETYPE_DEFAULT 0x0
 
@@ -2270,8 +2194,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     ULONG KerbCredOffset;
   } KERB_SUBMIT_TKT_REQUEST, *PKERB_SUBMIT_TKT_REQUEST;
 
-#if _WIN32_WINNT >= 0x0602
-
   typedef struct _KERB_QUERY_KDC_PROXY_CACHE_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
     ULONG Flags;
@@ -2340,10 +2262,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     PKERB_S4U2PROXY_CRED Creds;
   } KERB_QUERY_S4U2PROXY_CACHE_RESPONSE, *PKERB_QUERY_S4U2PROXY_CACHE_RESPONSE;
 
-#endif
-
-#if _WIN32_WINNT >= 0x0A00
-
   typedef struct _KERB_RETRIEVE_KEY_TAB_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
     ULONG Flags;
@@ -2407,7 +2325,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     unsigned int AsRepSourceCred : 8;
   } KERB_CLOUD_KERBEROS_DEBUG_DATA, *PKERB_CLOUD_KERBEROS_DEBUG_DATA;
 
-#endif /* _WIN32_WINNT >= 0x0A00 */
 
   typedef struct _KERB_CHANGEPASSWORD_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
@@ -2496,15 +2413,11 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 #define KERB_REQUEST_REPLACE_CREDENTIAL 2
 #define KERB_REQUEST_REMOVE_CREDENTIAL 4
 
-#if _WIN32_WINNT >= 0x0600
-
   typedef struct _KERB_ADD_CREDENTIALS_REQUEST_EX {
     KERB_ADD_CREDENTIALS_REQUEST Credentials;
     ULONG PrincipalNameCount;
     UNICODE_STRING PrincipalNames[1];
   } KERB_ADD_CREDENTIALS_REQUEST_EX, *PKERB_ADD_CREDENTIALS_REQUEST_EX;
-
-#endif
 
   typedef struct _KERB_TRANSFER_CRED_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
@@ -2515,8 +2428,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 
 #define KERB_TRANSFER_CRED_WITH_TICKETS 1
 #define KERB_TRANSFER_CRED_CLEANUP_CREDENTIALS 2
-
-#if _WIN32_WINNT >= 0x0602
 
   typedef struct _KERB_CLEANUP_MACHINE_PKINIT_CREDS_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
@@ -2585,7 +2496,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     ULONG InfoType;
   } KERB_CERTIFICATE_INFO, *PKERB_CERTIFICATE_INFO;
 
-#endif
 
 #define PER_USER_POLICY_UNCHANGED 0x00
 #define PER_USER_AUDIT_SUCCESS_INCLUDE 0x01
@@ -2627,8 +2537,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     ULONG UsersCount;
     PSID  *UserSidArray;
   } POLICY_AUDIT_SID_ARRAY, *PPOLICY_AUDIT_SID_ARRAY;
-
-#if _WIN32_WINNT >= 0x0600
 
 #define KERB_CERTIFICATE_LOGON_FLAG_CHECK_DUPLICATES 0x1
 #define KERB_CERTIFICATE_LOGON_FLAG_USE_CERTIFICATE_INFO 0x2
@@ -2678,7 +2586,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     TCHAR bBuffer;
   } KERB_SMARTCARD_CSP_INFO, *PKERB_SMARTCARD_CSP_INFO;
 
-#endif
 
   BOOLEAN WINAPI AuditComputeEffectivePolicyBySid(
     const PSID pSid,
@@ -2805,8 +2712,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
 
 #define AuditQueryGlobalSacl __MINGW_NAME_AW(AuditQueryGlobalSacl)
 
-#if _WIN32_WINNT >= 0x0601
-
 #define PKU2U_PACKAGE_NAME_A "pku2u"
 #define PKU2U_PACKAGE_NAME L"pku2u"
 #define PKU2U_PACKAGE_NAME_W PKU2U_PACKAGE_NAME
@@ -2839,7 +2744,6 @@ typedef enum _SE_ADT_PARAMETER_TYPE {
     PUCHAR Certificate;
   } PKU2U_CERTIFICATE_S4U_LOGON, *PPKU2U_CERTIFICATE_S4U_LOGON;
 
-#endif
 
 #ifdef __cplusplus
 }

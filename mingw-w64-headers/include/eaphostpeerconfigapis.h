@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPHOSTPEERCONFIGAPIS
 #define _INC_EAPHOSTPEERCONFIGAPIS
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #ifdef __cplusplus
 extern "C" {
@@ -136,5 +135,4 @@ DWORD WINAPI EapHostPeerInvokeIdentityUI(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPHOSTPEERCONFIGAPIS*/

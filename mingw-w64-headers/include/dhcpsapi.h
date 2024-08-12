@@ -262,7 +262,6 @@ typedef struct _DHCP_OPTION_ARRAY {
   LPDHCP_OPTION Options;
 } DHCP_OPTION_ARRAY, *LPDHCP_OPTION_ARRAY;
 
-#if (_WIN32_WINNT >= 0x0600)
 typedef struct _DHCP_BINARY_DATA {
   DWORD DataLength;
   BYTE* Data;
@@ -510,8 +509,6 @@ DWORD DHCP_API_FUNCTION DhcpSetOptionValueV6(
   LDHCP_OPTION_SCOPE_INFO6 ScopeInfo,
   LDHCP_OPTION_DATA OptionValue
 );
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

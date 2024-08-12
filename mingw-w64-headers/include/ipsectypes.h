@@ -11,8 +11,6 @@
 extern "C" {
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef UINT8 IPSEC_AUTH_CONFIG;
 typedef UINT8 IPSEC_CIPHER_CONFIG;
 typedef UINT32 IPSEC_SA_SPI;
@@ -371,9 +369,6 @@ typedef struct IPSEC_SA_CONTEXT_ENUM_TEMPLATE0_ {
   FWP_CONDITION_VALUE0 remoteSubNet;
 } IPSEC_SA_CONTEXT_ENUM_TEMPLATE0;
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-#if (_WIN32_WINNT >= 0x0601)
-
 typedef struct IPSEC_TUNNEL_ENDPOINTS1_ {
   FWP_IP_VERSION ipVersion;
   __C89_NAMELESS union {
@@ -581,7 +576,6 @@ typedef struct _IPSEC_ADDRESS_INFO0 {
   FWP_BYTE_ARRAY16 *v6Addresses;
 } IPSEC_ADDRESS_INFO0;
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #ifdef __cplusplus
 }
 #endif

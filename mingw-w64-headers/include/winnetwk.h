@@ -90,9 +90,7 @@ extern "C" {
 #define CONNECT_RESERVED 0xFF000000
 #define CONNECT_COMMANDLINE 0x00000800
 #define CONNECT_CMD_SAVECRED 0x00001000
-#if WINVER >= 0x0600
 #define CONNECT_CRED_RESET 0x00002000
-#endif
 
 #define WNetAddConnection __MINGW_NAME_AW(WNetAddConnection)
 #define WNetAddConnection2 __MINGW_NAME_AW(WNetAddConnection2)
@@ -120,11 +118,7 @@ extern "C" {
   DWORD WINAPI WNetUseConnectionW(HWND hwndOwner,LPNETRESOURCEW lpNetResource,LPCWSTR lpPassword,LPCWSTR lpUserID,DWORD dwFlags,LPWSTR lpAccessName,LPDWORD lpBufferSize,LPDWORD lpResult);
   DWORD WINAPI WNetConnectionDialog(HWND hwnd,DWORD dwType);
   DWORD WINAPI WNetDisconnectDialog(HWND hwnd,DWORD dwType);
-#if (_WIN32_WINNT >= _WIN32_WINNT_LONGHORN)
   DWORD WINAPI WNetRestoreSingleConnectionW(HWND hwndParent, LPCWSTR lpDevice, WINBOOL fUseUI);
-#else
-  DWORD WINAPI WNetRestoreConnectionW(HWND hwndParent,LPCWSTR lpDevice);
-#endif
 
   typedef struct _CONNECTDLGSTRUCTA {
     DWORD cbStructure;

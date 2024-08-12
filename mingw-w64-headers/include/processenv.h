@@ -43,8 +43,6 @@ extern "C" {
 
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
-
   WINBASEAPI LPCH WINAPI GetEnvironmentStrings (VOID);
   WINBASEAPI LPWCH WINAPI GetEnvironmentStringsW (VOID);
 
@@ -64,16 +62,12 @@ extern "C" {
   WINBASEAPI WINBOOL WINAPI SetEnvironmentVariableA (LPCSTR lpName, LPCSTR lpValue);
   WINBASEAPI WINBOOL WINAPI SetEnvironmentVariableW (LPCWSTR lpName, LPCWSTR lpValue);
   WINBASEAPI WINBOOL WINAPI SetStdHandle (DWORD nStdHandle, HANDLE hHandle);
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL WINAPI SetStdHandleEx (DWORD nStdHandle, HANDLE hHandle, PHANDLE phPrevValue);
-#endif
 
 #define ExpandEnvironmentStrings __MINGW_NAME_AW(ExpandEnvironmentStrings)
 #define FreeEnvironmentStrings __MINGW_NAME_AW(FreeEnvironmentStrings)
 #define GetEnvironmentVariable __MINGW_NAME_AW(GetEnvironmentVariable)
 #define SetEnvironmentVariable __MINGW_NAME_AW(SetEnvironmentVariable)
-
-#endif
 
 #ifdef __cplusplus
 }

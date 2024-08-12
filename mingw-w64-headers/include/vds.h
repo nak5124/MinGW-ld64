@@ -6,7 +6,6 @@
 #ifndef _INC_VDS
 #define _INC_VDS
 
-#if (_WIN32_WINNT >= 0x0600)
 #include <diskguid.h>
 #include <winioctl.h>
 
@@ -1260,11 +1259,9 @@ extern "C" {
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #include <vdslun.h>
 
-#if (_WIN32_WINNT >= 0x0601)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -1561,6 +1558,5 @@ typedef struct _VDS_VOLUME_PROP2 {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #endif /*_INC_VDS*/

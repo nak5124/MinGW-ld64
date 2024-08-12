@@ -10834,7 +10834,6 @@ static __WIDL_INLINE HRESULT IVideoFrameStep_CancelStep(IVideoFrameStep* This) {
 
 #endif  /* __IVideoFrameStep_INTERFACE_DEFINED__ */
 
-#if (_WIN32_WINNT >= 0x0601)
 /*****************************************************************************
  * IAMAsyncReaderTimestampScaling interface
  */
@@ -11078,7 +11077,6 @@ static __WIDL_INLINE HRESULT IAMPluginControl_IsLegacyDisabled(IAMPluginControl*
 
 #endif  /* __IAMPluginControl_INTERFACE_DEFINED__ */
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #ifndef __IPinConnection_FWD_DEFINED__
 #define __IPinConnection_FWD_DEFINED__
 typedef interface IPinConnection IPinConnection;

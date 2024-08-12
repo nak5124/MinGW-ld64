@@ -498,11 +498,9 @@ extern "C" {
 #define HDS_FULLDRAG 0x80
 #define HDS_FILTERBAR 0x100
 #define HDS_FLAT 0x200
-#if (_WIN32_WINNT >= 0x0600)
 #define HDS_CHECKBOXES 0x400
 #define HDS_NOSIZING 0x800
 #define HDS_OVERFLOW 0x1000
-#endif
 
 #define HDFT_ISSTRING 0x0
 #define HDFT_ISNUMBER 0x1
@@ -2153,7 +2151,7 @@ extern "C" {
 #define PBST_NORMAL 1
 #define PBST_ERROR 2
 #define PBST_PAUSED 3
-#endif /* (_WIN32_WINNT >= 0x0600) */
+#endif /* NTDDI_VERSION >= 0x06000000 */
 
 #endif /* !NOPROGRESS */
 

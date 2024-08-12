@@ -19,7 +19,7 @@ extern "C" {
 #define USPBUILD 0400
 #define SCRIPT_UNDEFINED 0
 
-#if !defined (UNISCRIBE_OPENTYPE) && (_WIN32_WINNT >= 0x0600)
+#if !defined (UNISCRIBE_OPENTYPE)
 #define UNISCRIBE_OPENTYPE 0x0100
 #endif
 

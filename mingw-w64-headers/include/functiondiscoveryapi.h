@@ -7,7 +7,6 @@
 #define _INC_FUNCTIONDISCOVERYAPI
 #include <propsys.h>
 #include <functiondiscoveryconstraints.h>
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -199,5 +198,4 @@ DECLARE_INTERFACE_(IFunctionDiscovery,IUnknown)
 #define IFunctionDiscovery_RemoveInstance(This,enumSystemVisibility,pszCategory,pszSubCategory,pszCategoryIdentity) (This)->lpVtbl->RemoveInstance(This,enumSystemVisibility,pszCategory,pszSubCategory,pszCategoryIdentity)
 #endif /*COBJMACROS*/
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_FUNCTIONDISCOVERYAPI*/

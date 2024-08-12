@@ -26,12 +26,10 @@ extern "C" {
 #define INVALID_FILE_ATTRIBUTES ((DWORD)-1)
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
 #define CreateFile __MINGW_NAME_AW(CreateFile)
 WINBASEAPI DWORD WINAPI GetFileAttributesW (LPCWSTR lpFileName);
 #define GetFileAttributes __MINGW_NAME_AW(GetFileAttributes)
 WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLONG lpDistanceToMoveHigh, DWORD dwMoveMethod);
-#endif
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || NTDDI_VERSION >= NTDDI_WIN10_19H1 || defined(WINSTORECOMPAT)
   typedef struct _BY_HANDLE_FILE_INFORMATION {
     DWORD dwFileAttributes;
@@ -64,7 +62,6 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
   WINBASEAPI HANDLE WINAPI CreateFileW (LPCWSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile);
   WINBASEAPI DWORD WINAPI GetFileSize (HANDLE hFile, LPDWORD lpFileSizeHigh);
 #endif
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
   WINBASEAPI LONG WINAPI CompareFileTime (CONST FILETIME *lpFileTime1, CONST FILETIME *lpFileTime2);
   WINBASEAPI WINBOOL WINAPI DeleteVolumeMountPointW (LPCWSTR lpszVolumeMountPoint);
   WINBASEAPI WINBOOL WINAPI FileTimeToLocalFileTime (CONST FILETIME *lpFileTime, LPFILETIME lpLocalFileTime);
@@ -85,7 +82,6 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
 #define GetDiskFreeSpace __MINGW_NAME_AW(GetDiskFreeSpace)
 #define GetDriveType __MINGW_NAME_AW(GetDriveType)
 #define GetFullPathName __MINGW_NAME_AW(GetFullPathName)
-#endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || (NTDDI_VERSION >= NTDDI_WIN10_VB)
   WINBASEAPI WINBOOL WINAPI GetVolumeNameForVolumeMountPointW (LPCWSTR lpszVolumeMountPoint, LPWSTR lpszVolumeName, DWORD cchBufferLength);
@@ -122,9 +118,7 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
 #define GetTempFileName __MINGW_NAME_AW(GetTempFileName)
 
 
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL WINAPI GetVolumeInformationByHandleW (HANDLE hFile, LPWSTR lpVolumeNameBuffer, DWORD nVolumeNameSize, LPDWORD lpVolumeSerialNumber, LPDWORD lpMaximumComponentLength, LPDWORD lpFileSystemFlags, LPWSTR lpFileSystemNameBuffer, DWORD nFileSystemNameSize);
-#endif
 
 #if NTDDI_VERSION >= NTDDI_WIN10_FE
   WINBASEAPI WINBOOL WINAPI AreShortNamesEnabled (HANDLE Handle, WINBOOL *Enabled);
@@ -145,12 +139,10 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
   WINBASEAPI WINBOOL WINAPI UnlockFile (HANDLE hFile, DWORD dwFileOffsetLow, DWORD dwFileOffsetHigh, DWORD nNumberOfBytesToUnlockLow, DWORD nNumberOfBytesToUnlockHigh);
   WINBASEAPI WINBOOL WINAPI WriteFileEx (HANDLE hFile, LPCVOID lpBuffer, DWORD nNumberOfBytesToWrite, LPOVERLAPPED lpOverlapped, LPOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
 
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI DWORD WINAPI GetFinalPathNameByHandleA (HANDLE hFile, LPSTR lpszFilePath, DWORD cchFilePath, DWORD dwFlags);
   WINBASEAPI DWORD WINAPI GetFinalPathNameByHandleW (HANDLE hFile, LPWSTR lpszFilePath, DWORD cchFilePath, DWORD dwFlags);
 
 #define GetFinalPathNameByHandle __MINGW_NAME_AW(GetFinalPathNameByHandle)
-#endif
   typedef struct _WIN32_FILE_ATTRIBUTE_DATA {
     DWORD dwFileAttributes;
     FILETIME ftCreationTime;
@@ -160,7 +152,6 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
     DWORD nFileSizeLow;
   } WIN32_FILE_ATTRIBUTE_DATA, *LPWIN32_FILE_ATTRIBUTE_DATA;
 
-#if _WIN32_WINNT >= 0x0602
   typedef struct _CREATEFILE2_EXTENDED_PARAMETERS {
     DWORD dwSize;
     DWORD dwFileAttributes;
@@ -170,7 +161,6 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
     HANDLE hTemplateFile;
   } CREATEFILE2_EXTENDED_PARAMETERS, *PCREATEFILE2_EXTENDED_PARAMETERS,
     *LPCREATEFILE2_EXTENDED_PARAMETERS;
-#endif
 
   typedef struct DISK_SPACE_INFORMATION {
     ULONGLONG ActualTotalAllocationUnits;
@@ -228,12 +218,8 @@ WINBASEAPI DWORD WINAPI SetFilePointer (HANDLE hFile, LONG lDistanceToMove, PLON
 #define GetTempPath __MINGW_NAME_AW(GetTempPath)
 #define GetDiskSpaceInformation __MINGW_NAME_AW(GetDiskSpaceInformation)
 
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL WINAPI SetFileInformationByHandle (HANDLE hFile, FILE_INFO_BY_HANDLE_CLASS FileInformationClass, LPVOID lpFileInformation, DWORD dwBufferSize);
-#endif
-#if _WIN32_WINNT >= 0x0602
   WINBASEAPI HANDLE WINAPI CreateFile2 (LPCWSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, DWORD dwCreationDisposition, LPCREATEFILE2_EXTENDED_PARAMETERS pCreateExParams);
-#endif
 #if NTDDI_VERSION >= NTDDI_WIN10_FE
   WINBASEAPI DWORD WINAPI GetTempPath2W (DWORD BufferLength, LPWSTR Buffer);
   WINBASEAPI DWORD WINAPI GetTempPath2A (DWORD BufferLength, LPSTR Buffer);

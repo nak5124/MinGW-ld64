@@ -6,8 +6,6 @@
 #ifndef _INC_MSRDC
 #define _INC_MSRDC
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef UINT SimilarityFileIndexT;
 
 typedef enum _GeneratorParametersType {
@@ -330,7 +328,6 @@ DECLARE_INTERFACE_(ISimilarity,IUnknown)
 #define ISimilarity_GetRecordCount(This,recordCount) (This)->lpVtbl->GetRecordCount(This,recordCount)
 #endif /*COBJMACROS*/
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /* _INC_MSRDC */
 

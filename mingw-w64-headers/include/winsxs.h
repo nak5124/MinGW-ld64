@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WINSXS
 #define _INC_WINSXS
-#if (_WIN32_WINNT >= 0x0600)
 
 typedef enum ASM_CMP_FLAGS {
   ASM_CMPF_NAME               = 0x1,
@@ -90,5 +89,4 @@ HRESULT STDAPI CreateAssemblyNameObject(
 
 */
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WINSXS*/

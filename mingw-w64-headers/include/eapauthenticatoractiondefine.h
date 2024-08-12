@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPAUTHENTICATORACTIONDEFINE
 #define _INC_EAPAUTHENTICATORACTIONDEFINE
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #ifdef __cplusplus
 extern "C" {
@@ -49,5 +48,4 @@ typedef struct tagEapPeerMethodOutput {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPAUTHENTICATORACTIONDEFINE*/

@@ -124,7 +124,6 @@ extern "C" {
 #endif
 
 #include <winapifamily.h>
-#if WINVER >= _WIN32_WINNT_WIN7
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 #ifndef _MFVideoNormalizedRect_
 #define _MFVideoNormalizedRect_
@@ -1764,7 +1763,6 @@ static __WIDL_INLINE HRESULT IMFCaptureSink2_SetOutputMediaType(IMFCaptureSink2*
 #endif  /* __IMFCaptureSink2_INTERFACE_DEFINED__ */
 
 #endif /* WINAPI_PARTITION_DESKTOP */
-#endif /* WINVER >= _WIN32_WINNT_WIN7 */
 /* Begin additional prototypes for all interfaces */
 
 

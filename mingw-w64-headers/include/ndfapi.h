@@ -8,8 +8,6 @@
 
 #include <ndattrib.h>
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -70,6 +68,5 @@ HRESULT NdfExecuteDiagnosis(
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /*_INC_NDFAPI*/

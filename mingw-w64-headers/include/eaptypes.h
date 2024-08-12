@@ -258,13 +258,11 @@ typedef struct _EAP_INTERACTIVE_UI_DATA {
 #define eapPropTunnelMethod 0x00100000
 #define eapPropSupportsConfig 0x00200000
 #define eapPropCertifiedMethod 0x00400000
-#if (_WIN32_WINNT >= 0x0601)
 #define eapPropmachineAuth 0x01000000
 #define eapPropUserAuth 0x02000000
 #define eapPropIdentityPrivacy 0x04000000
 #define eapPropMethodChaining 0x08000000
 #define eapPropSharedStateEquivalence 0x10000000
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #define eapPropReserved 0x20000000
 
 typedef struct _EAP_METHOD_INFO {

@@ -5,7 +5,6 @@
  */
 #ifndef _INC_PRNASNOT
 #define _INC_PRNASNOT
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -74,5 +73,4 @@ HRESULT UnRegisterForPrintAsyncNotifications(
 }
 #endif
 
-#endif /* (_WIN32_WINNT >= 0x0600) */
 #endif /*_INC_PRNASNOT*/

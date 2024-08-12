@@ -5,7 +5,6 @@
  */
 #ifndef _INC_PLA
 #define _INC_PLA
-#if (_WIN32_WINNT >= 0x0600)
 
 typedef enum _AutoPathFormat {
   plaNone                 = 0x0000,
@@ -82,5 +81,4 @@ typedef enum _WeekDays {
   plaEveryday    = 0x7F 
 } WeekDays;
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_PLA*/

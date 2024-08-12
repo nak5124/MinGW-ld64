@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WCSPLUGIN
 #define _INC_WCSPLUGIN
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -86,5 +85,4 @@ typedef struct _PrimaryXYZColors {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WCSPLUGIN*/

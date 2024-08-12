@@ -5,7 +5,6 @@
  */
 #ifndef _INC_SLPUBLIC
 #define _INC_SLPUBLIC
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -98,16 +97,13 @@ HRESULT WINAPI SLUninstallSAMLicense(
   const SLID *pApplicationId
 );
 
-#if (_WIN32_WINNT >= 0x0601)
 HRESULT WINAPI SLIsGenuineLocalEx(
   const SLID *pAppId,
   const SLID pSkuId,
   SL_GENUINE_STATE *pGenuineState
 );
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_SLPUBLIC*/

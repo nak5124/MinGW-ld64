@@ -263,9 +263,7 @@ extern "C" {
 #define DWM_EC_DISABLECOMPOSITION 0
 #define DWM_EC_ENABLECOMPOSITION 1
 
-#if _WIN32_WINNT >= 0x0601
 #define DWM_SIT_DISPLAYFRAME 0x1
-#endif
 
   WINBOOL WINAPI DwmDefWindowProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam, LRESULT *plResult);
   HRESULT WINAPI DwmEnableBlurBehindWindow (HWND hWnd, const DWM_BLURBEHIND *pBlurBehind);
@@ -291,11 +289,9 @@ extern "C" {
   HRESULT WINAPI DwmGetGraphicsStreamClient (UINT uIndex, UUID *pClientUuid);
   HRESULT WINAPI DwmGetTransportAttributes (WINBOOL *pfIsRemoting, WINBOOL *pfIsConnected, DWORD *pDwGeneration);
   HRESULT WINAPI DwmTransitionOwnedWindow (HWND hwnd, enum DWMTRANSITION_OWNEDWINDOW_TARGET target);
-#if _WIN32_WINNT >= 0x0601
   HRESULT WINAPI DwmSetIconicThumbnail (HWND hwnd, HBITMAP hbmp, DWORD dwSITFlags);
   HRESULT WINAPI DwmSetIconicLivePreviewBitmap (HWND hwnd, HBITMAP hbmp, POINT *pptClient, DWORD dwSITFlags);
   HRESULT WINAPI DwmInvalidateIconicBitmaps (HWND hwnd);
-#endif
 #if NTDDI_VERSION >= NTDDI_WIN8
   HRESULT WINAPI DwmRenderGesture (enum GESTURE_TYPE gt, UINT cContacts, const DWORD *pdwPointerID, const POINT *pPoints);
   HRESULT WINAPI DwmTetherContact (DWORD dwPointerID, WINBOOL fEnable, POINT ptTether);

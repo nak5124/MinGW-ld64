@@ -6,7 +6,6 @@
 #ifndef _INC_CERTENROLL
 #define _INC_CERTENROLL
 
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -518,7 +517,6 @@ extern "C" {
     EnrollDenied                         = 0x00000100 
   } EnrollmentEnrollStatus;
 
-#if (_WIN32_WINNT >= 0x0601)
   enum EnrollmentPolicyFlags {
     DisableGroupPolicyList   = 0x2,
     DisableUserServerList    = 0x4 
@@ -529,14 +527,10 @@ extern "C" {
     DefaultPolicyServer   = 0x00000001 
   } EnrollmentPolicyServerPropertyFlags;
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
-
   typedef enum EnrollmentSelectionStatus {
     SelectedNo    = 0,
     SelectedYes   = 1 
   } EnrollmentSelectionStatus;
-
-#if (_WIN32_WINNT >= 0x0601)
 
   typedef enum EnrollmentTemplateProperty {
     TemplatePropCommonName              = 1,
@@ -570,7 +564,6 @@ extern "C" {
     TemplatePropValidityPeriod          = 29,
     TemplatePropRenewalPeriod           = 30 
   } EnrollmentTemplateProperty;
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
   typedef enum InnerRequestLevel {
     LevelInnermost   = 0,
@@ -640,14 +633,10 @@ extern "C" {
     PsfAllowUnTrustedCA        = 32 
   } PolicyServerUrlFlags;
 
-#if (_WIN32_WINNT >= 0x0601)
-
   typedef enum PolicyServerUrlPropertyID {
     PsPolicyID       = 0,
     PsFriendlyName   = 1 
   } PolicyServerUrlPropertyID;
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
   typedef enum RequestClientInfoClientId {
     ClientIdNone             = 0,
@@ -664,13 +653,9 @@ extern "C" {
     ClientIdUserStart        = 1000 
   } RequestClientInfoClientId;
 
-#if (_WIN32_WINNT >= 0x0601)
-
   typedef enum WebEnrollmentFlags {
     EnrollPrompt   = 0x00000001 
   } WebEnrollmentFlags;
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
   typedef enum WebSecurityLevel {
     LevelUnsafe   = 0,
@@ -701,8 +686,6 @@ extern "C" {
     ContextMachine                     = 0x2,
     ContextAdministratorForceMachine   = 0x3 
   } X509CertificateEnrollmentContext;
-
-#if (_WIN32_WINNT >= 0x0601)
 
   typedef enum X509CertificateTemplateEnrollmentFlag {
     EnrollmentIncludeSymmetricAlgorithms                  = CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS,
@@ -767,9 +750,6 @@ extern "C" {
     LoadOptionReload                 = 2,
     LoadOptionRegisterForADChanges   = 4 
   } X509EnrollmentPolicyLoadOption;
-
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
   typedef enum X509KeySpec {
     XCN_AT_NONE          = 0,
@@ -908,5 +888,4 @@ typedef enum EnrollmentSelectionStatus {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_CERTENROLL*/

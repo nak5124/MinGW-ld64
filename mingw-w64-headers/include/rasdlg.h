@@ -100,22 +100,14 @@ extern "C" {
 
 #define RASEDFLAG_PositionDlg 0x00000001
 #define RASEDFLAG_NewEntry 0x00000002
-#if WINVER < 0x600
-#define RASEDFLAG_CloneEntry 0x00000004
-#endif
 #define RASEDFLAG_NoRename 0x00000008
 #define RASEDFLAG_ShellOwned 0x40000000
 #define RASEDFLAG_NewPhoneEntry 0x00000010
 #define RASEDFLAG_NewTunnelEntry 0x00000020
-#if WINVER < 0x600
-#define RASEDFLAG_NewDirectEntry 0x00000040
-#endif
 #define RASEDFLAG_NewBroadbandEntry 0x00000080
 #define RASEDFLAG_InternetEntry 0x00000100
 #define RASEDFLAG_NAT 0x00000200
-#if WINVER >= 0x600
 #define RASEDFLAG_IncomingConnection 0x00000400
-#endif
 
   struct tagRASENTRYDLGW {
     DWORD dwSize;

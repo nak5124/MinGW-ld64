@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPMETHODAUTHENTICATORAPIS
 #define _INC_EAPMETHODAUTHENTICATORAPIS
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #ifdef __cplusplus
 extern "C" {
@@ -175,5 +174,4 @@ DWORD WINAPI EapMethodAuthenticatorUpdateInnerMethodParams(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPMETHODAUTHENTICATORAPIS*/

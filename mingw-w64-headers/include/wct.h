@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WCT
 #define _INC_WCT
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -79,5 +78,4 @@ VOID WINAPI RegisterWaitChainCOMCallback(PCOGETCALLSTATE CallStateCallback,PCOGE
 }
 #endif
 
-#endif /* (_WIN32_WINNT >= 0x0600) */
 #endif /*_INC_WCT*/

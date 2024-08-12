@@ -511,9 +511,7 @@ static __WIDL_INLINE HRESULT IWSDDeviceHost_SignalEvent(IWSDDeviceHost* This,LPC
 #endif  /* __IWSDDeviceHost_INTERFACE_DEFINED__ */
 
 HRESULT WINAPI WSDCreateDeviceHost(LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDDeviceHost **ppDeviceHost);
-#if WINVER >= 0x601
 HRESULT WINAPI WSDCreateDeviceHost2(LPCWSTR pszLocalId, IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDDeviceHost **ppDeviceHost);
-#endif
 HRESULT WINAPI WSDCreateDeviceHostAdvanced(LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDAddress** ppHostAddresses, DWORD dwHostAddressCount, IWSDDeviceHost **ppDeviceHost);
 #endif
 /* Begin additional prototypes for all interfaces */

@@ -68,9 +68,7 @@ DEFINE_GUID(GUID_DEVINTERFACE_MOUSE, \
 #define MOUSE_MOVE_ABSOLUTE               1
 #define MOUSE_VIRTUAL_DESKTOP             0x02
 #define MOUSE_ATTRIBUTES_CHANGED          0x04
-#if(_WIN32_WINNT >= 0x0600)
 #define MOUSE_MOVE_NOCOALESCE             0x08
-#endif
 #define MOUSE_TERMSRV_SRC_SHADOW          0x100
 
 typedef struct _MOUSE_INPUT_DATA {

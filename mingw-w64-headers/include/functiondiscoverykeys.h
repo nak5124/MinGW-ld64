@@ -6,7 +6,6 @@
 #ifndef _INC_FUNCTIONDISCOVERYKEYS
 #define _INC_FUNCTIONDISCOVERYKEYS
 
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -33,5 +32,4 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_FUNCTIONDISCOVERYKEYS*/

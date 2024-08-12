@@ -7,8 +7,6 @@
 #define __WINSYNC_H__
 #include <objbase.h>
 
-#if (_WIN32_WINNT >= 0x0601)
-
 typedef enum _CONFLICT_RESOLUTION_POLICY {
   CRP_NONE = 0,
   CRP_DESTINATION_PROVIDER_WINS,
@@ -641,5 +639,4 @@ DECLARE_INTERFACE_(IEnumSyncChangeUnits,IUnknown)
 #define IEnumSyncChangeUnits_Skip(This,cChanges) (This)->lpVtbl->Skip(This,cChanges)
 #endif /*COBJMACROS*/
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /* __WINSYNC_H__ */

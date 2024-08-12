@@ -781,22 +781,6 @@ extern "C" {
 #if (NTDDI_VERSION >= NTDDI_VISTA && !defined(_WIN32_WINNT))
 #define _WIN32_WINNT 0x0600
 #endif
-#if(NTDDI_VERSION >= NTDDI_WS03 && !defined(_WIN32_WINNT))
-#define _WIN32_WINNT 0x0502
-#endif
-#if(NTDDI_VERSION >= NTDDI_WINXP && !defined(_WIN32_WINNT))
-#define _WIN32_WINNT 0x0501
-#endif
-/**
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER within this package.
- */
-
-#include <winapifamily.h>
-
-#if (NTDDI_VERSION >= NTDDI_VISTA && !defined(_WIN32_WINNT))
-#define _WIN32_WINNT 0x0600
-#endif
 
 #if (NTDDI_VERSION >= NTDDI_WS03 && !defined(_WIN32_WINNT))
 #define _WIN32_WINNT 0x0502
@@ -3724,7 +3708,6 @@ static __WIDL_INLINE HRESULT IPSFactoryBuffer_CreateStub(IPSFactoryBuffer* This,
 #endif
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
-#if  (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)
 typedef struct SChannelHookCallInfo {
     IID iid;
     DWORD cbSize;
@@ -3909,9 +3892,7 @@ static __WIDL_INLINE void IChannelHook_ServerFillBuffer(IChannelHook* This,REFGU
 #endif  /* __IChannelHook_INTERFACE_DEFINED__ */
 
 #endif
-#endif
 
-#if  (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 /*****************************************************************************
  * IClientSecurity interface
@@ -4450,7 +4431,6 @@ static __WIDL_INLINE HRESULT IGlobalOptions_Query(IGlobalOptions* This,GLOBALOPT
 
 #endif  /* __IGlobalOptions_INTERFACE_DEFINED__ */
 
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)

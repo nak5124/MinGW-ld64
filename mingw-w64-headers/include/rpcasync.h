@@ -250,8 +250,6 @@ RPC_STATUS RPC_ENTRY RpcServerUnsubscribeForNotification(
   unsigned __LONG32 *NotificationsQueued
 );
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef struct tagRPC_CALL_LOCAL_ADDRESS_V1_A {
   unsigned int          Version;
   void                  *Buffer;
@@ -321,7 +319,6 @@ RPC_STATUS RPC_ENTRY RpcDiagnoseError(
   ULONG Options,
   HWND ParentWindow
 );
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

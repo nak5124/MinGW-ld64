@@ -193,7 +193,7 @@
 #ifdef _WIN32_WINNT
 #define WINVER _WIN32_WINNT
 #else
-#define WINVER 0x0502
+#define WINVER 0x0A00
 #endif
 #endif
 

@@ -5,7 +5,6 @@
  */
 #ifndef _INC_FUNCTIONDISCOVERYCONSTRAINTS
 #define _INC_FUNCTIONDISCOVERYCONSTRAINTS
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -80,5 +79,4 @@ typedef enum tagPropertyConstraint {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_FUNCTIONDISCOVERYCONSTRAINTS*/

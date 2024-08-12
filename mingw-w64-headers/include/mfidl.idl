@@ -236,7 +236,6 @@ interface IMFMediaSource : IMFMediaEventGenerator
     HRESULT Shutdown();
 }
 
-cpp_quote("#if (WINVER >= _WIN32_WINNT_WIN8)")
 [object, uuid(3c9b2eb9-86d5-4514-a394-f56664f9f0d8)]
 interface IMFMediaSourceEx : IMFMediaSource
 {
@@ -245,8 +244,6 @@ interface IMFMediaSourceEx : IMFMediaSource
   HRESULT SetD3DManager([in] IUnknown *pManager);
 }
 cpp_quote("EXTERN_GUID(MF_SOURCE_STREAM_SUPPORTS_HW_CONNECTION, 0xa38253aa, 0x6314, 0x42fd, 0xa3, 0xce, 0xbb, 0x27, 0xb6, 0x85, 0x99, 0x46);")
-
-cpp_quote("#endif /* (WINVER >= _WIN32_WINNT_WIN8) */")
 
 typedef [public] struct _MF_LEAKY_BUCKET_PAIR {
     DWORD dwBitrate;
@@ -301,14 +298,10 @@ typedef enum _MFCLOCK_CHARACTERISTICS_FLAGS
     MFCLOCK_CHARACTERISTICS_FLAG_IS_SYSTEM_CLOCK   = 0x8
 } MFCLOCK_CHARACTERISTICS_FLAGS;
 
-cpp_quote("#if (WINVER >= 0x0601)")
-
 typedef enum _MF_QUALITY_ADVISE_FLAGS
 {
     MF_QUALITY_CANNOT_KEEP_UP = 0x1
 } MF_QUALITY_ADVISE_FLAGS;
-
-cpp_quote("#endif /*(WINVER >= 0x0601)*/")
 
 typedef enum _MF_QUALITY_DROP_MODE
 {
@@ -353,15 +346,11 @@ typedef enum _MF_TOPONODE_FLUSH_MODE
     MF_TOPONODE_FLUSH_NEVER
 } MF_TOPONODE_FLUSH_MODE;
 
-cpp_quote("#if (WINVER >= 0x0601)")
-
 typedef enum _MF_TRANSCODE_TOPOLOGY_MODE_FLAGS
 {
   MF_TRANSCODE_TOPOLOGYMODE_SOFTWARE_ONLY    = 0,
   MF_TRANSCODE_TOPOLOGYMODE_HARDWARE_ALLOWED = 1
 } MF_TRANSCODE_TOPOLOGYMODE_FLAGS;
-
-cpp_quote("#endif")
 
 cpp_quote("EXTERN_GUID(MF_TRANSCODE_CONTAINERTYPE, 0x150ff23f, 0x4abc, 0x478b, 0xac, 0x4f, 0xe1, 0x91, 0x6f, 0xba, 0x1c, 0xca);")
 cpp_quote("EXTERN_GUID(MFTranscodeContainerType_ASF, 0x430f6f6e, 0xb6bf, 0x4fc1, 0xa0, 0xbd, 0x9e, 0xe4, 0x6e, 0xee, 0x2a, 0xfb);")
@@ -374,9 +363,7 @@ cpp_quote("EXTERN_GUID(MFTranscodeContainerType_ADTS, 0x132fd27d, 0x0f02, 0x43de
 cpp_quote("EXTERN_GUID(MFTranscodeContainerType_MPEG2, 0xbfc2dbf9, 0x7bb4, 0x4f8f, 0xaf, 0xde, 0xe1, 0x12, 0xc4, 0x4b, 0xa8, 0x82);")
 cpp_quote("EXTERN_GUID(MFTranscodeContainerType_WAVE, 0x64c3453c, 0x0f26, 0x4741, 0xbe, 0x63, 0x87, 0xbd, 0xf8, 0xbb, 0x93, 0x5b);")
 cpp_quote("EXTERN_GUID(MFTranscodeContainerType_AVI, 0x7edfe8af, 0x402f, 0x4d76, 0xa3, 0x3c, 0x61, 0x9f, 0xd1, 0x57, 0xd0, 0xf1);")
-cpp_quote("#if (WINVER >= _WIN32_WINNT_WIN8)")
 cpp_quote("EXTERN_GUID(MFTranscodeContainerType_FMPEG4, 0x9ba876f1, 0x419f, 0x4b77, 0xa1, 0xe0, 0x35, 0x95, 0x9d, 0x9d, 0x40, 0x4);")
-cpp_quote("#endif /* (WINVER >= _WIN32_WINNT_WIN8) */")
 cpp_quote("EXTERN_GUID(MFTranscodeContainerType_AMR, 0x25d5ad3, 0x621a, 0x475b, 0x96, 0x4d, 0x66, 0xb1, 0xc8, 0x24, 0xf0, 0x79);")
 
 typedef enum
@@ -534,8 +521,6 @@ typedef enum MFTIMER_FLAGS
     MFTIMER_RELATIVE = 0x00000001
 } MFTIMER_FLAGS;
 
-cpp_quote("#if (WINVER >= 0x0601)")
-
 typedef enum MFTOPOLOGY_DXVA_MODE
 {
     MFTOPOLOGY_DXVA_DEFAULT = 0,
@@ -560,8 +545,6 @@ typedef struct _MFT_REGISTRATION_INFO
     DWORD cOutTypes;
     [size_is(cOutTypes)] MFT_REGISTER_TYPE_INFO *pOutTypes;
 } MFT_REGISTRATION_INFO;
-
-cpp_quote("#endif /*(WINVER >= 0x0601)*/")
 
 cpp_quote("typedef struct _ASFFlatPicture {")
 cpp_quote("  BYTE  bPictureType;")
@@ -844,8 +827,6 @@ interface IMFVideoSampleAllocator : IUnknown
   HRESULT AllocateSample([out] IMFSample **ppSample);
 }
 
-cpp_quote("#if WINVER >= _WIN32_WINNT_WIN7")
-
 [object, uuid(a792cdbe-c374-4e89-8335-278e7b9956a4), local]
 interface IMFVideoSampleAllocatorNotify : IUnknown
 {
@@ -871,10 +852,6 @@ interface IMFVideoSampleAllocatorEx : IMFVideoSampleAllocator
   HRESULT InitializeSampleAllocatorEx([in] DWORD cInitialSamples, [in] DWORD cMaximumSamples, [in, optional] IMFAttributes *pAttributes, [in] IMFMediaType *pMediaType);
 }
 
-cpp_quote("#endif /* WINVER >= _WIN32_WINNT_WIN7 */")
-
-cpp_quote("#if WINVER >= _WIN32_WINNT_WIN8")
-
 typedef enum _MF_VIDEO_PROCESSOR_ROTATION {
   ROTATION_NONE = 0,
   ROTATION_NORMAL = 1
@@ -897,7 +874,6 @@ interface IMFVideoProcessorControl : IUnknown
   HRESULT SetConstrictionSize([in, optional] SIZE *pConstrictionSize);
 }
 
-cpp_quote("#if WINVER >= _WIN32_WINNT_WINBLUE")
 [object, local, uuid(bde633d3-e1dc-4a7f-a693-bbae399c4a20), pointer_default(unique)]
 interface IMFVideoProcessorControl2 : IMFVideoProcessorControl
 {
@@ -906,16 +882,12 @@ interface IMFVideoProcessorControl2 : IMFVideoProcessorControl
   HRESULT GetSupportedHardwareEffects([out, retval] UINT *puiSupport);
 }
 
-cpp_quote("#if WINVER >= _WIN32_WINNT_WIN10")
-
 typedef enum _MFVideoSphericalFormat {
   MFVideoSphericalFormat_Unsupported = 0,
   MFVideoSphericalFormat_Equirectangular = 1,
   MFVideoSphericalFormat_CubeMap = 2,
   MFVideoSphericalFormat_3DMesh = 3
 } MFVideoSphericalFormat;
-
-cpp_quote("#endif /* WINVER >= _WIN32_WINNT_WIN10 */")
 
 cpp_quote("#if NTDDI_VERSION >= NTDDI_WIN10_RS3")
 
@@ -937,8 +909,6 @@ interface IMFVideoProcessorControl3 : IMFVideoProcessorControl2
 
 cpp_quote("#endif /* NTDDI_VERSION >= NTDDI_WIN10_RS3 */")
 
-cpp_quote("#endif /* WINVER >= _WIN32_WINNT_WINBLUE */")
-
 cpp_quote("#if NTDDI_VERSION >= NTDDI_WIN10_VB")
 
 [object, local, uuid(604d33d7-cf23-41d5-8224-5bbbb1a87475)]
@@ -947,9 +917,7 @@ interface IMFVideoRendererEffectControl : IUnknown
   HRESULT OnAppServiceConnectionEstablished([in] IUnknown *pAppServiceConnection);
 }
 
-cpp_quote("#endif /* WINVER >= NTDDI_WIN10_VB */")
-
-cpp_quote("#endif /* WINVER >= _WIN32_WINNT_WIN8 */")
+cpp_quote("#endif /* NTDDI_VERSION >= NTDDI_WIN10_VB */")
 
 cpp_quote("HRESULT WINAPI MFCreate3GPMediaSink(IMFByteStream *pIByteStream,IMFMediaType *pVideoMediaType,IMFMediaType *pAudioMediaType,IMFMediaSink **ppIMediaSink);")
 cpp_quote("HRESULT WINAPI MFCreateAggregateSource(IMFCollection *pSourceCollection,IMFMediaSource **ppAggSource);")
@@ -1000,7 +968,6 @@ cpp_quote("MFTIME WINAPI MFGetSystemTime(void);")
 cpp_quote("HRESULT WINAPI MFShutdownObject(IUnknown *pUnk);")
 cpp_quote("HRESULT WINAPI CreateNamedPropertyStore(INamedPropertyStore **ppStore);")
 cpp_quote("HRESULT WINAPI CreatePropertyStore(IPropertyStore **ppStore);")
-cpp_quote("#if (WINVER >= 0x0601)")
 cpp_quote("")
 cpp_quote("HRESULT WINAPI MFCreateTranscodeProfile(IMFTranscodeProfile **ppTranscodeProfile);")
 cpp_quote("HRESULT WINAPI MFCreateTranscodeSinkActivate(IMFActivate **ppActivate);")
@@ -1008,7 +975,6 @@ cpp_quote("HRESULT WINAPI MFCreateTranscodeTopology(IMFMediaSource *pSrc,LPCWSTR
 cpp_quote("HRESULT WINAPI MFEnumDeviceSources(IMFAttributes *pAttributes,IMFActivate ***pppSourceActivate,UINT32 *pcSourceActivate);")
 cpp_quote("HRESULT WINAPI MFGetTopoNodeCurrentType(IMFTopologyNode *pNode,DWORD dwStreamIndex,WINBOOL fOutput,IMFMediaType **ppType);")
 cpp_quote("HRESULT WINAPI MFTranscodeGetAudioOutputAvailableTypes(REFGUID guidSubType,DWORD dwMFTFlags,IMFAttributes *pCodecConfig,IMFCollection **ppAvailableTypes);")
-cpp_quote("#endif")
 
 cpp_quote("EXTERN_GUID(MFNETSOURCE_STATISTICS, 0x3cb1f274, 0x0505, 0x4c5d, 0xae, 0x71, 0x0a, 0x55, 0x63, 0x44, 0xef, 0xa1);")
 cpp_quote("EXTERN_GUID(MFNETSOURCE_STATISTICS_SERVICE, 0x3cb1f275, 0x0505, 0x4c5d, 0xae, 0x71, 0x0a, 0x55, 0x63, 0x44, 0xef, 0xa1);")

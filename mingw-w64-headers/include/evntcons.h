@@ -142,11 +142,9 @@ extern "C" {
   typedef const EVENT_RECORD *PCEVENT_RECORD;
 #endif
 
-#if WINVER >= 0x0600
   ULONG EVNTAPI EventAccessControl (LPGUID Guid, ULONG Operation, PSID Sid, ULONG Rights, BOOLEAN AllowOrDeny);
   ULONG EVNTAPI EventAccessQuery (LPGUID Guid, PSECURITY_DESCRIPTOR Buffer, PULONG BufferSize);
   ULONG EVNTAPI EventAccessRemove (LPGUID Guid);
-#endif
 
   FORCEINLINE ULONG GetEventProcessorIndex (PCEVENT_RECORD er) {
     return ((er->EventHeader.Flags & EVENT_HEADER_FLAG_PROCESSOR_INDEX) != 0 ? er->BufferContext.ProcessorIndex : er->BufferContext.ProcessorNumber);

@@ -2965,7 +2965,6 @@ HRESULT __RPC_STUB IMFMediaSource_CreatePresentationDescriptor_Stub(
 
 #endif  /* __IMFMediaSource_INTERFACE_DEFINED__ */
 
-#if (WINVER >= _WIN32_WINNT_WIN8)
 /*****************************************************************************
  * IMFMediaSourceEx interface
  */
@@ -3159,7 +3158,6 @@ static __WIDL_INLINE HRESULT IMFMediaSourceEx_SetD3DManager(IMFMediaSourceEx* Th
 #endif  /* __IMFMediaSourceEx_INTERFACE_DEFINED__ */
 
 EXTERN_GUID(MF_SOURCE_STREAM_SUPPORTS_HW_CONNECTION, 0xa38253aa, 0x6314, 0x42fd, 0xa3, 0xce, 0xbb, 0x27, 0xb6, 0x85, 0x99, 0x46);
-#endif /* (WINVER >= _WIN32_WINNT_WIN8) */
 typedef struct _MF_LEAKY_BUCKET_PAIR {
     DWORD dwBitrate;
     DWORD msBufferWindow;
@@ -3405,11 +3403,9 @@ typedef enum _MFCLOCK_CHARACTERISTICS_FLAGS {
     MFCLOCK_CHARACTERISTICS_FLAG_ALWAYS_RUNNING = 0x4,
     MFCLOCK_CHARACTERISTICS_FLAG_IS_SYSTEM_CLOCK = 0x8
 } MFCLOCK_CHARACTERISTICS_FLAGS;
-#if (WINVER >= 0x0601)
 typedef enum _MF_QUALITY_ADVISE_FLAGS {
     MF_QUALITY_CANNOT_KEEP_UP = 0x1
 } MF_QUALITY_ADVISE_FLAGS;
-#endif /*(WINVER >= 0x0601)*/
 typedef enum _MF_QUALITY_DROP_MODE {
     MF_DROP_MODE_NONE = 0x0,
     MF_DROP_MODE_1 = 0x1,
@@ -3443,12 +3439,10 @@ typedef enum _MF_TOPONODE_FLUSH_MODE {
     MF_TOPONODE_FLUSH_SEEK = 1,
     MF_TOPONODE_FLUSH_NEVER = 2
 } MF_TOPONODE_FLUSH_MODE;
-#if (WINVER >= 0x0601)
 typedef enum _MF_TRANSCODE_TOPOLOGY_MODE_FLAGS {
     MF_TRANSCODE_TOPOLOGYMODE_SOFTWARE_ONLY = 0,
     MF_TRANSCODE_TOPOLOGYMODE_HARDWARE_ALLOWED = 1
 } MF_TRANSCODE_TOPOLOGYMODE_FLAGS;
-#endif
 EXTERN_GUID(MF_TRANSCODE_CONTAINERTYPE, 0x150ff23f, 0x4abc, 0x478b, 0xac, 0x4f, 0xe1, 0x91, 0x6f, 0xba, 0x1c, 0xca);
 EXTERN_GUID(MFTranscodeContainerType_ASF, 0x430f6f6e, 0xb6bf, 0x4fc1, 0xa0, 0xbd, 0x9e, 0xe4, 0x6e, 0xee, 0x2a, 0xfb);
 EXTERN_GUID(MFTranscodeContainerType_MPEG4, 0xdc6cd05d, 0xb9d0, 0x40ef, 0xbd, 0x35, 0xfa, 0x62, 0x2c, 0x1a, 0xb2, 0x8a);
@@ -3460,9 +3454,7 @@ EXTERN_GUID(MFTranscodeContainerType_ADTS, 0x132fd27d, 0x0f02, 0x43de, 0xa3, 0x0
 EXTERN_GUID(MFTranscodeContainerType_MPEG2, 0xbfc2dbf9, 0x7bb4, 0x4f8f, 0xaf, 0xde, 0xe1, 0x12, 0xc4, 0x4b, 0xa8, 0x82);
 EXTERN_GUID(MFTranscodeContainerType_WAVE, 0x64c3453c, 0x0f26, 0x4741, 0xbe, 0x63, 0x87, 0xbd, 0xf8, 0xbb, 0x93, 0x5b);
 EXTERN_GUID(MFTranscodeContainerType_AVI, 0x7edfe8af, 0x402f, 0x4d76, 0xa3, 0x3c, 0x61, 0x9f, 0xd1, 0x57, 0xd0, 0xf1);
-#if (WINVER >= _WIN32_WINNT_WIN8)
 EXTERN_GUID(MFTranscodeContainerType_FMPEG4, 0x9ba876f1, 0x419f, 0x4b77, 0xa1, 0xe0, 0x35, 0x95, 0x9d, 0x9d, 0x40, 0x4);
-#endif /* (WINVER >= _WIN32_WINNT_WIN8) */
 EXTERN_GUID(MFTranscodeContainerType_AMR, 0x25d5ad3, 0x621a, 0x475b, 0x96, 0x4d, 0x66, 0xb1, 0xc8, 0x24, 0xf0, 0x79);
 typedef enum __WIDL_mfidl_generated_name_00000027 {
     MF_LICENSE_URL_UNTRUSTED = 0,
@@ -3584,7 +3576,6 @@ typedef enum MFSTREAMSINK_MARKER_TYPE {
 typedef enum MFTIMER_FLAGS {
     MFTIMER_RELATIVE = 0x1
 } MFTIMER_FLAGS;
-#if (WINVER >= 0x0601)
 typedef enum MFTOPOLOGY_DXVA_MODE {
     MFTOPOLOGY_DXVA_DEFAULT = 0,
     MFTOPOLOGY_DXVA_NONE = 1,
@@ -3604,7 +3595,6 @@ typedef struct _MFT_REGISTRATION_INFO {
     DWORD cOutTypes;
     MFT_REGISTER_TYPE_INFO *pOutTypes;
 } MFT_REGISTRATION_INFO;
-#endif /*(WINVER >= 0x0601)*/
 typedef struct _ASFFlatPicture {
   BYTE  bPictureType;
   DWORD dwDataLen;
@@ -6322,7 +6312,6 @@ static __WIDL_INLINE HRESULT IMFVideoSampleAllocator_AllocateSample(IMFVideoSamp
 
 #endif  /* __IMFVideoSampleAllocator_INTERFACE_DEFINED__ */
 
-#if WINVER >= _WIN32_WINNT_WIN7
 /*****************************************************************************
  * IMFVideoSampleAllocatorNotify interface
  */
@@ -6692,8 +6681,6 @@ static __WIDL_INLINE HRESULT IMFVideoSampleAllocatorEx_InitializeSampleAllocator
 
 #endif  /* __IMFVideoSampleAllocatorEx_INTERFACE_DEFINED__ */
 
-#endif /* WINVER >= _WIN32_WINNT_WIN7 */
-#if WINVER >= _WIN32_WINNT_WIN8
 typedef enum _MF_VIDEO_PROCESSOR_ROTATION {
     ROTATION_NONE = 0,
     ROTATION_NORMAL = 1
@@ -6835,7 +6822,6 @@ static __WIDL_INLINE HRESULT IMFVideoProcessorControl_SetConstrictionSize(IMFVid
 
 #endif  /* __IMFVideoProcessorControl_INTERFACE_DEFINED__ */
 
-#if WINVER >= _WIN32_WINNT_WINBLUE
 /*****************************************************************************
  * IMFVideoProcessorControl2 interface
  */
@@ -6986,14 +6972,12 @@ static __WIDL_INLINE HRESULT IMFVideoProcessorControl2_GetSupportedHardwareEffec
 
 #endif  /* __IMFVideoProcessorControl2_INTERFACE_DEFINED__ */
 
-#if WINVER >= _WIN32_WINNT_WIN10
 typedef enum _MFVideoSphericalFormat {
     MFVideoSphericalFormat_Unsupported = 0,
     MFVideoSphericalFormat_Equirectangular = 1,
     MFVideoSphericalFormat_CubeMap = 2,
     MFVideoSphericalFormat_3DMesh = 3
 } MFVideoSphericalFormat;
-#endif /* WINVER >= _WIN32_WINNT_WIN10 */
 #if NTDDI_VERSION >= NTDDI_WIN10_RS3
 EXTERN_GUID(MF_XVP_SAMPLE_LOCK_TIMEOUT, 0xaa4ddb29, 0x5134, 0x4363, 0xac, 0x72, 0x83, 0xec, 0x4b, 0xc1, 0x4, 0x26);
 typedef enum MFVideoSphericalProjectionMode {
@@ -7201,7 +7185,6 @@ static __WIDL_INLINE HRESULT IMFVideoProcessorControl3_SetOutputDevice(IMFVideoP
 #endif  /* __IMFVideoProcessorControl3_INTERFACE_DEFINED__ */
 
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_RS3 */
-#endif /* WINVER >= _WIN32_WINNT_WINBLUE */
 #if NTDDI_VERSION >= NTDDI_WIN10_VB
 /*****************************************************************************
  * IMFVideoRendererEffectControl interface
@@ -7280,8 +7263,7 @@ static __WIDL_INLINE HRESULT IMFVideoRendererEffectControl_OnAppServiceConnectio
 
 #endif  /* __IMFVideoRendererEffectControl_INTERFACE_DEFINED__ */
 
-#endif /* WINVER >= NTDDI_WIN10_VB */
-#endif /* WINVER >= _WIN32_WINNT_WIN8 */
+#endif /* NTDDI_VERSION >= NTDDI_WIN10_VB */
 HRESULT WINAPI MFCreate3GPMediaSink(IMFByteStream *pIByteStream,IMFMediaType *pVideoMediaType,IMFMediaType *pAudioMediaType,IMFMediaSink **ppIMediaSink);
 HRESULT WINAPI MFCreateAggregateSource(IMFCollection *pSourceCollection,IMFMediaSource **ppAggSource);
 
@@ -7331,7 +7313,6 @@ MFTIME WINAPI MFGetSystemTime(void);
 HRESULT WINAPI MFShutdownObject(IUnknown *pUnk);
 HRESULT WINAPI CreateNamedPropertyStore(INamedPropertyStore **ppStore);
 HRESULT WINAPI CreatePropertyStore(IPropertyStore **ppStore);
-#if (WINVER >= 0x0601)
 
 HRESULT WINAPI MFCreateTranscodeProfile(IMFTranscodeProfile **ppTranscodeProfile);
 HRESULT WINAPI MFCreateTranscodeSinkActivate(IMFActivate **ppActivate);
@@ -7339,7 +7320,6 @@ HRESULT WINAPI MFCreateTranscodeTopology(IMFMediaSource *pSrc,LPCWSTR pwszOutput
 HRESULT WINAPI MFEnumDeviceSources(IMFAttributes *pAttributes,IMFActivate ***pppSourceActivate,UINT32 *pcSourceActivate);
 HRESULT WINAPI MFGetTopoNodeCurrentType(IMFTopologyNode *pNode,DWORD dwStreamIndex,WINBOOL fOutput,IMFMediaType **ppType);
 HRESULT WINAPI MFTranscodeGetAudioOutputAvailableTypes(REFGUID guidSubType,DWORD dwMFTFlags,IMFAttributes *pCodecConfig,IMFCollection **ppAvailableTypes);
-#endif
 EXTERN_GUID(MFNETSOURCE_STATISTICS, 0x3cb1f274, 0x0505, 0x4c5d, 0xae, 0x71, 0x0a, 0x55, 0x63, 0x44, 0xef, 0xa1);
 EXTERN_GUID(MFNETSOURCE_STATISTICS_SERVICE, 0x3cb1f275, 0x0505, 0x4c5d, 0xae, 0x71, 0x0a, 0x55, 0x63, 0x44, 0xef, 0xa1);
 EXTERN_GUID(MF_ACTIVATE_CUSTOM_VIDEO_MIXER_CLSID, 0xba491360, 0xbe50, 0x451e, 0x95, 0xab, 0x6d, 0x4a, 0xcc, 0xc7, 0xda, 0xd8 );

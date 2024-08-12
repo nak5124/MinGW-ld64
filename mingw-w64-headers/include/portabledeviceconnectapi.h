@@ -8,8 +8,6 @@
 
 #include <objbase.h>
 
-#if (_WIN32_WINNT >= 0x0601)
-
 #ifndef __IConnectionRequestCallback_FWD_DEFINED__
 #define __IConnectionRequestCallback_FWD_DEFINED__
 typedef struct IConnectionRequestCallback ILocationReport;
@@ -38,6 +36,4 @@ DECLARE_INTERFACE_(IConnectionRequestCallback,IUnknown)
 #define IConnectionRequestCallback_OnComplete(This,hrStatus) (This)->lpVtbl->OnComplete(This,hrStatus)
 #endif /*COBJMACROS*/
 
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*__INC_PORTABLEDEVICECONNECTAPI__*/

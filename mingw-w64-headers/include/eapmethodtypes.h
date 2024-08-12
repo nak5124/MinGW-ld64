@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPMETHODTYPES
 #define _INC_EAPMETHODTYPES
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #ifdef __cplusplus
 extern "C" {
@@ -21,5 +20,4 @@ typedef struct tagEapPacket {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPMETHODTYPES*/

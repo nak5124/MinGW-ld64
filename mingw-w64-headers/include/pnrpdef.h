@@ -12,11 +12,7 @@
 #endif
 
 #if !defined (PNRP_USE_V1_API) && !defined (PNRP_USE_V2_API)
-#if _WIN32_WINNT >= 0x0600
 #define PNRP_USE_V2_API
-#else
-#define PNRP_USE_V1_API
-#endif
 #endif
 
 #define PNRP_MAX_ENDPOINT_ADDRESSES (10)

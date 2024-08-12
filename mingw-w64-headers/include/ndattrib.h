@@ -6,8 +6,6 @@
 #ifndef _INC_NDATTRIB
 #define _INC_NDATTRIB
 
-#if (_WIN32_WINNT >= 0x0600)
-
 /* In ndhelper.idl
 typedef struct tagDIAG_SOCKADDR {
   USHORT family;
@@ -141,9 +139,6 @@ typedef struct tagHELPER_ATTRIBUTE {
 }
 #endif
 
-
-#if (_WIN32_WINNT >= 0x0601)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -170,10 +165,4 @@ typedef struct tagRootCauseInfo {
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
-
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-
 #endif /*_INC_NDATTRIB*/
-

@@ -28,10 +28,8 @@ extern "C" {
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
   WINBASEAPI WINBOOL WINAPI GetStringTypeExW (LCID Locale, DWORD dwInfoType, LPCWCH lpSrcStr, int cchSrc, LPWORD lpCharType);
-#if WINVER >= 0x0600
   WINBASEAPI int WINAPI CompareStringEx (LPCWSTR lpLocaleName, DWORD dwCmpFlags, LPCWCH lpString1, int cchCount1, LPCWCH lpString2, int cchCount2, LPNLSVERSIONINFO lpVersionInformation, LPVOID lpReserved, LPARAM lParam);
   WINBASEAPI int WINAPI CompareStringOrdinal (LPCWCH lpString1, int cchCount1, LPCWCH lpString2, int cchCount2, WINBOOL bIgnoreCase);
-#endif
 
 #ifdef UNICODE
 #define GetStringTypeEx GetStringTypeExW

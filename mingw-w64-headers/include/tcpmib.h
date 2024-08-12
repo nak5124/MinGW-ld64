@@ -10,8 +10,6 @@
 #define ANY_SIZE 1
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -80,6 +78,5 @@ typedef struct _MIB_TCPTABLE2 {
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /*_INC_TCPMIB*/

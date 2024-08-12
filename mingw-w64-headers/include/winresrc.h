@@ -7,7 +7,7 @@
 #define _WINRESRC_
 
 #ifndef WINVER
-#define WINVER 0x0502
+#define WINVER 0x0A00
 #endif
 
 #ifndef _WIN32_IE
@@ -19,7 +19,7 @@
 #endif
 
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0502
+#define _WIN32_WINNT 0x0A00
 #endif
 
 #include <winuser.rh>

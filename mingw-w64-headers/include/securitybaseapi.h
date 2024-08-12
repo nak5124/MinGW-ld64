@@ -46,18 +46,14 @@ extern "C" {
   WINADVAPI WINBOOL WINAPI AddAuditAccessAceEx (PACL pAcl, DWORD dwAceRevision, DWORD AceFlags, DWORD dwAccessMask, PSID pSid, WINBOOL bAuditSuccess, WINBOOL bAuditFailure);
   WINADVAPI WINBOOL WINAPI AddAuditAccessObjectAce (PACL pAcl, DWORD dwAceRevision, DWORD AceFlags, DWORD AccessMask, GUID *ObjectTypeGuid, GUID *InheritedObjectTypeGuid, PSID pSid, WINBOOL bAuditSuccess, WINBOOL bAuditFailure);
 
-#if _WIN32_WINNT >= 0x0602
   WINADVAPI WINBOOL WINAPI AddResourceAttributeAce (PACL pAcl, DWORD dwAceRevision, DWORD AceFlags, DWORD AccessMask, PSID pSid, PCLAIM_SECURITY_ATTRIBUTES_INFORMATION pAttributeInfo, PDWORD pReturnLength);
   WINADVAPI WINBOOL WINAPI AddScopedPolicyIDAce (PACL pAcl, DWORD dwAceRevision, DWORD AceFlags, DWORD AccessMask, PSID pSid);
-#endif
 
   WINADVAPI WINBOOL WINAPI AreAllAccessesGranted (DWORD GrantedAccess, DWORD DesiredAccess);
   WINADVAPI WINBOOL WINAPI AreAnyAccessesGranted (DWORD GrantedAccess, DWORD DesiredAccess);
 
-#if _WIN32_WINNT >= 0x0602
   WINADVAPI WINBOOL APIENTRY CheckTokenCapability (HANDLE TokenHandle, PSID CapabilitySidToCheck, PBOOL HasCapability);
   WINADVAPI WINBOOL APIENTRY GetAppContainerAce (PACL Acl, DWORD StartingAceIndex, PVOID *AppContainerAce, DWORD *AppContainerAceIndex);
-#endif
 
   WINADVAPI WINBOOL WINAPI ConvertToAutoInheritPrivateObjectSecurity (PSECURITY_DESCRIPTOR ParentDescriptor, PSECURITY_DESCRIPTOR CurrentSecurityDescriptor, PSECURITY_DESCRIPTOR *NewSecurityDescriptor, GUID *ObjectType, BOOLEAN IsDirectoryObject, PGENERIC_MAPPING GenericMapping);
   WINADVAPI WINBOOL WINAPI CreatePrivateObjectSecurity (PSECURITY_DESCRIPTOR ParentDescriptor, PSECURITY_DESCRIPTOR CreatorDescriptor, PSECURITY_DESCRIPTOR *NewDescriptor, WINBOOL IsDirectoryObject, HANDLE Token, PGENERIC_MAPPING GenericMapping);
@@ -106,9 +102,7 @@ extern "C" {
 #define PrivilegedServiceAuditAlarm PrivilegedServiceAuditAlarmW
 #endif
 
-#if _WIN32_WINNT >= 0x0600
   WINADVAPI VOID WINAPI QuerySecurityAccessMask (SECURITY_INFORMATION SecurityInformation, LPDWORD DesiredAccess);
-#endif
 
   WINADVAPI WINBOOL WINAPI RevertToSelf (VOID);
   WINADVAPI WINBOOL WINAPI SetAclInformation (PACL pAcl, LPVOID pAclInformation, DWORD nAclInformationLength, ACL_INFORMATION_CLASS dwAclInformationClass);
@@ -120,21 +114,15 @@ extern "C" {
   WINADVAPI WINBOOL WINAPI SetPrivateObjectSecurity (SECURITY_INFORMATION SecurityInformation, PSECURITY_DESCRIPTOR ModificationDescriptor, PSECURITY_DESCRIPTOR *ObjectsSecurityDescriptor, PGENERIC_MAPPING GenericMapping, HANDLE Token);
   WINADVAPI WINBOOL WINAPI SetPrivateObjectSecurityEx (SECURITY_INFORMATION SecurityInformation, PSECURITY_DESCRIPTOR ModificationDescriptor, PSECURITY_DESCRIPTOR *ObjectsSecurityDescriptor, ULONG AutoInheritFlags, PGENERIC_MAPPING GenericMapping, HANDLE Token);
 
-#if _WIN32_WINNT >= 0x0600
   WINADVAPI VOID WINAPI SetSecurityAccessMask (SECURITY_INFORMATION SecurityInformation, LPDWORD DesiredAccess);
-#endif
 
-#if _WIN32_WINNT >= 0x0602
   WINADVAPI WINBOOL WINAPI SetCachedSigningLevel (PHANDLE SourceFiles, ULONG SourceFileCount, ULONG Flags, HANDLE TargetFile);
   WINADVAPI WINBOOL WINAPI GetCachedSigningLevel (HANDLE File, PULONG Flags, PULONG SigningLevel, PUCHAR Thumbprint, PULONG ThumbprintSize, PULONG ThumbprintAlgorithm);
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
   WINADVAPI WINBOOL APIENTRY CheckTokenMembership (HANDLE TokenHandle, PSID SidToCheck, PBOOL IsMember);
-#if _WIN32_WINNT >= 0x0602
   WINADVAPI WINBOOL APIENTRY CheckTokenMembershipEx (HANDLE TokenHandle, PSID SidToCheck, DWORD Flags, PBOOL IsMember);
-#endif
   WINADVAPI WINBOOL WINAPI AddAce (PACL pAcl, DWORD dwAceRevision, DWORD dwStartingAceIndex, LPVOID pAceList, DWORD nAceListLength);
   WINADVAPI WINBOOL WINAPI AddAccessAllowedAce (PACL pAcl, DWORD dwAceRevision, DWORD AccessMask, PSID pSid);
   WINADVAPI WINBOOL WINAPI AddAccessAllowedAceEx (PACL pAcl, DWORD dwAceRevision, DWORD AceFlags, DWORD AccessMask, PSID pSid);
@@ -183,15 +171,11 @@ extern "C" {
   WINADVAPI DWORD WINAPI SetSecurityDescriptorRMControl (PSECURITY_DESCRIPTOR SecurityDescriptor, PUCHAR RMControl);
   WINADVAPI WINBOOL WINAPI SetSecurityDescriptorSacl (PSECURITY_DESCRIPTOR pSecurityDescriptor, WINBOOL bSaclPresent, PACL pSacl, WINBOOL bSaclDefaulted);
   WINADVAPI WINBOOL WINAPI SetTokenInformation (HANDLE TokenHandle, TOKEN_INFORMATION_CLASS TokenInformationClass, LPVOID TokenInformation, DWORD TokenInformationLength);
-#if _WIN32_WINNT >= 0x0600
   WINADVAPI WINBOOL WINAPI AddMandatoryAce (PACL pAcl, DWORD dwAceRevision, DWORD AceFlags, DWORD MandatoryPolicy, PSID pLabelSid);
 #endif
-#endif
 
-#if _WIN32_WINNT >= 0x0A00
   WINADVAPI LONG WINAPI CveEventWrite (PCWSTR CveId, PCWSTR AdditionalDetails);
   WINADVAPI WINBOOL WINAPI DeriveCapabilitySidsFromName(LPCWSTR CapName, PSID** CapabilityGroupSids, DWORD* CapabilityGroupSidCount, PSID** CapabilitySids, DWORD* CapabilitySidCount);
-#endif
 
 #ifdef __cplusplus
 }

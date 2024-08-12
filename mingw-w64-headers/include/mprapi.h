@@ -197,7 +197,6 @@ extern "C" {
     DWORD dwVpnStrategy;
   } MPR_INTERFACE_2,*PMPR_INTERFACE_2;
 
-#if (_WIN32_WINNT >= 0x0600)
   typedef struct _MPR_INTERFACE_3 {
     WCHAR                   wszInterfaceName[MAX_INTERFACE_NAME_LEN+1];
     HANDLE                  hInterface;
@@ -241,7 +240,6 @@ extern "C" {
     IN6_ADDR                ipv6addrDnsAlt;
     IN6_ADDR *              ipv6addr;
   } MPR_INTERFACE_3, *PMPR_INTERFACE_3;
-#endif
 
   typedef struct _MPR_DEVICE_0 {
     WCHAR szDeviceType[MPR_MaxDeviceType + 1 ];
@@ -623,7 +621,6 @@ extern "C" {
 
 #define MprInfoBlockExists(h,t) (MprInfoBlockFind((h),(t),NULL,NULL,NULL)==NO_ERROR)
 
-#if (_WIN32_WINNT >= 0x0600)
 typedef enum _RAS_QUARANTINE_STATE {
   RAS_QUAR_STATE_NORMAL,
   RAS_QUAR_STATE_QUARANTINE,
@@ -724,9 +721,7 @@ DWORD WINAPI MprConfigFilterSetInfo(
   LPBYTE lpBuffer
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
-#if (_WIN32_WINNT >= 0x0601)
 #define MPRAPI_RAS_CONNECTION_OBJECT_REVISION_1 0x01
 #define MPRAPI_MPR_SERVER_OBJECT_REVISION_1 0x01
 #define MPRAPI_MPR_SERVER_SET_CONFIG_OBJECT_REVISION_1 0x01
@@ -991,7 +986,6 @@ DWORD APIENTRY MprAdminServerSetInfoEx(
   MPR_SERVER_SET_CONFIG_EX *pServerInfo
 );
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }

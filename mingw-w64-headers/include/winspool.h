@@ -1348,7 +1348,6 @@ extern "C" {
 #define SPLDS_PRINTER_LOCATIONS TEXT("printerLocations")
 #define SPLDS_PRINTER_MODEL TEXT("printerModel")
 
-#if (_WIN32_WINNT >= 0x0600)
 #define AddPrinterConnection2 __MINGW_NAME_AW(AddPrinterConnection2)
 #define DeletePrinterDriverPackage __MINGW_NAME_AW(DeletePrinterDriverPackage)
 #define DocumentEvent __MINGW_NAME_AW(DocumentEvent)
@@ -1667,7 +1666,6 @@ HRESULT WINAPI UploadPrinterDriverPackageW(
 
 #define UploadPrinterDriverPackage __MINGW_NAME_AW(UploadPrinterDriverPackage)
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

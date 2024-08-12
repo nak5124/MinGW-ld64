@@ -227,8 +227,6 @@ extern "C" {
 
   INT WSAAPI NSPStartup(LPGUID lpProviderId,LPNSP_ROUTINE lpnspRoutines);
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef int (WSAAPI *LPNSPV2CLEANUP)(
   LPGUID lpProviderId,
   LPVOID pvClientSessionArg
@@ -429,7 +427,6 @@ int WSPAPI WSCSetProviderInfo32(
 
 #endif /* _WIN64*/
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

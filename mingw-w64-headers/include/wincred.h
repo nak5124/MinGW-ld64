@@ -306,7 +306,6 @@ extern "C" {
   CREDUIAPI DWORD WINAPI CredUIStoreSSOCredW (PCWSTR pszRealm,PCWSTR pszUsername,PCWSTR pszPassword,WINBOOL bPersist);
   CREDUIAPI DWORD WINAPI CredUIReadSSOCredW (PCWSTR pszRealm,PWSTR *ppszUsername);
 
-#if (_WIN32_WINNT >= 0x0600)
 #define CredFindBestCredential __MINGW_NAME_AW(CredFindBestCredential)
 #define CredIsProtected __MINGW_NAME_AW(CredIsProtected)
 #define CredPackAuthenticationBuffer __MINGW_NAME_AW(CredPackAuthenticationBuffer)
@@ -452,7 +451,6 @@ WINADVAPI WINBOOL WINAPI CredUnprotectW(
   DWORD *pcchMaxChars
 );
 
-#endif /* (_WIN32_WINNT >= 0x0600) */
 
 #ifdef __cplusplus
 }

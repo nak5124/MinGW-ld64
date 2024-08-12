@@ -46,9 +46,7 @@ interface IWSDDeviceHost : IUnknown {
 };
 
 cpp_quote("HRESULT WINAPI WSDCreateDeviceHost(LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDDeviceHost **ppDeviceHost);")
-cpp_quote("#if WINVER >= 0x601")
 cpp_quote("HRESULT WINAPI WSDCreateDeviceHost2(LPCWSTR pszLocalId, IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDDeviceHost **ppDeviceHost);")
-cpp_quote("#endif")
 cpp_quote("HRESULT WINAPI WSDCreateDeviceHostAdvanced(LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDAddress** ppHostAddresses, DWORD dwHostAddressCount, IWSDDeviceHost **ppDeviceHost);")
 
 cpp_quote("#endif")

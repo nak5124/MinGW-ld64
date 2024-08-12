@@ -36,10 +36,6 @@ extern "C" {
 #define TCP_BSDURGENT 0x7000
 
 #define SIO_UDP_CONNRESET _WSAIOW(IOC_VENDOR,12)
-#if (_WIN32_WINNT < 0x0600) && (_WIN32_WINNT >= 0x0501)
-#define SIO_SOCKET_CLOSE_NOTIFY _WSAIOW(IOC_VENDOR,13)
-#endif /* >= XP && < VISTA */
-#if (_WIN32_WINNT >= 0x0600)
 #define SIO_BSP_HANDLE _WSAIOR(IOC_WS2,27)
 #define SIO_BSP_HANDLE_SELECT _WSAIOR(IOC_WS2,28)
 #define SIO_BSP_HANDLE_POLL _WSAIOR(IOC_WS2,29)
@@ -49,7 +45,6 @@ extern "C" {
 #define SIO_EXT_SENDMSG _WSAIORW(IOC_WS2,32)
 
 #define SIO_BASE_HANDLE _WSAIOR(IOC_WS2,34)
-#endif /* _WIN32_WINNT >= 0x0600 */
 
 #ifndef __MSWSOCK_WS1_SHARED
   int WINAPI WSARecvEx(SOCKET s,char *buf,int len,int *flags);
@@ -193,7 +188,6 @@ extern "C" {
 
 #define WSAID_WSARECVMSG {0xf689d7c8,0x6f1f,0x436b,{0x8a,0x53,0xe5,0x4f,0xe3,0x51,0xc3,0x22}}
 
-#if(_WIN32_WINNT >= 0x0600)
   typedef struct {
     int result;
     ULONG fds;
@@ -219,8 +213,6 @@ extern "C" {
 					LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
 
 #define WSAID_WSASENDMSG {0xa441e712,0x754f,0x43ca,{0x84,0xa7,0x0d,0xee,0x44,0xcf,0x60,0x6d}}
-
-#endif /* (_WIN32_WINNT >= 0x0600) */
 
 #ifdef __cplusplus
 }

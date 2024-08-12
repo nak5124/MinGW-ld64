@@ -46,10 +46,8 @@ cpp_quote("EXTERN_GUID(MF_SD_ASF_METADATA_DEVICE_CONFORMANCE_TEMPLATE, 0x245e929
 cpp_quote("EXTERN_GUID(MF_PD_ASF_INFO_HAS_AUDIO, 0x80e62295, 0x2296, 0x4a44, 0xb3, 0x1c, 0xd1, 0x3, 0xc6, 0xfe, 0xd2, 0x3c);")
 cpp_quote("EXTERN_GUID(MF_PD_ASF_INFO_HAS_VIDEO, 0x80e62296, 0x2296, 0x4a44, 0xb3, 0x1c, 0xd1, 0x3, 0xc6, 0xfe, 0xd2, 0x3c);")
 cpp_quote("EXTERN_GUID(MF_PD_ASF_INFO_HAS_NON_AUDIO_VIDEO, 0x80e62297, 0x2296, 0x4a44, 0xb3, 0x1c, 0xd1, 0x3, 0xc6, 0xfe, 0xd2, 0x3c);")
-cpp_quote("#if WINVER >= 0x0601")
 cpp_quote("EXTERN_GUID(MFASFINDEXER_TYPE_TIMECODE, 0x49815231, 0x6bad, 0x44fd, 0x81, 0xa, 0x3f, 0x60, 0x98, 0x4e, 0xc7, 0xfd);")
 cpp_quote("EXTERN_GUID(MF_PD_ASF_LANGLIST_LEGACYORDER, 0xf23de43d, 0x9977, 0x460d, 0xa6, 0xec, 0x32, 0x93, 0x7f, 0x16, 0xf, 0x7d);")
-cpp_quote("#endif")
 cpp_quote("")
 cpp_quote("EXTERN_GUID(MFASFMutexType_Bitrate, 0x72178C2C, 0xE45B, 0x11D5, 0xBC, 0x2A, 0x00, 0xB0, 0xD0, 0xF3, 0xF4, 0xAB);")
 cpp_quote("EXTERN_GUID(MFASFMutexType_Language, 0x72178C2B, 0xE45B, 0x11D5, 0xBC, 0x2A, 0x00, 0xB0, 0xD0, 0xF3, 0xF4, 0xAB);")
@@ -95,9 +93,7 @@ typedef enum MFASF_SPLITTERFLAGS {
 
 typedef enum ASF_STATUSFLAGS {
   ASF_STATUSFLAGS_INCOMPLETE = 0x1
-#if WINVER >= 0x0601
   ,ASF_STATUSFLAGS_NONFATAL_ERROR = 0x2
-#endif
 } ASF_STATUSFLAGS;
 
 typedef enum MFASF_MULTIPLEXERFLAGS {
@@ -242,13 +238,11 @@ interface IMFASFStreamSelector : IUnknown {
   HRESULT SetStreamSelectorFlags ([in] DWORD dwStreamSelectorFlags);
 };
 
-cpp_quote("#if WINVER >= 0x0601")
 [object, uuid (3d1ff0ea-679a-4190-8d46-7fa69e8c7e15)]
 interface IMFDRMNetHelper : IUnknown {
   HRESULT ProcessLicenseRequest ([in, size_is (cbLicenseRequest)] BYTE *pLicenseRequest,[in] DWORD cbLicenseRequest,[out, size_is (,*pcbLicenseResponse)] BYTE **ppLicenseResponse,[out] DWORD *pcbLicenseResponse,[out] BSTR *pbstrKID);
   HRESULT GetChainedLicenseResponse ([out, size_is (,*pcbLicenseResponse)] BYTE **ppLicenseResponse,[out] DWORD *pcbLicenseResponse);
 };
-cpp_quote("#endif")
 
 [object, local, uuid (D267BF6A-028b-4e0d-903d-43f0ef82d0d4)]
 interface IMFASFProfile : IMFAttributes {

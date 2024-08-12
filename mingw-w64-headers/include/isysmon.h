@@ -5,7 +5,6 @@
  */
 #ifndef _INC_ISYSMON
 #define _INC_ISYSMON
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,5 +26,4 @@ typedef enum _SysmonBatchReason {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_ISYSMON*/

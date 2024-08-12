@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WDSPXE
 #define _INC_WDSPXE
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -135,5 +134,4 @@ DWORD WINAPIV PxeTrace(HANDLE hProvider,PXE_SEVERITY Severity,LPCWSTR pszFormat,
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WDSPXE*/

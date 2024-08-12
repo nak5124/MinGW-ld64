@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WDSBP
 #define _INC_WDSBP
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,5 +61,4 @@ HRESULT WDSBPAPI WdsBpQueryOption(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WDSBP*/

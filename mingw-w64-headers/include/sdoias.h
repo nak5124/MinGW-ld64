@@ -691,7 +691,6 @@ extern "C" {
 #endif
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
 typedef enum _IDENTITY_TYPE {
   IAS_IDENTITY_NO_DEFAULT   = 1 
 } IDENTITY_TYPE;
@@ -731,7 +730,6 @@ typedef enum _SHVTEMPLATEPROPERTIES {
   PROPERTY_SHV_LIST 
 } SHVTEMPLATEPROPERTIES;
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

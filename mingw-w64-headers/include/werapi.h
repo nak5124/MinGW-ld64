@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WERAPI
 #define _INC_WERAPI
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -341,7 +340,6 @@ HRESULT WINAPI WerRegisterAppLocalDump(PCWSTR localAppDataRelativePath);
 HRESULT WINAPI WerUnregisterAppLocalDump(void);
 HRESULT WINAPI WerSetMaxProcessHoldMilliseconds(DWORD dwMilliseconds);
 
-#if (_WIN32_WINNT >= 0x0601)
 typedef struct _WER_RUNTIME_EXCEPTION_INFORMATION {
   DWORD            dwSize;
   HANDLE           hProcess;
@@ -390,8 +388,6 @@ HRESULT WINAPI WerUnregisterRuntimeExceptionModule(
   PCWSTR pwszOutOfProcessCallbackDll,
   PVOID pContext
 );
-
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 typedef enum _REPORT_STORE_TYPES {
   E_STORE_USER_ARCHIVE = 0,
@@ -471,5 +467,4 @@ HRESULT WINAPI WerStoreUploadReport(HREPORTSTORE hReportStore, PCWSTR pszReportK
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WERAPI*/

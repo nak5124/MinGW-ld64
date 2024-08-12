@@ -12,8 +12,6 @@
 extern "C" {
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00
-
 #ifndef WINAPI
 #define WINAPI __stdcall
 #endif
@@ -227,9 +225,7 @@ extern "C" {
     ULONGLONG cbData;
     ULONG dwFlags;
   } BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO,*PBCRYPT_AUTHENTICATED_CIPHER_MODE_INFO;
-#endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP) || _WIN32_WINNT >= 0x0A00
   typedef struct _BCryptBuffer {
     ULONG cbBuffer;
     ULONG BufferType;
@@ -241,9 +237,6 @@ extern "C" {
     ULONG cBuffers;
     PBCryptBuffer pBuffers;
   } BCryptBufferDesc,*PBCryptBufferDesc;
-#endif
-
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00
 
 #define BCRYPT_PUBLIC_KEY_BLOB L"PUBLICBLOB"
 #define BCRYPT_PRIVATE_KEY_BLOB L"PRIVATEBLOB"
@@ -795,7 +788,6 @@ typedef PVOID BCRYPT_HANDLE;
   NTSTATUS WINAPI BCryptDeriveKeyPBKDF2 (BCRYPT_ALG_HANDLE hPrf, PUCHAR pbPassword, ULONG cbPassword, PUCHAR pbSalt, ULONG cbSalt, ULONGLONG cIterations, PUCHAR pbDerivedKey, ULONG cbDerivedKey, ULONG dwFlags);
   NTSTATUS WINAPI BCryptResolveProviders (LPCWSTR pszContext, ULONG dwInterface, LPCWSTR pszFunction, LPCWSTR pszProvider, ULONG dwMode, ULONG dwFlags, ULONG *pcbBuffer, PCRYPT_PROVIDER_REFS *ppBuffer);
   NTSTATUS WINAPI BCryptGetFipsAlgorithmMode (BOOLEAN *pfEnabled);
-#endif
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 #ifndef KERNEL_MODE_CNG
   NTSTATUS WINAPI BCryptQueryProviderRegistration (LPCWSTR pszProvider, ULONG dwMode, ULONG dwInterface, ULONG *pcbBuffer, PCRYPT_PROVIDER_REG *ppBuffer);

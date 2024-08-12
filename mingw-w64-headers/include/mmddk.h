@@ -227,7 +227,6 @@ typedef struct midiopendesc_tag {
 #define MODM_CACHEPATCHES 12
 #define MODM_CACHEDRUMPATCHES 13
 
-#if WINVER >= 0x400
 #define MODM_STRMDATA 14
 #define MODM_GETPOS 17
 #define MODM_PAUSE 18
@@ -236,7 +235,6 @@ typedef struct midiopendesc_tag {
 #define MODM_PROPERTIES 21
 #define MODM_PREFERRED 22
 #define MODM_RECONFIGURE (MODM_USER + 0x0768)
-#endif
 
 #define MIDM_GETNUMDEVS 53
 #define MIDM_GETDEVCAPS 54

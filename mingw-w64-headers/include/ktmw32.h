@@ -8,7 +8,6 @@
 
 #include <ktmtypes.h>
 
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -57,6 +56,5 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-#endif /* (_WIN32_WINNT >= 0x0600) */
 
 #endif /*_INC_KTMW32*/

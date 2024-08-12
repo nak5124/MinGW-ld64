@@ -10,8 +10,6 @@
 extern "C" {
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef enum _CASetupProperty {
   ENUM_SETUPPROP_INVALID              = -1,
   ENUM_SETUPPROP_CATYPE               = 0,
@@ -49,8 +47,6 @@ typedef enum _MSCEPSetupProperty {
   ENUM_CEPSETUPPROP_MSCEPURL                 = 12,
   ENUM_CEPSETUPPROP_CHALLENGEURL             = 13
 } MSCEPSetupProperty;
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

@@ -98,7 +98,6 @@ extern "C" {
   __MINGW_TYPEDEF_AW(PWIN32_FIND_DATA)
   __MINGW_TYPEDEF_AW(LPWIN32_FIND_DATA)
 
-#if _WIN32_WINNT >= 0x0400
   typedef enum _FINDEX_INFO_LEVELS {
     FindExInfoStandard,
     FindExInfoBasic,
@@ -117,15 +116,12 @@ extern "C" {
     FindExSearchLimitToDevices,
     FindExSearchMaxSearchOp
   } FINDEX_SEARCH_OPS;
-#endif
 
-#if _WIN32_WINNT >= 0x0400
 #if NTDDI_VERSION >= 0x0A000004
   typedef enum _READ_DIRECTORY_NOTIFY_INFORMATION_CLASS {
     ReadDirectoryNotifyInformation = 1,
     ReadDirectoryNotifyExtendedInformation = 2
   } READ_DIRECTORY_NOTIFY_INFORMATION_CLASS, *PREAD_DIRECTORY_NOTIFY_INFORMATION_CLASS;
-#endif
 #endif
 
   typedef enum _GET_FILEEX_INFO_LEVELS {
@@ -133,7 +129,6 @@ extern "C" {
     GetFileExMaxInfoLevel
   } GET_FILEEX_INFO_LEVELS;
 
-#if _WIN32_WINNT >= 0x0600
   typedef enum _FILE_INFO_BY_HANDLE_CLASS {
     FileBasicInfo /* is zero? */,
     FileStandardInfo,
@@ -151,13 +146,11 @@ extern "C" {
     FileRemoteProtocolInfo,
     FileFullDirectoryInfo,
     FileFullDirectoryRestartInfo,
-#if _WIN32_WINNT >= 0x0602
     FileStorageInfo,
     FileAlignmentInfo,
     FileIdInfo,
     FileIdExtdDirectoryInfo,
     FileIdExtdDirectoryRestartInfo,
-#endif
 #if NTDDI_VERSION >= 0x0A000002
     FileDispositionInfoEx,
     FileRenameInfoEx,
@@ -168,7 +161,6 @@ extern "C" {
 #endif
     MaximumFileInfoByHandleClass
   } FILE_INFO_BY_HANDLE_CLASS, *PFILE_INFO_BY_HANDLE_CLASS;
-#endif
 
   typedef RTL_CRITICAL_SECTION CRITICAL_SECTION;
   typedef PRTL_CRITICAL_SECTION PCRITICAL_SECTION;

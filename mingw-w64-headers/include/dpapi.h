@@ -14,8 +14,6 @@
 extern "C" {
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
-
 #define CRYPTPROTECT_DEFAULT_PROVIDER { 0xdf9d8cd0, 0x1501, 0x11d1,{ 0x8c, 0x7a, 0x00, 0xc0, 0x4f, 0xc2, 0x97, 0xeb } }
 
 #define szFORCE_KEY_PROTECTION "ForceKeyProtection"
@@ -78,8 +76,6 @@ extern "C" {
 #endif
 #if NTDDI_VERSION >= 0x06000000
   DPAPI_IMP WINBOOL WINAPI CryptUpdateProtectedState (PSID pOldSid, LPCWSTR pwszOldPassword, DWORD dwFlags, DWORD *pdwSuccessCount, DWORD *pdwFailureCount);
-#endif
-
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)

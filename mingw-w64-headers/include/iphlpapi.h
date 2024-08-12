@@ -17,8 +17,6 @@ extern "C" {
 #include <iptypes.h>
 #include <tcpestats.h>
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00
-
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 
   DWORD WINAPI GetNumberOfInterfaces (PDWORD pdwNumIf);
@@ -174,7 +172,6 @@ extern "C" {
 #include <netioapi.h>
 #endif
 
-#endif /* WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00 */
 
 #ifdef __cplusplus
 }

@@ -139,9 +139,7 @@ typedef struct in6_addr RASIPV6ADDR;
     WCHAR szDomain[DNLEN + 1 ];
     DWORD dwSubEntry;
     ULONG_PTR dwCallbackId;
-#if _WIN32_WINNT >= 0x0601
     DWORD dwIfIndex;
-#endif
   };
 
 #define RASDIALPARAMSA struct tagRASDIALPARAMSA
@@ -155,9 +153,7 @@ typedef struct in6_addr RASIPV6ADDR;
     CHAR szDomain[DNLEN + 1 ];
     DWORD dwSubEntry;
     ULONG_PTR dwCallbackId;
-#if _WIN32_WINNT >= 0x0601
     DWORD dwIfIndex;
-#endif
   };
 
 #define RASDIALPARAMS __MINGW_NAME_AW(RASDIALPARAMS)
@@ -991,8 +987,6 @@ typedef struct in6_addr RASIPV6ADDR;
 #define RasFreeEapUserIdentity __MINGW_NAME_AW(RasFreeEapUserIdentity)
 #define RasDeleteSubEntry __MINGW_NAME_AW(RasDeleteSubEntry)
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef struct _tagRasNapState {
   DWORD          dwSize;
   DWORD          dwFlags;
@@ -1014,9 +1008,6 @@ DWORD rasgetnapstatus(
   LPRASNAPSTATE pNapState
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
-
-#if (_WIN32_WINNT >= 0x0601)
 typedef enum  {
   RASAPIVERSION_500   = 1,
   RASAPIVERSION_501   = 2,
@@ -1040,7 +1031,6 @@ typedef struct _RASUPDATECONN {
   RASTUNNELENDPOINT  localEndPoint;
   RASTUNNELENDPOINT  remoteEndPoint;
 } RASUPDATECONN, *LPRASUPDATECONN;
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }

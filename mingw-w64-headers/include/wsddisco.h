@@ -1130,10 +1130,8 @@ static __WIDL_INLINE HRESULT IWSDiscoveryPublisher_GetXMLContext(IWSDiscoveryPub
 
 HRESULT WINAPI WSDCreateDiscoveryProvider(IWSDXMLContext *pContext, IWSDiscoveryProvider **ppProvider);
 HRESULT WINAPI WSDCreateDiscoveryPublisher(IWSDXMLContext* pContext, IWSDiscoveryPublisher **ppPublisher);
-#if WINVER >= 0x601
 HRESULT WINAPI WSDCreateDiscoveryProvider2(IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDiscoveryProvider **ppProvider);
 HRESULT WINAPI WSDCreateDiscoveryPublisher2(IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDiscoveryPublisher **ppPublisher);
-#endif
 #endif
 /* Begin additional prototypes for all interfaces */
 

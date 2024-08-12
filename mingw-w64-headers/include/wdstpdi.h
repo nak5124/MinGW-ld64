@@ -6,7 +6,6 @@
 
 #ifndef _INC_WDSTPDI
 #define _INC_WDSTPDI
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -93,5 +92,4 @@ HRESULT WDSMCSAPI WdsTransportServerTrace(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WDSTPDI*/

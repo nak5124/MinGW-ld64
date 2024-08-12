@@ -6,7 +6,6 @@
 #ifndef _INC_CSCAPI
 #define _INC_CSCAPI
 #include <windows.h>
-#if (_WIN32_WINNT >= 0x0600)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -23,5 +22,4 @@ DWORD OfflineFilesQueryStatus(
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_CSCAPI*/

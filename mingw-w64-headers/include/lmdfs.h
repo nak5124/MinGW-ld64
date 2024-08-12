@@ -187,7 +187,6 @@ extern "C" {
     DFS_TARGET_PRIORITY TargetPriority;
   } DFS_INFO_106,*PDFS_INFO_106,*LPDFS_INFO_106;
 
-#if (_WIN32_WINNT >= 0x0600)
 #define DFS_NAMESPACE_CAPABILITY_ABDE 0x0000000000000001
 
   typedef enum _DFS_NAMESPACE_VERSION_ORIGIN {
@@ -279,7 +278,6 @@ NET_API_STATUS WINAPI NetShareDelEx(
   LPBYTE buf
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
   typedef struct _DFS_INFO_200 {
     LPWSTR FtDfsName;

@@ -38,12 +38,8 @@ extern "C" {
   WINBASEAPI VOID WINAPI GetSystemTimeAsFileTime (LPFILETIME lpSystemTimeAsFileTime);
   WINBASEAPI VOID WINAPI GetLocalTime (LPSYSTEMTIME lpSystemTime);
   WINBASEAPI VOID WINAPI GetNativeSystemInfo (LPSYSTEM_INFO lpSystemInfo);
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI ULONGLONG WINAPI GetTickCount64 (VOID);
 #endif
-#endif
-
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
 
   typedef struct _MEMORYSTATUSEX {
     DWORD dwLength;
@@ -63,8 +59,6 @@ extern "C" {
   WINBASEAPI VOID WINAPI GetSystemTimePreciseAsFileTime (LPFILETIME lpSystemTimeAsFileTime);
   WINBASEAPI WINBOOL WINAPI GetVersionExA (LPOSVERSIONINFOA lpVersionInformation);
   WINBASEAPI WINBOOL WINAPI GetVersionExW (LPOSVERSIONINFOW lpVersionInformation);
-
-#endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
   typedef enum _COMPUTER_NAME_FORMAT {
@@ -92,9 +86,7 @@ extern "C" {
   WINBASEAPI WINBOOL WINAPI SetComputerNameExW (COMPUTER_NAME_FORMAT NameType, LPCWSTR lpBuffer);
   WINBASEAPI WINBOOL WINAPI SetSystemTime (CONST SYSTEMTIME *lpSystemTime);
   NTSYSAPI ULONGLONG NTAPI VerSetConditionMask (ULONGLONG ConditionMask, ULONG TypeMask, UCHAR Condition);
-#if _WIN32_WINNT >= 0x0601
   WINBASEAPI WINBOOL WINAPI GetOsSafeBootMode (PDWORD Flags);
-#endif
 
 #define GetSystemDirectory __MINGW_NAME_AW(GetSystemDirectory)
 #define GetWindowsDirectory __MINGW_NAME_AW(GetWindowsDirectory)
@@ -115,12 +107,8 @@ extern "C" {
   WINBASEAPI WINBOOL WINAPI GetLogicalProcessorInformation (PSYSTEM_LOGICAL_PROCESSOR_INFORMATION Buffer, PDWORD ReturnedLength);
   WINBASEAPI UINT WINAPI EnumSystemFirmwareTables (DWORD FirmwareTableProviderSignature, PVOID pFirmwareTableEnumBuffer, DWORD BufferSize);
   WINBASEAPI UINT WINAPI GetSystemFirmwareTable (DWORD FirmwareTableProviderSignature, DWORD FirmwareTableID, PVOID pFirmwareTableBuffer, DWORD BufferSize);
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL WINAPI GetProductInfo (DWORD dwOSMajorVersion, DWORD dwOSMinorVersion, DWORD dwSpMajorVersion, DWORD dwSpMinorVersion, PDWORD pdwReturnedProductType);
-#endif
-#if _WIN32_WINNT >= 0x0601
   WINBASEAPI WINBOOL WINAPI GetLogicalProcessorInformationEx (LOGICAL_PROCESSOR_RELATIONSHIP RelationshipType, PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX Buffer, PDWORD ReturnedLength);
-#endif
 #endif
 
 #ifdef __cplusplus

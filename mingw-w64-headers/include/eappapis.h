@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPPAPIS
 #define _INC_EAPPAPIS
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #include <eaphostpeertypes.h>
 #ifdef __cplusplus
@@ -133,5 +132,4 @@ void WINAPI EapHostPeerUninitialize(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPPAPIS*/

@@ -894,11 +894,8 @@ extern "C" {
   NTDSAPI WINBOOL WINAPI DsIsMangledDnA(LPCSTR pszDn,DS_MANGLE_FOR eDsMangleFor);
   NTDSAPI WINBOOL WINAPI DsIsMangledDnW(LPCWSTR pszDn,DS_MANGLE_FOR eDsMangleFor);
 
-#if (_WIN32_WINNT >= 0x0600)
 #define NTDSAPI_BIND_FIND_BINDING (0x00000002)
 #define NTDSAPI_BIND_FORCE_KERBEROS (0x00000004)
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

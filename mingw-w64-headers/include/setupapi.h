@@ -1888,13 +1888,11 @@ extern "C" {
   WINSETUPAPI WINBOOL WINAPI SetupConfigureWmiFromInfSectionA(HINF InfHandle,PCSTR SectionName,DWORD Flags);
   WINSETUPAPI WINBOOL WINAPI SetupConfigureWmiFromInfSectionW(HINF InfHandle,PCWSTR SectionName,DWORD Flags);
 
-#if _WIN32_WINNT >= 0x0600
   WINSETUPAPI WINBOOL WINAPI SetupDiGetDevicePropertyW(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, const DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType, PBYTE PropertyBuffer, DWORD PropertyBufferSize, PDWORD RequiredSize, DWORD Flags);
   WINSETUPAPI WINBOOL WINAPI SetupDiGetDevicePropertyKeys(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, DEVPROPKEY *PropertyKeyArray, DWORD PropertyKeyCount, PDWORD RequiredPropertyKeyCount, DWORD Flags);
 
 #ifdef UNICODE
 #define SetupDiGetDeviceProperty SetupDiGetDevicePropertyW
-#endif
 #endif
 
 #ifdef __cplusplus

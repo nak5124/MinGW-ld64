@@ -10,8 +10,6 @@
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -586,6 +584,5 @@ WINBOOL WINAPI EvtUpdateBookmark(
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /* WINAPI_PARTITION_DESKTOP */
 #endif /*__WINEVT_H__ */

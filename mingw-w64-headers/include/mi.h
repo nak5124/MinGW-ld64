@@ -1848,9 +1848,7 @@ typedef struct _MI_SessionCallbacks {
 #define MI_AUTH_TYPE_KERBEROS MI_T("Kerberos")
 #define MI_AUTH_TYPE_CLIENT_CERTS MI_T("ClientCerts")
 #define MI_AUTH_TYPE_NTLM MI_T("Ntlmdomain")
-#if (WINVER >= 0x600)
 #define MI_AUTH_TYPE_CREDSSP MI_T("CredSSP")
-#endif
 #define MI_AUTH_TYPE_ISSUER_CERT MI_T("IssuerCert")
 
 typedef struct _MI_UsernamePasswordCreds {

@@ -191,7 +191,6 @@ typedef ADDRINFOA ADDRINFO,*LPADDRINFO;
 #define AI_PASSIVE                  0x00000001
 #define AI_CANONNAME                0x00000002
 #define AI_NUMERICHOST              0x00000004
-#if (_WIN32_WINNT >= 0x0600)
 #define AI_NUMERICSERV              0x00000008
 #define AI_ALL                      0x00000100
 #define AI_ADDRCONFIG               0x00000400
@@ -199,14 +198,9 @@ typedef ADDRINFOA ADDRINFO,*LPADDRINFO;
 #define AI_NON_AUTHORITATIVE        0x00004000
 #define AI_SECURE                   0x00008000
 #define AI_RETURN_PREFERRED_NAMES   0x00010000
-#endif
-#if (_WIN32_WINNT >= 0x0601)
 #define AI_FQDN                     0x00020000
 #define AI_FILESERVER               0x00040000
-#endif
-#if (_WIN32_WINNT >= 0x0602)
 #define AI_DISABLE_IDN_ENCODING     0x00080000
-#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -283,7 +277,6 @@ WCHAR *gai_strerrorW(int);
 
 #include <mstcpip.h>
 
-#if (_WIN32_WINNT >= 0x0600)
 #define ADDRINFOEX __MINGW_NAME_AW(ADDRINFOEX)
 #define PADDRINFOEX __MINGW_NAME_AW(PADDRINFOEX)
 #define GetAddrInfoEx __MINGW_NAME_AW(GetAddrInfoEx)
@@ -432,7 +425,6 @@ WINSOCK_API_LINKAGE INT WSAAPI InetPtonA(INT Family, LPCSTR pStringBuf, PVOID pA
 
 #define InetPton __MINGW_NAME_AW(InetPton)
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

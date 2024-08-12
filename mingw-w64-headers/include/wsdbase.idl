@@ -18,7 +18,6 @@ interface IWSDHttpAddress;
 interface IWSDHttpMessageParameters;
 
 cpp_quote("")
-cpp_quote("#if WINVER >= 0x601")
 typedef enum {
   WSD_CONFIG_MAX_INBOUND_MESSAGE_SIZE = 1,
   WSD_CONFIG_MAX_OUTBOUND_MESSAGE_SIZE = 2,
@@ -49,7 +48,6 @@ typedef struct _WSD_SECURITY_CERT_VALIDATION_V1 {
   DWORD dwCertCheckOptions;
 } WSD_SECURITY_CERT_VALIDATION_V1;
 
-cpp_quote("#if _WIN32_WINNT >= 0x602")
 typedef struct _WSD_SECURITY_CERT_VALIDATION {
   PCCERT_CONTEXT *certMatchArray;
   DWORD dwCertMatchArrayCount;
@@ -60,9 +58,6 @@ typedef struct _WSD_SECURITY_CERT_VALIDATION {
   BYTE *pbCertHash;
   DWORD dwCertHashSize;
 } WSD_SECURITY_CERT_VALIDATION;
-cpp_quote("#else")
-cpp_quote("typedef WSD_SECURITY_CERT_VALIDATION_V1 WSD_SECURITY_CERT_VALIDATION;")
-cpp_quote("#endif")
 
 cpp_quote("")
 typedef WSD_SECURITY_CERT_VALIDATION *PWSD_SECURITY_CERT_VALIDATION;
@@ -94,7 +89,6 @@ typedef struct _WSD_CONFIG_ADDRESSES {
   IWSDAddress **addresses;
   DWORD dwAddressCount;
 } WSD_CONFIG_ADDRESSES,*PWSD_CONFIG_ADDRESSES;
-cpp_quote("#endif")
 
 cpp_quote("#define WSDAPI_ADDRESSFAMILY_IPV4 1")
 cpp_quote("#define WSDAPI_ADDRESSFAMILY_IPV6 2")
@@ -196,7 +190,6 @@ interface IWSDHttpAddress : IWSDTransportAddress {
   HRESULT SetPath ([in] LPCWSTR pszPath);
 }
 
-cpp_quote("#if WINVER >= 0x601")
 [object, local, uuid (de105e87-a0da-418e-98ad-27b9eed87bdc)]
 interface IWSDSSLClientCertificate : IUnknown {
   HRESULT GetClientCertificate ([in, out] PCCERT_CONTEXT *ppCertContext);
@@ -217,7 +210,6 @@ interface IWSDSignatureProperty : IUnknown {
   HRESULT GetSignature ([out, size_is (*pdwSignatureSize)] BYTE *pbSignature,[in, out] DWORD *pdwSignatureSize);
   HRESULT GetSignedInfoHash ([out, size_is (*pdwHashSize)] BYTE *pbSignedInfoHash,[in, out] DWORD *pdwHashSize);
 }
-cpp_quote("#endif")
 
 cpp_quote("HRESULT WINAPI WSDCreateHttpAddress(IWSDHttpAddress **ppAdress);")
 cpp_quote("HRESULT WINAPI WSDCreateHttpMessageParameters(IWSDHttpMessageParameters **ppTxParams);")

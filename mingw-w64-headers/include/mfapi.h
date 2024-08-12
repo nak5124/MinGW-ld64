@@ -21,11 +21,7 @@
 #endif
 
 #ifndef MF_VERSION
-#if WINVER < 0x0601
-#define MF_SDK_VERSION 0x1
-#else
 #define MF_SDK_VERSION 0x2
-#endif
 
 #define MF_API_VERSION 0x0070
 #define MF_VERSION (MF_SDK_VERSION << 16 | MF_API_VERSION)
@@ -100,13 +96,11 @@ extern "C" {
     eAllocationTypeIgnore
   } EAllocationType;
 
-#if WINVER >= 0x0601
   typedef enum {
     MF_STANDARD_WORKQUEUE = 0,
     MF_WINDOW_WORKQUEUE = 1,
     MF_MULTITHREADED_WORKQUEUE = 2,
   } MFASYNC_WORKQUEUE_TYPE;
-#endif
 
   STDAPI MFPutWorkItem (DWORD dwQueue, IMFAsyncCallback *pCallback, IUnknown *pState);
   STDAPI MFPutWorkItemEx (DWORD dwQueue, IMFAsyncResult *pResult);
@@ -137,9 +131,7 @@ extern "C" {
   STDAPI MFCreateDXSurfaceBuffer (REFIID riid, IUnknown *punkSurface, WINBOOL fBottomUpWhenLinear, IMFMediaBuffer **ppBuffer);
   STDAPI MFCreateWICBitmapBuffer (REFIID riid, IUnknown *punkSurface, IMFMediaBuffer **ppBuffer);
   STDAPI MFGetContentProtectionSystemCLSID (REFGUID guidProtectionSystemID, CLSID *pclsid);
-#if WINVER >= 0x0601
   STDAPI MFAllocateWorkQueueEx (MFASYNC_WORKQUEUE_TYPE WorkQueueType, DWORD *pdwWorkQueue);
-#endif
   EXTERN_C void *WINAPI MFHeapAlloc (size_t nSize, ULONG dwFlags, char *pszFile, int line, EAllocationType eat);
   EXTERN_C void WINAPI MFHeapFree (void *pv);
 
@@ -194,9 +186,7 @@ extern "C" {
     MF_TOPOSTATUS_INVALID = 0,
     MF_TOPOSTATUS_READY = 100,
     MF_TOPOSTATUS_STARTED_SOURCE = 200,
-#if WINVER >= 0x0601
     MF_TOPOSTATUS_DYNAMIC_CHANGED = 210,
-#endif
     MF_TOPOSTATUS_SINK_SWITCHED = 300,
     MF_TOPOSTATUS_ENDED = 400,
   } MF_TOPOSTATUS;
@@ -229,10 +219,8 @@ extern "C" {
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
-#if WINVER >= 0x0601
   DEFINE_GUID (MF_EVENT_MFT_INPUT_STREAM_ID, 0xf29c2cca, 0x7ae6, 0x42d2, 0xb2, 0x84, 0xbf, 0x83, 0x7c, 0xc8, 0x74, 0xe2);
   DEFINE_GUID (MF_EVENT_MFT_CONTEXT, 0xb7cd31f1, 0x899e, 0x4b41, 0x80, 0xc9, 0x26, 0xa8, 0x96, 0xd3, 0x29, 0x77);
-#endif
   STDAPI MFCreateSample (IMFSample **ppIMFSample);
   DEFINE_GUID (MFSampleExtension_CleanPoint, 0x9cdf01d8, 0xa0f0, 0x43ba, 0xb0, 0x77, 0xea, 0xa0, 0x6c, 0xbd, 0x72, 0x8a);
   DEFINE_GUID (MFSampleExtension_Discontinuity, 0x9cdf01d9, 0xa0f0, 0x43ba, 0xb0, 0x77, 0xea, 0xa0, 0x6c, 0xbd, 0x72, 0x8a);
@@ -272,13 +260,10 @@ extern "C" {
   DEFINE_GUID (MFT_CATEGORY_AUDIO_ENCODER, 0x91c64bd0, 0xf91e, 0x4d8c, 0x92, 0x76, 0xdb, 0x24, 0x82, 0x79, 0xd9, 0x75);
   DEFINE_GUID (MFT_CATEGORY_AUDIO_EFFECT, 0x11064c48, 0x3648, 0x4ed0, 0x93, 0x2e, 0x05, 0xce, 0x8a, 0xc8, 0x11, 0xb7);
   DEFINE_GUID (MFT_CATEGORY_OTHER, 0x90175d57, 0xb7ea, 0x4901, 0xae, 0xb3, 0x93, 0x3a, 0x87, 0x47, 0x75, 0x6f);
-#if WINVER >= 0x0601
   DEFINE_GUID (MFT_CATEGORY_VIDEO_PROCESSOR, 0x302ea3fc, 0xaa5f, 0x47f9, 0x9f, 0x7a, 0xc2, 0x18, 0x8b, 0xb1, 0x63, 0x2);
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
-#if WINVER >= 0x0601
   enum _MFT_ENUM_FLAG {
     MFT_ENUM_FLAG_SYNCMFT = 0x00000001,
     MFT_ENUM_FLAG_ASYNCMFT = 0x00000002,
@@ -291,13 +276,11 @@ extern "C" {
     MFT_ENUM_FLAG_SORTANDFILTER_WEB_ONLY = 0x00000140,
     MFT_ENUM_FLAG_ALL = 0x0000003f
   };
-#endif
 
   STDAPI MFTRegister (CLSID clsidMFT, GUID guidCategory, LPWSTR pszName, UINT32 Flags, UINT32 cInputTypes, MFT_REGISTER_TYPE_INFO *pInputTypes, UINT32 cOutputTypes, MFT_REGISTER_TYPE_INFO *pOutputTypes, IMFAttributes *pAttributes);
   STDAPI MFTUnregister (CLSID clsidMFT);
   STDAPI MFTEnum (GUID guidCategory, UINT32 Flags, MFT_REGISTER_TYPE_INFO *pInputType, MFT_REGISTER_TYPE_INFO *pOutputType, IMFAttributes *pAttributes, CLSID **ppclsidMFT, UINT32 *pcMFTs);
   STDAPI MFTGetInfo (CLSID clsidMFT, LPWSTR *pszName, MFT_REGISTER_TYPE_INFO **ppInputTypes, UINT32 *pcInputTypes, MFT_REGISTER_TYPE_INFO **ppOutputTypes, UINT32 *pcOutputTypes, IMFAttributes **ppAttributes);
-#if WINVER >= 0x0601
   STDAPI MFTRegisterLocal (IClassFactory *pClassFactory, REFGUID guidCategory, LPCWSTR pszName, UINT32 Flags, UINT32 cInputTypes, const MFT_REGISTER_TYPE_INFO *pInputTypes, UINT32 cOutputTypes, const MFT_REGISTER_TYPE_INFO *pOutputTypes);
   STDAPI MFTUnregisterLocal (IClassFactory *pClassFactory);
   STDAPI MFTRegisterLocalByCLSID (REFCLSID clisdMFT, REFGUID guidCategory, LPCWSTR pszName, UINT32 Flags, UINT32 cInputTypes, const MFT_REGISTER_TYPE_INFO *pInputTypes, UINT32 cOutputTypes, const MFT_REGISTER_TYPE_INFO *pOutputTypes);
@@ -305,18 +288,13 @@ extern "C" {
   STDAPI MFTEnumEx (GUID guidCategory, UINT32 Flags, const MFT_REGISTER_TYPE_INFO *pInputType, const MFT_REGISTER_TYPE_INFO *pOutputType, IMFActivate ***pppMFTActivate, UINT32 *pnumMFTActivate);
   STDAPI MFGetPluginControl (IMFPluginControl **ppPluginControl);
   STDAPI MFGetMFTMerit (IUnknown *pMFT, UINT32 cbVerifier, const BYTE *verifier, DWORD *merit);
-#endif
-#if WINVER >= 0x0602
   STDAPI MFRegisterLocalSchemeHandler (PCWSTR szScheme, IMFActivate *pActivate);
   STDAPI MFRegisterLocalByteStreamHandler (PCWSTR szFileExtension, PCWSTR szMimeType, IMFActivate *pActivate);
   STDAPI MFCreateMFByteStreamWrapper (IMFByteStream *pStream, IMFByteStream **ppStreamWrapper);
 #endif
-#endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
-#if WINVER >= 0x0602
   STDAPI MFCreateMediaExtensionActivate (PCWSTR szActivatableClassId, IUnknown *pConfiguration, REFIID riid, LPVOID *ppvObject);
-#endif
 
   DEFINE_GUID (MFT_SUPPORT_DYNAMIC_FORMAT_CHANGE, 0x53476a11, 0x3f13, 0x49fb, 0xac, 0x42, 0xee, 0x27, 0x33, 0xc9, 0x67, 0x41);
 
@@ -410,9 +388,7 @@ extern "C" {
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_VP80, FCC ('VP80'));
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_VP90, FCC ('VP90'));
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_ORAW, FCC('ORAW'));
-#if WINVER >= _WIN32_WINNT_WIN8
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_H263, FCC ('H263'));
-#endif
 #if WDK_NTDDI_VERSION >= NTDDI_WIN10
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_A2R10G10B10, D3DFMT_A2B10G10R10);
   DEFINE_MEDIATYPE_GUID (MFVideoFormat_A16B16G16R16F, D3DFMT_A16B16G16R16F);
@@ -442,7 +418,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
 #undef LOCAL_D3DFMT_DEFINES
 #endif
 
-#if WINVER >= 0x0602
   typedef enum _MFVideo3DFormat {
     MFVideo3DSampleFormat_BaseView = 0,
     MFVideo3DSampleFormat_MultiView = 1,
@@ -461,7 +436,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
     MFVideoRotationFormat_180 = 180,
     MFVideoRotationFormat_270 = 270,
   } MFVideoRotationFormat;
-#endif
 
   typedef enum _MFVideoDRMFlags {
     MFVideoDRMFlag_None = 0,
@@ -511,11 +485,9 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_AMR_NB, WAVE_FORMAT_AMR_NB);
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_AMR_WB, WAVE_FORMAT_AMR_WB);
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_AMR_WP, WAVE_FORMAT_AMR_WP);
-#if WINVER >= _WIN32_WINNT_WINTHRESHOLD
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_FLAC, WAVE_FORMAT_FLAC);
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_ALAC, WAVE_FORMAT_ALAC);
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_Opus, WAVE_FORMAT_OPUS);
-#endif
   DEFINE_MEDIATYPE_GUID (MFAudioFormat_Dolby_AC4, WAVE_FORMAT_DOLBY_AC4);
 
   DEFINE_GUID (MFAudioFormat_Dolby_AC3, 0xe06d802c, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x05f, 0x6c, 0xbb, 0xea);
@@ -534,7 +506,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
 #if NTDDI_VERSION >= NTDDI_WIN10_RS2
   DEFINE_GUID (MFAudioFormat_Float_SpatialObjects, 0xfa39cd94, 0xbc64, 0x4ab1, 0x9b, 0x71, 0xdc, 0xd0, 0x9d, 0x5a, 0x7e, 0x7a);
 #endif
-#if WINVER >= _WIN32_WINNT_WINTHRESHOLD
   DEFINE_GUID (MFAudioFormat_LPCM, 0xe06d8032l, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x5f, 0x6c, 0xbb, 0xea);
   DEFINE_GUID (MFAudioFormat_PCM_HDCP, 0xa5e7ff01, 0x8411, 0x4acc, 0xa8, 0x65, 0x5f, 0x49, 0x41, 0x28, 0x8d, 0x80);
   DEFINE_GUID (MFAudioFormat_Dolby_AC3_HDCP, 0x97663a80, 0x8ffb, 0x4445, 0xa6, 0xba, 0x79, 0x2d, 0x90, 0x8f, 0x49, 0x7f);
@@ -544,7 +515,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   DEFINE_GUID (MFVideoFormat_H264_HDCP, 0x5d0ce9dd, 0x9817, 0x49da, 0xbd, 0xfd, 0xf5, 0xf5, 0xb9, 0x8f, 0x18, 0xa6);
   DEFINE_GUID (MFVideoFormat_HEVC_HDCP, 0x3cfe0fe6, 0x05c4, 0x47dc, 0x9d, 0x70, 0x4b, 0xdb, 0x29, 0x59, 0x72, 0x0f);
   DEFINE_GUID (MFVideoFormat_Base_HDCP, 0xeac3b9d5, 0xbd14, 0x4237, 0x8f, 0x1f, 0xba, 0xb4, 0x28, 0xe4, 0x93, 0x12);
-#endif
 
   DEFINE_GUID (MFMPEG4Format_Base, 0x00000000, 0x767a, 0x494d, 0xb4, 0x78, 0xf2, 0x9d, 0x25, 0xdc, 0x90, 0x37);
   DEFINE_GUID (MF_MT_MAJOR_TYPE, 0x48eba18e, 0xf8c9, 0x4687, 0xbf, 0x11, 0x0a, 0x74, 0xc9, 0xf9, 0x6a, 0x8f);
@@ -634,7 +604,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   DEFINE_GUID (MFImageFormat_RGB32, 0x00000016, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
   DEFINE_GUID (MFStreamFormat_MPEG2Transport, 0xe06d8023, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x5f, 0x6c, 0xbb, 0xea);
   DEFINE_GUID (MFStreamFormat_MPEG2Program, 0x263067d1, 0xd330, 0x45dc, 0xb6, 0x69, 0x34, 0xd9, 0x86, 0xe4, 0xe3, 0xe1);
-#if WINVER >= 0x0601
   DEFINE_GUID (MF_MT_AAC_PAYLOAD_TYPE, 0xbfbabe79, 0x7434, 0x4d1c, 0x94, 0xf0, 0x72, 0xa3, 0xb9, 0xe1, 0x71, 0x88);
   DEFINE_GUID (MF_MT_AAC_AUDIO_PROFILE_LEVEL_INDICATION, 0x7632f0e6, 0x9538, 0x4d61, 0xac, 0xda, 0xea, 0x29, 0xc8, 0xc1, 0x44, 0x56);
   DEFINE_GUID (MF_MT_IMAGE_LOSS_TOLERANT, 0xed062cf4, 0xe34e, 0x4922, 0xbe, 0x99, 0x93, 0x40, 0x32, 0x13, 0x3d, 0x7c);
@@ -642,8 +611,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   DEFINE_GUID (MF_MT_MPEG4_CURRENT_SAMPLE_ENTRY, 0x9aa7e155, 0xb64a, 0x4c1d, 0xa5, 0x00, 0x45, 0x5d, 0x60, 0x0b, 0x65, 0x60);
   DEFINE_GUID (MF_MT_FRAME_RATE_RANGE_MIN, 0xd2e7558c, 0xdc1f, 0x403f, 0x9a, 0x72, 0xd2, 0x8b, 0xb1, 0xeb, 0x3b, 0x5e);
   DEFINE_GUID (MF_MT_FRAME_RATE_RANGE_MAX, 0xe3371d41, 0xb4cf, 0x4a05, 0xbd, 0x4e, 0x20, 0xb8, 0x8b, 0xb2, 0xc4, 0xd6);
-#endif
-#if WINVER >= 0x0602
   DEFINE_GUID (MF_MT_VIDEO_3D, 0xcb5e88cf, 0x7b5b, 0x476b, 0x85, 0xaa, 0x1c, 0xa5, 0xae, 0x18, 0x75, 0x55);
   DEFINE_GUID (MF_MT_VIDEO_3D_FORMAT, 0x5315d8a0, 0x87c5, 0x4697, 0xb7, 0x93, 0x66, 0x6, 0xc6, 0x7c, 0x4, 0x9b);
   DEFINE_GUID (MF_MT_VIDEO_3D_NUM_VIEWS, 0xbb077e8a, 0xdcbf, 0x42eb, 0xaf, 0x60, 0x41, 0x8d, 0xf9, 0x8a, 0xa4, 0x95);
@@ -654,7 +621,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   DEFINE_GUID (MF_MT_VIDEO_ROTATION, 0xc380465d, 0x2271, 0x428c, 0x9b, 0x83, 0xec, 0xea, 0x3b, 0x4a, 0x85, 0xc1);
   DEFINE_GUID (MF_MT_TIMESTAMP_CAN_BE_DTS, 0x24974215, 0x1b7b, 0x41e4, 0x86, 0x25, 0xac, 0x46, 0x9f, 0x2d, 0xed, 0xaa);
   DEFINE_GUID (MF_LOW_LATENCY, 0x9c27891a, 0xed7a, 0x40e1, 0x88, 0xe8, 0xb2, 0x27, 0x27, 0xa0, 0x24, 0xee);
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
@@ -669,7 +635,6 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
     float fWy;
   } MT_CUSTOM_VIDEO_PRIMARIES;
 
-#if WINVER >= 0x0601
   typedef struct _MT_ARBITRARY_HEADER {
     GUID majortype;
     GUID subtype;
@@ -678,18 +643,15 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
     ULONG lSampleSize;
     GUID formattype;
   } MT_ARBITRARY_HEADER;
-#endif
 
   DEFINE_GUID (MF_MT_CUSTOM_VIDEO_PRIMARIES, 0x47537213, 0x8cfb, 0x4722, 0xaa, 0x34, 0xfb, 0xc9, 0xe2, 0x4d, 0x77, 0xb8);
   DEFINE_GUID (MF_MT_AM_FORMAT_TYPE, 0x73d1072d, 0x1870, 0x4174, 0xa0, 0x63, 0x29, 0xff, 0x4f, 0xf6, 0xc1, 0x1e);
   DEFINE_GUID (AM_MEDIA_TYPE_REPRESENTATION, 0xe2e42ad2, 0x132c, 0x491e, 0xa2, 0x68, 0x3c, 0x7c, 0x2d, 0xca, 0x18, 0x1f);
   DEFINE_GUID (FORMAT_MFVideoFormat, 0xaed4ab2d, 0x7326, 0x43cb, 0x94, 0x64, 0xc8, 0x79, 0xca, 0xb9, 0xc4, 0x3d);
-#if WINVER >= 0x0601
   DEFINE_GUID (MF_MT_ARBITRARY_HEADER, 0x9e6bd6f5, 0x109, 0x4f95, 0x84, 0xac, 0x93, 0x9, 0x15, 0x3a, 0x19, 0xfc);
   DEFINE_GUID (MF_MT_ARBITRARY_FORMAT, 0x5a75b249, 0xd7d, 0x49a1, 0xa1, 0xc3, 0xe0, 0xd8, 0x7f, 0xc, 0xad, 0xe5);
   DEFINE_GUID (MF_MT_ORIGINAL_4CC, 0xd7be3fe0, 0x2bc7, 0x492d, 0xb8, 0x43, 0x61, 0xa1, 0x91, 0x9b, 0x70, 0xc3);
   DEFINE_GUID (MF_MT_ORIGINAL_WAVE_FORMAT_TAG, 0x8cbbc843, 0x9fd9, 0x49c2, 0x88, 0x2f, 0xa7, 0x25, 0x86, 0xc4, 0x08, 0xad);
-#endif
 
   struct tagVIDEOINFOHEADER;
   struct tagVIDEOINFOHEADER2;
@@ -783,9 +745,7 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   STDAPI MFConvertColorInfoFromDXVA (MFVIDEOFORMAT *pToFormat, DWORD dwFromDXVA);
   STDAPI MFConvertFromFP16Array (float *pDest, const WORD *pSrc, DWORD dwCount);
   STDAPI MFConvertToFP16Array (WORD *pDest, const float *pSrc, DWORD dwCount);
-#if WINVER >= 0x0601
   STDAPI MFCreateVideoMediaTypeFromBitMapInfoHeaderEx (const BITMAPINFOHEADER *pbmihBitMapInfoHeader, UINT32 cbBitMapInfoHeader, DWORD dwPixelAspectRatioX, DWORD dwPixelAspectRatioY, MFVideoInterlaceMode InterlaceMode, QWORD VideoFlags, DWORD dwFramesPerSecondNumerator, DWORD dwFramesPerSecondDenominator, DWORD dwMaxBitRate, IMFVideoMediaType **ppIVideoMediaType);
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
@@ -858,9 +818,7 @@ DEFINE_MEDIATYPE_GUID(MFVideoFormat_Theora, FCC('theo'));
   STDAPI MFCreateCollection (IMFCollection **ppIMFCollection);
 #endif
 
-#if WINVER >= 0x0601
   LONGLONG WINAPI MFllMulDiv (LONGLONG a, LONGLONG b, LONGLONG c, LONGLONG d);
-#endif
 #endif
 
 #if defined (__cplusplus)

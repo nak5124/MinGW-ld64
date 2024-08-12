@@ -608,9 +608,7 @@ extern "C"
 
 #endif /* WT_DEFINE_ALL_APIS */
 
-#if (_WIN32_WINNT >= 0x0600)
 void WINAPI WintrustSetDefaultIncludePEPageHashes(WINBOOL fIncludePEPageHashes);
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

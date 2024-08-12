@@ -167,8 +167,6 @@ interface IWSDHttpMessageParameters;
 #endif /* __cplusplus */
 #endif
 
-
-#if WINVER >= 0x601
 typedef enum __WIDL_wsdbase_generated_name_00000015 {
     WSD_CONFIG_MAX_INBOUND_MESSAGE_SIZE = 1,
     WSD_CONFIG_MAX_OUTBOUND_MESSAGE_SIZE = 2,
@@ -197,7 +195,6 @@ typedef struct _WSD_SECURITY_CERT_VALIDATION_V1 {
     HCERTSTORE hCertIssuerStore;
     DWORD dwCertCheckOptions;
 } WSD_SECURITY_CERT_VALIDATION_V1;
-#if _WIN32_WINNT >= 0x602
 typedef struct _WSD_SECURITY_CERT_VALIDATION {
     PCCERT_CONTEXT *certMatchArray;
     DWORD dwCertMatchArrayCount;
@@ -208,9 +205,6 @@ typedef struct _WSD_SECURITY_CERT_VALIDATION {
     BYTE *pbCertHash;
     DWORD dwCertHashSize;
 } WSD_SECURITY_CERT_VALIDATION;
-#else
-typedef WSD_SECURITY_CERT_VALIDATION_V1 WSD_SECURITY_CERT_VALIDATION;
-#endif
 
 typedef WSD_SECURITY_CERT_VALIDATION *PWSD_SECURITY_CERT_VALIDATION;
 typedef struct _WSD_SECURITY_SIGNATURE_VALIDATION {
@@ -240,7 +234,6 @@ typedef struct _WSD_CONFIG_ADDRESSES {
     DWORD dwAddressCount;
 } WSD_CONFIG_ADDRESSES;
 typedef struct _WSD_CONFIG_ADDRESSES *PWSD_CONFIG_ADDRESSES;
-#endif
 #define WSDAPI_ADDRESSFAMILY_IPV4 1
 #define WSDAPI_ADDRESSFAMILY_IPV6 2
 /*****************************************************************************
@@ -1377,7 +1370,6 @@ static __WIDL_INLINE HRESULT IWSDHttpAddress_SetPath(IWSDHttpAddress* This,LPCWS
 
 #endif  /* __IWSDHttpAddress_INTERFACE_DEFINED__ */
 
-#if WINVER >= 0x601
 /*****************************************************************************
  * IWSDSSLClientCertificate interface
  */
@@ -1681,7 +1673,6 @@ static __WIDL_INLINE HRESULT IWSDSignatureProperty_GetSignedInfoHash(IWSDSignatu
 
 #endif  /* __IWSDSignatureProperty_INTERFACE_DEFINED__ */
 
-#endif
 HRESULT WINAPI WSDCreateHttpAddress(IWSDHttpAddress **ppAdress);
 HRESULT WINAPI WSDCreateHttpMessageParameters(IWSDHttpMessageParameters **ppTxParams);
 #endif

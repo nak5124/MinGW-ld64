@@ -56,11 +56,9 @@ extern "C" {
 #define GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT (0x2)
 #define GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS (0x4)
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= 0x0A00
   WINBASEAPI HRSRC WINAPI FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lpType);
 #ifdef UNICODE
 #define FindResource FindResourceW
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
@@ -85,7 +83,6 @@ extern "C" {
   WINBASEAPI WINBOOL WINAPI EnumResourceLanguagesW(HMODULE hModule,LPCWSTR lpType,LPCWSTR lpName,ENUMRESLANGPROCW lpEnumFunc,LONG_PTR lParam);
 
 
-#if _WIN32_WINNT >= 0x0600
   WINBASEAPI WINBOOL APIENTRY EnumResourceLanguagesExA (HMODULE hModule, LPCSTR lpType, LPCSTR lpName, ENUMRESLANGPROCA lpEnumFunc, LONG_PTR lParam, DWORD dwFlags, LANGID LangId);
   WINBASEAPI WINBOOL APIENTRY EnumResourceLanguagesExW (HMODULE hModule, LPCWSTR lpType, LPCWSTR lpName, ENUMRESLANGPROCW lpEnumFunc, LONG_PTR lParam, DWORD dwFlags, LANGID LangId);
   WINBASEAPI WINBOOL WINAPI EnumResourceNamesExA (HMODULE hModule, LPCSTR lpType, ENUMRESNAMEPROCA lpEnumFunc, LONG_PTR lParam, DWORD dwFlags, LANGID LangId);
@@ -97,7 +94,6 @@ extern "C" {
 #define EnumResourceLanguagesEx __MINGW_NAME_AW(EnumResourceLanguagesEx)
 #define EnumResourceNamesEx __MINGW_NAME_AW(EnumResourceNamesEx)
 #define EnumResourceTypesEx __MINGW_NAME_AW(EnumResourceTypesEx)
-#endif
 #endif
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || defined(WINSTORECOMPAT)
 WINBASEAPI HMODULE WINAPI LoadLibraryA(LPCSTR lpLibFileName);
@@ -132,9 +128,7 @@ typedef struct _REDIRECTION_DESCRIPTOR {
 
 typedef const REDIRECTION_DESCRIPTOR *PCREDIRECTION_DESCRIPTOR;
 
-#if WINVER >= 0x0601
   WINBASEAPI int WINAPI FindStringOrdinal (DWORD dwFindStringOrdinalFlags, LPCWSTR lpStringSource, int cchSource, LPCWSTR lpStringValue, int cchValue, WINBOOL bIgnoreCase);
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || NTDDI_VERSION >= NTDDI_WIN10_19H1

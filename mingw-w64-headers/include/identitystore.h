@@ -8,8 +8,6 @@
 
 #include <objbase.h>
 
-#if (_WIN32_WINNT >= 0x0601)
-
 DEFINE_GUID(IID_IAssociatedIdentityProvider,0x2AF066B3,0x4CBB,0x4CBA,0xA7,0x98,0x20,0x4B,0x6A,0xF6,0x8C,0xC0);
 
 #ifndef __IAssociatedIdentityProvider_FWD_DEFINED__
@@ -47,5 +45,4 @@ DECLARE_INTERFACE_(IAssociatedIdentityProvider,IUnknown)
 #define IAssociatedIdentityProvider_DisassociateIdentity(This,hwndParent,lpszUniqueID) (This)->lpVtbl->DisassociateIdentity(This,hwndParent,lpszUniqueID)
 #endif /*COBJMACROS*/
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /* __IDENTITYSTORE_H__ */

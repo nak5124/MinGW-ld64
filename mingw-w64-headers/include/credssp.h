@@ -6,8 +6,6 @@
 #ifndef _INC_CREDSSP
 #define _INC_CREDSSP
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,7 +32,5 @@ typedef struct _SecPkgContext_ClientCreds {
 #ifdef __cplusplus
 }
 #endif
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /*_INC_CREDSSP*/

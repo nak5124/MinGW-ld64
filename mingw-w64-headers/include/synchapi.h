@@ -57,7 +57,6 @@ extern "C" {
   WINBOOL WINAPI WaitOnAddress (volatile VOID *Address, PVOID CompareAddress, SIZE_T AddressSize, DWORD dwMilliseconds);
   VOID WINAPI WakeByAddressSingle (PVOID Address);
   VOID WINAPI WakeByAddressAll (PVOID Address);
-#if _WIN32_WINNT >= 0x0600
 #define CREATE_MUTEX_INITIAL_OWNER 0x1
 
 #define CREATE_EVENT_MANUAL_RESET 0x1
@@ -90,7 +89,6 @@ extern "C" {
 #define CreateEventEx __MINGW_NAME_AW(CreateEventEx)
 #ifdef UNICODE
 #define CreateSemaphoreEx CreateSemaphoreExW
-#endif
 #endif
 
 #ifdef UNICODE
@@ -126,7 +124,6 @@ extern "C" {
   WINBOOL WINAPI DeleteSynchronizationBarrier (LPSYNCHRONIZATION_BARRIER lpBarrier);
   WINBASEAPI VOID WINAPI Sleep (DWORD dwMilliseconds);
   WINBASEAPI DWORD WINAPI SignalObjectAndWait (HANDLE hObjectToSignal, HANDLE hObjectToWaitOn, DWORD dwMilliseconds, WINBOOL bAlertable);
-#if _WIN32_WINNT >= 0x0600
 #define CREATE_WAITABLE_TIMER_MANUAL_RESET 0x1
 #define CREATE_WAITABLE_TIMER_HIGH_RESOLUTION 0x2
 
@@ -135,11 +132,8 @@ extern "C" {
 #ifdef UNICODE
 #define CreateWaitableTimerEx CreateWaitableTimerExW
 #endif
-#endif
 
-#if _WIN32_WINNT >= 0x0601
   WINBOOL WINAPI SetWaitableTimerEx (HANDLE hTimer, const LARGE_INTEGER *lpDueTime, LONG lPeriod, PTIMERAPCROUTINE pfnCompletionRoutine, LPVOID lpArgToCompletionRoutine, PREASON_CONTEXT WakeContext, ULONG TolerableDelay);
-#endif
 
 #define CreateMutex __MINGW_NAME_AW(CreateMutex)
 #define CreateEvent __MINGW_NAME_AW(CreateEvent)

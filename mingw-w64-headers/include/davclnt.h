@@ -10,7 +10,6 @@
 extern "C" {
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
 #define DAV_AUTHN_SCHEME_BASIC      0x00000001
 #define DAV_AUTHN_SCHEME_NTLM       0x00000002
 #define DAV_AUTHN_SCHEME_PASSPORT   0x00000004
@@ -129,8 +128,6 @@ OPAQUE_HANDLE WINAPI DavRegisterAuthCallback(
 VOID WINAPI DavUnregisterAuthCallback(
   OPAQUE_HANDLE hCallback
 );
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

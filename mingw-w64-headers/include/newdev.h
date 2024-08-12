@@ -36,8 +36,6 @@ extern "C" {
 #define INSTALLFLAG_NONINTERACTIVE        0x00000004
 #define INSTALLFLAG_BITS                  0x00000007
 
-#if (WINVER >= _WIN32_WINNT_WIN2K)
-
 WINBOOL
 WINAPI
 UpdateDriverForPlugAndPlayDevicesA(
@@ -61,10 +59,6 @@ UpdateDriverForPlugAndPlayDevicesW(
 #else
 #define UpdateDriverForPlugAndPlayDevices UpdateDriverForPlugAndPlayDevicesA
 #endif /* UNICODE */
-
-#endif /* (WINVER >= _WIN32_WINNT_WIN2K) */
-
-#if (WINVER >= _WIN32_WINNT_VISTA)
 
 #define DIIDFLAG_SHOWSEARCHUI             0x00000001
 #define DIIDFLAG_NOFINISHINSTALLUI        0x00000002
@@ -137,9 +131,7 @@ DiInstallDriverA(
 #define DiInstallDriver DiInstallDriverA
 #endif
 
-#endif /* (WINVER >= _WIN32_WINNT_VISTA) */
 
-#if (WINVER >= _WIN32_WINNT_WIN7)
 WINBOOL
 WINAPI
 DiUninstallDevice(
@@ -148,7 +140,6 @@ DiUninstallDevice(
   PSP_DEVINFO_DATA DeviceInfoData,
   DWORD Flags,
   PBOOL NeedReboot OPTIONAL);
-#endif /* (WINVER >= _WIN32_WINNT_WIN7) */
 
 #include <poppack.h>
 

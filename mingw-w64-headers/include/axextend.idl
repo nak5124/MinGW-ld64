@@ -1507,7 +1507,6 @@ interface IVideoFrameStep : IUnknown
     HRESULT CancelStep();
 }
 
-cpp_quote("#if (_WIN32_WINNT >= 0x0601)")
 [
     local,
     object,
@@ -1551,4 +1550,3 @@ interface IAMPluginControl : IUnknown
     HRESULT IsLegacyDisabled(
             [in] LPCWSTR dllName);
 }
-cpp_quote("#endif /*(_WIN32_WINNT >= 0x0601)*/")

@@ -109,27 +109,19 @@ extern "C" {
   typedef VOID (NTAPI *PENABLECALLBACK) (LPCGUID SourceId, ULONG IsEnabled, UCHAR Level, ULONGLONG MatchAnyKeyword, ULONGLONG MatchAllKeyword, PEVENT_FILTER_DESCRIPTOR FilterData, PVOID CallbackContext);
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
-#if WINVER >= 0x0600
   BOOLEAN EVNTAPI EventEnabled (REGHANDLE RegHandle, PCEVENT_DESCRIPTOR EventDescriptor);
   BOOLEAN EVNTAPI EventProviderEnabled (REGHANDLE RegHandle, UCHAR Level, ULONGLONG Keyword);
   ULONG EVNTAPI EventWriteTransfer (REGHANDLE RegHandle, PCEVENT_DESCRIPTOR EventDescriptor, LPCGUID ActivityId, LPCGUID RelatedActivityId, ULONG UserDataCount, PEVENT_DATA_DESCRIPTOR UserData);
   ULONG EVNTAPI EventWriteString (REGHANDLE RegHandle, UCHAR Level, ULONGLONG Keyword, PCWSTR String);
   ULONG EVNTAPI EventActivityIdControl (ULONG ControlCode, LPGUID ActivityId);
-#endif
-#if WINVER >= 0x0601
   ULONG EVNTAPI EventWriteEx (REGHANDLE RegHandle, PCEVENT_DESCRIPTOR EventDescriptor, ULONG64 Filter, ULONG Flags, LPCGUID ActivityId, LPCGUID RelatedActivityId, ULONG UserDataCount, PEVENT_DATA_DESCRIPTOR UserData);
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
-#if WINVER >= 0x0600
   ULONG EVNTAPI EventRegister (LPCGUID ProviderId, PENABLECALLBACK EnableCallback, PVOID CallbackContext, PREGHANDLE RegHandle);
   ULONG EVNTAPI EventUnregister (REGHANDLE RegHandle);
   ULONG EVNTAPI EventWrite (REGHANDLE RegHandle, PCEVENT_DESCRIPTOR EventDescriptor, ULONG UserDataCount, PEVENT_DATA_DESCRIPTOR UserData);
-#endif
-#if WINVER >= 0x0602
   ULONG EVNTAPI EventSetInformation (REGHANDLE RegHandle, EVENT_INFO_CLASS InformationClass, PVOID EventInformation, ULONG InformationLength);
-#endif
 #endif
 
 #endif

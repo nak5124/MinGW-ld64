@@ -66,7 +66,6 @@ extern "C" {
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
 
-#if (WINVER >= _WIN32_WINNT_WIN7)
 #ifndef __IMFPMediaPlayer_FWD_DEFINED__
 #define __IMFPMediaPlayer_FWD_DEFINED__
 typedef interface IMFPMediaPlayer IMFPMediaPlayer;
@@ -1133,7 +1132,6 @@ static __WIDL_INLINE void IMFPMediaPlayerCallback_OnMediaPlayerEvent(IMFPMediaPl
 
 #endif  /* __IMFPMediaPlayerCallback_INTERFACE_DEFINED__ */
 
-#endif // (WINVER >= _WIN32_WINNT_WIN7)
 /* Begin additional prototypes for all interfaces */
 
 

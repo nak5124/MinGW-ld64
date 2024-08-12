@@ -5,7 +5,6 @@
  */
 #ifndef _INC_EAPMETHODPEERAPIS
 #define _INC_EAPMETHODPEERAPIS
-#if (_WIN32_WINNT >= 0x0600)
 #include <eaptypes.h>
 #include <eapmethodtypes.h>
 
@@ -245,5 +244,4 @@ VOID WINAPI EapPeerFreeMemory(
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_EAPMETHODPEERAPIS*/

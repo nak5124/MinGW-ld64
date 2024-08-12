@@ -9,7 +9,6 @@
 #include <endpointvolume.h>
 #include <audioapotypes.h>
 
-#if (_WIN32_WINNT >= 0x0601)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -338,5 +337,4 @@ DECLARE_INTERFACE_(IAudioOutputEndpointRT,IUnknown)
 #define IAudioOutputEndpointRT_ReleaseOutputDataPointer(This,pConnectionProperty) (This)->lpVtbl->ReleaseOutputDataPointer(This,pConnectionProperty)
 #endif /*COBJMACROS*/
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*_INC_AUDIOENGINEENDPOINT*/

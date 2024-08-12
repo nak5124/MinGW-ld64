@@ -325,7 +325,6 @@ typedef DWORD (WINAPI *PFN_CARD_CONSTRUCT_DH_AGREEMENT)(
   PCARD_DH_AGREEMENT_INFO pAgreementInfo
 );
 
-#if (_WIN32_WINNT >= 0x0600)
 typedef DWORD (WINAPI *PFN_CARD_DERIVE_KEY)(
   PCARD_DATA pCardData,
   PCARD_DERIVE_KEY pAgreementInfo
@@ -343,12 +342,6 @@ typedef DWORD (WINAPI *PFN_CSP_GET_DH_AGREEMENT)(
   BYTE *pbSecretAgreementIndex,
   DWORD dwFlags
 );
-
-#else
-typedef LPVOID PFN_CARD_DERIVE_KEY;
-typedef LPVOID PFN_CARD_DESTROY_DH_AGREEMENT;
-typedef LPVOID PFN_CSP_GET_DH_AGREEMENT;
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 typedef struct _CARD_DATA {
   DWORD                           dwVersion;

@@ -240,11 +240,7 @@ extern "C" {
   } HTTP_REQUEST_V2, *PHTTP_REQUEST_V2;
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
   typedef HTTP_REQUEST_V2 HTTP_REQUEST, *PHTTP_REQUEST;
-#else
-  typedef HTTP_REQUEST_V1 HTTP_REQUEST, *PHTTP_REQUEST;
-#endif
 
 #define HTTP_REQUEST_FLAG_MORE_ENTITY_BODY_EXISTS 0x00000001
 
@@ -295,11 +291,7 @@ extern "C" {
   } HTTP_RESPONSE_V2, *PHTTP_RESPONSE_V2;
 #endif
 
-#if (_WIN32_WINNT >= 0x0600)
   typedef HTTP_RESPONSE_V2 HTTP_RESPONSE, *PHTTP_RESPONSE;
-#else
-  typedef HTTP_RESPONSE_V1 HTTP_RESPONSE, *PHTTP_RESPONSE;
-#endif /* _WIN32_WINNT >= 0x0600 */
 
   typedef enum _HTTP_CACHE_POLICY_TYPE {
     HttpCachePolicyNocache = 0,
@@ -421,7 +413,6 @@ extern "C" {
   HTTPAPI_LINKAGE ULONG WINAPI HttpDeleteServiceConfiguration(HANDLE ServiceHandle,HTTP_SERVICE_CONFIG_ID ConfigId,PVOID pConfigInformation,ULONG ConfigInformationLength,LPOVERLAPPED pOverlapped);
   HTTPAPI_LINKAGE ULONG WINAPI HttpQueryServiceConfiguration(HANDLE ServiceHandle,HTTP_SERVICE_CONFIG_ID ConfigId,PVOID pInputConfigInformation,ULONG InputConfigInformationLength,PVOID pOutputConfigInformation,ULONG OutputConfigInformationLength,PULONG pReturnLength,LPOVERLAPPED pOverlapped);
 
-#if (_WIN32_WINNT >= 0x0600)
 #define HTTP_VERSION_2_0	{ 2, 0 }
 #define HTTPAPI_VERSION_2	{ 2, 0 }
 
@@ -705,7 +696,6 @@ extern "C" {
   HTTPAPI_LINKAGE ULONG WINAPI HttpShutdownRequestQueue(HANDLE ReqQueueHandle);
   HTTPAPI_LINKAGE ULONG WINAPI HttpWaitForDemandStart(HANDLE ReqQueueHandle,LPOVERLAPPED pOverlapped);
 
-#if (_WIN32_WINNT >= 0x0601)
   typedef ULONG HTTP_SERVICE_CONFIG_CACHE_PARAM;
 
   typedef enum _HTTP_SERVICE_CONFIG_CACHE_KEY {
@@ -725,9 +715,7 @@ typedef struct _HTTP_SERVICE_CONFIG_CACHE_SET {
   HTTP_SERVICE_CONFIG_CACHE_PARAM ParamDesc;
 } HTTP_SERVICE_CONFIG_CACHE_SET, *PHTTP_SERVICE_CONFIG_CACHE_SET;
 
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #ifdef __cplusplus
 }

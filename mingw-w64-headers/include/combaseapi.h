@@ -244,9 +244,7 @@ WINOLEAPI CoCreateInstanceFromApp (REFCLSID Clsid, IUnknown *punkOuter, DWORD dw
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 WINOLEAPI_(WINBOOL) CoIsHandlerConnected (LPUNKNOWN pUnk);
-#if _WIN32_WINNT >= 0x0600
 WINOLEAPI CoDisconnectContext (DWORD dwTimeout);
-#endif
 WINOLEAPI CoGetCallContext (REFIID riid, void **ppInterface);
 WINOLEAPI CoQueryProxyBlanket (IUnknown *pProxy, DWORD *pwAuthnSvc, DWORD *pAuthzSvc, LPOLESTR *pServerPrincName, DWORD *pAuthnLevel, DWORD *pImpLevel, RPC_AUTH_IDENTITY_HANDLE *pAuthInfo, DWORD *pCapabilites);
 WINOLEAPI CoSetProxyBlanket (IUnknown *pProxy, DWORD dwAuthnSvc, DWORD dwAuthzSvc, OLECHAR *pServerPrincName, DWORD dwAuthnLevel, DWORD dwImpLevel, RPC_AUTH_IDENTITY_HANDLE pAuthInfo, DWORD dwCapabilities);

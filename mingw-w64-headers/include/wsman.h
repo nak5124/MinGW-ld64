@@ -92,9 +92,7 @@ extern "C" {
     WSMAN_FLAG_AUTH_BASIC = 0x8,
     WSMAN_FLAG_AUTH_KERBEROS = 0x10,
     WSMAN_FLAG_AUTH_CLIENT_CERTIFICATE = 0x20
-#if WINVER >= 0x600
     ,WSMAN_FLAG_AUTH_CREDSSP = 0x80
-#endif
   } WSManAuthenticationFlags;
 
   enum WSManProxyAccessType {

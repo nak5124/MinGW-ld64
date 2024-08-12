@@ -6,8 +6,6 @@
 #ifndef _INC_TCPESTATS
 #define _INC_TCPESTATS
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -206,7 +204,6 @@ typedef enum _TCP_ESTATS_TYPE {
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /*_INC_TCPESTATS*/
 

@@ -75,9 +75,7 @@ extern "C" {
 #define MOUSE_MOVED 0x1
 #define DOUBLE_CLICK 0x2
 #define MOUSE_WHEELED 0x4
-#if (_WIN32_WINNT >= 0x0600)
 #define MOUSE_HWHEELED 0x8
-#endif
 
   typedef struct _WINDOW_BUFFER_SIZE_RECORD {
     COORD dwSize;
@@ -371,7 +369,6 @@ WINBOOL WINAPI GetConsoleHistoryInfo(
   PCONSOLE_HISTORY_INFO lpConsoleHistoryInfo
 );
 
-#if (_WIN32_WINNT >= 0x0600)
 #define GetConsoleOriginalTitle __MINGW_NAME_AW(GetConsoleOriginalTitle)
 
 WINBASEAPI DWORD WINAPI GetConsoleOriginalTitleA(
@@ -383,7 +380,6 @@ WINBASEAPI DWORD WINAPI GetConsoleOriginalTitleW(
   LPWSTR lpConsoleTitle,
   DWORD nSize
 );
-#endif /* (_WIN32_WINNT >= 0x0600) */
 
 WINBASEAPI WINBOOL WINAPI GetConsoleScreenBufferInfoEx(
   HANDLE hConsoleOutput,

@@ -6,8 +6,6 @@
 #ifndef _INC_FUNCTIONDISCOVERYNOTIFICATION
 #define _INC_FUNCTIONDISCOVERYNOTIFICATION
 
-#if (_WIN32_WINNT >= 0x0600)
-
 #undef  INTERFACE
 #define INTERFACE IFunctionDiscoveryNotification
 #warning COM interfaces layout in this header has not been verified.
@@ -37,7 +35,5 @@ DECLARE_INTERFACE_(IFunctionDiscoveryNotification,IUnknown)
 #define IFunctionDiscoveryNotification_OnError(This,hr,fdqcQueryContext,pszProvider) (This)->lpVtbl->OnError(This,hr,fdqcQueryContext,pszProvider)
 #define IFunctionDiscoveryNotification_OnEvent(This,dwEventID,fdqcQueryContext,pszProvider) (This)->lpVtbl->OnEvent(This,dwEventID,fdqcQueryContext,pszProvider)
 #endif /*COBJMACROS*/
-
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #endif /* _INC_FUNCTIONDISCOVERYNOTIFICATION */

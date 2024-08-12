@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WSDAPI
 #define _INC_WSDAPI
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,5 +50,4 @@ typedef struct _WSD_ENDPOINT_REFERENCE_LIST WSD_ENDPOINT_REFERENCE_LIST;
 #include <wsddisco.h>
 #include <wsdattachment.h>
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WSDAPI*/

@@ -563,8 +563,6 @@ extern "C" {
 #define RPC_IF_ALLOW_LOCAL_ONLY 0x0020
 #define RPC_IF_SEC_NO_CACHE 0x0040
 
-#if (_WIN32_WINNT >= 0x0600)
-
 typedef struct _RPC_BINDING_HANDLE_OPTIONS_V1 {
   unsigned __LONG32 Version;
   unsigned __LONG32 Flags;
@@ -616,7 +614,6 @@ RPC_STATUS RpcServerInqBindingHandle(
     RPC_BINDING_HANDLE *Binding
 );
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 
 #include <rpcdcep.h>
 

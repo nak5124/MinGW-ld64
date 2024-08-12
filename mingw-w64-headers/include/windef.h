@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #ifndef WINVER
-#define WINVER 0x0502
+#define WINVER 0x0A00
 #endif
 
 /* Make sure winnt.h is included.  */

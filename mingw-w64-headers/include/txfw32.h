@@ -6,7 +6,6 @@
 #ifndef _INC_TXFW32
 #define _INC_TXFW32
 #include <clfs.h>
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -88,5 +87,4 @@ WINBOOL WINAPI TxfLogReadRecords(
 #ifdef __cplusplus
 }
 #endif
-#endif /* (_WIN32_WINNT >= 0x0600) */
 #endif /*_INC_TXFW32*/

@@ -6,7 +6,6 @@
 #ifndef _INC_EHSTORAPI
 #define _INC_EHSTORAPI
 
-#if (_WIN32_WINNT >= 0x0601)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -18,5 +17,4 @@ typedef struct _ACT_AUTHORIZATION_STATE {
 #ifdef __cplusplus
 }
 #endif
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*_INC_EHSTORAPI*/

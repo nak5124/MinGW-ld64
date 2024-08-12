@@ -9,7 +9,6 @@ import "propsys.idl";
 import "mfidl.idl";
 import "evr.idl";
 
-cpp_quote("#if (WINVER >= _WIN32_WINNT_WIN7)")
 interface IMFPMediaPlayer;
 interface IMFPMediaItem;
 interface IMFPMediaPlayerCallback;
@@ -272,4 +271,3 @@ cpp_quote("")
 interface IMFPMediaPlayerCallback : IUnknown {
   void OnMediaPlayerEvent([in] MFP_EVENT_HEADER * pEventHeader);
 };
-cpp_quote("#endif // (WINVER >= _WIN32_WINNT_WIN7)")

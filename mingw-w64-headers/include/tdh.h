@@ -7,7 +7,6 @@
 #define _INC_TDH
 #include <evntprov.h>
 #include <evntcons.h>
-#if (_WIN32_WINNT >= 0x0600)
 
 #ifdef __cplusplus
 extern "C" {
@@ -223,7 +222,6 @@ ULONG __stdcall TdhQueryProviderFieldInformation(
   ULONG *pBufferSize
 );
 
-#if (_WIN32_WINNT >= 0x0601)
 typedef struct _PROVIDER_FILTER_INFO {
   UCHAR               Id;
   UCHAR               Version;
@@ -232,11 +230,9 @@ typedef struct _PROVIDER_FILTER_INFO {
   ULONG               PropertyCount;
   EVENT_PROPERTY_INFO EventPropertyInfoArray[ANYSIZE_ARRAY];
 } PROVIDER_FILTER_INFO, *PPROVIDER_FILTER_INFO;
-#endif /*(_WIN32_WINNT >= 0x0601)*/
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_TDH*/

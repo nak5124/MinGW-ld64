@@ -5,7 +5,6 @@
  */
 #ifndef _INC_WCMCONFIG
 #define _INC_WCMCONFIG
-#if (_WIN32_WINNT >= 0x0600)
 
 typedef enum __MIDL___MIDL_itf_wcmconfig_0000_0000_0013 {
   dataTypeByte = 1,
@@ -58,5 +57,4 @@ typedef enum __MIDL___MIDL_itf_wcmconfig_0000_0000_0019 {
   UserUnloaded = 4
 } WcmUserStatus;
 
-#endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WCMCONFIG*/

@@ -1092,7 +1092,6 @@ static __WIDL_INLINE HRESULT IWSDServiceProxy_GetEndpointProxy(IWSDServiceProxy*
 
 #endif  /* __IWSDServiceProxy_INTERFACE_DEFINED__ */
 
-#if WINVER >= 0x601
 /*****************************************************************************
  * IWSDServiceProxyEventing interface
  */
@@ -1473,12 +1472,9 @@ static __WIDL_INLINE HRESULT IWSDServiceProxyEventing_EndGetStatusForMultipleOpe
 
 #endif  /* __IWSDServiceProxyEventing_INTERFACE_DEFINED__ */
 
-#endif
 HRESULT WINAPI WSDCreateDeviceProxy(LPCWSTR pszDeviceId, LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDDeviceProxy **ppDeviceProxy);
 HRESULT WINAPI WSDCreateDeviceProxyAdvanced(LPCWSTR pszDeviceId, IWSDAddress* pDeviceAddress, LPCWSTR pszLocalId, IWSDXMLContext *pContext, IWSDDeviceProxy **ppDeviceProxy);
-#if WINVER >= 0x601
 HRESULT WINAPI WSDCreateDeviceProxy2(LPCWSTR pszDeviceId, LPCWSTR pszLocalId, IWSDXMLContext *pContext, WSD_CONFIG_PARAM *pConfigParams, DWORD dwConfigParamCount, IWSDDeviceProxy **ppDeviceProxy);
-#endif
 #endif
 /* Begin additional prototypes for all interfaces */
 

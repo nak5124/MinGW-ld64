@@ -3389,7 +3389,6 @@ static __WIDL_INLINE HRESULT IPSFactoryBuffer_CreateStub(IPSFactoryBuffer* This,
 #endif
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
-#if  (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)
 typedef struct SChannelHookCallInfo {
     IID iid;
     DWORD cbSize;
@@ -3574,9 +3573,7 @@ static __WIDL_INLINE void IChannelHook_ServerFillBuffer(IChannelHook* This,REFGU
 #endif  /* __IChannelHook_INTERFACE_DEFINED__ */
 
 #endif
-#endif
 
-#if  (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 /*****************************************************************************
  * IClientSecurity interface
@@ -4115,7 +4112,6 @@ static __WIDL_INLINE HRESULT IGlobalOptions_Query(IGlobalOptions* This,GLOBALOPT
 
 #endif  /* __IGlobalOptions_INTERFACE_DEFINED__ */
 
-#endif
 #endif
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
