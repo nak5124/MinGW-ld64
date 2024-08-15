@@ -12,10 +12,11 @@
 
 #define _WIN32_MAXVER         0x0A00
 #define _WIN32_WINDOWS_MAXVER 0x0A00
-#define NTDDI_MAXVER          0x0A00
+#define  NTDDI_MAXVER         0x0A00
 #define _WIN32_IE_MAXVER      0x0A00
 #define _WIN32_WINNT_MAXVER   0x0A00
-#define WINVER_MAXVER         0x0A00
+#define  WINVER_MAXVER        0x0A00
 
 #endif
-#endif
+
+#endif  /* _INC_WINSDKVER */

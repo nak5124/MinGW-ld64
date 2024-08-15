@@ -524,6 +524,12 @@ supports ReadWriteBarrier, map all 3 to do the same. */
 #define __INTRINSIC_SPECIAL___movsw
 #define __INTRINSIC_SPECIAL___movsd
 #define __INTRINSIC_SPECIAL___movsq
+#define __INTRINSIC_SPECIAL___cpuidex
+#define __INTRINSIC_SPECIAL___popcnt64
+#define __INTRINSIC_SPECIAL___shiftleft128
+#define __INTRINSIC_SPECIAL___shiftright128
+#define __INTRINSIC_SPECIAL__mul128
+#define __INTRINSIC_SPECIAL__umul128
 
 #endif /* __INTRINSIC_GROUP_WINNT */
 

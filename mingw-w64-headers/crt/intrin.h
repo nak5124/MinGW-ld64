@@ -53,16 +53,9 @@
 #ifdef __x86_64__
 #include <stdlib.h>
 #include <errno.h>
-/* Make sure _mm_malloc and _mm_free are defined.  */
-#include <malloc.h>
 
 __MINGW_BEGIN_C_DECLS
 
-#ifndef _mm_malloc
-# define _MM_MALLOC_H_INCLUDED
-# define _mm_free(a)      _aligned_free(a)
-# define _mm_malloc(a, b) _aligned_malloc(a, b)
-#endif
 #include <x86intrin.h>
 #include <cpuid.h>
 

@@ -275,45 +275,47 @@ limitations in handling dllimport attribute.  */
 
 #ifndef DUMMYUNIONNAME
 # ifdef NONAMELESSUNION
-#  define DUMMYUNIONNAME  u
-#  define DUMMYUNIONNAME1 u1  /* Wine uses this variant */
-#  define DUMMYUNIONNAME2 u2
-#  define DUMMYUNIONNAME3 u3
-#  define DUMMYUNIONNAME4 u4
-#  define DUMMYUNIONNAME5 u5
-#  define DUMMYUNIONNAME6 u6
-#  define DUMMYUNIONNAME7 u7
-#  define DUMMYUNIONNAME8 u8
-#  define DUMMYUNIONNAME9 u9
+#   define DUMMYUNIONNAME  u
+#   define DUMMYUNIONNAME1 u1  /* Wine uses this variant */
+#   define DUMMYUNIONNAME2 u2
+#   define DUMMYUNIONNAME3 u3
+#   define DUMMYUNIONNAME4 u4
+#   define DUMMYUNIONNAME5 u5
+#   define DUMMYUNIONNAME6 u6
+#   define DUMMYUNIONNAME7 u7
+#   define DUMMYUNIONNAME8 u8
+#   define DUMMYUNIONNAME9 u9
 # else
-#  define DUMMYUNIONNAME
-#  define DUMMYUNIONNAME1  /* Wine uses this variant */
-#  define DUMMYUNIONNAME2
-#  define DUMMYUNIONNAME3
-#  define DUMMYUNIONNAME4
-#  define DUMMYUNIONNAME5
-#  define DUMMYUNIONNAME6
-#  define DUMMYUNIONNAME7
-#  define DUMMYUNIONNAME8
-#  define DUMMYUNIONNAME9
+#   define DUMMYUNIONNAME
+#   define DUMMYUNIONNAME1  /* Wine uses this variant */
+#   define DUMMYUNIONNAME2
+#   define DUMMYUNIONNAME3
+#   define DUMMYUNIONNAME4
+#   define DUMMYUNIONNAME5
+#   define DUMMYUNIONNAME6
+#   define DUMMYUNIONNAME7
+#   define DUMMYUNIONNAME8
+#   define DUMMYUNIONNAME9
 # endif
 #endif  /* DUMMYUNIONNAME */
 
 #ifndef DUMMYSTRUCTNAME
 # ifdef NONAMELESSUNION
-#  define DUMMYSTRUCTNAME  s
-#  define DUMMYSTRUCTNAME1 s1  /* Wine uses this variant */
-#  define DUMMYSTRUCTNAME2 s2
-#  define DUMMYSTRUCTNAME3 s3
-#  define DUMMYSTRUCTNAME4 s4
-#  define DUMMYSTRUCTNAME5 s5
+#   define DUMMYSTRUCTNAME  s
+#   define DUMMYSTRUCTNAME1 s1  /* Wine uses this variant */
+#   define DUMMYSTRUCTNAME2 s2
+#   define DUMMYSTRUCTNAME3 s3
+#   define DUMMYSTRUCTNAME4 s4
+#   define DUMMYSTRUCTNAME5 s5
+#   define DUMMYSTRUCTNAME6 s6
 # else
-#  define DUMMYSTRUCTNAME
-#  define DUMMYSTRUCTNAME1  /* Wine uses this variant */
-#  define DUMMYSTRUCTNAME2
-#  define DUMMYSTRUCTNAME3
-#  define DUMMYSTRUCTNAME4
-#  define DUMMYSTRUCTNAME5
+#   define DUMMYSTRUCTNAME
+#   define DUMMYSTRUCTNAME1  /* Wine uses this variant */
+#   define DUMMYSTRUCTNAME2
+#   define DUMMYSTRUCTNAME3
+#   define DUMMYSTRUCTNAME4
+#   define DUMMYSTRUCTNAME5
+#   define DUMMYSTRUCTNAME6
 # endif
 #endif  /* DUMMYSTRUCTNAME */
 
