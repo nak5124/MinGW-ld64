@@ -64,6 +64,7 @@ extern "C"
 #endif
 
 #include <specstrings.h>
+#include <kernelspecs.h>
 
 #ifdef __x86_64__
 # ifndef _AMD64_
