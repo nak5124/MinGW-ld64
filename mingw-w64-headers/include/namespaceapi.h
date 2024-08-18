@@ -14,26 +14,21 @@
 extern "C" {
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
-#define PRIVATE_NAMESPACE_FLAG_DESTROY 0x1
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM)
 
-  WINBASEAPI HANDLE WINAPI CreatePrivateNamespaceW (LPSECURITY_ATTRIBUTES lpPrivateNamespaceAttributes, LPVOID lpBoundaryDescriptor, LPCWSTR lpAliasPrefix);
-  WINBASEAPI HANDLE WINAPI OpenPrivateNamespaceW (LPVOID lpBoundaryDescriptor, LPCWSTR lpAliasPrefix);
-#ifdef UNICODE
-#define CreatePrivateNamespace CreatePrivateNamespaceW
-#endif
+#define PRIVATE_NAMESPACE_FLAG_DESTROY 0x00000001
 
-  WINBASEAPI BOOLEAN WINAPI ClosePrivateNamespace (HANDLE Handle, ULONG Flags);
-  WINBASEAPI HANDLE WINAPI CreateBoundaryDescriptorW (LPCWSTR Name, ULONG Flags);
-#ifdef UNICODE
-#define CreateBoundaryDescriptor CreateBoundaryDescriptorW
-#endif
+  WINBASEAPI HANDLE  WINAPI CreatePrivateNamespaceW(LPSECURITY_ATTRIBUTES lpPrivateNamespaceAttributes, LPVOID lpBoundaryDescriptor, LPCWSTR lpAliasPrefix);
+  WINBASEAPI HANDLE  WINAPI OpenPrivateNamespaceW(LPVOID lpBoundaryDescriptor, LPCWSTR lpAliasPrefix);
+  WINBASEAPI BOOLEAN WINAPI ClosePrivateNamespace(HANDLE Handle, ULONG Flags);
+  WINBASEAPI HANDLE  WINAPI CreateBoundaryDescriptorW(LPCWSTR Name, ULONG Flags);
+  WINBASEAPI WINBOOL WINAPI AddSIDToBoundaryDescriptor(HANDLE *BoundaryDescriptor, PSID RequiredSid);
+  WINBASEAPI VOID    WINAPI DeleteBoundaryDescriptor(HANDLE BoundaryDescriptor);
 
-  WINBASEAPI WINBOOL WINAPI AddSIDToBoundaryDescriptor (HANDLE *BoundaryDescriptor, PSID RequiredSid);
-  WINBASEAPI VOID WINAPI DeleteBoundaryDescriptor (HANDLE BoundaryDescriptor);
-#endif
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM) */
 
 #ifdef __cplusplus
 }
 #endif
-#endif
+
+#endif  /* _APISETNAMESPACE_ */

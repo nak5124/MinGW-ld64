@@ -6,6 +6,7 @@
 #ifndef _SHLOBJ_H_
 #define _SHLOBJ_H_
 
+#include <_mingw_unicode.h>
 #include <wtypesbase.h>
 #include <wincrypt.h>
 #include <winapifamily.h>

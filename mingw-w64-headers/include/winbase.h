@@ -1,3 +1,4 @@
+#include <winapifamily.h>
 /**
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER within this package.
@@ -8,40 +9,42 @@
 #include <_mingw_unicode.h>
 
 #include <apisetcconv.h>
-#include <winapifamily.h>
-
 #include <minwinbase.h>
-#include <bemapiset.h>
+
+#include <apiquery2.h>
+#include <processenv.h>
+#include <fileapifromapp.h>
 #include <debugapi.h>
+#include <utilapiset.h>
+#include <handleapi.h>
 #include <errhandlingapi.h>
 #include <fibersapi.h>
-#include <fileapi.h>
-#include <handleapi.h>
+#include <namedpipeapi.h>
+#include <profileapi.h>
 #include <heapapi.h>
 #include <ioapiset.h>
-#include <interlockedapi.h>
-#include <jobapi.h>
-#include <libloaderapi.h>
-#include <memoryapi.h>
-#include <namedpipeapi.h>
-#include <namespaceapi.h>
-#include <processenv.h>
-#include <processthreadsapi.h>
-#include <processtopologyapi.h>
-#include <profileapi.h>
-#include <realtimeapiset.h>
-#include <securityappcontainer.h>
-#include <securitybaseapi.h>
 #include <synchapi.h>
+#include <interlockedapi.h>
+#include <processthreadsapi.h>
 #include <sysinfoapi.h>
-#include <systemtopologyapi.h>
-#include <threadpoolapiset.h>
+#include <memoryapi.h>
+#include <enclaveapi.h>
 #include <threadpoollegacyapiset.h>
-#include <utilapiset.h>
+#include <threadpoolapiset.h>
+#include <jobapi.h>
+#include <jobapi2.h>
 #include <wow64apiset.h>
+#include <libloaderapi.h>
+#include <libloaderapi2.h>
+#include <securitybaseapi.h>
+#include <namespaceapi.h>
+#include <systemtopologyapi.h>
+#include <processtopologyapi.h>
+#include <securityappcontainer.h>
+#include <realtimeapiset.h>
 
 #ifdef __WIDL__
-#define NOWINBASEINTERLOCK 1
+# define NOWINBASEINTERLOCK 1
 #endif
 
 #ifndef NOWINBASEINTERLOCK
@@ -53,16 +56,24 @@
 extern "C" {
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
-#define GetCurrentTime() GetTickCount ()
-#endif
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
 #define DefineHandleTable(w) ( { (VOID)(w); TRUE; } )
 #define LimitEmsPages(dw)
 #define SetSwapAreaSize(w) (w)
 #define LockSegment(w) GlobalFix((HANDLE)(w))
 #define UnlockSegment(w) GlobalUnfix((HANDLE)(w))
+
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+
+
+
+#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
+#define GetCurrentTime() GetTickCount ()
+#endif
+
+#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
+
 
 #define Yield()
 

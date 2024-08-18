@@ -6,6 +6,7 @@
 #ifndef _WINNLS_
 #define _WINNLS_
 
+#include <_mingw_unicode.h>
 #include <winapifamily.h>
 
 #ifdef __cplusplus

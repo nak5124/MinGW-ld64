@@ -10,6 +10,14 @@
 #include <_mingw_unicode.h>
 #include <apisetcconv.h>
 
+#if !defined(CREDUIAPI)
+#if !defined(_CREDUI_)
+#define CREDUIAPI    EXTERN_C DECLSPEC_IMPORT
+#else
+#define CREDUIAPI    EXTERN_C
+#endif
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

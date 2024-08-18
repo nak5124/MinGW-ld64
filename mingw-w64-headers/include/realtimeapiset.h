@@ -13,30 +13,29 @@
 extern "C" {
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
-  WINBASEAPI WINBOOL WINAPI QueryThreadCycleTime (HANDLE ThreadHandle, PULONG64 CycleTime);
-  WINBASEAPI WINBOOL WINAPI QueryProcessCycleTime (HANDLE ProcessHandle, PULONG64 CycleTime);
-  WINBASEAPI WINBOOL WINAPI QueryIdleProcessorCycleTime (PULONG BufferLength, PULONG64 ProcessorIdleCycleTime);
-  WINBASEAPI WINBOOL WINAPI QueryIdleProcessorCycleTimeEx (USHORT Group, PULONG BufferLength, PULONG64 ProcessorIdleCycleTime);
+  WINBASEAPI WINBOOL WINAPI QueryThreadCycleTime(HANDLE ThreadHandle, PULONG64 CycleTime);
+  WINBASEAPI WINBOOL WINAPI QueryProcessCycleTime(HANDLE ProcessHandle, PULONG64 CycleTime);
+  WINBASEAPI WINBOOL WINAPI QueryIdleProcessorCycleTime(PULONG BufferLength, PULONG64 ProcessorIdleCycleTime);
+  WINBASEAPI WINBOOL WINAPI QueryIdleProcessorCycleTimeEx(USHORT Group, PULONG BufferLength, PULONG64 ProcessorIdleCycleTime);
 
-#endif /* WINAPI_PARTITION_DESKTOP */
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM) */
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM)
 
-  WINBASEAPI VOID WINAPI QueryInterruptTimePrecise (PULONGLONG lpInterruptTimePrecise);
-  WINBASEAPI VOID WINAPI QueryUnbiasedInterruptTimePrecise (PULONGLONG lpUnbiasedInterruptTimePrecise);
-  WINBASEAPI VOID WINAPI QueryInterruptTime (PULONGLONG lpInterruptTime);
+  WINBASEAPI VOID    WINAPI QueryInterruptTimePrecise(PULONGLONG lpInterruptTimePrecise);
+  WINBASEAPI VOID    WINAPI QueryUnbiasedInterruptTimePrecise(PULONGLONG lpUnbiasedInterruptTimePrecise);
+  WINBASEAPI VOID    WINAPI QueryInterruptTime(PULONGLONG lpInterruptTime);
+  WINBASEAPI WINBOOL WINAPI QueryUnbiasedInterruptTime(PULONGLONG UnbiasedTime);
+  WINBASEAPI HRESULT WINAPI QueryAuxiliaryCounterFrequency(PULONGLONG lpAuxiliaryCounterFrequency);
+  WINBASEAPI HRESULT WINAPI ConvertAuxiliaryCounterToPerformanceCounter(ULONGLONG ullAuxiliaryCounterValue, PULONGLONG lpPerformanceCounterValue, PULONGLONG lpConversionError);
+  WINBASEAPI HRESULT WINAPI ConvertPerformanceCounterToAuxiliaryCounter(ULONGLONG ullPerformanceCounterValue, PULONGLONG lpAuxiliaryCounterValue, PULONGLONG lpConversionError);
 
-  WINBASEAPI WINBOOL WINAPI QueryUnbiasedInterruptTime (PULONGLONG UnbiasedTime);
-  WINBASEAPI HRESULT WINAPI QueryAuxiliaryCounterFrequency (PULONGLONG lpAuxiliaryCounterFrequency);
-  WINBASEAPI HRESULT WINAPI ConvertAuxiliaryCounterToPerformanceCounter (ULONGLONG ullAuxiliaryCounterValue, PULONGLONG lpPerformanceCounterValue, PULONGLONG lpConversionError);
-  WINBASEAPI HRESULT WINAPI ConvertPerformanceCounterToAuxiliaryCounter (ULONGLONG ullPerformanceCounterValue, PULONGLONG lpAuxiliaryCounterValue, PULONGLONG lpConversionError);
-
-#endif /* WINAPI_PARTITION_APP */
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM) */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _APISETREALTIME_ */
+#endif  /* _APISETREALTIME_ */

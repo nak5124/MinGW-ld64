@@ -7,6 +7,7 @@
 #ifndef _MMEAPI_H_
 #define _MMEAPI_H_
 
+#include <_mingw_unicode.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 

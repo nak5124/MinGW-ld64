@@ -7,6 +7,7 @@
 #ifndef _MCIAPI_H_
 #define _MCIAPI_H_
 
+#include <_mingw_unicode.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 

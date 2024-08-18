@@ -5,6 +5,8 @@
  */
 #ifndef _INC_ISCSIDSC
 #define _INC_ISCSIDSC
+
+#include <_mingw_unicode.h>
 #include <ntddscsi.h>
 #ifdef __cplusplus
 extern "C" {
