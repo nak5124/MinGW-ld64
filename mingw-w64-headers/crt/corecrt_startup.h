@@ -57,6 +57,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _initialize_narrow_environment(void);
   _CRTIMP int __cdecl _initialize_wide_environment(void);
 
+  _CRTIMP char    **__cdecl _get_initial_narrow_environment(void);
+  _CRTIMP wchar_t **__cdecl _get_initial_wide_environment(void);
+
   _CRTIMP char    *__cdecl _get_narrow_winmain_command_line(void);
   _CRTIMP wchar_t *__cdecl _get_wide_winmain_command_line(void);
 
