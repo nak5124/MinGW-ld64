@@ -20,6 +20,7 @@
 #include <tchar.h>
 #include <sect_attribs.h>
 #include <locale.h>
+#include <corecrt_startup.h>
 #include <stdio.h>
 #ifdef __USING_MCFGTHREAD__
 #include <mcfgthread/cxa.h>
@@ -325,7 +326,12 @@ int __cdecl atexit (_PVFV func)
 #ifdef __USING_MCFGTHREAD__
     return __MCF_cxa_atexit ((__MCF_cxa_dtor_cdecl*)(intptr_t) func, NULL, &__dso_handle);
 #else
-    return _onexit((_onexit_t)func) ? 0 : -1;
+    /*
+     * msvcrt def file renames the real atexit() function to _crt_atexit().
+     * UCRT provides atexit() function only under name _crt_atexit().
+     * So redirect call to _crt_atexit() function.
+     */
+    return _crt_atexit(func);
 #endif
 }
 

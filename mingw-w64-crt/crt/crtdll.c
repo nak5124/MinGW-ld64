@@ -230,6 +230,8 @@ int __cdecl atexit (_PVFV func)
 #ifdef __USING_MCFGTHREAD__
     return __MCF_cxa_atexit ((__MCF_cxa_dtor_cdecl*)(intptr_t) func, NULL, &__dso_handle);
 #else
+    /* Do not use msvcrt's atexit() or UCRT's _crt_atexit() function as it
+     * cannot be called from DLL library which may be unloaded at runtime. */
     return _register_onexit_function(&atexit_table, (_onexit_t)func);
 #endif
 }
