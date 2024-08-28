@@ -7,6 +7,13 @@
 #define _THREADS_H
 
 #include <corecrt.h>
+
+#if __USING_MCFGTHREAD__
+
+#include <mcfgthread/c11.h>
+
+#else
+
 #include <stdint.h>
 #include <time.h>
 
@@ -114,5 +121,7 @@ __MINGW_BEGIN_C_DECLS
 #define ONCE_FLAG_INIT { 0 }
 
 __MINGW_END_C_DECLS
+
+#endif  /* __USING_MCFGTHREAD__ */
 
 #endif  /* _THREADS_H */
