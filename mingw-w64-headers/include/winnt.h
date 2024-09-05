@@ -1854,6 +1854,7 @@ extern "C" {
   SHORT InterlockedXor16(SHORT volatile *Destination, SHORT Value);
 #endif
 
+#ifndef RC_INVOKED
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -1867,6 +1868,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+#endif /* RC_INVOKED */
 
 #define CpuIdEx __cpuidex
 
