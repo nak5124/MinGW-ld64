@@ -1,11 +1,9 @@
+#include <winapifamily.h>
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
-#include <winapifamily.h>
-
 #ifndef _INC_MMSYSTEM
 #define _INC_MMSYSTEM
 
@@ -15,38 +13,48 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif  /* __cplusplus */
+#endif
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #ifndef MMNOMCI
-#include <mciapi.h>
+# include <mciapi.h>
 #endif
 
 #include <mmiscapi.h>
 #include <mmiscapi2.h>
+
 #include <playsoundapi.h>
+
 #include <mmeapi.h>
 
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
+
 #ifndef MMNOTIMER
-#include <timeapi.h>
+# include <timeapi.h>
 #endif
+
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM) */
+
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #include <joystickapi.h>
 
 #ifndef NEWTRANSPARENT
-#define NEWTRANSPARENT  3
-#define QUERYROPSUPPORT 40
+# define NEWTRANSPARENT  3
+# define QUERYROPSUPPORT 40
 #endif
 
-#define SELECTDIB 41
-#define DIBINDEX(n) MAKELONG((n),0x10FF)
+#define SELECTDIB   41
+#define DIBINDEX(n) MAKELONG((n), 0x10FF)
 
 #ifndef SC_SCREENSAVE
-#define SC_SCREENSAVE 0xF140
+# define SC_SCREENSAVE 0xF140
 #endif
 
-#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 
 #ifdef __cplusplus
 }
@@ -54,4 +62,4 @@ extern "C" {
 
 #include <poppack.h>
 
-#endif /* _INC_MMSYSTEM */
+#endif  /* _INC_MMSYSTEM */

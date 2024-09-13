@@ -4,5 +4,9 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #if !(defined(lint) || defined(RC_INVOKED))
-# pragma pack(push, 1)
+# ifndef __WIDL__
+#   pragma pack(push, 1)
+# else
+#   pragma pack(1)
+# endif
 #endif

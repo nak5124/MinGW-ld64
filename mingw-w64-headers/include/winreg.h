@@ -55,7 +55,7 @@ extern "C" {
     LPVOID val_buff_ptr;
   };
 
-  typedef struct val_context FAR *PVALCONTEXT;
+  typedef struct val_context *PVALCONTEXT;
 
   typedef struct pvalueA
   {
@@ -63,7 +63,7 @@ extern "C" {
     int    pv_valuelen;
     LPVOID pv_value_context;
     DWORD  pv_type;
-  } PVALUEA, FAR *PPVALUEA;
+  } PVALUEA, *PPVALUEA;
 
   typedef struct pvalueW
   {
@@ -71,14 +71,14 @@ extern "C" {
     int    pv_valuelen;
     LPVOID pv_value_context;
     DWORD  pv_type;
-  } PVALUEW, FAR *PPVALUEW;
+  } PVALUEW, *PPVALUEW;
 
   __MINGW_TYPEDEF_AW(PVALUE)
   __MINGW_TYPEDEF_AW(PPVALUE)
 
-  typedef DWORD __cdecl QUERYHANDLER(LPVOID keycontext, PVALCONTEXT val_list, DWORD num_vals, LPVOID outputbuffer, DWORD FAR *total_outlen, DWORD input_blen);
+  typedef DWORD __cdecl QUERYHANDLER(LPVOID keycontext, PVALCONTEXT val_list, DWORD num_vals, LPVOID outputbuffer, DWORD *total_outlen, DWORD input_blen);
 
-  typedef QUERYHANDLER FAR *PQUERYHANDLER;
+  typedef QUERYHANDLER *PQUERYHANDLER;
 
   typedef struct provider_info
   {
@@ -90,7 +90,7 @@ extern "C" {
     LPVOID        pi_key_context;
   } REG_PROVIDER;
 
-  typedef struct provider_info FAR *PPROVIDER;
+  typedef struct provider_info *PPROVIDER;
 
   typedef struct value_entA
   {
@@ -98,7 +98,7 @@ extern "C" {
     DWORD     ve_valuelen;
     DWORD_PTR ve_valueptr;
     DWORD     ve_type;
-  } VALENTA, FAR *PVALENTA;
+  } VALENTA, *PVALENTA;
 
   typedef struct value_entW
   {
@@ -106,7 +106,7 @@ extern "C" {
     DWORD     ve_valuelen;
     DWORD_PTR ve_valueptr;
     DWORD     ve_type;
-  } VALENTW, FAR *PVALENTW;
+  } VALENTW, *PVALENTW;
 
   __MINGW_TYPEDEF_AW(VALENT)
   __MINGW_TYPEDEF_AW(PVALENT)
