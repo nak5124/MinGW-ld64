@@ -75,7 +75,7 @@ src_libntoskrnl=libsrc/memcmp.c
 src_libdloadhelper=libsrc/dloadhelper.c misc/delay-f.c
 
 src_libmingw32=\
-  crt/_newmode.c       crt/charmax.c     crt/cinitexe.c           crt/CRT_fp10.c      crt/crt_handler.c        \
+  crt/_newmode.c       crt/charmax.c     crt/cinitexe.c           crt/CRT_fp8.c       crt/crt_handler.c        \
   crt/crtexewin.c      crt/cxa_atexit.c  crt/cxa_thread_atexit.c  crt/dll_argv.c      crt/dllargv.c            \
   crt/exit_wrappers.c  crt/gccmain.c     crt/merr.c               crt/mingw_custom.c  crt/mingw_helpers.c      \
   crt/natstart.c       crt/pesect.c      crt/pseudo-reloc-list.c  crt/pseudo-reloc.c  crt/tls_atexit.c         \
