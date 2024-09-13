@@ -110,13 +110,13 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vfprintf_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfprintf(0, _Stream, _Format, _Locale, _ArgList);
+    return __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vfprintf_s_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_s(0, _Stream, _Format, _Locale, _ArgList);
+    return __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
   }
 
 #ifdef __MINGW_USE_SECAPI
@@ -124,7 +124,7 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int vfprintf_s(FILE *__restrict _Stream, const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_s(0, _Stream, _Format, NULL, _ArgList);
+    return __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
   }
 
 #endif
@@ -132,25 +132,25 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vfprintf_p_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_p(0, _Stream, _Format, _Locale, _ArgList);
+    return __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vfprintf_p(FILE *__restrict _Stream, const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_p(0, _Stream, _Format, NULL, _ArgList);
+    return __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
   }
 
   __mingw_ovr
   int _vprintf_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfprintf(0, stdout, _Format, _Locale, _ArgList);
+    return __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vprintf_s_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_s(0, stdout, _Format, _Locale, _ArgList);
+    return __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
   }
 
 #ifdef __MINGW_USE_SECAPI
@@ -158,7 +158,7 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int vprintf_s(const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_s(0, stdout, _Format, NULL, _ArgList);
+    return __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
   }
 
 #endif
@@ -166,13 +166,13 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vprintf_p_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_p(0, stdout, _Format, _Locale, _ArgList);
+    return __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vprintf_p(const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vfprintf_p(0, stdout, _Format, NULL, _ArgList);
+    return __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
   }
 
   __mingw_ovr
@@ -181,7 +181,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfprintf(0, _Stream, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -195,7 +195,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfprintf_s(0, _Stream, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -208,7 +208,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vfprintf_s(0, _Stream, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -221,7 +221,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfprintf_p(0, _Stream, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -232,7 +232,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vfprintf_p(0, _Stream, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -243,7 +243,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfprintf(0, stdout, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -254,7 +254,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfprintf_s(0, stdout, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -267,7 +267,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vfprintf_s(0, stdout, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -280,7 +280,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfprintf_p(0, stdout, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -291,7 +291,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vfprintf_p(0, stdout, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -301,13 +301,13 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vfscanf_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfscanf(0, _Stream, _Format, _Locale, _ArgList);
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vfscanf_s_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, _Locale, _ArgList);
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, _Locale, _ArgList);
   }
 
 #ifdef __MINGW_USE_SECAPI
@@ -315,7 +315,7 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int vfscanf_s(FILE *__restrict _Stream, const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, NULL, _ArgList);
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, NULL, _ArgList);
   }
 
 #endif
@@ -323,13 +323,13 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vscanf_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfscanf(0, stdin, _Format, _Locale, _ArgList);
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vscanf_s_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, _Locale, _ArgList);
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, _Locale, _ArgList);
   }
 
 #ifdef __MINGW_USE_SECAPI
@@ -337,7 +337,7 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int vscanf_s(const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, NULL, _ArgList);
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, NULL, _ArgList);
   }
 
 #endif
@@ -348,7 +348,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfscanf(0, _Stream, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -359,7 +359,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -372,7 +372,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -385,7 +385,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfscanf(0, stdin, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -396,7 +396,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -409,7 +409,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -425,7 +425,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsnprintf_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -436,7 +436,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsprintf_l(char *__restrict _Buffer, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -444,7 +444,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsprintf_s_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf_s(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -454,7 +454,7 @@ __MINGW_BEGIN_C_DECLS
   int vsprintf_s(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf_s(0, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(int, vsprintf_s, char, _Buffer, const char *, _Format, va_list, _ArgList)
@@ -465,7 +465,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsprintf_p_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf_p(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -473,7 +473,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsprintf_p(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf_p(0, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -481,7 +481,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsnprintf_s_l(char *__restrict _Buffer, size_t _BufferCount, size_t _MaxCount, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsnprintf_s(0, _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -489,7 +489,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsnprintf_s(char *__restrict _Buffer, size_t _BufferCount, size_t _MaxCount, const char *__restrict _Format, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsnprintf_s(0, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(int, _vsnprintf_s, char, _Buffer, size_t, _BufferCount, const char *, _Format, va_list, _ArgList)
@@ -500,7 +500,7 @@ __MINGW_BEGIN_C_DECLS
   int vsnprintf_s(char *__restrict _Buffer, size_t _BufferCount, size_t _MaxCount, const char *__restrict _Format, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsnprintf_s(0, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(int, vsnprintf_s, char, _Buffer, size_t, _BufferCount, const char *, _Format, va_list, _ArgList)
@@ -511,7 +511,7 @@ __MINGW_BEGIN_C_DECLS
   int _vscprintf_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -522,7 +522,7 @@ __MINGW_BEGIN_C_DECLS
   int _vscprintf_p_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -530,7 +530,7 @@ __MINGW_BEGIN_C_DECLS
   int _vscprintf_p(const char *__restrict _Format, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -538,7 +538,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsnprintf_c_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -546,7 +546,7 @@ __MINGW_BEGIN_C_DECLS
   int _vsnprintf_c(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, va_list _ArgList)
   {
     int _Ret;
-    _Ret = __stdio_common_vsprintf(0, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -556,7 +556,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -567,7 +567,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf_s(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -580,7 +580,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsprintf_s(0, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -594,7 +594,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf_p(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -605,7 +605,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsprintf_p(0, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -616,7 +616,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -630,7 +630,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -641,7 +641,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsprintf(0, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -652,7 +652,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsnprintf_s(0, _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -663,7 +663,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsnprintf_s(0, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -675,7 +675,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -689,7 +689,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -700,7 +700,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
@@ -710,13 +710,13 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vsscanf_l(const char *__restrict _Buffer, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vsscanf(0, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    return __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vsscanf_s_l(const char *__restrict _Buffer, const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __stdio_common_vsscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    return __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
   }
 
 #ifdef __MINGW_USE_SECAPI
@@ -724,7 +724,7 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int vsscanf_s(const char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList)
   {
-    return __stdio_common_vsscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
+    return __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(int, vsscanf_s, const char, _Buffer, const char *, _Format, va_list, _ArgList)
 
@@ -736,7 +736,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsscanf(0, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -747,7 +747,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -760,7 +760,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -773,7 +773,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsscanf(0, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -787,7 +787,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -798,7 +798,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, _BufferCount, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
