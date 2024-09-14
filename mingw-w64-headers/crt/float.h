@@ -267,8 +267,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
 #endif
 
-  _LDCRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign);
-  _LDCRTIMP long double __cdecl _chgsignl(long double _X);
+  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign);
+  _CRTIMP long double __cdecl _chgsignl(long double _X);
 #endif  /* _SIGN_DEFINED */
 
 #define clear87   _clear87

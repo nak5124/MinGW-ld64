@@ -11,4 +11,4 @@ float __cdecl fabsf(float x)
   return __builtin_fabsf(x);
 }
 
-float __cdecl (*__MINGW_IMP_SYMBOL(fabsf))(float) = fabsf;
+float __cdecl (*__MINGW_IMP_SYMBOL(fabsf))(float x) = fabsf;

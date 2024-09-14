@@ -23,7 +23,6 @@ __threadhandle
 __threadid
 __wcserror
 __wcserror_s
-; DATA set manually
 _assert
 _beginthread
 _beginthreadex

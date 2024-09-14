@@ -124,7 +124,7 @@ src_libws2_32=\
 # Files included in libucrt*.a
 src_ucrtbase=\
   math/_huge.c             math/frexpf.c              math/ldexpf.c              math/lgamma.c            math/lgammaf.c           \
-  math/lgammal.c           math/modfl.c               math/signgam.c             \
+  math/modfl.c             math/signgam.c             \
   \
   misc/__badioinfo.c       misc/__initenv.c           misc/__p___initenv.c       misc/__p___winitenv.c    misc/__winitenv.c        \
   misc/feclearexcept.c     misc/fegetenv.c            misc/fegetexceptflag.c     misc/fegetround.c        misc/feholdexcept.c      \
@@ -147,23 +147,8 @@ src_ucrtapp=\
 
 # Files included in libucrt*.a on x86_64
 src_ucrtbase64=\
-  $(src_ucrtbase)       \
-  \
-  math/x64/_chgsignl.S  math/x64/acoshl.c      math/x64/acosl.c          math/x64/asinhl.c      math/x64/asinl.c         \
-  math/x64/atan2l.c     math/x64/atanhl.c      math/x64/atanl.c          math/x64/cbrtl.c       math/x64/ceill.S         \
-  math/x64/copysignl.S  math/x64/coshl.c       math/x64/cosl_internal.S  math/x64/cosl.c        math/x64/erfl.c          \
-  math/x64/exp2l.S      math/x64/expl.c        math/x64/expm1l.c         math/x64/fabsf.c       math/x64/fabsl.c         \
-  math/x64/fdiml.c      math/x64/floorl.S      math/x64/fmal.c           math/x64/fmaxl.c       math/x64/fminl.c         \
-  math/x64/fmodl.c      math/x64/frexpl.c      math/x64/hypotl.c         math/x64/ilogbl.S      math/x64/ldexp.c         \
-  math/x64/ldexpl.c     math/x64/llrintl.c     math/x64/llroundl.c       math/x64/log10l.S      math/x64/log1pl.S        \
-  math/x64/log2l.S      math/x64/logbl.c       math/x64/logl_internal.S  math/x64/logl.c        math/x64/lrintl.c        \
-  math/x64/lroundl.c    math/x64/nearbyintl.S  math/x64/nextafterl.c     math/x64/nexttoward.c  math/x64/nexttowardf.c   \
-  math/x64/powl.c       math/x64/remainderl.S  math/x64/remquol.S        math/x64/rintl.c       math/x64/roundl.c        \
-  math/x64/scalbn.S     math/x64/scalbnf.S     math/x64/scalbnl.S        math/x64/sinhl.c       math/x64/sinl_internal.S \
-  math/x64/sinl.c       math/x64/sqrtl.c       math/x64/tanhl.c          math/x64/tanl.S        math/x64/tgammal.c       \
-  math/x64/truncl.c     \
-  \
-  misc/wcstold.c
+  $(src_ucrtbase)  math/x64/fabsf.c  math/x64/ldexp.c  math/x64/scalbn.S  math/x64/scalbnf.S
+
 
 # Files included in libucrt*.a on ARM64
 src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
@@ -190,9 +175,8 @@ src_libmingwex=\
   gdtoa/strtodg.c                  gdtoa/strtodnrp.c          gdtoa/strtof.c           gdtoa/strtopx.c          gdtoa/sum.c             \
   gdtoa/ulp.c                      \
   \
-  math/fp_consts.c                 math/fp_constsf.c          math/fp_constsl.c        math/fpclassify.c        math/fpclassifyf.c      \
-  math/fpclassifyl.c               math/isnan.c               math/isnanf.c            math/isnanl.c            math/signbit.c          \
-  math/signbitf.c                  math/signbitl.c            \
+  math/fpclassify.c                math/fpclassifyf.c         math/isnan.c             math/isnanf.c            math/signbit.c          \
+  math/signbitf.c                  \
   \
   misc/alarm.c                     misc/delay-f.c             misc/delay-n.c           misc/delayimp.c          misc/dirent.c           \
   misc/dirname.c                   misc/dllentrypoint.c       misc/dllmain.c           misc/feraiseexcept.c     misc/feupdateenv.c      \

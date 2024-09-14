@@ -298,4 +298,8 @@ double __cdecl lgamma(double x)
   return (__lgamma_r(x, &signgam));
 }
 
-double __cdecl (*__MINGW_IMP_SYMBOL(lgamma))(double) = lgamma;
+double __cdecl (*__MINGW_IMP_SYMBOL(lgamma))(double x) = lgamma;
+
+long double __cdecl lgammal(long double x) __attribute__((alias("lgamma")));
+extern long double (__cdecl *__MINGW_IMP_SYMBOL(lgammal))(long double x)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(lgamma)))));

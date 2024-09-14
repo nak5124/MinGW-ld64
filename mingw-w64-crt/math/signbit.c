@@ -4,7 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #define __FP_SIGNBIT 0x0200
-int __signbit(double x);
+int __cdecl __signbit(double x);
 
 typedef union __mingw_dbl_type_t
 {
@@ -16,7 +16,7 @@ typedef union __mingw_dbl_type_t
   } lh;
 } __mingw_dbl_type_t;
 
-int __signbit(double x)
+int __cdecl __signbit(double x)
 {
   __mingw_dbl_type_t hlp;
 
@@ -25,4 +25,7 @@ int __signbit(double x)
 }
 
 #undef signbit
-int __attribute__((alias("__signbit"))) signbit(double);
+int __cdecl signbit(double x) __attribute__((alias("__signbit")));
+
+int __cdecl __signbitl(long double x) __attribute__((alias("__signbit")));
+int __cdecl signbitl(long double x) __attribute__((alias("__signbit")));

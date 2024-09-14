@@ -6,7 +6,7 @@
 #define __CRT__NO_INLINE
 #include <math.h>
 
-int __fpclassifyf(float _x)
+int __cdecl __fpclassifyf(float _x)
 {
   __mingw_flt_type_t hlp;
 

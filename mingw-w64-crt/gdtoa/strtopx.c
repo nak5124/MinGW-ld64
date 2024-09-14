@@ -54,7 +54,7 @@ THIS SOFTWARE.
 #endif
 
 /* This is specific to the x86 80 bit long doubles. */
-#if defined(__x86_64__) || defined(_AMD64_)
+#if 0
 
 typedef union lD {
 	UShort L[5];

@@ -187,4 +187,4 @@ float __cdecl lgammaf(float x)
   return (__lgammaf_r(x, &signgam));
 }
 
-float __cdecl (*__MINGW_IMP_SYMBOL(lgammaf))(float) = lgammaf;
+float __cdecl (*__MINGW_IMP_SYMBOL(lgammaf))(float x) = lgammaf;

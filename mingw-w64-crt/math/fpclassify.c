@@ -15,7 +15,7 @@
 
  * and sets C1 flag (signbit) if neg */
 
-int __fpclassify(double _x)
+int __cdecl __fpclassify(double _x)
 {
   __mingw_dbl_type_t hlp;
   unsigned int l, h;
@@ -32,3 +32,5 @@ int __fpclassify(double _x)
     return (l ? FP_NAN : FP_INFINITE);
   return FP_NORMAL;
 }
+
+int __cdecl __fpclassifyl(long double _x) __attribute__((alias("__fpclassify")));

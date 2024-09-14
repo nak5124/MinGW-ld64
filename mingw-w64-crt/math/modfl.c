@@ -9,26 +9,10 @@
 
 long double __cdecl modfl(long double value, long double* iptr)
 {
-  long double int_part = 0.0L;
-  /* truncate */
-#if defined(__x86_64__) || defined(_AMD64_)
-  __asm__ __volatile__(
-    "subq   $8,       %%rsp\n"
-    "fnstcw 4(%%rsp)\n"
-    "movzwl 4(%%rsp), %%eax\n"
-    "orb    $12,      %%ah\n"
-    "movw   %%ax,     (%%rsp)\n"
-    "fldcw  (%%rsp)\n"
-    "frndint\n"
-    "fldcw  4(%%rsp)\n"
-    "addq   $8,       %%rsp\n"
-    : "=t" (int_part) : "0" (value) : "eax"); /* round */
-#else
-  int_part = truncl(value);
-#endif
-  if(iptr)
-    *iptr = int_part;
-  return (isinf(value) ? 0.0L : value - int_part);
+  double _fraction, _integer;
+  _fraction = modf((double)value, &_integer);
+  *iptr = _integer;
+  return _fraction;
 }
 
-long double __cdecl (*__MINGW_IMP_SYMBOL(modfl))(long double, long double *) = modfl;
+long double __cdecl (*__MINGW_IMP_SYMBOL(modfl))(long double value, long double *iptr) = modfl;

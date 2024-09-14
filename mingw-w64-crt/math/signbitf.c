@@ -4,7 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #define __FP_SIGNBIT 0x0200
-int __signbitf(float x);
+int __cdecl __signbitf(float x);
 
 typedef union __mingw_flt_type_t
 {
@@ -12,10 +12,10 @@ typedef union __mingw_flt_type_t
   unsigned int val;
 } __mingw_flt_type_t;
 
-int __signbitf(float x)
+int __cdecl __signbitf(float x)
 {
   __mingw_flt_type_t hlp;
   hlp.x = x;
   return ((hlp.val & 0x80000000) != 0);
 }
-int __attribute__((alias("__signbitf"))) signbitf(float);
+int __cdecl signbitf(float x) __attribute__((alias("__signbitf")));

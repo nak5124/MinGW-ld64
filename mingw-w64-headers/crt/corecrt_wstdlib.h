@@ -59,11 +59,9 @@ __MINGW_BEGIN_C_DECLS
 #endif
   __MINGW_EXTENSION _CRTIMP unsigned long long __cdecl _wcstoull_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix, _locale_t _Locale);
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-  _LDCRTIMP long double __cdecl wcstold(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr) __MINGW_NONNULL((1));
+  _CRTIMP long double __cdecl wcstold(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr) __MINGW_NONNULL((1));
 #endif
-#if defined(__aarch64__) || defined(_ARM64_)
-  _LDCRTIMP long double __cdecl _wcstold_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, _locale_t _Locale);
-#endif
+  _CRTIMP long double __cdecl _wcstold_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, _locale_t _Locale);
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
   _CRTIMP float __cdecl wcstof(const wchar_t *__restrict _Str, wchar_t **__restrict _EndPtr) __MINGW_NONNULL((1));
 #endif

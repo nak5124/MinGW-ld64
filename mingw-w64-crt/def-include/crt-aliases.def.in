@@ -135,9 +135,8 @@ ADD_UNDERSCORE(yn)
 ; ADD_UNDERSCORE(nextafter)
 ADD_UNDERSCORE(hypotf)
 
-#if defined(DEF_ARM64)
-; This is list of symbol aliases for C99 ARM long double functions
-; They are defined as aliases to regular double symbols as on ARM, long double is equal to regular double
+; This is list of symbol aliases for C99 long double functions
+; They are defined as aliases to regular double symbols as, long double is equal to regular double
 acosl == acos
 asinl == asin
 atan2l == atan2
@@ -162,7 +161,6 @@ sqrtl == sqrt
 _chgsignl == _chgsign
 _copysignl == _copysign
 _hypotl == _hypot
-#endif
 
 ; This is list of symbol aliases for C11 functions
 timespec_get == _timespec64_get

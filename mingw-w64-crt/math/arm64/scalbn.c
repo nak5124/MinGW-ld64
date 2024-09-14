@@ -10,34 +10,34 @@ double __cdecl scalbn(double x, int exp)
 {
   return x * exp2(exp);
 }
-double __cdecl (*__MINGW_IMP_SYMBOL(scalbn))(double, int) = scalbn;
+double __cdecl (*__MINGW_IMP_SYMBOL(scalbn))(double x, int exp) = scalbn;
 
 float __cdecl scalbnf(float x, int exp)
 {
   return x * exp2f(exp);
 }
-float __cdecl (*__MINGW_IMP_SYMBOL(scalbnf))(float, int) = scalbnf;
+float __cdecl (*__MINGW_IMP_SYMBOL(scalbnf))(float x, int exp) = scalbnf;
 
 long double __cdecl scalbnl(long double x, int exp) __attribute__((alias("scalbn")));
-extern long double __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))))
-  (__cdecl *__MINGW_IMP_SYMBOL(scalbnl))(long double, int);
+extern long double (__cdecl *__MINGW_IMP_SYMBOL(scalbnl))(long double x, int exp)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))));
 
 double __cdecl scalbln(double x, long exp) __attribute__((alias("scalbn")));
-extern double __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))))
-  (__cdecl *__MINGW_IMP_SYMBOL(scalbln))(double, long);
+extern double (__cdecl *__MINGW_IMP_SYMBOL(scalbln))(double x, long exp)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))));
 
 float __cdecl scalblnf(float x, long exp) __attribute__((alias("scalbnf")));
-extern float __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbnf)))))
-  (__cdecl *__MINGW_IMP_SYMBOL(scalblnf))(float, long);
+extern float (__cdecl *__MINGW_IMP_SYMBOL(scalblnf))(float x, long exp)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbnf)))));
 
-long double __cdecl scalblnl(long double x, long exp) __attribute__((alias("scalbnl")));
-extern long double __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbnl)))))
-  (__cdecl *__MINGW_IMP_SYMBOL(scalblnl))(long double, long);
+long double __cdecl scalblnl(long double x, long exp) __attribute__((alias("scalbn")));
+extern long double (__cdecl *__MINGW_IMP_SYMBOL(scalblnl))(long double, long)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))));
 
 double __cdecl ldexp(double x, int exp) __attribute__((alias("scalbn")));
-extern double __attribute__ ((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))))
-  (__cdecl *__MINGW_IMP_SYMBOL(ldexp))(double, int);
+extern double (__cdecl *__MINGW_IMP_SYMBOL(ldexp))(double x, int exp)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))));
 
-long double __cdecl ldexpl(long double x, int exp) __attribute__((alias("ldexp")));
-extern double __attribute__ ((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(ldexp)))))
-  (__cdecl *__MINGW_IMP_SYMBOL(ldexpl))(long double, int);
+long double __cdecl ldexpl(long double x, int exp) __attribute__((alias("scalbn")));
+extern double (__cdecl *__MINGW_IMP_SYMBOL(ldexpl))(long double x, int exp)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(scalbn)))));

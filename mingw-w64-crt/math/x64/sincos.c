@@ -4,11 +4,11 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-void sincos (double __x, double *p_sin, double *p_cos);
-void sincosl (long double __x, long double *p_sin, long double *p_cos);
-void sincosf (float __x, float *p_sin, float *p_cos);
+void __cdecl sincos (double __x, double *p_sin, double *p_cos);
+void __cdecl sincosl (long double __x, long double *p_sin, long double *p_cos);
+void __cdecl sincosf (float __x, float *p_sin, float *p_cos);
 
-void sincos (double __x, double *p_sin, double *p_cos)
+void __cdecl sincos (double __x, double *p_sin, double *p_cos)
 {
   long double c, s;
 
@@ -30,7 +30,7 @@ void sincos (double __x, double *p_sin, double *p_cos)
   *p_cos = (double) c;
 }
 
-void sincosf (float __x, float *p_sin, float *p_cos)
+void __cdecl sincosf (float __x, float *p_sin, float *p_cos)
 {
   long double c, s;
 
@@ -52,7 +52,7 @@ void sincosf (float __x, float *p_sin, float *p_cos)
   *p_cos = (float) c;
 }
 
-void sincosl (long double __x, long double *p_sin, long double *p_cos)
+void __cdecl sincosl (long double __x, long double *p_sin, long double *p_cos)
 {
   long double c, s;
 

@@ -11,4 +11,4 @@ float __cdecl frexpf(float x, int *expn)
   return (float)frexp(x, expn);
 }
 
-float __cdecl (*__MINGW_IMP_SYMBOL(frexpf))(float, int *) = frexpf;
+float __cdecl (*__MINGW_IMP_SYMBOL(frexpf))(float x, int *expn) = frexpf;

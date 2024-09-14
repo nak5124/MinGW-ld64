@@ -51,14 +51,6 @@ limitations in handling dllimport attribute.  */
 # endif
 #endif  /* __declspec */
 
-#ifndef _LDCRTIMP
-# if defined(__aarch64__) || defined(_ARM64_)
-#   define _LDCRTIMP _CRTIMP
-# else
-#   define _LDCRTIMP extern
-# endif
-#endif
-
 #define USE___UUIDOF 0
 
 #ifndef _inline

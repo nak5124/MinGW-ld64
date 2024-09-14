@@ -11,4 +11,4 @@ float __cdecl ldexpf(float x, int expn)
   return (float)ldexp(x, expn);
 }
 
-float __cdecl (*__MINGW_IMP_SYMBOL(ldexpf))(float, int) = ldexpf;
+float __cdecl (*__MINGW_IMP_SYMBOL(ldexpf))(float x, int expn) = ldexpf;

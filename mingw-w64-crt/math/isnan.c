@@ -5,7 +5,7 @@
  */
 #include <math.h>
 
-int __isnan(double _x)
+int __cdecl __isnan(double _x)
 {
   __mingw_dbl_type_t hlp;
   int l, h;
@@ -19,4 +19,7 @@ int __isnan(double _x)
 }
 
 #undef isnan
-int __attribute__((alias("__isnan"))) isnan(double);
+int __cdecl isnan(double _x) __attribute__((alias("__isnan")));
+
+int __cdecl __isnanl(long double _x) __attribute__((alias("__isnan")));
+int __cdecl isnanl(long double _x) __attribute__((alias("__isnan")));
