@@ -99,25 +99,13 @@ __MINGW_BEGIN_C_DECLS
     {
       unsigned int low, high;
     } lh;
-  } __mingw_dbl_type_t;
+  } __mingw_dbl_type_t, __mingw_ldbl_type_t;
 
   typedef union __mingw_flt_type_t
   {
     float        x;
     unsigned int val;
   } __mingw_flt_type_t;
-
-  typedef union __mingw_ldbl_type_t
-  {
-    long double x;
-    __C89_NAMELESS struct
-    {
-      unsigned int low, high;
-      int          sign_exponent : 16;
-      int          res1          : 16;
-      int          res0          : 32;
-    } lh;
-  } __mingw_ldbl_type_t;
 
 #endif
 
@@ -327,7 +315,14 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_CONST
   int __cdecl isnanl(long double _X)
   {
-    return isnan(_X);
+    __mingw_dbl_type_t __hlp;
+    unsigned int __l, __h;
+    __hlp.x = (double)_X;
+    __l = __hlp.lh.low;
+    __h = __hlp.lh.high & 0x7fffffff;
+    __h |= (__l | -__l) >> 31;
+    __h = 0x7ff00000 - __h;
+    return (int)__h >> 31;
   }
 # endif  /* __CRT__NO_INLINE */
 #endif
