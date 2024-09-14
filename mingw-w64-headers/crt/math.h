@@ -497,14 +497,14 @@ __MINGW_BEGIN_C_DECLS
 # define isnan(_X)                                                 \
     __mingw_choose_expr(                                           \
       __mingw_types_compatible_p(__typeof__(_X), double),          \
-      __isnan(_X),                                                 \
+      __isnan((double)(_X)),                                       \
       __mingw_choose_expr(                                         \
         __mingw_types_compatible_p(__typeof__(_X), float),         \
-        __isnanf(_X),                                              \
+        __isnanf((float)(_X)),                                     \
         __mingw_choose_expr(                                       \
           __mingw_types_compatible_p(__typeof__(_X), long double), \
-          __isnanl(_X),                                            \
-          (__builtin_trap(), _X))))
+          __isnanl((long double)(_X)),                             \
+          (__builtin_trap(), (int)0))))
 #endif
 
 /* 7.12.3.5 */
