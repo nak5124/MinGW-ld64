@@ -215,7 +215,7 @@
 # define __MINGW_USE_LFS64 1
 #endif
 
-#if (defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC)) && !defined(__USE_MINGW_ANSI_STDIO)
+#if defined(__MINGW_USE_GNU) && !defined(__USE_MINGW_ANSI_STDIO)
 # define __USE_MINGW_ANSI_STDIO 1
 #endif
 
