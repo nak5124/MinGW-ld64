@@ -251,8 +251,7 @@ extern "C" {
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingGetTrainingContextHandle(RPC_BINDING_HANDLE Binding, void **ContextHandle);
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcServerInqBindingHandle(RPC_BINDING_HANDLE *Binding);
 
-  typedef RPC_STATUS (__RPC_USER *RPC_NEW_HTTP_PROXY_CHANNEL)(RPC_HTTP_REDIRECTOR_STAGE RedirectorStage, RPC_WSTR ServerName, RPC_WSTR ServerPort, RPC_WSTR RemoteUser, RPC_WSTR AuthType, void *ResourceUuid, void *Metadata, void *SessionId, void *Interface, void *Reserved, unsigned long Flags, RPC_WSTR *NewServerName, RPC_WSTR *NewServerPort);
-  typedef void       (__RPC_USER *RPC_HTTP_PROXY_FREE_STRING)(RPC_WSTR String);
+  typedef void (__RPC_USER *RPC_HTTP_PROXY_FREE_STRING)(RPC_WSTR String);
 
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcImpersonateClient(RPC_BINDING_HANDLE BindingHandle);
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcImpersonateClient2(RPC_BINDING_HANDLE BindingHandle);
@@ -260,10 +259,6 @@ extern "C" {
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcRevertToSelf(void);
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcImpersonateClientContainer(RPC_BINDING_HANDLE BindingHandle);
   RPCRTAPI RPC_STATUS RPC_ENTRY RpcRevertContainerImpersonation(void);
-  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientA(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_CSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc);
-  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientW(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_WSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc);
-  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientExA(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_CSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc, unsigned long Flags);
-  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientExW(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_WSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc, unsigned long Flags);
 
   typedef void (__RPC_USER *RPC_AUTH_KEY_RETRIEVAL_FN)(void *Arg, RPC_WSTR ServerPrincName, unsigned long KeyVer, void **Key, RPC_STATUS *Status);
 
@@ -896,6 +891,11 @@ extern "C" {
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
+  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientA(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_CSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc);
+  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientW(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_WSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc);
+  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientExA(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_CSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc, unsigned long Flags);
+  RPCRTAPI RPC_STATUS RPC_ENTRY RpcBindingInqAuthClientExW(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE *Privs, RPC_WSTR *ServerPrincName, unsigned long *AuthnLevel, unsigned long *AuthnSvc, unsigned long *AuthzSvc, unsigned long Flags);
+
 #define RPC_SECURITY_QOS_V2                __MINGW_NAME_UAW(RPC_SECURITY_QOS_V2)
 #define PRPC_SECURITY_QOS_V2               __MINGW_NAME_UAW(PRPC_SECURITY_QOS_V2)
 #define _RPC_SECURITY_QOS_V2               __MINGW_NAME_UAW(_RPC_SECURITY_QOS_V2)
@@ -917,6 +917,8 @@ extern "C" {
 #define RPC_SECURITY_QOS_V5                __MINGW_NAME_UAW(RPC_SECURITY_QOS_V5)
 #define PRPC_SECURITY_QOS_V5               __MINGW_NAME_UAW(PRPC_SECURITY_QOS_V5)
 #define _RPC_SECURITY_QOS_V5               __MINGW_NAME_UAW(_RPC_SECURITY_QOS_V5)
+
+  typedef RPC_STATUS (__RPC_USER *RPC_NEW_HTTP_PROXY_CHANNEL)(RPC_HTTP_REDIRECTOR_STAGE RedirectorStage, RPC_WSTR ServerName, RPC_WSTR ServerPort, RPC_WSTR RemoteUser, RPC_WSTR AuthType, void *ResourceUuid, void *Metadata, void *SessionId, void *Interface, void *Reserved, unsigned long Flags, RPC_WSTR *NewServerName, RPC_WSTR *NewServerPort);
 
 #endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM) */
 
