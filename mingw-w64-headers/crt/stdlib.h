@@ -7,7 +7,7 @@
 #define _INC_STDLIB
 
 #include <corecrt.h>
-#include <search.h>
+#include <corecrt_search.h>
 #include <corecrt_wstdlib.h>
 #include <limits.h>
 
