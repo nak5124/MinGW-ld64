@@ -34,6 +34,7 @@
 #undef __MINGW_FORTIFY_VA_ARG
 #undef __MINGW_USE_C99FORGXX
 #undef __MINGW_USE_DEPRECATED_GETS
+#undef __MINGW_USE_GNU_STDIO
 
 #define __MINGW_GNUC_PREREQ(maj, min) ((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
 #if defined(__clang_major__) && defined(__clang_minor__)
@@ -215,16 +216,8 @@
 # define __MINGW_USE_LFS64 1
 #endif
 
-#if defined(__MINGW_USE_GNU) && !defined(__USE_MINGW_ANSI_STDIO)
-# define __USE_MINGW_ANSI_STDIO 1
-#endif
-
-#if !defined(__USE_MINGW_ANSI_STDIO) || (defined(__USE_MINGW_ANSI_STDIO) && __USE_MINGW_ANSI_STDIO == 0)
-# undef  __USE_MINGW_ANSI_STDIO
-# define __USE_MINGW_ANSI_STDIO 0
-#else
-# undef  __USE_MINGW_ANSI_STDIO
-# define __USE_MINGW_ANSI_STDIO 1
+#if defined(__USE_MINGW_ANSI_STDIO) && __USE_MINGW_ANSI_STDIO != 0
+# define __MINGW_USE_GNU_STDIO 1
 #endif
 
 #if defined(_MS_SOURCE) || !defined(__STRICT_ANSI__) || defined(_CRT_DECLARE_NONSTDC_NAMES)

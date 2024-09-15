@@ -806,7 +806,7 @@ __MINGW_BEGIN_C_DECLS
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wshadow"
 
-#if __USE_MINGW_ANSI_STDIO && !defined(_CRTBLD)
+#if defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD)
 
   __mingw_ovr
   __MINGW_GNU_PRINTF(2, 0) __MINGW_NONNULL((1, 2))
@@ -1154,7 +1154,7 @@ __MINGW_BEGIN_C_DECLS
     __MINGW_GNU_PRINTF(2, 3) __MINGW_NONNULL((1, 2)) __MINGW_NOTHROW;
 #endif
 
-#endif  /* __USE_MINGW_ANSI_STDIO */
+#endif  /* defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD) */
 
 #pragma GCC diagnostic pop
 

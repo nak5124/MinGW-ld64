@@ -82,7 +82,7 @@ int __cdecl __ms_fwprintf(FILE *file, const wchar_t *fmt, ...)
   va_list ap;
   int ret;
   va_start(ap, fmt);
-  ret = __stdio_common_vfwprintf(_CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS, file, fmt, NULL, ap);
+  ret = __stdio_common_vfwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS, file, fmt, NULL, ap);
   va_end(ap);
   return ret;
 }

@@ -804,7 +804,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret;
   }
 
-#if __USE_MINGW_ANSI_STDIO && !defined(_CRTBLD)
+#if defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD)
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
@@ -1068,7 +1068,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#endif  /* __USE_MINGW_ANSI_STDIO */
+#endif  /* defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
   __mingw_ovr
@@ -1099,7 +1099,7 @@ extern "C++"
   /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
   int vswprintf(wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, va_list _ArgList)
   {
-#if __USE_MINGW_ANSI_STDIO
+#ifdef __MINGW_USE_GNU_STDIO
   return __mingw_vswprintf(_Buffer, _Format, _ArgList);
 #else
   return _vswprintf(_Buffer, _Format, _ArgList);
@@ -1139,7 +1139,7 @@ extern "C++"
 #elif defined(_CRT_NON_CONFORMING_SWPRINTFS)
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98)
-# if __USE_MINGW_ANSI_STDIO
+# ifdef __MINGW_USE_GNU_STDIO
 #   define swprintf  __mingw_swprintf
 #   define vswprintf __mingw_vswprintf
 # else
