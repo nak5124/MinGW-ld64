@@ -116,6 +116,8 @@
 
 #endif  /* defined(RC_INVOKED) && !defined(NOWINRES) */
 
+#include <specstrings_undef.h>
+
 #endif  /* _INC_WINDOWS */
 
 #endif  /* _WINDOWS_ */
