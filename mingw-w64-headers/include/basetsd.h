@@ -140,17 +140,17 @@ extern "C" {
   static __inline
   void *Ptr32ToPtr(const void *POINTER_32 p)
   {
-    return ((void *)(ULONG_PTR)(unsigned long)p);
+    return ((void *)(ULONG_PTR)(unsigned long)(ULONG_PTR)p);
   }
   static __inline
   void *Handle32ToHandle(const void *POINTER_32 h)
   {
-    return ((void *)(LONG_PTR)(long)h);
+    return ((void *)(LONG_PTR)(long)(ULONG_PTR)h);
   }
   static __inline
   void *POINTER_32 PtrToPtr32(const void *p)
   {
-    return ((void *POINTER_32)(unsigned long)(ULONG_PTR)p);
+    return ((void *POINTER_32)(ULONG_PTR)(unsigned long)(ULONG_PTR)p);
   }
 
 #define HandleToHandle32(h) (PtrToPtr32(h))
