@@ -6,7 +6,7 @@
 #define _WINNT_
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 #include <_mingw.h>
@@ -1858,7 +1858,6 @@ extern "C" {
 #ifdef __cplusplus
 extern "C" {
 #endif
-#include <malloc.h>
 #include <x86intrin.h>
 #include <cpuid.h>
 #undef __cpuid
@@ -2752,7 +2751,7 @@ extern "C" {
 
 #define _DBGRAISEASSERTIONFAILURE_
 
-#ifdef _ARM64_
+#ifdef _AMD64_
 #if 0  /* moved to psdk_inc/intrin-impl.h */
   VOID __int2c(VOID);
 #endif
@@ -11692,12 +11691,6 @@ extern "C" {
 
 #define MAXLOGICALLOGNAMESIZE 256
 
-  struct _EVENTSFORLOGFILE;
-  typedef struct _EVENTSFORLOGFILE EVENTSFORLOGFILE, *PEVENTSFORLOGFILE;
-
-  struct _PACKEDEVENTINFO;
-  typedef struct _PACKEDEVENTINFO PACKEDEVENTINFO, *PPACKEDEVENTINFO;
-
   struct _EVENTSFORLOGFILE
   {
     DWORD          ulSize;
@@ -11705,13 +11698,15 @@ extern "C" {
     DWORD          ulNumRecords;
     EVENTLOGRECORD pEventLogRecords[];
   };
+  typedef struct _EVENTSFORLOGFILE EVENTSFORLOGFILE, *PEVENTSFORLOGFILE;
 
-  typedef struct _PACKEDEVENTINFO
+  struct _PACKEDEVENTINFO
   {
     DWORD ulSize;
     DWORD ulNumEventsForLogFile;
     DWORD ulOffsets[];
   };
+  typedef struct _PACKEDEVENTINFO PACKEDEVENTINFO, *PPACKEDEVENTINFO;
 
 #define KEY_QUERY_VALUE        (0x0001)
 #define KEY_SET_VALUE          (0x0002)

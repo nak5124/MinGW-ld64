@@ -35,7 +35,7 @@ extern "C" {
 #ifdef STRICT
   typedef void *HGDIOBJ;
 #else
-  DECLARE_HANDLE (HGDIOBJ);
+  DECLARE_HANDLE(HGDIOBJ);
 #endif
 
   DECLARE_HANDLE(HACCEL);
