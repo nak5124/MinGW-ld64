@@ -103,6 +103,7 @@ D3DKMTAcquireSwapChain
 D3DKMTAddSurfaceToSwapChain
 D3DKMTAdjustFullscreenGamma
 D3DKMTCacheHybridQueryValue
+D3DKMTCancelPresents
 D3DKMTChangeVideoMemoryReservation
 D3DKMTCheckExclusiveOwnership
 D3DKMTCheckMonitorPowerState
@@ -111,9 +112,11 @@ D3DKMTCheckMultiPlaneOverlaySupport2
 D3DKMTCheckMultiPlaneOverlaySupport3
 D3DKMTCheckOcclusion
 D3DKMTCheckSharedResourceAccess
+D3DKMTCheckSinglePlaneForMultiPlaneOverlaySupport
 D3DKMTCheckVidPnExclusiveOwnership
 D3DKMTCloseAdapter
 D3DKMTConfigureSharedResource
+D3DKMTConnectDoorbell
 D3DKMTCreateAllocation
 D3DKMTCreateAllocation2
 D3DKMTCreateBundleObject
@@ -121,10 +124,12 @@ D3DKMTCreateContext
 D3DKMTCreateContextVirtual
 D3DKMTCreateDCFromMemory
 D3DKMTCreateDevice
+D3DKMTCreateDoorbell
 D3DKMTCreateHwContext
 D3DKMTCreateHwQueue
 D3DKMTCreateKeyedMutex
 D3DKMTCreateKeyedMutex2
+D3DKMTCreateNativeFence
 D3DKMTCreateOutputDupl
 D3DKMTCreateOverlay
 D3DKMTCreatePagingQueue
@@ -139,6 +144,7 @@ D3DKMTDestroyAllocation2
 D3DKMTDestroyContext
 D3DKMTDestroyDCFromMemory
 D3DKMTDestroyDevice
+D3DKMTDestroyDoorbell
 D3DKMTDestroyHwContext
 D3DKMTDestroyHwQueue
 D3DKMTDestroyKeyedMutex
@@ -157,6 +163,7 @@ D3DKMTDuplicateHandle
 D3DKMTEnumAdapters
 D3DKMTEnumAdapters2
 D3DKMTEnumAdapters3
+D3DKMTEnumProcesses
 D3DKMTEscape
 D3DKMTEvict
 D3DKMTExtractBundleObject
@@ -182,12 +189,14 @@ D3DKMTGetProcessDeviceRemovalSupport
 D3DKMTGetProcessList
 D3DKMTGetProcessSchedulingPriorityBand
 D3DKMTGetProcessSchedulingPriorityClass
+D3DKMTGetProperties
 D3DKMTGetResourcePresentPrivateDriverData
 D3DKMTGetRuntimeData
 D3DKMTGetScanLine
 D3DKMTGetSetSwapChainMetadata
 D3DKMTGetSharedPrimaryHandle
 D3DKMTGetSharedResourceAdapterLuid
+D3DKMTGetSwapChainSurfacePhysicalAddress
 D3DKMTGetTrackedWorkloadStatistics
 D3DKMTGetYieldPercentage
 D3DKMTInvalidateActiveVidPn
@@ -204,6 +213,7 @@ D3DKMTNetDispStartMiracastDisplayDevice
 D3DKMTNetDispStartMiracastDisplayDevice2
 D3DKMTNetDispStartMiracastDisplayDeviceEx
 D3DKMTNetDispStopMiracastDisplayDevice
+D3DKMTNotifyWorkSubmission
 D3DKMTOfferAllocations
 D3DKMTOpenAdapterFromDeviceName
 D3DKMTOpenAdapterFromGdiDisplayName
@@ -213,6 +223,7 @@ D3DKMTOpenBundleObjectNtHandleFromName
 D3DKMTOpenKeyedMutex
 D3DKMTOpenKeyedMutex2
 D3DKMTOpenKeyedMutexFromNtHandle
+D3DKMTOpenNativeFenceFromNtHandle
 D3DKMTOpenNtHandleFromName
 D3DKMTOpenProtectedSessionFromNtHandle
 D3DKMTOpenResource
@@ -276,6 +287,7 @@ D3DKMTSetMonitorColorSpaceTransform
 D3DKMTSetProcessDeviceRemovalSupport
 D3DKMTSetProcessSchedulingPriorityBand
 D3DKMTSetProcessSchedulingPriorityClass
+D3DKMTSetProperties
 D3DKMTSetQueuedLimit
 D3DKMTSetStablePowerState
 D3DKMTSetStereoEnabled
@@ -399,7 +411,6 @@ DestroyPhysicalMonitorInternal
 DeviceCapabilitiesExA
 DeviceCapabilitiesExW
 DrawEscape
-DxTrimNotificationListHead DATA
 Ellipse
 EnableEUDC
 EndDoc
@@ -500,7 +511,6 @@ GdiAlphaBlend
 GdiArtificialDecrementDriver
 GdiBatchLimit DATA
 GdiCleanCacheDC
-GdiClearStockObjectCache
 GdiComment
 GdiConsoleTextOut
 GdiConvertAndCheckDC
@@ -520,6 +530,7 @@ GdiCurrentProcessSplWow64
 GdiDeleteLocalDC
 GdiDeleteSpoolFileHandle
 GdiDescribePixelFormat
+GdiDisableUMPDSandboxing
 GdiDllInitialize
 GdiDrawStream
 GdiEndDocEMF
@@ -559,13 +570,13 @@ GdiGetSpoolFileHandle
 GdiGetSpoolMessage
 GdiGetVariationStoreDelta
 GdiGradientFill
+GdiHandleBeingTracked
 GdiInitSpool
 GdiInitializeLanguagePack
 GdiIsMetaFileDC
 GdiIsMetaPrintDC
 GdiIsPlayMetafileDC
 GdiIsScreenDC
-GdiIsTrackingEnabled
 GdiIsUMPDSandboxingEnabled
 GdiLoadType1Fonts
 GdiPlayDCScript
@@ -595,6 +606,10 @@ GdiTrackHCreate
 GdiTrackHDelete
 GdiTransparentBlt
 GdiValidateHandle
+GdiWaitForTextReady
+GditGetCallerTLStorage
+GditPopCallerInfo
+GditPushCallerInfo
 GetArcDirection
 GetAspectRatioFilterEx
 GetBitmapAttributes
@@ -963,6 +978,7 @@ bMakePathNameW
 cGetTTFFromFOT
 fpClosePrinter DATA
 ftsWordBreak
+gCookie DATA
 gMaxGdiHandleCount DATA
 gW32PID DATA
 g_systemCallFilterId DATA
@@ -973,6 +989,5 @@ pGdiDevCaps DATA
 pGdiSharedHandleTable DATA
 pGdiSharedMemory DATA
 pldcGet
-semDxTrimNotification DATA
 vSetPldc
 CreateDCExW

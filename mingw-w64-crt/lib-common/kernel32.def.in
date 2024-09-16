@@ -50,7 +50,6 @@ BaseCheckAppcompatCacheEx
 BaseCheckAppcompatCacheExWorker
 BaseCheckAppcompatCacheWorker
 BaseCheckElevation
-BaseCheckRunApp
 BaseCleanupAppcompatCacheSupport
 BaseCleanupAppcompatCacheSupportWorker
 BaseDestroyVDMEnvironment
@@ -70,11 +69,8 @@ BaseInitAppcompatCacheSupportWorker
 BaseIsAppcompatInfrastructureDisabled
 BaseIsAppcompatInfrastructureDisabledWorker
 BaseIsDosApplication
-BaseProcessInitPostImport
-BaseProcessStart
 BaseQueryModuleData
 BaseReadAppCompatDataForProcessWorker
-BaseThreadStart
 BaseSetLastNTError
 BaseThreadInitThunk
 BaseUpdateAppcompatCache
@@ -88,16 +84,20 @@ BasepAnsiStringToDynamicUnicodeString
 BasepAppContainerEnvironmentExtension
 BasepAppXExtension
 BasepCheckAppCompat
-BasepCheckBadapp
 BasepCheckWebBladeHashes
 BasepCheckWinSaferRestrictions
 BasepConstructSxsCreateProcessMessage
 BasepCopyEncryption
+BasepFinishPackageActivation
+BasepFinishPackageActivationForSxS
 BasepFreeActivationContextActivationBlock
 BasepFreeAppCompatData
 BasepGetAppCompatData
 BasepGetComputerNameFromNtPath
 BasepGetExeArchType
+BasepGetPackageActivationTokenForFilePath
+BasepGetPackageActivationTokenForSxS
+BasepGetPackagedAppInfoForFile
 BasepInitAppCompatData
 BasepIsProcessAllowed
 BasepMapModuleHandle
@@ -107,6 +107,7 @@ BasepProcessInvalidImage
 BasepQueryAppCompat
 BasepQueryModuleChpeSettings
 BasepReleaseAppXContext
+BasepReleasePackagedAppInfo
 BasepReleaseSxsCreateProcessUtilityStruct
 BasepReportFault
 BasepSetFileEncryptionCompression
@@ -127,7 +128,6 @@ BuildIoRingWriteFile
 CallNamedPipeA
 CallNamedPipeW
 CallbackMayRunLong
-CalloutOnFiberStack
 CancelDeviceWakeupRequest
 CancelIo
 CancelIoEx
@@ -174,7 +174,6 @@ CompareStringEx
 CompareStringOrdinal
 CompareStringW
 ConnectNamedPipe
-ConsoleIMERoutine
 ConsoleMenuControl
 ContinueDebugEvent
 ConvertCalDateTimeToSystemTime
@@ -185,7 +184,6 @@ ConvertSystemTimeToCalDateTime
 ConvertThreadToFiber
 ConvertThreadToFiberEx
 CopyContext
-CopyExtendedContext
 CopyFile2
 CopyFileA
 CopyFileExA
@@ -241,7 +239,6 @@ CreateMutexExW
 CreateMutexW
 CreateNamedPipeA
 CreateNamedPipeW
-CreateNlsSecurityDescriptor
 CreatePackageVirtualizationContext
 CreatePipe
 CreatePrivateNamespaceA
@@ -336,8 +333,8 @@ EncodeSystemPointer
 EndUpdateResourceA
 EndUpdateResourceW
 EnterCriticalSection
-F_X64(EnterUmsSchedulingMode)
 EnterSynchronizationBarrier
+F_X64(EnterUmsSchedulingMode)
 EnumCalendarInfoA
 EnumCalendarInfoExA
 EnumCalendarInfoExEx
@@ -481,7 +478,6 @@ GetAtomNameW
 GetBinaryType
 GetBinaryTypeA
 GetBinaryTypeW
-GetCPFileNameFromRegistry
 GetCPInfo
 GetCPInfoExA
 GetCPInfoExW
@@ -584,7 +580,6 @@ GetDateFormatW
 GetDateFormatWWorker
 GetDefaultCommConfigA
 GetDefaultCommConfigW
-GetDefaultSortkeySize
 GetDevicePowerState
 GetDiskFreeSpaceA
 GetDiskFreeSpaceExA
@@ -599,7 +594,6 @@ GetDriveTypeW
 GetDurationFormat
 GetDurationFormatEx
 GetDynamicTimeZoneInformation
-GetEnabledExtendedFeatures
 GetEnabledXStateFeatures
 GetEncryptedFileVersionExt
 GetEnvironmentStrings
@@ -613,8 +607,6 @@ GetExitCodeProcess
 GetExitCodeThread
 GetExpandedNameA
 GetExpandedNameW
-GetExtendedContextLength
-GetExtendedFeaturesMask
 GetFileAttributesA
 GetFileAttributesExA
 GetFileAttributesExW
@@ -642,14 +634,13 @@ GetFullPathNameTransactedA
 GetFullPathNameTransactedW
 GetFullPathNameW
 GetGeoInfoA
-GetGeoInfoW
 GetGeoInfoEx
+GetGeoInfoW
 GetHandleInformation
 GetIoRingInfo
 GetLargePageMinimum
 GetLargestConsoleWindowSize
 GetLastError
-GetLinguistLangSize
 GetLocalTime
 GetLocaleInfoA
 GetLocaleInfoEx
@@ -689,7 +680,6 @@ GetNamedPipeServerSessionId
 GetNativeSystemInfo
 F_X64(GetNextUmsListItem)
 GetNextVDMCommand
-GetNlsSectionName
 GetNumaAvailableMemoryNode
 GetNumaAvailableMemoryNodeEx
 GetNumaHighestNodeNumber
@@ -732,9 +722,9 @@ GetPrivateProfileStructA
 GetPrivateProfileStructW
 GetProcAddress
 GetProcessAffinityMask
+GetProcessDEPPolicy
 GetProcessDefaultCpuSetMasks
 GetProcessDefaultCpuSets
-GetProcessDEPPolicy
 GetProcessGroupAffinity
 GetProcessHandleCount
 GetProcessHeap
@@ -803,10 +793,10 @@ GetTapePosition
 GetTapeStatus
 GetTempFileNameA
 GetTempFileNameW
-GetTempPathA
-GetTempPathW
 GetTempPath2A
 GetTempPath2W
+GetTempPathA
+GetTempPathW
 GetThreadContext
 GetThreadDescription
 GetThreadEnabledXStateFeatures
@@ -892,19 +882,15 @@ Heap32Next
 HeapAlloc
 HeapCompact
 HeapCreate
-HeapCreateTagsW
 HeapDestroy
-HeapExtend
 HeapFree
 HeapLock
 HeapQueryInformation
-HeapQueryTagW
 HeapReAlloc
 HeapSetInformation
 HeapSize
 HeapSummary
 HeapUnlock
-HeapUsage
 HeapValidate
 HeapWalk
 IdnToAscii
@@ -922,7 +908,6 @@ InitializeCriticalSection
 InitializeCriticalSectionAndSpinCount
 InitializeCriticalSectionEx
 InitializeEnclave
-InitializeExtendedContext
 InitializeProcThreadAttributeList
 InitializeSListHead
 InitializeSRWLock
@@ -958,13 +943,11 @@ IsProcessorFeaturePresent
 IsSystemResumeAutomatic
 IsThreadAFiber
 IsThreadpoolTimerSet
-IsTimeZoneRedirectionEnabled
 IsUserCetAvailableInEnvironment
 IsValidCalDateTime
 IsValidCodePage
 IsValidLanguageGroup
 IsValidLocale
-IsValidUILanguage
 IsValidLocaleName
 IsValidNLSVersion
 IsWow64GuestMachineSupported
@@ -1039,8 +1022,6 @@ LocalSize
 LocalSystemTimeToLocalFileTime
 LocalUnlock
 LocaleNameToLCID
-LocateExtendedFeature
-LocateLegacyContext
 LocateXStateFeature
 LockFile
 LockFileEx
@@ -1067,14 +1048,10 @@ MulDiv
 MultiByteToWideChar
 NeedCurrentDirectoryForExePathA
 NeedCurrentDirectoryForExePathW
-NlsConvertIntegerToString
 NlsCheckPolicy
-NlsEventDataDescCreate
 NlsGetCacheUpdateCount
 NlsUpdateLocale
 NlsUpdateSystemLocale
-NlsResetProcessLocale
-NlsWriteEtwEvent
 NormalizeString
 NotifyMountMgr
 NotifyUILanguageChange
@@ -1083,7 +1060,6 @@ OOBEComplete
 OfferVirtualMemory
 OpenConsoleW
 OpenConsoleWStub
-OpenDataFile
 OpenEventA
 OpenEventW
 OpenFile
@@ -1192,7 +1168,6 @@ RaiseException
 RaiseFailFastException
 RaiseInvalid16BitExeError
 ReOpenFile
-ReclaimVirtualMemory
 ReadConsoleA
 ReadConsoleInputA
 ReadConsoleInputExA
@@ -1332,7 +1307,6 @@ ScrollConsoleScreenBufferW
 SearchPathA
 SearchPathW
 SetCachedSigningLevel
-SetCPGlobal
 SetCalendarInfoA
 SetCalendarInfoW
 SetComPlusPackageInstallStatus
@@ -1348,7 +1322,6 @@ SetComputerNameExW
 SetComputerNameW
 SetConsoleActiveScreenBuffer
 SetConsoleCP
-SetConsoleCommandHistoryMode
 SetConsoleCtrlHandler
 SetConsoleCursor
 SetConsoleCursorInfo
@@ -1396,7 +1369,6 @@ SetEnvironmentVariableW
 SetErrorMode
 SetEvent
 SetEventWhenCallbackReturns
-SetExtendedFeaturesMask
 SetFileApisToANSI
 SetFileApisToOEM
 SetFileAttributesA
@@ -1572,8 +1544,6 @@ UpdateResourceA
 UpdateResourceW
 VDMConsoleOperation
 VDMOperationStarted
-ValidateLCType
-ValidateLocale
 VerLanguageNameA
 VerLanguageNameW
 VerSetConditionMask
@@ -1607,13 +1577,6 @@ WaitForThreadpoolWorkCallbacks
 WaitNamedPipeA
 WaitNamedPipeW
 WakeAllConditionVariable
-; MSDN says it's in Kernel32.dll but it's not.
-; Link with libsynchronization.a instead.
-; Commented out for compatibility with older 
-; versions of Windows.
-;WaitOnAddress
-;WakeByAddressSingle
-;WakeByAddressAll
 WakeConditionVariable
 WerGetFlags
 WerGetFlagsWorker
@@ -1639,16 +1602,11 @@ WerUnregisterMemoryBlock
 WerUnregisterMemoryBlockWorker
 WerUnregisterRuntimeExceptionModule
 WerUnregisterRuntimeExceptionModuleWorker
-WerpCleanupMessageMapping
 WerpGetDebugger
 WerpInitiateRemoteRecovery
 WerpLaunchAeDebug
-WerpNotifyLoadStringResource
-WerpNotifyLoadStringResourceEx
 WerpNotifyLoadStringResourceWorker
-WerpNotifyUseStringResource
 WerpNotifyUseStringResourceWorker
-WerpStringLookup
 WideCharToMultiByte
 WinExec
 Wow64DisableWow64FsRedirection
@@ -1690,7 +1648,7 @@ F_X64(__C_specific_handler)
 F_ARM32(__C_specific_handler)
 ; This isn't always available and shouldn't be linked from here, but should
 ; be statically linked from the compiler support library.
-;F_ARM32(__chkstk)
+;__chkstk
 F_X64(__misaligned_access)
 _hread
 _hwrite

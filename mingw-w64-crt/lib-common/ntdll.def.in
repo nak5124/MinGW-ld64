@@ -2,11 +2,6 @@
 
 LIBRARY "ntdll.dll"
 EXPORTS
-#ifdef DEF_X64
-PropertyLengthAsVariant
-RtlConvertPropertyToVariant
-RtlConvertVariantToProperty
-#endif
 A_SHAFinal
 A_SHAInit
 A_SHAUpdate
@@ -38,11 +33,6 @@ CsrClientConnectToServer
 CsrFreeCaptureBuffer
 CsrGetProcessId
 CsrIdentifyAlertableThread
-#if defined(DEF_I386) || defined(DEF_X64)
-CsrNewThread
-CsrProbeForRead
-CsrProbeForWrite
-#endif
 CsrSetPriorityClass
 CsrVerifyRegion
 DbgBreakPoint
@@ -65,17 +55,7 @@ DbgUiStopDebugging
 DbgUiWaitStateChange
 DbgUserBreakPoint
 EtwCheckCoverage
-#ifdef DEF_X64
-EtwControlTraceA
-EtwControlTraceW
-#endif
 EtwCreateTraceInstanceId
-#ifdef DEF_X64
-EtwEnableTrace
-EtwEnumerateTraceGuids
-EtwFlushTraceA
-EtwFlushTraceW
-#endif
 EtwDeliverDataBlock
 EtwEnumerateProcessRegGuids
 EtwEventActivityIdControl
@@ -95,16 +75,6 @@ EtwEventWriteTransfer
 EtwGetTraceEnableFlags
 EtwGetTraceEnableLevel
 EtwGetTraceLoggerHandle
-#ifdef DEF_X64
-EtwNotificationRegistrationA
-EtwNotificationRegistrationW
-EtwQueryAllTracesA
-EtwQueryAllTracesW
-EtwQueryTraceA
-EtwQueryTraceW
-EtwReceiveNotificationsA
-EtwReceiveNotificationsW
-#endif
 EtwLogTraceEvent
 EtwNotificationRegister
 EtwNotificationUnregister
@@ -112,13 +82,6 @@ EtwProcessPrivateLoggerRequest
 EtwRegisterSecurityProvider
 EtwRegisterTraceGuidsA
 EtwRegisterTraceGuidsW
-#ifdef DEF_X64
-EtwStartTraceA
-EtwStartTraceW
-EtwStopTraceA
-EtwStopTraceW
-EtwTraceEvent
-#endif
 EtwReplyNotification
 EtwSendNotification
 EtwSetMark
@@ -126,50 +89,35 @@ EtwTraceEventInstance
 EtwTraceMessage
 EtwTraceMessageVa
 EtwUnregisterTraceGuids
-#ifdef DEF_X64
-EtwUpdateTraceA
-EtwUpdateTraceW
-EtwpGetTraceBuffer
-EtwpSetHWConfigFunction
-#endif
 EtwWriteUMSecurityEvent
 EtwpCreateEtwThread
 EtwpGetCpuSpeed
-F_X64(EtwpNotificationThread)
 EvtIntReportAuthzEventAndSourceAsync
 EvtIntReportEventAndSourceAsync
 #ifndef DEF_ARM32
 ExpInterlockedPopEntrySListEnd
-F_X64(ExpInterlockedPopEntrySListEnd16)
 ExpInterlockedPopEntrySListFault
-F_X64(ExpInterlockedPopEntrySListFault16)
 ExpInterlockedPopEntrySListResume
-F_X64(ExpInterlockedPopEntrySListResume16)
 #endif
 KiRaiseUserExceptionDispatcher
 KiUserApcDispatcher
 KiUserCallbackDispatcher
 F_ARM_ANY(KiUserCallbackDispatcherReturn)
 KiUserExceptionDispatcher
-KiUserInvertedFunctionTable F_ARM_ANY(DATA)
-F_X64(LdrAccessOutOfProcessResource)
+KiUserInvertedFunctionTable DATA
 LdrAccessResource
 LdrAddDllDirectory
 LdrAddLoadAsDataTable
 LdrAddRefDll
-F_X86_ANY(LdrAlternateResourcesEnabled)
 LdrAppxHandleIntegrityFailure
 LdrCallEnclave
 LdrControlFlowGuardEnforced
 LdrCreateEnclave
-F_X64(LdrCreateOutOfProcessImage)
 LdrDeleteEnclave
-F_X64(LdrDestroyOutOfProcessImage)
 LdrDisableThreadCalloutsForDll
 LdrEnumResources
 LdrEnumerateLoadedModules
 LdrFastFailInLoaderCallout
-F_X64(LdrFindCreateProcessManifest)
 LdrFindEntryForAddress
 LdrFindResourceDirectory_U
 LdrFindResourceEx_U
@@ -228,7 +176,7 @@ LdrSetMUICacheType
 LdrShutdownProcess
 LdrShutdownThread
 LdrStandardizeSystemPath
-LdrSystemDllInitBlock F_ARM_ANY(DATA)
+LdrSystemDllInitBlock DATA
 LdrUnloadAlternateResourceModule
 LdrUnloadAlternateResourceModuleEx
 LdrUnloadDll
@@ -245,6 +193,7 @@ MD4Update
 MD5Final
 MD5Init
 MD5Update
+MicrosoftTelemetryAssertTriggeredUM
 NlsAnsiCodePage DATA
 NlsMbCodePageTag DATA
 NlsMbOemCodePageTag DATA
@@ -304,7 +253,6 @@ NtAssignProcessToJobObject
 NtAssociateWaitCompletionPacket
 NtCallEnclave
 NtCallbackReturn
-F_X86_ANY(NtCancelDeviceWakeupRequest)
 NtCancelIoFile
 NtCancelIoFileEx
 NtCancelSynchronousIoFile
@@ -330,6 +278,8 @@ NtConnectPort
 NtContinue
 NtContinueEx
 NtConvertBetweenAuxiliaryCounterAndPerformanceCounter
+NtCopyFileChunk
+NtCreateCpuPartition
 NtCreateCrossVmEvent
 NtCreateCrossVmMutant
 NtCreateDebugObject
@@ -437,7 +387,6 @@ NtGetNextProcess
 NtGetNextThread
 NtGetNlsSectionPtr
 NtGetNotificationResourceManager
-F_X86_ANY(NtGetPlugPlayEvent)
 NtGetTickCount
 NtGetWriteWatch
 NtImpersonateAnonymousToken
@@ -455,7 +404,7 @@ NtLoadDriver
 NtLoadEnclaveData
 NtLoadKey
 NtLoadKey2
-F_ARM_ANY(NtLoadKey3)
+NtLoadKey3
 NtLoadKeyEx
 NtLockFile
 NtLockProductActivationKeys
@@ -477,6 +426,7 @@ NtNotifyChangeDirectoryFileEx
 NtNotifyChangeKey
 NtNotifyChangeMultipleKeys
 NtNotifyChangeSession
+NtOpenCpuPartition
 NtOpenDirectoryObject
 NtOpenEnlistment
 NtOpenEvent
@@ -538,6 +488,7 @@ NtQueryEvent
 NtQueryFullAttributesFile
 NtQueryInformationAtom
 NtQueryInformationByName
+NtQueryInformationCpuPartition
 NtQueryInformationEnlistment
 NtQueryInformationFile
 NtQueryInformationJobObject
@@ -612,10 +563,8 @@ NtReplyPort
 NtReplyWaitReceivePort
 NtReplyWaitReceivePortEx
 NtReplyWaitReplyPort
-F_X86_ANY(NtRequestDeviceWakeup)
 NtRequestPort
 NtRequestWaitReplyPort
-F_X86_ANY(NtRequestWakeupLatency)
 NtResetEvent
 NtResetWriteWatch
 NtRestoreKey
@@ -648,6 +597,7 @@ NtSetEventBoostPriority
 NtSetHighEventPair
 NtSetHighWaitLowEventPair
 NtSetIRTimer
+NtSetInformationCpuPartition
 NtSetInformationDebugObject
 NtSetInformationEnlistment
 NtSetInformationFile
@@ -844,6 +794,7 @@ RtlAvlInsertNodeEx
 RtlAvlRemoveNode
 RtlBarrier
 RtlBarrierForDelete
+RtlCallEnclave
 F_X64(RtlCallEnclaveReturn)
 RtlCancelTimer
 RtlCanonicalizeDomainName
@@ -856,7 +807,6 @@ RtlCharToInteger
 RtlCheckBootStatusIntegrity
 RtlCheckForOrphanedCriticalSections
 RtlCheckPortableOperatingSystem
-F_X64(RtlCheckProcessParameters)
 RtlCheckRegistryKey
 RtlCheckSandboxedToken
 RtlCheckSystemBootStatusIntegrity
@@ -898,12 +848,12 @@ RtlConstructCrossVmMutexPath
 RtlContractHashTable
 RtlConvertDeviceFamilyInfoToString
 RtlConvertExclusiveToShared
+RtlConvertHostPerfCounterToPerfCounter
 RtlConvertLCIDToString
 RtlConvertSRWLockExclusiveToShared
 RtlConvertSharedToExclusive
 RtlConvertSidToUnicodeString
 RtlConvertToAutoInheritSecurityObject
-F_X86_ANY(RtlConvertUiListToApiList)
 RtlCopyBitMap
 RtlCopyContext
 RtlCopyExtendedContext
@@ -948,7 +898,6 @@ RtlCreateTimer
 RtlCreateTimerQueue
 #ifdef DEF_X64
 RtlCreateUmsCompletionList
-RtlCreateUmsThread
 RtlCreateUmsThreadContext
 #endif
 RtlCreateUnicodeString
@@ -1015,6 +964,7 @@ RtlDestroyQueryDebugBuffer
 RtlDetectHeapLeaks
 RtlDetermineDosPathNameType_U
 RtlDisableThreadProfiling
+RtlDisownModuleHeapAllocation
 RtlDllShutdownInProgress
 RtlDnsHostNameToComputerName
 RtlDoesFileExists_U
@@ -1071,7 +1021,6 @@ RtlExitUserProcess
 RtlExitUserThread
 RtlExpandEnvironmentStrings
 RtlExpandEnvironmentStrings_U
-F_X86_ANY(RtlExtendHeap)
 RtlExpandHashTable
 RtlExtendCorrelationVector
 RtlExtendMemoryBlockLookaside
@@ -1131,7 +1080,6 @@ RtlFreeThreadActivationContextStack
 F_X86_ANY(RtlFreeUTF8String)
 RtlFreeUnicodeString
 F_X64(RtlFreeUserFiberShadowStack)
-F_X86_ANY(RtlFreeUserThreadStack)
 RtlFreeUserStack
 RtlGUIDFromString
 RtlGenerate8dot3Name
@@ -1162,6 +1110,8 @@ RtlGetExePath
 RtlGetExtendedContextLength
 RtlGetExtendedContextLength2
 RtlGetExtendedFeaturesMask
+RtlGetFeatureToggleConfiguration
+RtlGetFeatureTogglesChangeToken
 RtlGetFileMUIPath
 RtlGetFrame
 RtlGetFullPathName_U
@@ -1281,6 +1231,7 @@ RtlInt64ToUnicodeString
 RtlIntegerToChar
 RtlIntegerToUnicodeString
 RtlInterlockedClearBitRun
+RtlInterlockedClearBitRunEx
 RtlInterlockedFlushSList
 RtlInterlockedPopEntrySList
 RtlInterlockedPushEntrySList
@@ -1318,6 +1269,7 @@ RtlIsDosDeviceName_U
 RtlIsEcCode
 RtlIsElevatedRid
 RtlIsEnclaveFeaturePresent
+RtlIsFeatureEnabledForEnterprise
 RtlIsGenericTableEmpty
 RtlIsGenericTableEmptyAvl
 RtlIsMultiSessionSku
@@ -1347,6 +1299,8 @@ RtlLCIDToCultureName
 RtlLargeIntegerToChar
 RtlLcidToLocaleName
 RtlLeaveCriticalSection
+RtlLengthCurrentClearRunBackwardEx
+RtlLengthCurrentClearRunForwardEx
 RtlLengthRequiredSid
 RtlLengthSecurityDescriptor
 RtlLengthSid
@@ -1391,6 +1345,7 @@ RtlNewSecurityObjectWithMultipleInheritance
 RtlNormalizeProcessParams
 F_X86_ANY(RtlNormalizeSecurityDescriptor)
 RtlNormalizeString
+RtlNotifyFeatureToggleUsage
 RtlNotifyFeatureUsage
 RtlNtPathNameToDosPathName
 RtlNtStatusToDosError
@@ -1411,6 +1366,7 @@ RtlOemToUnicodeN
 RtlOpenCrossProcessEmulatorWorkConnection
 RtlOpenCurrentUser
 RtlOsDeploymentState
+RtlOverwriteFeatureConfigurationBuffer
 RtlOwnerAcesPresent
 RtlPcToFileHeader
 RtlPinAtomInAtomTable
@@ -1424,6 +1380,7 @@ RtlPublishWnfStateData
 RtlPushFrame
 RtlQueryActivationContextApplicationSettings
 RtlQueryAllFeatureConfigurations
+RtlQueryAllInternalFeatureConfigurations
 RtlQueryAtomInAtomTable
 RtlQueryCriticalSectionOwner
 RtlQueryDepthSList
@@ -1474,6 +1431,7 @@ RtlQueueApcWow64Thread
 RtlQueueWorkItem
 RtlRaiseCustomSystemEventTrigger
 RtlRaiseException
+RtlRaiseExceptionForReturnAddressHijack
 RtlRaiseNoncontinuableException
 RtlRaiseStatus
 RtlRandom
@@ -1590,7 +1548,6 @@ RtlSetTimeZoneInformation
 RtlSetTimer
 F_X64(RtlSetUmsThreadInformation)
 RtlSetUnhandledExceptionFilter
-F_X64(RtlSetUnicodeCallouts)
 F32(RtlSetUserCallbackExceptionFilter)
 RtlSetUserFlagsHeap
 RtlSetUserValueHeap
@@ -1687,7 +1644,6 @@ RtlUpdateClonedSRWLock
 RtlUpdateTimer
 RtlUpperChar
 RtlUpperString
-F_X86_ANY(RtlUsageHeap)
 RtlUserFiberStart
 RtlUserThreadStart
 F_ARM_ANY(RtlUshortByteSwap)
@@ -1757,8 +1713,7 @@ RtlpConvertLCIDsToCultureNames
 RtlpConvertRelativeToAbsoluteSecurityAttribute
 RtlpCreateProcessRegistryInfo
 RtlpEnsureBufferSize
-F_X64(RtlpExecuteUmsThread)
-RtlpFreezeTimeBias F_ARM_ANY(DATA)
+RtlpFreezeTimeBias DATA
 RtlpGetDeviceFamilyInfoEnum
 RtlpGetLCIDFromLangInfoNode
 RtlpGetNameFromLangInfoNode
@@ -1789,8 +1744,6 @@ RtlpSetPreferredUILanguages
 RtlpSetUserPreferredUILanguages
 RtlpTimeFieldsToTime
 RtlpTimeToTimeFields
-F_X64(RtlpUmsExecuteYieldThreadEnd)
-F_X64(RtlpUmsThreadYield)
 RtlpUnWaitCriticalSection
 RtlpVerifyAndCommitUILanguageSettings
 RtlpWaitForCriticalSection
@@ -1835,12 +1788,10 @@ TpCancelAsyncIoOperation
 TpCaptureCaller
 TpCheckTerminateWorker
 TpDbgDumpHeapUsage
-F_X86_ANY(TpDbgGetFreeInfo)
 TpDbgSetLogRoutine
 TpDisablePoolCallbackChecks
 TpDisassociateCallback
 TpIsTimerSet
-F_X86_ANY(TpPoolFreeUnusedNodes)
 TpPostWork
 TpQueryPoolStackInformation
 TpReleaseAlpcCompletion
@@ -1875,6 +1826,8 @@ TpWaitForJobNotification
 TpWaitForTimer
 TpWaitForWait
 TpWaitForWork
+TpWorkOnBehalfClearTicket
+TpWorkOnBehalfSetTicket
 VerSetConditionMask
 WerReportExceptionWorker
 WerReportSQMEvent
@@ -1964,7 +1917,6 @@ ZwAssignProcessToJobObject
 ZwAssociateWaitCompletionPacket
 ZwCallEnclave
 ZwCallbackReturn
-F_X86_ANY(ZwCancelDeviceWakeupRequest)
 ZwCancelIoFile
 ZwCancelIoFileEx
 ZwCancelSynchronousIoFile
@@ -1990,6 +1942,8 @@ ZwConnectPort
 ZwContinue
 ZwContinueEx
 ZwConvertBetweenAuxiliaryCounterAndPerformanceCounter
+ZwCopyFileChunk
+ZwCreateCpuPartition
 ZwCreateCrossVmEvent
 ZwCreateCrossVmMutant
 ZwCreateDebugObject
@@ -2097,7 +2051,6 @@ ZwGetNextProcess
 ZwGetNextThread
 ZwGetNlsSectionPtr
 ZwGetNotificationResourceManager
-F_X86_ANY(ZwGetPlugPlayEvent)
 ZwGetWriteWatch
 ZwImpersonateAnonymousToken
 ZwImpersonateClientOfPort
@@ -2114,7 +2067,7 @@ ZwLoadDriver
 ZwLoadEnclaveData
 ZwLoadKey
 ZwLoadKey2
-F_ARM_ANY(ZwLoadKey3)
+ZwLoadKey3
 ZwLoadKeyEx
 ZwLockFile
 ZwLockProductActivationKeys
@@ -2136,6 +2089,7 @@ ZwNotifyChangeDirectoryFileEx
 ZwNotifyChangeKey
 ZwNotifyChangeMultipleKeys
 ZwNotifyChangeSession
+ZwOpenCpuPartition
 ZwOpenDirectoryObject
 ZwOpenEnlistment
 ZwOpenEvent
@@ -2197,6 +2151,7 @@ ZwQueryEvent
 ZwQueryFullAttributesFile
 ZwQueryInformationAtom
 ZwQueryInformationByName
+ZwQueryInformationCpuPartition
 ZwQueryInformationEnlistment
 ZwQueryInformationFile
 ZwQueryInformationJobObject
@@ -2271,10 +2226,8 @@ ZwReplyPort
 ZwReplyWaitReceivePort
 ZwReplyWaitReceivePortEx
 ZwReplyWaitReplyPort
-F_X86_ANY(ZwRequestDeviceWakeup)
 ZwRequestPort
 ZwRequestWaitReplyPort
-F_X86_ANY(ZwRequestWakeupLatency)
 ZwResetEvent
 ZwResetWriteWatch
 ZwRestoreKey
@@ -2307,6 +2260,7 @@ ZwSetEventBoostPriority
 ZwSetHighEventPair
 ZwSetHighWaitLowEventPair
 ZwSetIRTimer
+ZwSetInformationCpuPartition
 ZwSetInformationDebugObject
 ZwSetInformationEnlistment
 ZwSetInformationFile
@@ -2414,5 +2368,188 @@ ZwWriteFileGather
 ZwWriteRequestData
 ZwWriteVirtualMemory
 ZwYieldExecution
+; __C_specific_handler
+; __chkstk
+; __isascii
+; __iscsym
+; __iscsymf
+; __misaligned_access
+; __toascii
+; _atoi64
+; _errno
+; _fltused DATA
+; _i64toa
+; _i64toa_s
+; _i64tow
+; _i64tow_s
+; _itoa
+; _itoa_s
+; _itow
+; _itow_s
+; _lfind
+; _local_unwind
+; _ltoa
+; _ltoa_s
+; _ltow
+; _ltow_s
+; _makepath_s
+; _memccpy
+; _memicmp
+; _setjmp
+; _setjmpex
+; _snprintf
+; _snprintf_s
+; _snscanf_s
+; _snwprintf
+; _snwprintf_s
+; _snwscanf_s
+; _splitpath
+; _splitpath_s
+; _strcmpi
+; _stricmp
+; _strlwr
+; _strlwr_s
+; _strnicmp
+; _strnset_s
+; _strset_s
+; _strupr
+; _strupr_s
+; _swprintf
+; _ui64toa
+; _ui64toa_s
+; _ui64tow
+; _ui64tow_s
+; _ultoa
+; _ultoa_s
+; _ultow
+; _ultow_s
+; _vscprintf
+; _vscwprintf
+; _vsnprintf
+; _vsnprintf_s
+; _vsnwprintf
+; _vsnwprintf_s
+; _vswprintf
+; _wcsicmp
+; _wcslwr
+; _wcslwr_s
+; _wcsnicmp
+; _wcsnset_s
+; _wcsset_s
+; _wcstoi64
+; _wcstoui64
+; _wcsupr
+; _wcsupr_s
+; _wmakepath_s
+; _wsplitpath_s
+; _wtoi
+; _wtoi64
+; _wtol
+; abs
+; atan
+; atan2
+; atoi
+; atol
+; bsearch
+; bsearch_s
+; ceil
+; cos
+; fabs
+; floor
+; isalnum
+; isalpha
+; iscntrl
+; isdigit
+; isgraph
+; islower
+; isprint
+; ispunct
+; isspace
+; isupper
+; iswalnum
+; iswalpha
+; iswascii
+; iswctype
+; iswdigit
+; iswgraph
+; iswlower
+; iswprint
+; iswspace
+; iswxdigit
+; isxdigit
+; labs
+; log
+; longjmp
+; mbstowcs
+; memchr
+; memcmp
+; memcpy
+; memcpy_s
+; memmove
+; memmove_s
+; memset
+; pow
+; qsort
+; qsort_s
+; sin
+; sprintf
+; sprintf_s
+; sqrt
+; sscanf
+; sscanf_s
+; strcat
+; strcat_s
+; strchr
+; strcmp
+; strcpy
+; strcpy_s
+; strcspn
+; strlen
+; strncat
+; strncat_s
+; strncmp
+; strncpy
+; strncpy_s
+; strnlen
+; strpbrk
+; strrchr
+; strspn
+; strstr
+; strtok_s
+; strtol
+; strtoul
+; swprintf
+; swprintf_s
+; swscanf_s
+; tan
+; tolower
+; toupper
+; towlower
+; towupper
 vDbgPrintEx
 vDbgPrintExWithPrefix
+; vsprintf
+; vsprintf_s
+; vswprintf_s
+; wcscat
+; wcscat_s
+; wcschr
+; wcscmp
+; wcscpy
+; wcscpy_s
+; wcscspn
+; wcslen
+; wcsncat
+; wcsncat_s
+; wcsncmp
+; wcsncpy
+; wcsncpy_s
+; wcsnlen
+; wcspbrk
+; wcsrchr
+; wcsspn
+; wcsstr
+; wcstok_s
+; wcstol
+; wcstombs
+; wcstoul
