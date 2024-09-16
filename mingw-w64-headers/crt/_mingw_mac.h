@@ -47,12 +47,16 @@
 #ifdef __x86_64__
 # define _M_AMD64 100
 # define _M_X64   100
-# define _AMD64_  1
+# ifndef _AMD64_
+#   define _AMD64_  1
+# endif
 #endif
 
 #ifdef __aarch64__
 # define _M_ARM64 1
-# define _ARM64_  1
+# ifndef _ARM64_
+#   define _ARM64_  1
+# endif
 #endif
 
 #define __MINGW_IMP_SYMBOL(sym)  __imp_##sym
