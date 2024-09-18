@@ -270,3 +270,7 @@ ADD_UNDERSCORE(wpopen)
 ; This is list of symbol aliases for internal CRT functions
 __lconv_init == __initialize_lconv_for_unsigned_char
 __set_app_type == _set_app_type
+__p__daylight == __daylight
+__p__dstbias == __dstbias
+__p__timezone == __timezone
+__p__tzname == __tzname
