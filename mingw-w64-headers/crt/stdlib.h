@@ -409,6 +409,32 @@ __MINGW_BEGIN_C_DECLS
 # define _wenviron (* __p__wenviron())
 #endif
 
+  unsigned int *__cdecl __p__osplatform(void);
+  unsigned int *__cdecl __p__osver(void);
+  unsigned int *__cdecl __p__winver(void);
+  unsigned int *__cdecl __p__winmajor(void);
+  unsigned int *__cdecl __p__winminor(void);
+
+#ifndef _osplatform
+# define _osplatform (* __p__osplatform())
+#endif
+
+#ifndef _osver
+# define _osver (* __p__osver())
+#endif
+
+#ifndef _winver
+# define _winver (* __p__winver())
+#endif
+
+#ifndef _winmajor
+# define _winmajor (*__p__winmajor())
+#endif
+
+#ifndef _winminor
+# define _winminor (*__p__winminor())
+#endif
+
 #define _MAX_ENV 32767
 
   _CRTIMP char   *__cdecl  getenv(const char *_VarName) __MINGW_NONNULL((1)) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
