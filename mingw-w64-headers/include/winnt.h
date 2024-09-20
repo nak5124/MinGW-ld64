@@ -255,7 +255,7 @@ extern "C" {
 #endif
 #define NTAPI_INLINE NTAPI
 
-#if !defined(_NTSYSTEM_) && !defined(_NTHALLIB_)
+#ifndef _NTSYSTEM_
 # define NTSYSAPI     DECLSPEC_IMPORT
 # define NTSYSCALLAPI DECLSPEC_IMPORT
 #else
