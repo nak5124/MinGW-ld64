@@ -40,8 +40,7 @@ ADD_UNDERSCORE(flushall)
 ADD_UNDERSCORE(fputchar)
 ; ADD_UNDERSCORE(fstat)
 ; ADD_UNDERSCORE(ftime)
-; _HUGE variable is provided by math/_huge.c
-; HUGE alias is not defined
+; HUGE alias and _HUGE variable are provided by math/_huge.c
 ADD_UNDERSCORE(gcvt)
 ADD_UNDERSCORE(getch)
 ADD_UNDERSCORE(getche)
