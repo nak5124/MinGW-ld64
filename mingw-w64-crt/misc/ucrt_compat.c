@@ -8,7 +8,6 @@
 #pragma GCC diagnostic ignored "-Winline"
 
 #define _amsg_exit crtimp__amsg_exit
-#define _get_output_format crtimp__get_output_format
 
 #include <internal.h>
 #include <sect_attribs.h>
@@ -17,13 +16,11 @@
 #include <corecrt_startup.h>
 
 #undef _amsg_exit
-#undef _get_output_format
 
 // Declarations of non-static functions implemented within this file (that aren't
 // declared in any of the included headers, and that isn't mapped away with a define
 // to get rid of the _CRTIMP in headers).
 void __cdecl _amsg_exit(int ret) __MINGW_NORETURN;
-unsigned int __cdecl _get_output_format(void);
 
 int __cdecl __ms_fwprintf(FILE *, const wchar_t *, ...);
 
@@ -33,11 +30,6 @@ __MINGW_NORETURN
 void __cdecl _amsg_exit(int ret) {
   fprintf(stderr, "runtime error %d\n", ret);
   (*__MINGW_IMP_SYMBOL(_exit))(255);
-}
-
-unsigned int __cdecl _get_output_format(void)
-{
-  return 0;
 }
 
 // These are required to provide the unrepfixed data symbols "timezone"
@@ -86,7 +78,6 @@ int __cdecl __ms_fwprintf(FILE *file, const wchar_t *fmt, ...)
 
 // Dummy/unused __imp_ wrappers, to make GNU ld not autoexport these symbols.
 void __cdecl (*__MINGW_IMP_SYMBOL(_amsg_exit))(int) = _amsg_exit;
-unsigned int __cdecl (*__MINGW_IMP_SYMBOL(_get_output_format))(void) = _get_output_format;
 void __cdecl (*__MINGW_IMP_SYMBOL(tzset))(void) = tzset;
 int __cdecl (*__MINGW_IMP_SYMBOL(__ms_fwprintf))(FILE *, const wchar_t *, ...) = __ms_fwprintf;
 #pragma GCC diagnostic pop
