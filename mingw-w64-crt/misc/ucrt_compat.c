@@ -7,28 +7,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Winline"
 
-#define _amsg_exit crtimp__amsg_exit
-
-#include <internal.h>
-#include <sect_attribs.h>
-#include <stdio.h>
 #include <time.h>
-#include <corecrt_startup.h>
-
-#undef _amsg_exit
-
-// Declarations of non-static functions implemented within this file (that aren't
-// declared in any of the included headers, and that isn't mapped away with a define
-// to get rid of the _CRTIMP in headers).
-void __cdecl _amsg_exit(int ret) __MINGW_NORETURN;
-
-extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __MINGW_NORETURN;
-
-__MINGW_NORETURN
-void __cdecl _amsg_exit(int ret) {
-  fprintf(stderr, "runtime error %d\n", ret);
-  (*__MINGW_IMP_SYMBOL(_exit))(255);
-}
 
 // These are required to provide the unrepfixed data symbols "timezone"
 // and "tzname"; we can't remap "timezone" via a define due to clashes
@@ -63,6 +42,5 @@ void __cdecl tzset(void)
 }
 
 // Dummy/unused __imp_ wrappers, to make GNU ld not autoexport these symbols.
-void __cdecl (*__MINGW_IMP_SYMBOL(_amsg_exit))(int) = _amsg_exit;
 void __cdecl (*__MINGW_IMP_SYMBOL(tzset))(void) = tzset;
 #pragma GCC diagnostic pop

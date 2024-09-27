@@ -92,7 +92,7 @@ extern "C" {
   _CRTIMP char *** __cdecl __p___initenv(void);
 #define __initenv (*__p___initenv())
 
-  _CRTIMP void __cdecl _amsg_exit(int);
+  _CRTIMP void __cdecl _amsg_exit(int) __MINGW_NORETURN;
 
   int __CRTDECL _setargv(void);
   int __CRTDECL __setargv(void);
