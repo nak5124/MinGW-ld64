@@ -16,7 +16,7 @@ ADD_UNDERSCORE(cputs)
 ADD_UNDERSCORE(creat)
 ; ADD_UNDERSCORE(cscanf)
 ADD_UNDERSCORE(cwait)
-; daylight variable is provided by ucrtbase_compat.c
+; daylight variable is provided by misc/ucrt_tzset.c
 ADD_UNDERSCORE(dup)
 ADD_UNDERSCORE(dup2)
 ADD_UNDERSCORE(ecvt)
@@ -59,7 +59,7 @@ ADD_UNDERSCORE(memccpy)
 ADD_UNDERSCORE(memicmp)
 ADD_UNDERSCORE(mkdir)
 ADD_UNDERSCORE(mktemp)
-; onexit is provided by ucrtbase_compat.c
+; onexit function alias is provided by misc/_onexit.c
 ADD_UNDERSCORE(open)
 ADD_UNDERSCORE(putch)
 ADD_UNDERSCORE(putenv)
@@ -94,9 +94,9 @@ ADD_UNDERSCORE(swab)
 ; _sys_nerr variable is not available in ucrtbase.dll and there is no replacement for it
 ADD_UNDERSCORE(tell)
 ADD_UNDERSCORE(tempnam)
-; timezone variable is provided by ucrtbase_compat.c
-; tzname variable is provided by ucrtbase_compat.c
-; tzset function is provided by ucrtbase_compat.c
+; timezone variable is provided by misc/ucrt_tzset.c
+; tzname variable is provided by misc/ucrt_tzset.c
+; tzset function is provided by misc/ucrt_tzset.c
 ADD_UNDERSCORE(ultoa)
 ADD_UNDERSCORE(umask)
 ADD_UNDERSCORE(ungetch)

@@ -133,7 +133,7 @@ src_ucrtbase=\
   misc/__p__osver_emul.c     misc/__winitenv.c          misc/_onexit.c         misc/feclearexcept.c      misc/fegetenv.c             \
   misc/fegetexceptflag.c     misc/fegetround.c          misc/feholdexcept.c    misc/fesetenv.c           misc/fesetexceptflag.c      \
   misc/fesetround.c          misc/fetestexcept.c        misc/output_format.c   misc/ucrt__getmainargs.c  misc/ucrt__wgetmainargs.c   \
-  misc/ucrt_amsg_exit.c      misc/ucrt_at_quick_exit.c  misc/ucrt_compat.c     misc/ucrt-access.c        \
+  misc/ucrt_amsg_exit.c      misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c      misc/ucrt-access.c        \
   \
   stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c     stdio/ucrt__snscanf.c  stdio/ucrt__snwprintf.c   stdio/ucrt__vscprintf.c     \
   stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c   stdio/ucrt_fprintf.c   stdio/ucrt_fscanf.c       stdio/ucrt_fwprintf.c       \
