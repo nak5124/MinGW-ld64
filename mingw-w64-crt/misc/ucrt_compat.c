@@ -4,9 +4,6 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Winline"
-
 #include <time.h>
 
 // These are required to provide the unrepfixed data symbols "timezone"
@@ -43,4 +40,3 @@ void __cdecl tzset(void)
 
 // Dummy/unused __imp_ wrappers, to make GNU ld not autoexport these symbols.
 void __cdecl (*__MINGW_IMP_SYMBOL(tzset))(void) = tzset;
-#pragma GCC diagnostic pop
