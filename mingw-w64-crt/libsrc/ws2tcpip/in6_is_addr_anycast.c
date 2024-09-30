@@ -5,7 +5,7 @@
 #define __CRT__NO_INLINE
 #include <ws2tcpip.h>
 
-BOOLEAN IN6_IS_ADDR_LINKLOCAL(CONST IN6_ADDR *a)
+BOOLEAN IN6_IS_ADDR_ANYCAST(CONST IN6_ADDR *a)
 {
-  return (BOOLEAN)((a->s6_bytes[0] == 0xfe) && ((a->s6_bytes[1] & 0xc0) == 0x80));
+  return (IN6_IS_ADDR_SUBNET_RESERVED_ANYCAST(a) || IN6_IS_ADDR_SUBNET_ROUTER_ANYCAST(a));
 }

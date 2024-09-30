@@ -105,20 +105,23 @@ src_libuuid=\
   libsrc/wia-uuid.c       libsrc/windowscodecs.c
 
 src_libws2_32=\
-  libsrc/ws2_32.c                             \
+  libsrc/ws2_32.c                                        \
   \
-  libsrc/ws2tcpip/gai_strerrorA.c             libsrc/ws2tcpip/gai_strerrorW.c             libsrc/ws2tcpip/in6_addr_equal.c          \
-  libsrc/ws2tcpip/in6_is_addr_linklocal.c     libsrc/ws2tcpip/in6_is_addr_loopback.c      libsrc/ws2tcpip/in6_is_addr_mc_global.c   \
-  libsrc/ws2tcpip/in6_is_addr_mc_linklocal.c  libsrc/ws2tcpip/in6_is_addr_mc_nodelocal.c  libsrc/ws2tcpip/in6_is_addr_mc_orglocal.c \
-  libsrc/ws2tcpip/in6_is_addr_mc_sitelocal.c  libsrc/ws2tcpip/in6_is_addr_multicast.c     libsrc/ws2tcpip/in6_is_addr_sitelocal.c   \
-  libsrc/ws2tcpip/in6_is_addr_unspecified.c   libsrc/ws2tcpip/in6_is_addr_v4compat.c      libsrc/ws2tcpip/in6_is_addr_v4mapped.c    \
-  libsrc/ws2tcpip/in6_set_addr_loopback.c     libsrc/ws2tcpip/in6_set_addr_unspecified.c  libsrc/ws2tcpip/in6addr_isany.c           \
-  libsrc/ws2tcpip/in6addr_isloopback.c        libsrc/ws2tcpip/in6addr_setany.c            libsrc/ws2tcpip/in6addr_setloopback.c     \
+  libsrc/ws2tcpip/gai_strerrorA.c                        libsrc/ws2tcpip/gai_strerrorW.c                      libsrc/ws2tcpip/in6_addr_equal.c           \
+  libsrc/ws2tcpip/in6_is_addr_anycast.c                  libsrc/ws2tcpip/in6_is_addr_eui64.c                  libsrc/ws2tcpip/in6_is_addr_global.c       \
+  libsrc/ws2tcpip/in6_is_addr_linklocal.c                libsrc/ws2tcpip/in6_is_addr_loopback.c               libsrc/ws2tcpip/in6_is_addr_mc_global.c    \
+  libsrc/ws2tcpip/in6_is_addr_mc_linklocal.c             libsrc/ws2tcpip/in6_is_addr_mc_nodelocal.c           libsrc/ws2tcpip/in6_is_addr_mc_orglocal.c  \
+  libsrc/ws2tcpip/in6_is_addr_mc_sitelocal.c             libsrc/ws2tcpip/in6_is_addr_multicast.c              libsrc/ws2tcpip/in6_is_addr_sitelocal.c    \
+  libsrc/ws2tcpip/in6_is_addr_subnet_reserved_anycast.c  libsrc/ws2tcpip/in6_is_addr_subnet_router_anycast.c  libsrc/ws2tcpip/in6_is_addr_unspecified.c  \
+  libsrc/ws2tcpip/in6_is_addr_v4compat.c                 libsrc/ws2tcpip/in6_is_addr_v4mapped.c               libsrc/ws2tcpip/in6_is_addr_v4translated.c \
+  libsrc/ws2tcpip/in6_set_addr_loopback.c                libsrc/ws2tcpip/in6_set_addr_unspecified.c           libsrc/ws2tcpip/in6addr_isany.c            \
+  libsrc/ws2tcpip/in6addr_isequal.c                      libsrc/ws2tcpip/in6addr_isloopback.c                 libsrc/ws2tcpip/in6addr_isunspecified.c    \
+  libsrc/ws2tcpip/in6addr_setany.c                       libsrc/ws2tcpip/in6addr_setloopback.c                \
   \
-  libsrc/wspiapi/WspiapiClone.c               libsrc/wspiapi/WspiapiFreeAddrInfo.c        libsrc/wspiapi/WspiapiGetAddrInfo.c       \
-  libsrc/wspiapi/WspiapiGetNameInfo.c         libsrc/wspiapi/WspiapiLegacyFreeAddrInfo.c  libsrc/wspiapi/WspiapiLegacyGetAddrInfo.c \
-  libsrc/wspiapi/WspiapiLegacyGetNameInfo.c   libsrc/wspiapi/WspiapiLoad.c                libsrc/wspiapi/WspiapiLookupNode.c        \
-  libsrc/wspiapi/WspiapiNewAddrInfo.c         libsrc/wspiapi/WspiapiParseV4Address.c      libsrc/wspiapi/WspiapiQueryDNS.c          \
+  libsrc/wspiapi/WspiapiClone.c                          libsrc/wspiapi/WspiapiFreeAddrInfo.c                 libsrc/wspiapi/WspiapiGetAddrInfo.c        \
+  libsrc/wspiapi/WspiapiGetNameInfo.c                    libsrc/wspiapi/WspiapiLegacyFreeAddrInfo.c           libsrc/wspiapi/WspiapiLegacyGetAddrInfo.c  \
+  libsrc/wspiapi/WspiapiLegacyGetNameInfo.c              libsrc/wspiapi/WspiapiLoad.c                         libsrc/wspiapi/WspiapiLookupNode.c         \
+  libsrc/wspiapi/WspiapiNewAddrInfo.c                    libsrc/wspiapi/WspiapiParseV4Address.c               libsrc/wspiapi/WspiapiQueryDNS.c           \
   libsrc/wspiapi/WspiapiStrdup.c
 
 # Files included in libucrt*.a

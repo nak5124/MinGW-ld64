@@ -5,12 +5,9 @@
 #define __CRT__NO_INLINE
 #include <ws2tcpip.h>
 
-BOOLEAN IN6_IS_ADDR_UNSPECIFIED(CONST IN6_ADDR *a)
+BOOLEAN IN6_IS_ADDR_SUBNET_ROUTER_ANYCAST(CONST IN6_ADDR *a)
 {
-  return (BOOLEAN)((a->s6_words[0] == 0) &&
-                  (a->s6_words[1] == 0) &&
-                  (a->s6_words[2] == 0) &&
-                  (a->s6_words[3] == 0) &&
+  return (BOOLEAN)(IN6_IS_ADDR_EUI64(a) &&
                   (a->s6_words[4] == 0) &&
                   (a->s6_words[5] == 0) &&
                   (a->s6_words[6] == 0) &&

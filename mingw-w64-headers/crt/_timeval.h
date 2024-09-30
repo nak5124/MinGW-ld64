@@ -10,11 +10,11 @@
 
   struct timeval
   {
-                      time_t  tv_sec;
-    __MINGW_EXTENSION __int64 tv_usec;
+    long tv_sec;
+    long tv_usec;
   };
 
-#ifdef __MINGW_USE_MISC
+#if defined(__MINGW_USE_MISC) || defined(_WINSOCKAPI_) || defined(_WINSOCK2API_)
 # define timerisset(tvp) ((tvp)->tv_sec || (tvp)->tv_usec)
 # define timerclear(tvp) ((tvp)->tv_sec = (tvp)->tv_usec = 0)
 # define timercmp(tvp, uvp, cmp)          \
