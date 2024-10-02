@@ -703,6 +703,16 @@ extern "C" {
     SHORT  revents;
   } WSAPOLLFD, *PWSAPOLLFD, *LPWSAPOLLFD;
 
+  typedef struct SOCK_NOTIFY_REGISTRATION
+  {
+    SOCKET socket;
+    PVOID  completionKey;
+    UINT16 eventFilter;
+    UINT8  operation;
+    UINT8  triggerFlags;
+    DWORD  registrationResult;
+  } SOCK_NOTIFY_REGISTRATION;
+
 #if INCL_WINSOCK_API_PROTOTYPES
 
 #ifndef __WINSOCK_WS1_SHARED
@@ -1067,16 +1077,6 @@ extern "C" {
 #endif
 
 #endif  /* !defined(NO_EXTRA_HTON_FUNCTIONS) && !defined(__WIDL__) */
-
-  typedef struct SOCK_NOTIFY_REGISTRATION
-  {
-    SOCKET socket;
-    PVOID  completionKey;
-    UINT16 eventFilter;
-    UINT8  operation;
-    UINT8  triggerFlags;
-    DWORD  registrationResult;
-  } SOCK_NOTIFY_REGISTRATION;
 
 #define SOCK_NOTIFY_REGISTER_EVENT_NONE   0x00
 #define SOCK_NOTIFY_REGISTER_EVENT_IN     0x01
