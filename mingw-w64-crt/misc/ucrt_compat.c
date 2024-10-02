@@ -7,9 +7,6 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Winline"
 
-#undef __MSVCRT_VERSION__
-#define _UCRT
-
 #define _amsg_exit crtimp__amsg_exit
 #define _get_output_format crtimp__get_output_format
 

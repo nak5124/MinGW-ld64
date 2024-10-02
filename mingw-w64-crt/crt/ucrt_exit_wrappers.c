@@ -4,8 +4,6 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#undef __MSVCRT_VERSION__
-#define _UCRT
 #include <_mingw.h>
 #ifdef __USING_MCFGTHREAD__
 #include <mcfgthread/exit.h>

@@ -4,8 +4,6 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#undef __MSVCRT_VERSION__
-#define _UCRT
 #include <stdio.h>
 
 int __cdecl _vsnwprintf(wchar_t * __restrict _Dest,size_t _Count,const wchar_t * __restrict _Format,va_list _Args) __MINGW_DEPRECATED_SEC_WARN

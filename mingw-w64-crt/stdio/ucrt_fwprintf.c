@@ -11,9 +11,6 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Winline"
 
-#undef __MSVCRT_VERSION__
-#define _UCRT
-
 #define fwprintf real_fwprintf
 
 #include <stdarg.h>
