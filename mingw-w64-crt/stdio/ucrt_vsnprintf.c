@@ -4,8 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#undef __MSVCRT_VERSION__
-#define _UCRT
+#define __CRT__NO_INLINE
 #include <stdio.h>
 
 int __cdecl vsnprintf (char * __restrict __stream, size_t __n, const char * __restrict __format, va_list __local_argv)

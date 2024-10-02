@@ -4,8 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-#undef __MSVCRT_VERSION__
-#define _UCRT
+#define __CRT__NO_INLINE
 #include <stdio.h>
 
 int __cdecl printf(const char * __restrict _Format,...)
