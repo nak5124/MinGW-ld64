@@ -90,11 +90,13 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int vfwprintf_s(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList)
   {
     return __stdio_common_vfwprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
   }
+
 #endif
 
   __mingw_ovr
@@ -122,11 +124,13 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int vwprintf_s(const wchar_t *__restrict _Format, va_list _ArgList)
   {
     return __stdio_common_vfwprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
   }
+
 #endif
 
   __mingw_ovr
@@ -164,6 +168,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int fwprintf_s(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
   {
@@ -174,6 +179,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
+
 #endif
 
   __mingw_ovr
@@ -221,6 +227,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int wprintf_s(const wchar_t *__restrict _Format, ...)
   {
@@ -231,6 +238,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
+
 #endif
 
   __mingw_ovr
@@ -270,11 +278,13 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int vfwscanf_s(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList)
   {
     return __stdio_common_vfwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, NULL, _ArgList);
   }
+
 #endif
 
   __mingw_ovr
@@ -290,11 +300,13 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int vwscanf_s(const wchar_t *__restrict _Format, va_list _ArgList)
   {
     return __stdio_common_vfwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, NULL, _ArgList);
   }
+
 #endif
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
@@ -320,6 +332,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int fwscanf_s(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
   {
@@ -330,6 +343,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
+
 #endif
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
@@ -355,6 +369,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int wscanf_s(const wchar_t *__restrict _Format, ...)
   {
@@ -365,6 +380,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
+
 #endif
 
   _CRTIMP int __cdecl __stdio_common_vswprintf(unsigned __int64 _Options, wchar_t *_Buffer, size_t _BufferCount, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
@@ -449,6 +465,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int vswprintf_s(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, va_list _ArgList)
   {
@@ -457,6 +474,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(int, vswprintf_s, wchar_t, _Buffer, const wchar_t *, _Format, va_list, _ArgList)
+
 #endif
 
   __mingw_ovr
@@ -552,6 +570,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int swprintf_s(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...)
   {
@@ -563,6 +582,7 @@ __MINGW_BEGIN_C_DECLS
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(int, swprintf_s, vswprintf_s, wchar_t, _Buffer, const wchar_t *, _Format)
+
 #endif
 
   __mingw_ovr
@@ -705,12 +725,14 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int vswscanf_s(wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, va_list _ArgList)
   {
     return __stdio_common_vswscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(int, vswscanf_s, wchar_t, _Buffer, const wchar_t *, _Format, va_list, _ArgList)
+
 #endif
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
@@ -748,6 +770,7 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #ifdef __MINGW_USE_SECAPI
+
   __mingw_ovr
   int swscanf_s(wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, ...)
   {
@@ -758,6 +781,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
+
 #endif
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
@@ -807,6 +831,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD)
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   int vfwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList)
     /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ __MINGW_NONNULL((1, 2)) __MINGW_ASM_CALL(__mingw_vfwprintf);
   int vwprintf(const wchar_t *__restrict _Format, va_list _ArgList)
@@ -815,26 +840,32 @@ __MINGW_BEGIN_C_DECLS
     /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ __MINGW_NONNULL((1, 2)) __MINGW_ASM_CALL(__mingw_fwprintf);
   int wprintf(const wchar_t *__restrict _Format, ...)
       /* __attribute__((__format__(gnu_wprintf, 1, 2))) */ __MINGW_NONNULL((1)) __MINGW_ASM_CALL(__mingw_wprintf);
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
+
   int vfwscanf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList)
     /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_NONNULL((1, 2)) __MINGW_ASM_CALL(__mingw_vfwscanf);
   int vwscanf(const wchar_t *__restrict _Format, va_list _ArgList)
     /* __attribute__((__format__(gnu_wscanf, 1, 0))) */ __MINGW_NONNULL((1)) __MINGW_ASM_CALL(__mingw_vwscanf);
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   int fwscanf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
     /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_NONNULL((1, 2)) __MINGW_ASM_CALL(__mingw_fwscanf);
   int wscanf(const wchar_t *__restrict _Format, ...)
     /* __attribute__((__format__(gnu_wscanf, 1, 2))) */ __MINGW_NONNULL((1)) __MINGW_ASM_CALL(__mingw_wscanf);
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
   int vsnwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, va_list _ArgList)
     /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_NONNULL((3)) __MINGW_ASM_CALL(__mingw_vsnwprintf);
 
 #if __MINGW_FORTIFY_LEVEL > 0
+
   __mingw_bos_extern_ovr
   /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_NONNULL((3))
   int vsnwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, va_list _ArgList)
@@ -842,12 +873,14 @@ __MINGW_BEGIN_C_DECLS
     __mingw_bos_ptr_chk_warn(_Buffer, _BufferCount * sizeof(wchar_t), 1);
     return __mingw_vsnwprintf(_Buffer, _BufferCount, _Format, _ArgList);
   }
-#endif
+
+#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
   int snwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...)
     /* __attribute__((__format__(gnu_wprintf, 3, 4))) */ __MINGW_NONNULL((3)) __MINGW_ASM_CALL(__mingw_snwprintf);
 
 #if __MINGW_FORTIFY_VA_ARG
+
   __mingw_bos_extern_ovr
   /* __attribute__((__format__(gnu_wprintf, 3, 4))) */ __MINGW_NONNULL((3))
   int snwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...)
@@ -855,21 +888,27 @@ __MINGW_BEGIN_C_DECLS
     __mingw_bos_ptr_chk_warn(_Buffer, _BufferCount * sizeof(wchar_t), 1);
     return __mingw_snwprintf(_Buffer, _BufferCount, _Format, __builtin_va_arg_pack());
   }
+
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
+
   int vswscanf(const wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, va_list _ArgList)
     /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_NONNULL((2)) __MINGW_ASM_CALL(__mingw_vswscanf);
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   int swscanf(const wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, ...)
     /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_NONNULL((2)) __MINGW_ASM_CALL(__mingw_swscanf);
-#endif
 
-#else
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
+
+#else  /* defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wprintf, 2, 0))) */ __MINGW_NONNULL((1, 2))
   int vfwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList)
@@ -898,9 +937,11 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_NONNULL((1, 2))
   int vfwscanf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList)
@@ -914,9 +955,11 @@ __MINGW_BEGIN_C_DECLS
   {
     return __stdio_common_vfwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, _Format, NULL, _ArgList);
   }
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN
   int fwscanf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
@@ -940,7 +983,8 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
   __mingw_ovr
   /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_NONNULL((3))
@@ -964,15 +1008,18 @@ __MINGW_BEGIN_C_DECLS
   }
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 0))) */ __MINGW_NONNULL((2))
   int vswscanf(const wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, va_list _ArgList)
   {
     return __stdio_common_vswscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
   }
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wscanf, 2, 3))) */ __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
   int swscanf(const wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, ...)
@@ -984,11 +1031,13 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
 #endif  /* defined(__MINGW_USE_GNU_STDIO) && !defined(_CRTBLD) */
 
 #if defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_NONNULL((3))
   int vswprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, va_list _ArgList)
@@ -1007,7 +1056,8 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_end(_ArgList);
     return _Ret;
   }
-#endif
+
+#endif  /* defined(__MINGW_USE_ISOC95) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
 #ifdef __cplusplus
 
