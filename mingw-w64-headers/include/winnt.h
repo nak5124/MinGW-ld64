@@ -453,8 +453,10 @@ extern "C" {
 # define STDAPICALLTYPE     __stdcall
 # define STDAPIVCALLTYPE    __cdecl
 
-# define STDAPI        EXTERN_C HRESULT STDAPICALLTYPE
-# define STDAPI_(type) EXTERN_C type STDAPICALLTYPE
+# define STDAPI                       EXTERN_C HRESULT STDAPICALLTYPE
+# define STDAPI_CHPE_PATCHABLE        EXTERN_C DECLSPEC_CHPE_PATCHABLE HRESULT STDAPICALLTYPE
+# define STDAPI_(type)                EXTERN_C type STDAPICALLTYPE
+# define STDAPI_CHPE_PATCHABLE_(type) EXTERN_C DECLSPEC_CHPE_PATCHABLE type STDAPICALLTYPE
 
 # define STDMETHODIMP        HRESULT STDMETHODCALLTYPE
 # define STDMETHODIMP_(type) type STDMETHODCALLTYPE
@@ -1764,7 +1766,12 @@ extern "C" {
 #define InterlockedCompareExchangeAcquire64  InterlockedCompareExchange64
 #define InterlockedCompareExchangeRelease64  InterlockedCompareExchange64
 #define InterlockedCompareExchangeNoFence64  InterlockedCompareExchange64
-/* #define InterlockedCompareExchange128       _InterlockedCompareExchange128 */
+#if 0
+#define InterlockedCompareExchange128        _InterlockedCompareExchange128
+#define InterlockedCompareExchangeAcquire128 _InterlockedCompareExchange128
+#define InterlockedCompareExchangeRelease128 _InterlockedCompareExchange128
+#define InterlockedCompareExchangeNoFence128 _InterlockedCompareExchange128
+#endif
 
 #define InterlockedExchangePointer               _InterlockedExchangePointer
 #define InterlockedExchangePointerNoFence        _InterlockedExchangePointer
@@ -2384,33 +2391,36 @@ extern "C" {
 #define InterlockedCompareExchangeRelease _InterlockedCompareExchange_rel
 #define InterlockedCompareExchangeNoFence _InterlockedCompareExchange_nf
 
-#define InterlockedAndAcquire64             _InterlockedAnd64_acq
-#define InterlockedAndRelease64             _InterlockedAnd64_rel
-#define InterlockedAndNoFence64             _InterlockedAnd64_nf
-#define InterlockedOrAcquire64              _InterlockedOr64_acq
-#define InterlockedOrRelease64              _InterlockedOr64_rel
-#define InterlockedOrNoFence64              _InterlockedOr64_nf
-#define InterlockedXorAcquire64             _InterlockedXor64_acq
-#define InterlockedXorRelease64             _InterlockedXor64_rel
-#define InterlockedXorNoFence64             _InterlockedXor64_nf
-#define InterlockedIncrementAcquire64       _InterlockedIncrement64_acq
-#define InterlockedIncrementRelease64       _InterlockedIncrement64_rel
-#define InterlockedIncrementNoFence64       _InterlockedIncrement64_nf
-#define InterlockedDecrementAcquire64       _InterlockedDecrement64_acq
-#define InterlockedDecrementRelease64       _InterlockedDecrement64_rel
-#define InterlockedDecrementNoFence64       _InterlockedDecrement64_nf
-#define InterlockedAddAcquire64             _InterlockedAdd64_acq
-#define InterlockedAddRelease64             _InterlockedAdd64_rel
-#define InterlockedAddNoFence64             _InterlockedAdd64_nf
-#define InterlockedExchangeAcquire64        _InterlockedExchange64_acq
-#define InterlockedExchangeNoFence64        _InterlockedExchange64_nf
-#define InterlockedExchangeAddAcquire64     _InterlockedExchangeAdd64_acq
-#define InterlockedExchangeAddRelease64     _InterlockedExchangeAdd64_rel
-#define InterlockedExchangeAddNoFence64     _InterlockedExchangeAdd64_nf
-#define InterlockedCompareExchangeAcquire64 _InterlockedCompareExchange64_acq
-#define InterlockedCompareExchangeRelease64 _InterlockedCompareExchange64_rel
-#define InterlockedCompareExchangeNoFence64 _InterlockedCompareExchange64_nf
-#define InterlockedCompareExchange128       _InterlockedCompareExchange128
+#define InterlockedAndAcquire64              _InterlockedAnd64_acq
+#define InterlockedAndRelease64              _InterlockedAnd64_rel
+#define InterlockedAndNoFence64              _InterlockedAnd64_nf
+#define InterlockedOrAcquire64               _InterlockedOr64_acq
+#define InterlockedOrRelease64               _InterlockedOr64_rel
+#define InterlockedOrNoFence64               _InterlockedOr64_nf
+#define InterlockedXorAcquire64              _InterlockedXor64_acq
+#define InterlockedXorRelease64              _InterlockedXor64_rel
+#define InterlockedXorNoFence64              _InterlockedXor64_nf
+#define InterlockedIncrementAcquire64        _InterlockedIncrement64_acq
+#define InterlockedIncrementRelease64        _InterlockedIncrement64_rel
+#define InterlockedIncrementNoFence64        _InterlockedIncrement64_nf
+#define InterlockedDecrementAcquire64        _InterlockedDecrement64_acq
+#define InterlockedDecrementRelease64        _InterlockedDecrement64_rel
+#define InterlockedDecrementNoFence64        _InterlockedDecrement64_nf
+#define InterlockedAddAcquire64              _InterlockedAdd64_acq
+#define InterlockedAddRelease64              _InterlockedAdd64_rel
+#define InterlockedAddNoFence64              _InterlockedAdd64_nf
+#define InterlockedExchangeAcquire64         _InterlockedExchange64_acq
+#define InterlockedExchangeNoFence64         _InterlockedExchange64_nf
+#define InterlockedExchangeAddAcquire64      _InterlockedExchangeAdd64_acq
+#define InterlockedExchangeAddRelease64      _InterlockedExchangeAdd64_rel
+#define InterlockedExchangeAddNoFence64      _InterlockedExchangeAdd64_nf
+#define InterlockedCompareExchangeAcquire64  _InterlockedCompareExchange64_acq
+#define InterlockedCompareExchangeRelease64  _InterlockedCompareExchange64_rel
+#define InterlockedCompareExchangeNoFence64  _InterlockedCompareExchange64_nf
+#define InterlockedCompareExchange128        _InterlockedCompareExchange128
+#define InterlockedCompareExchangeAcquire128 _InterlockedCompareExchange128_acq
+#define InterlockedCompareExchangeRelease128 _InterlockedCompareExchange128_rel
+#define InterlockedCompareExchangeNoFence128 _InterlockedCompareExchange128_nf
 
 #define InterlockedAnd64Acquire _InterlockedAnd64_acq
 #define InterlockedAnd64Release _InterlockedAnd64_rel
