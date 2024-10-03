@@ -7146,6 +7146,10 @@ extern "C" {
 
   WINUSERAPI WINBOOL WINAPI IsWindowArranged(HWND hwnd);
 
+#define INVALID_MONITOR_TOPOLOGY_ID 0
+
+  WINUSERAPI UINT WINAPI GetCurrentMonitorTopologyId();
+
 #ifdef __cplusplus
 }
 #endif
