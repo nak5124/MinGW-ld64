@@ -2109,6 +2109,7 @@
 #define ERROR_OPERATION_NOT_SUPPORTED_IN_TRANSACTION                             6853L
 #define ERROR_EXPIRED_HANDLE                                                     6854L
 #define ERROR_TRANSACTION_NOT_ENLISTED                                           6855L
+#define ERROR_ENLISTMENT_NOT_INITIALIZED                                         6856L
 #define ERROR_CTX_WINSTATION_NAME_INVALID                                        7001L
 #define ERROR_CTX_INVALID_PD                                                     7002L
 #define ERROR_CTX_PD_NOT_FOUND                                                   7003L
@@ -3362,6 +3363,8 @@
 #define ERROR_APPINSTALLER_IS_MANAGED_BY_SYSTEM                                        15672L
 #define ERROR_SERVICE_BLOCKED_BY_SYSPREP_IN_PROGRESS                                   15673L
 #define ERROR_UNSUPPORTED_ARM32_PACKAGE_REQUIRES_REMEDIAITON                           15674L
+#define ERROR_UUP_PRODUCT_NOT_APPLICABLE                                               15675L
+#define ERROR_BLOCKED_BY_PENDING_PACKAGE_REMOVAL                                       15676L
 #define APPMODEL_ERROR_NO_PACKAGE                                                      15700L
 #define APPMODEL_ERROR_PACKAGE_RUNTIME_CORRUPT                                         15701L
 #define APPMODEL_ERROR_PACKAGE_IDENTITY_CORRUPT                                        15702L
