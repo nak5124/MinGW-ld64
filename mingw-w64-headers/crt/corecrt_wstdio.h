@@ -926,6 +926,21 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl fwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
     /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ __MINGW_NONNULL((1, 2));
 
+#ifndef __CRT__NO_INLINE
+
+  __CRT_INLINE __MINGW_NONNULL((1, 2))
+  int __cdecl fwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
+  {
+    __builtin_va_list _ArgList;
+    int _Ret;
+    __builtin_va_start(_ArgList, _Format);
+    _Ret = __stdio_common_vfwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
+    __builtin_va_end(_ArgList);
+    return _Ret;
+  }
+
+#endif  /* __CRT__NO_INLINE */
+
   __mingw_ovr
   /* __attribute__((__format__(gnu_wprintf, 1, 2))) */ __MINGW_NONNULL((1))
   int wprintf(const wchar_t *__restrict _Format, ...)

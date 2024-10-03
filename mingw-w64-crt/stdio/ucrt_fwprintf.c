@@ -8,28 +8,17 @@
 // libmingwex doesn't use the ucrt version of headers, and wassert.c can
 // end up requiring a concrete version of it.
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Winline"
-
-#define fwprintf real_fwprintf
-
-#include <stdarg.h>
+#define __CRT__NO_INLINE
 #include <stdio.h>
 
-#undef fwprintf
-
-int __cdecl fwprintf(FILE *ptr, const wchar_t *fmt, ...);
-
-int __cdecl fwprintf(FILE *ptr, const wchar_t *fmt, ...)
+int __cdecl fwprintf(FILE *__restrict ptr, const wchar_t *__restrict fmt, ...)
 {
-  va_list ap;
+  __builtin_va_list ap;
   int ret;
-  va_start(ap, fmt);
+  __builtin_va_start(ap, fmt);
   ret = __stdio_common_vfwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, ptr, fmt, NULL, ap);
-  va_end(ap);
+  __builtin_va_end(ap);
   return ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(fwprintf))(FILE *, const wchar_t *, ...) = fwprintf;
-
-#pragma GCC diagnostic pop
+int __cdecl (*__MINGW_IMP_SYMBOL(fwprintf))(FILE *__restrict, const wchar_t *__restrict, ...) = fwprintf;
