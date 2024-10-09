@@ -343,6 +343,7 @@ IDL_SRCS = \
   include/windows.ui.composition.idl \
   include/windows.ui.composition.interop.idl \
   include/windows.ui.core.idl \
+  include/windows.ui.notifications.idl \
   include/windows.ui.viewmanagement.idl \
   include/windows.ui.xaml.hosting.desktopwindowxamlsource.idl \
   include/windows.ui.xaml.idl \
