@@ -5,6 +5,8 @@
 #ifndef _INC_WINAPIFAMILY
 #define _INC_WINAPIFAMILY
 
+#include <winpackagefamily.h>
+
 #define WINAPI_FAMILY_PC_APP      2    /* Windows Store Applications */
 #define WINAPI_FAMILY_PHONE_APP   3    /* Windows Phone Applications */
 #define WINAPI_FAMILY_SYSTEM      4    /* Windows Drivers and Tools */
@@ -17,6 +19,15 @@
 /* WINAPI_FAMILY can be either desktop + App, or App.  */
 #ifndef WINAPI_FAMILY
 # define WINAPI_FAMILY WINAPI_FAMILY_DESKTOP_APP
+#endif
+
+#if WINAPI_FAMILY != WINAPI_FAMILY_DESKTOP_APP && \
+    WINAPI_FAMILY != WINAPI_FAMILY_PC_APP &&      \
+    WINAPI_FAMILY != WINAPI_FAMILY_PHONE_APP &&   \
+    WINAPI_FAMILY != WINAPI_FAMILY_SYSTEM &&      \
+    WINAPI_FAMILY != WINAPI_FAMILY_GAMES &&       \
+    WINAPI_FAMILY != WINAPI_FAMILY_SERVER
+# error Unknown WINAPI_FAMILY value. Was it defined in terms of a WINAPI_PARTITION_* value?
 #endif
 
 /* Desktop Win32 apps (but not store apps) */
