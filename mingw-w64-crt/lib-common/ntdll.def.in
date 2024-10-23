@@ -214,9 +214,11 @@ NtAddDriverEntry
 NtAdjustGroupsToken
 NtAdjustPrivilegesToken
 NtAdjustTokenClaimsAndDeviceGroups
+NtAlertMultipleThreadByThreadId
 NtAlertResumeThread
 NtAlertThread
 NtAlertThreadByThreadId
+NtAlertThreadByThreadIdEx
 NtAllocateLocallyUniqueId
 NtAllocateReserveObject
 NtAllocateUserPhysicalPages
@@ -594,6 +596,7 @@ NtSetDriverEntryOrder
 NtSetEaFile
 NtSetEvent
 NtSetEventBoostPriority
+NtSetEventEx
 NtSetHighEventPair
 NtSetHighWaitLowEventPair
 NtSetIRTimer
@@ -1058,8 +1061,10 @@ RtlFindUnicodeSubstring
 RtlFirstEntrySList
 RtlFirstFreeAce
 RtlFlsAlloc
+RtlFlsAllocEx
 RtlFlsFree
 RtlFlsGetValue
+RtlFlsGetValue2
 RtlFlsSetValue
 RtlFlushHeaps
 F64(RtlFlushNonVolatileMemory)
@@ -1084,6 +1089,7 @@ RtlFreeUserStack
 RtlGUIDFromString
 RtlGenerate8dot3Name
 RtlGetAce
+RtlGetAcesBufferSize
 RtlGetActiveActivationContext
 RtlGetActiveConsoleId
 RtlGetAppContainerNamedObjectPath
@@ -1099,6 +1105,7 @@ RtlGetCurrentPeb
 RtlGetCurrentProcessorNumber
 RtlGetCurrentProcessorNumberEx
 RtlGetCurrentServiceSessionId
+RtlGetCurrentThreadPrimaryGroup
 RtlGetCurrentTransaction
 F_X64(RtlGetCurrentUmsThread)
 RtlGetDaclSecurityDescriptor
@@ -1319,6 +1326,7 @@ RtlLockMemoryStreamRegion
 RtlLockMemoryZone
 RtlLockModuleSection
 RtlLogStackBackTrace
+RtlLogUnexpectedCodepath
 RtlLookupAtomInAtomTable
 RtlLookupElementGenericTable
 RtlLookupElementGenericTableAvl
@@ -1438,6 +1446,11 @@ RtlRandom
 RtlRandomEx
 RtlRbInsertNodeEx
 RtlRbRemoveNode
+RtlRcuAllocate
+RtlRcuFree
+RtlRcuReadLock
+RtlRcuReadUnlock
+RtlRcuSynchronize
 RtlReAllocateHeap
 RtlReadMemoryStream
 RtlReadOutOfProcessMemoryStream
@@ -1583,6 +1596,9 @@ RtlTimeToElapsedTimeFields
 RtlTimeToSecondsSince1970
 RtlTimeToSecondsSince1980
 RtlTimeToTimeFields
+RtlTlsAlloc
+RtlTlsFree
+RtlTlsSetValue
 RtlTraceDatabaseAdd
 RtlTraceDatabaseCreate
 RtlTraceDatabaseDestroy
@@ -1656,6 +1672,7 @@ RtlValidateCorrelationVector
 RtlValidateHeap
 RtlValidateProcessHeaps
 RtlValidateUnicodeString
+RtlValidateUserCallTarget
 RtlVerifyVersionInfo
 RtlVirtualUnwind
 RtlVirtualUnwind2
@@ -1671,13 +1688,13 @@ RtlWalkFrameChain
 RtlWalkHeap
 RtlWeaklyEnumerateEntryHashTable
 RtlWerpReportException
-RtlWnfCompareChangeStamp
 RtlWnfDllUnloadCallback
 RtlWow64CallFunction64
 RtlWow64ChangeProcessState
 RtlWow64ChangeThreadState
 RtlWow64EnableFsRedirection
 RtlWow64EnableFsRedirectionEx
+RtlWow64GetCpuAreaEnabledFeatures
 F64(RtlWow64GetCpuAreaInfo)
 F64(RtlWow64GetCurrentCpuArea)
 RtlWow64GetCurrentMachine
@@ -1701,6 +1718,8 @@ RtlWow64SuspendThread
 RtlWriteMemoryStream
 F64(RtlWriteNonVolatileMemory)
 RtlWriteRegistryValue
+RtlXRestore
+RtlXSave
 RtlZeroHeap
 RtlZeroMemory
 RtlZombifyActivationContext
@@ -1739,6 +1758,7 @@ RtlpQueryDefaultUILanguage
 F64(RtlpQueryProcessDebugInformationFromWow64)
 RtlpQueryProcessDebugInformationRemote
 RtlpRefreshCachedUILanguage
+RtlpScpCfgNtdllExports DATA
 RtlpSetInstallLanguage
 RtlpSetPreferredUILanguages
 RtlpSetUserPreferredUILanguages
@@ -1878,9 +1898,11 @@ ZwAddDriverEntry
 ZwAdjustGroupsToken
 ZwAdjustPrivilegesToken
 ZwAdjustTokenClaimsAndDeviceGroups
+ZwAlertMultipleThreadByThreadId
 ZwAlertResumeThread
 ZwAlertThread
 ZwAlertThreadByThreadId
+ZwAlertThreadByThreadIdEx
 ZwAllocateLocallyUniqueId
 ZwAllocateReserveObject
 ZwAllocateUserPhysicalPages
@@ -2257,6 +2279,7 @@ ZwSetDriverEntryOrder
 ZwSetEaFile
 ZwSetEvent
 ZwSetEventBoostPriority
+ZwSetEventEx
 ZwSetHighEventPair
 ZwSetHighWaitLowEventPair
 ZwSetIRTimer

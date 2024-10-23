@@ -447,6 +447,7 @@ LsaICLookupNames
 LsaICLookupNamesWithCreds
 LsaICLookupSids
 LsaICLookupSidsWithCreds
+LsaIOpenPolicyWithCreds
 LsaInvokeTrustScanner
 LsaIsUserArsoAllowed
 LsaIsUserArsoEnabled
