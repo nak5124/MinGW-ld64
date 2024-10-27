@@ -625,25 +625,24 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	math/fpclassifyf.c math/isnan.c math/isnanf.c math/signbit.c \
 	math/signbitf.c misc/alarm.c misc/delay-f.c misc/delay-n.c \
 	misc/delayimp.c misc/dirent.c misc/dirname.c \
-	misc/dllentrypoint.c misc/dllmain.c misc/feraiseexcept.c \
-	misc/feupdateenv.c misc/ftruncate.c misc/ftw.c misc/ftw64.c \
-	misc/fwide.c misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
-	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
-	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
-	misc/mingw_usleep.c misc/mkstemp.c misc/sleep.c misc/strsafe.c \
-	misc/tdelete.c misc/tdestroy.c misc/tfind.c misc/tsearch.c \
-	misc/twalk.c misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c \
-	misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c \
-	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
-	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
-	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/stpcpy_chk.c \
-	ssp/strcat_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
-	ssp/strncpy_chk.c stdio/asprintf.c stdio/ftruncate64.c \
-	stdio/mingw_asprintf.c stdio/mingw_fprintf.c \
-	stdio/mingw_fprintfw.c stdio/mingw_fscanf.c \
-	stdio/mingw_fwscanf.c stdio/mingw_pformat.c \
-	stdio/mingw_pformatw.c stdio/mingw_printf.c \
-	stdio/mingw_printfw.c stdio/mingw_scanf.c \
+	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getlogin.c \
+	misc/getopt.c misc/gettimeofday.c misc/mempcpy.c \
+	misc/mingw_getsp.S misc/mingw_longjmp.S misc/mingw_matherr.c \
+	misc/mingw_mbwc_convert.c misc/mingw_usleep.c misc/mkstemp.c \
+	misc/sleep.c misc/strsafe.c misc/tdelete.c misc/tdestroy.c \
+	misc/tfind.c misc/tsearch.c misc/twalk.c misc/wdirent.c \
+	misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c \
+	misc/wmempcpy.c misc/wmemset.c ssp/chk_fail.c ssp/gets_chk.c \
+	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
+	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
+	ssp/stpcpy_chk.c ssp/strcat_chk.c ssp/strcpy_chk.c \
+	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/asprintf.c \
+	stdio/ftruncate64.c stdio/mingw_asprintf.c \
+	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
+	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
+	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
+	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
 	stdio/mingw_snprintf.c stdio/mingw_snprintfw.c \
 	stdio/mingw_sprintf.c stdio/mingw_sprintfw.c \
 	stdio/mingw_sscanf.c stdio/mingw_swscanf.c \
@@ -748,8 +747,6 @@ am__objects_24 =  \
 	misc/lib64_libmingwex_a-dirname.$(OBJEXT) \
 	misc/lib64_libmingwex_a-dllentrypoint.$(OBJEXT) \
 	misc/lib64_libmingwex_a-dllmain.$(OBJEXT) \
-	misc/lib64_libmingwex_a-feraiseexcept.$(OBJEXT) \
-	misc/lib64_libmingwex_a-feupdateenv.$(OBJEXT) \
 	misc/lib64_libmingwex_a-ftruncate.$(OBJEXT) \
 	misc/lib64_libmingwex_a-ftw.$(OBJEXT) \
 	misc/lib64_libmingwex_a-ftw64.$(OBJEXT) \
@@ -924,10 +921,7 @@ am__lib64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	math/signgam.c misc/__badioinfo.c misc/__initenv.c \
 	misc/__p___initenv.c misc/__p___winitenv.c \
 	misc/__p__osplatform_emul.c misc/__p__osver_emul.c \
-	misc/__winitenv.c misc/_onexit.c misc/feclearexcept.c \
-	misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c \
-	misc/feholdexcept.c misc/fesetenv.c misc/fesetexceptflag.c \
-	misc/fesetround.c misc/fetestexcept.c misc/output_format.c \
+	misc/__winitenv.c misc/_onexit.c misc/output_format.c \
 	misc/ucrt__getmainargs.c misc/ucrt__wgetmainargs.c \
 	misc/ucrt_amsg_exit.c misc/ucrt_at_quick_exit.c \
 	misc/ucrt_tzset.c misc/ucrt-access.c stdio/ucrt__scprintf.c \
@@ -957,15 +951,6 @@ am__objects_37 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-__p__osver_emul.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-__winitenv.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-_onexit.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-feclearexcept.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fegetenv.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fegetexceptflag.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fegetround.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-feholdexcept.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fesetenv.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fesetexceptflag.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fesetround.$(OBJEXT) \
-	misc/lib64_libucrt_extra_a-fetestexcept.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-output_format.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-ucrt__getmainargs.$(OBJEXT) \
 	misc/lib64_libucrt_extra_a-ucrt__wgetmainargs.$(OBJEXT) \
@@ -1537,25 +1522,24 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	math/fpclassifyf.c math/isnan.c math/isnanf.c math/signbit.c \
 	math/signbitf.c misc/alarm.c misc/delay-f.c misc/delay-n.c \
 	misc/delayimp.c misc/dirent.c misc/dirname.c \
-	misc/dllentrypoint.c misc/dllmain.c misc/feraiseexcept.c \
-	misc/feupdateenv.c misc/ftruncate.c misc/ftw.c misc/ftw64.c \
-	misc/fwide.c misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
-	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
-	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
-	misc/mingw_usleep.c misc/mkstemp.c misc/sleep.c misc/strsafe.c \
-	misc/tdelete.c misc/tdestroy.c misc/tfind.c misc/tsearch.c \
-	misc/twalk.c misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c \
-	misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c \
-	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
-	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
-	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/stpcpy_chk.c \
-	ssp/strcat_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
-	ssp/strncpy_chk.c stdio/asprintf.c stdio/ftruncate64.c \
-	stdio/mingw_asprintf.c stdio/mingw_fprintf.c \
-	stdio/mingw_fprintfw.c stdio/mingw_fscanf.c \
-	stdio/mingw_fwscanf.c stdio/mingw_pformat.c \
-	stdio/mingw_pformatw.c stdio/mingw_printf.c \
-	stdio/mingw_printfw.c stdio/mingw_scanf.c \
+	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getlogin.c \
+	misc/getopt.c misc/gettimeofday.c misc/mempcpy.c \
+	misc/mingw_getsp.S misc/mingw_longjmp.S misc/mingw_matherr.c \
+	misc/mingw_mbwc_convert.c misc/mingw_usleep.c misc/mkstemp.c \
+	misc/sleep.c misc/strsafe.c misc/tdelete.c misc/tdestroy.c \
+	misc/tfind.c misc/tsearch.c misc/twalk.c misc/wdirent.c \
+	misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c \
+	misc/wmempcpy.c misc/wmemset.c ssp/chk_fail.c ssp/gets_chk.c \
+	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
+	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
+	ssp/stpcpy_chk.c ssp/strcat_chk.c ssp/strcpy_chk.c \
+	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/asprintf.c \
+	stdio/ftruncate64.c stdio/mingw_asprintf.c \
+	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
+	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
+	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
+	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
 	stdio/mingw_snprintf.c stdio/mingw_snprintfw.c \
 	stdio/mingw_sprintf.c stdio/mingw_sprintfw.c \
 	stdio/mingw_sscanf.c stdio/mingw_swscanf.c \
@@ -1660,8 +1644,6 @@ am__objects_68 =  \
 	misc/libarm64_libmingwex_a-dirname.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-dllentrypoint.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-dllmain.$(OBJEXT) \
-	misc/libarm64_libmingwex_a-feraiseexcept.$(OBJEXT) \
-	misc/libarm64_libmingwex_a-feupdateenv.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-ftruncate.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-ftw.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-ftw64.$(OBJEXT) \
@@ -1836,10 +1818,7 @@ am__libarm64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	math/signgam.c misc/__badioinfo.c misc/__initenv.c \
 	misc/__p___initenv.c misc/__p___winitenv.c \
 	misc/__p__osplatform_emul.c misc/__p__osver_emul.c \
-	misc/__winitenv.c misc/_onexit.c misc/feclearexcept.c \
-	misc/fegetenv.c misc/fegetexceptflag.c misc/fegetround.c \
-	misc/feholdexcept.c misc/fesetenv.c misc/fesetexceptflag.c \
-	misc/fesetround.c misc/fetestexcept.c misc/output_format.c \
+	misc/__winitenv.c misc/_onexit.c misc/output_format.c \
 	misc/ucrt__getmainargs.c misc/ucrt__wgetmainargs.c \
 	misc/ucrt_amsg_exit.c misc/ucrt_at_quick_exit.c \
 	misc/ucrt_tzset.c misc/ucrt-access.c stdio/ucrt__scprintf.c \
@@ -1868,15 +1847,6 @@ am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-__p__osver_emul.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-__winitenv.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-_onexit.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-feclearexcept.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fegetenv.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fegetexceptflag.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fegetround.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-feholdexcept.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fesetenv.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fesetexceptflag.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fesetround.$(OBJEXT) \
-	misc/libarm64_libucrt_extra_a-fetestexcept.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-output_format.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-ucrt__getmainargs.$(OBJEXT) \
 	misc/libarm64_libucrt_extra_a-ucrt__wgetmainargs.$(OBJEXT) \
@@ -3194,8 +3164,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-dllmain.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po \
@@ -3232,15 +3200,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-__p__osver_emul.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-_onexit.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po \
-	misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-output_format.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po \
 	misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__getmainargs.Po \
@@ -3260,8 +3219,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-dllmain.Po \
-	misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Po \
-	misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po \
@@ -3298,15 +3255,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p__osver_emul.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-_onexit.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Po \
-	misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-output_format.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt-access.Po \
 	misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__getmainargs.Po \
@@ -4314,20 +4262,18 @@ src_libws2_32 = \
 
 # Files included in libucrt*.a
 src_ucrtbase = \
-  math/_huge.c               math/frexpf.c              math/ldexpf.c          math/lgamma.c             math/lgammaf.c              \
-  math/modfl.c               math/signgam.c             \
+  math/_huge.c               math/frexpf.c             math/ldexpf.c              math/lgamma.c            math/lgammaf.c              \
+  math/modfl.c               math/signgam.c            \
   \
-  misc/__badioinfo.c         misc/__initenv.c           misc/__p___initenv.c   misc/__p___winitenv.c     misc/__p__osplatform_emul.c \
-  misc/__p__osver_emul.c     misc/__winitenv.c          misc/_onexit.c         misc/feclearexcept.c      misc/fegetenv.c             \
-  misc/fegetexceptflag.c     misc/fegetround.c          misc/feholdexcept.c    misc/fesetenv.c           misc/fesetexceptflag.c      \
-  misc/fesetround.c          misc/fetestexcept.c        misc/output_format.c   misc/ucrt__getmainargs.c  misc/ucrt__wgetmainargs.c   \
-  misc/ucrt_amsg_exit.c      misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c      misc/ucrt-access.c        \
+  misc/__badioinfo.c         misc/__initenv.c          misc/__p___initenv.c       misc/__p___winitenv.c    misc/__p__osplatform_emul.c \
+  misc/__p__osver_emul.c     misc/__winitenv.c         misc/_onexit.c             misc/output_format.c     misc/ucrt__getmainargs.c    \
+  misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
   \
-  stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c     stdio/ucrt__snscanf.c  stdio/ucrt__snwprintf.c   stdio/ucrt__vscprintf.c     \
-  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c   stdio/ucrt_fprintf.c   stdio/ucrt_fscanf.c       stdio/ucrt_fwprintf.c       \
-  stdio/ucrt_ms_fwprintf.c   stdio/ucrt_printf.c        stdio/ucrt_scanf.c     stdio/ucrt_snprintf.c     stdio/ucrt_sprintf.c        \
-  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c   stdio/ucrt_vprintf.c      stdio/ucrt_vscanf.c         \
-  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c
+  stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c      stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c     \
+  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c       \
+  stdio/ucrt_ms_fwprintf.c   stdio/ucrt_printf.c       stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c    stdio/ucrt_sprintf.c        \
+  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c     stdio/ucrt_vfscanf.c       stdio/ucrt_vprintf.c     stdio/ucrt_vscanf.c         \
+  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c     stdio/ucrt_vsscanf.c
 
 
 # Files included in libucrtapp.a
@@ -4374,25 +4320,24 @@ src_libmingwex = cfguard/mingw_cfguard_support.c complex/cabs.c \
 	math/fpclassifyf.c math/isnan.c math/isnanf.c math/signbit.c \
 	math/signbitf.c misc/alarm.c misc/delay-f.c misc/delay-n.c \
 	misc/delayimp.c misc/dirent.c misc/dirname.c \
-	misc/dllentrypoint.c misc/dllmain.c misc/feraiseexcept.c \
-	misc/feupdateenv.c misc/ftruncate.c misc/ftw.c misc/ftw64.c \
-	misc/fwide.c misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
-	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
-	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
-	misc/mingw_usleep.c misc/mkstemp.c misc/sleep.c misc/strsafe.c \
-	misc/tdelete.c misc/tdestroy.c misc/tfind.c misc/tsearch.c \
-	misc/twalk.c misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c \
-	misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c \
-	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
-	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
-	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/stpcpy_chk.c \
-	ssp/strcat_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
-	ssp/strncpy_chk.c stdio/asprintf.c stdio/ftruncate64.c \
-	stdio/mingw_asprintf.c stdio/mingw_fprintf.c \
-	stdio/mingw_fprintfw.c stdio/mingw_fscanf.c \
-	stdio/mingw_fwscanf.c stdio/mingw_pformat.c \
-	stdio/mingw_pformatw.c stdio/mingw_printf.c \
-	stdio/mingw_printfw.c stdio/mingw_scanf.c \
+	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getlogin.c \
+	misc/getopt.c misc/gettimeofday.c misc/mempcpy.c \
+	misc/mingw_getsp.S misc/mingw_longjmp.S misc/mingw_matherr.c \
+	misc/mingw_mbwc_convert.c misc/mingw_usleep.c misc/mkstemp.c \
+	misc/sleep.c misc/strsafe.c misc/tdelete.c misc/tdestroy.c \
+	misc/tfind.c misc/tsearch.c misc/twalk.c misc/wdirent.c \
+	misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c \
+	misc/wmempcpy.c misc/wmemset.c ssp/chk_fail.c ssp/gets_chk.c \
+	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
+	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
+	ssp/stpcpy_chk.c ssp/strcat_chk.c ssp/strcpy_chk.c \
+	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/asprintf.c \
+	stdio/ftruncate64.c stdio/mingw_asprintf.c \
+	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
+	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
+	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
+	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
 	stdio/mingw_snprintf.c stdio/mingw_snprintfw.c \
 	stdio/mingw_sprintf.c stdio/mingw_sprintfw.c \
 	stdio/mingw_sscanf.c stdio/mingw_swscanf.c \
@@ -6364,10 +6309,6 @@ misc/lib64_libmingwex_a-dllentrypoint.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-dllmain.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-feraiseexcept.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-feupdateenv.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-ftruncate.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-ftw.$(OBJEXT): misc/$(am__dirstamp) \
@@ -6665,24 +6606,6 @@ misc/lib64_libucrt_extra_a-__winitenv.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libucrt_extra_a-_onexit.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-feclearexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fegetenv.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fegetexceptflag.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fegetround.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-feholdexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fesetenv.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fesetexceptflag.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fesetround.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libucrt_extra_a-fetestexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libucrt_extra_a-output_format.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libucrt_extra_a-ucrt__getmainargs.$(OBJEXT):  \
@@ -7593,10 +7516,6 @@ misc/libarm64_libmingwex_a-dllentrypoint.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-dllmain.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libmingwex_a-feraiseexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libmingwex_a-feupdateenv.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-ftruncate.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-ftw.$(OBJEXT): misc/$(am__dirstamp) \
@@ -7873,24 +7792,6 @@ misc/libarm64_libucrt_extra_a-__winitenv.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libucrt_extra_a-_onexit.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-feclearexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fegetenv.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fegetexceptflag.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fegetround.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-feholdexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fesetenv.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fesetexceptflag.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fesetround.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libucrt_extra_a-fetestexcept.$(OBJEXT):  \
-	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libucrt_extra_a-output_format.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libucrt_extra_a-ucrt__getmainargs.$(OBJEXT):  \
@@ -9489,8 +9390,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-dllmain.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po@am__quote@ # am--include-marker
@@ -9527,15 +9426,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__p__osver_emul.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-_onexit.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-output_format.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__getmainargs.Po@am__quote@ # am--include-marker
@@ -9555,8 +9445,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-dllmain.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po@am__quote@ # am--include-marker
@@ -9593,15 +9481,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p__osver_emul.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-_onexit.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-output_format.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt-access.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__getmainargs.Po@am__quote@ # am--include-marker
@@ -13616,34 +13495,6 @@ misc/lib64_libmingwex_a-dllmain.obj: misc/dllmain.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-dllmain.obj `if test -f 'misc/dllmain.c'; then $(CYGPATH_W) 'misc/dllmain.c'; else $(CYGPATH_W) '$(srcdir)/misc/dllmain.c'; fi`
 
-misc/lib64_libmingwex_a-feraiseexcept.o: misc/feraiseexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-feraiseexcept.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Tpo -c -o misc/lib64_libmingwex_a-feraiseexcept.o `test -f 'misc/feraiseexcept.c' || echo '$(srcdir)/'`misc/feraiseexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feraiseexcept.c' object='misc/lib64_libmingwex_a-feraiseexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-feraiseexcept.o `test -f 'misc/feraiseexcept.c' || echo '$(srcdir)/'`misc/feraiseexcept.c
-
-misc/lib64_libmingwex_a-feraiseexcept.obj: misc/feraiseexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-feraiseexcept.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Tpo -c -o misc/lib64_libmingwex_a-feraiseexcept.obj `if test -f 'misc/feraiseexcept.c'; then $(CYGPATH_W) 'misc/feraiseexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feraiseexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feraiseexcept.c' object='misc/lib64_libmingwex_a-feraiseexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-feraiseexcept.obj `if test -f 'misc/feraiseexcept.c'; then $(CYGPATH_W) 'misc/feraiseexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feraiseexcept.c'; fi`
-
-misc/lib64_libmingwex_a-feupdateenv.o: misc/feupdateenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-feupdateenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Tpo -c -o misc/lib64_libmingwex_a-feupdateenv.o `test -f 'misc/feupdateenv.c' || echo '$(srcdir)/'`misc/feupdateenv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feupdateenv.c' object='misc/lib64_libmingwex_a-feupdateenv.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-feupdateenv.o `test -f 'misc/feupdateenv.c' || echo '$(srcdir)/'`misc/feupdateenv.c
-
-misc/lib64_libmingwex_a-feupdateenv.obj: misc/feupdateenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-feupdateenv.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Tpo -c -o misc/lib64_libmingwex_a-feupdateenv.obj `if test -f 'misc/feupdateenv.c'; then $(CYGPATH_W) 'misc/feupdateenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/feupdateenv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feupdateenv.c' object='misc/lib64_libmingwex_a-feupdateenv.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-feupdateenv.obj `if test -f 'misc/feupdateenv.c'; then $(CYGPATH_W) 'misc/feupdateenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/feupdateenv.c'; fi`
-
 misc/lib64_libmingwex_a-ftruncate.o: misc/ftruncate.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-ftruncate.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Tpo -c -o misc/lib64_libmingwex_a-ftruncate.o `test -f 'misc/ftruncate.c' || echo '$(srcdir)/'`misc/ftruncate.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Po
@@ -15071,132 +14922,6 @@ misc/lib64_libucrt_extra_a-_onexit.obj: misc/_onexit.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/_onexit.c' object='misc/lib64_libucrt_extra_a-_onexit.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-_onexit.obj `if test -f 'misc/_onexit.c'; then $(CYGPATH_W) 'misc/_onexit.c'; else $(CYGPATH_W) '$(srcdir)/misc/_onexit.c'; fi`
-
-misc/lib64_libucrt_extra_a-feclearexcept.o: misc/feclearexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-feclearexcept.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Tpo -c -o misc/lib64_libucrt_extra_a-feclearexcept.o `test -f 'misc/feclearexcept.c' || echo '$(srcdir)/'`misc/feclearexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feclearexcept.c' object='misc/lib64_libucrt_extra_a-feclearexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-feclearexcept.o `test -f 'misc/feclearexcept.c' || echo '$(srcdir)/'`misc/feclearexcept.c
-
-misc/lib64_libucrt_extra_a-feclearexcept.obj: misc/feclearexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-feclearexcept.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Tpo -c -o misc/lib64_libucrt_extra_a-feclearexcept.obj `if test -f 'misc/feclearexcept.c'; then $(CYGPATH_W) 'misc/feclearexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feclearexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feclearexcept.c' object='misc/lib64_libucrt_extra_a-feclearexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-feclearexcept.obj `if test -f 'misc/feclearexcept.c'; then $(CYGPATH_W) 'misc/feclearexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feclearexcept.c'; fi`
-
-misc/lib64_libucrt_extra_a-fegetenv.o: misc/fegetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fegetenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Tpo -c -o misc/lib64_libucrt_extra_a-fegetenv.o `test -f 'misc/fegetenv.c' || echo '$(srcdir)/'`misc/fegetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetenv.c' object='misc/lib64_libucrt_extra_a-fegetenv.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fegetenv.o `test -f 'misc/fegetenv.c' || echo '$(srcdir)/'`misc/fegetenv.c
-
-misc/lib64_libucrt_extra_a-fegetenv.obj: misc/fegetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fegetenv.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Tpo -c -o misc/lib64_libucrt_extra_a-fegetenv.obj `if test -f 'misc/fegetenv.c'; then $(CYGPATH_W) 'misc/fegetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetenv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetenv.c' object='misc/lib64_libucrt_extra_a-fegetenv.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fegetenv.obj `if test -f 'misc/fegetenv.c'; then $(CYGPATH_W) 'misc/fegetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetenv.c'; fi`
-
-misc/lib64_libucrt_extra_a-fegetexceptflag.o: misc/fegetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fegetexceptflag.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Tpo -c -o misc/lib64_libucrt_extra_a-fegetexceptflag.o `test -f 'misc/fegetexceptflag.c' || echo '$(srcdir)/'`misc/fegetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetexceptflag.c' object='misc/lib64_libucrt_extra_a-fegetexceptflag.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fegetexceptflag.o `test -f 'misc/fegetexceptflag.c' || echo '$(srcdir)/'`misc/fegetexceptflag.c
-
-misc/lib64_libucrt_extra_a-fegetexceptflag.obj: misc/fegetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fegetexceptflag.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Tpo -c -o misc/lib64_libucrt_extra_a-fegetexceptflag.obj `if test -f 'misc/fegetexceptflag.c'; then $(CYGPATH_W) 'misc/fegetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetexceptflag.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetexceptflag.c' object='misc/lib64_libucrt_extra_a-fegetexceptflag.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fegetexceptflag.obj `if test -f 'misc/fegetexceptflag.c'; then $(CYGPATH_W) 'misc/fegetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetexceptflag.c'; fi`
-
-misc/lib64_libucrt_extra_a-fegetround.o: misc/fegetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fegetround.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Tpo -c -o misc/lib64_libucrt_extra_a-fegetround.o `test -f 'misc/fegetround.c' || echo '$(srcdir)/'`misc/fegetround.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetround.c' object='misc/lib64_libucrt_extra_a-fegetround.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fegetround.o `test -f 'misc/fegetround.c' || echo '$(srcdir)/'`misc/fegetround.c
-
-misc/lib64_libucrt_extra_a-fegetround.obj: misc/fegetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fegetround.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Tpo -c -o misc/lib64_libucrt_extra_a-fegetround.obj `if test -f 'misc/fegetround.c'; then $(CYGPATH_W) 'misc/fegetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetround.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetround.c' object='misc/lib64_libucrt_extra_a-fegetround.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fegetround.obj `if test -f 'misc/fegetround.c'; then $(CYGPATH_W) 'misc/fegetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetround.c'; fi`
-
-misc/lib64_libucrt_extra_a-feholdexcept.o: misc/feholdexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-feholdexcept.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Tpo -c -o misc/lib64_libucrt_extra_a-feholdexcept.o `test -f 'misc/feholdexcept.c' || echo '$(srcdir)/'`misc/feholdexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feholdexcept.c' object='misc/lib64_libucrt_extra_a-feholdexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-feholdexcept.o `test -f 'misc/feholdexcept.c' || echo '$(srcdir)/'`misc/feholdexcept.c
-
-misc/lib64_libucrt_extra_a-feholdexcept.obj: misc/feholdexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-feholdexcept.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Tpo -c -o misc/lib64_libucrt_extra_a-feholdexcept.obj `if test -f 'misc/feholdexcept.c'; then $(CYGPATH_W) 'misc/feholdexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feholdexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feholdexcept.c' object='misc/lib64_libucrt_extra_a-feholdexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-feholdexcept.obj `if test -f 'misc/feholdexcept.c'; then $(CYGPATH_W) 'misc/feholdexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feholdexcept.c'; fi`
-
-misc/lib64_libucrt_extra_a-fesetenv.o: misc/fesetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fesetenv.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Tpo -c -o misc/lib64_libucrt_extra_a-fesetenv.o `test -f 'misc/fesetenv.c' || echo '$(srcdir)/'`misc/fesetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetenv.c' object='misc/lib64_libucrt_extra_a-fesetenv.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fesetenv.o `test -f 'misc/fesetenv.c' || echo '$(srcdir)/'`misc/fesetenv.c
-
-misc/lib64_libucrt_extra_a-fesetenv.obj: misc/fesetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fesetenv.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Tpo -c -o misc/lib64_libucrt_extra_a-fesetenv.obj `if test -f 'misc/fesetenv.c'; then $(CYGPATH_W) 'misc/fesetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetenv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetenv.c' object='misc/lib64_libucrt_extra_a-fesetenv.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fesetenv.obj `if test -f 'misc/fesetenv.c'; then $(CYGPATH_W) 'misc/fesetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetenv.c'; fi`
-
-misc/lib64_libucrt_extra_a-fesetexceptflag.o: misc/fesetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fesetexceptflag.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Tpo -c -o misc/lib64_libucrt_extra_a-fesetexceptflag.o `test -f 'misc/fesetexceptflag.c' || echo '$(srcdir)/'`misc/fesetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetexceptflag.c' object='misc/lib64_libucrt_extra_a-fesetexceptflag.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fesetexceptflag.o `test -f 'misc/fesetexceptflag.c' || echo '$(srcdir)/'`misc/fesetexceptflag.c
-
-misc/lib64_libucrt_extra_a-fesetexceptflag.obj: misc/fesetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fesetexceptflag.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Tpo -c -o misc/lib64_libucrt_extra_a-fesetexceptflag.obj `if test -f 'misc/fesetexceptflag.c'; then $(CYGPATH_W) 'misc/fesetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetexceptflag.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetexceptflag.c' object='misc/lib64_libucrt_extra_a-fesetexceptflag.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fesetexceptflag.obj `if test -f 'misc/fesetexceptflag.c'; then $(CYGPATH_W) 'misc/fesetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetexceptflag.c'; fi`
-
-misc/lib64_libucrt_extra_a-fesetround.o: misc/fesetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fesetround.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Tpo -c -o misc/lib64_libucrt_extra_a-fesetround.o `test -f 'misc/fesetround.c' || echo '$(srcdir)/'`misc/fesetround.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetround.c' object='misc/lib64_libucrt_extra_a-fesetround.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fesetround.o `test -f 'misc/fesetround.c' || echo '$(srcdir)/'`misc/fesetround.c
-
-misc/lib64_libucrt_extra_a-fesetround.obj: misc/fesetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fesetround.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Tpo -c -o misc/lib64_libucrt_extra_a-fesetround.obj `if test -f 'misc/fesetround.c'; then $(CYGPATH_W) 'misc/fesetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetround.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetround.c' object='misc/lib64_libucrt_extra_a-fesetround.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fesetround.obj `if test -f 'misc/fesetround.c'; then $(CYGPATH_W) 'misc/fesetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetround.c'; fi`
-
-misc/lib64_libucrt_extra_a-fetestexcept.o: misc/fetestexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fetestexcept.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Tpo -c -o misc/lib64_libucrt_extra_a-fetestexcept.o `test -f 'misc/fetestexcept.c' || echo '$(srcdir)/'`misc/fetestexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fetestexcept.c' object='misc/lib64_libucrt_extra_a-fetestexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fetestexcept.o `test -f 'misc/fetestexcept.c' || echo '$(srcdir)/'`misc/fetestexcept.c
-
-misc/lib64_libucrt_extra_a-fetestexcept.obj: misc/fetestexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-fetestexcept.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Tpo -c -o misc/lib64_libucrt_extra_a-fetestexcept.obj `if test -f 'misc/fetestexcept.c'; then $(CYGPATH_W) 'misc/fetestexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/fetestexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Tpo misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fetestexcept.c' object='misc/lib64_libucrt_extra_a-fetestexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libucrt_extra_a-fetestexcept.obj `if test -f 'misc/fetestexcept.c'; then $(CYGPATH_W) 'misc/fetestexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/fetestexcept.c'; fi`
 
 misc/lib64_libucrt_extra_a-output_format.o: misc/output_format.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libucrt_extra_a-output_format.o -MD -MP -MF misc/$(DEPDIR)/lib64_libucrt_extra_a-output_format.Tpo -c -o misc/lib64_libucrt_extra_a-output_format.o `test -f 'misc/output_format.c' || echo '$(srcdir)/'`misc/output_format.c
@@ -20140,34 +19865,6 @@ misc/libarm64_libmingwex_a-dllmain.obj: misc/dllmain.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-dllmain.obj `if test -f 'misc/dllmain.c'; then $(CYGPATH_W) 'misc/dllmain.c'; else $(CYGPATH_W) '$(srcdir)/misc/dllmain.c'; fi`
 
-misc/libarm64_libmingwex_a-feraiseexcept.o: misc/feraiseexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-feraiseexcept.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Tpo -c -o misc/libarm64_libmingwex_a-feraiseexcept.o `test -f 'misc/feraiseexcept.c' || echo '$(srcdir)/'`misc/feraiseexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feraiseexcept.c' object='misc/libarm64_libmingwex_a-feraiseexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-feraiseexcept.o `test -f 'misc/feraiseexcept.c' || echo '$(srcdir)/'`misc/feraiseexcept.c
-
-misc/libarm64_libmingwex_a-feraiseexcept.obj: misc/feraiseexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-feraiseexcept.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Tpo -c -o misc/libarm64_libmingwex_a-feraiseexcept.obj `if test -f 'misc/feraiseexcept.c'; then $(CYGPATH_W) 'misc/feraiseexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feraiseexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feraiseexcept.c' object='misc/libarm64_libmingwex_a-feraiseexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-feraiseexcept.obj `if test -f 'misc/feraiseexcept.c'; then $(CYGPATH_W) 'misc/feraiseexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feraiseexcept.c'; fi`
-
-misc/libarm64_libmingwex_a-feupdateenv.o: misc/feupdateenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-feupdateenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Tpo -c -o misc/libarm64_libmingwex_a-feupdateenv.o `test -f 'misc/feupdateenv.c' || echo '$(srcdir)/'`misc/feupdateenv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feupdateenv.c' object='misc/libarm64_libmingwex_a-feupdateenv.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-feupdateenv.o `test -f 'misc/feupdateenv.c' || echo '$(srcdir)/'`misc/feupdateenv.c
-
-misc/libarm64_libmingwex_a-feupdateenv.obj: misc/feupdateenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-feupdateenv.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Tpo -c -o misc/libarm64_libmingwex_a-feupdateenv.obj `if test -f 'misc/feupdateenv.c'; then $(CYGPATH_W) 'misc/feupdateenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/feupdateenv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feupdateenv.c' object='misc/libarm64_libmingwex_a-feupdateenv.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-feupdateenv.obj `if test -f 'misc/feupdateenv.c'; then $(CYGPATH_W) 'misc/feupdateenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/feupdateenv.c'; fi`
-
 misc/libarm64_libmingwex_a-ftruncate.o: misc/ftruncate.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-ftruncate.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Tpo -c -o misc/libarm64_libmingwex_a-ftruncate.o `test -f 'misc/ftruncate.c' || echo '$(srcdir)/'`misc/ftruncate.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Po
@@ -21567,132 +21264,6 @@ misc/libarm64_libucrt_extra_a-_onexit.obj: misc/_onexit.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/_onexit.c' object='misc/libarm64_libucrt_extra_a-_onexit.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-_onexit.obj `if test -f 'misc/_onexit.c'; then $(CYGPATH_W) 'misc/_onexit.c'; else $(CYGPATH_W) '$(srcdir)/misc/_onexit.c'; fi`
-
-misc/libarm64_libucrt_extra_a-feclearexcept.o: misc/feclearexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-feclearexcept.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-feclearexcept.o `test -f 'misc/feclearexcept.c' || echo '$(srcdir)/'`misc/feclearexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feclearexcept.c' object='misc/libarm64_libucrt_extra_a-feclearexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-feclearexcept.o `test -f 'misc/feclearexcept.c' || echo '$(srcdir)/'`misc/feclearexcept.c
-
-misc/libarm64_libucrt_extra_a-feclearexcept.obj: misc/feclearexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-feclearexcept.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-feclearexcept.obj `if test -f 'misc/feclearexcept.c'; then $(CYGPATH_W) 'misc/feclearexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feclearexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feclearexcept.c' object='misc/libarm64_libucrt_extra_a-feclearexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-feclearexcept.obj `if test -f 'misc/feclearexcept.c'; then $(CYGPATH_W) 'misc/feclearexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feclearexcept.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fegetenv.o: misc/fegetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fegetenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Tpo -c -o misc/libarm64_libucrt_extra_a-fegetenv.o `test -f 'misc/fegetenv.c' || echo '$(srcdir)/'`misc/fegetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetenv.c' object='misc/libarm64_libucrt_extra_a-fegetenv.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fegetenv.o `test -f 'misc/fegetenv.c' || echo '$(srcdir)/'`misc/fegetenv.c
-
-misc/libarm64_libucrt_extra_a-fegetenv.obj: misc/fegetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fegetenv.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Tpo -c -o misc/libarm64_libucrt_extra_a-fegetenv.obj `if test -f 'misc/fegetenv.c'; then $(CYGPATH_W) 'misc/fegetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetenv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetenv.c' object='misc/libarm64_libucrt_extra_a-fegetenv.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fegetenv.obj `if test -f 'misc/fegetenv.c'; then $(CYGPATH_W) 'misc/fegetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetenv.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fegetexceptflag.o: misc/fegetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fegetexceptflag.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Tpo -c -o misc/libarm64_libucrt_extra_a-fegetexceptflag.o `test -f 'misc/fegetexceptflag.c' || echo '$(srcdir)/'`misc/fegetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetexceptflag.c' object='misc/libarm64_libucrt_extra_a-fegetexceptflag.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fegetexceptflag.o `test -f 'misc/fegetexceptflag.c' || echo '$(srcdir)/'`misc/fegetexceptflag.c
-
-misc/libarm64_libucrt_extra_a-fegetexceptflag.obj: misc/fegetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fegetexceptflag.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Tpo -c -o misc/libarm64_libucrt_extra_a-fegetexceptflag.obj `if test -f 'misc/fegetexceptflag.c'; then $(CYGPATH_W) 'misc/fegetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetexceptflag.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetexceptflag.c' object='misc/libarm64_libucrt_extra_a-fegetexceptflag.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fegetexceptflag.obj `if test -f 'misc/fegetexceptflag.c'; then $(CYGPATH_W) 'misc/fegetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetexceptflag.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fegetround.o: misc/fegetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fegetround.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Tpo -c -o misc/libarm64_libucrt_extra_a-fegetround.o `test -f 'misc/fegetround.c' || echo '$(srcdir)/'`misc/fegetround.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetround.c' object='misc/libarm64_libucrt_extra_a-fegetround.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fegetround.o `test -f 'misc/fegetround.c' || echo '$(srcdir)/'`misc/fegetround.c
-
-misc/libarm64_libucrt_extra_a-fegetround.obj: misc/fegetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fegetround.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Tpo -c -o misc/libarm64_libucrt_extra_a-fegetround.obj `if test -f 'misc/fegetround.c'; then $(CYGPATH_W) 'misc/fegetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetround.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fegetround.c' object='misc/libarm64_libucrt_extra_a-fegetround.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fegetround.obj `if test -f 'misc/fegetround.c'; then $(CYGPATH_W) 'misc/fegetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fegetround.c'; fi`
-
-misc/libarm64_libucrt_extra_a-feholdexcept.o: misc/feholdexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-feholdexcept.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-feholdexcept.o `test -f 'misc/feholdexcept.c' || echo '$(srcdir)/'`misc/feholdexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feholdexcept.c' object='misc/libarm64_libucrt_extra_a-feholdexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-feholdexcept.o `test -f 'misc/feholdexcept.c' || echo '$(srcdir)/'`misc/feholdexcept.c
-
-misc/libarm64_libucrt_extra_a-feholdexcept.obj: misc/feholdexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-feholdexcept.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-feholdexcept.obj `if test -f 'misc/feholdexcept.c'; then $(CYGPATH_W) 'misc/feholdexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feholdexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/feholdexcept.c' object='misc/libarm64_libucrt_extra_a-feholdexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-feholdexcept.obj `if test -f 'misc/feholdexcept.c'; then $(CYGPATH_W) 'misc/feholdexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/feholdexcept.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fesetenv.o: misc/fesetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fesetenv.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Tpo -c -o misc/libarm64_libucrt_extra_a-fesetenv.o `test -f 'misc/fesetenv.c' || echo '$(srcdir)/'`misc/fesetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetenv.c' object='misc/libarm64_libucrt_extra_a-fesetenv.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fesetenv.o `test -f 'misc/fesetenv.c' || echo '$(srcdir)/'`misc/fesetenv.c
-
-misc/libarm64_libucrt_extra_a-fesetenv.obj: misc/fesetenv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fesetenv.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Tpo -c -o misc/libarm64_libucrt_extra_a-fesetenv.obj `if test -f 'misc/fesetenv.c'; then $(CYGPATH_W) 'misc/fesetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetenv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetenv.c' object='misc/libarm64_libucrt_extra_a-fesetenv.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fesetenv.obj `if test -f 'misc/fesetenv.c'; then $(CYGPATH_W) 'misc/fesetenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetenv.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fesetexceptflag.o: misc/fesetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fesetexceptflag.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Tpo -c -o misc/libarm64_libucrt_extra_a-fesetexceptflag.o `test -f 'misc/fesetexceptflag.c' || echo '$(srcdir)/'`misc/fesetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetexceptflag.c' object='misc/libarm64_libucrt_extra_a-fesetexceptflag.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fesetexceptflag.o `test -f 'misc/fesetexceptflag.c' || echo '$(srcdir)/'`misc/fesetexceptflag.c
-
-misc/libarm64_libucrt_extra_a-fesetexceptflag.obj: misc/fesetexceptflag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fesetexceptflag.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Tpo -c -o misc/libarm64_libucrt_extra_a-fesetexceptflag.obj `if test -f 'misc/fesetexceptflag.c'; then $(CYGPATH_W) 'misc/fesetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetexceptflag.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetexceptflag.c' object='misc/libarm64_libucrt_extra_a-fesetexceptflag.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fesetexceptflag.obj `if test -f 'misc/fesetexceptflag.c'; then $(CYGPATH_W) 'misc/fesetexceptflag.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetexceptflag.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fesetround.o: misc/fesetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fesetround.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Tpo -c -o misc/libarm64_libucrt_extra_a-fesetround.o `test -f 'misc/fesetround.c' || echo '$(srcdir)/'`misc/fesetround.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetround.c' object='misc/libarm64_libucrt_extra_a-fesetround.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fesetround.o `test -f 'misc/fesetround.c' || echo '$(srcdir)/'`misc/fesetround.c
-
-misc/libarm64_libucrt_extra_a-fesetround.obj: misc/fesetround.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fesetround.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Tpo -c -o misc/libarm64_libucrt_extra_a-fesetround.obj `if test -f 'misc/fesetround.c'; then $(CYGPATH_W) 'misc/fesetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetround.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fesetround.c' object='misc/libarm64_libucrt_extra_a-fesetround.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fesetround.obj `if test -f 'misc/fesetround.c'; then $(CYGPATH_W) 'misc/fesetround.c'; else $(CYGPATH_W) '$(srcdir)/misc/fesetround.c'; fi`
-
-misc/libarm64_libucrt_extra_a-fetestexcept.o: misc/fetestexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fetestexcept.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-fetestexcept.o `test -f 'misc/fetestexcept.c' || echo '$(srcdir)/'`misc/fetestexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fetestexcept.c' object='misc/libarm64_libucrt_extra_a-fetestexcept.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fetestexcept.o `test -f 'misc/fetestexcept.c' || echo '$(srcdir)/'`misc/fetestexcept.c
-
-misc/libarm64_libucrt_extra_a-fetestexcept.obj: misc/fetestexcept.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-fetestexcept.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Tpo -c -o misc/libarm64_libucrt_extra_a-fetestexcept.obj `if test -f 'misc/fetestexcept.c'; then $(CYGPATH_W) 'misc/fetestexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/fetestexcept.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Tpo misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/fetestexcept.c' object='misc/libarm64_libucrt_extra_a-fetestexcept.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libucrt_extra_a-fetestexcept.obj `if test -f 'misc/fetestexcept.c'; then $(CYGPATH_W) 'misc/fetestexcept.c'; else $(CYGPATH_W) '$(srcdir)/misc/fetestexcept.c'; fi`
 
 misc/libarm64_libucrt_extra_a-output_format.o: misc/output_format.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libucrt_extra_a-output_format.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libucrt_extra_a-output_format.Tpo -c -o misc/libarm64_libucrt_extra_a-output_format.o `test -f 'misc/output_format.c' || echo '$(srcdir)/'`misc/output_format.c
@@ -26530,8 +26101,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dllmain.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po
@@ -26568,15 +26137,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__p__osver_emul.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-_onexit.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-output_format.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__getmainargs.Po
@@ -26596,8 +26156,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dllmain.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po
@@ -26634,15 +26192,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p__osver_emul.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-_onexit.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-output_format.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt-access.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__getmainargs.Po
@@ -27669,8 +27218,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dllmain.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-feraiseexcept.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-feupdateenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftruncate.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po
@@ -27707,15 +27254,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__p__osver_emul.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-_onexit.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-feclearexcept.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetenv.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fegetround.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-feholdexcept.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetenv.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fesetround.Po
-	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-fetestexcept.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-output_format.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt-access.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__getmainargs.Po
@@ -27735,8 +27273,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dllmain.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-feraiseexcept.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-feupdateenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftruncate.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po
@@ -27773,15 +27309,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__p__osver_emul.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-__winitenv.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-_onexit.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-feclearexcept.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetenv.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fegetround.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-feholdexcept.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetenv.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetexceptflag.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fesetround.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-fetestexcept.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-output_format.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt-access.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__getmainargs.Po
