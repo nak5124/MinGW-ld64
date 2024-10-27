@@ -5925,13 +5925,12 @@ extern "C" {
 #define CRYPT_KEYID_SET_NEW_FLAG 0x00002000
 #define CRYPT_KEYID_ALLOC_FLAG   0x00008000
 
-  WINCRYPT32API WINBOOL WINAPI CryptGetKeyIdentifierProperty(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwPropId, DWORD dwFlags, LPCWSTR pwszComputerName, void *pvReserved, void *pvData, DWORD *pcbData);
-  WINCRYPT32API WINBOOL WINAPI CryptSetKeyIdentifierProperty(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwPropId, DWORD dwFlags, LPCWSTR pwszComputerName, void *pvReserved, const void *pvData);
-  WINCRYPT32API WINBOOL WINAPI CryptEnumKeyIdentifierProperties(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwPropId, DWORD dwFlags, LPCWSTR pwszComputerName, void *pvReserved, void *pvArg, PFN_CRYPT_ENUM_KEYID_PROP pfnEnum);
-  WINCRYPT32API WINBOOL WINAPI CryptCreateKeyIdentifierFromCSP(DWORD dwCertEncodingType, LPCSTR pszPubKeyOID, const PUBLICKEYSTRUC *pPubKeyStruc, DWORD cbPubKeyStruc, DWORD dwFlags, void *pvReserved, BYTE *pbHash, DWORD *pcbHash);
-
   typedef WINBOOL (WINAPI *PFN_CRYPT_ENUM_KEYID_PROP)(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwFlags, void *pvReserved, void *pvArg, DWORD cProp, DWORD *rgdwPropId, void **rgpvData, DWORD *rgcbData);
 
+  WINCRYPT32API WINBOOL              WINAPI CryptGetKeyIdentifierProperty(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwPropId, DWORD dwFlags, LPCWSTR pwszComputerName, void *pvReserved, void *pvData, DWORD *pcbData);
+  WINCRYPT32API WINBOOL              WINAPI CryptSetKeyIdentifierProperty(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwPropId, DWORD dwFlags, LPCWSTR pwszComputerName, void *pvReserved, const void *pvData);
+  WINCRYPT32API WINBOOL              WINAPI CryptEnumKeyIdentifierProperties(const CRYPT_HASH_BLOB *pKeyIdentifier, DWORD dwPropId, DWORD dwFlags, LPCWSTR pwszComputerName, void *pvReserved, void *pvArg, PFN_CRYPT_ENUM_KEYID_PROP pfnEnum);
+  WINCRYPT32API WINBOOL              WINAPI CryptCreateKeyIdentifierFromCSP(DWORD dwCertEncodingType, LPCSTR pszPubKeyOID, const PUBLICKEYSTRUC *pPubKeyStruc, DWORD cbPubKeyStruc, DWORD dwFlags, void *pvReserved, BYTE *pbHash, DWORD *pcbHash);
   WINCRYPT32API PCCERT_CHAIN_CONTEXT WINAPI CertFindChainInStore(HCERTSTORE hCertStore, DWORD dwCertEncodingType, DWORD dwFindFlags, DWORD dwFindType, const void *pvFindPara, PCCERT_CHAIN_CONTEXT pPrevChainContext);
 
   typedef         VOID                              *HCERT_SERVER_OCSP_RESPONSE;
