@@ -121,21 +121,64 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 
   /* 7.6.2 Exception */
-  extern int __cdecl feclearexcept(int _Flags)                                __MINGW_NOTHROW;
-  extern int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags)      __MINGW_NOTHROW;
-  extern int __cdecl feraiseexcept(int _Except)                               __MINGW_NOTHROW;
-  extern int __cdecl fesetexceptflag(const fexcept_t *_Except, int _SetFlags) __MINGW_NOTHROW;
-  extern int __cdecl fetestexcept(int _Flags)                                 __MINGW_NOTHROW;
+  _CRTIMP int __cdecl feclearexcept(int _Flags)                           __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags) __MINGW_NOTHROW;
+  __forceinline __MINGW_NOTHROW __attribute__((optimize("O0")))
+  int __cdecl feraiseexcept(int _Except)
+  {
+    static struct
+    {
+      int    _Except_Val;
+      double _Num;
+      double _Denom;
+    } const _Table[] =
+      {
+        {FE_INVALID,   0.0,    0.0   },
+        {FE_DIVBYZERO, 1.0,    0.0   },
+        {FE_OVERFLOW,  1e+300, 1e-300},
+        {FE_UNDERFLOW, 1e-300, 1e+300},
+        {FE_INEXACT,   2.0,    3.0   }
+      };
+
+    double _Ans = 0.0;
+    (void) _Ans;
+    size_t _Index;
+
+    if((_Except &= FE_ALL_EXCEPT) == 0)
+    {
+      return 0;
+    }
+
+    for(_Index = 0; _Index < sizeof(_Table) / sizeof(_Table[0]); ++_Index)
+    {
+      if((_Except & _Table[_Index]._Except_Val) != 0)
+      {
+        _Ans = _Table[_Index]._Num / _Table[_Index]._Denom;
+      }
+    }
+    return 0;
+  }
+  _CRTIMP int __cdecl fesetexceptflag(const fexcept_t *_Except, int _SetFlags) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fetestexcept(int _Flags)                                 __MINGW_NOTHROW;
 
   /* 7.6.3 Rounding */
-  extern int __cdecl fegetround(void)       __MINGW_PURE __MINGW_NOTHROW;
-  extern int __cdecl fesetround(int _Round) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fegetround(void)       __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fesetround(int _Round) __MINGW_NOTHROW;
 
   /* 7.6.4 Environment */
-  extern int __cdecl fegetenv(fenv_t *_Env)           __MINGW_NOTHROW;
-  extern int __cdecl fesetenv(const fenv_t *_Env)     __MINGW_NOTHROW;
-  extern int __cdecl feupdateenv(const fenv_t *_Penv) __MINGW_NOTHROW;
-  extern int __cdecl feholdexcept(fenv_t *_Env)       __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fegetenv(fenv_t *_Env)           __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fesetenv(const fenv_t *_Env)     __MINGW_NOTHROW;
+  __forceinline __MINGW_NOTHROW
+  int __cdecl feupdateenv(const fenv_t *_Penv)
+  {
+    int _Except = fetestexcept(FE_ALL_EXCEPT);
+    if(fesetenv(_Penv) != 0 || feraiseexcept(_Except) != 0)
+    {
+      return 1;
+    }
+    return 0;
+  }
+  _CRTIMP int __cdecl feholdexcept(fenv_t *_Env)       __MINGW_NOTHROW;
 
 __MINGW_END_C_DECLS
 

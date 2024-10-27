@@ -189,6 +189,13 @@ __MINGW_BEGIN_C_DECLS
 # define _FPCLASS_PINF           0x0200  /* Positive Infinity */
 #endif  /* __MINGW_FPCLASS_DEFINED */
 
+#define _SW_INEXACT    0x00000001
+#define _SW_UNDERFLOW  0x00000002
+#define _SW_OVERFLOW   0x00000004
+#define _SW_ZERODIVIDE 0x00000008
+#define _SW_INVALID    0x00000010
+#define _SW_DENORMAL   0x00080000
+
 /* invalid subconditions (_SW_INVALID also set) */
 #define _SW_UNEMULATED     0x0040  /* unemulated instruction */
 #define _SW_SQRTNEG        0x0080  /* square root of a neg number */

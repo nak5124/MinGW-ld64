@@ -126,20 +126,18 @@ src_libws2_32=\
 
 # Files included in libucrt*.a
 src_ucrtbase=\
-  math/_huge.c               math/frexpf.c              math/ldexpf.c          math/lgamma.c             math/lgammaf.c              \
-  math/modfl.c               math/signgam.c             \
+  math/_huge.c               math/frexpf.c             math/ldexpf.c              math/lgamma.c            math/lgammaf.c              \
+  math/modfl.c               math/signgam.c            \
   \
-  misc/__badioinfo.c         misc/__initenv.c           misc/__p___initenv.c   misc/__p___winitenv.c     misc/__p__osplatform_emul.c \
-  misc/__p__osver_emul.c     misc/__winitenv.c          misc/_onexit.c         misc/feclearexcept.c      misc/fegetenv.c             \
-  misc/fegetexceptflag.c     misc/fegetround.c          misc/feholdexcept.c    misc/fesetenv.c           misc/fesetexceptflag.c      \
-  misc/fesetround.c          misc/fetestexcept.c        misc/output_format.c   misc/ucrt__getmainargs.c  misc/ucrt__wgetmainargs.c   \
-  misc/ucrt_amsg_exit.c      misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c      misc/ucrt-access.c        \
+  misc/__badioinfo.c         misc/__initenv.c          misc/__p___initenv.c       misc/__p___winitenv.c    misc/__p__osplatform_emul.c \
+  misc/__p__osver_emul.c     misc/__winitenv.c         misc/_onexit.c             misc/output_format.c     misc/ucrt__getmainargs.c    \
+  misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
   \
-  stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c     stdio/ucrt__snscanf.c  stdio/ucrt__snwprintf.c   stdio/ucrt__vscprintf.c     \
-  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c   stdio/ucrt_fprintf.c   stdio/ucrt_fscanf.c       stdio/ucrt_fwprintf.c       \
-  stdio/ucrt_ms_fwprintf.c   stdio/ucrt_printf.c        stdio/ucrt_scanf.c     stdio/ucrt_snprintf.c     stdio/ucrt_sprintf.c        \
-  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c   stdio/ucrt_vprintf.c      stdio/ucrt_vscanf.c         \
-  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c
+  stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c      stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c     \
+  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c       \
+  stdio/ucrt_ms_fwprintf.c   stdio/ucrt_printf.c       stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c    stdio/ucrt_sprintf.c        \
+  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c     stdio/ucrt_vfscanf.c       stdio/ucrt_vprintf.c     stdio/ucrt_vscanf.c         \
+  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c     stdio/ucrt_vsscanf.c
 
 # Files included in libucrtapp.a
 src_ucrtapp=\
@@ -161,46 +159,46 @@ src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
 src_libmingwex=\
   cfguard/mingw_cfguard_support.c  \
   \
-  complex/cabs.c                   complex/cabsf.c            complex/cabsl.c          complex/cacos.c          complex/cacosf.c        \
-  complex/cacosl.c                 complex/carg.c             complex/cargf.c          complex/cargl.c          complex/casin.c         \
-  complex/casinf.c                 complex/casinl.c           complex/catan.c          complex/catanf.c         complex/catanl.c        \
-  complex/ccos.c                   complex/ccosf.c            complex/ccosl.c          complex/cexp.c           complex/cexpf.c         \
-  complex/cexpl.c                  complex/cimag.c            complex/cimagf.c         complex/cimagl.c         complex/clog.c          \
-  complex/clog10.c                 complex/clog10f.c          complex/clog10l.c        complex/clogf.c          complex/clogl.c         \
-  complex/conj.c                   complex/conjf.c            complex/conjl.c          complex/cpow.c           complex/cpowf.c         \
-  complex/cpowl.c                  complex/cproj.c            complex/cprojf.c         complex/cprojl.c         complex/creal.c         \
-  complex/crealf.c                 complex/creall.c           complex/csin.c           complex/csinf.c          complex/csinl.c         \
-  complex/csqrt.c                  complex/csqrtf.c           complex/csqrtl.c         complex/ctan.c           complex/ctanf.c         \
+  complex/cabs.c                   complex/cabsf.c            complex/cabsl.c          complex/cacos.c          complex/cacosf.c          \
+  complex/cacosl.c                 complex/carg.c             complex/cargf.c          complex/cargl.c          complex/casin.c           \
+  complex/casinf.c                 complex/casinl.c           complex/catan.c          complex/catanf.c         complex/catanl.c          \
+  complex/ccos.c                   complex/ccosf.c            complex/ccosl.c          complex/cexp.c           complex/cexpf.c           \
+  complex/cexpl.c                  complex/cimag.c            complex/cimagf.c         complex/cimagl.c         complex/clog.c            \
+  complex/clog10.c                 complex/clog10f.c          complex/clog10l.c        complex/clogf.c          complex/clogl.c           \
+  complex/conj.c                   complex/conjf.c            complex/conjl.c          complex/cpow.c           complex/cpowf.c           \
+  complex/cpowl.c                  complex/cproj.c            complex/cprojf.c         complex/cprojl.c         complex/creal.c           \
+  complex/crealf.c                 complex/creall.c           complex/csin.c           complex/csinf.c          complex/csinl.c           \
+  complex/csqrt.c                  complex/csqrtf.c           complex/csqrtl.c         complex/ctan.c           complex/ctanf.c           \
   complex/ctanl.c                  complex/norm.c             complex/normf.c          complex/norml.c          \
   \
-  gdtoa/arithchk.c                 gdtoa/dmisc.c              gdtoa/dtoa.c             gdtoa/g__fmt.c           gdtoa/g_dfmt.c          \
-  gdtoa/g_ffmt.c                   gdtoa/g_xfmt.c             gdtoa/gdtoa.c            gdtoa/gethex.c           gdtoa/gmisc.c           \
-  gdtoa/hd_init.c                  gdtoa/hexnan.c             gdtoa/misc.c             gdtoa/qnan.c             gdtoa/smisc.c           \
-  gdtoa/strtodg.c                  gdtoa/strtodnrp.c          gdtoa/strtof.c           gdtoa/strtopx.c          gdtoa/sum.c             \
+  gdtoa/arithchk.c                 gdtoa/dmisc.c              gdtoa/dtoa.c             gdtoa/g__fmt.c           gdtoa/g_dfmt.c            \
+  gdtoa/g_ffmt.c                   gdtoa/g_xfmt.c             gdtoa/gdtoa.c            gdtoa/gethex.c           gdtoa/gmisc.c             \
+  gdtoa/hd_init.c                  gdtoa/hexnan.c             gdtoa/misc.c             gdtoa/qnan.c             gdtoa/smisc.c             \
+  gdtoa/strtodg.c                  gdtoa/strtodnrp.c          gdtoa/strtof.c           gdtoa/strtopx.c          gdtoa/sum.c               \
   gdtoa/ulp.c                      \
   \
-  math/fpclassify.c                math/fpclassifyf.c         math/isnan.c             math/isnanf.c            math/signbit.c          \
+  math/fpclassify.c                math/fpclassifyf.c         math/isnan.c             math/isnanf.c            math/signbit.c            \
   math/signbitf.c                  \
   \
-  misc/alarm.c                     misc/delay-f.c             misc/delay-n.c           misc/delayimp.c          misc/dirent.c           \
-  misc/dirname.c                   misc/dllentrypoint.c       misc/dllmain.c           misc/feraiseexcept.c     misc/feupdateenv.c      \
-  misc/ftruncate.c                 misc/ftw.c                 misc/ftw64.c             misc/fwide.c             misc/getlogin.c         \
-  misc/getopt.c                    misc/gettimeofday.c        misc/mempcpy.c           misc/mingw_getsp.S       misc/mingw_longjmp.S    \
-  misc/mingw_matherr.c             misc/mingw_mbwc_convert.c  misc/mingw_usleep.c      misc/mkstemp.c           misc/sleep.c            \
-  misc/strsafe.c                   misc/tdelete.c             misc/tdestroy.c          misc/tfind.c             misc/tsearch.c          \
-  misc/twalk.c                     misc/wdirent.c             misc/wmemchr.c           misc/wmemcmp.c           misc/wmemcpy.c          \
-  misc/wmemmove.c                  misc/wmempcpy.c            misc/wmemset.c           \
+  misc/alarm.c                     misc/delay-f.c             misc/delay-n.c           misc/delayimp.c          misc/dirent.c             \
+  misc/dirname.c                   misc/dllentrypoint.c       misc/dllmain.c           misc/ftruncate.c         misc/ftw.c                \
+  misc/ftw64.c                     misc/fwide.c               misc/getlogin.c          misc/getopt.c            misc/gettimeofday.c       \
+  misc/mempcpy.c                   misc/mingw_getsp.S         misc/mingw_longjmp.S     misc/mingw_matherr.c     misc/mingw_mbwc_convert.c \
+  misc/mingw_usleep.c              misc/mkstemp.c             misc/sleep.c             misc/strsafe.c           misc/tdelete.c            \
+  misc/tdestroy.c                  misc/tfind.c               misc/tsearch.c           misc/twalk.c             misc/wdirent.c            \
+  misc/wmemchr.c                   misc/wmemcmp.c             misc/wmemcpy.c           misc/wmemmove.c          misc/wmempcpy.c           \
+  misc/wmemset.c                   \
   \
-  ssp/chk_fail.c                   ssp/gets_chk.c             ssp/memcpy_chk.c         ssp/memmove_chk.c        ssp/mempcpy_chk.c       \
-  ssp/memset_chk.c                 ssp/stack_chk_fail.c       ssp/stack_chk_guard.c    ssp/stpcpy_chk.c         ssp/strcat_chk.c        \
+  ssp/chk_fail.c                   ssp/gets_chk.c             ssp/memcpy_chk.c         ssp/memmove_chk.c        ssp/mempcpy_chk.c         \
+  ssp/memset_chk.c                 ssp/stack_chk_fail.c       ssp/stack_chk_guard.c    ssp/stpcpy_chk.c         ssp/strcat_chk.c          \
   ssp/strcpy_chk.c                 ssp/strncat_chk.c          ssp/strncpy_chk.c        \
   \
-  stdio/asprintf.c                 stdio/ftruncate64.c        stdio/mingw_asprintf.c   stdio/mingw_fprintf.c    stdio/mingw_fprintfw.c  \
-  stdio/mingw_fscanf.c             stdio/mingw_fwscanf.c      stdio/mingw_pformat.c    stdio/mingw_pformatw.c   stdio/mingw_printf.c    \
-  stdio/mingw_printfw.c            stdio/mingw_scanf.c        stdio/mingw_snprintf.c   stdio/mingw_snprintfw.c  stdio/mingw_sprintf.c   \
-  stdio/mingw_sprintfw.c           stdio/mingw_sscanf.c       stdio/mingw_swscanf.c    stdio/mingw_vasprintf.c  stdio/mingw_vfprintf.c  \
-  stdio/mingw_vfprintfw.c          stdio/mingw_vfscanf.c      stdio/mingw_vprintf.c    stdio/mingw_vprintfw.c   stdio/mingw_vsnprintf.c \
-  stdio/mingw_vsnprintfw.c         stdio/mingw_vsprintf.c     stdio/mingw_vsprintfw.c  stdio/mingw_wscanf.c     stdio/mingw_wvfscanf.c  \
+  stdio/asprintf.c                 stdio/ftruncate64.c        stdio/mingw_asprintf.c   stdio/mingw_fprintf.c    stdio/mingw_fprintfw.c    \
+  stdio/mingw_fscanf.c             stdio/mingw_fwscanf.c      stdio/mingw_pformat.c    stdio/mingw_pformatw.c   stdio/mingw_printf.c      \
+  stdio/mingw_printfw.c            stdio/mingw_scanf.c        stdio/mingw_snprintf.c   stdio/mingw_snprintfw.c  stdio/mingw_sprintf.c     \
+  stdio/mingw_sprintfw.c           stdio/mingw_sscanf.c       stdio/mingw_swscanf.c    stdio/mingw_vasprintf.c  stdio/mingw_vfprintf.c    \
+  stdio/mingw_vfprintfw.c          stdio/mingw_vfscanf.c      stdio/mingw_vprintf.c    stdio/mingw_vprintfw.c   stdio/mingw_vsnprintf.c   \
+  stdio/mingw_vsnprintfw.c         stdio/mingw_vsprintf.c     stdio/mingw_vsprintfw.c  stdio/mingw_wscanf.c     stdio/mingw_wvfscanf.c    \
   stdio/strtok_r.c                 stdio/truncate.c           stdio/vasprintf.c        \
   \
   time/clock.c                     time/nanosleep.c
