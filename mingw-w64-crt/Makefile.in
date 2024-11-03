@@ -994,9 +994,9 @@ lib64_libucrtapp_extra_a_LIBADD =
 am__lib64_libucrtapp_extra_a_SOURCES_DIST =  \
 	misc/__C_specific_handler.c misc/longjmp.S misc/setjmp.S \
 	string/memchr.c string/memcmp.c string/memcpy.c \
-	string/memmove.c string/memrchr.c string/strchr.c \
-	string/strchrnul.c string/strrchr.c string/strstr.c \
-	string/wcschr.c string/wcsrchr.c string/wcsstr.c
+	string/memmove.c string/strchr.c string/strrchr.c \
+	string/strstr.c string/wcschr.c string/wcsrchr.c \
+	string/wcsstr.c
 am__objects_39 =  \
 	misc/lib64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT) \
 	misc/lib64_libucrtapp_extra_a-longjmp.$(OBJEXT) \
@@ -1005,9 +1005,7 @@ am__objects_39 =  \
 	string/lib64_libucrtapp_extra_a-memcmp.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-memcpy.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-memmove.$(OBJEXT) \
-	string/lib64_libucrtapp_extra_a-memrchr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-strchr.$(OBJEXT) \
-	string/lib64_libucrtapp_extra_a-strchrnul.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-strrchr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-strstr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-wcschr.$(OBJEXT) \
@@ -1889,9 +1887,9 @@ libarm64_libucrtapp_extra_a_LIBADD =
 am__libarm64_libucrtapp_extra_a_SOURCES_DIST =  \
 	misc/__C_specific_handler.c misc/longjmp.S misc/setjmp.S \
 	string/memchr.c string/memcmp.c string/memcpy.c \
-	string/memmove.c string/memrchr.c string/strchr.c \
-	string/strchrnul.c string/strrchr.c string/strstr.c \
-	string/wcschr.c string/wcsrchr.c string/wcsstr.c
+	string/memmove.c string/strchr.c string/strrchr.c \
+	string/strstr.c string/wcschr.c string/wcsrchr.c \
+	string/wcsstr.c
 am__objects_84 = misc/libarm64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT) \
 	misc/libarm64_libucrtapp_extra_a-longjmp.$(OBJEXT) \
 	misc/libarm64_libucrtapp_extra_a-setjmp.$(OBJEXT) \
@@ -1899,9 +1897,7 @@ am__objects_84 = misc/libarm64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT)
 	string/libarm64_libucrtapp_extra_a-memcmp.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-memcpy.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-memmove.$(OBJEXT) \
-	string/libarm64_libucrtapp_extra_a-memrchr.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-strchr.$(OBJEXT) \
-	string/libarm64_libucrtapp_extra_a-strchrnul.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-strrchr.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-strstr.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-wcschr.$(OBJEXT) \
@@ -3411,9 +3407,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memmove.Po \
-	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Po \
-	string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-strrchr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-strstr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po \
@@ -3423,9 +3417,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memmove.Po \
-	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Po \
-	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strrchr.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strstr.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-wcschr.Po \
@@ -4278,11 +4270,10 @@ src_ucrtbase = \
 
 # Files included in libucrtapp.a
 src_ucrtapp = \
-  misc/__C_specific_handler.c misc/longjmp.S      misc/setjmp.S     \
+  misc/__C_specific_handler.c  misc/longjmp.S   misc/setjmp.S    \
   \
-  string/memchr.c             string/memcmp.c     string/memcpy.c   string/memmove.c  string/memrchr.c \
-  string/strchr.c             string/strchrnul.c  string/strrchr.c  string/strstr.c   string/wcschr.c  \
-  string/wcsrchr.c            string/wcsstr.c
+  string/memchr.c              string/memcmp.c  string/memcpy.c  string/memmove.c  string/strchr.c \
+  string/strrchr.c             string/strstr.c  string/wcschr.c  string/wcsrchr.c  string/wcsstr.c
 
 
 # Files included in libucrt*.a on x86_64
@@ -6699,11 +6690,7 @@ string/lib64_libucrtapp_extra_a-memcpy.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/lib64_libucrtapp_extra_a-memmove.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
-string/lib64_libucrtapp_extra_a-memrchr.$(OBJEXT):  \
-	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/lib64_libucrtapp_extra_a-strchr.$(OBJEXT):  \
-	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
-string/lib64_libucrtapp_extra_a-strchrnul.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/lib64_libucrtapp_extra_a-strrchr.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
@@ -7874,11 +7861,7 @@ string/libarm64_libucrtapp_extra_a-memcpy.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/libarm64_libucrtapp_extra_a-memmove.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
-string/libarm64_libucrtapp_extra_a-memrchr.$(OBJEXT):  \
-	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/libarm64_libucrtapp_extra_a-strchr.$(OBJEXT):  \
-	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
-string/libarm64_libucrtapp_extra_a-strchrnul.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/libarm64_libucrtapp_extra_a-strrchr.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
@@ -9637,9 +9620,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memmove.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-strrchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-strstr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po@am__quote@ # am--include-marker
@@ -9649,9 +9630,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memmove.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strrchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strstr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-wcschr.Po@am__quote@ # am--include-marker
@@ -15441,20 +15420,6 @@ string/lib64_libucrtapp_extra_a-memmove.obj: string/memmove.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrtapp_extra_a-memmove.obj `if test -f 'string/memmove.c'; then $(CYGPATH_W) 'string/memmove.c'; else $(CYGPATH_W) '$(srcdir)/string/memmove.c'; fi`
 
-string/lib64_libucrtapp_extra_a-memrchr.o: string/memrchr.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrtapp_extra_a-memrchr.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Tpo -c -o string/lib64_libucrtapp_extra_a-memrchr.o `test -f 'string/memrchr.c' || echo '$(srcdir)/'`string/memrchr.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Tpo string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/memrchr.c' object='string/lib64_libucrtapp_extra_a-memrchr.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrtapp_extra_a-memrchr.o `test -f 'string/memrchr.c' || echo '$(srcdir)/'`string/memrchr.c
-
-string/lib64_libucrtapp_extra_a-memrchr.obj: string/memrchr.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrtapp_extra_a-memrchr.obj -MD -MP -MF string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Tpo -c -o string/lib64_libucrtapp_extra_a-memrchr.obj `if test -f 'string/memrchr.c'; then $(CYGPATH_W) 'string/memrchr.c'; else $(CYGPATH_W) '$(srcdir)/string/memrchr.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Tpo string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/memrchr.c' object='string/lib64_libucrtapp_extra_a-memrchr.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrtapp_extra_a-memrchr.obj `if test -f 'string/memrchr.c'; then $(CYGPATH_W) 'string/memrchr.c'; else $(CYGPATH_W) '$(srcdir)/string/memrchr.c'; fi`
-
 string/lib64_libucrtapp_extra_a-strchr.o: string/strchr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrtapp_extra_a-strchr.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Tpo -c -o string/lib64_libucrtapp_extra_a-strchr.o `test -f 'string/strchr.c' || echo '$(srcdir)/'`string/strchr.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Tpo string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Po
@@ -15468,20 +15433,6 @@ string/lib64_libucrtapp_extra_a-strchr.obj: string/strchr.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strchr.c' object='string/lib64_libucrtapp_extra_a-strchr.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrtapp_extra_a-strchr.obj `if test -f 'string/strchr.c'; then $(CYGPATH_W) 'string/strchr.c'; else $(CYGPATH_W) '$(srcdir)/string/strchr.c'; fi`
-
-string/lib64_libucrtapp_extra_a-strchrnul.o: string/strchrnul.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrtapp_extra_a-strchrnul.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Tpo -c -o string/lib64_libucrtapp_extra_a-strchrnul.o `test -f 'string/strchrnul.c' || echo '$(srcdir)/'`string/strchrnul.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Tpo string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strchrnul.c' object='string/lib64_libucrtapp_extra_a-strchrnul.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrtapp_extra_a-strchrnul.o `test -f 'string/strchrnul.c' || echo '$(srcdir)/'`string/strchrnul.c
-
-string/lib64_libucrtapp_extra_a-strchrnul.obj: string/strchrnul.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrtapp_extra_a-strchrnul.obj -MD -MP -MF string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Tpo -c -o string/lib64_libucrtapp_extra_a-strchrnul.obj `if test -f 'string/strchrnul.c'; then $(CYGPATH_W) 'string/strchrnul.c'; else $(CYGPATH_W) '$(srcdir)/string/strchrnul.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Tpo string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strchrnul.c' object='string/lib64_libucrtapp_extra_a-strchrnul.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrtapp_extra_a-strchrnul.obj `if test -f 'string/strchrnul.c'; then $(CYGPATH_W) 'string/strchrnul.c'; else $(CYGPATH_W) '$(srcdir)/string/strchrnul.c'; fi`
 
 string/lib64_libucrtapp_extra_a-strrchr.o: string/strrchr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrtapp_extra_a-strrchr.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrtapp_extra_a-strrchr.Tpo -c -o string/lib64_libucrtapp_extra_a-strrchr.o `test -f 'string/strrchr.c' || echo '$(srcdir)/'`string/strrchr.c
@@ -21769,20 +21720,6 @@ string/libarm64_libucrtapp_extra_a-memmove.obj: string/memmove.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrtapp_extra_a-memmove.obj `if test -f 'string/memmove.c'; then $(CYGPATH_W) 'string/memmove.c'; else $(CYGPATH_W) '$(srcdir)/string/memmove.c'; fi`
 
-string/libarm64_libucrtapp_extra_a-memrchr.o: string/memrchr.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrtapp_extra_a-memrchr.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Tpo -c -o string/libarm64_libucrtapp_extra_a-memrchr.o `test -f 'string/memrchr.c' || echo '$(srcdir)/'`string/memrchr.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Tpo string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/memrchr.c' object='string/libarm64_libucrtapp_extra_a-memrchr.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrtapp_extra_a-memrchr.o `test -f 'string/memrchr.c' || echo '$(srcdir)/'`string/memrchr.c
-
-string/libarm64_libucrtapp_extra_a-memrchr.obj: string/memrchr.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrtapp_extra_a-memrchr.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Tpo -c -o string/libarm64_libucrtapp_extra_a-memrchr.obj `if test -f 'string/memrchr.c'; then $(CYGPATH_W) 'string/memrchr.c'; else $(CYGPATH_W) '$(srcdir)/string/memrchr.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Tpo string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/memrchr.c' object='string/libarm64_libucrtapp_extra_a-memrchr.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrtapp_extra_a-memrchr.obj `if test -f 'string/memrchr.c'; then $(CYGPATH_W) 'string/memrchr.c'; else $(CYGPATH_W) '$(srcdir)/string/memrchr.c'; fi`
-
 string/libarm64_libucrtapp_extra_a-strchr.o: string/strchr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrtapp_extra_a-strchr.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Tpo -c -o string/libarm64_libucrtapp_extra_a-strchr.o `test -f 'string/strchr.c' || echo '$(srcdir)/'`string/strchr.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Tpo string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Po
@@ -21796,20 +21733,6 @@ string/libarm64_libucrtapp_extra_a-strchr.obj: string/strchr.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strchr.c' object='string/libarm64_libucrtapp_extra_a-strchr.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrtapp_extra_a-strchr.obj `if test -f 'string/strchr.c'; then $(CYGPATH_W) 'string/strchr.c'; else $(CYGPATH_W) '$(srcdir)/string/strchr.c'; fi`
-
-string/libarm64_libucrtapp_extra_a-strchrnul.o: string/strchrnul.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrtapp_extra_a-strchrnul.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Tpo -c -o string/libarm64_libucrtapp_extra_a-strchrnul.o `test -f 'string/strchrnul.c' || echo '$(srcdir)/'`string/strchrnul.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Tpo string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strchrnul.c' object='string/libarm64_libucrtapp_extra_a-strchrnul.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrtapp_extra_a-strchrnul.o `test -f 'string/strchrnul.c' || echo '$(srcdir)/'`string/strchrnul.c
-
-string/libarm64_libucrtapp_extra_a-strchrnul.obj: string/strchrnul.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrtapp_extra_a-strchrnul.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Tpo -c -o string/libarm64_libucrtapp_extra_a-strchrnul.obj `if test -f 'string/strchrnul.c'; then $(CYGPATH_W) 'string/strchrnul.c'; else $(CYGPATH_W) '$(srcdir)/string/strchrnul.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Tpo string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strchrnul.c' object='string/libarm64_libucrtapp_extra_a-strchrnul.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrtapp_extra_a-strchrnul.obj `if test -f 'string/strchrnul.c'; then $(CYGPATH_W) 'string/strchrnul.c'; else $(CYGPATH_W) '$(srcdir)/string/strchrnul.c'; fi`
 
 string/libarm64_libucrtapp_extra_a-strrchr.o: string/strrchr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrtapp_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrtapp_extra_a-strrchr.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strrchr.Tpo -c -o string/libarm64_libucrtapp_extra_a-strrchr.o `test -f 'string/strrchr.c' || echo '$(srcdir)/'`string/strrchr.c
@@ -26348,9 +26271,7 @@ distclean: distclean-am
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memmove.Po
-	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Po
-	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strrchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strstr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po
@@ -26360,9 +26281,7 @@ distclean: distclean-am
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memmove.Po
-	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Po
-	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strrchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strstr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-wcschr.Po
@@ -27465,9 +27384,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memmove.Po
-	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memrchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchr.Po
-	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strchrnul.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strrchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-strstr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po
@@ -27477,9 +27394,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memmove.Po
-	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memrchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchr.Po
-	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strchrnul.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strrchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-strstr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-wcschr.Po
