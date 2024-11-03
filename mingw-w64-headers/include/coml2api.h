@@ -10,7 +10,7 @@
 
 #include <combaseapi.h>
 #include <objidl.h>
-/* #include <propidlbase.h> */
+#include <propidl.h>  /* #include <propidlbase.h> */
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
 
