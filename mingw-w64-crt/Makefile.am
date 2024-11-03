@@ -141,11 +141,10 @@ src_ucrtbase=\
 
 # Files included in libucrtapp.a
 src_ucrtapp=\
-  misc/__C_specific_handler.c misc/longjmp.S      misc/setjmp.S     \
+  misc/__C_specific_handler.c  misc/longjmp.S   misc/setjmp.S    \
   \
-  string/memchr.c             string/memcmp.c     string/memcpy.c   string/memmove.c  string/memrchr.c \
-  string/strchr.c             string/strchrnul.c  string/strrchr.c  string/strstr.c   string/wcschr.c  \
-  string/wcsrchr.c            string/wcsstr.c
+  string/memchr.c              string/memcmp.c  string/memcpy.c  string/memmove.c  string/strchr.c \
+  string/strrchr.c             string/strstr.c  string/wcschr.c  string/wcsrchr.c  string/wcsstr.c
 
 # Files included in libucrt*.a on x86_64
 src_ucrtbase64=\
