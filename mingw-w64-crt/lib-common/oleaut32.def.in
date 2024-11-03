@@ -303,7 +303,6 @@ VarCyAdd
 F64(BSTR_UserUnmarshal64)
 DllCanUnloadNow
 DllGetClassObject
-OACreateTypeLib2
 VarCyMul
 VarCyMulI4
 VarCySub
@@ -353,10 +352,14 @@ VarI4FromI8
 VarI4FromUI8
 F64(LPSAFEARRAY_UserSize64)
 F64(LPSAFEARRAY_UserUnmarshal64)
+OACreateTypeLib2
+SafeArrayAddRef
+SafeArrayReleaseData
+SafeArrayReleaseDescriptor
+SysAddRefString
+SysReleaseString
 F64(VARIANT_UserFree64)
 F64(VARIANT_UserMarshal64)
-F64(VARIANT_UserSize64)
-F64(VARIANT_UserUnmarshal64)
 VarR4FromI8
 VarR4FromUI8
 VarR8FromI8
@@ -377,6 +380,8 @@ VarI1FromI8
 VarI1FromUI8
 VarUI2FromI8
 VarUI2FromUI8
+F64(VARIANT_UserSize64)
+F64(VARIANT_UserUnmarshal64)
 OleLoadPictureEx
 OleLoadPictureFileEx
 SafeArrayCreateVector
@@ -413,4 +418,12 @@ VarUI8FromDec
 RegisterTypeLibForUser
 UnRegisterTypeLibForUser
 OaEnablePerUserTLibRegistration
+HWND_UserFree
+HWND_UserMarshal
+HWND_UserSize
+HWND_UserUnmarshal
+HWND_UserFree64
+HWND_UserMarshal64
+HWND_UserSize64
+HWND_UserUnmarshal64
 OACleanup
