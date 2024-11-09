@@ -6,9 +6,11 @@
 
 #include <errno.h>
 #include <time.h>
+#define WIN32_LEAN_AND_MEAN
+#define NOSERVICE
+#define NOMCX
+#define NOIME
 #include <windows.h>
-#include "pthread.h"
-#include "pthread_time.h"
 
 #define POW10_3                 1000
 #define POW10_4                 10000

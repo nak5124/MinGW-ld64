@@ -3,16 +3,14 @@
  * This file is part of the w64 mingw-runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
 #include <errno.h>
 #include <stdint.h>
 #include <time.h>
+#define WIN32_LEAN_AND_MEAN
+#define NOSERVICE
+#define NOMCX
+#define NOIME
 #include <windows.h>
-#ifndef IN_WINPTHREAD
-#define IN_WINPTHREAD 1
-#endif
-#include "pthread.h"
-#include "pthread_time.h"
 
 #define POW10_7                 10000000
 #define POW10_9                 1000000000
@@ -20,39 +18,15 @@
 /* Number of 100ns-seconds between the beginning of the Windows epoch
  * (Jan. 1, 1601) and the Unix epoch (Jan. 1, 1970)
  */
-#define DELTA_EPOCH_IN_100NS    INT64_C(116444736000000000)
+#define DELTA_EPOCH_IN_100NS INT64_C(116444736000000000)
 
-static WINPTHREADS_INLINE int lc_set_errno(int result)
+static inline int lc_set_errno(int result)
 {
     if (result != 0) {
         errno = result;
         return -1;
     }
     return 0;
-}
-
-typedef void (WINAPI * GetSystemTimeAsFileTime_t)(LPFILETIME);
-static GetSystemTimeAsFileTime_t GetSystemTimeAsFileTime_p /* = 0 */;
-
-static GetSystemTimeAsFileTime_t try_load_GetSystemPreciseTimeAsFileTime()
-{
-    /* Use GetSystemTimePreciseAsFileTime() if available (Windows 8 or later) */
-    GetSystemTimeAsFileTime_t get_time = (GetSystemTimeAsFileTime_t)(intptr_t)GetProcAddress(
-        GetModuleHandle ("kernel32.dll"),
-        "GetSystemTimePreciseAsFileTime"); /* <1us precision on Windows 10 */
-    if (get_time == NULL)
-        get_time = GetSystemTimeAsFileTime; /* >15ms precision on Windows 10 */
-    __atomic_store_n(&GetSystemTimeAsFileTime_p, get_time, __ATOMIC_RELAXED);
-    return get_time;
-}
-
-static WINPTHREADS_INLINE GetSystemTimeAsFileTime_t load_GetSystemTimeBestAsFileTime()
-{
-    GetSystemTimeAsFileTime_t get_time =
-        __atomic_load_n(&GetSystemTimeAsFileTime_p, __ATOMIC_RELAXED);
-    if (get_time == NULL)
-        get_time = try_load_GetSystemPreciseTimeAsFileTime();
-    return get_time;
 }
 
 /**
@@ -77,9 +51,6 @@ static WINPTHREADS_INLINE GetSystemTimeAsFileTime_t load_GetSystemTimeBestAsFile
 int clock_getres(clockid_t clock_id, struct timespec *res)
 {
     clockid_t id = clock_id;
-
-    if (id == CLOCK_REALTIME && load_GetSystemTimeBestAsFileTime() == GetSystemTimeAsFileTime)
-        id = CLOCK_REALTIME_COARSE; /* GetSystemTimePreciseAsFileTime() not available */
 
     switch(id) {
     case CLOCK_REALTIME:
@@ -148,7 +119,7 @@ int clock_gettime(clockid_t clock_id, struct timespec *tp)
     switch(clock_id) {
     case CLOCK_REALTIME:
         {
-            load_GetSystemTimeBestAsFileTime()(&ct.ft);
+            GetSystemTimePreciseAsFileTime(&ct.ft);
             t = ct.u64 - DELTA_EPOCH_IN_100NS;
             tp->tv_sec = t / POW10_7;
             tp->tv_nsec = ((int) (t % POW10_7)) * 100;

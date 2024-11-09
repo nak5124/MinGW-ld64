@@ -196,13 +196,68 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-__MINGW_END_C_DECLS
+#ifdef __MINGW_USE_POSIX199309
 
-/* POSIX 2008 says clock_gettime and timespec are defined in time.h header,
-   but other systems - like Linux, Solaris, etc - tend to declare such
-   recent extensions only if the following guards are met.  */
-#if !defined(IN_WINPTHREAD) && defined(__MINGW_USE_POSIX199309)
-#include <pthread_time.h>
+/* Posix timers are supported */
+#ifndef _POSIX_TIMERS
+# define _POSIX_TIMERS 200809L
 #endif
+
+/* Monotonic clocks are available.  */
+#ifndef _POSIX_MONOTONIC_CLOCK
+# define _POSIX_MONOTONIC_CLOCK 200809L
+#endif
+
+/* CPU-time clocks are available.  */
+#ifndef _POSIX_CPUTIME
+# define _POSIX_CPUTIME 200809L
+#endif
+
+/* Clock support in threads are available.  */
+#ifndef _POSIX_THREAD_CPUTIME
+# define _POSIX_THREAD_CPUTIME 200809L
+#endif
+
+#ifndef __clockid_t_defined
+  typedef int clockid_t;
+# define __clockid_t_defined 1
+#endif  /* __clockid_t_defined */
+
+#ifndef TIMER_ABSTIME
+# define TIMER_ABSTIME 1
+#endif
+
+#ifndef CLOCK_REALTIME
+# define CLOCK_REALTIME 0
+#endif
+
+#ifndef CLOCK_MONOTONIC
+# define CLOCK_MONOTONIC 1
+#endif
+
+#ifndef CLOCK_PROCESS_CPUTIME_ID
+# define CLOCK_PROCESS_CPUTIME_ID 2
+#endif
+
+#ifndef CLOCK_THREAD_CPUTIME_ID
+# define CLOCK_THREAD_CPUTIME_ID 3
+#endif
+
+#ifndef CLOCK_REALTIME_COARSE
+# define CLOCK_REALTIME_COARSE 4
+#endif
+
+#ifndef _POSIX_TIMERS_DEFINED
+# define _POSIX_TIMERS_DEFINED
+  extern int __cdecl nanosleep(const struct timespec *request, struct timespec *remain);
+  extern int __cdecl clock_nanosleep(clockid_t clock_id, int flags, const struct timespec *request, struct timespec *remain);
+  extern int __cdecl clock_getres(clockid_t clock_id, struct timespec *res);
+  extern int __cdecl clock_gettime(clockid_t clock_id, struct timespec *tp)       __MINGW_NONNULL((2));
+  extern int __cdecl clock_settime(clockid_t clock_id, const struct timespec *tp) __MINGW_NONNULL((2));
+#endif
+
+#endif  /* __MINGW_USE_POSIX199309 */
+
+__MINGW_END_C_DECLS
 
 #endif  /* _TIME_H_ */
