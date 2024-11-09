@@ -7,7 +7,6 @@
 #define _INC_SIGNAL
 
 #include <corecrt.h>
-#include <pthread_signal.h>
 
 __MINGW_BEGIN_C_DECLS
 
@@ -57,6 +56,12 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP __p_sig_fn_t __cdecl signal(int _SigNum, __p_sig_fn_t _Func);
   _CRTIMP int          __cdecl raise(int _SigNum);
+
+#ifdef __MINGW_USE_POSIX199506
+# ifndef pthread_sigmask
+#   define pthread_sigmask(H, S1, S2) 0
+# endif
+#endif
 
 __MINGW_END_C_DECLS
 
