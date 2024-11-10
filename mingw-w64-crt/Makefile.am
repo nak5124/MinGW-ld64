@@ -202,7 +202,8 @@ src_libmingwex=\
   \
   string/strndup.c                 \
   \
-  time/clock.c                     time/nanosleep.c
+  time/asctime_r.c                 time/clock.c               time/ctime_r.c           time/gmtime_r.c          time/localtime_r.c        \
+  time/nanosleep.c
 
 # Include the default load config struct only for Control Flow Guard support.
 if CFGUARD

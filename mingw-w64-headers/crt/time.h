@@ -169,31 +169,69 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl mingw_gettimeofday(struct timeval *__tv, struct timezone *__tz) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
 #endif  /* _TIMEZONE_DEFINED */
 
+#include <errno.h>
+
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_POSIX)
-  __forceinline __MINGW_NOTHROW
-  struct tm *__cdecl localtime_r(const time_t *_Time, struct tm *_Tm)
+  extern struct tm *__cdecl localtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm) __MINGW_NOTHROW;
+  extern struct tm *__cdecl gmtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)    __MINGW_NOTHROW;
+
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_NOTHROW
+  struct tm *__cdecl localtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)
   {
-    return _localtime64_s(_Tm, _Time) ? NULL : _Tm;
+    errno_t ret = _localtime64_s(_Tm, _Time);
+    if(ret == 0)
+    {
+      return _Tm;
+    }
+    errno = ret;
+    return NULL;
   }
 
-  __forceinline __MINGW_NOTHROW
-  struct tm *__cdecl gmtime_r(const time_t *_Time, struct tm *_Tm)
+  __CRT_INLINE __MINGW_NOTHROW
+  struct tm *__cdecl gmtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)
   {
-    return _gmtime64_s(_Tm, _Time) ? NULL : _Tm;
+    errno_t ret = _gmtime64_s(_Tm, _Time);
+    if(ret == 0)
+    {
+      return _Tm;
+    }
+    errno = ret;
+    return NULL;
   }
+#endif  /* __CRT__NO_INLINE */
+#endif
 
-  __forceinline __MINGW_NOTHROW
-  char *__cdecl ctime_r(const time_t *_Time, char *_Str)
+#ifdef __MINGW_USE_POSIX
+  extern char *__cdecl ctime_r(const time_t *__restrict _Time, char *__restrict _Buf)    __MINGW_NOTHROW;
+  extern char *__cdecl asctime_r(const struct tm *__restrict _Tm, char *__restrict _Buf) __MINGW_NOTHROW;
+
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_NOTHROW
+  char *__cdecl ctime_r(const time_t *__restrict _Time, char *__restrict _Buf)
   {
-    return _ctime64_s(_Str, 0x7fffffff, _Time) ? NULL : _Str;
+    errno_t ret = _ctime64_s(_Buf, 26, _Time);
+    if(ret == 0)
+    {
+      return _Buf;
+    }
+    errno = ret;
+    return NULL;
   }
 
   _CRTIMP errno_t __cdecl _asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm) __MINGW_ASM_CALL(asctime_s);
-  __forceinline __MINGW_NOTHROW
-  char *__cdecl asctime_r(const struct tm *_Tm, char * _Str)
+  __CRT_INLINE __MINGW_NOTHROW
+  char *__cdecl asctime_r(const struct tm *__restrict _Tm, char *__restrict _Buf)
   {
-    return _asctime_s(_Str, 0x7fffffff, _Tm) ? NULL : _Str;
+    errno_t ret = _asctime_s(_Buf, 26, _Tm);
+    if(ret == 0)
+    {
+      return _Buf;
+    }
+    errno = ret;
+    return NULL;
   }
+#endif  /* __CRT__NO_INLINE */
 #endif
 
 #ifdef __MINGW_USE_POSIX199309

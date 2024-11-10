@@ -26,7 +26,11 @@ __MINGW_BEGIN_C_DECLS
 #define _CRT_UNPARENTHESIZE(...)  _CRT_UNPARENTHESIZE_ __VA_ARGS__
 
 #ifndef __CRTDECL
-# define __CRTDECL __cdecl
+# ifndef __cplusplus
+#   define __CRTDECL __cdecl __MINGW_UNUSED
+# else
+#   define __CRTDECL __cdecl
+# endif
 #endif
 
 #ifndef __WIDL__
