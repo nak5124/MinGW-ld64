@@ -92,6 +92,10 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 
+#ifdef __MINGW_USE_MISC
+  extern int __cdecl getentropy(void *_Buffer, size_t _Length);
+#endif
+
 __MINGW_END_C_DECLS
 
 #include <pthread_unistd.h>
