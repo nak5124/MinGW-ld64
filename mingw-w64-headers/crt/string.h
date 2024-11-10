@@ -112,6 +112,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char *__cdecl strdup(const char *_Src) __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEPRECATED_MSVC2005;
 # pragma pop_macro("strdup")
 #endif
+#if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_LIB_EXT2)
+  extern char *__cdecl strndup(const char *_Src, size_t _Size) __MINGW_NONNULL((1)) __MINGW_MALLOC;
+#endif
 #ifdef __MINGW_USE_MS
   _CRTIMP int   __cdecl strcmpi(const char *_Str1, const char *_Str2)                   __MINGW_DEPRECATED_MSVC2005;
   _CRTIMP int   __cdecl stricmp(const char *_Str1,const char *_Str2)                    __MINGW_DEPRECATED_MSVC2005;
