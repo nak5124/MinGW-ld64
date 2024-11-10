@@ -27,14 +27,12 @@
 
 __MINGW_BEGIN_C_DECLS
 
-/* Remember that g++ >= 4.4 defines these types only in c++0x mode */
-#if !(defined(__cplusplus) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || \
-  (!defined(__clang__) && (__GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 4)))
+#ifndef __MINGW_USE_ISOCXX11
   typedef uint_least16_t  char16_t;
   typedef uint_least32_t  char32_t;
+#endif
   typedef uint_least16_t _Char16_t;
   typedef uint_least32_t _Char32_t;
-#endif
 
 #ifndef __STDC_UTF_16__
 # define __STDC_UTF_16__ 1
@@ -44,11 +42,11 @@ __MINGW_BEGIN_C_DECLS
 # define __STDC_UTF_32__ 1
 #endif
 
-  _CRTIMP size_t mbrtoc16(char16_t *__restrict _Pc16, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __MINGW_NOTHROW;
-  _CRTIMP size_t c16rtomb(char *__restrict _S, char16_t _C16, mbstate_t *__restrict _Ps)                               __MINGW_NOTHROW;
+  _CRTIMP size_t __cdecl mbrtoc16(char16_t *__restrict _Pc16, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __MINGW_NOTHROW;
+  _CRTIMP size_t __cdecl c16rtomb(char *__restrict _S, char16_t _C16, mbstate_t *__restrict _Ps)                               __MINGW_NOTHROW;
 
-  _CRTIMP size_t mbrtoc32(char32_t *__restrict _Pc32, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __MINGW_NOTHROW;
-  _CRTIMP size_t c32rtomb(char *__restrict _S, char32_t _C32, mbstate_t *__restrict _Ps)                               __MINGW_NOTHROW;
+  _CRTIMP size_t __cdecl mbrtoc32(char32_t *__restrict _Pc32, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __MINGW_NOTHROW;
+  _CRTIMP size_t __cdecl c32rtomb(char *__restrict _S, char32_t _C32, mbstate_t *__restrict _Ps)                               __MINGW_NOTHROW;
 
 __MINGW_END_C_DECLS
 
