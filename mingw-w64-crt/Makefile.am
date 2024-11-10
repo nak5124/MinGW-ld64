@@ -200,7 +200,7 @@ src_libmingwex=\
   stdio/mingw_vsnprintfw.c         stdio/mingw_vsprintf.c     stdio/mingw_vsprintfw.c  stdio/mingw_wscanf.c     stdio/mingw_wvfscanf.c    \
   stdio/strtok_r.c                 stdio/truncate.c           stdio/vasprintf.c        \
   \
-  string/strndup.c                 \
+  string/strerror_r.c              string/strndup.c           string/xsi_strerror_r.c  \
   \
   time/asctime_r.c                 time/clock.c               time/ctime_r.c           time/gmtime_r.c          time/localtime_r.c        \
   time/nanosleep.c

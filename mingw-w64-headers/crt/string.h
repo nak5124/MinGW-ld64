@@ -142,6 +142,32 @@ __MINGW_BEGIN_C_DECLS
 # pragma pop_macro("strtok_r")
 #endif
 
+#ifdef __MINGW_USE_GNU
+  extern char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __MINGW_NONNULL((2));
+# ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_NONNULL((2))
+  char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen)
+  {
+    errno_t err = strerror_s(_Buf, _Buflen, _Errnum);
+    if(err != 0)
+    {
+      return NULL;
+    }
+    return _Buf;
+  }
+# endif
+#elif defined(__MINGW_USE_XOPEN2K)
+  extern int   __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __MINGW_ASM_CALL(__xsi_strerror_r) __MINGW_NONNULL((2));
+# ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_NONNULL((2))
+  int __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen)
+  {
+    return strerror_s(_Buf, _Buflen, _Errnum);
+  }
+# endif
+#endif
+
+
 #if __MINGW_FORTIFY_LEVEL > 0
 
   __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))
