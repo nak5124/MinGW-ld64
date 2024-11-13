@@ -1415,15 +1415,15 @@ extern "C" {
 #define DEFAULT_UNREACHABLE
 
 #ifdef __cplusplus
-# define DEFINE_ENUM_FLAG_OPERATORS(ENUMTYPE) \
-    extern "C++" { \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE operator | (ENUMTYPE a, ENUMTYPE b) { return ENUMTYPE(((int)a) | ((int)b)); } \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE &operator |= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((int &)a) |= ((int)b)); } \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE operator & (ENUMTYPE a, ENUMTYPE b) { return ENUMTYPE(((int)a) & ((int)b)); } \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE &operator &= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((int &)a) &= ((int)b)); } \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE operator ~ (ENUMTYPE a) { return ENUMTYPE(~((int)a)); } \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE operator ^ (ENUMTYPE a, ENUMTYPE b) { return ENUMTYPE(((int)a) ^ ((int)b)); } \
-      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE &operator ^= (ENUMTYPE &a, ENUMTYPE b) { return (ENUMTYPE &)(((int &)a) ^= ((int)b)); } \
+# define DEFINE_ENUM_FLAG_OPERATORS(ENUMTYPE)                                                                                  \
+    extern "C++" {                                                                                                             \
+      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE  operator ~  (ENUMTYPE  a)             { return ENUMTYPE(~((int)a));           } \
+      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE  operator |  (ENUMTYPE  a, ENUMTYPE b) { return ENUMTYPE(((int)a) | ((int)b)); } \
+      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE  operator &  (ENUMTYPE  a, ENUMTYPE b) { return ENUMTYPE(((int)a) & ((int)b)); } \
+      __MINGW_CXX11_CONSTEXPR inline ENUMTYPE  operator ^  (ENUMTYPE  a, ENUMTYPE b) { return ENUMTYPE(((int)a) ^ ((int)b)); } \
+      __MINGW_CXX14_CONSTEXPR inline ENUMTYPE& operator |= (ENUMTYPE& a, ENUMTYPE b) { return a = a | b;                     } \
+      __MINGW_CXX14_CONSTEXPR inline ENUMTYPE& operator &= (ENUMTYPE& a, ENUMTYPE b) { return a = a & b;                     } \
+      __MINGW_CXX14_CONSTEXPR inline ENUMTYPE& operator ^= (ENUMTYPE& a, ENUMTYPE b) { return a = a ^ b;                     } \
     }
 #else
 # define DEFINE_ENUM_FLAG_OPERATORS(ENUMTYPE)
