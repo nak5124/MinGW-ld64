@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include",
+                "${workspaceFolder}/mingw-w64-headers/crt",
+                "${workspaceFolder}/mingw-w64-headers/include",
+                "${workspaceFolder}/mingw-w64-crt/include"
+            ],
+            "defines": [
+                "_MS_SOURCE",
+                "_GNU_SOURCE",
+                "_FORTIFY_SOURCE=3",
+                "_WIN32_WINNT=0x0A00",
+                "WINVER=0x0A00"
+            ],
+            "windowsSdkVersion": "10.0.26100.0",
+            "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+            "cStandard": "gnu23",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerArgs": [
+                "-O2"
+            ],
+            "forcedInclude": [
+                "${workspaceFolder}/mingw-w64-headers/include/windows.h"
+            ]
+        }
+    ],
+    "version": 4
+}
