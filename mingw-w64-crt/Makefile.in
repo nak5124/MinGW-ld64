@@ -626,23 +626,24 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	math/signbitf.c misc/alarm.c misc/delay-f.c misc/delay-n.c \
 	misc/delayimp.c misc/dirent.c misc/dirname.c \
 	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate.c \
-	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getlogin.c \
-	misc/getopt.c misc/gettimeofday.c misc/mempcpy.c \
-	misc/mingw_getsp.S misc/mingw_longjmp.S misc/mingw_matherr.c \
-	misc/mingw_mbwc_convert.c misc/mingw_usleep.c misc/mkstemp.c \
-	misc/sleep.c misc/strsafe.c misc/tdelete.c misc/tdestroy.c \
-	misc/tfind.c misc/tsearch.c misc/twalk.c misc/wdirent.c \
-	misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c \
-	misc/wmempcpy.c misc/wmemset.c ssp/chk_fail.c ssp/gets_chk.c \
-	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
-	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
-	ssp/stpcpy_chk.c ssp/strcat_chk.c ssp/strcpy_chk.c \
-	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/asprintf.c \
-	stdio/ftruncate64.c stdio/mingw_asprintf.c \
-	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
-	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
-	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
-	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getentropy.c \
+	misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
+	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
+	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
+	misc/mingw_usleep.c misc/mkstemp.c misc/sleep.c misc/strsafe.c \
+	misc/tdelete.c misc/tdestroy.c misc/tfind.c misc/tsearch.c \
+	misc/twalk.c misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c \
+	misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c \
+	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
+	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
+	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/stpcpy_chk.c \
+	ssp/strcat_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
+	ssp/strncpy_chk.c stdio/asprintf.c stdio/ftruncate64.c \
+	stdio/mingw_asprintf.c stdio/mingw_fprintf.c \
+	stdio/mingw_fprintfw.c stdio/mingw_fscanf.c \
+	stdio/mingw_fwscanf.c stdio/mingw_pformat.c \
+	stdio/mingw_pformatw.c stdio/mingw_printf.c \
+	stdio/mingw_printfw.c stdio/mingw_scanf.c \
 	stdio/mingw_snprintf.c stdio/mingw_snprintfw.c \
 	stdio/mingw_sprintf.c stdio/mingw_sprintfw.c \
 	stdio/mingw_sscanf.c stdio/mingw_swscanf.c \
@@ -652,7 +653,9 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	stdio/mingw_vsnprintf.c stdio/mingw_vsnprintfw.c \
 	stdio/mingw_vsprintf.c stdio/mingw_vsprintfw.c \
 	stdio/mingw_wscanf.c stdio/mingw_wvfscanf.c stdio/strtok_r.c \
-	stdio/truncate.c stdio/vasprintf.c time/clock.c \
+	stdio/truncate.c stdio/vasprintf.c string/strerror_r.c \
+	string/strndup.c string/xsi_strerror_r.c time/asctime_r.c \
+	time/clock.c time/ctime_r.c time/gmtime_r.c time/localtime_r.c \
 	time/nanosleep.c cfguard/mingw_cfguard_loadcfg.S \
 	math/x64/sincos.c
 @CFGUARD_TRUE@am__objects_23 = cfguard/lib64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
@@ -751,6 +754,7 @@ am__objects_24 =  \
 	misc/lib64_libmingwex_a-ftw.$(OBJEXT) \
 	misc/lib64_libmingwex_a-ftw64.$(OBJEXT) \
 	misc/lib64_libmingwex_a-fwide.$(OBJEXT) \
+	misc/lib64_libmingwex_a-getentropy.$(OBJEXT) \
 	misc/lib64_libmingwex_a-getlogin.$(OBJEXT) \
 	misc/lib64_libmingwex_a-getopt.$(OBJEXT) \
 	misc/lib64_libmingwex_a-gettimeofday.$(OBJEXT) \
@@ -821,7 +825,14 @@ am__objects_24 =  \
 	stdio/lib64_libmingwex_a-strtok_r.$(OBJEXT) \
 	stdio/lib64_libmingwex_a-truncate.$(OBJEXT) \
 	stdio/lib64_libmingwex_a-vasprintf.$(OBJEXT) \
+	string/lib64_libmingwex_a-strerror_r.$(OBJEXT) \
+	string/lib64_libmingwex_a-strndup.$(OBJEXT) \
+	string/lib64_libmingwex_a-xsi_strerror_r.$(OBJEXT) \
+	time/lib64_libmingwex_a-asctime_r.$(OBJEXT) \
 	time/lib64_libmingwex_a-clock.$(OBJEXT) \
+	time/lib64_libmingwex_a-ctime_r.$(OBJEXT) \
+	time/lib64_libmingwex_a-gmtime_r.$(OBJEXT) \
+	time/lib64_libmingwex_a-localtime_r.$(OBJEXT) \
 	time/lib64_libmingwex_a-nanosleep.$(OBJEXT) $(am__objects_23)
 am__objects_25 = math/x64/lib64_libmingwex_a-sincos.$(OBJEXT)
 @LIB64_TRUE@am_lib64_libmingwex_a_OBJECTS = $(am__objects_24) \
@@ -1521,23 +1532,24 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	math/signbitf.c misc/alarm.c misc/delay-f.c misc/delay-n.c \
 	misc/delayimp.c misc/dirent.c misc/dirname.c \
 	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate.c \
-	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getlogin.c \
-	misc/getopt.c misc/gettimeofday.c misc/mempcpy.c \
-	misc/mingw_getsp.S misc/mingw_longjmp.S misc/mingw_matherr.c \
-	misc/mingw_mbwc_convert.c misc/mingw_usleep.c misc/mkstemp.c \
-	misc/sleep.c misc/strsafe.c misc/tdelete.c misc/tdestroy.c \
-	misc/tfind.c misc/tsearch.c misc/twalk.c misc/wdirent.c \
-	misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c \
-	misc/wmempcpy.c misc/wmemset.c ssp/chk_fail.c ssp/gets_chk.c \
-	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
-	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
-	ssp/stpcpy_chk.c ssp/strcat_chk.c ssp/strcpy_chk.c \
-	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/asprintf.c \
-	stdio/ftruncate64.c stdio/mingw_asprintf.c \
-	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
-	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
-	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
-	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getentropy.c \
+	misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
+	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
+	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
+	misc/mingw_usleep.c misc/mkstemp.c misc/sleep.c misc/strsafe.c \
+	misc/tdelete.c misc/tdestroy.c misc/tfind.c misc/tsearch.c \
+	misc/twalk.c misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c \
+	misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c \
+	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
+	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
+	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/stpcpy_chk.c \
+	ssp/strcat_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
+	ssp/strncpy_chk.c stdio/asprintf.c stdio/ftruncate64.c \
+	stdio/mingw_asprintf.c stdio/mingw_fprintf.c \
+	stdio/mingw_fprintfw.c stdio/mingw_fscanf.c \
+	stdio/mingw_fwscanf.c stdio/mingw_pformat.c \
+	stdio/mingw_pformatw.c stdio/mingw_printf.c \
+	stdio/mingw_printfw.c stdio/mingw_scanf.c \
 	stdio/mingw_snprintf.c stdio/mingw_snprintfw.c \
 	stdio/mingw_sprintf.c stdio/mingw_sprintfw.c \
 	stdio/mingw_sscanf.c stdio/mingw_swscanf.c \
@@ -1547,7 +1559,9 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	stdio/mingw_vsnprintf.c stdio/mingw_vsnprintfw.c \
 	stdio/mingw_vsprintf.c stdio/mingw_vsprintfw.c \
 	stdio/mingw_wscanf.c stdio/mingw_wvfscanf.c stdio/strtok_r.c \
-	stdio/truncate.c stdio/vasprintf.c time/clock.c \
+	stdio/truncate.c stdio/vasprintf.c string/strerror_r.c \
+	string/strndup.c string/xsi_strerror_r.c time/asctime_r.c \
+	time/clock.c time/ctime_r.c time/gmtime_r.c time/localtime_r.c \
 	time/nanosleep.c cfguard/mingw_cfguard_loadcfg.S \
 	math/arm64/sincos.S math/arm64/sincosf.S
 @CFGUARD_TRUE@am__objects_67 = cfguard/libarm64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
@@ -1646,6 +1660,7 @@ am__objects_68 =  \
 	misc/libarm64_libmingwex_a-ftw.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-ftw64.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-fwide.$(OBJEXT) \
+	misc/libarm64_libmingwex_a-getentropy.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-getlogin.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-getopt.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-gettimeofday.$(OBJEXT) \
@@ -1716,7 +1731,14 @@ am__objects_68 =  \
 	stdio/libarm64_libmingwex_a-strtok_r.$(OBJEXT) \
 	stdio/libarm64_libmingwex_a-truncate.$(OBJEXT) \
 	stdio/libarm64_libmingwex_a-vasprintf.$(OBJEXT) \
+	string/libarm64_libmingwex_a-strerror_r.$(OBJEXT) \
+	string/libarm64_libmingwex_a-strndup.$(OBJEXT) \
+	string/libarm64_libmingwex_a-xsi_strerror_r.$(OBJEXT) \
+	time/libarm64_libmingwex_a-asctime_r.$(OBJEXT) \
 	time/libarm64_libmingwex_a-clock.$(OBJEXT) \
+	time/libarm64_libmingwex_a-ctime_r.$(OBJEXT) \
+	time/libarm64_libmingwex_a-gmtime_r.$(OBJEXT) \
+	time/libarm64_libmingwex_a-localtime_r.$(OBJEXT) \
 	time/libarm64_libmingwex_a-nanosleep.$(OBJEXT) \
 	$(am__objects_67)
 am__objects_69 = math/arm64/libarm64_libmingwex_a-sincos.$(OBJEXT) \
@@ -3164,6 +3186,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-fwide.Po \
+	misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-getopt.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po \
@@ -3219,6 +3242,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-fwide.Po \
+	misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-getopt.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po \
@@ -3403,6 +3427,9 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po \
+	string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po \
+	string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po \
+	string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po \
@@ -3413,6 +3440,9 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsrchr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsstr.Po \
+	string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po \
+	string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po \
+	string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po \
@@ -3534,9 +3564,17 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po \
 	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po \
 	testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po \
+	time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Po \
 	time/$(DEPDIR)/lib64_libmingwex_a-clock.Po \
+	time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Po \
+	time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Po \
+	time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Po \
 	time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po \
+	time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Po \
 	time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po \
+	time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Po \
+	time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Po \
+	time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Po \
 	time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -4312,23 +4350,24 @@ src_libmingwex = cfguard/mingw_cfguard_support.c complex/cabs.c \
 	math/signbitf.c misc/alarm.c misc/delay-f.c misc/delay-n.c \
 	misc/delayimp.c misc/dirent.c misc/dirname.c \
 	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate.c \
-	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getlogin.c \
-	misc/getopt.c misc/gettimeofday.c misc/mempcpy.c \
-	misc/mingw_getsp.S misc/mingw_longjmp.S misc/mingw_matherr.c \
-	misc/mingw_mbwc_convert.c misc/mingw_usleep.c misc/mkstemp.c \
-	misc/sleep.c misc/strsafe.c misc/tdelete.c misc/tdestroy.c \
-	misc/tfind.c misc/tsearch.c misc/twalk.c misc/wdirent.c \
-	misc/wmemchr.c misc/wmemcmp.c misc/wmemcpy.c misc/wmemmove.c \
-	misc/wmempcpy.c misc/wmemset.c ssp/chk_fail.c ssp/gets_chk.c \
-	ssp/memcpy_chk.c ssp/memmove_chk.c ssp/mempcpy_chk.c \
-	ssp/memset_chk.c ssp/stack_chk_fail.c ssp/stack_chk_guard.c \
-	ssp/stpcpy_chk.c ssp/strcat_chk.c ssp/strcpy_chk.c \
-	ssp/strncat_chk.c ssp/strncpy_chk.c stdio/asprintf.c \
-	stdio/ftruncate64.c stdio/mingw_asprintf.c \
-	stdio/mingw_fprintf.c stdio/mingw_fprintfw.c \
-	stdio/mingw_fscanf.c stdio/mingw_fwscanf.c \
-	stdio/mingw_pformat.c stdio/mingw_pformatw.c \
-	stdio/mingw_printf.c stdio/mingw_printfw.c stdio/mingw_scanf.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getentropy.c \
+	misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
+	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
+	misc/mingw_matherr.c misc/mingw_mbwc_convert.c \
+	misc/mingw_usleep.c misc/mkstemp.c misc/sleep.c misc/strsafe.c \
+	misc/tdelete.c misc/tdestroy.c misc/tfind.c misc/tsearch.c \
+	misc/twalk.c misc/wdirent.c misc/wmemchr.c misc/wmemcmp.c \
+	misc/wmemcpy.c misc/wmemmove.c misc/wmempcpy.c misc/wmemset.c \
+	ssp/chk_fail.c ssp/gets_chk.c ssp/memcpy_chk.c \
+	ssp/memmove_chk.c ssp/mempcpy_chk.c ssp/memset_chk.c \
+	ssp/stack_chk_fail.c ssp/stack_chk_guard.c ssp/stpcpy_chk.c \
+	ssp/strcat_chk.c ssp/strcpy_chk.c ssp/strncat_chk.c \
+	ssp/strncpy_chk.c stdio/asprintf.c stdio/ftruncate64.c \
+	stdio/mingw_asprintf.c stdio/mingw_fprintf.c \
+	stdio/mingw_fprintfw.c stdio/mingw_fscanf.c \
+	stdio/mingw_fwscanf.c stdio/mingw_pformat.c \
+	stdio/mingw_pformatw.c stdio/mingw_printf.c \
+	stdio/mingw_printfw.c stdio/mingw_scanf.c \
 	stdio/mingw_snprintf.c stdio/mingw_snprintfw.c \
 	stdio/mingw_sprintf.c stdio/mingw_sprintfw.c \
 	stdio/mingw_sscanf.c stdio/mingw_swscanf.c \
@@ -4338,7 +4377,9 @@ src_libmingwex = cfguard/mingw_cfguard_support.c complex/cabs.c \
 	stdio/mingw_vsnprintf.c stdio/mingw_vsnprintfw.c \
 	stdio/mingw_vsprintf.c stdio/mingw_vsprintfw.c \
 	stdio/mingw_wscanf.c stdio/mingw_wvfscanf.c stdio/strtok_r.c \
-	stdio/truncate.c stdio/vasprintf.c time/clock.c \
+	stdio/truncate.c stdio/vasprintf.c string/strerror_r.c \
+	string/strndup.c string/xsi_strerror_r.c time/asctime_r.c \
+	time/clock.c time/ctime_r.c time/gmtime_r.c time/localtime_r.c \
 	time/nanosleep.c $(am__append_3)
 
 # these only go into the x86_64 version:
@@ -6310,6 +6351,8 @@ misc/lib64_libmingwex_a-ftw64.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-fwide.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libmingwex_a-getentropy.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-getlogin.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-getopt.$(OBJEXT): misc/$(am__dirstamp) \
@@ -6462,13 +6505,33 @@ stdio/lib64_libmingwex_a-truncate.$(OBJEXT): stdio/$(am__dirstamp) \
 	stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libmingwex_a-vasprintf.$(OBJEXT): stdio/$(am__dirstamp) \
 	stdio/$(DEPDIR)/$(am__dirstamp)
+string/$(am__dirstamp):
+	@$(MKDIR_P) string
+	@: >>string/$(am__dirstamp)
+string/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) string/$(DEPDIR)
+	@: >>string/$(DEPDIR)/$(am__dirstamp)
+string/lib64_libmingwex_a-strerror_r.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
+string/lib64_libmingwex_a-strndup.$(OBJEXT): string/$(am__dirstamp) \
+	string/$(DEPDIR)/$(am__dirstamp)
+string/lib64_libmingwex_a-xsi_strerror_r.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 time/$(am__dirstamp):
 	@$(MKDIR_P) time
 	@: >>time/$(am__dirstamp)
 time/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) time/$(DEPDIR)
 	@: >>time/$(DEPDIR)/$(am__dirstamp)
+time/lib64_libmingwex_a-asctime_r.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
 time/lib64_libmingwex_a-clock.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/lib64_libmingwex_a-ctime_r.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/lib64_libmingwex_a-gmtime_r.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/lib64_libmingwex_a-localtime_r.$(OBJEXT): time/$(am__dirstamp) \
 	time/$(DEPDIR)/$(am__dirstamp)
 time/lib64_libmingwex_a-nanosleep.$(OBJEXT): time/$(am__dirstamp) \
 	time/$(DEPDIR)/$(am__dirstamp)
@@ -6678,12 +6741,6 @@ misc/lib64_libucrtapp_extra_a-longjmp.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libucrtapp_extra_a-setjmp.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-string/$(am__dirstamp):
-	@$(MKDIR_P) string
-	@: >>string/$(am__dirstamp)
-string/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) string/$(DEPDIR)
-	@: >>string/$(DEPDIR)/$(am__dirstamp)
 string/lib64_libucrtapp_extra_a-memchr.$(OBJEXT):  \
 	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 string/lib64_libucrtapp_extra_a-memcmp.$(OBJEXT):  \
@@ -7513,6 +7570,8 @@ misc/libarm64_libmingwex_a-ftw64.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-fwide.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libmingwex_a-getentropy.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-getlogin.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-getopt.$(OBJEXT): misc/$(am__dirstamp) \
@@ -7653,8 +7712,22 @@ stdio/libarm64_libmingwex_a-truncate.$(OBJEXT): stdio/$(am__dirstamp) \
 	stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libmingwex_a-vasprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+string/libarm64_libmingwex_a-strerror_r.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
+string/libarm64_libmingwex_a-strndup.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
+string/libarm64_libmingwex_a-xsi_strerror_r.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
+time/libarm64_libmingwex_a-asctime_r.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
 time/libarm64_libmingwex_a-clock.$(OBJEXT): time/$(am__dirstamp) \
 	time/$(DEPDIR)/$(am__dirstamp)
+time/libarm64_libmingwex_a-ctime_r.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/libarm64_libmingwex_a-gmtime_r.$(OBJEXT): time/$(am__dirstamp) \
+	time/$(DEPDIR)/$(am__dirstamp)
+time/libarm64_libmingwex_a-localtime_r.$(OBJEXT):  \
+	time/$(am__dirstamp) time/$(DEPDIR)/$(am__dirstamp)
 time/libarm64_libmingwex_a-nanosleep.$(OBJEXT): time/$(am__dirstamp) \
 	time/$(DEPDIR)/$(am__dirstamp)
 cfguard/libarm64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT):  \
@@ -9379,6 +9452,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-fwide.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-getopt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po@am__quote@ # am--include-marker
@@ -9434,6 +9508,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-fwide.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-getopt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po@am__quote@ # am--include-marker
@@ -9618,6 +9693,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po@am__quote@ # am--include-marker
@@ -9628,6 +9706,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsrchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsstr.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po@am__quote@ # am--include-marker
@@ -9751,9 +9832,17 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-clock.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -13532,6 +13621,20 @@ misc/lib64_libmingwex_a-fwide.obj: misc/fwide.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-fwide.obj `if test -f 'misc/fwide.c'; then $(CYGPATH_W) 'misc/fwide.c'; else $(CYGPATH_W) '$(srcdir)/misc/fwide.c'; fi`
 
+misc/lib64_libmingwex_a-getentropy.o: misc/getentropy.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-getentropy.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Tpo -c -o misc/lib64_libmingwex_a-getentropy.o `test -f 'misc/getentropy.c' || echo '$(srcdir)/'`misc/getentropy.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/getentropy.c' object='misc/lib64_libmingwex_a-getentropy.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-getentropy.o `test -f 'misc/getentropy.c' || echo '$(srcdir)/'`misc/getentropy.c
+
+misc/lib64_libmingwex_a-getentropy.obj: misc/getentropy.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-getentropy.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Tpo -c -o misc/lib64_libmingwex_a-getentropy.obj `if test -f 'misc/getentropy.c'; then $(CYGPATH_W) 'misc/getentropy.c'; else $(CYGPATH_W) '$(srcdir)/misc/getentropy.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/getentropy.c' object='misc/lib64_libmingwex_a-getentropy.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-getentropy.obj `if test -f 'misc/getentropy.c'; then $(CYGPATH_W) 'misc/getentropy.c'; else $(CYGPATH_W) '$(srcdir)/misc/getentropy.c'; fi`
+
 misc/lib64_libmingwex_a-getlogin.o: misc/getlogin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-getlogin.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Tpo -c -o misc/lib64_libmingwex_a-getlogin.o `test -f 'misc/getlogin.c' || echo '$(srcdir)/'`misc/getlogin.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Po
@@ -14484,6 +14587,62 @@ stdio/lib64_libmingwex_a-vasprintf.obj: stdio/vasprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libmingwex_a-vasprintf.obj `if test -f 'stdio/vasprintf.c'; then $(CYGPATH_W) 'stdio/vasprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/vasprintf.c'; fi`
 
+string/lib64_libmingwex_a-strerror_r.o: string/strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libmingwex_a-strerror_r.o -MD -MP -MF string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Tpo -c -o string/lib64_libmingwex_a-strerror_r.o `test -f 'string/strerror_r.c' || echo '$(srcdir)/'`string/strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Tpo string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strerror_r.c' object='string/lib64_libmingwex_a-strerror_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libmingwex_a-strerror_r.o `test -f 'string/strerror_r.c' || echo '$(srcdir)/'`string/strerror_r.c
+
+string/lib64_libmingwex_a-strerror_r.obj: string/strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libmingwex_a-strerror_r.obj -MD -MP -MF string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Tpo -c -o string/lib64_libmingwex_a-strerror_r.obj `if test -f 'string/strerror_r.c'; then $(CYGPATH_W) 'string/strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/strerror_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Tpo string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strerror_r.c' object='string/lib64_libmingwex_a-strerror_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libmingwex_a-strerror_r.obj `if test -f 'string/strerror_r.c'; then $(CYGPATH_W) 'string/strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/strerror_r.c'; fi`
+
+string/lib64_libmingwex_a-strndup.o: string/strndup.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libmingwex_a-strndup.o -MD -MP -MF string/$(DEPDIR)/lib64_libmingwex_a-strndup.Tpo -c -o string/lib64_libmingwex_a-strndup.o `test -f 'string/strndup.c' || echo '$(srcdir)/'`string/strndup.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libmingwex_a-strndup.Tpo string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strndup.c' object='string/lib64_libmingwex_a-strndup.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libmingwex_a-strndup.o `test -f 'string/strndup.c' || echo '$(srcdir)/'`string/strndup.c
+
+string/lib64_libmingwex_a-strndup.obj: string/strndup.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libmingwex_a-strndup.obj -MD -MP -MF string/$(DEPDIR)/lib64_libmingwex_a-strndup.Tpo -c -o string/lib64_libmingwex_a-strndup.obj `if test -f 'string/strndup.c'; then $(CYGPATH_W) 'string/strndup.c'; else $(CYGPATH_W) '$(srcdir)/string/strndup.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libmingwex_a-strndup.Tpo string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strndup.c' object='string/lib64_libmingwex_a-strndup.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libmingwex_a-strndup.obj `if test -f 'string/strndup.c'; then $(CYGPATH_W) 'string/strndup.c'; else $(CYGPATH_W) '$(srcdir)/string/strndup.c'; fi`
+
+string/lib64_libmingwex_a-xsi_strerror_r.o: string/xsi_strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libmingwex_a-xsi_strerror_r.o -MD -MP -MF string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Tpo -c -o string/lib64_libmingwex_a-xsi_strerror_r.o `test -f 'string/xsi_strerror_r.c' || echo '$(srcdir)/'`string/xsi_strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Tpo string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/xsi_strerror_r.c' object='string/lib64_libmingwex_a-xsi_strerror_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libmingwex_a-xsi_strerror_r.o `test -f 'string/xsi_strerror_r.c' || echo '$(srcdir)/'`string/xsi_strerror_r.c
+
+string/lib64_libmingwex_a-xsi_strerror_r.obj: string/xsi_strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libmingwex_a-xsi_strerror_r.obj -MD -MP -MF string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Tpo -c -o string/lib64_libmingwex_a-xsi_strerror_r.obj `if test -f 'string/xsi_strerror_r.c'; then $(CYGPATH_W) 'string/xsi_strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/xsi_strerror_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Tpo string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/xsi_strerror_r.c' object='string/lib64_libmingwex_a-xsi_strerror_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libmingwex_a-xsi_strerror_r.obj `if test -f 'string/xsi_strerror_r.c'; then $(CYGPATH_W) 'string/xsi_strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/xsi_strerror_r.c'; fi`
+
+time/lib64_libmingwex_a-asctime_r.o: time/asctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-asctime_r.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Tpo -c -o time/lib64_libmingwex_a-asctime_r.o `test -f 'time/asctime_r.c' || echo '$(srcdir)/'`time/asctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/asctime_r.c' object='time/lib64_libmingwex_a-asctime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-asctime_r.o `test -f 'time/asctime_r.c' || echo '$(srcdir)/'`time/asctime_r.c
+
+time/lib64_libmingwex_a-asctime_r.obj: time/asctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-asctime_r.obj -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Tpo -c -o time/lib64_libmingwex_a-asctime_r.obj `if test -f 'time/asctime_r.c'; then $(CYGPATH_W) 'time/asctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/asctime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/asctime_r.c' object='time/lib64_libmingwex_a-asctime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-asctime_r.obj `if test -f 'time/asctime_r.c'; then $(CYGPATH_W) 'time/asctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/asctime_r.c'; fi`
+
 time/lib64_libmingwex_a-clock.o: time/clock.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-clock.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-clock.Tpo -c -o time/lib64_libmingwex_a-clock.o `test -f 'time/clock.c' || echo '$(srcdir)/'`time/clock.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-clock.Tpo time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
@@ -14497,6 +14656,48 @@ time/lib64_libmingwex_a-clock.obj: time/clock.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/clock.c' object='time/lib64_libmingwex_a-clock.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-clock.obj `if test -f 'time/clock.c'; then $(CYGPATH_W) 'time/clock.c'; else $(CYGPATH_W) '$(srcdir)/time/clock.c'; fi`
+
+time/lib64_libmingwex_a-ctime_r.o: time/ctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-ctime_r.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Tpo -c -o time/lib64_libmingwex_a-ctime_r.o `test -f 'time/ctime_r.c' || echo '$(srcdir)/'`time/ctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/ctime_r.c' object='time/lib64_libmingwex_a-ctime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-ctime_r.o `test -f 'time/ctime_r.c' || echo '$(srcdir)/'`time/ctime_r.c
+
+time/lib64_libmingwex_a-ctime_r.obj: time/ctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-ctime_r.obj -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Tpo -c -o time/lib64_libmingwex_a-ctime_r.obj `if test -f 'time/ctime_r.c'; then $(CYGPATH_W) 'time/ctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/ctime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/ctime_r.c' object='time/lib64_libmingwex_a-ctime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-ctime_r.obj `if test -f 'time/ctime_r.c'; then $(CYGPATH_W) 'time/ctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/ctime_r.c'; fi`
+
+time/lib64_libmingwex_a-gmtime_r.o: time/gmtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-gmtime_r.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Tpo -c -o time/lib64_libmingwex_a-gmtime_r.o `test -f 'time/gmtime_r.c' || echo '$(srcdir)/'`time/gmtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/gmtime_r.c' object='time/lib64_libmingwex_a-gmtime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-gmtime_r.o `test -f 'time/gmtime_r.c' || echo '$(srcdir)/'`time/gmtime_r.c
+
+time/lib64_libmingwex_a-gmtime_r.obj: time/gmtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-gmtime_r.obj -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Tpo -c -o time/lib64_libmingwex_a-gmtime_r.obj `if test -f 'time/gmtime_r.c'; then $(CYGPATH_W) 'time/gmtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/gmtime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/gmtime_r.c' object='time/lib64_libmingwex_a-gmtime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-gmtime_r.obj `if test -f 'time/gmtime_r.c'; then $(CYGPATH_W) 'time/gmtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/gmtime_r.c'; fi`
+
+time/lib64_libmingwex_a-localtime_r.o: time/localtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-localtime_r.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Tpo -c -o time/lib64_libmingwex_a-localtime_r.o `test -f 'time/localtime_r.c' || echo '$(srcdir)/'`time/localtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/localtime_r.c' object='time/lib64_libmingwex_a-localtime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-localtime_r.o `test -f 'time/localtime_r.c' || echo '$(srcdir)/'`time/localtime_r.c
+
+time/lib64_libmingwex_a-localtime_r.obj: time/localtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-localtime_r.obj -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Tpo -c -o time/lib64_libmingwex_a-localtime_r.obj `if test -f 'time/localtime_r.c'; then $(CYGPATH_W) 'time/localtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/localtime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Tpo time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/localtime_r.c' object='time/lib64_libmingwex_a-localtime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/lib64_libmingwex_a-localtime_r.obj `if test -f 'time/localtime_r.c'; then $(CYGPATH_W) 'time/localtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/localtime_r.c'; fi`
 
 time/lib64_libmingwex_a-nanosleep.o: time/nanosleep.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/lib64_libmingwex_a-nanosleep.o -MD -MP -MF time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Tpo -c -o time/lib64_libmingwex_a-nanosleep.o `test -f 'time/nanosleep.c' || echo '$(srcdir)/'`time/nanosleep.c
@@ -19874,6 +20075,20 @@ misc/libarm64_libmingwex_a-fwide.obj: misc/fwide.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-fwide.obj `if test -f 'misc/fwide.c'; then $(CYGPATH_W) 'misc/fwide.c'; else $(CYGPATH_W) '$(srcdir)/misc/fwide.c'; fi`
 
+misc/libarm64_libmingwex_a-getentropy.o: misc/getentropy.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-getentropy.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Tpo -c -o misc/libarm64_libmingwex_a-getentropy.o `test -f 'misc/getentropy.c' || echo '$(srcdir)/'`misc/getentropy.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/getentropy.c' object='misc/libarm64_libmingwex_a-getentropy.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-getentropy.o `test -f 'misc/getentropy.c' || echo '$(srcdir)/'`misc/getentropy.c
+
+misc/libarm64_libmingwex_a-getentropy.obj: misc/getentropy.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-getentropy.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Tpo -c -o misc/libarm64_libmingwex_a-getentropy.obj `if test -f 'misc/getentropy.c'; then $(CYGPATH_W) 'misc/getentropy.c'; else $(CYGPATH_W) '$(srcdir)/misc/getentropy.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/getentropy.c' object='misc/libarm64_libmingwex_a-getentropy.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-getentropy.obj `if test -f 'misc/getentropy.c'; then $(CYGPATH_W) 'misc/getentropy.c'; else $(CYGPATH_W) '$(srcdir)/misc/getentropy.c'; fi`
+
 misc/libarm64_libmingwex_a-getlogin.o: misc/getlogin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-getlogin.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Tpo -c -o misc/libarm64_libmingwex_a-getlogin.o `test -f 'misc/getlogin.c' || echo '$(srcdir)/'`misc/getlogin.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Po
@@ -20826,6 +21041,62 @@ stdio/libarm64_libmingwex_a-vasprintf.obj: stdio/vasprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libmingwex_a-vasprintf.obj `if test -f 'stdio/vasprintf.c'; then $(CYGPATH_W) 'stdio/vasprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/vasprintf.c'; fi`
 
+string/libarm64_libmingwex_a-strerror_r.o: string/strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libmingwex_a-strerror_r.o -MD -MP -MF string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Tpo -c -o string/libarm64_libmingwex_a-strerror_r.o `test -f 'string/strerror_r.c' || echo '$(srcdir)/'`string/strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Tpo string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strerror_r.c' object='string/libarm64_libmingwex_a-strerror_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libmingwex_a-strerror_r.o `test -f 'string/strerror_r.c' || echo '$(srcdir)/'`string/strerror_r.c
+
+string/libarm64_libmingwex_a-strerror_r.obj: string/strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libmingwex_a-strerror_r.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Tpo -c -o string/libarm64_libmingwex_a-strerror_r.obj `if test -f 'string/strerror_r.c'; then $(CYGPATH_W) 'string/strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/strerror_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Tpo string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strerror_r.c' object='string/libarm64_libmingwex_a-strerror_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libmingwex_a-strerror_r.obj `if test -f 'string/strerror_r.c'; then $(CYGPATH_W) 'string/strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/strerror_r.c'; fi`
+
+string/libarm64_libmingwex_a-strndup.o: string/strndup.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libmingwex_a-strndup.o -MD -MP -MF string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Tpo -c -o string/libarm64_libmingwex_a-strndup.o `test -f 'string/strndup.c' || echo '$(srcdir)/'`string/strndup.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Tpo string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strndup.c' object='string/libarm64_libmingwex_a-strndup.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libmingwex_a-strndup.o `test -f 'string/strndup.c' || echo '$(srcdir)/'`string/strndup.c
+
+string/libarm64_libmingwex_a-strndup.obj: string/strndup.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libmingwex_a-strndup.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Tpo -c -o string/libarm64_libmingwex_a-strndup.obj `if test -f 'string/strndup.c'; then $(CYGPATH_W) 'string/strndup.c'; else $(CYGPATH_W) '$(srcdir)/string/strndup.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Tpo string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/strndup.c' object='string/libarm64_libmingwex_a-strndup.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libmingwex_a-strndup.obj `if test -f 'string/strndup.c'; then $(CYGPATH_W) 'string/strndup.c'; else $(CYGPATH_W) '$(srcdir)/string/strndup.c'; fi`
+
+string/libarm64_libmingwex_a-xsi_strerror_r.o: string/xsi_strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libmingwex_a-xsi_strerror_r.o -MD -MP -MF string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Tpo -c -o string/libarm64_libmingwex_a-xsi_strerror_r.o `test -f 'string/xsi_strerror_r.c' || echo '$(srcdir)/'`string/xsi_strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Tpo string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/xsi_strerror_r.c' object='string/libarm64_libmingwex_a-xsi_strerror_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libmingwex_a-xsi_strerror_r.o `test -f 'string/xsi_strerror_r.c' || echo '$(srcdir)/'`string/xsi_strerror_r.c
+
+string/libarm64_libmingwex_a-xsi_strerror_r.obj: string/xsi_strerror_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libmingwex_a-xsi_strerror_r.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Tpo -c -o string/libarm64_libmingwex_a-xsi_strerror_r.obj `if test -f 'string/xsi_strerror_r.c'; then $(CYGPATH_W) 'string/xsi_strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/xsi_strerror_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Tpo string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/xsi_strerror_r.c' object='string/libarm64_libmingwex_a-xsi_strerror_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libmingwex_a-xsi_strerror_r.obj `if test -f 'string/xsi_strerror_r.c'; then $(CYGPATH_W) 'string/xsi_strerror_r.c'; else $(CYGPATH_W) '$(srcdir)/string/xsi_strerror_r.c'; fi`
+
+time/libarm64_libmingwex_a-asctime_r.o: time/asctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-asctime_r.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Tpo -c -o time/libarm64_libmingwex_a-asctime_r.o `test -f 'time/asctime_r.c' || echo '$(srcdir)/'`time/asctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/asctime_r.c' object='time/libarm64_libmingwex_a-asctime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-asctime_r.o `test -f 'time/asctime_r.c' || echo '$(srcdir)/'`time/asctime_r.c
+
+time/libarm64_libmingwex_a-asctime_r.obj: time/asctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-asctime_r.obj -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Tpo -c -o time/libarm64_libmingwex_a-asctime_r.obj `if test -f 'time/asctime_r.c'; then $(CYGPATH_W) 'time/asctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/asctime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/asctime_r.c' object='time/libarm64_libmingwex_a-asctime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-asctime_r.obj `if test -f 'time/asctime_r.c'; then $(CYGPATH_W) 'time/asctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/asctime_r.c'; fi`
+
 time/libarm64_libmingwex_a-clock.o: time/clock.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-clock.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-clock.Tpo -c -o time/libarm64_libmingwex_a-clock.o `test -f 'time/clock.c' || echo '$(srcdir)/'`time/clock.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-clock.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
@@ -20839,6 +21110,48 @@ time/libarm64_libmingwex_a-clock.obj: time/clock.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/clock.c' object='time/libarm64_libmingwex_a-clock.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-clock.obj `if test -f 'time/clock.c'; then $(CYGPATH_W) 'time/clock.c'; else $(CYGPATH_W) '$(srcdir)/time/clock.c'; fi`
+
+time/libarm64_libmingwex_a-ctime_r.o: time/ctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-ctime_r.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Tpo -c -o time/libarm64_libmingwex_a-ctime_r.o `test -f 'time/ctime_r.c' || echo '$(srcdir)/'`time/ctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/ctime_r.c' object='time/libarm64_libmingwex_a-ctime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-ctime_r.o `test -f 'time/ctime_r.c' || echo '$(srcdir)/'`time/ctime_r.c
+
+time/libarm64_libmingwex_a-ctime_r.obj: time/ctime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-ctime_r.obj -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Tpo -c -o time/libarm64_libmingwex_a-ctime_r.obj `if test -f 'time/ctime_r.c'; then $(CYGPATH_W) 'time/ctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/ctime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/ctime_r.c' object='time/libarm64_libmingwex_a-ctime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-ctime_r.obj `if test -f 'time/ctime_r.c'; then $(CYGPATH_W) 'time/ctime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/ctime_r.c'; fi`
+
+time/libarm64_libmingwex_a-gmtime_r.o: time/gmtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-gmtime_r.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Tpo -c -o time/libarm64_libmingwex_a-gmtime_r.o `test -f 'time/gmtime_r.c' || echo '$(srcdir)/'`time/gmtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/gmtime_r.c' object='time/libarm64_libmingwex_a-gmtime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-gmtime_r.o `test -f 'time/gmtime_r.c' || echo '$(srcdir)/'`time/gmtime_r.c
+
+time/libarm64_libmingwex_a-gmtime_r.obj: time/gmtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-gmtime_r.obj -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Tpo -c -o time/libarm64_libmingwex_a-gmtime_r.obj `if test -f 'time/gmtime_r.c'; then $(CYGPATH_W) 'time/gmtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/gmtime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/gmtime_r.c' object='time/libarm64_libmingwex_a-gmtime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-gmtime_r.obj `if test -f 'time/gmtime_r.c'; then $(CYGPATH_W) 'time/gmtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/gmtime_r.c'; fi`
+
+time/libarm64_libmingwex_a-localtime_r.o: time/localtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-localtime_r.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Tpo -c -o time/libarm64_libmingwex_a-localtime_r.o `test -f 'time/localtime_r.c' || echo '$(srcdir)/'`time/localtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/localtime_r.c' object='time/libarm64_libmingwex_a-localtime_r.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-localtime_r.o `test -f 'time/localtime_r.c' || echo '$(srcdir)/'`time/localtime_r.c
+
+time/libarm64_libmingwex_a-localtime_r.obj: time/localtime_r.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-localtime_r.obj -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Tpo -c -o time/libarm64_libmingwex_a-localtime_r.obj `if test -f 'time/localtime_r.c'; then $(CYGPATH_W) 'time/localtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/localtime_r.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Tpo time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='time/localtime_r.c' object='time/libarm64_libmingwex_a-localtime_r.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o time/libarm64_libmingwex_a-localtime_r.obj `if test -f 'time/localtime_r.c'; then $(CYGPATH_W) 'time/localtime_r.c'; else $(CYGPATH_W) '$(srcdir)/time/localtime_r.c'; fi`
 
 time/libarm64_libmingwex_a-nanosleep.o: time/nanosleep.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT time/libarm64_libmingwex_a-nanosleep.o -MD -MP -MF time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Tpo -c -o time/libarm64_libmingwex_a-nanosleep.o `test -f 'time/nanosleep.c' || echo '$(srcdir)/'`time/nanosleep.c
@@ -26030,6 +26343,7 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-fwide.Po
+	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-getopt.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po
@@ -26085,6 +26399,7 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-fwide.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-getopt.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po
@@ -26269,6 +26584,9 @@ distclean: distclean-am
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po
+	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po
+	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po
+	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po
@@ -26279,6 +26597,9 @@ distclean: distclean-am
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsrchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsstr.Po
+	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po
+	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po
+	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po
@@ -26402,9 +26723,17 @@ distclean: distclean-am
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Po
 	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Po
 	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Po
 	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Po
 	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -27143,6 +27472,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-ftw64.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-fwide.Po
+	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-getentropy.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-getlogin.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-getopt.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-gettimeofday.Po
@@ -27198,6 +27528,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-ftw64.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-fwide.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-getentropy.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-getlogin.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-getopt.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-gettimeofday.Po
@@ -27382,6 +27713,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po
+	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po
+	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po
+	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po
@@ -27392,6 +27726,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcschr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsrchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-wcsstr.Po
+	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po
+	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po
+	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po
@@ -27515,9 +27852,17 @@ maintainer-clean: maintainer-clean-am
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-csqrt.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctan.Po
 	-rm -f testcases/complex/$(DEPDIR)/tests64_libnewcomplextestsld_a-ctanh.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-asctime_r.Po
 	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-ctime_r.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-gmtime_r.Po
+	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-localtime_r.Po
 	-rm -f time/$(DEPDIR)/lib64_libmingwex_a-nanosleep.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-asctime_r.Po
 	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-clock.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-ctime_r.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-gmtime_r.Po
+	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-localtime_r.Po
 	-rm -f time/$(DEPDIR)/libarm64_libmingwex_a-nanosleep.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
