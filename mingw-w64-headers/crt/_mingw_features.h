@@ -104,7 +104,6 @@
 #endif
 
 #if defined(__cplusplus) && ((__cplusplus - 0) >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__))
-# undef  __MINGW_USE_ISOCXX11
 # define __MINGW_USE_ISOCXX11 1
 #endif
 
@@ -122,7 +121,6 @@
 #endif
 
 #if (!defined(__STRICT_ANSI__) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) >= 500)) && !defined(_POSIX_C_SOURCE)
-# define _POSIX_C_SOURCE 1
 # if defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 500
 #   define _POSIX_C_SOURCE 2
 # elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 600
@@ -171,16 +169,18 @@
 # if (_XOPEN_SOURCE - 0) >= 500
 #   define __MINGW_USE_XOPEN_EXT 1
 #   define __MINGW_USE_UNIX98    1
-#   undef _LARGEFILE_SOURCE
+#   undef  _LARGEFILE_SOURCE
 #   define _LARGEFILE_SOURCE     1
 #   if (_XOPEN_SOURCE - 0) >= 600
 #     undef  __MINGW_USE_ISOC95
 #     undef  __MINGW_USE_ISOC99
+#     undef  __MINGW_USE_XOPEN2K
 #     define __MINGW_USE_ISOC95     1
 #     define __MINGW_USE_ISOC99     1
 #     define __MINGW_USE_XOPEN2K    1
 #     define __MINGW_USE_XOPEN2KXSI 1
 #     if (_XOPEN_SOURCE - 0) >= 700
+#       undef  __MINGW_USE_XOPEN2K8
 #       define __MINGW_USE_XOPEN2K8    1
 #       define __MINGW_USE_XOPEN2K8XSI 1
 #     endif
