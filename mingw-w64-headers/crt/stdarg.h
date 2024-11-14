@@ -61,7 +61,3 @@ Boston, MA 02110-1301, USA.  */
 #endif
 
 #endif  /* _STDARG_H */
-
-/* include mingw stuff */
-#include <_mingw_stdarg.h>
-
