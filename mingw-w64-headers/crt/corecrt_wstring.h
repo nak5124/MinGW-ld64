@@ -55,11 +55,14 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control)                 __MINGW_NONNULL((1, 2)) __MINGW_PURE;
   _CRTIMP size_t                 __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control)                  __MINGW_NONNULL((1, 2)) __MINGW_PURE;
 
-  __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
-  wchar_t *_wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim)
+  extern wchar_t *__cdecl _wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim) __MINGW_DEPRECATED_SEC_WARN;
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_DEPRECATED_SEC_WARN
+  wchar_t *__cdecl _wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim)
   {
     return wcstok(_Str, _Delim, NULL);
   }
+#endif
 
 #ifdef _CRT_NON_CONFORMING_WCSTOK
 # ifndef __cplusplus
