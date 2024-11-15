@@ -1,13 +1,14 @@
 #define _CRT_RAND_S
+#define _MS_SOURCE
+#define _XOPEN_SOURCE 500
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-#include <io.h>
 #include <errno.h>
-#include <share.h>
-#include <fcntl.h>
-#include <sys/stat.h>
 #include <limits.h>
+#include <io.h>
+#include <fcntl.h>
+#include <share.h>
+#include <sys/stat.h>
 
 /*
     The mkstemp() function generates a unique temporary filename from template,
@@ -49,17 +50,21 @@ int __cdecl mkstemp (char *template_name)
                 r = rand();
             template_name[j] = letters[r % 62];
         }
-        fd = _sopen(template_name,
+        errno_t err = _sopen_s(&fd, template_name,
                 _O_RDWR | _O_CREAT | _O_EXCL | _O_BINARY,
                 _SH_DENYNO, _S_IREAD | _S_IWRITE);
-        if (fd != -1) return fd;
-        if (fd == -1 && errno != EEXIST) return -1;
+        if (fd != -1 && err == 0) return fd;
+        if (err != 0 && errno != EEXIST) return -1;
     }
 
     return -1;
 }
 
+int __cdecl mkstemp64 (char *template_name) __attribute__((alias("mkstemp")));
+
 #if 0
+#include <stdio.h>
+
 int main (int argc, char *argv[])
 {
     int i, fd;

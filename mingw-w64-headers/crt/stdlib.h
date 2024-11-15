@@ -533,7 +533,16 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_ALLOCATION_DEFINED */
 
 #if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MISC)
-  extern int __cdecl mkstemp(char *__template) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  extern int __cdecl mkstemp(char *_Template)   __MINGW_NONNULL((1));
+# if __MINGW_USE_LFS64
+  extern int __cdecl mkstemp64(char *_Template) __MINGW_NONNULL((1));
+# endif
+#endif
+#ifdef __MINGW_USE_MISC
+  extern int __cdecl mkstemps(char *_Template, int _Suffixlen)   __MINGW_NONNULL((1));
+# ifdef __MINGW_USE_LFS64
+  extern int __cdecl mkstemps64(char *_Template, int _Suffixlen) __MINGW_NONNULL((1));
+# endif
 #endif
 
 #ifndef __STRICT_ANSI__
