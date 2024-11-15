@@ -2499,6 +2499,7 @@ testcase_progs = \
   testcases/t_readdir \
   testcases/t_snprintf \
   testcases/t_swprintf \
+  testcases/t_snwprintf \
   testcases/t_setjmp \
   testcases/t_sigv \
   testcases/t_speed_powl \
