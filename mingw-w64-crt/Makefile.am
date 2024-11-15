@@ -2497,6 +2497,7 @@ testcase_progs = \
   testcases/t_matherr \
   testcases/t_nullptrexception \
   testcases/t_readdir \
+  testcases/t_snprintf \
   testcases/t_setjmp \
   testcases/t_sigv \
   testcases/t_speed_powl \
