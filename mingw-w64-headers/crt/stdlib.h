@@ -543,6 +543,10 @@ __MINGW_BEGIN_C_DECLS
 # ifdef __MINGW_USE_LFS64
   extern int __cdecl mkstemps64(char *_Template, int _Suffixlen) __MINGW_NONNULL((1));
 # endif
+# include <stdint.h>
+  extern uint32_t __cdecl arc4random(void)                                              __MINGW_NOTHROW;
+  extern uint32_t __cdecl arc4random_uniform(uint32_t _Upper_bound)                     __MINGW_NOTHROW;
+  extern void     __cdecl arc4random_buf(void *_Buf, size_t _Size) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
 #endif
 
 #ifndef __STRICT_ANSI__
