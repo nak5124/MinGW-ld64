@@ -30,7 +30,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t  __cdecl wcsncpy_s(wchar_t *_Dst, size_t _DstSizeInChars, const wchar_t *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, wcsncpy_s, wchar_t, _Dest, const wchar_t *, _Source, size_t, _MaxCount)
 #endif
-  _CRTIMP wchar_t *__cdecl wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim, wchar_t **_Ptr) __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *__cdecl wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim, wchar_t **__restrict _Ptr) __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP wchar_t *__cdecl wcstok_s(wchar_t *_Str, const wchar_t *_Delim, wchar_t **_Context);
 #endif
@@ -58,20 +58,17 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   wchar_t *_wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim)
   {
-    return wcstok(_Str, _Delim, 0);
+    return wcstok(_Str, _Delim, NULL);
   }
 
 #ifdef _CRT_NON_CONFORMING_WCSTOK
 # ifndef __cplusplus
 #   define wcstok _wcstok
 # elif !defined(_CRT_NO_INLINE_DEPRECATED_WCSTOK)
-  extern "C++"
+  extern "C++" inline __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
+  wchar_t *__CRTDECL wcstok(wchar_t *_Str, const wchar_t *_Delim)
   {
-    inline __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
-    wchar_t *__CRTDECL wcstok(wchar_t *_Str, const wchar_t *_Delim) throw()
-    {
-      return wcstok(_Str, _Delim, 0);
-    }
+    return wcstok(_Str, _Delim, NULL);
   }
 # endif
 #endif  /* _CRT_NON_CONFORMING_WCSTOK */
