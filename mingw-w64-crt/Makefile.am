@@ -7,7 +7,7 @@ else
 endif
 
 AM_CPPFLAGS=$(sysincludes)
-AM_CFLAGS=-pipe -std=gnu99 -D_CRTBLD -D_WIN32_WINNT=0x0A00 -D__USE_MINGW_ANSI_STDIO=0 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
+AM_CFLAGS=-pipe -std=gnu99 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
 AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@ @ADD_CXX_ONLY_WARNING_FLAGS@
 CPPFLAGSARM64=
 CPPFLAGS64=-m64 -masm=att
@@ -135,9 +135,9 @@ src_ucrtbase=\
   \
   stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c      stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c     \
   stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c       \
-  stdio/ucrt_ms_fwprintf.c   stdio/ucrt_printf.c       stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c    stdio/ucrt_sprintf.c        \
-  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c     stdio/ucrt_vfscanf.c       stdio/ucrt_vprintf.c     stdio/ucrt_vscanf.c         \
-  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c     stdio/ucrt_vsscanf.c
+  stdio/ucrt_printf.c        stdio/ucrt_scanf.c        stdio/ucrt_snprintf.c      stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c         \
+  stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c      stdio/ucrt_vprintf.c       stdio/ucrt_vscanf.c      stdio/ucrt_vsnprintf.c      \
+  stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c
 
 # Files included in libucrtapp.a
 src_ucrtapp=\
@@ -170,12 +170,6 @@ src_libmingwex=\
   complex/csqrt.c                  complex/csqrtf.c        complex/csqrtl.c         complex/ctan.c             complex/ctanf.c         \
   complex/ctanl.c                  complex/norm.c          complex/normf.c          complex/norml.c            \
   \
-  gdtoa/arithchk.c                 gdtoa/dmisc.c           gdtoa/dtoa.c             gdtoa/g__fmt.c             gdtoa/g_dfmt.c          \
-  gdtoa/g_ffmt.c                   gdtoa/g_xfmt.c          gdtoa/gdtoa.c            gdtoa/gethex.c             gdtoa/gmisc.c           \
-  gdtoa/hd_init.c                  gdtoa/hexnan.c          gdtoa/misc.c             gdtoa/qnan.c               gdtoa/smisc.c           \
-  gdtoa/strtodg.c                  gdtoa/strtodnrp.c       gdtoa/strtof.c           gdtoa/strtopx.c            gdtoa/sum.c             \
-  gdtoa/ulp.c                      \
-  \
   math/fpclassify.c                math/fpclassifyf.c      math/isnan.c             math/isnanf.c              math/signbit.c          \
   math/signbitf.c                  \
   \
@@ -193,13 +187,7 @@ src_libmingwex=\
   ssp/memset_chk.c                 ssp/stack_chk_fail.c    ssp/stack_chk_guard.c    ssp/stpcpy_chk.c           ssp/strcat_chk.c        \
   ssp/strcpy_chk.c                 ssp/strncat_chk.c       ssp/strncpy_chk.c        \
   \
-  stdio/asprintf.c                 stdio/ftruncate64.c     stdio/mingw_asprintf.c   stdio/mingw_fprintf.c      stdio/mingw_fprintfw.c  \
-  stdio/mingw_fscanf.c             stdio/mingw_fwscanf.c   stdio/mingw_pformat.c    stdio/mingw_pformatw.c     stdio/mingw_printf.c    \
-  stdio/mingw_printfw.c            stdio/mingw_scanf.c     stdio/mingw_snprintf.c   stdio/mingw_snprintfw.c    stdio/mingw_sprintf.c   \
-  stdio/mingw_sprintfw.c           stdio/mingw_sscanf.c    stdio/mingw_swscanf.c    stdio/mingw_vasprintf.c    stdio/mingw_vfprintf.c  \
-  stdio/mingw_vfprintfw.c          stdio/mingw_vfscanf.c   stdio/mingw_vprintf.c    stdio/mingw_vprintfw.c     stdio/mingw_vsnprintf.c \
-  stdio/mingw_vsnprintfw.c         stdio/mingw_vsprintf.c  stdio/mingw_vsprintfw.c  stdio/mingw_wscanf.c       stdio/mingw_wvfscanf.c  \
-  stdio/strtok_r.c                 stdio/truncate.c        stdio/vasprintf.c        \
+  stdio/asprintf.c                 stdio/ftruncate64.c     stdio/strtok_r.c         stdio/truncate.c           stdio/vasprintf.c       \
   \
   string/strerror_r.c              string/strndup.c        string/xsi_strerror_r.c  \
   \

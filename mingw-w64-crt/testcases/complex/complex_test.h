@@ -47,7 +47,6 @@
 #define _NEWCOMPLEX_TEST_H
 
 /* Support printing of long doubles.  */
-#define __USE_MINGW_ANSI_STDIO 1
 #include <stdio.h>
 #include <math.h>
 #include <complex.h>
