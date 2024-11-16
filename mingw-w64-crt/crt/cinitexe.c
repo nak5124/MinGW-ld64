@@ -1,5 +1,5 @@
+#include <internal.h>
 #include <stdio.h>
-#include <sect_attribs.h>
 
 typedef void (__cdecl *_PVFV)(void);
 

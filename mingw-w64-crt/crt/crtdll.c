@@ -10,7 +10,6 @@
 #define _DLL
 #endif
 
-#include <oscalls.h>
 #include <internal.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -29,7 +28,6 @@
 #endif
 #endif
 #endif
-#include <sect_attribs.h>
 #include <locale.h>
 #include <stdio.h>
 #ifdef __USING_MCFGTHREAD__

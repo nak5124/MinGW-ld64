@@ -11,14 +11,12 @@
 
 #define SPECIAL_CRTEXE
 
-#include <oscalls.h>
 #include <internal.h>
 #include <process.h>
 #include <signal.h>
 #include <math.h>
 #include <stdlib.h>
 #include <tchar.h>
-#include <sect_attribs.h>
 #include <locale.h>
 #include <corecrt_startup.h>
 #include <stdio.h>

@@ -27,8 +27,6 @@ int __mingw_cxa_thread_atexit(dtor_fn dtor, void *obj, void *dso)
 
 #else  /* __USING_MCFGTHREAD__  */
 
-#include <sect_attribs.h>
-
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif

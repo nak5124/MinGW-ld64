@@ -10,13 +10,7 @@
 #undef CRTDLL
 #endif
 
-#include <sect_attribs.h>
-
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-#include <windows.h>
-
+#include <internal.h>
 #include <stdio.h>
 #include <memory.h>
 #include <malloc.h>
@@ -46,9 +40,9 @@ _CRTALLOC(".CRT$XLZ") PIMAGE_TLS_CALLBACK __xl_z = 0;
 
 __attribute__((used))
 const IMAGE_TLS_DIRECTORY _tls_used = {
-  (ULONG_PTR) &_tls_start, (ULONG_PTR) &_tls_end,
-  (ULONG_PTR) &_tls_index, (ULONG_PTR) (&__xl_a+1),
-  (ULONG) 0, (ULONG) 0
+  (ULONGLONG) &_tls_start, (ULONGLONG) &_tls_end,
+  (ULONGLONG) &_tls_index, (ULONGLONG) (&__xl_a+1),
+  (DWORD)0, {(DWORD)0}
 };
 
 #ifndef __CRT_THREAD

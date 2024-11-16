@@ -2393,7 +2393,7 @@ dist_libsrc_DATA = \
 #
 
 noinst_HEADERS = libsrc/dxerr.c \
- include/internal.h include/oscalls.h include/sect_attribs.h
+ include/internal.h
 
 
 # Cleaning options

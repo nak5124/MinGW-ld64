@@ -3,9 +3,7 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
-#include <crtdefs.h>
-#include <sect_attribs.h>
+#include <internal.h>
 #include <corecrt_startup.h>
 
 __declspec(dllimport) int __lconv_init (void);

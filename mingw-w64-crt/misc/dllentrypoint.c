@@ -3,8 +3,7 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
-#include <oscalls.h>
+#include <internal.h>
 #define _DECL_DLLMAIN
 #include <process.h>
 
