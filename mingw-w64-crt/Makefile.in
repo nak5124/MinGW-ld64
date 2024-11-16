@@ -3985,7 +3985,7 @@ processed_defs = $(am__append_4) $(am__append_6)
 noinst_LIBRARIES = $(am__append_5) $(am__append_7)
 
 # default directx import library names
-xinput = xinput1_3
+xinput = xinput1_4
 xapofx = xapofx1_5
 x3daudio = x3daudio1_7
 d3dx9 = d3dx9_43
@@ -4614,46 +4614,13 @@ src_intrincsarm64 =
 @LIB64_TRUE@	lib64/libwdsimage.a lib64/libwofutil.a \
 @LIB64_TRUE@	lib64/libwsmsvc.a lib64/libvirtdisk.a \
 @LIB64_TRUE@	lib64/libcryptxml.a lib64/libsspicli.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_33.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_34.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_35.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_36.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_37.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_38.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_39.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_40.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_41.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_42.a \
-@LIB64_TRUE@	lib64/libd3dcompiler_43.a lib64/libd3dcsxd_43.a \
-@LIB64_TRUE@	lib64/libd3dx10_33.a lib64/libd3dx10_34.a \
-@LIB64_TRUE@	lib64/libd3dx10_35.a lib64/libd3dx10_36.a \
-@LIB64_TRUE@	lib64/libd3dx10_37.a lib64/libd3dx10_38.a \
-@LIB64_TRUE@	lib64/libd3dx10_39.a lib64/libd3dx10_40.a \
-@LIB64_TRUE@	lib64/libd3dx10_41.a lib64/libd3dx10_42.a \
-@LIB64_TRUE@	lib64/libd3dx10_43.a lib64/libd3dx11_42.a \
-@LIB64_TRUE@	lib64/libd3dx11_43.a lib64/libd3dx9_24.a \
-@LIB64_TRUE@	lib64/libd3dx9_25.a lib64/libd3dx9_26.a \
-@LIB64_TRUE@	lib64/libd3dx9_27.a lib64/libd3dx9_28.a \
-@LIB64_TRUE@	lib64/libd3dx9_29.a lib64/libd3dx9_30.a \
-@LIB64_TRUE@	lib64/libd3dx9_31.a lib64/libd3dx9_32.a \
-@LIB64_TRUE@	lib64/libd3dx9_33.a lib64/libd3dx9_34.a \
-@LIB64_TRUE@	lib64/libd3dx9_35.a lib64/libd3dx9_36.a \
-@LIB64_TRUE@	lib64/libd3dx9_37.a lib64/libd3dx9_38.a \
-@LIB64_TRUE@	lib64/libd3dx9_39.a lib64/libd3dx9_40.a \
-@LIB64_TRUE@	lib64/libd3dx9_41.a lib64/libd3dx9_42.a \
-@LIB64_TRUE@	lib64/libd3dx9_43.a lib64/libdwrite.a \
-@LIB64_TRUE@	lib64/libdxgi.a lib64/libx3daudio1_2.a \
-@LIB64_TRUE@	lib64/libx3daudio1_3.a lib64/libx3daudio1_4.a \
-@LIB64_TRUE@	lib64/libx3daudio1_5.a lib64/libx3daudio1_6.a \
+@LIB64_TRUE@	lib64/libd3dcsxd_43.a lib64/libd3dx10_43.a \
+@LIB64_TRUE@	lib64/libd3dx11_43.a lib64/libd3dx9_43.a \
+@LIB64_TRUE@	lib64/libdwrite.a lib64/libdxgi.a \
 @LIB64_TRUE@	lib64/libx3daudio1_7.a lib64/libx3daudiod1_7.a \
-@LIB64_TRUE@	lib64/libxapofx1_0.a lib64/libxapofx1_1.a \
-@LIB64_TRUE@	lib64/libxapofx1_2.a lib64/libxapofx1_3.a \
-@LIB64_TRUE@	lib64/libxapofx1_4.a lib64/libxapofx1_5.a \
-@LIB64_TRUE@	lib64/libxapofxd1_5.a lib64/libxinput1_1.a \
-@LIB64_TRUE@	lib64/libxinput1_2.a lib64/libxinput1_3.a \
+@LIB64_TRUE@	lib64/libxapofx1_5.a lib64/libxapofxd1_5.a \
 @LIB64_TRUE@	lib64/libxinput1_4.a lib64/libxinput9_1_0.a \
-@LIB64_TRUE@	lib64/libxinputuap.a lib64/libxaudio2_8.a \
-@LIB64_TRUE@	lib64/libxaudio2_9.a lib64/libd3dcompiler_46.a \
+@LIB64_TRUE@	lib64/libxinputuap.a lib64/libxaudio2_9.a \
 @LIB64_TRUE@	lib64/libd3dcsx_46.a lib64/libd3dcompiler_47.a \
 @LIB64_TRUE@	lib64/libwimgapi.a lib64/libwinhttp.a \
 @LIB64_TRUE@	lib64/libruntimeobject.a \
@@ -5021,10 +4988,10 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@	libarm64/libwscsvc.a libarm64/libwshbth.a \
 @LIBARM64_TRUE@	libarm64/libwslapi.a libarm64/libwsmsvc.a \
 @LIBARM64_TRUE@	libarm64/libwsock32.a libarm64/libwtsapi32.a \
-@LIBARM64_TRUE@	libarm64/libxaudio2_8.a libarm64/libxaudio2_9.a \
-@LIBARM64_TRUE@	libarm64/libxinput1_4.a libarm64/libxinputuap.a \
-@LIBARM64_TRUE@	libarm64/libxmllite.a libarm64/libucrtbase.a \
-@LIBARM64_TRUE@	libarm64/libucrt.a libarm64/libucrtapp.a
+@LIBARM64_TRUE@	libarm64/libxaudio2_9.a libarm64/libxinput1_4.a \
+@LIBARM64_TRUE@	libarm64/libxinputuap.a libarm64/libxmllite.a \
+@LIBARM64_TRUE@	libarm64/libucrtbase.a libarm64/libucrt.a \
+@LIBARM64_TRUE@	libarm64/libucrtapp.a
 @LIBARM64_TRUE@libarm64_libbits_a_SOURCES = $(src_libbits)
 @LIBARM64_TRUE@libarm64_libbits_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@libarm64_libshell32_a_SOURCES = $(src_libshell32)
@@ -25951,7 +25918,7 @@ _libm_dummy.c:
 @LIB64_TRUE@lib64/lib%_def.a: lib-common/%.def
 @LIB64_TRUE@	$(DTDEF64) $<
 
-@LIB64_TRUE@lib64/libxinput.a: lib64/$(xinput).def
+@LIB64_TRUE@lib64/libxinput.a: lib-common/$(xinput).def
 @LIB64_TRUE@	$(DTDEF64) $<
 @LIB64_TRUE@lib64/libxapofx.a: lib64/$(xapofx).def
 @LIB64_TRUE@	$(DTDEF64) $<
