@@ -32,7 +32,7 @@ processed_defs=
 noinst_LIBRARIES =
 
 # default directx import library names
-xinput=xinput1_3
+xinput=xinput1_4
 xapofx=xapofx1_5
 x3daudio=x3daudio1_7
 d3dx9=d3dx9_43
@@ -478,7 +478,7 @@ dx64_DATA += lib64/libd3dx11.a
 dx64_DATA += lib64/libd3dcsxd.a
 dx64_DATA += lib64/libd3dcompiler.a
 
-lib64/libxinput.a: lib64/$(xinput).def
+lib64/libxinput.a: lib-common/$(xinput).def
 	$(DTDEF64) $<
 lib64/libxapofx.a: lib64/$(xapofx).def
 	$(DTDEF64) $<
