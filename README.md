@@ -28,3 +28,10 @@ Differences from official
 GCC patches
 -----------
 To use GCC where long double equals double, [GCC patches](https://github.com/nak5124/gcc/tree/ld64) are required.
+
+
+ToDo
+----
+ - Update headers
+   - shlwapi.h
+   - iphlpapi.h
