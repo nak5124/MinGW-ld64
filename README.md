@@ -21,6 +21,7 @@ Differences from official
    - mkstemps
    - strerror_r
    - strndup
+   - realpath
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Various other cosmetics.
 

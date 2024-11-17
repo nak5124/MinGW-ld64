@@ -549,6 +549,10 @@ __MINGW_BEGIN_C_DECLS
   extern void     __cdecl arc4random_buf(void *_Buf, size_t _Size) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
 #endif
 
+#if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_MISC)
+  extern char *__cdecl realpath(const char *__restrict _Path, char *__restrict _Resolved_path);
+#endif
+
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);
