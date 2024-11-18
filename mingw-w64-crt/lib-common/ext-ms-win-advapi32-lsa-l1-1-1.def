@@ -1,0 +1,5 @@
+LIBRARY ext-ms-win-advapi32-lsa-l1-1-1
+
+EXPORTS
+
+LsaLookupNames

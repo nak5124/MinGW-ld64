@@ -1112,6 +1112,8 @@ endif
 	$(RANLIB) $@
 
 %/libonecore_apiset.a: lib-common/onecore_apiset.mri \
+		%/libapi-ms-win-base-bootconfig-l1-1-0.a \
+		%/libapi-ms-win-base-util-l1-1-0.a \
 		%/libapi-ms-win-core-apiquery-l2-1-0.a \
 		%/libapi-ms-win-core-atoms-l1-1-0.a \
 		%/libapi-ms-win-core-backgroundtask-l1-1-0.a \
@@ -1121,12 +1123,14 @@ endif
 		%/libapi-ms-win-core-com-l1-1-2.a \
 		%/libapi-ms-win-core-com-l1-1-3.a \
 		%/libapi-ms-win-core-com-midlproxystub-l1-1-0.a \
+		%/libapi-ms-win-core-com-private-l1-1-0.a \
 		%/libapi-ms-win-core-comm-l1-1-0.a \
 		%/libapi-ms-win-core-comm-l1-1-1.a \
 		%/libapi-ms-win-core-comm-l1-1-2.a \
 		%/libapi-ms-win-core-console-l1-1-0.a \
 		%/libapi-ms-win-core-console-l1-2-0.a \
 		%/libapi-ms-win-core-console-l1-2-1.a \
+		%/libapi-ms-win-core-console-l1-2-2.a \
 		%/libapi-ms-win-core-console-l2-1-0.a \
 		%/libapi-ms-win-core-console-l2-2-0.a \
 		%/libapi-ms-win-core-console-l3-2-0.a \
@@ -1147,21 +1151,26 @@ endif
 		%/libapi-ms-win-core-errorhandling-l1-1-3.a \
 		%/libapi-ms-win-core-featurestaging-l1-1-0.a \
 		%/libapi-ms-win-core-featurestaging-l1-1-1.a \
+		%/libapi-ms-win-core-featuretoggles-l1-1-0.a \
 		%/libapi-ms-win-core-fibers-l1-1-0.a \
 		%/libapi-ms-win-core-fibers-l1-1-1.a \
+		%/libapi-ms-win-core-fibers-l1-1-2.a \
 		%/libapi-ms-win-core-fibers-l2-1-0.a \
 		%/libapi-ms-win-core-fibers-l2-1-1.a \
 		%/libapi-ms-win-core-file-ansi-l1-1-0.a \
 		%/libapi-ms-win-core-file-ansi-l2-1-0.a \
+		%/libapi-ms-win-core-file-fromapp-l1-1-0.a \
 		%/libapi-ms-win-core-file-l1-1-0.a \
 		%/libapi-ms-win-core-file-l1-2-0.a \
 		%/libapi-ms-win-core-file-l1-2-1.a \
 		%/libapi-ms-win-core-file-l1-2-2.a \
 		%/libapi-ms-win-core-file-l1-2-3.a \
+		%/libapi-ms-win-core-file-l1-2-4.a \
 		%/libapi-ms-win-core-file-l2-1-0.a \
 		%/libapi-ms-win-core-file-l2-1-1.a \
 		%/libapi-ms-win-core-file-l2-1-2.a \
 		%/libapi-ms-win-core-file-l2-1-3.a \
+		%/libapi-ms-win-core-file-l2-1-4.a \
 		%/libapi-ms-win-core-firmware-l1-1-0.a \
 		%/libapi-ms-win-core-handle-l1-1-0.a \
 		%/libapi-ms-win-core-heap-l1-1-0.a \
@@ -1171,6 +1180,9 @@ endif
 		%/libapi-ms-win-core-interlocked-l1-2-0.a \
 		%/libapi-ms-win-core-io-l1-1-0.a \
 		%/libapi-ms-win-core-io-l1-1-1.a \
+		%/libapi-ms-win-core-ioring-l1-1-0.a \
+		%/libapi-ms-win-core-ioring-l1-1-1.a \
+		%/libapi-ms-win-core-ioring-l1-1-2.a \
 		%/libapi-ms-win-core-job-l1-1-0.a \
 		%/libapi-ms-win-core-job-l2-1-0.a \
 		%/libapi-ms-win-core-job-l2-1-1.a \
@@ -1186,6 +1198,7 @@ endif
 		%/libapi-ms-win-core-libraryloader-l1-2-0.a \
 		%/libapi-ms-win-core-libraryloader-l1-2-1.a \
 		%/libapi-ms-win-core-libraryloader-l1-2-2.a \
+		%/libapi-ms-win-core-libraryloader-l1-2-3.a \
 		%/libapi-ms-win-core-libraryloader-l2-1-0.a \
 		%/libapi-ms-win-core-localization-ansi-l1-1-0.a \
 		%/libapi-ms-win-core-localization-l1-2-0.a \
@@ -1195,6 +1208,7 @@ endif
 		%/libapi-ms-win-core-localization-l1-2-4.a \
 		%/libapi-ms-win-core-localization-l2-1-0.a \
 		%/libapi-ms-win-core-localization-obsolete-l1-2-0.a \
+		%/libapi-ms-win-core-marshal-l1-1-0.a \
 		%/libapi-ms-win-core-memory-l1-1-0.a \
 		%/libapi-ms-win-core-memory-l1-1-1.a \
 		%/libapi-ms-win-core-memory-l1-1-2.a \
@@ -1203,6 +1217,8 @@ endif
 		%/libapi-ms-win-core-memory-l1-1-5.a \
 		%/libapi-ms-win-core-memory-l1-1-6.a \
 		%/libapi-ms-win-core-memory-l1-1-7.a \
+		%/libapi-ms-win-core-memory-l1-1-8.a \
+		%/libapi-ms-win-core-memory-l1-1-9.a \
 		%/libapi-ms-win-core-namedpipe-ansi-l1-1-0.a \
 		%/libapi-ms-win-core-namedpipe-ansi-l1-1-1.a \
 		%/libapi-ms-win-core-namedpipe-l1-1-0.a \
@@ -1224,6 +1240,10 @@ endif
 		%/libapi-ms-win-core-processthreads-l1-1-2.a \
 		%/libapi-ms-win-core-processthreads-l1-1-3.a \
 		%/libapi-ms-win-core-processthreads-l1-1-4.a \
+		%/libapi-ms-win-core-processthreads-l1-1-5.a \
+		%/libapi-ms-win-core-processthreads-l1-1-6.a \
+		%/libapi-ms-win-core-processthreads-l1-1-7.a \
+		%/libapi-ms-win-core-processthreads-l1-1-8.a \
 		%/libapi-ms-win-core-processtopology-l1-1-0.a \
 		%/libapi-ms-win-core-processtopology-obsolete-l1-1-0.a \
 		%/libapi-ms-win-core-processtopology-obsolete-l1-1-1.a \
@@ -1242,10 +1262,14 @@ endif
 		%/libapi-ms-win-core-rtlsupport-l1-1-0.a \
 		%/libapi-ms-win-core-rtlsupport-l1-2-0.a \
 		%/libapi-ms-win-core-rtlsupport-l1-2-1.a \
+		%/libapi-ms-win-core-rtlsupport-l1-2-2.a \
 		%/libapi-ms-win-core-shlwapi-legacy-l1-1-0.a \
 		%/libapi-ms-win-core-shutdown-ansi-l1-1-0.a \
 		%/libapi-ms-win-core-shutdown-l1-1-0.a \
 		%/libapi-ms-win-core-shutdown-l1-1-1.a \
+		%/libapi-ms-win-core-sidebyside-ansi-l1-1-0.a \
+		%/libapi-ms-win-core-sidebyside-l1-1-0.a \
+		%/libapi-ms-win-core-state-helpers-l1-1-0.a \
 		%/libapi-ms-win-core-string-l1-1-0.a \
 		%/libapi-ms-win-core-string-l2-1-0.a \
 		%/libapi-ms-win-core-string-l2-1-1.a \
@@ -1264,8 +1288,11 @@ endif
 		%/libapi-ms-win-core-sysinfo-l1-2-4.a \
 		%/libapi-ms-win-core-sysinfo-l1-2-5.a \
 		%/libapi-ms-win-core-sysinfo-l1-2-6.a \
+		%/libapi-ms-win-core-sysinfo-l1-2-7.a \
+		%/libapi-ms-win-core-sysinfo-l2-1-0.a \
 		%/libapi-ms-win-core-systemtopology-l1-1-0.a \
 		%/libapi-ms-win-core-systemtopology-l1-1-1.a \
+		%/libapi-ms-win-core-systemtopology-l1-1-2.a \
 		%/libapi-ms-win-core-threadpool-l1-2-0.a \
 		%/libapi-ms-win-core-threadpool-legacy-l1-1-0.a \
 		%/libapi-ms-win-core-timezone-l1-1-0.a \
@@ -1298,6 +1325,7 @@ endif
 		%/libapi-ms-win-core-wow64-l1-1-3.a \
 		%/libapi-ms-win-core-xstate-l2-1-0.a \
 		%/libapi-ms-win-core-xstate-l2-1-1.a \
+		%/libapi-ms-win-core-xstate-l2-1-2.a \
 		%/libapi-ms-win-devices-config-l1-1-1.a \
 		%/libapi-ms-win-devices-config-l1-1-2.a \
 		%/libapi-ms-win-devices-query-l1-1-0.a \
@@ -1307,12 +1335,16 @@ endif
 		%/libapi-ms-win-eventing-classicprovider-l1-1-0.a \
 		%/libapi-ms-win-eventing-consumer-l1-1-0.a \
 		%/libapi-ms-win-eventing-consumer-l1-1-1.a \
+		%/libapi-ms-win-eventing-consumer-l1-1-2.a \
 		%/libapi-ms-win-eventing-controller-l1-1-0.a \
+		%/libapi-ms-win-eventing-controller-l1-1-1.a \
 		%/libapi-ms-win-eventing-legacy-l1-1-0.a \
 		%/libapi-ms-win-eventing-obsolete-l1-1-0.a \
 		%/libapi-ms-win-eventing-provider-l1-1-0.a \
 		%/libapi-ms-win-eventing-tdh-l1-1-0.a \
 		%/libapi-ms-win-eventing-tdh-l1-1-1.a \
+		%/libapi-ms-win-eventing-tdh-l1-1-2.a \
+		%/libapi-ms-win-eventlog-legacy-l1-1-0.a \
 		%/libapi-ms-win-gaming-deviceinformation-l1-1-0.a \
 		%/libapi-ms-win-mm-time-l1-1-0.a \
 		%/libapi-ms-win-oobe-notification-l1-1-0.a \
@@ -1324,6 +1356,8 @@ endif
 		%/libapi-ms-win-ro-typeresolution-l1-1-0.a \
 		%/libapi-ms-win-ro-typeresolution-l1-1-1.a \
 		%/libapi-ms-win-security-appcontainer-l1-1-0.a \
+		%/libapi-ms-win-security-audit-l1-1-0.a \
+		%/libapi-ms-win-security-audit-l1-1-1.a \
 		%/libapi-ms-win-security-base-ansi-l1-1-0.a \
 		%/libapi-ms-win-security-base-l1-1-0.a \
 		%/libapi-ms-win-security-base-l1-2-0.a \
@@ -1334,6 +1368,8 @@ endif
 		%/libapi-ms-win-security-cryptoapi-l1-1-0.a \
 		%/libapi-ms-win-security-isolatedcontainer-l1-1-0.a \
 		%/libapi-ms-win-security-isolatedcontainer-l1-1-1.a \
+		%/libapi-ms-win-security-logon-l1-1-0.a \
+		%/libapi-ms-win-security-logon-l1-1-1.a \
 		%/libapi-ms-win-security-lsalookup-ansi-l2-1-0.a \
 		%/libapi-ms-win-security-lsalookup-l2-1-0.a \
 		%/libapi-ms-win-security-lsalookup-l2-1-1.a \
@@ -1343,6 +1379,9 @@ endif
 		%/libapi-ms-win-security-sddl-ansi-l1-1-0.a \
 		%/libapi-ms-win-security-sddl-l1-1-0.a \
 		%/libapi-ms-win-security-systemfunctions-l1-1-0.a \
+		%/libapi-ms-win-security-trustee-l1-1-0.a \
+		%/libapi-ms-win-security-trustee-l1-1-1.a \
+		%/libapi-ms-win-security-trustee-l1-1-2.a \
 		%/libapi-ms-win-service-core-ansi-l1-1-0.a \
 		%/libapi-ms-win-service-core-ansi-l1-1-1.a \
 		%/libapi-ms-win-service-core-l1-1-0.a \
@@ -1350,6 +1389,8 @@ endif
 		%/libapi-ms-win-service-core-l1-1-2.a \
 		%/libapi-ms-win-service-core-l1-1-3.a \
 		%/libapi-ms-win-service-core-l1-1-4.a \
+		%/libapi-ms-win-service-core-l1-1-5.a \
+		%/libapi-ms-win-service-legacy-l1-1-0.a \
 		%/libapi-ms-win-service-management-l1-1-0.a \
 		%/libapi-ms-win-service-management-l2-1-0.a \
 		%/libapi-ms-win-service-winsvc-l1-1-0.a \
@@ -1365,34 +1406,41 @@ endif
 		%/libapi-ms-win-shcore-sysinfo-l1-1-0.a \
 		%/libapi-ms-win-shcore-unicodeansi-l1-1-0.a \
 		%/libapi-ms-win-shell-shdirectory-l1-1-0.a \
-		%/libauthz.a \
-		%/libbcrypt.a \
+		%/libext-ms-win-advapi32-lsa-l1-1-1.a \
+		%/libext-ms-win-wer-wct-l1-1-0.a \
+		%/libauthz_onecore.a \
+		%/libbcrypt_onecore.a \
 		%/libcabinet.a \
-		%/libcrypt32.a \
-		%/libcryptbase.a \
-		%/libcryptnet.a \
-		%/libdfscli.a \
+		%/libcrypt32_onecore.a \
+		%/libcryptbase_onecore.a \
+		%/libcryptnet_onecore.a \
+		%/libdfscli_onecore.a \
 		%/libdhcpcsvc.a \
-		%/libdnsapi.a \
+		%/libdhcpcsvc6.a \
+		%/libdiagnosticdataquery.a \
+		%/libdnsapi_onecore.a \
+		%/libdsparse.a \
 		%/libdsrole.a \
 		%/libfltlib.a \
-		%/libiphlpapi.a \
-		%/liblogoncli.a \
-		%/libmpr.a \
-		%/libmswsock.a \
-		%/libncrypt.a \
-		%/libnetutils.a \
-		%/liboleaut32.a \
-		%/libpowrprof.a \
+		%/libicu.a \
+		%/libiphlpapi_onecore.a \
+		%/liblogoncli_onecore.a \
+		%/libmpr_onecore.a \
+		%/libmswsock_onecore.a \
+		%/libncrypt_onecore.a \
+		%/libnetutils_onecore.a \
+		%/libntdll_onecore.a \
+		%/liboleaut32_onecore.a \
+		%/libpowrprof_onecore.a \
 		%/libprofapi.a \
-		%/librpcrt4.a \
+		%/librpcrt4_onecore.a \
 		%/libsamcli.a \
 		%/libschedcli.a \
-		%/libsrvcli.a \
-		%/libsspicli.a \
-		%/libuserenv.a \
+		%/libsrvcli_onecore.a \
+		%/libsspicli_onecore.a \
+		%/libuserenv_onecore.a \
 		%/libwebsocket.a \
-		%/libwinhttp.a \
+		%/libwinhttp_onecore.a \
 		%/libwkscli.a \
 		%/libwldap32.a \
 		%/libwpprecorderum.a \

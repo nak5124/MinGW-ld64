@@ -2,15 +2,15 @@ LIBRARY api-ms-win-core-com-midlproxystub-l1-1-0
 
 EXPORTS
 
+CStdAsyncStubBuffer2_Connect
+CStdAsyncStubBuffer2_Disconnect
+CStdAsyncStubBuffer2_Release
 CStdAsyncStubBuffer_AddRef
 CStdAsyncStubBuffer_Connect
 CStdAsyncStubBuffer_Disconnect
 CStdAsyncStubBuffer_Invoke
 CStdAsyncStubBuffer_QueryInterface
 CStdAsyncStubBuffer_Release
-CStdAsyncStubBuffer2_Connect
-CStdAsyncStubBuffer2_Disconnect
-CStdAsyncStubBuffer2_Release
 CStdStubBuffer2_Connect
 CStdStubBuffer2_CountRefs
 CStdStubBuffer2_Disconnect

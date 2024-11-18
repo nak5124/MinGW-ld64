@@ -1,0 +1,15 @@
+LIBRARY api-ms-win-base-bootconfig-l1-1-0
+
+EXPORTS
+
+NotifyBootConfigStatus
+TokenBindingDeleteAllBindings
+TokenBindingDeleteBinding
+TokenBindingGenerateBinding
+TokenBindingGenerateID
+TokenBindingGenerateIDForUri
+TokenBindingGenerateMessage
+TokenBindingGetHighestSupportedVersion
+TokenBindingGetKeyTypesClient
+TokenBindingGetKeyTypesServer
+TokenBindingVerifyMessage

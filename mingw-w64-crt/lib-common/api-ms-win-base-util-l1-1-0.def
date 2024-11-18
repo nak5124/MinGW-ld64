@@ -1,0 +1,5 @@
+LIBRARY api-ms-win-base-util-l1-1-0
+
+EXPORTS
+
+IsTextUnicode

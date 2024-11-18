@@ -1,0 +1,9 @@
+LIBRARY api-ms-win-core-processthreads-l1-1-6
+
+EXPORTS
+
+GetProcessDefaultCpuSetMasks
+GetThreadSelectedCpuSetMasks
+SetProcessDefaultCpuSetMasks
+SetProcessDynamicEnforcedCetCompatibleRanges
+SetThreadSelectedCpuSetMasks

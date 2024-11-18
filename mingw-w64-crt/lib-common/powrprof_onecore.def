@@ -1,6 +1,7 @@
-LIBRARY "POWRPROF.dll"
+LIBRARY POWRPROF.dll
+
 EXPORTS
-CallNtPowerInformation
+
 CanUserWritePwrScheme
 DeletePwrScheme
 DevicePowerClose
@@ -22,6 +23,8 @@ PowerDeleteScheme
 PowerDeterminePlatformRole
 PowerDuplicateScheme
 PowerEnumerate
+PowerGetUserConfiguredACPowerMode
+PowerGetUserConfiguredDCPowerMode
 PowerImportPowerScheme
 PowerIsSettingRangeDefined
 PowerOpenSystemPowerKey
@@ -48,6 +51,8 @@ PowerRestoreDefaultPowerSchemes
 PowerRestoreIndividualDefaultPowerScheme
 PowerSettingAccessCheck
 PowerSettingAccessCheckEx
+PowerSetUserConfiguredACPowerMode
+PowerSetUserConfiguredDCPowerMode
 PowerWriteACDefaultIndex
 PowerWriteDCDefaultIndex
 PowerWriteDescription

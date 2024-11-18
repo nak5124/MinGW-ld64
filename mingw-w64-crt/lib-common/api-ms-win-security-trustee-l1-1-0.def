@@ -1,0 +1,8 @@
+LIBRARY api-ms-win-security-trustee-l1-1-0
+
+EXPORTS
+
+BuildImpersonateTrusteeW
+BuildSecurityDescriptorW
+BuildTrusteeWithObjectsAndSidW
+BuildTrusteeWithSidW

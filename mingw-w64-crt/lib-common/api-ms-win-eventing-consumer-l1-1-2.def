@@ -1,0 +1,11 @@
+LIBRARY api-ms-win-eventing-consumer-l1-1-2
+
+EXPORTS
+
+OpenTraceFromBufferStream
+OpenTraceFromFile
+OpenTraceFromRealTimeLogger
+OpenTraceFromRealTimeLoggerWithAllocationOptions
+ProcessTraceAddBufferToBufferStream
+ProcessTraceBufferDecrementReference
+ProcessTraceBufferIncrementReference

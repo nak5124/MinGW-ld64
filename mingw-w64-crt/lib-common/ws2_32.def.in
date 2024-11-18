@@ -150,7 +150,6 @@ WSCInstallNameSpaceEx2
 F64(WSCInstallNameSpaceEx32)
 WSCInstallProvider
 F64(WSCInstallProvider64_32)
-WSCInstallProviderAndChains
 F64(WSCInstallProviderAndChains64_32)
 WSCInstallProviderEx
 WSCSetApplicationCategory

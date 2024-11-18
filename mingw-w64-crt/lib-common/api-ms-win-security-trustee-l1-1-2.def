@@ -1,0 +1,12 @@
+LIBRARY api-ms-win-security-trustee-l1-1-2
+
+EXPORTS
+
+BuildExplicitAccessWithNameA
+BuildImpersonateTrusteeA
+BuildSecurityDescriptorA
+BuildTrusteeWithNameA
+BuildTrusteeWithObjectsAndSidA
+BuildTrusteeWithSidA
+GetAuditedPermissionsFromAclA
+GetEffectiveRightsFromAclA

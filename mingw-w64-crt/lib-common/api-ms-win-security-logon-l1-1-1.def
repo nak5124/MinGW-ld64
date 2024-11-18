@@ -1,0 +1,7 @@
+LIBRARY api-ms-win-security-logon-l1-1-1
+
+EXPORTS
+
+LogonUserA
+LogonUserExA
+LogonUserW

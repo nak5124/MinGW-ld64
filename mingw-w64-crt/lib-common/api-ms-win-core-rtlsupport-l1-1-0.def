@@ -8,6 +8,7 @@ RtlCaptureStackBackTrace
 RtlCompareMemory
 RtlDeleteFunctionTable
 RtlInstallFunctionTableCallback
+RtlIsEcCode
 RtlLookupFunctionEntry
 RtlPcToFileHeader
 RtlRaiseException

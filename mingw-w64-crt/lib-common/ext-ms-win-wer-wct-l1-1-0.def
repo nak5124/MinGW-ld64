@@ -1,0 +1,8 @@
+LIBRARY ext-ms-win-wer-wct-l1-1-0
+
+EXPORTS
+
+CloseThreadWaitChainSession
+GetThreadWaitChain
+OpenThreadWaitChainSession
+RegisterWaitChainCOMCallback

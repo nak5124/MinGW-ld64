@@ -1,0 +1,6 @@
+LIBRARY api-ms-win-core-sysinfo-l2-1-0
+
+EXPORTS
+
+GetUserNameA
+GetUserNameW

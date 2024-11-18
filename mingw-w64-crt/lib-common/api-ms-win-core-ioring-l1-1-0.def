@@ -1,0 +1,16 @@
+LIBRARY api-ms-win-core-ioring-l1-1-0
+
+EXPORTS
+
+BuildIoRingCancelRequest
+BuildIoRingReadFile
+BuildIoRingRegisterBuffers
+BuildIoRingRegisterFileHandles
+CloseIoRing
+CreateIoRing
+GetIoRingInfo
+IsIoRingOpSupported
+PopIoRingCompletion
+QueryIoRingCapabilities
+SetIoRingCompletionEvent
+SubmitIoRing

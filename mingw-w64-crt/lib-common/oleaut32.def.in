@@ -301,8 +301,8 @@ LPSAFEARRAY_Unmarshal
 VarDecCmpR8
 VarCyAdd
 F64(BSTR_UserUnmarshal64)
-DllCanUnloadNow
-DllGetClassObject
+; DllCanUnloadNow
+; DllGetClassObject
 VarCyMul
 VarCyMulI4
 VarCySub
@@ -320,8 +320,8 @@ VarR4CmpR8
 VarR8Round
 VarCat
 VarDateFromUdateEx
-DllRegisterServer
-DllUnregisterServer
+; DllRegisterServer
+; DllUnregisterServer
 GetRecordInfoFromGuids
 GetRecordInfoFromTypeInfo
 F64(LPSAFEARRAY_UserFree64)

@@ -1,0 +1,8 @@
+LIBRARY api-ms-win-security-audit-l1-1-0
+
+EXPORTS
+
+AuditComputeEffectivePolicyBySid
+AuditFree
+AuditQuerySystemPolicy
+AuditSetSystemPolicy

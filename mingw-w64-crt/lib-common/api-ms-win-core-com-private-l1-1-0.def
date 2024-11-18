@@ -1,0 +1,12 @@
+LIBRARY api-ms-win-core-com-private-l1-1-0
+
+EXPORTS
+
+CoGetInstanceFromFile
+CoGetInstanceFromIStorage
+CoGetSystemSecurityPermissions
+CoRegisterInitializeSpy
+CoRegisterMallocSpy
+CoRegisterMessageFilter
+CoRevokeInitializeSpy
+CoRevokeMallocSpy

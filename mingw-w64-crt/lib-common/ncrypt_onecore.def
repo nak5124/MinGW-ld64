@@ -1,5 +1,7 @@
-LIBRARY "ncrypt.dll"
+LIBRARY ncrypt.dll
+
 EXPORTS
+
 GetIsolationServerInterface
 GetKeyStorageInterface
 GetSChannelInterface
@@ -53,6 +55,7 @@ SslCreateEphemeralKey
 SslCreateHandshakeHash
 SslDecrementProviderReferenceCount
 SslDecryptPacket
+SslDeriveSessionTicketKey
 SslDuplicateTranscriptHash
 SslEncryptPacket
 SslEnumCipherSuites
@@ -61,6 +64,7 @@ SslEnumEccCurves
 SslEnumProtocolProviders
 SslExpandBinderKey
 SslExpandExporterMasterKey
+SslExpandNextGenTrafficKey
 SslExpandPreSharedKey
 SslExpandResumptionMasterKey
 SslExpandTrafficKeys
@@ -78,6 +82,7 @@ SslGenerateSessionKeys
 SslGetCipherSuitePRFHashAlgorithm
 SslGetKeyProperty
 SslGetProviderProperty
+SslGetSessionTicketProtectionHeaderSize
 SslHashHandshake
 SslImportKey
 SslImportMasterKey
@@ -86,5 +91,7 @@ SslLookupCipherLengths
 SslLookupCipherSuiteInfo
 SslOpenPrivateKey
 SslOpenProvider
+SslProtectSessionTicket
 SslSignHash
+SslUnprotectSessionTicket
 SslVerifySignature

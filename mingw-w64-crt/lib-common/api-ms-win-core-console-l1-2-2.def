@@ -1,0 +1,6 @@
+LIBRARY api-ms-win-core-console-l1-2-2
+
+EXPORTS
+
+AllocConsoleWithOptions
+ReleasePseudoConsole

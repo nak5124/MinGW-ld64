@@ -1,0 +1,7 @@
+LIBRARY api-ms-win-core-featuretoggles-l1-1-0
+
+EXPORTS
+
+GetFeatureToggleConfiguration
+GetFeatureTogglesChangeToken
+NotifyFeatureToggleUsage

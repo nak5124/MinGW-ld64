@@ -1,0 +1,8 @@
+LIBRARY api-ms-win-security-trustee-l1-1-1
+
+EXPORTS
+
+BuildExplicitAccessWithNameW
+BuildTrusteeWithNameW
+GetAuditedPermissionsFromAclW
+GetEffectiveRightsFromAclW

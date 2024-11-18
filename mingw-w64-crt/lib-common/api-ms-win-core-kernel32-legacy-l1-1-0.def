@@ -4,6 +4,7 @@ EXPORTS
 
 AddLocalAlternateComputerNameW
 BackupRead
+BackupSeek
 BackupWrite
 BindIoCompletionCallback
 CopyFileA
@@ -27,15 +28,18 @@ GetSystemPowerStatus
 GetTapeParameters
 GetThreadSelectorEntry
 GlobalMemoryStatus
+IsSystemResumeAutomatic
 MoveFileA
 MoveFileExA
 MoveFileW
 OpenFile
 PulseEvent
 RegisterWaitForSingleObject
+RequestWakeupLatency
 SetFileCompletionNotificationModes
 SetHandleCount
 SetMailslotInfo
+SetSystemPowerState
 SetVolumeLabelW
 UnregisterWait
 WTSGetActiveConsoleSessionId

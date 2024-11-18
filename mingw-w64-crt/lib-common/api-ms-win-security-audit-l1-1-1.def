@@ -1,0 +1,15 @@
+LIBRARY api-ms-win-security-audit-l1-1-1
+
+EXPORTS
+
+AuditEnumerateCategories
+AuditEnumeratePerUserPolicy
+AuditEnumerateSubCategories
+AuditLookupCategoryNameW
+AuditLookupSubCategoryNameW
+AuditQueryGlobalSaclW
+AuditQueryPerUserPolicy
+AuditQuerySecurity
+AuditSetGlobalSaclW
+AuditSetPerUserPolicy
+AuditSetSecurity

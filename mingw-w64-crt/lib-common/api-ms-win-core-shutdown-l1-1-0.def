@@ -4,3 +4,4 @@ EXPORTS
 
 AbortSystemShutdownW
 InitiateSystemShutdownExW
+InitiateSystemShutdownW

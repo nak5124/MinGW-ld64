@@ -1,0 +1,5 @@
+LIBRARY api-ms-win-core-processthreads-l1-1-8
+
+EXPORTS
+
+TlsGetValue2

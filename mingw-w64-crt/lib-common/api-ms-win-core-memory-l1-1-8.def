@@ -1,0 +1,7 @@
+LIBRARY api-ms-win-core-memory-l1-1-8
+
+EXPORTS
+
+AllocateUserPhysicalPages2
+OpenDedicatedMemoryPartition
+QueryPartitionInformation

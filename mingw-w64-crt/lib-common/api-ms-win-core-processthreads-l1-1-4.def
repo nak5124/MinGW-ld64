@@ -3,4 +3,3 @@ LIBRARY api-ms-win-core-processthreads-l1-1-4
 EXPORTS
 
 SetProcessDynamicEHContinuationTargets
-SetProcessDynamicEnforcedCetCompatibleRanges

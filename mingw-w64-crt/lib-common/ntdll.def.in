@@ -137,6 +137,7 @@ LdrGetProcedureAddress
 LdrGetProcedureAddressEx
 LdrGetProcedureAddressForCaller
 F_X86_ANY(LdrHotPatchRoutine)
+LdrHotPatchNotify
 LdrInitShimEngineDynamic
 LdrInitializeEnclave
 LdrInitializeThunk
