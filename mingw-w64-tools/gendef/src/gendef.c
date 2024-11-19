@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <string.h>
+#include <io.h>
+#include <fcntl.h>
 #include "compat_string.h"
 #include "gendef.h"
 #include "fsredir.h"
@@ -218,6 +220,9 @@ int main(int argc,char **argv)
     show_usage ();
     return 0;
   }
+
+  _setmode(_fileno(stdout), _O_BINARY);
+  _setmode(_fileno(stderr), _O_BINARY);
 
   for (i = 1; i < argc; i++)
     i += opt_chain (argv[i], ((i+1) < argc ? argv[i+1] : NULL));
