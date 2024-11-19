@@ -1,3 +1,4 @@
+#define _CRT_STDIO_LEGACY_WIDE_SPECIFIERS
 #include <stdio.h>
 #include <string.h>
 #include <wchar.h>
