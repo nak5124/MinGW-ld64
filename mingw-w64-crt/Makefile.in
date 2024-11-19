@@ -200,7 +200,10 @@ am__EXEEXT_2 = testcases/tstmainc$(EXEEXT) \
 	testcases/t_intrinc$(EXEEXT) testcases/t_imagebase$(EXEEXT) \
 	testcases/t_matherr$(EXEEXT) \
 	testcases/t_nullptrexception$(EXEEXT) \
-	testcases/t_readdir$(EXEEXT) testcases/t_setjmp$(EXEEXT) \
+	testcases/t_readdir$(EXEEXT) testcases/t_snprintf$(EXEEXT) \
+	testcases/t_swprintf$(EXEEXT) testcases/t_snwprintf$(EXEEXT) \
+	testcases/t_stprintf_a$(EXEEXT) \
+	testcases/t_stprintf_u$(EXEEXT) testcases/t_setjmp$(EXEEXT) \
 	testcases/t_sigv$(EXEEXT) testcases/t_speed_powl$(EXEEXT) \
 	testcases/t_stat$(EXEEXT) testcases/t_stdint$(EXEEXT) \
 	testcases/t_time$(EXEEXT) testcases/t_tls1$(EXEEXT) \
@@ -878,10 +881,11 @@ am__lib64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	stdio/ucrt__snprintf.c stdio/ucrt__snscanf.c \
 	stdio/ucrt__snwprintf.c stdio/ucrt__vscprintf.c \
 	stdio/ucrt__vsnprintf.c stdio/ucrt__vsnwprintf.c \
-	stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c stdio/ucrt_fwprintf.c \
-	stdio/ucrt_printf.c stdio/ucrt_scanf.c stdio/ucrt_snprintf.c \
-	stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c stdio/ucrt_vfprintf.c \
-	stdio/ucrt_vfscanf.c stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
+	string/ucrt__wcstok.c stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c \
+	stdio/ucrt_fwprintf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
+	stdio/ucrt_snprintf.c stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
+	stdio/ucrt_vfprintf.c stdio/ucrt_vfscanf.c \
+	stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
 	stdio/ucrt_vsnprintf.c stdio/ucrt_vsprintf.c \
 	stdio/ucrt_vsscanf.c math/x64/fabsf.c math/x64/ldexp.c \
 	math/x64/scalbn.S math/x64/scalbnf.S
@@ -914,6 +918,7 @@ am__objects_37 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt__vscprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT) \
+	string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_fwprintf.$(OBJEXT) \
@@ -1721,10 +1726,11 @@ am__libarm64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	stdio/ucrt__snprintf.c stdio/ucrt__snscanf.c \
 	stdio/ucrt__snwprintf.c stdio/ucrt__vscprintf.c \
 	stdio/ucrt__vsnprintf.c stdio/ucrt__vsnwprintf.c \
-	stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c stdio/ucrt_fwprintf.c \
-	stdio/ucrt_printf.c stdio/ucrt_scanf.c stdio/ucrt_snprintf.c \
-	stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c stdio/ucrt_vfprintf.c \
-	stdio/ucrt_vfscanf.c stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
+	string/ucrt__wcstok.c stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c \
+	stdio/ucrt_fwprintf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
+	stdio/ucrt_snprintf.c stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
+	stdio/ucrt_vfprintf.c stdio/ucrt_vfscanf.c \
+	stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
 	stdio/ucrt_vsnprintf.c stdio/ucrt_vsprintf.c \
 	stdio/ucrt_vsscanf.c math/arm64/scalbn.c
 am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
@@ -1756,6 +1762,7 @@ am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt__vscprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT) \
+	string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_fwprintf.$(OBJEXT) \
@@ -2164,6 +2171,12 @@ testcases_t_setjmp_LDADD = $(LDADD)
 testcases_t_sigv_SOURCES = testcases/t_sigv.c
 testcases_t_sigv_OBJECTS = testcases/t_sigv.$(OBJEXT)
 testcases_t_sigv_LDADD = $(LDADD)
+testcases_t_snprintf_SOURCES = testcases/t_snprintf.c
+testcases_t_snprintf_OBJECTS = testcases/t_snprintf.$(OBJEXT)
+testcases_t_snprintf_LDADD = $(LDADD)
+testcases_t_snwprintf_SOURCES = testcases/t_snwprintf.c
+testcases_t_snwprintf_OBJECTS = testcases/t_snwprintf.$(OBJEXT)
+testcases_t_snwprintf_LDADD = $(LDADD)
 testcases_t_speed_powl_SOURCES = testcases/t_speed_powl.c
 testcases_t_speed_powl_OBJECTS = testcases/t_speed_powl.$(OBJEXT)
 testcases_t_speed_powl_LDADD = $(LDADD)
@@ -2176,6 +2189,15 @@ testcases_t_stat_slash_LDADD = $(LDADD)
 testcases_t_stdint_SOURCES = testcases/t_stdint.c
 testcases_t_stdint_OBJECTS = testcases/t_stdint.$(OBJEXT)
 testcases_t_stdint_LDADD = $(LDADD)
+testcases_t_stprintf_a_SOURCES = testcases/t_stprintf_a.c
+testcases_t_stprintf_a_OBJECTS = testcases/t_stprintf_a.$(OBJEXT)
+testcases_t_stprintf_a_LDADD = $(LDADD)
+testcases_t_stprintf_u_SOURCES = testcases/t_stprintf_u.c
+testcases_t_stprintf_u_OBJECTS = testcases/t_stprintf_u.$(OBJEXT)
+testcases_t_stprintf_u_LDADD = $(LDADD)
+testcases_t_swprintf_SOURCES = testcases/t_swprintf.c
+testcases_t_swprintf_OBJECTS = testcases/t_swprintf.$(OBJEXT)
+testcases_t_swprintf_LDADD = $(LDADD)
 testcases_t_time_SOURCES = testcases/t_time.c
 testcases_t_time_OBJECTS = testcases/t_time.$(OBJEXT)
 testcases_t_time_LDADD = $(LDADD)
@@ -3214,6 +3236,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po \
 	string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po \
 	string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po \
+	string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po \
 	string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po \
@@ -3227,6 +3250,7 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po \
 	string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po \
 	string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po \
+	string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po \
 	string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po \
@@ -3249,11 +3273,16 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	testcases/$(DEPDIR)/t_nullptrexception.Po \
 	testcases/$(DEPDIR)/t_readdir.Po \
 	testcases/$(DEPDIR)/t_setjmp.Po testcases/$(DEPDIR)/t_sigv.Po \
+	testcases/$(DEPDIR)/t_snprintf.Po \
+	testcases/$(DEPDIR)/t_snwprintf.Po \
 	testcases/$(DEPDIR)/t_speed_powl.Po \
 	testcases/$(DEPDIR)/t_stat.Po \
 	testcases/$(DEPDIR)/t_stat_slash.Po \
-	testcases/$(DEPDIR)/t_stdint.Po testcases/$(DEPDIR)/t_time.Po \
-	testcases/$(DEPDIR)/t_tls1.Po \
+	testcases/$(DEPDIR)/t_stdint.Po \
+	testcases/$(DEPDIR)/t_stprintf_a.Po \
+	testcases/$(DEPDIR)/t_stprintf_u.Po \
+	testcases/$(DEPDIR)/t_swprintf.Po \
+	testcases/$(DEPDIR)/t_time.Po testcases/$(DEPDIR)/t_tls1.Po \
 	testcases/$(DEPDIR)/t_tmain-t_tmain.Po \
 	testcases/$(DEPDIR)/t_trycatch.Po \
 	testcases/$(DEPDIR)/t_wreaddir.Po \
@@ -3467,9 +3496,11 @@ SOURCES = $(lib64_libadsiid_a_SOURCES) $(lib64_libamstrmid_a_SOURCES) \
 	testcases/t_imagebase.c testcases/t_intrinc.c \
 	testcases/t_matherr.c testcases/t_municode.c \
 	testcases/t_nullptrexception.c testcases/t_readdir.c \
-	testcases/t_setjmp.c testcases/t_sigv.c \
-	testcases/t_speed_powl.c testcases/t_stat.c \
-	testcases/t_stat_slash.c testcases/t_stdint.c \
+	testcases/t_setjmp.c testcases/t_sigv.c testcases/t_snprintf.c \
+	testcases/t_snwprintf.c testcases/t_speed_powl.c \
+	testcases/t_stat.c testcases/t_stat_slash.c \
+	testcases/t_stdint.c testcases/t_stprintf_a.c \
+	testcases/t_stprintf_u.c testcases/t_swprintf.c \
 	testcases/t_time.c testcases/t_tls1.c testcases/t_tmain.c \
 	$(testcases_t_trycatch_SOURCES) testcases/t_wreaddir.c \
 	testcases/tstmain_sys_xxx.c testcases/tstmainc.c \
@@ -3571,9 +3602,11 @@ DIST_SOURCES = $(am__lib64_libadsiid_a_SOURCES_DIST) \
 	testcases/t_imagebase.c testcases/t_intrinc.c \
 	testcases/t_matherr.c testcases/t_municode.c \
 	testcases/t_nullptrexception.c testcases/t_readdir.c \
-	testcases/t_setjmp.c testcases/t_sigv.c \
-	testcases/t_speed_powl.c testcases/t_stat.c \
-	testcases/t_stat_slash.c testcases/t_stdint.c \
+	testcases/t_setjmp.c testcases/t_sigv.c testcases/t_snprintf.c \
+	testcases/t_snwprintf.c testcases/t_speed_powl.c \
+	testcases/t_stat.c testcases/t_stat_slash.c \
+	testcases/t_stdint.c testcases/t_stprintf_a.c \
+	testcases/t_stprintf_u.c testcases/t_swprintf.c \
 	testcases/t_time.c testcases/t_tls1.c testcases/t_tmain.c \
 	$(testcases_t_trycatch_SOURCES) testcases/t_wreaddir.c \
 	testcases/tstmain_sys_xxx.c testcases/tstmainc.c \
@@ -4084,10 +4117,10 @@ src_ucrtbase = \
   misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
   \
   stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c      stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c     \
-  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c       \
-  stdio/ucrt_printf.c        stdio/ucrt_scanf.c        stdio/ucrt_snprintf.c      stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c         \
-  stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c      stdio/ucrt_vprintf.c       stdio/ucrt_vscanf.c      stdio/ucrt_vsnprintf.c      \
-  stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c
+  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  string/ucrt__wcstok.c      stdio/ucrt_fprintf.c     stdio/ucrt_fscanf.c         \
+  stdio/ucrt_fwprintf.c      stdio/ucrt_printf.c       stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c    stdio/ucrt_sprintf.c        \
+  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c     stdio/ucrt_vfscanf.c       stdio/ucrt_vprintf.c     stdio/ucrt_vscanf.c         \
+  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c     stdio/ucrt_vsscanf.c
 
 
 # Files included in libucrtapp.a
@@ -5120,10 +5153,13 @@ testcase_progs = testcases/tstmainc testcases/tstmaincpp \
 	testcases/t_findfirst testcases/t_float testcases/t_fstat \
 	testcases/t_intrinc testcases/t_imagebase testcases/t_matherr \
 	testcases/t_nullptrexception testcases/t_readdir \
-	testcases/t_setjmp testcases/t_sigv testcases/t_speed_powl \
-	testcases/t_stat testcases/t_stdint testcases/t_time \
-	testcases/t_tls1 testcases/t_trycatch testcases/t_stat_slash \
-	testcases/t_wreaddir testcases/t_fseeko64 $(am__append_8)
+	testcases/t_snprintf testcases/t_swprintf \
+	testcases/t_snwprintf testcases/t_stprintf_a \
+	testcases/t_stprintf_u testcases/t_setjmp testcases/t_sigv \
+	testcases/t_speed_powl testcases/t_stat testcases/t_stdint \
+	testcases/t_time testcases/t_tls1 testcases/t_trycatch \
+	testcases/t_stat_slash testcases/t_wreaddir \
+	testcases/t_fseeko64 $(am__append_8)
 testcases_tstmaincpp_SOURCES = testcases/tstmaincpp.cpp
 testcases_t_trycatch_SOURCES = testcases/t_trycatch.cpp
 testcases_t_intrinc_CFLAGS = -std=c99
@@ -6330,6 +6366,8 @@ stdio/lib64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT):  \
@@ -7432,6 +7470,8 @@ stdio/libarm64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT):  \
@@ -8060,6 +8100,18 @@ testcases/t_sigv.$(OBJEXT): testcases/$(am__dirstamp) \
 testcases/t_sigv$(EXEEXT): $(testcases_t_sigv_OBJECTS) $(testcases_t_sigv_DEPENDENCIES) $(EXTRA_testcases_t_sigv_DEPENDENCIES) testcases/$(am__dirstamp)
 	@rm -f testcases/t_sigv$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(testcases_t_sigv_OBJECTS) $(testcases_t_sigv_LDADD) $(LIBS)
+testcases/t_snprintf.$(OBJEXT): testcases/$(am__dirstamp) \
+	testcases/$(DEPDIR)/$(am__dirstamp)
+
+testcases/t_snprintf$(EXEEXT): $(testcases_t_snprintf_OBJECTS) $(testcases_t_snprintf_DEPENDENCIES) $(EXTRA_testcases_t_snprintf_DEPENDENCIES) testcases/$(am__dirstamp)
+	@rm -f testcases/t_snprintf$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(testcases_t_snprintf_OBJECTS) $(testcases_t_snprintf_LDADD) $(LIBS)
+testcases/t_snwprintf.$(OBJEXT): testcases/$(am__dirstamp) \
+	testcases/$(DEPDIR)/$(am__dirstamp)
+
+testcases/t_snwprintf$(EXEEXT): $(testcases_t_snwprintf_OBJECTS) $(testcases_t_snwprintf_DEPENDENCIES) $(EXTRA_testcases_t_snwprintf_DEPENDENCIES) testcases/$(am__dirstamp)
+	@rm -f testcases/t_snwprintf$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(testcases_t_snwprintf_OBJECTS) $(testcases_t_snwprintf_LDADD) $(LIBS)
 testcases/t_speed_powl.$(OBJEXT): testcases/$(am__dirstamp) \
 	testcases/$(DEPDIR)/$(am__dirstamp)
 
@@ -8084,6 +8136,24 @@ testcases/t_stdint.$(OBJEXT): testcases/$(am__dirstamp) \
 testcases/t_stdint$(EXEEXT): $(testcases_t_stdint_OBJECTS) $(testcases_t_stdint_DEPENDENCIES) $(EXTRA_testcases_t_stdint_DEPENDENCIES) testcases/$(am__dirstamp)
 	@rm -f testcases/t_stdint$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(testcases_t_stdint_OBJECTS) $(testcases_t_stdint_LDADD) $(LIBS)
+testcases/t_stprintf_a.$(OBJEXT): testcases/$(am__dirstamp) \
+	testcases/$(DEPDIR)/$(am__dirstamp)
+
+testcases/t_stprintf_a$(EXEEXT): $(testcases_t_stprintf_a_OBJECTS) $(testcases_t_stprintf_a_DEPENDENCIES) $(EXTRA_testcases_t_stprintf_a_DEPENDENCIES) testcases/$(am__dirstamp)
+	@rm -f testcases/t_stprintf_a$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(testcases_t_stprintf_a_OBJECTS) $(testcases_t_stprintf_a_LDADD) $(LIBS)
+testcases/t_stprintf_u.$(OBJEXT): testcases/$(am__dirstamp) \
+	testcases/$(DEPDIR)/$(am__dirstamp)
+
+testcases/t_stprintf_u$(EXEEXT): $(testcases_t_stprintf_u_OBJECTS) $(testcases_t_stprintf_u_DEPENDENCIES) $(EXTRA_testcases_t_stprintf_u_DEPENDENCIES) testcases/$(am__dirstamp)
+	@rm -f testcases/t_stprintf_u$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(testcases_t_stprintf_u_OBJECTS) $(testcases_t_stprintf_u_LDADD) $(LIBS)
+testcases/t_swprintf.$(OBJEXT): testcases/$(am__dirstamp) \
+	testcases/$(DEPDIR)/$(am__dirstamp)
+
+testcases/t_swprintf$(EXEEXT): $(testcases_t_swprintf_OBJECTS) $(testcases_t_swprintf_DEPENDENCIES) $(EXTRA_testcases_t_swprintf_DEPENDENCIES) testcases/$(am__dirstamp)
+	@rm -f testcases/t_swprintf$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(testcases_t_swprintf_OBJECTS) $(testcases_t_swprintf_LDADD) $(LIBS)
 testcases/t_time.$(OBJEXT): testcases/$(am__dirstamp) \
 	testcases/$(DEPDIR)/$(am__dirstamp)
 
@@ -9153,6 +9223,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po@am__quote@ # am--include-marker
@@ -9166,6 +9237,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po@am__quote@ # am--include-marker
@@ -9189,10 +9261,15 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_readdir.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_setjmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_sigv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_snprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_snwprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_speed_powl.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_stat.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_stat_slash.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_stdint.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_stprintf_a.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_stprintf_u.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_swprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_time.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_tls1.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@testcases/$(DEPDIR)/t_tmain-t_tmain.Po@am__quote@ # am--include-marker
@@ -14141,6 +14218,20 @@ stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.obj: stdio/ucrt__vsnwprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt__vsnwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.obj `if test -f 'stdio/ucrt__vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt__vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt__vsnwprintf.c'; fi`
+
+string/lib64_libucrt_extra_a-ucrt__wcstok.o: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrt_extra_a-ucrt__wcstok.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/lib64_libucrt_extra_a-ucrt__wcstok.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+
+string/lib64_libucrt_extra_a-ucrt__wcstok.obj: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrt_extra_a-ucrt__wcstok.obj -MD -MP -MF string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/lib64_libucrt_extra_a-ucrt__wcstok.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
 
 stdio/lib64_libucrt_extra_a-ucrt_fprintf.o: stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_fprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_fprintf.o `test -f 'stdio/ucrt_fprintf.c' || echo '$(srcdir)/'`stdio/ucrt_fprintf.c
@@ -19938,6 +20029,20 @@ stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.obj: stdio/ucrt__vsnwprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.obj `if test -f 'stdio/ucrt__vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt__vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt__vsnwprintf.c'; fi`
 
+string/libarm64_libucrt_extra_a-ucrt__wcstok.o: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrt_extra_a-ucrt__wcstok.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/libarm64_libucrt_extra_a-ucrt__wcstok.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+
+string/libarm64_libucrt_extra_a-ucrt__wcstok.obj: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrt_extra_a-ucrt__wcstok.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/libarm64_libucrt_extra_a-ucrt__wcstok.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
+
 stdio/libarm64_libucrt_extra_a-ucrt_fprintf.o: stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_fprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_fprintf.o `test -f 'stdio/ucrt_fprintf.c' || echo '$(srcdir)/'`stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Po
@@ -23322,6 +23427,41 @@ testcases/t_readdir.log: testcases/t_readdir$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+testcases/t_snprintf.log: testcases/t_snprintf$(EXEEXT)
+	@p='testcases/t_snprintf$(EXEEXT)'; \
+	b='testcases/t_snprintf'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+testcases/t_swprintf.log: testcases/t_swprintf$(EXEEXT)
+	@p='testcases/t_swprintf$(EXEEXT)'; \
+	b='testcases/t_swprintf'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+testcases/t_snwprintf.log: testcases/t_snwprintf$(EXEEXT)
+	@p='testcases/t_snwprintf$(EXEEXT)'; \
+	b='testcases/t_snwprintf'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+testcases/t_stprintf_a.log: testcases/t_stprintf_a$(EXEEXT)
+	@p='testcases/t_stprintf_a$(EXEEXT)'; \
+	b='testcases/t_stprintf_a'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+testcases/t_stprintf_u.log: testcases/t_stprintf_u$(EXEEXT)
+	@p='testcases/t_stprintf_u$(EXEEXT)'; \
+	b='testcases/t_stprintf_u'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 testcases/t_setjmp.log: testcases/t_setjmp$(EXEEXT)
 	@p='testcases/t_setjmp$(EXEEXT)'; \
 	b='testcases/t_setjmp'; \
@@ -24692,6 +24832,7 @@ distclean: distclean-am
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po
+	-rm -f string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po
@@ -24705,6 +24846,7 @@ distclean: distclean-am
 	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po
 	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po
 	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po
+	-rm -f string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po
@@ -24728,10 +24870,15 @@ distclean: distclean-am
 	-rm -f testcases/$(DEPDIR)/t_readdir.Po
 	-rm -f testcases/$(DEPDIR)/t_setjmp.Po
 	-rm -f testcases/$(DEPDIR)/t_sigv.Po
+	-rm -f testcases/$(DEPDIR)/t_snprintf.Po
+	-rm -f testcases/$(DEPDIR)/t_snwprintf.Po
 	-rm -f testcases/$(DEPDIR)/t_speed_powl.Po
 	-rm -f testcases/$(DEPDIR)/t_stat.Po
 	-rm -f testcases/$(DEPDIR)/t_stat_slash.Po
 	-rm -f testcases/$(DEPDIR)/t_stdint.Po
+	-rm -f testcases/$(DEPDIR)/t_stprintf_a.Po
+	-rm -f testcases/$(DEPDIR)/t_stprintf_u.Po
+	-rm -f testcases/$(DEPDIR)/t_swprintf.Po
 	-rm -f testcases/$(DEPDIR)/t_time.Po
 	-rm -f testcases/$(DEPDIR)/t_tls1.Po
 	-rm -f testcases/$(DEPDIR)/t_tmain-t_tmain.Po
@@ -25731,6 +25878,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strerror_r.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-strndup.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-xsi_strerror_r.Po
+	-rm -f string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/lib64_libucrtapp_extra_a-memcpy.Po
@@ -25744,6 +25892,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strerror_r.Po
 	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-strndup.Po
 	-rm -f string/$(DEPDIR)/libarm64_libmingwex_a-xsi_strerror_r.Po
+	-rm -f string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memchr.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcmp.Po
 	-rm -f string/$(DEPDIR)/libarm64_libucrtapp_extra_a-memcpy.Po
@@ -25767,10 +25916,15 @@ maintainer-clean: maintainer-clean-am
 	-rm -f testcases/$(DEPDIR)/t_readdir.Po
 	-rm -f testcases/$(DEPDIR)/t_setjmp.Po
 	-rm -f testcases/$(DEPDIR)/t_sigv.Po
+	-rm -f testcases/$(DEPDIR)/t_snprintf.Po
+	-rm -f testcases/$(DEPDIR)/t_snwprintf.Po
 	-rm -f testcases/$(DEPDIR)/t_speed_powl.Po
 	-rm -f testcases/$(DEPDIR)/t_stat.Po
 	-rm -f testcases/$(DEPDIR)/t_stat_slash.Po
 	-rm -f testcases/$(DEPDIR)/t_stdint.Po
+	-rm -f testcases/$(DEPDIR)/t_stprintf_a.Po
+	-rm -f testcases/$(DEPDIR)/t_stprintf_u.Po
+	-rm -f testcases/$(DEPDIR)/t_swprintf.Po
 	-rm -f testcases/$(DEPDIR)/t_time.Po
 	-rm -f testcases/$(DEPDIR)/t_tls1.Po
 	-rm -f testcases/$(DEPDIR)/t_tmain-t_tmain.Po
