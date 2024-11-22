@@ -1131,41 +1131,6 @@ extern "C++"
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-  /**
-   * __mingw_str_wide_utf8
-   * Converts a null terminated UCS-2 string to a multibyte (UTF-8) equivalent.
-   * Caller is supposed to free allocated buffer with __mingw_str_free().
-   * @param[in] __wptr Pointer to wide string.
-   * @param[out] __mbptr Pointer to multibyte string.
-   * @param[out] __buflen Optional parameter for length of allocated buffer.
-   * @return Number of characters converted, 0 for failure.
-   *
-   * WideCharToMultiByte - http://msdn.microsoft.com/en-us/library/dd374130(VS.85).aspx
-   */
-  extern int __cdecl __mingw_str_wide_utf8(const wchar_t *const __wptr, char **__mbptr, size_t *__buflen);
-
-  /**
-   * __mingw_str_utf8_wide
-   * Converts a null terminated UTF-8 string to a UCS-2 equivalent.
-   * Caller is supposed to free allocated buffer with __mingw_str_free().
-   * @param[out] __mbptr Pointer to multibyte string.
-   * @param[in] __wptr Pointer to wide string.
-   * @param[out] __buflen Optional parameter for length of allocated buffer.
-   * @return Number of characters converted, 0 for failure.
-   *
-   * MultiByteToWideChar - http://msdn.microsoft.com/en-us/library/dd319072(VS.85).aspx
-   */
-
-  extern int __cdecl __mingw_str_utf8_wide(const char *const __mbptr, wchar_t **__wptr, size_t *__buflen);
-
-  /**
-   * __mingw_str_free
-   * Frees buffer create by __mingw_str_wide_utf8 and __mingw_str_utf8_wide.
-   * @param[in] __ptr memory block to free.
-   *
-   */
-  extern void __cdecl __mingw_str_free(void *__ptr);
-
 __MINGW_END_C_DECLS
 
 #pragma pop_macro("snwprintf")
