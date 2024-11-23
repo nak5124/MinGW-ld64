@@ -553,6 +553,11 @@ __MINGW_BEGIN_C_DECLS
   extern char *__cdecl realpath(const char *__restrict _Path, char *__restrict _Resolved_path);
 #endif
 
+#ifdef __MINGW_USE_XOPEN2K
+  extern int __cdecl setenv(const char *_Name, const char *_Value, int _Overwrite) __MINGW_NONNULL((2));
+  extern int __cdecl unsetenv(const char *_Name)                                   __MINGW_NONNULL((1));
+#endif
+
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);
