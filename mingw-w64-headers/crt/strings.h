@@ -26,4 +26,33 @@
 #endif
 #endif
 
+#if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_XOPEN2K8XSI)
+  extern int __cdecl ffs(int _Int) __MINGW_CONST;
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_CONST
+  int __cdecl ffs(int _Int)
+  {
+    return __builtin_ffs(_Int);
+  }
+#endif
+#endif
+
+#ifdef __MINGW_USE_MISC
+  /**/              extern int __cdecl ffsl(long _Long)        __MINGW_CONST;
+  __MINGW_EXTENSION extern int __cdecl ffsll(long long _Llong) __MINGW_CONST;
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_CONST
+  int __cdecl ffsl(long _Long)
+  {
+    return __builtin_ffsl(_Long);
+  }
+
+  __CRT_INLINE __MINGW_CONST
+  int __cdecl ffsll(long long _Llong)
+  {
+    return __builtin_ffsll(_Llong);
+  }
+#endif
+#endif
+
 #endif  /* _STRINGS_H_ */
