@@ -190,7 +190,7 @@ src_libmingwex=\
   stdio/asprintf.c                 stdio/ftruncate64.c   stdio/strtok_r.c         stdio/truncate.c           stdio/vasprintf.c    \
   \
   string/bcopy.c                   string/bzero.c        string/explicit_bzero.c  string/ffs.c               string/ffsll.c       \
-  string/strerror_r.c              string/strndup.c      string/xsi_strerror_r.c  \
+  string/strerror_r.c              string/strndup.c      string/strverscmp.c      string/xsi_strerror_r.c    \
   \
   time/asctime_r.c                 time/clock.c          time/ctime_r.c           time/gmtime_r.c            time/localtime_r.c   \
   time/nanosleep.c

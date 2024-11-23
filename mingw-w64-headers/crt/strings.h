@@ -55,4 +55,8 @@
 #endif
 #endif
 
+#ifdef __MINGW_USE_GNU
+  extern int strverscmp(const char *_S1, const char *_S2) __MINGW_PURE __MINGW_NONNULL((1, 2));
+#endif
+
 #endif  /* _STRINGS_H_ */
