@@ -51,6 +51,20 @@ __MINGW_BEGIN_C_DECLS
   extern void __cdecl tdestroy(void *__root, __free_fn_t __freenode) __MINGW_NONNULL((2));
 #endif
 
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN_EXT)
+# ifdef __MINGW_USE_GNU
+  struct qelem
+  {
+    struct qelem *q_forw;
+    struct qelem *q_back;
+    char          q_data[1];
+  };
+# endif
+
+  extern void __cdecl insque(void *_Elem, void *_Prev);
+  extern void __cdecl remque(void *_Elem);
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _INC_SEARCH */
