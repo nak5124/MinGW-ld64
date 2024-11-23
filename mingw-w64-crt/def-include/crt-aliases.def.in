@@ -181,6 +181,8 @@ ftello64 == _ftelli64
 fopen64 == fopen
 lseek64 == _lseeki64
 tmpfile64 == tmpfile
+index == strchr
+rindex == strrchr
 
 ; This is list of symbol aliases for GNU functions which are not part of POSIX or ISO C
 strcasecmp == _stricmp

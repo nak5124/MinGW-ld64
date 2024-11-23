@@ -10,8 +10,9 @@
 
 #if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8)
   /**/   int  __cdecl bcmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
-  extern void __cdecl bcopy(const void *_Src, void *_Dst, size_t _Size) __MINGW_NONNULL((1, 2));
-  extern void __cdecl bzero(void *_Ptr, size_t _N) __MINGW_NONNULL((1));
+  extern void __cdecl bcopy(const void *_Src, void *_Dst, size_t _Size)        __MINGW_NONNULL((1, 2));
+  extern void __cdecl bzero(void *_Ptr, size_t _N)                             __MINGW_NONNULL((1));
+
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE __MINGW_NONNULL((1, 2))
   void __cdecl bcopy(const void *_Src, void *_Dst, size_t _Size)
@@ -24,6 +25,9 @@
     (void)memset(_Ptr, '\0', _N);
   }
 #endif
+
+  char *__cdecl index(const char *_S, int _C)  __MINGW_PURE __MINGW_NONNULL((1));
+  char *__cdecl rindex(const char *_S, int _C) __MINGW_PURE __MINGW_NONNULL((1));
 #endif
 
 #if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_XOPEN2K8XSI)

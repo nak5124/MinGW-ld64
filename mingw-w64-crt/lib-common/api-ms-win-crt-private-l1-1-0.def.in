@@ -1179,7 +1179,9 @@ memmove
 set_unexpected
 F_X64(setjmp)
 strchr
+index == strchr
 strrchr
+rindex == strrchr
 strstr
 unexpected
 wcschr
