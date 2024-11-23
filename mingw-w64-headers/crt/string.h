@@ -167,6 +167,17 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif
 
+#ifdef __MINGW_USE_MISC
+  extern void __cdecl explicit_bzero(void *_Ptr, size_t _N) __MINGW_NONNULL((1));
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_NONNULL((1))
+  void __cdecl explicit_bzero(void *_Ptr, size_t _N)
+  {
+    (void)memset(_Ptr, '\0', _N);
+    __asm__ __volatile__("" ::: "memory");
+  }
+#endif
+#endif
 
 #if __MINGW_FORTIFY_LEVEL > 0
 

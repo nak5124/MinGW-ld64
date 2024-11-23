@@ -1173,6 +1173,7 @@ F_I386(_setjmp3)
 longjmp
 memchr
 memcmp
+bcmp == memcmp
 memcpy
 memmove
 set_unexpected

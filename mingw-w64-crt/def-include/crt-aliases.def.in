@@ -273,3 +273,6 @@ __p__daylight == __daylight
 __p__dstbias == __dstbias
 __p__timezone == __timezone
 __p__tzname == __tzname
+
+; BSD function
+bcmp == memcmp
