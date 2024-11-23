@@ -38,7 +38,6 @@ x3daudio=x3daudio1_7
 d3dx9=d3dx9_43
 d3dx10=d3dx10_43
 d3dx11=d3dx11_43
-d3dcsxd=d3dcsxd_43
 d3dcompiler=d3dcompiler_47
 
 # can move this into libsrc/dummy_libm.c or similar
@@ -477,7 +476,6 @@ dx64_DATA += lib64/libx3daudio.a
 dx64_DATA += lib64/libd3dx9.a
 dx64_DATA += lib64/libd3dx10.a
 dx64_DATA += lib64/libd3dx11.a
-dx64_DATA += lib64/libd3dcsxd.a
 dx64_DATA += lib64/libd3dcompiler.a
 
 lib64/libxinput.a: lib-common/$(xinput).def
@@ -491,8 +489,6 @@ lib64/libd3dx9.a: lib64/$(d3dx9).def
 lib64/libd3dx10.a: lib64/$(d3dx10).def
 	$(DTDEF64) $<
 lib64/libd3dx11.a: lib64/$(d3dx11).def
-	$(DTDEF64) $<
-lib64/libd3dcsxd.a: lib64/$(d3dcsxd).def
 	$(DTDEF64) $<
 lib64/libd3dcompiler.a: lib-common/$(d3dcompiler).def
 	$(DTDEF64) $<
