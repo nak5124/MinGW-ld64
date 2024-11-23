@@ -5,7 +5,6 @@ EXPORTS
 #include "func.def.in"
 
 _Exit DATA
-F_I386(__control87_2)
 __doserrno
 __fpe_flt_rounds
 __fpecode
@@ -36,7 +35,6 @@ _controlfp
 _controlfp_s
 _crt_at_quick_exit
 _crt_atexit
-F_I386(_crt_debugger_hook)
 _endthread
 _endthreadex
 _errno
@@ -86,7 +84,6 @@ _set_thread_local_invalid_parameter_handler
 _seterrormode
 _sleep
 _statusfp
-F_I386(_statusfp2)
 _strerror
 _strerror_s
 _wassert

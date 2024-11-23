@@ -1658,7 +1658,6 @@ WriteTapemark
 ZombifyActCtx
 ZombifyActCtxWorker
 F_X64(__C_specific_handler)
-F_ARM32(__C_specific_handler)
 ; This isn't always available and shouldn't be linked from here, but should
 ; be statically linked from the compiler support library.
 ;__chkstk

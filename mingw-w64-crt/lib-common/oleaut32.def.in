@@ -144,14 +144,14 @@ VarTokenizeFormatString
 VarAdd
 VarAnd
 VarDiv
-F64(BSTR_UserFree64)
-F64(BSTR_UserMarshal64)
+BSTR_UserFree64
+BSTR_UserMarshal64
 DispCallFunc
 VariantChangeTypeEx
 SafeArrayPtrOfIndex
 SysStringByteLen
 SysAllocStringByteLen
-F64(BSTR_UserSize64)
+BSTR_UserSize64
 VarEqv
 VarIdiv
 VarImp
@@ -300,7 +300,7 @@ LPSAFEARRAY_Marshal
 LPSAFEARRAY_Unmarshal
 VarDecCmpR8
 VarCyAdd
-F64(BSTR_UserUnmarshal64)
+BSTR_UserUnmarshal64
 ; DllCanUnloadNow
 ; DllGetClassObject
 VarCyMul
@@ -324,11 +324,11 @@ VarDateFromUdateEx
 ; DllUnregisterServer
 GetRecordInfoFromGuids
 GetRecordInfoFromTypeInfo
-F64(LPSAFEARRAY_UserFree64)
+LPSAFEARRAY_UserFree64
 SetVarConversionLocaleSetting
 GetVarConversionLocaleSetting
 SetOaNoCache
-F64(LPSAFEARRAY_UserMarshal64)
+LPSAFEARRAY_UserMarshal64
 VarCyMulI8
 VarDateFromUdate
 VarUdateFromDate
@@ -350,16 +350,16 @@ VarI2FromI8
 VarI2FromUI8
 VarI4FromI8
 VarI4FromUI8
-F64(LPSAFEARRAY_UserSize64)
-F64(LPSAFEARRAY_UserUnmarshal64)
+LPSAFEARRAY_UserSize64
+LPSAFEARRAY_UserUnmarshal64
 OACreateTypeLib2
 SafeArrayAddRef
 SafeArrayReleaseData
 SafeArrayReleaseDescriptor
 SysAddRefString
 SysReleaseString
-F64(VARIANT_UserFree64)
-F64(VARIANT_UserMarshal64)
+VARIANT_UserFree64
+VARIANT_UserMarshal64
 VarR4FromI8
 VarR4FromUI8
 VarR8FromI8
@@ -380,8 +380,8 @@ VarI1FromI8
 VarI1FromUI8
 VarUI2FromI8
 VarUI2FromUI8
-F64(VARIANT_UserSize64)
-F64(VARIANT_UserUnmarshal64)
+VARIANT_UserSize64
+VARIANT_UserUnmarshal64
 OleLoadPictureEx
 OleLoadPictureFileEx
 SafeArrayCreateVector

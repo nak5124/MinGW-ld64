@@ -258,7 +258,6 @@ lib64_DATA += %reldir%/libnewdev.a
 lib64_DATA += %reldir%/libninput.a
 lib64_DATA += %reldir%/libnshipsec.a
 lib64_DATA += %reldir%/libntdll.a
-lib64_DATA += %reldir%/libntdllcrt.a
 lib64_DATA += %reldir%/libntdsapi.a
 lib64_DATA += %reldir%/libntlanman.a
 lib64_DATA += %reldir%/libntmarta.a

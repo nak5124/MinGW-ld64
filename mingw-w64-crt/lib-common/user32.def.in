@@ -303,8 +303,8 @@ GetClassInfoExA
 GetClassInfoExW
 GetClassInfoW
 GetClassLongA
-F64(GetClassLongPtrA)
-F64(GetClassLongPtrW)
+GetClassLongPtrA
+GetClassLongPtrW
 GetClassLongW
 GetClassNameA
 GetClassNameW
@@ -488,8 +488,8 @@ GetWindowDpiHostingBehavior
 GetWindowFeedbackSetting
 GetWindowInfo
 GetWindowLongA
-F64(GetWindowLongPtrA)
-F64(GetWindowLongPtrW)
+GetWindowLongPtrA
+GetWindowLongPtrW
 GetWindowLongW
 GetWindowMinimizeRect
 GetWindowModuleFileName
@@ -796,8 +796,8 @@ SetCapture
 SetCaretBlinkTime
 SetCaretPos
 SetClassLongA
-F64(SetClassLongPtrA)
-F64(SetClassLongPtrW)
+SetClassLongPtrA
+SetClassLongPtrW
 SetClassLongW
 SetClassWord
 SetClipboardData
@@ -884,8 +884,8 @@ SetWindowContextHelpId
 SetWindowDisplayAffinity
 SetWindowFeedbackSetting
 SetWindowLongA
-F64(SetWindowLongPtrA)
-F64(SetWindowLongPtrW)
+SetWindowLongPtrA
+SetWindowLongPtrW
 SetWindowLongW
 SetWindowPlacement
 SetWindowPos

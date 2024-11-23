@@ -4,57 +4,15 @@ EXPORTS
 
 #include "func.def.in"
 
-#ifdef DEF_I386
-_CIacos
-_CIasin
-_CIatan
-_CIatan2
-_CIcos
-_CIcosh
-_CIexp
-_CIfmod
-_CIlog
-_CIlog10
-_CIpow
-_CIsin
-_CIsinh
-_CIsqrt
-_CItan
-_CItanh
-#endif
 _Cbuild
 _Cmulcc
 _Cmulcr
 _FCbuild
 _FCmulcc
 _FCmulcr
-F_ARM32(_FPE_Raise)
 _LCbuild
 _LCmulcc
 _LCmulcr
-#ifdef DEF_I386
-__libm_sse2_acos
-__libm_sse2_acosf
-__libm_sse2_asin
-__libm_sse2_asinf
-__libm_sse2_atan
-__libm_sse2_atan2
-__libm_sse2_atanf
-__libm_sse2_cos
-__libm_sse2_cosf
-__libm_sse2_exp
-__libm_sse2_expf
-__libm_sse2_log
-__libm_sse2_log10
-__libm_sse2_log10f
-__libm_sse2_logf
-__libm_sse2_pow
-__libm_sse2_powf
-__libm_sse2_sin
-__libm_sse2_sinf
-__libm_sse2_tan
-__libm_sse2_tanf
-#endif
 __setusermatherr
 _cabs
 _chgsign
@@ -94,11 +52,10 @@ _fdtest
 _fdunscale
 _finite
 finite == _finite
-F_NON_I386(_finitef)
+_finitef
 _fpclass
 fpclass == _fpclass
 F_X64(_fpclassf)
-F_I386(_ftol)
 F_X64(_get_FMA3_enable)
 _hypot
 _hypotl == _hypot
@@ -122,27 +79,13 @@ _ldsign
 _ldsin
 _ldtest
 _ldunscale
-#ifdef DEF_I386
-_libm_sse2_acos_precise
-_libm_sse2_asin_precise
-_libm_sse2_atan_precise
-_libm_sse2_cos_precise
-_libm_sse2_exp_precise
-_libm_sse2_log10_precise
-_libm_sse2_log_precise
-_libm_sse2_pow_precise
-_libm_sse2_sin_precise
-_libm_sse2_sqrt_precise
-_libm_sse2_tan_precise
-#endif
 _logb
-F_NON_I386(_logbf)
+_logbf
 _nextafter
 F_X64(_nextafterf)
 _scalb
 F_X64(_scalbf)
 F_X64(_set_FMA3_enable)
-F_I386(_set_SSE2_enable)
 _y0
 y0 == _y0
 _y1
@@ -150,22 +93,22 @@ y1 == _y1
 _yn
 yn == _yn
 acos
-F_NON_I386(acosf)
+acosf
 acosl == acos
 acosh
 acoshf
 acoshl
 asin
-F_NON_I386(asinf)
+asinf
 asinl == asin
 asinh
 asinhf
 asinhl
 atan
 atan2
-F_NON_I386(atan2f)
+atan2f
 atan2l == atan2
-F_NON_I386(atanf)
+atanf
 atanl == atan
 atanh
 atanhf
@@ -204,7 +147,7 @@ cbrtl
 ; ccoshl
 ; ccosl
 ceil
-F_NON_I386(ceilf)
+ceilf
 ceill == ceil
 ; cexp
 ; cexpf
@@ -225,11 +168,11 @@ copysign
 copysignf
 copysignl
 cos
-F_NON_I386(cosf)
+cosf
 cosl == cos
 cosh
 coshl == cosh
-F_NON_I386(coshf)
+coshf
 ; cpow
 ; cpowf
 ; cpowl
@@ -264,19 +207,19 @@ exp
 exp2
 exp2f
 exp2l
-F_NON_I386(expf)
+expf
 expl == exp
 expm1
 expm1f
 expm1l
 fabs
-F_ARM_ANY(fabsf)
+F_ARM64(fabsf)
 fabsl == fabs
 fdim
 fdimf
 fdiml
 floor
-F_NON_I386(floorf)
+floorf
 floorl == floor
 fma
 fmaf
@@ -288,7 +231,7 @@ fmin
 fminf
 fminl
 fmod
-F_NON_I386(fmodf)
+fmodf
 fmodl == fmod
 frexp
 frexpl == frexp
@@ -312,7 +255,7 @@ llroundf
 llroundl
 log
 log10
-F_NON_I386(log10f)
+log10f
 log10l == log10
 log1p
 log1pf
@@ -323,7 +266,7 @@ log2l
 logb
 logbf
 logbl
-F_NON_I386(logf)
+logf
 logl == log
 lrint
 lrintf
@@ -332,7 +275,7 @@ lround
 lroundf
 lroundl
 modf
-F_NON_I386(modff)
+modff
 nan
 nanf
 nanl
@@ -372,20 +315,20 @@ roundl
 ; scalbnf
 ; scalbnl
 sin
-F_NON_I386(sinf)
+sinf
 sinl == sin
 sinh
 sinhl == sinh
-F_NON_I386(sinhf)
+sinhf
 sqrt
-F_NON_I386(sqrtf)
+sqrtf
 sqrtl == sqrt
 tan
-F_NON_I386(tanf)
+tanf
 tanl == tan
 tanh
 tanhl == tanh
-F_NON_I386(tanhf)
+tanhf
 tgamma
 tgammaf
 tgammal

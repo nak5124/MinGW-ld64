@@ -3,36 +3,15 @@ EXPORTS
 
 #include "func.def.in"
 
-#ifdef DEF_I386
-_CIacos
-_CIasin
-_CIatan
-_CIatan2
-_CIcos
-_CIcosh
-_CIexp
-_CIfmod
-_CIlog
-_CIlog10
-_CIpow
-_CIsin
-_CIsinh
-_CIsqrt
-_CItan
-_CItanh
-#endif
 _Cbuild
 _Cmulcc
 _Cmulcr
 _CreateFrameInfo
-F_I386(_CxxThrowException@8)
-F_NON_I386(_CxxThrowException)
-F_I386(_EH_prolog)
+_CxxThrowException
 _Exit DATA
 _FCbuild
 _FCmulcc
 _FCmulcr
-F_ARM32(_FPE_Raise)
 _FindAndUnlinkFrame
 F_X64(_GetImageBase)
 F_X64(_GetThrowImageBase)
@@ -43,9 +22,6 @@ _IsExceptionObjectToBeDestroyed
 _LCbuild
 _LCmulcc
 _LCmulcr
-F_I386(_NLG_Dispatch2@4)
-F_I386(_NLG_Return@12)
-F_I386(_NLG_Return2)
 F_X64(_SetImageBase)
 F_X64(_SetThrowImageBase)
 _SetWinRTOutOfMemoryExceptionCallback
@@ -57,23 +33,22 @@ _Wcsftime
 __AdjustPointer
 __BuildCatchObject
 __BuildCatchObjectHelper
-F_NON_I386(__C_specific_handler)
-F_NON_I386(__C_specific_handler_noexcept)
+__C_specific_handler
+__C_specific_handler_noexcept
 __CxxDetectRethrow
 __CxxExceptionFilter
 __CxxFrameHandler
 __CxxFrameHandler2
 __CxxFrameHandler3
 F_X64(__CxxFrameHandler4)
-F_I386(__CxxLongjmpUnwind@4)
 __CxxQueryExceptionSize
 __CxxRegisterExceptionObject
 __CxxUnregisterExceptionObject
 __DestructExceptionObject
 __FrameUnwindFilter
 __GetPlatformExceptionInfo
-F_NON_I386(__NLG_Dispatch2)
-F_NON_I386(__NLG_Return2)
+__NLG_Dispatch2
+__NLG_Return2
 __RTCastToVoid
 __RTDynamicCast
 __RTtypeid
@@ -92,7 +67,6 @@ __conio_common_vcwprintf
 __conio_common_vcwprintf_p
 __conio_common_vcwprintf_s
 __conio_common_vcwscanf
-F_I386(__control87_2)
 __current_exception
 __current_exception_context
 __daylight
@@ -103,38 +77,13 @@ __dstbias
 __fpe_flt_rounds
 __fpecode
 __initialize_lconv_for_unsigned_char
-F_I386(__intrinsic_abnormal_termination)
-F_NON_ARM64(__intrinsic_setjmp)
-F64(__intrinsic_setjmpex)
+F_X64(__intrinsic_setjmp)
+__intrinsic_setjmpex
 __isascii
 __iscsym
 __iscsymf
 __iswcsym
 __iswcsymf
-F_ARM32(__jump_unwind)
-#ifdef DEF_I386
-__libm_sse2_acos
-__libm_sse2_acosf
-__libm_sse2_asin
-__libm_sse2_asinf
-__libm_sse2_atan
-__libm_sse2_atan2
-__libm_sse2_atanf
-__libm_sse2_cos
-__libm_sse2_cosf
-__libm_sse2_exp
-__libm_sse2_expf
-__libm_sse2_log
-__libm_sse2_log10
-__libm_sse2_log10f
-__libm_sse2_logf
-__libm_sse2_pow
-__libm_sse2_powf
-__libm_sse2_sin
-__libm_sse2_sinf
-__libm_sse2_tan
-__libm_sse2_tanf
-#endif
 __p___argc
 __p___argv
 __p___wargv
@@ -237,7 +186,6 @@ _chdir
 _chdrive
 _chgsign
 _chgsignf
-F_I386(_chkesp)
 _chmod
 _chsize
 _chsize_s
@@ -258,7 +206,6 @@ _creat
 _create_locale
 _crt_at_quick_exit
 _crt_atexit
-F_I386(_crt_debugger_hook)
 _ctime32
 _ctime32_s
 _ctime64
@@ -288,9 +235,6 @@ _endthreadex
 _eof
 _errno
 _except1
-F_I386(_except_handler2)
-F_I386(_except_handler3)
-F_I386(_except_handler4_common)
 _execl
 _execle
 _execlp
@@ -337,7 +281,7 @@ _findnext32i64
 _findnext64
 _findnext64i32
 _finite
-F_NON_I386(_finitef)
+_finitef
 _flushall
 _fpclass
 F_X64(_fpclassf)
@@ -367,7 +311,6 @@ _ftime32
 _ftime32_s
 _ftime64
 _ftime64_s
-F_I386(_ftol)
 _fullpath
 _futime32
 _futime64
@@ -421,7 +364,6 @@ _getwche
 _getwche_nolock
 _getws
 _getws_s
-F_I386(_global_unwind2)
 _gmtime32
 _gmtime32_s
 _gmtime64
@@ -560,23 +502,8 @@ _ldtest
 _ldunscale
 _lfind
 _lfind_s
-#ifdef DEF_I386
-_libm_sse2_acos_precise
-_libm_sse2_asin_precise
-_libm_sse2_atan_precise
-_libm_sse2_cos_precise
-_libm_sse2_exp_precise
-_libm_sse2_log10_precise
-_libm_sse2_log_precise
-_libm_sse2_pow_precise
-_libm_sse2_sin_precise
-_libm_sse2_sqrt_precise
-_libm_sse2_tan_precise
-#endif
 _loaddll
-F64(_local_unwind)
-F_I386(_local_unwind2)
-F_I386(_local_unwind4)
+_local_unwind
 _localtime32
 _localtime32_s
 _localtime64
@@ -585,8 +512,7 @@ _lock_file
 _lock_locales
 _locking
 _logb
-F_NON_I386(_logbf)
-F_I386(_longjmpex)
+_logbf
 _lrotl
 _lrotr
 _lsearch
@@ -749,24 +675,6 @@ _mktime64
 _msize
 _nextafter
 F_X64(_nextafterf)
-#ifdef DEF_I386
-_o__CIacos
-_o__CIasin
-_o__CIatan
-_o__CIatan2
-_o__CIcos
-_o__CIcosh
-_o__CIexp
-_o__CIfmod
-_o__CIlog
-_o__CIlog10
-_o__CIpow
-_o__CIsin
-_o__CIsinh
-_o__CIsqrt
-_o__CItan
-_o__CItanh
-#endif
 _o__Getdays
 _o__Getmonths
 _o__Gettnames
@@ -791,29 +699,6 @@ _o___conio_common_vcwscanf
 _o___daylight
 _o___dstbias
 _o___fpe_flt_rounds
-#ifdef DEF_I386
-_o___libm_sse2_acos
-_o___libm_sse2_acosf
-_o___libm_sse2_asin
-_o___libm_sse2_asinf
-_o___libm_sse2_atan
-_o___libm_sse2_atan2
-_o___libm_sse2_atanf
-_o___libm_sse2_cos
-_o___libm_sse2_cosf
-_o___libm_sse2_exp
-_o___libm_sse2_expf
-_o___libm_sse2_log
-_o___libm_sse2_log10
-_o___libm_sse2_log10f
-_o___libm_sse2_logf
-_o___libm_sse2_pow
-_o___libm_sse2_powf
-_o___libm_sse2_sin
-_o___libm_sse2_sinf
-_o___libm_sse2_tan
-_o___libm_sse2_tanf
-#endif
 _o___p___argc
 _o___p___argv
 _o___p___wargv
@@ -1144,19 +1029,6 @@ _o__ldtest
 _o__ldunscale
 _o__lfind
 _o__lfind_s
-#ifdef DEF_I386
-_o__libm_sse2_acos_precise
-_o__libm_sse2_asin_precise
-_o__libm_sse2_atan_precise
-_o__libm_sse2_cos_precise
-_o__libm_sse2_exp_precise
-_o__libm_sse2_log10_precise
-_o__libm_sse2_log_precise
-_o__libm_sse2_pow_precise
-_o__libm_sse2_sin_precise
-_o__libm_sse2_sqrt_precise
-_o__libm_sse2_tan_precise
-#endif
 _o__loaddll
 _o__localtime32
 _o__localtime32_s
@@ -1165,7 +1037,7 @@ _o__localtime64_s
 _o__lock_file
 _o__locking
 _o__logb
-F_NON_I386(_o__logbf)
+_o__logbf
 _o__lsearch
 _o__lsearch_s
 _o__lseek
@@ -1583,21 +1455,21 @@ _o__y1
 _o__yn
 _o_abort
 _o_acos
-F_NON_I386(_o_acosf)
+_o_acosf
 _o_acosh
 _o_acoshf
 _o_acoshl
 _o_asctime
 _o_asctime_s
 _o_asin
-F_NON_I386(_o_asinf)
+_o_asinf
 _o_asinh
 _o_asinhf
 _o_asinhl
 _o_atan
 _o_atan2
-F_NON_I386(_o_atan2f)
-F_NON_I386(_o_atanf)
+_o_atan2f
+_o_atanf
 _o_atanh
 _o_atanhf
 _o_atanhl
@@ -1612,13 +1484,13 @@ _o_calloc
 _o_cbrt
 _o_cbrtf
 _o_ceil
-F_NON_I386(_o_ceilf)
+_o_ceilf
 _o_clearerr
 _o_clearerr_s
 _o_cos
-F_NON_I386(_o_cosf)
+_o_cosf
 _o_cosh
-F_NON_I386(_o_coshf)
+_o_coshf
 _o_erf
 _o_erfc
 _o_erfcf
@@ -1630,9 +1502,9 @@ _o_exp
 _o_exp2
 _o_exp2f
 _o_exp2l
-F_NON_I386(_o_expf)
+_o_expf
 _o_fabs
-F_ARM_ANY(_o_fabsf)
+F_ARM64(_o_fabsf)
 _o_fclose
 _o_feof
 _o_ferror
@@ -1643,12 +1515,12 @@ _o_fgets
 _o_fgetwc
 _o_fgetws
 _o_floor
-F_NON_I386(_o_floorf)
+_o_floorf
 _o_fma
 _o_fmaf
 _o_fmal
 _o_fmod
-F_NON_I386(_o_fmodf)
+_o_fmodf
 _o_fopen
 _o_fopen_s
 _o_fputc
@@ -1715,7 +1587,7 @@ _o_llroundl
 _o_localeconv
 _o_log
 _o_log10
-F_NON_I386(_o_log10f)
+_o_log10f
 _o_log1p
 _o_log1pf
 _o_log1pl
@@ -1725,7 +1597,7 @@ _o_log2l
 _o_logb
 _o_logbf
 _o_logbl
-F_NON_I386(_o_logf)
+_o_logf
 _o_lrint
 _o_lrintf
 _o_lrintl
@@ -1746,7 +1618,7 @@ _o_mbtowc
 _o_memcpy_s
 _o_memset
 _o_modf
-F_NON_I386(_o_modff)
+_o_modff
 _o_nan
 _o_nanf
 _o_nanl
@@ -1798,11 +1670,11 @@ _o_setbuf
 _o_setlocale
 _o_setvbuf
 _o_sin
-F_NON_I386(_o_sinf)
+_o_sinf
 _o_sinh
-F_NON_I386(_o_sinhf)
+_o_sinhf
 _o_sqrt
-F_NON_I386(_o_sqrtf)
+_o_sqrtf
 _o_srand
 _o_strcat_s
 _o_strcoll
@@ -1823,9 +1695,9 @@ _o_strtoul
 _o_strtoull
 _o_system
 _o_tan
-F_NON_I386(_o_tanf)
+_o_tanf
 _o_tanh
-F_NON_I386(_o_tanhf)
+_o_tanhf
 _o_terminate
 _o_tgamma
 _o_tgammaf
@@ -1903,9 +1775,6 @@ _searchenv_s
 _seh_filter_dll
 _seh_filter_exe
 F_X64(_set_FMA3_enable)
-F_I386(_seh_longjmp_unwind4@4)
-F_I386(_seh_longjmp_unwind@4)
-F_I386(_set_SSE2_enable)
 _set_abort_behavior
 _set_app_type
 _set_controlfp
@@ -1921,7 +1790,6 @@ _set_purecall_handler
 _set_se_translator
 _set_thread_local_invalid_parameter_handler
 _seterrormode
-F_I386(_setjmp3)
 _setmaxstdio
 _setmbcp
 _setmode
@@ -1945,7 +1813,6 @@ _stat32i64
 _stat64
 _stat64i32
 _statusfp
-F_I386(_statusfp2)
 _strcoll_l
 _strdate
 _strdate_s
@@ -2179,21 +2046,21 @@ _yn
 abort
 abs
 acos
-F_NON_I386(acosf)
+acosf
 acosh
 acoshf
 acoshl
 asctime
 asctime_s
 asin
-F_NON_I386(asinf)
+asinf
 asinh
 asinhf
 asinhl
 atan
 atan2
-F_NON_I386(atan2f)
-F_NON_I386(atanf)
+atan2f
+atanf
 atanh
 atanhf
 atanhl
@@ -2241,7 +2108,7 @@ cbrtl
 ; ccoshl
 ; ccosl
 ceil
-F_NON_I386(ceilf)
+ceilf
 ; cexp
 ; cexpf
 ; cexpl
@@ -2264,9 +2131,9 @@ copysign
 copysignf
 copysignl
 cos
-F_NON_I386(cosf)
+cosf
 cosh
-F_NON_I386(coshf)
+coshf
 ; cpow
 ; cpowf
 ; cpowl
@@ -2303,12 +2170,12 @@ exp
 exp2
 exp2f
 exp2l
-F_NON_I386(expf)
+expf
 expm1
 expm1f
 expm1l
 fabs
-F_ARM_ANY(fabsf)
+F_ARM64(fabsf)
 fclose
 fdim
 fdimf
@@ -2331,7 +2198,7 @@ fgets
 fgetwc
 fgetws
 floor
-F_NON_I386(floorf)
+floorf
 fma
 fmaf
 fmal
@@ -2342,7 +2209,7 @@ fmin
 fminf
 fminl
 fmod
-F_NON_I386(fmodf)
+fmodf
 fopen
 fopen_s
 fputc
@@ -2420,7 +2287,7 @@ llroundl
 localeconv
 log
 log10
-F_NON_I386(log10f)
+log10f
 log1p
 log1pf
 log1pl
@@ -2430,7 +2297,7 @@ log2l
 logb
 logbf
 logbl
-F_NON_I386(logf)
+logf
 longjmp
 lrint
 lrintf
@@ -2457,7 +2324,7 @@ memmove
 memmove_s
 memset
 modf
-F_NON_I386(modff)
+modff
 nan
 nanf
 nanl
@@ -2519,11 +2386,11 @@ setlocale
 setvbuf
 signal
 sin
-F_NON_I386(sinf)
+sinf
 sinh
-F_NON_I386(sinhf)
+sinhf
 sqrt
-F_NON_I386(sqrtf)
+sqrtf
 srand
 strcat
 strcat_s
@@ -2561,9 +2428,9 @@ strtoumax
 strxfrm
 system
 tan
-F_NON_I386(tanf)
+tanf
 tanh
-F_NON_I386(tanhf)
+tanhf
 terminate
 tgamma
 tgammaf

@@ -224,7 +224,6 @@ libarm64_DATA += %reldir%/libninput.a
 libarm64_DATA += %reldir%/libnormaliz.a
 libarm64_DATA += %reldir%/libntdsapi.a
 libarm64_DATA += %reldir%/libntdll.a
-libarm64_DATA += %reldir%/libntdllcrt.a
 libarm64_DATA += %reldir%/libntquery.a
 libarm64_DATA += %reldir%/liboccache.a
 libarm64_DATA += %reldir%/libodbc32.a

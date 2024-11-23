@@ -94,15 +94,13 @@ EtwpCreateEtwThread
 EtwpGetCpuSpeed
 EvtIntReportAuthzEventAndSourceAsync
 EvtIntReportEventAndSourceAsync
-#ifndef DEF_ARM32
 ExpInterlockedPopEntrySListEnd
 ExpInterlockedPopEntrySListFault
 ExpInterlockedPopEntrySListResume
-#endif
 KiRaiseUserExceptionDispatcher
 KiUserApcDispatcher
 KiUserCallbackDispatcher
-F_ARM_ANY(KiUserCallbackDispatcherReturn)
+F_ARM64(KiUserCallbackDispatcherReturn)
 KiUserExceptionDispatcher
 KiUserInvertedFunctionTable DATA
 LdrAccessResource
@@ -132,11 +130,11 @@ LdrGetDllHandleEx
 LdrGetDllPath
 LdrGetFailureData
 LdrGetFileNameFromLoadAsDataTable
-F64(LdrGetKnownDllSectionHandle)
+LdrGetKnownDllSectionHandle
 LdrGetProcedureAddress
 LdrGetProcedureAddressEx
 LdrGetProcedureAddressForCaller
-F_X86_ANY(LdrHotPatchRoutine)
+F_X64(LdrHotPatchRoutine)
 LdrHotPatchNotify
 LdrInitShimEngineDynamic
 LdrInitializeEnclave
@@ -148,7 +146,7 @@ LdrLoadDll
 LdrLoadEnclaveModule
 LdrLockLoaderLock
 LdrOpenImageFileOptionsKey
-F64(LdrProcessInitializationComplete)
+LdrProcessInitializationComplete
 LdrProcessRelocationBlock
 LdrProcessRelocationBlockEx
 LdrQueryImageFileExecutionOptions
@@ -223,7 +221,7 @@ NtAlertThreadByThreadIdEx
 NtAllocateLocallyUniqueId
 NtAllocateReserveObject
 NtAllocateUserPhysicalPages
-F_X86_ANY(NtAllocateUserPhysicalPagesEx)
+F_X64(NtAllocateUserPhysicalPagesEx)
 NtAllocateUuids
 NtAllocateVirtualMemory
 NtAllocateVirtualMemoryEx
@@ -473,7 +471,7 @@ NtPrivilegedServiceAuditAlarm
 NtPropagationComplete
 NtPropagationFailed
 NtProtectVirtualMemory
-F_X86_ANY(NtPssCaptureVaSpaceBulk)
+F_X64(NtPssCaptureVaSpaceBulk)
 NtPulseEvent
 NtQueryAttributesFile
 NtQueryAuxiliaryCounterFrequency
@@ -683,27 +681,6 @@ NtWaitForWorkViaWorkerFactory
 NtWaitHighEventPair
 NtWaitLowEventPair
 NtWorkerFactoryWorkerReady
-#ifdef DEF_ARM32
-NtWow64AllocateVirtualMemory64
-NtWow64CallFunction64
-NtWow64CsrAllocateCaptureBuffer
-NtWow64CsrAllocateMessagePointer
-NtWow64CsrCaptureMessageBuffer
-NtWow64CsrCaptureMessageString
-NtWow64CsrClientCallServer
-NtWow64CsrClientConnectToServer
-NtWow64CsrFreeCaptureBuffer
-NtWow64CsrGetProcessId
-NtWow64CsrIdentifyAlertableThread
-NtWow64CsrVerifyRegion
-NtWow64DebuggerCall
-NtWow64GetCurrentProcessorNumberEx
-NtWow64GetNativeSystemInformation
-NtWow64IsProcessorFeaturePresent
-NtWow64QueryInformationProcess64
-NtWow64ReadVirtualMemory64
-NtWow64WriteVirtualMemory64
-#endif
 NtWriteFile
 NtWriteFileGather
 NtWriteRequestData
@@ -725,7 +702,6 @@ PssNtFreeWalkMarker
 PssNtQuerySnapshot
 PssNtValidateDescriptor
 PssNtWalkSnapshot
-F_ARM32(ReadTimeStampCounter)
 RtlAbortRXact
 RtlAbsoluteToSelfRelativeSD
 RtlAcquirePebLock
@@ -840,7 +816,7 @@ RtlCompareMemoryUlong
 RtlCompareString
 RtlCompareUnicodeString
 RtlCompareUnicodeStrings
-F64(RtlCompleteProcessCloning)
+RtlCompleteProcessCloning
 RtlCompressBuffer
 RtlComputeCrc32
 RtlComputeImportTableHash
@@ -984,7 +960,7 @@ RtlDosSearchPath_U
 RtlDosSearchPath_Ustr
 RtlDowncaseUnicodeChar
 RtlDowncaseUnicodeString
-F64(RtlDrainNonVolatileFlush)
+RtlDrainNonVolatileFlush
 RtlDumpResource
 RtlDuplicateUnicodeString
 RtlEmptyAtomTable
@@ -1029,13 +1005,12 @@ RtlExpandHashTable
 RtlExtendCorrelationVector
 RtlExtendMemoryBlockLookaside
 RtlExtendMemoryZone
-F_ARM32(RtlExtendedMagicDivide)
 RtlExtractBitMap
 RtlFillMemory
 F_X64(RtlFillMemoryNonTemporal)
-F_ARM_ANY(RtlFillMemoryUlong)
-F_ARM_ANY(RtlFillMemoryUlonglong)
-F64(RtlFillNonVolatileMemory)
+F_ARM64(RtlFillMemoryUlong)
+F_ARM64(RtlFillMemoryUlonglong)
+RtlFillNonVolatileMemory
 RtlFinalReleaseOutOfProcessMemoryStream
 RtlFindAceByType
 RtlFindActivationContextSectionGuid
@@ -1068,8 +1043,8 @@ RtlFlsGetValue
 RtlFlsGetValue2
 RtlFlsSetValue
 RtlFlushHeaps
-F64(RtlFlushNonVolatileMemory)
-F64(RtlFlushNonVolatileMemoryRanges)
+RtlFlushNonVolatileMemory
+RtlFlushNonVolatileMemoryRanges
 RtlFlushSecureMemoryCache
 RtlFormatCurrentUserKeyPath
 RtlFormatMessage
@@ -1079,11 +1054,11 @@ RtlFreeAnsiString
 RtlFreeHandle
 RtlFreeHeap
 RtlFreeMemoryBlockLookaside
-F64(RtlFreeNonVolatileToken)
+RtlFreeNonVolatileToken
 RtlFreeOemString
 RtlFreeSid
 RtlFreeThreadActivationContextStack
-F_X86_ANY(RtlFreeUTF8String)
+F_X64(RtlFreeUTF8String)
 RtlFreeUnicodeString
 F_X64(RtlFreeUserFiberShadowStack)
 RtlFreeUserStack
@@ -1140,7 +1115,7 @@ RtlGetMultiTimePrecise
 RtlGetNativeSystemInformation
 RtlGetNextEntryHashTable
 F_X64(RtlGetNextUmsListItem)
-F64(RtlGetNonVolatileToken)
+RtlGetNonVolatileToken
 RtlGetNtGlobalFlags
 RtlGetNtProductType
 RtlGetNtSystemRoot
@@ -1203,14 +1178,14 @@ RtlInitOutOfProcessMemoryStream
 RtlInitString
 RtlInitStringEx
 RtlInitStrongEnumerationHashTable
-F_X86_ANY(RtlInitUTF8String)
-F_X86_ANY(RtlInitUTF8StringEx)
+F_X64(RtlInitUTF8String)
+F_X64(RtlInitUTF8StringEx)
 RtlInitUnicodeString
 RtlInitUnicodeStringEx
 RtlInitWeakEnumerationHashTable
 RtlInitializeAtomPackage
 RtlInitializeBitMap
-F64(RtlInitializeBitMapEx)
+RtlInitializeBitMapEx
 RtlInitializeConditionVariable
 RtlInitializeContext
 RtlInitializeCorrelationVector
@@ -1301,7 +1276,7 @@ RtlIsValidHandle
 RtlIsValidIndexHandle
 RtlIsValidLocaleName
 RtlIsValidProcessTrustLabelSid
-F_X86_ANY(RtlIsZeroMemory)
+F_X64(RtlIsZeroMemory)
 RtlKnownExceptionFilter
 RtlLCIDToCultureName
 RtlLargeIntegerToChar
@@ -1352,14 +1327,14 @@ RtlNewSecurityObject
 RtlNewSecurityObjectEx
 RtlNewSecurityObjectWithMultipleInheritance
 RtlNormalizeProcessParams
-F_X86_ANY(RtlNormalizeSecurityDescriptor)
+F_X64(RtlNormalizeSecurityDescriptor)
 RtlNormalizeString
 RtlNotifyFeatureToggleUsage
 RtlNotifyFeatureUsage
 RtlNtPathNameToDosPathName
 RtlNtStatusToDosError
 RtlNtStatusToDosErrorNoTeb
-F64(RtlNtdllName DATA)
+RtlNtdllName DATA
 RtlNumberGenericTableElements
 RtlNumberGenericTableElementsAvl
 RtlNumberOfClearBits
@@ -1382,7 +1357,7 @@ RtlPinAtomInAtomTable
 RtlPopFrame
 RtlPrefixString
 RtlPrefixUnicodeString
-F64(RtlPrepareForProcessCloning)
+RtlPrepareForProcessCloning
 RtlProcessFlsData
 RtlProtectHeap
 RtlPublishWnfStateData
@@ -1493,7 +1468,7 @@ RtlRestoreBootStatusDefaults
 RtlRestoreContext
 RtlRestoreLastWin32Error
 RtlRestoreSystemBootStatusDefaults
-F_X86_ANY(RtlRestoreThreadPreferredUILanguages)
+F_X64(RtlRestoreThreadPreferredUILanguages)
 RtlRetrieveNtUserPfn
 RtlRevertMemoryStream
 RtlRunDecodeUnicodeString
@@ -1555,14 +1530,13 @@ RtlSetThreadIsCritical
 RtlSetThreadPlaceholderCompatibilityMode
 RtlSetThreadPoolStartFunc
 RtlSetThreadPreferredUILanguages
-F_X86_ANY(RtlSetThreadPreferredUILanguages2)
+F_X64(RtlSetThreadPreferredUILanguages2)
 RtlSetThreadSubProcessTag
 RtlSetThreadWorkOnBehalfTicket
 RtlSetTimeZoneInformation
 RtlSetTimer
 F_X64(RtlSetUmsThreadInformation)
 RtlSetUnhandledExceptionFilter
-F32(RtlSetUserCallbackExceptionFilter)
 RtlSetUserFlagsHeap
 RtlSetUserValueHeap
 RtlSidDominates
@@ -1590,7 +1564,7 @@ RtlSwitchedVVI
 RtlSystemTimeToLocalTime
 RtlTestAndPublishWnfStateData
 RtlTestBit
-F64(RtlTestBitEx)
+RtlTestBitEx
 RtlTestProtectedAccess
 RtlTimeFieldsToTime
 RtlTimeToElapsedTimeFields
@@ -1613,12 +1587,12 @@ RtlTryAcquireSRWLockExclusive
 RtlTryAcquireSRWLockShared
 RtlTryConvertSRWLockSharedToExclusiveOrRelease
 RtlTryEnterCriticalSection
-F_X86_ANY(RtlUTF8StringToUnicodeString)
+F_X64(RtlUTF8StringToUnicodeString)
 RtlUTF8ToUnicodeN
 RtlUdiv128
 F_X64(RtlUmsThreadYield)
-F_ARM_ANY(RtlUlongByteSwap)
-F_ARM_ANY(RtlUlonglongByteSwap)
+F_ARM64(RtlUlongByteSwap)
+F_ARM64(RtlUlonglongByteSwap)
 RtlUnhandledExceptionFilter
 RtlUnhandledExceptionFilter2
 RtlUnicodeStringToAnsiSize
@@ -1627,7 +1601,7 @@ RtlUnicodeStringToCountedOemString
 RtlUnicodeStringToInteger
 RtlUnicodeStringToOemSize
 RtlUnicodeStringToOemString
-F_X86_ANY(RtlUnicodeStringToUTF8String)
+F_X64(RtlUnicodeStringToUTF8String)
 RtlUnicodeToCustomCPN
 RtlUnicodeToMultiByteN
 RtlUnicodeToMultiByteSize
@@ -1663,7 +1637,7 @@ RtlUpperChar
 RtlUpperString
 RtlUserFiberStart
 RtlUserThreadStart
-F_ARM_ANY(RtlUshortByteSwap)
+F_ARM64(RtlUshortByteSwap)
 RtlValidAcl
 RtlValidProcessProtection
 RtlValidRelativeSecurityDescriptor
@@ -1696,17 +1670,16 @@ RtlWow64ChangeThreadState
 RtlWow64EnableFsRedirection
 RtlWow64EnableFsRedirectionEx
 RtlWow64GetCpuAreaEnabledFeatures
-F64(RtlWow64GetCpuAreaInfo)
-F64(RtlWow64GetCurrentCpuArea)
+RtlWow64GetCpuAreaInfo
+RtlWow64GetCurrentCpuArea
 RtlWow64GetCurrentMachine
 RtlWow64GetEquivalentMachineCHPE
 RtlWow64GetProcessMachines
 RtlWow64GetSharedInfoProcess
-F64(RtlWow64GetThreadContext)
-F64(RtlWow64GetThreadSelectorEntry)
+RtlWow64GetThreadContext
+RtlWow64GetThreadSelectorEntry
 RtlWow64IsWowGuestMachineSupported
 RtlWow64LogMessageInEventLogger
-#if defined(DEF_X64) || defined(DEF_ARM64)
 RtlWow64PopAllCrossProcessWorkFromWorkList
 RtlWow64PopCrossProcessWorkFromFreeList
 RtlWow64PushCrossProcessWorkOntoFreeList
@@ -1715,9 +1688,8 @@ RtlWow64RequestCrossProcessHeavyFlush
 RtlWow64SetThreadContext
 RtlWow64SuspendProcess
 RtlWow64SuspendThread
-#endif
 RtlWriteMemoryStream
-F64(RtlWriteNonVolatileMemory)
+RtlWriteNonVolatileMemory
 RtlWriteRegistryValue
 RtlXRestore
 RtlXSave
@@ -1756,7 +1728,7 @@ RtlpNtOpenKey
 RtlpNtQueryValueKey
 RtlpNtSetValueKey
 RtlpQueryDefaultUILanguage
-F64(RtlpQueryProcessDebugInformationFromWow64)
+RtlpQueryProcessDebugInformationFromWow64
 RtlpQueryProcessDebugInformationRemote
 RtlpRefreshCachedUILanguage
 RtlpScpCfgNtdllExports DATA
@@ -1907,7 +1879,7 @@ ZwAlertThreadByThreadIdEx
 ZwAllocateLocallyUniqueId
 ZwAllocateReserveObject
 ZwAllocateUserPhysicalPages
-F_X86_ANY(ZwAllocateUserPhysicalPagesEx)
+F_X64(ZwAllocateUserPhysicalPagesEx)
 ZwAllocateUuids
 ZwAllocateVirtualMemory
 ZwAllocateVirtualMemoryEx
@@ -2156,7 +2128,7 @@ ZwPrivilegedServiceAuditAlarm
 ZwPropagationComplete
 ZwPropagationFailed
 ZwProtectVirtualMemory
-F_X86_ANY(ZwPssCaptureVaSpaceBulk)
+F_X64(ZwPssCaptureVaSpaceBulk)
 ZwPulseEvent
 ZwQueryAttributesFile
 ZwQueryAuxiliaryCounterFrequency
@@ -2366,27 +2338,6 @@ ZwWaitForWorkViaWorkerFactory
 ZwWaitHighEventPair
 ZwWaitLowEventPair
 ZwWorkerFactoryWorkerReady
-#ifdef DEF_ARM32
-ZwWow64AllocateVirtualMemory64
-ZwWow64CallFunction64
-ZwWow64CsrAllocateCaptureBuffer
-ZwWow64CsrAllocateMessagePointer
-ZwWow64CsrCaptureMessageBuffer
-ZwWow64CsrCaptureMessageString
-ZwWow64CsrClientCallServer
-ZwWow64CsrClientConnectToServer
-ZwWow64CsrFreeCaptureBuffer
-ZwWow64CsrGetProcessId
-ZwWow64CsrIdentifyAlertableThread
-ZwWow64CsrVerifyRegion
-ZwWow64DebuggerCall
-ZwWow64GetCurrentProcessorNumberEx
-ZwWow64GetNativeSystemInformation
-ZwWow64IsProcessorFeaturePresent
-ZwWow64QueryInformationProcess64
-ZwWow64ReadVirtualMemory64
-ZwWow64WriteVirtualMemory64
-#endif
 ZwWriteFile
 ZwWriteFileGather
 ZwWriteRequestData
