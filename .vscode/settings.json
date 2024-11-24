@@ -73,5 +73,20 @@
       "typeinfo": "c",
       "cfloat": "c"
     },
-    "C_Cpp.dimInactiveRegions": true
+    "C_Cpp.dimInactiveRegions": true,
+
+    "terminal.integrated.defaultProfile.windows": "MSYS2",
+    "terminal.integrated.profiles.windows": {
+
+
+        "MSYS2": {
+            "path": [
+                "C:/msys64/msys2_shell.cmd"
+            ],
+            "terminal.integrated.env.windows": {
+                "MSYSTEM": "UCRT64",
+            },
+            "args": ["-defterm", "-here", "-no-start", "-ucrt64"],
+        },
+    }
 }
