@@ -186,7 +186,7 @@ src_libmingwex=\
   ssp/memset_chk.c                 ssp/stack_chk_fail.c     ssp/stack_chk_guard.c    ssp/stpcpy_chk.c           ssp/strcat_chk.c     \
   ssp/strcpy_chk.c                 ssp/strncat_chk.c        ssp/strncpy_chk.c        \
   \
-  stdio/asprintf.c                 stdio/ftruncate64.c      stdio/strtok_r.c         stdio/truncate.c           stdio/vasprintf.c    \
+  stdio/asprintf.c                 stdio/ftruncate64.c      stdio/truncate.c         stdio/vasprintf.c          \
   \
   string/bcopy.c                   string/bzero.c           string/explicit_bzero.c  string/ffs.c               string/ffsll.c       \
   string/memmem.c                  string/memrchr.c         string/stpcpy.c          string/stpncpy.c           string/strchrnul.c   \

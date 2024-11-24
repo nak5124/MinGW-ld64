@@ -180,6 +180,7 @@ strpbrk
 strspn
 strtok
 strtok_s
+strtok_r == strtok_s
 strxfrm
 tolower
 toupper

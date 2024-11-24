@@ -141,11 +141,8 @@ __MINGW_BEGIN_C_DECLS
   extern void *__cdecl memrchr(const void *_S, int _C, size_t _N) __MINGW_PURE __MINGW_NONNULL((1));
 #endif
 
-#if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MISC)
-# pragma push_macro("strtok_r")
-# undef strtok_r
-  extern char *__cdecl strtok_r(char *__restrict _Str, const char *__restrict _Delim, char **__restrict __last) __MINGW_NONNULL((2, 3));
-# pragma pop_macro("strtok_r")
+#ifdef __MINGW_USE_POSIX
+  /**/   char *__cdecl strtok_r(char *__restrict _Str, const char *__restrict _Delim, char **__restrict _Saveptr) __MINGW_NONNULL((2, 3));
 #endif
 
 #ifdef __MINGW_USE_GNU
