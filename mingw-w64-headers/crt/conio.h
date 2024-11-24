@@ -139,13 +139,13 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _vcscanf_s_l(const char *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
-    return __conio_common_vcscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Format, _Locale, _ArgList);
+    return __conio_common_vcscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, _Locale, _ArgList);
   }
 
   __mingw_ovr
   int _vcscanf_s(const char *__restrict _Format, va_list _ArgList)
   {
-    return __conio_common_vcscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
+    return __conio_common_vcscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
   }
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
@@ -176,7 +176,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __conio_common_vcscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Format, _Locale, _ArgList);
+    _Ret = __conio_common_vcscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -187,7 +187,7 @@ __MINGW_BEGIN_C_DECLS
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __conio_common_vcscanf(_CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
+    _Ret = __conio_common_vcscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
