@@ -14,14 +14,24 @@ Differences from official
  - _WIN32_WINNT and NTDDI_VERSION are always defined with the latest version.
  - Added _mingw_features.h, a new header for feature test macros.
  - Removed mingw stdio implementation.
+ - Removed mingw mbwc convert functions.
  - Various header clean-ups, including removal of old functions.
- - Add new functions
+ - Update OneCore_apiset to 10.0.26100.
+ - Added new functions
    - arc4random, arc4random_buf, arc4random_uniform
    - getentropy
    - mkstemps
    - strerror_r
    - strndup
    - realpath
+   - old BSD strings functions
+   - ffs functions
+   - strverscmp
+   - insque/remque
+   - memmem
+   - (un)setenv
+   - strchrnul/memrchr
+   - stp(n)cpy
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Various other cosmetics.
 
