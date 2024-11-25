@@ -174,19 +174,19 @@ src_libmingwex=\
   \
   misc/alarm.c                     misc/arc4random.c        misc/arc4random_buf.c    misc/arc4random_uniform.c  misc/delay-f.c       \
   misc/delay-n.c                   misc/delayimp.c          misc/dirent.c            misc/dirname.c             misc/dllentrypoint.c \
-  misc/dllmain.c                   misc/ftruncate.c         misc/ftw.c               misc/ftw64.c               misc/fwide.c         \
-  misc/getentropy.c                misc/getlogin.c          misc/getopt.c            misc/gettimeofday.c        misc/insque.c        \
-  misc/mempcpy.c                   misc/mingw_getsp.S       misc/mingw_longjmp.S     misc/mingw_matherr.c       misc/mingw_usleep.c  \
-  misc/mkstemp.c                   misc/mkstemps.c          misc/realpath.c          misc/setenv.c              misc/sleep.c         \
-  misc/strsafe.c                   misc/tdelete.c           misc/tdestroy.c          misc/tfind.c               misc/tsearch.c       \
-  misc/twalk.c                     misc/unsetenv.c          misc/wdirent.c           misc/wmemchr.c             misc/wmemcmp.c       \
-  misc/wmemcpy.c                   misc/wmemmove.c          misc/wmempcpy.c          misc/wmemset.c             \
+  misc/dllmain.c                   misc/ftruncate.c         misc/ftruncate64.c       misc/ftw.c                 misc/ftw64.c         \
+  misc/fwide.c                     misc/getentropy.c        misc/getlogin.c          misc/getopt.c              misc/gettimeofday.c  \
+  misc/insque.c                    misc/mempcpy.c           misc/mingw_getsp.S       misc/mingw_longjmp.S       misc/mingw_matherr.c \
+  misc/mingw_usleep.c              misc/mkstemp.c           misc/mkstemps.c          misc/realpath.c            misc/setenv.c        \
+  misc/sleep.c                     misc/strsafe.c           misc/tdelete.c           misc/tdestroy.c            misc/tfind.c         \
+  misc/tsearch.c                   misc/twalk.c             misc/unsetenv.c          misc/wdirent.c             misc/wmemchr.c       \
+  misc/wmemcmp.c                   misc/wmemcpy.c           misc/wmemmove.c          misc/wmempcpy.c            misc/wmemset.c       \
   \
   ssp/chk_fail.c                   ssp/gets_chk.c           ssp/memcpy_chk.c         ssp/memmove_chk.c          ssp/mempcpy_chk.c    \
   ssp/memset_chk.c                 ssp/stack_chk_fail.c     ssp/stack_chk_guard.c    ssp/stpcpy_chk.c           ssp/strcat_chk.c     \
   ssp/strcpy_chk.c                 ssp/strncat_chk.c        ssp/strncpy_chk.c        \
   \
-  stdio/asprintf.c                 stdio/ftruncate64.c      stdio/truncate.c         stdio/vasprintf.c          \
+  stdio/asprintf.c                 stdio/truncate.c         stdio/vasprintf.c        \
   \
   string/bcopy.c                   string/bzero.c           string/explicit_bzero.c  string/ffs.c               string/ffsll.c       \
   string/memmem.c                  string/memrchr.c         string/stpcpy.c          string/stpncpy.c           string/strchrnul.c   \
