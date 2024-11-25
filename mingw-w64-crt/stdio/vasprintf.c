@@ -1,25 +1,32 @@
 #define _GNU_SOURCE
-#define __CRT__NO_INLINE
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 
-int vasprintf(char ** __restrict ret,
-                      const char * __restrict format,
-                      va_list ap) {
-  int len;
-  /* Get Length */
-  len = _vscprintf(format,ap);
-  if (len < 0) return -1;
-  /* +1 for \0 terminator. */
-  *ret = malloc(len + 1);
-  /* Check malloc fail*/
-  if (!*ret) return -1;
-  /* Write String */
-  _vsnprintf(*ret,len+1,format,ap);
-  /* Terminate explicitly */
-  (*ret)[len] = '\0';
-  return len;
+int __cdecl vasprintf(char **__restrict _Strp, const char *__restrict _Format, va_list _ArgList)
+{
+    __builtin_va_list ap;
+    __builtin_va_copy(ap, _ArgList);
+    int len = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, ap);
+    __builtin_va_end(ap);
+
+    if(len < 0)
+    {
+        return -1;
+    }
+
+    *_Strp = (char *)malloc(len + 1U);
+    if(*_Strp == NULL)
+    {
+        return -1;
+    }
+
+    int ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, *_Strp, len + 1U, _Format, NULL, _ArgList);
+    if(ret < 0)
+    {
+        free(*_Strp);
+        return -1;
+    }
+
+    return ret;
 }
 

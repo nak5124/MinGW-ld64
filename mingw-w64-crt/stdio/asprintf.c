@@ -1,31 +1,12 @@
 #define _GNU_SOURCE
-#define __CRT__NO_INLINE
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 
-int asprintf(char ** __restrict ret,
-                     const char * __restrict format,
-                     ...) {
-  va_list ap;
-  int len;
-  va_start(ap,format);
-  /* Get Length */
-  len = _vscprintf(format,ap);
-  if (len < 0) goto _end;
-  /* +1 for \0 terminator. */
-  *ret = malloc(len + 1);
-  /* Check malloc fail*/
-  if (!*ret) {
-    len = -1;
-    goto _end;
-  }
-  /* Write String */
-  _vsnprintf(*ret,len+1,format,ap);
-  /* Terminate explicitly */
-  (*ret)[len] = '\0';
-  _end:
-  va_end(ap);
-  return len;
+int __cdecl asprintf(char **__restrict _Strp, const char *__restrict _Format, ...)
+{
+    __builtin_va_list ap;
+    int ret;
+    __builtin_va_start(ap, _Format);
+    ret = vasprintf(_Strp, _Format, ap);
+    __builtin_va_end(ap);
+    return ret;
 }
