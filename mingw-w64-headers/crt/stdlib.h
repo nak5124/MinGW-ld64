@@ -558,6 +558,11 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl unsetenv(const char *_Name)                                   __MINGW_NONNULL((1));
 #endif
 
+#ifdef __MINGW_USE_GNU
+  typedef int (__cdecl *_Compare_fn_t)(const void *, const void *, void *);
+  extern void __cdecl qsort_r(void *_Base, size_t _Nmemb, size_t _Size, _Compare_fn_t _Compar, void *_Arg) __MINGW_NONNULL((1, 4));
+#endif
+
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);

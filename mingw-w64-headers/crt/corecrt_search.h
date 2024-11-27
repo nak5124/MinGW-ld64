@@ -11,8 +11,8 @@
 
 __MINGW_BEGIN_C_DECLS
 
-  typedef int (__cdecl* _CoreCrtSecureSearchSortCompareFunction)(void *, const void *, const void *);
-  typedef int (__cdecl* _CoreCrtNonSecureSearchSortCompareFunction)(const void *, const void *);
+  typedef int (__cdecl *_CoreCrtSecureSearchSortCompareFunction)(void *, const void *, const void *);
+  typedef int (__cdecl *_CoreCrtNonSecureSearchSortCompareFunction)(const void *, const void *);
 
   _CRTIMP void *__cdecl bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 2, 5));
 #ifdef __MINGW_USE_SECAPI
