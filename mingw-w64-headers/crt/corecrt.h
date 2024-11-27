@@ -126,17 +126,15 @@ __MINGW_BEGIN_C_DECLS
 #define __FILEW__     _CRT_WIDE(__FILE__)
 #define __FUNCTIONW__ _CRT_WIDE(__FUNCTION__)
 
-#ifdef __cplusplus
-# ifndef _STATIC_ASSERT
-#   define _STATIC_ASSERT(expr) static_assert((expr), #expr)
-# endif
-#else
-# ifndef _STATIC_ASSERT
-#   ifdef __clang__
-#     define _STATIC_ASSERT(expr) _Static_assert((expr), #expr)
-#   else
-#     define _STATIC_ASSERT(expr) extern void __static_assert_t(int [(expr)?1:-1])
-#   endif
+#ifndef _STATIC_ASSERT
+# if (defined(__cpp_static_assert) && __cpp_static_assert >= 201411L) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L)
+#   define _STATIC_ASSERT(expr) static_assert(expr)
+# elif defined(__cpp_static_assert)
+#   define _STATIC_ASSERT(expr) static_assert(expr, #expr)
+# elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+#   define _STATIC_ASSERT(expr) _Static_assert(expr, #expr)
+# else
+#   define _STATIC_ASSERT(expr) extern void __static_assert_t(int [(expr)?1:-1])
 # endif
 #endif
 
