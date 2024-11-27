@@ -558,6 +558,10 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl unsetenv(const char *_Name)                                   __MINGW_NONNULL((1));
 #endif
 
+#ifdef __MINGW_USE_MISC
+  extern int __cdecl clearenv(void);
+#endif
+
 #ifdef __MINGW_USE_GNU
   typedef int (__cdecl *_Compare_fn_t)(const void *, const void *, void *);
   extern void __cdecl qsort_r(void *_Base, size_t _Nmemb, size_t _Size, _Compare_fn_t _Compar, void *_Arg) __MINGW_NONNULL((1, 4));
