@@ -34,8 +34,8 @@ extern void _fpreset (void);
 EXCEPTION_DISPOSITION __mingw_SEH_error_handler(struct _EXCEPTION_RECORD *, void *, struct _CONTEXT *, void *);
 
 #define MAX_PDATA_ENTRIES 32
-static RUNTIME_FUNCTION emu_pdata[MAX_PDATA_ENTRIES];
-static UNWIND_INFO emu_xdata[MAX_PDATA_ENTRIES];
+static RUNTIME_FUNCTION emu_pdata[MAX_PDATA_ENTRIES] = {};
+static UNWIND_INFO emu_xdata[MAX_PDATA_ENTRIES] = {};
 
 int
 __mingw_init_ehandler (void)
@@ -50,10 +50,6 @@ __mingw_init_ehandler (void)
   was_here = 1;
   if (_FindPESectionByName (".pdata") != NULL)
     return 1;
-
-  /* Allocate # of e tables and entries.  */
-  memset (emu_pdata, 0, sizeof (RUNTIME_FUNCTION) * MAX_PDATA_ENTRIES);
-  memset (emu_xdata, 0, sizeof (UNWIND_INFO) * MAX_PDATA_ENTRIES);
 
   e = 0;
   /* Fill tables and entries.  */
