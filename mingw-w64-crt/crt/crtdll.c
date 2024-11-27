@@ -154,6 +154,7 @@ DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
   return __DllMainCRTStartup (hDllHandle, dwReason, lpreserved);
 }
 
+static
 __declspec(noinline) WINBOOL
 __DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 {
