@@ -32,6 +32,11 @@ Differences from official
    - (un)setenv
    - strchrnul/memrchr
    - stp(n)cpy
+   - qsort_r
+   - clearenv
+   - strcasestr
+   - memset_s
+   - memset_explicit
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Various other cosmetics.
 
