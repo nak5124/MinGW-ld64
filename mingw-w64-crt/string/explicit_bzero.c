@@ -4,10 +4,15 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #define _DEFAULT_SOURCE
+#define __CRT__NO_INLINE
 #include <string.h>
+#define WIN32_LEAN_AND_MEAN
+#define NOSERVICE
+#define NOMCX
+#define NOIME
+#include <windows.h>
 
 void __cdecl explicit_bzero(void *_Ptr, size_t _N)
 {
-    (void)memset(_Ptr, '\0', _N);
-    __asm__ __volatile__("" : : : "memory");
+    SecureZeroMemory(_Ptr, _N);
 }

@@ -29,7 +29,7 @@ errno_t __cdecl memset_s(void *_Dest, rsize_t _Destsz, int _Ch, rsize_t _Count)
     else
     {
         memset(_Dest, _Ch, _Count < _Destsz ? _Count : _Destsz);
-        __asm__ __volatile__("" : : : "memory");
+        __asm__ __volatile__("" : : "r"(_Dest) : "memory");
         if(_Count > _Destsz)
         {
             errno = ret;

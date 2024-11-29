@@ -173,12 +173,11 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_USE_MISC
   extern void __cdecl explicit_bzero(void *_Ptr, size_t _N) __MINGW_NONNULL((1));
-#ifndef __CRT__NO_INLINE
+#if !defined(__CRT__NO_INLINE) && defined(SecureZeroMemory)
   __CRT_INLINE __MINGW_NONNULL((1))
   void __cdecl explicit_bzero(void *_Ptr, size_t _N)
   {
-    (void)memset(_Ptr, '\0', _N);
-    __asm__ __volatile__("" : : : "memory");
+    SecureZeroMemory(_Ptr, _N);
   }
 #endif
 #endif
@@ -190,6 +189,18 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_USE_SECAPI
   extern errno_t __cdecl memset_s(void *_Dest, rsize_t _Destsz, int _Ch, rsize_t _Count) __MINGW_NONNULL((1));
+#endif
+
+#ifdef __MINGW_USE_ISOC23
+  extern void *__cdecl memset_explicit(void *_Dest, int _Ch, size_t _Count) __MINGW_NONNULL((1));
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_NONNULL((1))
+  void *__cdecl memset_explicit(void *_Dest, int _Ch, size_t _Count)
+  {
+    memset(_Dest, _Ch, _Count);
+    __asm__ __volatile__("" : : "r"(_Dest) : "memory");
+  }
+#endif
 #endif
 
 #if __MINGW_FORTIFY_LEVEL > 0

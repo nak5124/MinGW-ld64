@@ -3,11 +3,12 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#define _DEFAULT_SOURCE
+#define _ISOC23_SOURCE
 #define __CRT__NO_INLINE
-#include <strings.h>
+#include <string.h>
 
-void __cdecl bcopy(const void *_Src, void *_Dst, size_t _Size)
+void *__cdecl memset_explicit(void *_Dest, int _Ch, size_t _Count)
 {
-    memmove(_Dst, _Src, _Size);
+    memset(_Dest, _Ch, _Count);
+    __asm__ __volatile__("" : : "r"(_Dest) : "memory");
 }

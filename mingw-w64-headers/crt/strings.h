@@ -17,12 +17,12 @@
   __CRT_INLINE __MINGW_NONNULL((1, 2))
   void __cdecl bcopy(const void *_Src, void *_Dst, size_t _Size)
   {
-    (void)memmove(_Dst, _Src, _Size);
+    memmove(_Dst, _Src, _Size);
   }
   __CRT_INLINE __MINGW_NONNULL((1))
   void __cdecl bzero(void *_Ptr, size_t _N)
   {
-    (void)memset(_Ptr, '\0', _N);
+    memset(_Ptr, '\0', _N);
   }
 #endif
 
