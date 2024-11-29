@@ -188,6 +188,10 @@ __MINGW_BEGIN_C_DECLS
   extern char *__cdecl stpncpy(char *__restrict _Dest, const char *__restrict _Src, size_t _N) __MINGW_NONNULL((1, 2));
 #endif
 
+#ifdef __MINGW_USE_SECAPI
+  extern errno_t __cdecl memset_s(void *_Dest, rsize_t _Destsz, int _Ch, rsize_t _Count) __MINGW_NONNULL((1));
+#endif
+
 #if __MINGW_FORTIFY_LEVEL > 0
 
   __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))

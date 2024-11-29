@@ -7,7 +7,7 @@ else
 endif
 
 AM_CPPFLAGS=$(sysincludes)
-AM_CFLAGS=-pipe -std=gnu99 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
+AM_CFLAGS=-pipe -std=gnu17 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
 AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@ @ADD_CXX_ONLY_WARNING_FLAGS@
 CPPFLAGSARM64=
 CPPFLAGS64=-m64 -masm=att
@@ -190,8 +190,9 @@ src_libmingwex=\
   stdio/asprintf.c                 stdio/truncate.c      stdio/vasprintf.c        \
   \
   string/bcopy.c                   string/bzero.c        string/explicit_bzero.c  string/ffs.c               string/ffsll.c          \
-  string/memmem.c                  string/memrchr.c      string/stpcpy.c          string/stpncpy.c           string/strcasestr.c     \
-  string/strchrnul.c               string/strerror_r.c   string/strndup.c         string/strverscmp.c        string/xsi_strerror_r.c \
+  string/memmem.c                  string/memrchr.c      string/memset_s.c        string/stpcpy.c            string/stpncpy.c        \
+  string/strcasestr.c              string/strchrnul.c    string/strerror_r.c      string/strndup.c           string/strverscmp.c     \
+  string/xsi_strerror_r.c          \
   \
   time/asctime_r.c                 time/clock.c          time/ctime_r.c           time/gmtime_r.c            time/localtime_r.c      \
   time/nanosleep.c
@@ -2515,7 +2516,7 @@ testcase_progs = \
 
 testcases_tstmaincpp_SOURCES = testcases/tstmaincpp.cpp
 testcases_t_trycatch_SOURCES = testcases/t_trycatch.cpp
-testcases_t_intrinc_CFLAGS = -std=c99
+testcases_t_intrinc_CFLAGS = -std=c17
 
 if ENABLE_TESTS_UNICODE
   testcase_progs += testcases/t_municode testcases/t_tmain
