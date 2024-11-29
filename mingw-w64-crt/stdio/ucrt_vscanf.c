@@ -3,11 +3,12 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
 #define __CRT__NO_INLINE
 #include <stdio.h>
 
-int __cdecl vscanf(const char *__format, __builtin_va_list __local_argv) {
-  return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, __format, NULL, __local_argv);
+int __cdecl vscanf(const char *__restrict _Format, va_list _ArgList)
+{
+    return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, _Format, NULL, _ArgList);
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(vscanf))(const char *, __builtin_va_list) = vscanf;
+
+int __cdecl (*__MINGW_IMP_SYMBOL(vscanf))(const char *__restrict, va_list) = vscanf;

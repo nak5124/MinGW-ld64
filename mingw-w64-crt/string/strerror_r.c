@@ -4,6 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #define _GNU_SOURCE
+#define __CRT__NO_INLINE
 #include <string.h>
 
 char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen)

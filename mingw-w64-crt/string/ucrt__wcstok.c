@@ -3,7 +3,7 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
+#define __CRT__NO_INLINE
 #include <wchar.h>
 
 wchar_t *__cdecl _wcstok(wchar_t *restrict str, const wchar_t *restrict delim)

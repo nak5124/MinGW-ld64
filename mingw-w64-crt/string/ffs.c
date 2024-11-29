@@ -4,6 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 #define _DEFAULT_SOURCE
+#define __CRT__NO_INLINE
 #include <strings.h>
 
 int __cdecl ffs(int _Int)

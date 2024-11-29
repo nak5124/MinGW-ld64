@@ -3,33 +3,17 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
-// For ucrt, this function normally is an inline function in stdio.h.
-// libmingwex doesn't use the ucrt version of headers, and wassert.c can
-// end up requiring a concrete version of it.
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Winline"
-
-#define _snwprintf real__snwprintf
-
-#include <stdarg.h>
+#define __CRT__NO_INLINE
 #include <stdio.h>
 
-#undef _snwprintf
-
-int __cdecl _snwprintf(wchar_t * restrict _Dest, size_t _Count, const wchar_t * restrict _Format, ...);
-
-int __cdecl _snwprintf(wchar_t * restrict _Dest, size_t _Count, const wchar_t * restrict _Format, ...)
+int __cdecl _snwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...)
 {
-  va_list ap;
-  int ret;
-  va_start(ap, _Format);
-  ret = __stdio_common_vswprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Dest, _Count, _Format, NULL, ap);
-  va_end(ap);
-  return ret < 0 ? -1 : ret;
+    __builtin_va_list _ArgList;
+    int _Ret;
+    __builtin_va_start(_ArgList, _Format);
+    _Ret = __stdio_common_vswprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    __builtin_va_end(_ArgList);
+    return _Ret < 0 ? -1 : _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(_snwprintf))(wchar_t *restrict, size_t, const wchar_t *restrict, ...) = _snwprintf;
-
-#pragma GCC diagnostic pop
+int __cdecl (*__MINGW_IMP_SYMBOL(_snwprintf))(wchar_t *__restrict, size_t, const wchar_t *__restrict, ...) = _snwprintf;

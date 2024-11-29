@@ -381,6 +381,18 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl _vsnwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, va_list _ArgList)
     /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN;
 
+#ifndef __CRT__NO_INLINE
+
+  __CRT_INLINE /* __attribute__((__format__(gnu_wprintf, 3, 0))) */ __MINGW_NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN
+  int __cdecl _vsnwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, va_list _ArgList)
+  {
+    int _Ret;
+    _Ret = __stdio_common_vswprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    return _Ret < 0 ? -1 : _Ret;
+  }
+
+#endif
+
   __mingw_ovr
   int _vswprintf_c_l(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, _locale_t _Locale, va_list _ArgList)
   {
@@ -608,6 +620,21 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl _snwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...)
     /* __attribute__((__format__(gnu_wprintf, 3, 4))) */ __MINGW_NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN;
 
+#ifndef __CRT__NO_INLINE
+
+  __CRT_INLINE /* __attribute__((__format__(gnu_wprintf, 3, 4))) */ __MINGW_NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN
+  int __cdecl _snwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...)
+  {
+    __builtin_va_list _ArgList;
+    int _Ret;
+    __builtin_va_start(_ArgList, _Format);
+    _Ret = __stdio_common_vswprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    __builtin_va_end(_ArgList);
+    return _Ret < 0 ? -1 : _Ret;
+  }
+
+#endif
+
   __mingw_ovr
   int _snwprintf_s_l(wchar_t *__restrict _Buffer, size_t _BufferCount, size_t _MaxCount, const wchar_t *__restrict _Format, _locale_t _Locale, ...)
   {
@@ -814,7 +841,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef __CRT__NO_INLINE
 
-  __CRT_INLINE __MINGW_NONNULL((1, 2))
+  __CRT_INLINE /* __attribute__((__format__(gnu_wprintf, 2, 3))) */ __MINGW_NONNULL((1, 2))
   int __cdecl fwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...)
   {
     __builtin_va_list _ArgList;

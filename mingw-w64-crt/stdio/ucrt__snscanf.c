@@ -3,17 +3,17 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
+#define __CRT__NO_INLINE
 #include <stdio.h>
-#include <stdarg.h>
 
-int __cdecl _snscanf(const char * __restrict _Src, size_t _MaxCount, const char * __restrict _Format, ...)
+int __cdecl _snscanf(const char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
 {
-  int ret;
-  va_list _ArgList;
-  va_start(_ArgList, _Format);
-  ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Src, _MaxCount, _Format, NULL, _ArgList);
-  va_end(_ArgList);
-  return ret;
+    __builtin_va_list _ArgList;
+    int _Ret;
+    __builtin_va_start(_ArgList, _Format);
+    _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    __builtin_va_end(_ArgList);
+    return _Ret;
 }
+
 int __cdecl (*__MINGW_IMP_SYMBOL(_snscanf))(const char *__restrict, size_t, const char * __restrict, ...) = _snscanf;

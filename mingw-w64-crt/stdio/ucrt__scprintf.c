@@ -3,17 +3,17 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
+#define __CRT__NO_INLINE
 #include <stdio.h>
-#include <stdarg.h>
 
 int __cdecl _scprintf(const char * __restrict _Format, ...)
 {
-  int ret;
-  va_list _ArgList;
-  va_start(_ArgList, _Format);
-  ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
-  va_end(_ArgList);
-  return ret < 0 ? -1 : ret;
+    __builtin_va_list _ArgList;
+    int _Ret;
+    __builtin_va_start(_ArgList, _Format);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
+    __builtin_va_end(_ArgList);
+    return _Ret < 0 ? -1 : _Ret;
 }
+
 int __cdecl (*__MINGW_IMP_SYMBOL(_scprintf))(const char *__restrict, ...) = _scprintf;
