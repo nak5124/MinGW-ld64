@@ -191,8 +191,8 @@ src_libmingwex=\
   \
   string/bcopy.c                   string/bzero.c           string/explicit_bzero.c   string/ffs.c               string/ffsll.c       \
   string/memmem.c                  string/memrchr.c         string/memset_explicit.c  string/memset_s.c          string/stpcpy.c      \
-  string/stpncpy.c                 string/strcasestr.c      string/strchrnul.c        string/strerror_r.c        string/strndup.c     \
-  string/strverscmp.c              string/xsi_strerror_r.c  \
+  string/stpncpy.c                 string/strcasestr.c      string/strchrnul.c        string/strerror_r.c        string/strlcat.c     \
+  string/strlcpy.c                 string/strndup.c         string/strverscmp.c       string/xsi_strerror_r.c    \
   \
   time/asctime_r.c                 time/clock.c             time/ctime_r.c            time/gmtime_r.c            time/localtime_r.c   \
   time/nanosleep.c

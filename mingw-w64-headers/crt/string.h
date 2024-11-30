@@ -132,10 +132,12 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_MISC
-  extern void *__cdecl mempcpy(void *_Dst, const void *_Src, size_t _Size)                                                     __MINGW_NONNULL((1, 2));
-  extern void *__cdecl memmem(const void *_Haystack, size_t _Haystacklen, const void *_Needle, size_t _Needlelen) __MINGW_PURE __MINGW_NONNULL((1, 3));
-  extern char *__cdecl strchrnul(const char *_S, int _C)                                                          __MINGW_PURE __MINGW_NONNULL((1));
-  extern char *__cdecl strcasestr(const char *_Haystack, const char *_Needle)                                     __MINGW_PURE __MINGW_NONNULL((1, 2));
+  extern void   *__cdecl mempcpy(void *_Dst, const void *_Src, size_t _Size)                                                     __MINGW_NONNULL((1, 2));
+  extern void   *__cdecl memmem(const void *_Haystack, size_t _Haystacklen, const void *_Needle, size_t _Needlelen) __MINGW_PURE __MINGW_NONNULL((1, 3));
+  extern char   *__cdecl strchrnul(const char *_S, int _C)                                                          __MINGW_PURE __MINGW_NONNULL((1));
+  extern char   *__cdecl strcasestr(const char *_Haystack, const char *_Needle)                                     __MINGW_PURE __MINGW_NONNULL((1, 2));
+  extern size_t  __cdecl strlcat(char *__restrict _Dest, const char *__restrict _Src, size_t _N)                                 __MINGW_NONNULL((1, 2));
+  extern size_t  __cdecl strlcpy(char *__restrict _Dest, const char *__restrict _Src, size_t _N)                                 __MINGW_NONNULL((1, 2));
 #endif
 
 #ifdef __MINGW_USE_GNU
