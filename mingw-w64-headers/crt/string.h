@@ -174,6 +174,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_MISC
+#include <strings.h>
+
   extern void __cdecl explicit_bzero(void *_Ptr, size_t _N) __MINGW_NONNULL((1));
 #if !defined(__CRT__NO_INLINE) && defined(SecureZeroMemory)
   __CRT_INLINE __MINGW_NONNULL((1))
@@ -182,6 +184,8 @@ __MINGW_BEGIN_C_DECLS
     SecureZeroMemory(_Ptr, _N);
   }
 #endif
+
+  extern char *__cdecl strsep(char **__restrict _Stringp, const char *__restrict _Delim) __MINGW_NONNULL((1, 2));
 #endif
 
 #ifdef __MINGW_USE_XOPEN2K8
