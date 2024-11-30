@@ -39,6 +39,7 @@ Differences from official
    - memset_explicit
    - strlcat/strlcpy
    - strsep
+   - a64l/l64a
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Various other cosmetics.
 

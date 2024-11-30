@@ -571,6 +571,11 @@ __MINGW_BEGIN_C_DECLS
   extern char *__cdecl mkdtemp(char *_Template) __MINGW_NONNULL((1));
 #endif
 
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN_EXT)
+  extern long  __cdecl a64l(const char *_Str64) __MINGW_PURE __MINGW_NONNULL((1));
+  extern char *__cdecl l64a(long _Value);
+#endif
+
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);
