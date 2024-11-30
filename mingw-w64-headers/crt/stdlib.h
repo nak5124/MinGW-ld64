@@ -567,6 +567,10 @@ __MINGW_BEGIN_C_DECLS
   extern void __cdecl qsort_r(void *_Base, size_t _Nmemb, size_t _Size, _Compare_fn_t _Compar, void *_Arg) __MINGW_NONNULL((1, 4));
 #endif
 
+#ifdef __MINGW_USE_XOPEN2K8
+  extern char *__cdecl mkdtemp(char *_Template) __MINGW_NONNULL((1));
+#endif
+
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);

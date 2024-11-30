@@ -25,7 +25,7 @@
     owner only. The returned file descriptor provides both read and write access
     to the file.
  */
-int __cdecl mkstemp (char *template_name)
+int __cdecl mkstemp(char *_Template)
 {
     int j, fd, len, index;
     unsigned int i, r;
@@ -34,63 +34,38 @@ int __cdecl mkstemp (char *template_name)
     static const char letters[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     /* The last six characters of template must be "XXXXXX" */
-    if (template_name == NULL || (len = strlen (template_name)) < 6
-            || memcmp (template_name + (len - 6), "XXXXXX", 6)) {
+    if(_Template == NULL || (len = strlen(_Template)) < 6 || memcmp(_Template + (len - 6), "XXXXXX", 6))
+    {
         errno = EINVAL;
         return -1;
     }
 
     /* User may supply more than six trailing Xs */
-    for (index = len - 6; index > 0 && template_name[index - 1] == 'X'; index--);
+    for(index = len - 6; index > 0 && _Template[index - 1] == 'X'; index--);
 
     /* Like OpenBSD, mkstemp() will try 2 ** 31 combinations before giving up. */
-    for (i = 0; i <= INT_MAX; i++) {
-        for(j = index; j < len; j++) {
-            if (rand_s(&r))
+    for(i = 0; i <= INT_MAX; i++)
+    {
+        for(j = index; j < len; j++)
+        {
+            if(rand_s(&r))
+            {
                 r = rand();
-            template_name[j] = letters[r % 62];
+            }
+            _Template[j] = letters[r % 62];
         }
-        errno_t err = _sopen_s(&fd, template_name,
-                _O_RDWR | _O_CREAT | _O_EXCL | _O_BINARY,
-                _SH_DENYNO, _S_IREAD | _S_IWRITE);
-        if (fd != -1 && err == 0) return fd;
-        if (err != 0 && errno != EEXIST) return -1;
+        errno_t err = _sopen_s(&fd, _Template, _O_RDWR | _O_CREAT | _O_EXCL | _O_BINARY, _SH_DENYNO, _S_IREAD | _S_IWRITE);
+        if(fd != -1 && err == 0)
+        {
+            return fd;
+        }
+        if(err != 0 && errno != EEXIST)
+        {
+            return -1;
+        }
     }
 
     return -1;
 }
 
-int __cdecl mkstemp64 (char *template_name) __attribute__((alias("mkstemp")));
-
-#if 0
-#include <stdio.h>
-
-int main (int argc, char *argv[])
-{
-    int i, fd;
-
-    for (i = 0; i < 10; i++) {
-        char template_name[] = { "temp_XXXXXX" };
-        fd = mkstemp (template_name);
-        if (fd >= 0) {
-            fprintf (stderr, "fd=%d, name=%s\n", fd, template_name);
-            _close (fd);
-        } else {
-            fprintf (stderr, "errno=%d\n", errno);
-        }
-    }
-
-    for (i = 0; i < 10; i++) {
-        char template_name[] = { "temp_XXXXXXXX" };
-        fd = mkstemp (template_name);
-        if (fd >= 0) {
-            fprintf (stderr, "fd=%d, name=%s\n", fd, template_name);
-            _close (fd);
-        } else {
-            fprintf (stderr, "errno=%d\n", errno);
-        }
-    }
-
-    return 0;
-}
-#endif
+int __cdecl mkstemp64(char *_Template) __attribute__((alias("mkstemp")));

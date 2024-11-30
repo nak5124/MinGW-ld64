@@ -20,7 +20,7 @@ Differences from official
  - Added new functions
    - arc4random, arc4random_buf, arc4random_uniform
    - getentropy
-   - mkstemps
+   - mkstemps/mkdtemp
    - strerror_r
    - strndup
    - realpath
