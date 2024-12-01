@@ -40,6 +40,7 @@ Differences from official
    - strlcat/strlcpy
    - strsep
    - a64l/l64a
+   - reallocarray
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Various other cosmetics.
 

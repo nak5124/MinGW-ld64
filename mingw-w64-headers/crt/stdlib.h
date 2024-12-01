@@ -576,6 +576,10 @@ __MINGW_BEGIN_C_DECLS
   extern char *__cdecl l64a(long _Value);
 #endif
 
+#ifdef __MINGW_USE_MISC
+  extern void *__cdecl reallocarray(void *_Ptr, size_t _Nmemb, size_t _Size) __MINGW_NOTHROW;
+#endif
+
 #ifndef __STRICT_ANSI__
   __MINGW_EXTENSION char *__cdecl lltoa(long long _Val, char *_DstBuf, int _Radix);
   __MINGW_EXTENSION char *__cdecl ulltoa(unsigned long long _Val, char *_DstBuf, int _Radix);
