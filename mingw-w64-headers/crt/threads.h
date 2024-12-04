@@ -20,6 +20,7 @@
 __MINGW_BEGIN_C_DECLS
 
 #if (!defined(__STDC_VERSION__) || __STDC_VERSION__ <= 201710L || !__MINGW_GNUC_PREREQ(13, 0)) && !defined(__cplusplus)
+# undef  thread_local
 # define thread_local _Thread_local
 #endif
 

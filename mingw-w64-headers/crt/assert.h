@@ -16,8 +16,7 @@
 
 __MINGW_BEGIN_C_DECLS
 
-#if defined(__MINGW_USE_ISOC11) && !defined(__cplusplus)
-/* Static assertion.  Requires support in the compiler. */
+#if (!defined(__STDC_VERSION__) || __STDC_VERSION__ <= 201710L || !__MINGW_GNUC_PREREQ(13, 0)) && !defined(__cplusplus)
 # undef  static_assert
 # define static_assert _Static_assert
 #endif
