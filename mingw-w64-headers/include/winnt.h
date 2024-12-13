@@ -12499,7 +12499,7 @@ extern "C" {
   }
 #endif  /* defined(__x86_64__) && !defined (__WIDL__) */
 
-#if defined(__aarch64__) && !defined(__WIDL__)
+#if (defined(__aarch64__) || defined(__arm64ec__)) && !defined(__WIDL__)
   __forceinline
   struct _TEB *NtCurrentTeb(VOID)
   {
