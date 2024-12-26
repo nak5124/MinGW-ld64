@@ -85,7 +85,7 @@ int __mingw_cxa_thread_atexit(dtor_fn dtor, void *obj, void *dso) {
     return 1;
   assert(!dso || dso == &__dso_handle);
 
-  dtor_obj **head = (dtor_obj **)TlsGetValue(tls_dtors_slot);
+  dtor_obj **head = (dtor_obj **)TlsGetValue2(tls_dtors_slot);
   if (!head) {
     head = (dtor_obj **) calloc(1, sizeof(*head));
     if (!head)
@@ -104,7 +104,7 @@ int __mingw_cxa_thread_atexit(dtor_fn dtor, void *obj, void *dso) {
 
 static void WINAPI tls_atexit_callback(HANDLE __UNUSED_PARAM(hDllHandle), DWORD dwReason, LPVOID __UNUSED_PARAM(lpReserved)) {
   if (dwReason == DLL_PROCESS_DETACH) {
-    dtor_obj **p = (dtor_obj **)TlsGetValue(tls_dtors_slot);
+    dtor_obj **p = (dtor_obj **)TlsGetValue2(tls_dtors_slot);
     run_dtor_list(p);
     free(p);
     TlsSetValue(tls_dtors_slot, NULL);
@@ -159,7 +159,7 @@ static void WINAPI tls_callback(HANDLE hDllHandle, DWORD dwReason, LPVOID __UNUS
      * linked CRT (which still runs TLS destructors for the main thread).
      */
     if (__mingw_module_is_dll) {
-      p = (dtor_obj **)TlsGetValue(tls_dtors_slot);
+      p = (dtor_obj **)TlsGetValue2(tls_dtors_slot);
       run_dtor_list(p);
       free(p);
       TlsSetValue(tls_dtors_slot, NULL);
@@ -177,7 +177,7 @@ static void WINAPI tls_callback(HANDLE hDllHandle, DWORD dwReason, LPVOID __UNUS
   case DLL_THREAD_ATTACH:
     break;
   case DLL_THREAD_DETACH:
-    p = (dtor_obj **)TlsGetValue(tls_dtors_slot);
+    p = (dtor_obj **)TlsGetValue2(tls_dtors_slot);
     run_dtor_list(p);
     free(p);
     TlsSetValue(tls_dtors_slot, NULL);

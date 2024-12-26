@@ -106,7 +106,7 @@ __mingwthr_run_key_dtors (void)
 
   for (keyp = key_dtor_list; keyp; )
     {
-      LPVOID value = TlsGetValue (keyp->key);
+      LPVOID value = TlsGetValue2 (keyp->key);
       if (GetLastError () == ERROR_SUCCESS)
         {
           if (value)
