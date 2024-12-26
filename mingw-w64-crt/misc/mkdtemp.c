@@ -19,7 +19,7 @@ char *__cdecl mkdtemp(char *_Template)
     if(_Template == NULL || (len = strlen(_Template)) < 6 || memcmp(_Template + (len - 6), "XXXXXX", 6))
     {
         errno = EINVAL;
-        return -1;
+        return NULL;
     }
 
     /* User may supply more than six trailing Xs */
