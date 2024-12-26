@@ -50,7 +50,7 @@
 # define __MINGW_FORCE_SYS_INTRINS
 #endif
 
-if defined(__x86_64__) && !defined(__arm64ec__)
+#if defined(__x86_64__) && !defined(__arm64ec__)
 #include <stdlib.h>
 #include <errno.h>
 
@@ -87,7 +87,7 @@ __MINGW_END_C_DECLS
 # define WINAPI __stdcall
 #endif
 
-if defined(__x86_64__) && !defined(__arm64ec__)
+#if defined(__x86_64__) && !defined(__arm64ec__)
 
 #if defined(__MMX__) || defined(__MINGW_FORCE_SYS_INTRINS)
 __MINGW_BEGIN_C_DECLS
