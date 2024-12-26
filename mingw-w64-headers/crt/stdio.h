@@ -700,7 +700,6 @@ __MINGW_BEGIN_C_DECLS
 
 #endif
 
-
   __mingw_ovr
   int _scprintf_p_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
@@ -949,6 +948,8 @@ __MINGW_BEGIN_C_DECLS
 
   extern int __cdecl vsnprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, va_list _ArgList)
     __MINGW_GNU_PRINTF(3, 0) __MINGW_NONNULL((3)) __MINGW_NOTHROW;
+  extern int __cdecl snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
+    __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW;
 
 #ifndef __CRT__NO_INLINE
 
@@ -959,6 +960,17 @@ __MINGW_BEGIN_C_DECLS
   {
     int _Ret;
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    return _Ret < 0 ? -1 : _Ret;
+  }
+
+  __CRT_INLINE __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW
+  int __cdecl snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
+  {
+    __builtin_va_list _ArgList;
+    int _Ret;
+    __builtin_va_start(_ArgList, _Format);
+    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, _Buffer, _BufferCount, _Format, NULL, _ArgList);
+    __builtin_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -999,32 +1011,6 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* __MINGW_FORTIFY_LEVEL == 0 */
 
 #endif  /* __CRT__NO_INLINE */
-
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
-
-  extern int __cdecl snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
-    __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW;
-
-#ifndef __CRT__NO_INLINE
-
-#if __MINGW_FORTIFY_LEVEL == 0
-
-  __CRT_INLINE __MINGW_GNU_PRINTF(3, 4) __MINGW_NONNULL((3)) __MINGW_NOTHROW
-  int __cdecl snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
-  {
-    __builtin_va_list _ArgList;
-    int _Ret;
-    __builtin_va_start(_ArgList, _Format);
-    _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
-    return _Ret < 0 ? -1 : _Ret;
-  }
-
-#endif  /* __MINGW_FORTIFY_LEVEL == 0 */
-
-#endif  /* __CRT__NO_INLINE */
-
-#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
 
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 
