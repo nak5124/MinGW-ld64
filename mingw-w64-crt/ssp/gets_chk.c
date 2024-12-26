@@ -3,12 +3,12 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 void __cdecl __chk_fail(void) __MINGW_NORETURN;
+_CRTIMP char   *__cdecl  gets(char *_Buffer) __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
 
 char *__cdecl __gets_chk(char *dst, size_t bufsize);
 
