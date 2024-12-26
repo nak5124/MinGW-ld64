@@ -51,5 +51,3 @@ To use GCC where long double equals double, [GCC patches](https://github.com/nak
 
 ToDo
 ----
- - Update headers
-   - iphlpapi.h
