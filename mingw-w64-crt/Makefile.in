@@ -912,14 +912,20 @@ am__lib64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	stdio/ucrt__snprintf.c stdio/ucrt__snscanf.c \
 	stdio/ucrt__snwprintf.c stdio/ucrt__vscprintf.c \
 	stdio/ucrt__vsnprintf.c stdio/ucrt__vsnwprintf.c \
-	string/ucrt__wcstok.c stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c \
-	stdio/ucrt_fwprintf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
-	stdio/ucrt_snprintf.c stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
-	stdio/ucrt_vfprintf.c stdio/ucrt_vfscanf.c \
-	stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
-	stdio/ucrt_vsnprintf.c stdio/ucrt_vsprintf.c \
-	stdio/ucrt_vsscanf.c math/x64/fabsf.c math/x64/ldexp.c \
-	math/x64/scalbn.S math/x64/scalbnf.S
+	stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c stdio/ucrt_fwprintf.c \
+	stdio/ucrt_fwscanf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
+	stdio/ucrt_snprintf.c stdio/ucrt_snwprintf.c \
+	stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c stdio/ucrt_swprintf.c \
+	stdio/ucrt_swscanf.c stdio/ucrt_vfprintf.c \
+	stdio/ucrt_vfscanf.c stdio/ucrt_vfwprintf.c \
+	stdio/ucrt_vfwscanf.c stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
+	stdio/ucrt_vsnprintf.c stdio/ucrt_vsnwprintf.c \
+	stdio/ucrt_vsprintf.c stdio/ucrt_vsscanf.c \
+	stdio/ucrt_vswprintf.c stdio/ucrt_vswscanf.c \
+	stdio/ucrt_vwprintf.c stdio/ucrt_vwscanf.c \
+	stdio/ucrt_wprintf.c stdio/ucrt_wscanf.c string/ucrt__wcstok.c \
+	math/x64/fabsf.c math/x64/ldexp.c math/x64/scalbn.S \
+	math/x64/scalbnf.S
 am__objects_37 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-frexpf.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-ldexpf.$(OBJEXT) \
@@ -949,22 +955,35 @@ am__objects_37 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt__vscprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT) \
-	string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_fwprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_fwscanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_printf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_scanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_snprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_snwprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_sprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_sscanf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_swprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_swscanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_vfprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_vfscanf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_vprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_vscanf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_vsnprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_vsprintf.$(OBJEXT) \
-	stdio/lib64_libucrt_extra_a-ucrt_vsscanf.$(OBJEXT)
+	stdio/lib64_libucrt_extra_a-ucrt_vsscanf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vswprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vswscanf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vwprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_vwscanf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_wprintf.$(OBJEXT) \
+	stdio/lib64_libucrt_extra_a-ucrt_wscanf.$(OBJEXT) \
+	string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT)
 am__objects_38 = $(am__objects_37) \
 	math/x64/lib64_libucrt_extra_a-fabsf.$(OBJEXT) \
 	math/x64/lib64_libucrt_extra_a-ldexp.$(OBJEXT) \
@@ -1788,13 +1807,19 @@ am__libarm64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	stdio/ucrt__snprintf.c stdio/ucrt__snscanf.c \
 	stdio/ucrt__snwprintf.c stdio/ucrt__vscprintf.c \
 	stdio/ucrt__vsnprintf.c stdio/ucrt__vsnwprintf.c \
-	string/ucrt__wcstok.c stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c \
-	stdio/ucrt_fwprintf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
-	stdio/ucrt_snprintf.c stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c \
-	stdio/ucrt_vfprintf.c stdio/ucrt_vfscanf.c \
-	stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
-	stdio/ucrt_vsnprintf.c stdio/ucrt_vsprintf.c \
-	stdio/ucrt_vsscanf.c math/arm64/scalbn.c
+	stdio/ucrt_fprintf.c stdio/ucrt_fscanf.c stdio/ucrt_fwprintf.c \
+	stdio/ucrt_fwscanf.c stdio/ucrt_printf.c stdio/ucrt_scanf.c \
+	stdio/ucrt_snprintf.c stdio/ucrt_snwprintf.c \
+	stdio/ucrt_sprintf.c stdio/ucrt_sscanf.c stdio/ucrt_swprintf.c \
+	stdio/ucrt_swscanf.c stdio/ucrt_vfprintf.c \
+	stdio/ucrt_vfscanf.c stdio/ucrt_vfwprintf.c \
+	stdio/ucrt_vfwscanf.c stdio/ucrt_vprintf.c stdio/ucrt_vscanf.c \
+	stdio/ucrt_vsnprintf.c stdio/ucrt_vsnwprintf.c \
+	stdio/ucrt_vsprintf.c stdio/ucrt_vsscanf.c \
+	stdio/ucrt_vswprintf.c stdio/ucrt_vswscanf.c \
+	stdio/ucrt_vwprintf.c stdio/ucrt_vwscanf.c \
+	stdio/ucrt_wprintf.c stdio/ucrt_wscanf.c string/ucrt__wcstok.c \
+	math/arm64/scalbn.c
 am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-frexpf.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-ldexpf.$(OBJEXT) \
@@ -1824,22 +1849,35 @@ am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt__vscprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT) \
-	string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_fwprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_printf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_scanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_snprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_sprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_sscanf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_swprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_swscanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_vfprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_vfscanf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_vprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_vscanf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_vsnprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_vsprintf.$(OBJEXT) \
-	stdio/libarm64_libucrt_extra_a-ucrt_vsscanf.$(OBJEXT)
+	stdio/libarm64_libucrt_extra_a-ucrt_vsscanf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_wprintf.$(OBJEXT) \
+	stdio/libarm64_libucrt_extra_a-ucrt_wscanf.$(OBJEXT) \
+	string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT)
 am__objects_83 = $(am__objects_82) \
 	math/arm64/libarm64_libucrt_extra_a-scalbn.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libucrt_extra_a_OBJECTS =  \
@@ -3275,18 +3313,31 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fscanf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_printf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_scanf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sscanf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfscanf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vscanf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Po \
 	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsscanf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Po \
+	stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Po \
 	stdio/$(DEPDIR)/libarm64_libmingwex_a-asprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libmingwex_a-truncate.Po \
 	stdio/$(DEPDIR)/libarm64_libmingwex_a-vasprintf.Po \
@@ -3300,18 +3351,31 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fscanf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_printf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_scanf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sscanf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfscanf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vscanf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po \
 	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Po \
+	stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Po \
 	string/$(DEPDIR)/lib64_libmingwex_a-bcopy.Po \
 	string/$(DEPDIR)/lib64_libmingwex_a-bzero.Po \
 	string/$(DEPDIR)/lib64_libmingwex_a-explicit_bzero.Po \
@@ -4230,10 +4294,14 @@ src_ucrtbase = \
   misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
   \
   stdio/ucrt__scprintf.c     stdio/ucrt__snprintf.c    stdio/ucrt__snscanf.c      stdio/ucrt__snwprintf.c  stdio/ucrt__vscprintf.c     \
-  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  string/ucrt__wcstok.c      stdio/ucrt_fprintf.c     stdio/ucrt_fscanf.c         \
-  stdio/ucrt_fwprintf.c      stdio/ucrt_printf.c       stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c    stdio/ucrt_sprintf.c        \
-  stdio/ucrt_sscanf.c        stdio/ucrt_vfprintf.c     stdio/ucrt_vfscanf.c       stdio/ucrt_vprintf.c     stdio/ucrt_vscanf.c         \
-  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsprintf.c     stdio/ucrt_vsscanf.c
+  stdio/ucrt__vsnprintf.c    stdio/ucrt__vsnwprintf.c  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c      stdio/ucrt_fwprintf.c       \
+  stdio/ucrt_fwscanf.c       stdio/ucrt_printf.c       stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c    stdio/ucrt_snwprintf.c      \
+  stdio/ucrt_sprintf.c       stdio/ucrt_sscanf.c       stdio/ucrt_swprintf.c      stdio/ucrt_swscanf.c     stdio/ucrt_vfprintf.c       \
+  stdio/ucrt_vfscanf.c       stdio/ucrt_vfwprintf.c    stdio/ucrt_vfwscanf.c      stdio/ucrt_vprintf.c     stdio/ucrt_vscanf.c         \
+  stdio/ucrt_vsnprintf.c     stdio/ucrt_vsnwprintf.c   stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c     stdio/ucrt_vswprintf.c      \
+  stdio/ucrt_vswscanf.c      stdio/ucrt_vwprintf.c     stdio/ucrt_vwscanf.c       stdio/ucrt_wprintf.c     stdio/ucrt_wscanf.c         \
+  \
+  string/ucrt__wcstok.c
 
 
 # Files included in libucrtapp.a
@@ -6394,13 +6462,13 @@ stdio/lib64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
-string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT):  \
-	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_fwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_fwscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_printf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
@@ -6408,13 +6476,23 @@ stdio/lib64_libucrt_extra_a-ucrt_scanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_snprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_snwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_sprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_sscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_swprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_swscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_vfprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_vfscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_vprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
@@ -6422,10 +6500,26 @@ stdio/lib64_libucrt_extra_a-ucrt_vscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_vsnprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_vsprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/lib64_libucrt_extra_a-ucrt_vsscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vswprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vswscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_vwscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_wprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/lib64_libucrt_extra_a-ucrt_wscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 math/x64/lib64_libucrt_extra_a-fabsf.$(OBJEXT):  \
 	math/x64/$(am__dirstamp) math/x64/$(DEPDIR)/$(am__dirstamp)
 math/x64/lib64_libucrt_extra_a-ldexp.$(OBJEXT):  \
@@ -7546,13 +7640,13 @@ stdio/libarm64_libucrt_extra_a-ucrt__vsnprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
-string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT):  \
-	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_fprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_fscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_fwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_printf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
@@ -7560,13 +7654,23 @@ stdio/libarm64_libucrt_extra_a-ucrt_scanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_snprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_sprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_sscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_swprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_swscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_vfprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_vfscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_vprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
@@ -7574,10 +7678,26 @@ stdio/libarm64_libucrt_extra_a-ucrt_vscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_vsnprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_vsprintf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
 stdio/libarm64_libucrt_extra_a-ucrt_vsscanf.$(OBJEXT):  \
 	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_wprintf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+stdio/libarm64_libucrt_extra_a-ucrt_wscanf.$(OBJEXT):  \
+	stdio/$(am__dirstamp) stdio/$(DEPDIR)/$(am__dirstamp)
+string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT):  \
+	string/$(am__dirstamp) string/$(DEPDIR)/$(am__dirstamp)
 math/arm64/libarm64_libucrt_extra_a-scalbn.$(OBJEXT):  \
 	math/arm64/$(am__dirstamp) \
 	math/arm64/$(DEPDIR)/$(am__dirstamp)
@@ -9279,18 +9399,31 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_printf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_scanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libmingwex_a-asprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libmingwex_a-truncate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libmingwex_a-vasprintf.Po@am__quote@ # am--include-marker
@@ -9304,18 +9437,31 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_printf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_scanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-bcopy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-bzero.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@string/$(DEPDIR)/lib64_libmingwex_a-explicit_bzero.Po@am__quote@ # am--include-marker
@@ -14686,20 +14832,6 @@ stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.obj: stdio/ucrt__vsnwprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt__vsnwprintf.obj `if test -f 'stdio/ucrt__vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt__vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt__vsnwprintf.c'; fi`
 
-string/lib64_libucrt_extra_a-ucrt__wcstok.o: string/ucrt__wcstok.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrt_extra_a-ucrt__wcstok.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/lib64_libucrt_extra_a-ucrt__wcstok.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
-
-string/lib64_libucrt_extra_a-ucrt__wcstok.obj: string/ucrt__wcstok.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrt_extra_a-ucrt__wcstok.obj -MD -MP -MF string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/lib64_libucrt_extra_a-ucrt__wcstok.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
-
 stdio/lib64_libucrt_extra_a-ucrt_fprintf.o: stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_fprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_fprintf.o `test -f 'stdio/ucrt_fprintf.c' || echo '$(srcdir)/'`stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Po
@@ -14741,6 +14873,20 @@ stdio/lib64_libucrt_extra_a-ucrt_fwprintf.obj: stdio/ucrt_fwprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_fwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_fwprintf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_fwprintf.obj `if test -f 'stdio/ucrt_fwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_fwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_fwprintf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_fwscanf.o: stdio/ucrt_fwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_fwscanf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_fwscanf.o `test -f 'stdio/ucrt_fwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_fwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_fwscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_fwscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_fwscanf.o `test -f 'stdio/ucrt_fwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_fwscanf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_fwscanf.obj: stdio/ucrt_fwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_fwscanf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_fwscanf.obj `if test -f 'stdio/ucrt_fwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_fwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_fwscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_fwscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_fwscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_fwscanf.obj `if test -f 'stdio/ucrt_fwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_fwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_fwscanf.c'; fi`
 
 stdio/lib64_libucrt_extra_a-ucrt_printf.o: stdio/ucrt_printf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_printf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_printf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_printf.o `test -f 'stdio/ucrt_printf.c' || echo '$(srcdir)/'`stdio/ucrt_printf.c
@@ -14784,6 +14930,20 @@ stdio/lib64_libucrt_extra_a-ucrt_snprintf.obj: stdio/ucrt_snprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_snprintf.obj `if test -f 'stdio/ucrt_snprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_snprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_snprintf.c'; fi`
 
+stdio/lib64_libucrt_extra_a-ucrt_snwprintf.o: stdio/ucrt_snwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_snwprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_snwprintf.o `test -f 'stdio/ucrt_snwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_snwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_snwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_snwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_snwprintf.o `test -f 'stdio/ucrt_snwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_snwprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_snwprintf.obj: stdio/ucrt_snwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_snwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_snwprintf.obj `if test -f 'stdio/ucrt_snwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_snwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_snwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_snwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_snwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_snwprintf.obj `if test -f 'stdio/ucrt_snwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_snwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_snwprintf.c'; fi`
+
 stdio/lib64_libucrt_extra_a-ucrt_sprintf.o: stdio/ucrt_sprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_sprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_sprintf.o `test -f 'stdio/ucrt_sprintf.c' || echo '$(srcdir)/'`stdio/ucrt_sprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Po
@@ -14812,6 +14972,34 @@ stdio/lib64_libucrt_extra_a-ucrt_sscanf.obj: stdio/ucrt_sscanf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_sscanf.obj `if test -f 'stdio/ucrt_sscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_sscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_sscanf.c'; fi`
 
+stdio/lib64_libucrt_extra_a-ucrt_swprintf.o: stdio/ucrt_swprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_swprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_swprintf.o `test -f 'stdio/ucrt_swprintf.c' || echo '$(srcdir)/'`stdio/ucrt_swprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_swprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_swprintf.o `test -f 'stdio/ucrt_swprintf.c' || echo '$(srcdir)/'`stdio/ucrt_swprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_swprintf.obj: stdio/ucrt_swprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_swprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_swprintf.obj `if test -f 'stdio/ucrt_swprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_swprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_swprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_swprintf.obj `if test -f 'stdio/ucrt_swprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_swprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swprintf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_swscanf.o: stdio/ucrt_swscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_swscanf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_swscanf.o `test -f 'stdio/ucrt_swscanf.c' || echo '$(srcdir)/'`stdio/ucrt_swscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_swscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_swscanf.o `test -f 'stdio/ucrt_swscanf.c' || echo '$(srcdir)/'`stdio/ucrt_swscanf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_swscanf.obj: stdio/ucrt_swscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_swscanf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_swscanf.obj `if test -f 'stdio/ucrt_swscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_swscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_swscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_swscanf.obj `if test -f 'stdio/ucrt_swscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_swscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swscanf.c'; fi`
+
 stdio/lib64_libucrt_extra_a-ucrt_vfprintf.o: stdio/ucrt_vfprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vfprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vfprintf.o `test -f 'stdio/ucrt_vfprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vfprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Po
@@ -14839,6 +15027,34 @@ stdio/lib64_libucrt_extra_a-ucrt_vfscanf.obj: stdio/ucrt_vfscanf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vfscanf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vfscanf.obj `if test -f 'stdio/ucrt_vfscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfscanf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.o: stdio/ucrt_vfwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.o `test -f 'stdio/ucrt_vfwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.o `test -f 'stdio/ucrt_vfwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.obj: stdio/ucrt_vfwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.obj `if test -f 'stdio/ucrt_vfwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwprintf.obj `if test -f 'stdio/ucrt_vfwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwprintf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.o: stdio/ucrt_vfwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.o `test -f 'stdio/ucrt_vfwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.o `test -f 'stdio/ucrt_vfwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwscanf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.obj: stdio/ucrt_vfwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.obj `if test -f 'stdio/ucrt_vfwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vfwscanf.obj `if test -f 'stdio/ucrt_vfwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwscanf.c'; fi`
 
 stdio/lib64_libucrt_extra_a-ucrt_vprintf.o: stdio/ucrt_vprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vprintf.o `test -f 'stdio/ucrt_vprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vprintf.c
@@ -14882,6 +15098,20 @@ stdio/lib64_libucrt_extra_a-ucrt_vsnprintf.obj: stdio/ucrt_vsnprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vsnprintf.obj `if test -f 'stdio/ucrt_vsnprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsnprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsnprintf.c'; fi`
 
+stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.o: stdio/ucrt_vsnwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.o `test -f 'stdio/ucrt_vsnwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vsnwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vsnwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.o `test -f 'stdio/ucrt_vsnwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vsnwprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.obj: stdio/ucrt_vsnwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.obj `if test -f 'stdio/ucrt_vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsnwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vsnwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vsnwprintf.obj `if test -f 'stdio/ucrt_vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsnwprintf.c'; fi`
+
 stdio/lib64_libucrt_extra_a-ucrt_vsprintf.o: stdio/ucrt_vsprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vsprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vsprintf.o `test -f 'stdio/ucrt_vsprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vsprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Po
@@ -14909,6 +15139,104 @@ stdio/lib64_libucrt_extra_a-ucrt_vsscanf.obj: stdio/ucrt_vsscanf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vsscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vsscanf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vsscanf.obj `if test -f 'stdio/ucrt_vsscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsscanf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_vswprintf.o: stdio/ucrt_vswprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vswprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vswprintf.o `test -f 'stdio/ucrt_vswprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vswprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vswprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vswprintf.o `test -f 'stdio/ucrt_vswprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vswprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vswprintf.obj: stdio/ucrt_vswprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vswprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vswprintf.obj `if test -f 'stdio/ucrt_vswprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vswprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vswprintf.obj `if test -f 'stdio/ucrt_vswprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswprintf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_vswscanf.o: stdio/ucrt_vswscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vswscanf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vswscanf.o `test -f 'stdio/ucrt_vswscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vswscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vswscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vswscanf.o `test -f 'stdio/ucrt_vswscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vswscanf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vswscanf.obj: stdio/ucrt_vswscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vswscanf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vswscanf.obj `if test -f 'stdio/ucrt_vswscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vswscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vswscanf.obj `if test -f 'stdio/ucrt_vswscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswscanf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_vwprintf.o: stdio/ucrt_vwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vwprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vwprintf.o `test -f 'stdio/ucrt_vwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vwprintf.o `test -f 'stdio/ucrt_vwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vwprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vwprintf.obj: stdio/ucrt_vwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vwprintf.obj `if test -f 'stdio/ucrt_vwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vwprintf.obj `if test -f 'stdio/ucrt_vwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwprintf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_vwscanf.o: stdio/ucrt_vwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vwscanf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vwscanf.o `test -f 'stdio/ucrt_vwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vwscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vwscanf.o `test -f 'stdio/ucrt_vwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vwscanf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_vwscanf.obj: stdio/ucrt_vwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_vwscanf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_vwscanf.obj `if test -f 'stdio/ucrt_vwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_vwscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_vwscanf.obj `if test -f 'stdio/ucrt_vwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwscanf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_wprintf.o: stdio/ucrt_wprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_wprintf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_wprintf.o `test -f 'stdio/ucrt_wprintf.c' || echo '$(srcdir)/'`stdio/ucrt_wprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_wprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_wprintf.o `test -f 'stdio/ucrt_wprintf.c' || echo '$(srcdir)/'`stdio/ucrt_wprintf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_wprintf.obj: stdio/ucrt_wprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_wprintf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_wprintf.obj `if test -f 'stdio/ucrt_wprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_wprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wprintf.c' object='stdio/lib64_libucrt_extra_a-ucrt_wprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_wprintf.obj `if test -f 'stdio/ucrt_wprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_wprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wprintf.c'; fi`
+
+stdio/lib64_libucrt_extra_a-ucrt_wscanf.o: stdio/ucrt_wscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_wscanf.o -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_wscanf.o `test -f 'stdio/ucrt_wscanf.c' || echo '$(srcdir)/'`stdio/ucrt_wscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_wscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_wscanf.o `test -f 'stdio/ucrt_wscanf.c' || echo '$(srcdir)/'`stdio/ucrt_wscanf.c
+
+stdio/lib64_libucrt_extra_a-ucrt_wscanf.obj: stdio/ucrt_wscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/lib64_libucrt_extra_a-ucrt_wscanf.obj -MD -MP -MF stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Tpo -c -o stdio/lib64_libucrt_extra_a-ucrt_wscanf.obj `if test -f 'stdio/ucrt_wscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_wscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Tpo stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wscanf.c' object='stdio/lib64_libucrt_extra_a-ucrt_wscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/lib64_libucrt_extra_a-ucrt_wscanf.obj `if test -f 'stdio/ucrt_wscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_wscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wscanf.c'; fi`
+
+string/lib64_libucrt_extra_a-ucrt__wcstok.o: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrt_extra_a-ucrt__wcstok.o -MD -MP -MF string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/lib64_libucrt_extra_a-ucrt__wcstok.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+
+string/lib64_libucrt_extra_a-ucrt__wcstok.obj: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/lib64_libucrt_extra_a-ucrt__wcstok.obj -MD -MP -MF string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/lib64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/lib64_libucrt_extra_a-ucrt__wcstok.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/lib64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
 
 math/x64/lib64_libucrt_extra_a-fabsf.o: math/x64/fabsf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT math/x64/lib64_libucrt_extra_a-fabsf.o -MD -MP -MF math/x64/$(DEPDIR)/lib64_libucrt_extra_a-fabsf.Tpo -c -o math/x64/lib64_libucrt_extra_a-fabsf.o `test -f 'math/x64/fabsf.c' || echo '$(srcdir)/'`math/x64/fabsf.c
@@ -20832,20 +21160,6 @@ stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.obj: stdio/ucrt__vsnwprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt__vsnwprintf.obj `if test -f 'stdio/ucrt__vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt__vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt__vsnwprintf.c'; fi`
 
-string/libarm64_libucrt_extra_a-ucrt__wcstok.o: string/ucrt__wcstok.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrt_extra_a-ucrt__wcstok.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/libarm64_libucrt_extra_a-ucrt__wcstok.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
-
-string/libarm64_libucrt_extra_a-ucrt__wcstok.obj: string/ucrt__wcstok.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrt_extra_a-ucrt__wcstok.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/libarm64_libucrt_extra_a-ucrt__wcstok.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
-
 stdio/libarm64_libucrt_extra_a-ucrt_fprintf.o: stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_fprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_fprintf.o `test -f 'stdio/ucrt_fprintf.c' || echo '$(srcdir)/'`stdio/ucrt_fprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Po
@@ -20887,6 +21201,20 @@ stdio/libarm64_libucrt_extra_a-ucrt_fwprintf.obj: stdio/ucrt_fwprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_fwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_fwprintf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_fwprintf.obj `if test -f 'stdio/ucrt_fwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_fwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_fwprintf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.o: stdio/ucrt_fwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.o `test -f 'stdio/ucrt_fwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_fwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_fwscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.o `test -f 'stdio/ucrt_fwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_fwscanf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.obj: stdio/ucrt_fwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.obj `if test -f 'stdio/ucrt_fwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_fwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_fwscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_fwscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_fwscanf.obj `if test -f 'stdio/ucrt_fwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_fwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_fwscanf.c'; fi`
 
 stdio/libarm64_libucrt_extra_a-ucrt_printf.o: stdio/ucrt_printf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_printf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_printf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_printf.o `test -f 'stdio/ucrt_printf.c' || echo '$(srcdir)/'`stdio/ucrt_printf.c
@@ -20930,6 +21258,20 @@ stdio/libarm64_libucrt_extra_a-ucrt_snprintf.obj: stdio/ucrt_snprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_snprintf.obj `if test -f 'stdio/ucrt_snprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_snprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_snprintf.c'; fi`
 
+stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.o: stdio/ucrt_snwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.o `test -f 'stdio/ucrt_snwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_snwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_snwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.o `test -f 'stdio/ucrt_snwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_snwprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.obj: stdio/ucrt_snwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.obj `if test -f 'stdio/ucrt_snwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_snwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_snwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_snwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_snwprintf.obj `if test -f 'stdio/ucrt_snwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_snwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_snwprintf.c'; fi`
+
 stdio/libarm64_libucrt_extra_a-ucrt_sprintf.o: stdio/ucrt_sprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_sprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_sprintf.o `test -f 'stdio/ucrt_sprintf.c' || echo '$(srcdir)/'`stdio/ucrt_sprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Po
@@ -20958,6 +21300,34 @@ stdio/libarm64_libucrt_extra_a-ucrt_sscanf.obj: stdio/ucrt_sscanf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_sscanf.obj `if test -f 'stdio/ucrt_sscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_sscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_sscanf.c'; fi`
 
+stdio/libarm64_libucrt_extra_a-ucrt_swprintf.o: stdio/ucrt_swprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_swprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_swprintf.o `test -f 'stdio/ucrt_swprintf.c' || echo '$(srcdir)/'`stdio/ucrt_swprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_swprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_swprintf.o `test -f 'stdio/ucrt_swprintf.c' || echo '$(srcdir)/'`stdio/ucrt_swprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_swprintf.obj: stdio/ucrt_swprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_swprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_swprintf.obj `if test -f 'stdio/ucrt_swprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_swprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_swprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_swprintf.obj `if test -f 'stdio/ucrt_swprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_swprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swprintf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_swscanf.o: stdio/ucrt_swscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_swscanf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_swscanf.o `test -f 'stdio/ucrt_swscanf.c' || echo '$(srcdir)/'`stdio/ucrt_swscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_swscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_swscanf.o `test -f 'stdio/ucrt_swscanf.c' || echo '$(srcdir)/'`stdio/ucrt_swscanf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_swscanf.obj: stdio/ucrt_swscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_swscanf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_swscanf.obj `if test -f 'stdio/ucrt_swscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_swscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_swscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_swscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_swscanf.obj `if test -f 'stdio/ucrt_swscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_swscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_swscanf.c'; fi`
+
 stdio/libarm64_libucrt_extra_a-ucrt_vfprintf.o: stdio/ucrt_vfprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vfprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfprintf.o `test -f 'stdio/ucrt_vfprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vfprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Po
@@ -20985,6 +21355,34 @@ stdio/libarm64_libucrt_extra_a-ucrt_vfscanf.obj: stdio/ucrt_vfscanf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vfscanf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfscanf.obj `if test -f 'stdio/ucrt_vfscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfscanf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.o: stdio/ucrt_vfwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.o `test -f 'stdio/ucrt_vfwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.o `test -f 'stdio/ucrt_vfwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.obj: stdio/ucrt_vfwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.obj `if test -f 'stdio/ucrt_vfwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwprintf.obj `if test -f 'stdio/ucrt_vfwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwprintf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.o: stdio/ucrt_vfwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.o `test -f 'stdio/ucrt_vfwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.o `test -f 'stdio/ucrt_vfwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vfwscanf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.obj: stdio/ucrt_vfwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.obj `if test -f 'stdio/ucrt_vfwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vfwscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vfwscanf.obj `if test -f 'stdio/ucrt_vfwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vfwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vfwscanf.c'; fi`
 
 stdio/libarm64_libucrt_extra_a-ucrt_vprintf.o: stdio/ucrt_vprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vprintf.o `test -f 'stdio/ucrt_vprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vprintf.c
@@ -21028,6 +21426,20 @@ stdio/libarm64_libucrt_extra_a-ucrt_vsnprintf.obj: stdio/ucrt_vsnprintf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsnprintf.obj `if test -f 'stdio/ucrt_vsnprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsnprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsnprintf.c'; fi`
 
+stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.o: stdio/ucrt_vsnwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.o `test -f 'stdio/ucrt_vsnwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vsnwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vsnwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.o `test -f 'stdio/ucrt_vsnwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vsnwprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.obj: stdio/ucrt_vsnwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.obj `if test -f 'stdio/ucrt_vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsnwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vsnwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsnwprintf.obj `if test -f 'stdio/ucrt_vsnwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsnwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsnwprintf.c'; fi`
+
 stdio/libarm64_libucrt_extra_a-ucrt_vsprintf.o: stdio/ucrt_vsprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vsprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsprintf.o `test -f 'stdio/ucrt_vsprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vsprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po
@@ -21055,6 +21467,104 @@ stdio/libarm64_libucrt_extra_a-ucrt_vsscanf.obj: stdio/ucrt_vsscanf.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vsscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vsscanf.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vsscanf.obj `if test -f 'stdio/ucrt_vsscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vsscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vsscanf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.o: stdio/ucrt_vswprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.o `test -f 'stdio/ucrt_vswprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vswprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.o `test -f 'stdio/ucrt_vswprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vswprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.obj: stdio/ucrt_vswprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.obj `if test -f 'stdio/ucrt_vswprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswprintf.obj `if test -f 'stdio/ucrt_vswprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswprintf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.o: stdio/ucrt_vswscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.o `test -f 'stdio/ucrt_vswscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vswscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.o `test -f 'stdio/ucrt_vswscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vswscanf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.obj: stdio/ucrt_vswscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.obj `if test -f 'stdio/ucrt_vswscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vswscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vswscanf.obj `if test -f 'stdio/ucrt_vswscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vswscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vswscanf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.o: stdio/ucrt_vwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.o `test -f 'stdio/ucrt_vwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.o `test -f 'stdio/ucrt_vwprintf.c' || echo '$(srcdir)/'`stdio/ucrt_vwprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.obj: stdio/ucrt_vwprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.obj `if test -f 'stdio/ucrt_vwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwprintf.obj `if test -f 'stdio/ucrt_vwprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwprintf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.o: stdio/ucrt_vwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.o `test -f 'stdio/ucrt_vwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.o `test -f 'stdio/ucrt_vwscanf.c' || echo '$(srcdir)/'`stdio/ucrt_vwscanf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.obj: stdio/ucrt_vwscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.obj `if test -f 'stdio/ucrt_vwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_vwscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_vwscanf.obj `if test -f 'stdio/ucrt_vwscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_vwscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_vwscanf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_wprintf.o: stdio/ucrt_wprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_wprintf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_wprintf.o `test -f 'stdio/ucrt_wprintf.c' || echo '$(srcdir)/'`stdio/ucrt_wprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_wprintf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_wprintf.o `test -f 'stdio/ucrt_wprintf.c' || echo '$(srcdir)/'`stdio/ucrt_wprintf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_wprintf.obj: stdio/ucrt_wprintf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_wprintf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_wprintf.obj `if test -f 'stdio/ucrt_wprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_wprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wprintf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wprintf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_wprintf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_wprintf.obj `if test -f 'stdio/ucrt_wprintf.c'; then $(CYGPATH_W) 'stdio/ucrt_wprintf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wprintf.c'; fi`
+
+stdio/libarm64_libucrt_extra_a-ucrt_wscanf.o: stdio/ucrt_wscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_wscanf.o -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_wscanf.o `test -f 'stdio/ucrt_wscanf.c' || echo '$(srcdir)/'`stdio/ucrt_wscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_wscanf.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_wscanf.o `test -f 'stdio/ucrt_wscanf.c' || echo '$(srcdir)/'`stdio/ucrt_wscanf.c
+
+stdio/libarm64_libucrt_extra_a-ucrt_wscanf.obj: stdio/ucrt_wscanf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT stdio/libarm64_libucrt_extra_a-ucrt_wscanf.obj -MD -MP -MF stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Tpo -c -o stdio/libarm64_libucrt_extra_a-ucrt_wscanf.obj `if test -f 'stdio/ucrt_wscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_wscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wscanf.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Tpo stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='stdio/ucrt_wscanf.c' object='stdio/libarm64_libucrt_extra_a-ucrt_wscanf.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o stdio/libarm64_libucrt_extra_a-ucrt_wscanf.obj `if test -f 'stdio/ucrt_wscanf.c'; then $(CYGPATH_W) 'stdio/ucrt_wscanf.c'; else $(CYGPATH_W) '$(srcdir)/stdio/ucrt_wscanf.c'; fi`
+
+string/libarm64_libucrt_extra_a-ucrt__wcstok.o: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrt_extra_a-ucrt__wcstok.o -MD -MP -MF string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/libarm64_libucrt_extra_a-ucrt__wcstok.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.o `test -f 'string/ucrt__wcstok.c' || echo '$(srcdir)/'`string/ucrt__wcstok.c
+
+string/libarm64_libucrt_extra_a-ucrt__wcstok.obj: string/ucrt__wcstok.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT string/libarm64_libucrt_extra_a-ucrt__wcstok.obj -MD -MP -MF string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Tpo string/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt__wcstok.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='string/ucrt__wcstok.c' object='string/libarm64_libucrt_extra_a-ucrt__wcstok.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o string/libarm64_libucrt_extra_a-ucrt__wcstok.obj `if test -f 'string/ucrt__wcstok.c'; then $(CYGPATH_W) 'string/ucrt__wcstok.c'; else $(CYGPATH_W) '$(srcdir)/string/ucrt__wcstok.c'; fi`
 
 math/arm64/libarm64_libucrt_extra_a-scalbn.o: math/arm64/scalbn.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libucrt_extra_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT math/arm64/libarm64_libucrt_extra_a-scalbn.o -MD -MP -MF math/arm64/$(DEPDIR)/libarm64_libucrt_extra_a-scalbn.Tpo -c -o math/arm64/libarm64_libucrt_extra_a-scalbn.o `test -f 'math/arm64/scalbn.c' || echo '$(srcdir)/'`math/arm64/scalbn.c
@@ -25616,18 +26126,31 @@ distclean: distclean-am
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_printf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_scanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libmingwex_a-asprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libmingwex_a-truncate.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libmingwex_a-vasprintf.Po
@@ -25641,18 +26164,31 @@ distclean: distclean-am
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_printf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_scanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-bcopy.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-bzero.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-explicit_bzero.Po
@@ -26711,18 +27247,31 @@ maintainer-clean: maintainer-clean-am
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_fwscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_printf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_scanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_snwprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_sscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_swscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vfwscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vscanf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsnwprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsprintf.Po
 	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vsscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vswscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_vwscanf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wprintf.Po
+	-rm -f stdio/$(DEPDIR)/lib64_libucrt_extra_a-ucrt_wscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libmingwex_a-asprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libmingwex_a-truncate.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libmingwex_a-vasprintf.Po
@@ -26736,18 +27285,31 @@ maintainer-clean: maintainer-clean-am
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_fwscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_printf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_scanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_snwprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_sscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_swscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vfwscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vscanf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsnwprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsprintf.Po
 	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vsscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vswscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_vwscanf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wprintf.Po
+	-rm -f stdio/$(DEPDIR)/libarm64_libucrt_extra_a-ucrt_wscanf.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-bcopy.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-bzero.Po
 	-rm -f string/$(DEPDIR)/lib64_libmingwex_a-explicit_bzero.Po
