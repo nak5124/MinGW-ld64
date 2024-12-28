@@ -8,7 +8,7 @@
 #define __STRALIGN_H_
 
 #ifndef _STRALIGN_USE_SECURE_CRT
-# if defined(__GOT_SECURE_LIB__) && __GOT_SECURE_LIB__ >= 200402L
+# if defined(__GOT_SECURE_LIB__) && __GOT_SECURE_LIB__ >= 200402L && defined(__MINGW_USE_SECAPI)
 #   define _STRALIGN_USE_SECURE_CRT 1
 # else
 #   define _STRALIGN_USE_SECURE_CRT 0
