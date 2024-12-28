@@ -1,12 +1,10 @@
-MinGW-w64 for LD64
-==================
+MinGW-ld64
+==========
 
-What is this ?
---------------
-Here is the mingw-w64 source code forked for GCC, where long double equals double for compatibility with MSVC.
+Fork of mingw-w64 configured to treat long double as equivalent to double for MSVC compatibility.
 
-Differences from official
--------------------------
+Differences from official MinGW-w64
+-----------------------------------
  - Removed mingw implementations for long double, such as math functions, as long double is equal to double as in MSVC.
  - Support UCRT only.
  - Only GCC and CLANG are assumed.
