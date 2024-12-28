@@ -150,7 +150,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_USE_GNU
   extern char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __MINGW_NONNULL((2));
-# ifndef __CRT__NO_INLINE
+# if !defined(__CRT__NO_INLINE) && defined(__MINGW_USE_SECAPI)
   __CRT_INLINE __MINGW_NONNULL((2))
   char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen)
   {
@@ -164,7 +164,7 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #elif defined(__MINGW_USE_XOPEN2K)
   extern int   __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __MINGW_ASM_CALL(__xsi_strerror_r) __MINGW_NONNULL((2));
-# ifndef __CRT__NO_INLINE
+# if !defined(__CRT__NO_INLINE) && defined(__MINGW_USE_SECAPI)
   __CRT_INLINE __MINGW_NONNULL((2))
   int __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen)
   {
