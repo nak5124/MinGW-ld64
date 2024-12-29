@@ -245,6 +245,7 @@ utime == _utime64
 _wctime == _wctime64
 _wctime_s == _wctime64_s
 _wutime == _wutime64
+timegm == _mkgmtime64
 
 ; This is list of additional symbol aliases not available in any library as neither native symbols nor aliases
 ; FIXME: check if these really are needed

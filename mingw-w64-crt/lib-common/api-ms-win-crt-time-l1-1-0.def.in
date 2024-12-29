@@ -53,6 +53,7 @@ localtime_s == _localtime64_s
 _mkgmtime32
 _mkgmtime64
 _mkgmtime == _mkgmtime64
+timegm == _mkgmtime64
 _mktime32
 _mktime64
 mktime == _mktime64

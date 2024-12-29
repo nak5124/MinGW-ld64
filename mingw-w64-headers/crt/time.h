@@ -300,6 +300,10 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl timespec_getres(struct timespec *_Ts, int _Base);
 #endif
 
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_ISOC23)
+  /**/ time_t __cdecl timegm(struct tm *_Tm);
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _TIME_H_ */
