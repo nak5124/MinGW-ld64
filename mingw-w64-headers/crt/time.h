@@ -105,7 +105,7 @@ __MINGW_BEGIN_C_DECLS
   time_t     __cdecl  mktime(struct tm *_Tm)                 __MINGW_ASM_CALL(_mktime64)    __MINGW_NOTHROW;
   time_t     __cdecl  time(time_t *_Time)                    __MINGW_ASM_CALL(_time64)      __MINGW_NOTHROW;
 #ifdef __MINGW_USE_ISOC11
-  int __cdecl timespec_get(struct timespec* _Ts, int _Base) __MINGW_ASM_CALL(_timespec64_get) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  int __cdecl timespec_get(struct timespec *_Ts, int _Base) __MINGW_ASM_CALL(_timespec64_get) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
 #endif
 #ifdef __MINGW_USE_SECAPI
   errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime64_s);
@@ -295,6 +295,10 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #endif  /* __MINGW_USE_POSIX199309 */
+
+#ifdef __MINGW_USE_ISOC23
+  extern int __cdecl timespec_getres(struct timespec *_Ts, int _Base);
+#endif
 
 __MINGW_END_C_DECLS
 

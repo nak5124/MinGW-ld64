@@ -160,45 +160,45 @@ src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
 src_libmingwex=\
   cfguard/mingw_cfguard_support.c  \
   \
-  complex/cabs.c                   complex/cabsf.c       complex/cabsl.c           complex/cacos.c        complex/cacosf.c          \
-  complex/cacosl.c                 complex/carg.c        complex/cargf.c           complex/cargl.c        complex/casin.c           \
-  complex/casinf.c                 complex/casinl.c      complex/catan.c           complex/catanf.c       complex/catanl.c          \
-  complex/ccos.c                   complex/ccosf.c       complex/ccosl.c           complex/cexp.c         complex/cexpf.c           \
-  complex/cexpl.c                  complex/cimag.c       complex/cimagf.c          complex/cimagl.c       complex/clog.c            \
-  complex/clog10.c                 complex/clog10f.c     complex/clog10l.c         complex/clogf.c        complex/clogl.c           \
-  complex/conj.c                   complex/conjf.c       complex/conjl.c           complex/cpow.c         complex/cpowf.c           \
-  complex/cpowl.c                  complex/cproj.c       complex/cprojf.c          complex/cprojl.c       complex/creal.c           \
-  complex/crealf.c                 complex/creall.c      complex/csin.c            complex/csinf.c        complex/csinl.c           \
-  complex/csqrt.c                  complex/csqrtf.c      complex/csqrtl.c          complex/ctan.c         complex/ctanf.c           \
-  complex/ctanl.c                  complex/norm.c        complex/normf.c           complex/norml.c        \
+  complex/cabs.c                   complex/cabsf.c         complex/cabsl.c           complex/cacos.c        complex/cacosf.c          \
+  complex/cacosl.c                 complex/carg.c          complex/cargf.c           complex/cargl.c        complex/casin.c           \
+  complex/casinf.c                 complex/casinl.c        complex/catan.c           complex/catanf.c       complex/catanl.c          \
+  complex/ccos.c                   complex/ccosf.c         complex/ccosl.c           complex/cexp.c         complex/cexpf.c           \
+  complex/cexpl.c                  complex/cimag.c         complex/cimagf.c          complex/cimagl.c       complex/clog.c            \
+  complex/clog10.c                 complex/clog10f.c       complex/clog10l.c         complex/clogf.c        complex/clogl.c           \
+  complex/conj.c                   complex/conjf.c         complex/conjl.c           complex/cpow.c         complex/cpowf.c           \
+  complex/cpowl.c                  complex/cproj.c         complex/cprojf.c          complex/cprojl.c       complex/creal.c           \
+  complex/crealf.c                 complex/creall.c        complex/csin.c            complex/csinf.c        complex/csinl.c           \
+  complex/csqrt.c                  complex/csqrtf.c        complex/csqrtl.c          complex/ctan.c         complex/ctanf.c           \
+  complex/ctanl.c                  complex/norm.c          complex/normf.c           complex/norml.c        \
   \
-  math/fpclassify.c                math/fpclassifyf.c    math/isnan.c              math/isnanf.c          math/signbit.c            \
+  math/fpclassify.c                math/fpclassifyf.c      math/isnan.c              math/isnanf.c          math/signbit.c            \
   math/signbitf.c                  \
   \
-  misc/a64l.c                      misc/alarm.c          misc/arc4random.c         misc/arc4random_buf.c  misc/arc4random_uniform.c \
-  misc/clearenv.c                  misc/delay-f.c        misc/delay-n.c            misc/delayimp.c        misc/dirent.c             \
-  misc/dirname.c                   misc/dllentrypoint.c  misc/dllmain.c            misc/ftruncate64.c     misc/ftw.c                \
-  misc/ftw64.c                     misc/fwide.c          misc/getentropy.c         misc/getlogin.c        misc/getopt.c             \
-  misc/gettimeofday.c              misc/insque.c         misc/l64a.c               misc/mempcpy.c         misc/mingw_getsp.S        \
-  misc/mingw_longjmp.S             misc/mingw_matherr.c  misc/mingw_usleep.c       misc/mkdtemp.c         misc/mkstemp.c            \
-  misc/mkstemps.c                  misc/qsort_r.c        misc/reallocarray.c       misc/realpath.c        misc/setenv.c             \
-  misc/sleep.c                     misc/strsafe.c        misc/tdelete.c            misc/tdestroy.c        misc/tfind.c              \
-  misc/tsearch.c                   misc/twalk.c          misc/unsetenv.c           misc/wdirent.c         misc/wmemchr.c            \
-  misc/wmemcmp.c                   misc/wmemcpy.c        misc/wmemmove.c           misc/wmempcpy.c        misc/wmemset.c            \
+  misc/a64l.c                      misc/alarm.c            misc/arc4random.c         misc/arc4random_buf.c  misc/arc4random_uniform.c \
+  misc/clearenv.c                  misc/delay-f.c          misc/delay-n.c            misc/delayimp.c        misc/dirent.c             \
+  misc/dirname.c                   misc/dllentrypoint.c    misc/dllmain.c            misc/ftruncate64.c     misc/ftw.c                \
+  misc/ftw64.c                     misc/fwide.c            misc/getentropy.c         misc/getlogin.c        misc/getopt.c             \
+  misc/gettimeofday.c              misc/insque.c           misc/l64a.c               misc/mempcpy.c         misc/mingw_getsp.S        \
+  misc/mingw_longjmp.S             misc/mingw_matherr.c    misc/mingw_usleep.c       misc/mkdtemp.c         misc/mkstemp.c            \
+  misc/mkstemps.c                  misc/qsort_r.c          misc/reallocarray.c       misc/realpath.c        misc/setenv.c             \
+  misc/sleep.c                     misc/strsafe.c          misc/tdelete.c            misc/tdestroy.c        misc/tfind.c              \
+  misc/tsearch.c                   misc/twalk.c            misc/unsetenv.c           misc/wdirent.c         misc/wmemchr.c            \
+  misc/wmemcmp.c                   misc/wmemcpy.c          misc/wmemmove.c           misc/wmempcpy.c        misc/wmemset.c            \
   \
-  ssp/chk_fail.c                   ssp/gets_chk.c        ssp/memcpy_chk.c          ssp/memmove_chk.c      ssp/mempcpy_chk.c         \
-  ssp/memset_chk.c                 ssp/stack_chk_fail.c  ssp/stack_chk_guard.c     ssp/stpcpy_chk.c       ssp/strcat_chk.c          \
-  ssp/strcpy_chk.c                 ssp/strncat_chk.c     ssp/strncpy_chk.c         \
+  ssp/chk_fail.c                   ssp/gets_chk.c          ssp/memcpy_chk.c          ssp/memmove_chk.c      ssp/mempcpy_chk.c         \
+  ssp/memset_chk.c                 ssp/stack_chk_fail.c    ssp/stack_chk_guard.c     ssp/stpcpy_chk.c       ssp/strcat_chk.c          \
+  ssp/strcpy_chk.c                 ssp/strncat_chk.c       ssp/strncpy_chk.c         \
   \
-  stdio/asprintf.c                 stdio/truncate.c      stdio/vasprintf.c         \
+  stdio/asprintf.c                 stdio/truncate.c        stdio/vasprintf.c         \
   \
-  string/bcopy.c                   string/bzero.c        string/explicit_bzero.c   string/ffs.c           string/ffsll.c            \
-  string/memmem.c                  string/memrchr.c      string/memset_explicit.c  string/memset_s.c      string/stpcpy.c           \
-  string/stpncpy.c                 string/strcasestr.c   string/strchrnul.c        string/strerror_r.c    string/strlcat.c          \
-  string/strlcpy.c                 string/strndup.c      string/strsep.c           string/strverscmp.c    string/xsi_strerror_r.c   \
+  string/bcopy.c                   string/bzero.c          string/explicit_bzero.c   string/ffs.c           string/ffsll.c            \
+  string/memmem.c                  string/memrchr.c        string/memset_explicit.c  string/memset_s.c      string/stpcpy.c           \
+  string/stpncpy.c                 string/strcasestr.c     string/strchrnul.c        string/strerror_r.c    string/strlcat.c          \
+  string/strlcpy.c                 string/strndup.c        string/strsep.c           string/strverscmp.c    string/xsi_strerror_r.c   \
   \
-  time/asctime_r.c                 time/clock.c          time/ctime_r.c            time/gmtime_r.c        time/localtime_r.c        \
-  time/nanosleep.c
+  time/asctime_r.c                 time/clock.c            time/ctime_r.c            time/gmtime_r.c        time/localtime_r.c        \
+  time/nanosleep.c                 time/timespec_getres.c
 
 # Include the default load config struct only for Control Flow Guard support.
 if CFGUARD

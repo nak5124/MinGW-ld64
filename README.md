@@ -39,6 +39,7 @@ Differences from official MinGW-w64
    - strsep
    - a64l/l64a
    - reallocarray
+   - timespec_getres
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Various other cosmetics.
 
