@@ -62,14 +62,7 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__MINGW_USE_POSIX199309) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    extern int __cdecl ftruncate(int __fd, off_t __length);
-#   ifndef __CRT__NO_INLINE
-      __CRT_INLINE
-      int __cdecl ftruncate(int __fd, off_t __length)
-      {
-        return _chsize(__fd, __length);
-      }
-#   endif
+    /**/   int __cdecl ftruncate(int __fd, off_t __length);
 # else
     extern int __cdecl ftruncate(int __fd, off_t __length) __MINGW_ASM_CALL(ftruncate64);
 # endif
