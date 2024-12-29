@@ -51,3 +51,11 @@ To use GCC where long double equals double, [GCC patches](https://github.com/nak
 
 ToDo
 ----
+Add missing math functions
+  - acospi/asinpi/atan2pi/atanpi
+  - cospi/sinpi/tanpi
+  - exp10/exp10m1/exp2m1
+  - log10p1/log2p1
+  - rsqrt
+
+Update libonecore/libonecoreuap_apiset
