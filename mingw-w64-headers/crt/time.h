@@ -304,6 +304,10 @@ __MINGW_BEGIN_C_DECLS
   /**/ time_t __cdecl timegm(struct tm *_Tm);
 #endif
 
+#ifdef __MINGW_USE_MISC
+  /**/ time_t __cdecl timelocal(struct tm *_Tm);
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _TIME_H_ */

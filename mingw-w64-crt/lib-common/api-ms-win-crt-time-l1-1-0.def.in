@@ -57,6 +57,7 @@ timegm == _mkgmtime64
 _mktime32
 _mktime64
 mktime == _mktime64
+timelocal == _mktime64
 _setsystime
 _strdate
 _strdate_s
