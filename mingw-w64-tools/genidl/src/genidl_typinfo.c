@@ -524,17 +524,9 @@ getVT_data (sTITyps *dptr, uint32_t vt, unsigned char *dta, char **ret)
   case 23: /* VT_UINT */
   case 19: /* VT_UI4 */ sprintf (s,"(UINT) %uU", *((uint32_t *) dta)); break;
   case 20: /* VT_I8 */
-#ifdef _WIN32
-    sprintf (s,"(LONGLONG) %I64dLL", *((int64_t *) dta)); break;
-#else
     sprintf (s,"(LONGLONG) %lldLL", *((int64_t *) dta)); break;
-#endif
   case 21: /* VT_UI8 */
-#ifdef _WIN32
-  sprintf (s,"(ULONGLONG) %I64uULL", *((uint64_t *) dta)); break;
-#else
   sprintf (s,"(ULONGLONG) %lluULL", *((uint64_t *) dta)); break;
-#endif
   case 10: /* VT_ERROR */ sprintf (s, " = (SCODE) %dL", *((int32_t *) dta)); break;
   case 11: /* VT_BOOL */ sprintf (s,"(WINBOOL) %d", *((int16_t *) dta)); break;
   case 2: /* VT_I2 */ sprintf (s,"(short) %d", *((int16_t *) dta)); break;
@@ -543,11 +535,7 @@ getVT_data (sTITyps *dptr, uint32_t vt, unsigned char *dta, char **ret)
   case 4: /* VT_R4 */ sprintf (s,"(float) %f", *((float *) dta)); break;
   case 5: /* VT_R8 */ sprintf (s,"(double) %g", *((double *) dta)); break;
   case 6: /* VT_CY */
-#ifdef _WIN32
-    sprintf (s,"(CY) %I64dLL", *((int64_t *) dta)); break;
-#else
     sprintf (s,"(CY) %lldLL", *((int64_t *) dta)); break;
-#endif
   case 8: /* VT_BSTR */
     sprintf (s,"L\"");
     while (sz>0 && sz < 4094)

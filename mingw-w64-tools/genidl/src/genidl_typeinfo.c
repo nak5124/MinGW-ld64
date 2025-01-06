@@ -1049,19 +1049,11 @@ printVTData (FILE * fp,uint32_t vt, unsigned char *dta, uint32_t sz)
   case 23: /* VT_UINT */
   case 19: /* VT_UI4 */ fprintf (fp," = %uU", *((uint32_t *) dta)); break;
   case 20: /* VT_I8 */
-#ifdef _WIN32
-    fprintf (fp," = %I64dLL", *((int64_t *) dta)); break;
-#else
     fprintf (fp," = %lldLL", *((int64_t *) dta)); break;
-#endif
   case 21: /* VT_UI8 */
-#ifdef _WIN32
-  fprintf (fp," = %I64uULL", *((uint64_t *) dta)); break;
-#else
-  fprintf (fp," = %lluULL", *((uint64_t *) dta)); break;
-#endif
+    fprintf (fp," = %lluULL", *((uint64_t *) dta)); break;
   case 10: /* VT_ERROR */
-          fprintf (fp, " = (SCODE) %dL", *((int32_t *) dta)); break;
+    fprintf (fp, " = (SCODE) %dL", *((int32_t *) dta)); break;
   case 11: /* VT_BOOL */
   case 2: /* VT_I2 */ fprintf (fp," = %d", *((int16_t *) dta)); break;
   case 22: /* VT_INT */
@@ -1069,11 +1061,7 @@ printVTData (FILE * fp,uint32_t vt, unsigned char *dta, uint32_t sz)
   case 4: /* VT_R4 */ fprintf (fp," = %f", *((float *) dta)); break;
   case 5: /* VT_R8 */ fprintf (fp," = %g", *((double *) dta)); break;
   case 6: /* VT_CY */
-#ifdef _WIN32
-    fprintf (fp," = %I64dLL", *((int64_t *) dta)); break;
-#else
     fprintf (fp," = %lldLL", *((int64_t *) dta)); break;
-#endif
   case 8: /* VT_BSTR */
     fprintf (fp," = \"");
     while (sz>0)
@@ -1252,17 +1240,9 @@ printValue (FILE *fp, sTITyps *typs, uint32_t val)
 	case 19: /* VT_UI4 */
           fprintf (fp, "(UINT) 0x%xU", u.ui4); break;
 	case 20: /* VT_I8 */
-#ifdef _WIN32
-          fprintf (fp, "(LONGLONG) %I64dLL", u.i8); break;
-#else
           fprintf (fp, "(LONGLONG) %lldLL", u.i8); break;
-#endif
 	case 21: /* VT_UI8 */
-#ifdef _WIN32
-          fprintf (fp, "(ULONGLONG) 0x%I64xULL", u.ui8); break;
-#else
           fprintf (fp, "(ULONGLONG) 0x%llxULL", u.ui8); break;
-#endif
 	case 23: /* VT_UINT */
           fprintf (fp, "(unsigned int) 0x%xU", u.ui4); break;
 	case 24: /* VT_VOID */
