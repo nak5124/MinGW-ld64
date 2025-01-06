@@ -72,6 +72,8 @@ src_libportabledeviceguids=libsrc/portabledeviceguids.c
 src_libtaskschd=libsrc/taskschd.c
 src_libntoskrnl=libsrc/memcmp.c
 src_libdloadhelper=libsrc/dloadhelper.c misc/delay-f.c
+src_libdelayimp=misc/delay-f.c misc/delay-n.c misc/delayimp.c
+
 
 src_libmingw32=\
   crt/_newmode.c       crt/charmax.c     crt/cinitexe.c           crt/CRT_fp8.c       crt/crt_handler.c        \
@@ -176,16 +178,15 @@ src_libmingwex=\
   math/signbitf.c                  \
   \
   misc/a64l.c                      misc/alarm.c            misc/arc4random.c         misc/arc4random_buf.c      misc/arc4random_uniform.c \
-  misc/clearenv.c                  misc/delay-f.c          misc/delay-n.c            misc/delayimp.c            misc/dirent.c             \
-  misc/dirname.c                   misc/dllentrypoint.c    misc/dllmain.c            misc/ftruncate64.c         misc/ftw.c                \
-  misc/ftw64.c                     misc/fwide.c            misc/getentropy.c         misc/getlogin.c            misc/getopt.c             \
-  misc/gettimeofday.c              misc/insque.c           misc/l64a.c               misc/malloc_usable_size.c  misc/mempcpy.c            \
-  misc/mingw_getsp.S               misc/mingw_longjmp.S    misc/mingw_matherr.c      misc/mingw_usleep.c        misc/mkdtemp.c            \
-  misc/mkstemp.c                   misc/mkstemps.c         misc/qsort_r.c            misc/reallocarray.c        misc/realpath.c           \
-  misc/setenv.c                    misc/sleep.c            misc/strsafe.c            misc/tdelete.c             misc/tdestroy.c           \
-  misc/tfind.c                     misc/tsearch.c          misc/twalk.c              misc/unsetenv.c            misc/wdirent.c            \
-  misc/wmemchr.c                   misc/wmemcmp.c          misc/wmemcpy.c            misc/wmemmove.c            misc/wmempcpy.c           \
-  misc/wmemset.c                   \
+  misc/clearenv.c                  misc/dirent.c           misc/dirname.c            misc/dllentrypoint.c       misc/dllmain.c            \
+  misc/ftruncate64.c               misc/ftw.c              misc/ftw64.c              misc/fwide.c               misc/getentropy.c         \
+  misc/getlogin.c                  misc/getopt.c           misc/gettimeofday.c       misc/insque.c              misc/l64a.c               \
+  misc/malloc_usable_size.c        misc/mempcpy.c          misc/mingw_getsp.S        misc/mingw_longjmp.S       misc/mingw_matherr.c      \
+  misc/mingw_usleep.c              misc/mkdtemp.c          misc/mkstemp.c            misc/mkstemps.c            misc/qsort_r.c            \
+  misc/reallocarray.c              misc/realpath.c         misc/setenv.c             misc/sleep.c               misc/strsafe.c            \
+  misc/tdelete.c                   misc/tdestroy.c         misc/tfind.c              misc/tsearch.c             misc/twalk.c              \
+  misc/unsetenv.c                  misc/wdirent.c          misc/wmemchr.c            misc/wmemcmp.c             misc/wmemcpy.c            \
+  misc/wmemmove.c                  misc/wmempcpy.c         misc/wmemset.c            \
   \
   ssp/chk_fail.c                   ssp/gets_chk.c          ssp/memcpy_chk.c          ssp/memmove_chk.c          ssp/mempcpy_chk.c         \
   ssp/memset_chk.c                 ssp/stack_chk_fail.c    ssp/stack_chk_guard.c     ssp/stpcpy_chk.c           ssp/strcat_chk.c          \
@@ -411,7 +412,8 @@ lib64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 lib64_libdloadhelper_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
 
 lib64_LIBRARIES += lib64/libdelayimp.a
-lib64_libdelayimp_a_SOURCES =
+lib64_libdelayimp_a_SOURCES = $(src_libdelayimp)
+lib64_libdelayimp_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
 
 lib64_LIBRARIES += lib64/libm.a
 nodist_lib64_libm_a_SOURCES = $(src_libm)
@@ -678,7 +680,8 @@ libarm64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 libarm64_libdloadhelper_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
 
 libarm64_LIBRARIES += libarm64/libdelayimp.a
-libarm64_libdelayimp_a_SOURCES =
+libarm64_libdelayimp_a_SOURCES = $(src_libdelayimp)
+libarm64_libdelayimp_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
 
 libarm64_LIBRARIES += libarm64/libm.a
 nodist_libarm64_libm_a_SOURCES = $(src_libm)
