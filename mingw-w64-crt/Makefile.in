@@ -141,40 +141,39 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 @DLLTOOL_HAS_TEMP_PREFIX_TRUE@am__append_1 = --temp-prefix $(basename $@)
-@DELAY_IMPORT_LIBS_TRUE@am__append_2 = --output-delaylib $@.delayimp.a
 
 # Include the default load config struct only for Control Flow Guard support.
-@CFGUARD_TRUE@am__append_3 = \
+@CFGUARD_TRUE@am__append_2 = \
 @CFGUARD_TRUE@  cfguard/mingw_cfguard_loadcfg.S
 
-@LIB64_TRUE@am__append_4 = lib64/ucrtbase.def \
+@LIB64_TRUE@am__append_3 = lib64/ucrtbase.def \
 @LIB64_TRUE@				  lib64/advapi32.def lib64/clbcatq.def lib64/kernel32.def lib64/ole32.def \
 @LIB64_TRUE@				  lib64/oleaut32.def lib64/user32.def lib64/winhvplatform.def lib64/ws2_32.def \
 @LIB64_TRUE@				  lib64/api-ms-win-crt-math-l1-1-0.def lib64/api-ms-win-crt-private-l1-1-0.def lib64/api-ms-win-crt-runtime-l1-1-0.def \
 @LIB64_TRUE@				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def
 
-@LIB64_TRUE@am__append_5 = lib64/libucrt_extra.a lib64/libucrtapp_extra.a
-@LIBARM64_TRUE@am__append_6 = libarm64/ucrtbase.def \
+@LIB64_TRUE@am__append_4 = lib64/libucrt_extra.a lib64/libucrtapp_extra.a
+@LIBARM64_TRUE@am__append_5 = libarm64/ucrtbase.def \
 @LIBARM64_TRUE@				  libarm64/advapi32.def libarm64/clbcatq.def libarm64/kernel32.def libarm64/ole32.def libarm64/oleaut32.def \
 @LIBARM64_TRUE@				  libarm64/user32.def libarm64/winhvplatform.def libarm64/ws2_32.def \
 @LIBARM64_TRUE@				  libarm64/api-ms-win-crt-math-l1-1-0.def libarm64/api-ms-win-crt-private-l1-1-0.def libarm64/api-ms-win-crt-runtime-l1-1-0.def \
 @LIBARM64_TRUE@				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def
 
-@LIBARM64_TRUE@am__append_7 = libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
-@ENABLE_TESTS_UNICODE_TRUE@am__append_8 = testcases/t_municode testcases/t_tmain
+@LIBARM64_TRUE@am__append_6 = libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
+@ENABLE_TESTS_UNICODE_TRUE@am__append_7 = testcases/t_municode testcases/t_tmain
 check_PROGRAMS = $(am__EXEEXT_2) $(am__EXEEXT_4)
 TESTS = $(am__EXEEXT_2) $(am__EXEEXT_4)
 XFAIL_TESTS = testcases/t_nullptrexception$(EXEEXT) $(am__EXEEXT_5)
 
 # Build the libraries
-@LIB64_TRUE@am__append_9 = $(newcomplex_test_lib64)
+@LIB64_TRUE@am__append_8 = $(newcomplex_test_lib64)
 
 # Build the programs during make check.
-@LIB64_TRUE@am__append_10 = $(newcomplex_tests64)
+@LIB64_TRUE@am__append_9 = $(newcomplex_tests64)
 
 # Declare the tests.
-@LIB64_TRUE@am__append_11 = $(newcomplex_tests64)
-@LIB64_TRUE@am__append_12 = 
+@LIB64_TRUE@am__append_10 = $(newcomplex_tests64)
+@LIB64_TRUE@am__append_11 = 
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -285,77 +284,82 @@ lib64_libbits_a_OBJECTS = $(am_lib64_libbits_a_OBJECTS)
 lib64_libdelayimp_a_AR = $(AR) $(ARFLAGS)
 lib64_libdelayimp_a_RANLIB = $(RANLIB)
 lib64_libdelayimp_a_LIBADD =
-am_lib64_libdelayimp_a_OBJECTS =
+am__lib64_libdelayimp_a_SOURCES_DIST = misc/delay-f.c misc/delay-n.c \
+	misc/delayimp.c
+am__objects_4 = misc/lib64_libdelayimp_a-delay-f.$(OBJEXT) \
+	misc/lib64_libdelayimp_a-delay-n.$(OBJEXT) \
+	misc/lib64_libdelayimp_a-delayimp.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libdelayimp_a_OBJECTS = $(am__objects_4)
 lib64_libdelayimp_a_OBJECTS = $(am_lib64_libdelayimp_a_OBJECTS)
 lib64_libdinput_a_RANLIB = $(RANLIB)
 lib64_libdinput_a_LIBADD =
 am__lib64_libdinput_a_SOURCES_DIST = libsrc/dinput_joy.c \
 	libsrc/dinput_joy2.c libsrc/dinput_kbd.c libsrc/dinput_mouse.c \
 	libsrc/dinput_mouse2.c
-am__objects_4 = libsrc/lib64_libdinput_a-dinput_joy.$(OBJEXT) \
+am__objects_5 = libsrc/lib64_libdinput_a-dinput_joy.$(OBJEXT) \
 	libsrc/lib64_libdinput_a-dinput_joy2.$(OBJEXT) \
 	libsrc/lib64_libdinput_a-dinput_kbd.$(OBJEXT) \
 	libsrc/lib64_libdinput_a-dinput_mouse.$(OBJEXT) \
 	libsrc/lib64_libdinput_a-dinput_mouse2.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libdinput_a_OBJECTS = $(am__objects_4)
+@LIB64_TRUE@am_lib64_libdinput_a_OBJECTS = $(am__objects_5)
 lib64_libdinput_a_OBJECTS = $(am_lib64_libdinput_a_OBJECTS)
 lib64_libdinput8_a_RANLIB = $(RANLIB)
 lib64_libdinput8_a_LIBADD =
 am__lib64_libdinput8_a_SOURCES_DIST = libsrc/dinput_joy.c \
 	libsrc/dinput_joy2.c libsrc/dinput_kbd.c libsrc/dinput_mouse.c \
 	libsrc/dinput_mouse2.c
-am__objects_5 = libsrc/lib64_libdinput8_a-dinput_joy.$(OBJEXT) \
+am__objects_6 = libsrc/lib64_libdinput8_a-dinput_joy.$(OBJEXT) \
 	libsrc/lib64_libdinput8_a-dinput_joy2.$(OBJEXT) \
 	libsrc/lib64_libdinput8_a-dinput_kbd.$(OBJEXT) \
 	libsrc/lib64_libdinput8_a-dinput_mouse.$(OBJEXT) \
 	libsrc/lib64_libdinput8_a-dinput_mouse2.$(OBJEXT)
-am__objects_6 = $(am__objects_5)
-@LIB64_TRUE@am_lib64_libdinput8_a_OBJECTS = $(am__objects_6)
+am__objects_7 = $(am__objects_6)
+@LIB64_TRUE@am_lib64_libdinput8_a_OBJECTS = $(am__objects_7)
 lib64_libdinput8_a_OBJECTS = $(am_lib64_libdinput8_a_OBJECTS)
 lib64_libdloadhelper_a_AR = $(AR) $(ARFLAGS)
 lib64_libdloadhelper_a_RANLIB = $(RANLIB)
 lib64_libdloadhelper_a_LIBADD =
 am__lib64_libdloadhelper_a_SOURCES_DIST = libsrc/dloadhelper.c \
 	misc/delay-f.c
-am__objects_7 = libsrc/lib64_libdloadhelper_a-dloadhelper.$(OBJEXT) \
+am__objects_8 = libsrc/lib64_libdloadhelper_a-dloadhelper.$(OBJEXT) \
 	misc/lib64_libdloadhelper_a-delay-f.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libdloadhelper_a_OBJECTS = $(am__objects_7)
+@LIB64_TRUE@am_lib64_libdloadhelper_a_OBJECTS = $(am__objects_8)
 lib64_libdloadhelper_a_OBJECTS = $(am_lib64_libdloadhelper_a_OBJECTS)
 lib64_libdmoguids_a_AR = $(AR) $(ARFLAGS)
 lib64_libdmoguids_a_RANLIB = $(RANLIB)
 lib64_libdmoguids_a_LIBADD =
 am__lib64_libdmoguids_a_SOURCES_DIST = libsrc/dmoguids.c
-am__objects_8 = libsrc/lib64_libdmoguids_a-dmoguids.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libdmoguids_a_OBJECTS = $(am__objects_8)
+am__objects_9 = libsrc/lib64_libdmoguids_a-dmoguids.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libdmoguids_a_OBJECTS = $(am__objects_9)
 lib64_libdmoguids_a_OBJECTS = $(am_lib64_libdmoguids_a_OBJECTS)
 lib64_libdxerr8_a_AR = $(AR) $(ARFLAGS)
 lib64_libdxerr8_a_RANLIB = $(RANLIB)
 lib64_libdxerr8_a_LIBADD =
 am__lib64_libdxerr8_a_SOURCES_DIST = libsrc/dxerr8.c libsrc/dxerr8w.c
-am__objects_9 = libsrc/lib64_libdxerr8_a-dxerr8.$(OBJEXT) \
+am__objects_10 = libsrc/lib64_libdxerr8_a-dxerr8.$(OBJEXT) \
 	libsrc/lib64_libdxerr8_a-dxerr8w.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libdxerr8_a_OBJECTS = $(am__objects_9)
+@LIB64_TRUE@am_lib64_libdxerr8_a_OBJECTS = $(am__objects_10)
 lib64_libdxerr8_a_OBJECTS = $(am_lib64_libdxerr8_a_OBJECTS)
 lib64_libdxerr9_a_AR = $(AR) $(ARFLAGS)
 lib64_libdxerr9_a_RANLIB = $(RANLIB)
 lib64_libdxerr9_a_LIBADD =
 am__lib64_libdxerr9_a_SOURCES_DIST = libsrc/dxerr9.c libsrc/dxerr9w.c
-am__objects_10 = libsrc/lib64_libdxerr9_a-dxerr9.$(OBJEXT) \
+am__objects_11 = libsrc/lib64_libdxerr9_a-dxerr9.$(OBJEXT) \
 	libsrc/lib64_libdxerr9_a-dxerr9w.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libdxerr9_a_OBJECTS = $(am__objects_10)
+@LIB64_TRUE@am_lib64_libdxerr9_a_OBJECTS = $(am__objects_11)
 lib64_libdxerr9_a_OBJECTS = $(am_lib64_libdxerr9_a_OBJECTS)
 lib64_libdxguid_a_AR = $(AR) $(ARFLAGS)
 lib64_libdxguid_a_RANLIB = $(RANLIB)
 lib64_libdxguid_a_LIBADD =
 am__lib64_libdxguid_a_SOURCES_DIST = libsrc/dxguid.c
-am__objects_11 = libsrc/lib64_libdxguid_a-dxguid.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libdxguid_a_OBJECTS = $(am__objects_11)
+am__objects_12 = libsrc/lib64_libdxguid_a-dxguid.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libdxguid_a_OBJECTS = $(am__objects_12)
 lib64_libdxguid_a_OBJECTS = $(am_lib64_libdxguid_a_OBJECTS)
 lib64_libgdiplus_a_RANLIB = $(RANLIB)
 lib64_libgdiplus_a_LIBADD =
 am__lib64_libgdiplus_a_SOURCES_DIST = libsrc/gdiplus.c
-am__objects_12 = libsrc/lib64_libgdiplus_a-gdiplus.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libgdiplus_a_OBJECTS = $(am__objects_12)
+am__objects_13 = libsrc/lib64_libgdiplus_a-gdiplus.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libgdiplus_a_OBJECTS = $(am__objects_13)
 lib64_libgdiplus_a_OBJECTS = $(am_lib64_libgdiplus_a_OBJECTS)
 lib64_libgmon_a_AR = $(AR) $(ARFLAGS)
 lib64_libgmon_a_RANLIB = $(RANLIB)
@@ -412,7 +416,7 @@ am__lib64_libkernel32_a_SOURCES_DIST = intrincs/__int2c.c \
 	intrincs/writegsbyte.c intrincs/writegsdword.c \
 	intrincs/writegsqword.c intrincs/writegsword.c \
 	lib-common/kernel32.def.in
-am__objects_13 = intrincs/lib64_libkernel32_a-__int2c.$(OBJEXT) \
+am__objects_14 = intrincs/lib64_libkernel32_a-__int2c.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-__movsb.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-__movsd.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-__movsw.$(OBJEXT) \
@@ -476,7 +480,7 @@ am__objects_13 = intrincs/lib64_libkernel32_a-__int2c.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-writecr3.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-writecr4.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-writemsr.$(OBJEXT)
-am__objects_14 =  \
+am__objects_15 =  \
 	intrincs/lib64_libkernel32_a-__faststorefence.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-__movsq.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-__shiftleft128.$(OBJEXT) \
@@ -507,49 +511,49 @@ am__objects_14 =  \
 	intrincs/lib64_libkernel32_a-writegsdword.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-writegsqword.$(OBJEXT) \
 	intrincs/lib64_libkernel32_a-writegsword.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libkernel32_a_OBJECTS = $(am__objects_13) \
-@LIB64_TRUE@	$(am__objects_14)
+@LIB64_TRUE@am_lib64_libkernel32_a_OBJECTS = $(am__objects_14) \
+@LIB64_TRUE@	$(am__objects_15)
 lib64_libkernel32_a_OBJECTS = $(am_lib64_libkernel32_a_OBJECTS)
 lib64_libksguid_a_AR = $(AR) $(ARFLAGS)
 lib64_libksguid_a_RANLIB = $(RANLIB)
 lib64_libksguid_a_LIBADD =
 am__lib64_libksguid_a_SOURCES_DIST = libsrc/ksuser.c
-am__objects_15 = libsrc/lib64_libksguid_a-ksuser.$(OBJEXT)
-am__objects_16 = $(am__objects_15)
-@LIB64_TRUE@am_lib64_libksguid_a_OBJECTS = $(am__objects_16)
+am__objects_16 = libsrc/lib64_libksguid_a-ksuser.$(OBJEXT)
+am__objects_17 = $(am__objects_16)
+@LIB64_TRUE@am_lib64_libksguid_a_OBJECTS = $(am__objects_17)
 lib64_libksguid_a_OBJECTS = $(am_lib64_libksguid_a_OBJECTS)
 lib64_libksuser_a_RANLIB = $(RANLIB)
 lib64_libksuser_a_LIBADD =
 am__lib64_libksuser_a_SOURCES_DIST = libsrc/ksuser.c
-am__objects_17 = libsrc/lib64_libksuser_a-ksuser.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libksuser_a_OBJECTS = $(am__objects_17)
+am__objects_18 = libsrc/lib64_libksuser_a-ksuser.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libksuser_a_OBJECTS = $(am__objects_18)
 lib64_libksuser_a_OBJECTS = $(am_lib64_libksuser_a_OBJECTS)
 lib64_liblargeint_a_AR = $(AR) $(ARFLAGS)
 lib64_liblargeint_a_RANLIB = $(RANLIB)
 lib64_liblargeint_a_LIBADD =
 am__lib64_liblargeint_a_SOURCES_DIST = libsrc/largeint.c
-am__objects_18 = libsrc/lib64_liblargeint_a-largeint.$(OBJEXT)
-@LIB64_TRUE@am_lib64_liblargeint_a_OBJECTS = $(am__objects_18)
+am__objects_19 = libsrc/lib64_liblargeint_a-largeint.$(OBJEXT)
+@LIB64_TRUE@am_lib64_liblargeint_a_OBJECTS = $(am__objects_19)
 lib64_liblargeint_a_OBJECTS = $(am_lib64_liblargeint_a_OBJECTS)
 lib64_liblocationapi_a_AR = $(AR) $(ARFLAGS)
 lib64_liblocationapi_a_RANLIB = $(RANLIB)
 lib64_liblocationapi_a_LIBADD =
 am__lib64_liblocationapi_a_SOURCES_DIST = libsrc/locationapi.c
-am__objects_19 = libsrc/lib64_liblocationapi_a-locationapi.$(OBJEXT)
-@LIB64_TRUE@am_lib64_liblocationapi_a_OBJECTS = $(am__objects_19)
+am__objects_20 = libsrc/lib64_liblocationapi_a-locationapi.$(OBJEXT)
+@LIB64_TRUE@am_lib64_liblocationapi_a_OBJECTS = $(am__objects_20)
 lib64_liblocationapi_a_OBJECTS = $(am_lib64_liblocationapi_a_OBJECTS)
 lib64_libm_a_AR = $(AR) $(ARFLAGS)
 lib64_libm_a_RANLIB = $(RANLIB)
 lib64_libm_a_LIBADD =
-am__objects_20 = lib64_libm_a-_libm_dummy.$(OBJEXT)
-@LIB64_TRUE@nodist_lib64_libm_a_OBJECTS = $(am__objects_20)
+am__objects_21 = lib64_libm_a-_libm_dummy.$(OBJEXT)
+@LIB64_TRUE@nodist_lib64_libm_a_OBJECTS = $(am__objects_21)
 lib64_libm_a_OBJECTS = $(nodist_lib64_libm_a_OBJECTS)
 lib64_libmfuuid_a_AR = $(AR) $(ARFLAGS)
 lib64_libmfuuid_a_RANLIB = $(RANLIB)
 lib64_libmfuuid_a_LIBADD =
 am__lib64_libmfuuid_a_SOURCES_DIST = libsrc/mfuuid.c
-am__objects_21 = libsrc/lib64_libmfuuid_a-mfuuid.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmfuuid_a_OBJECTS = $(am__objects_21)
+am__objects_22 = libsrc/lib64_libmfuuid_a-mfuuid.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libmfuuid_a_OBJECTS = $(am__objects_22)
 lib64_libmfuuid_a_OBJECTS = $(am_lib64_libmfuuid_a_OBJECTS)
 lib64_libmingw32_a_AR = $(AR) $(ARFLAGS)
 lib64_libmingw32_a_RANLIB = $(RANLIB)
@@ -564,7 +568,7 @@ am__lib64_libmingw32_a_SOURCES_DIST = crt/_newmode.c crt/charmax.c \
 	crt/tlsthrd.c crt/ucrt_exit_wrappers.c crt/ucrtexewin.c \
 	crt/udll_argv.c crt/udllargc.c crt/usermatherr.c \
 	crt/wildcard.c crt/xncommod.c crt/xthdloc.c crt/xtxtmode.c
-am__objects_22 = crt/lib64_libmingw32_a-_newmode.$(OBJEXT) \
+am__objects_23 = crt/lib64_libmingw32_a-_newmode.$(OBJEXT) \
 	crt/lib64_libmingw32_a-charmax.$(OBJEXT) \
 	crt/lib64_libmingw32_a-cinitexe.$(OBJEXT) \
 	crt/lib64_libmingw32_a-CRT_fp8.$(OBJEXT) \
@@ -597,7 +601,7 @@ am__objects_22 = crt/lib64_libmingw32_a-_newmode.$(OBJEXT) \
 	crt/lib64_libmingw32_a-xncommod.$(OBJEXT) \
 	crt/lib64_libmingw32_a-xthdloc.$(OBJEXT) \
 	crt/lib64_libmingw32_a-xtxtmode.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmingw32_a_OBJECTS = $(am__objects_22)
+@LIB64_TRUE@am_lib64_libmingw32_a_OBJECTS = $(am__objects_23)
 lib64_libmingw32_a_OBJECTS = $(am_lib64_libmingw32_a_OBJECTS)
 lib64_libmingwex_a_AR = $(AR) $(ARFLAGS)
 lib64_libmingwex_a_RANLIB = $(RANLIB)
@@ -623,14 +627,14 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	math/isnan.c math/isnanf.c math/signbit.c math/signbitf.c \
 	misc/a64l.c misc/alarm.c misc/arc4random.c \
 	misc/arc4random_buf.c misc/arc4random_uniform.c \
-	misc/clearenv.c misc/delay-f.c misc/delay-n.c misc/delayimp.c \
-	misc/dirent.c misc/dirname.c misc/dllentrypoint.c \
-	misc/dllmain.c misc/ftruncate64.c misc/ftw.c misc/ftw64.c \
-	misc/fwide.c misc/getentropy.c misc/getlogin.c misc/getopt.c \
-	misc/gettimeofday.c misc/insque.c misc/l64a.c \
-	misc/malloc_usable_size.c misc/mempcpy.c misc/mingw_getsp.S \
-	misc/mingw_longjmp.S misc/mingw_matherr.c misc/mingw_usleep.c \
-	misc/mkdtemp.c misc/mkstemp.c misc/mkstemps.c misc/qsort_r.c \
+	misc/clearenv.c misc/dirent.c misc/dirname.c \
+	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate64.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getentropy.c \
+	misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
+	misc/insque.c misc/l64a.c misc/malloc_usable_size.c \
+	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
+	misc/mingw_matherr.c misc/mingw_usleep.c misc/mkdtemp.c \
+	misc/mkstemp.c misc/mkstemps.c misc/qsort_r.c \
 	misc/reallocarray.c misc/realpath.c misc/setenv.c misc/sleep.c \
 	misc/strsafe.c misc/tdelete.c misc/tdestroy.c misc/tfind.c \
 	misc/tsearch.c misc/twalk.c misc/unsetenv.c misc/wdirent.c \
@@ -651,8 +655,8 @@ am__lib64_libmingwex_a_SOURCES_DIST = cfguard/mingw_cfguard_support.c \
 	time/ctime_r.c time/gmtime_r.c time/localtime_r.c \
 	time/nanosleep.c time/timespec_getres.c \
 	cfguard/mingw_cfguard_loadcfg.S math/x64/sincos.c
-@CFGUARD_TRUE@am__objects_23 = cfguard/lib64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
-am__objects_24 =  \
+@CFGUARD_TRUE@am__objects_24 = cfguard/lib64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
+am__objects_25 =  \
 	cfguard/lib64_libmingwex_a-mingw_cfguard_support.$(OBJEXT) \
 	complex/lib64_libmingwex_a-cabs.$(OBJEXT) \
 	complex/lib64_libmingwex_a-cabsf.$(OBJEXT) \
@@ -720,9 +724,6 @@ am__objects_24 =  \
 	misc/lib64_libmingwex_a-arc4random_buf.$(OBJEXT) \
 	misc/lib64_libmingwex_a-arc4random_uniform.$(OBJEXT) \
 	misc/lib64_libmingwex_a-clearenv.$(OBJEXT) \
-	misc/lib64_libmingwex_a-delay-f.$(OBJEXT) \
-	misc/lib64_libmingwex_a-delay-n.$(OBJEXT) \
-	misc/lib64_libmingwex_a-delayimp.$(OBJEXT) \
 	misc/lib64_libmingwex_a-dirent.$(OBJEXT) \
 	misc/lib64_libmingwex_a-dirname.$(OBJEXT) \
 	misc/lib64_libmingwex_a-dllentrypoint.$(OBJEXT) \
@@ -808,62 +809,62 @@ am__objects_24 =  \
 	time/lib64_libmingwex_a-localtime_r.$(OBJEXT) \
 	time/lib64_libmingwex_a-nanosleep.$(OBJEXT) \
 	time/lib64_libmingwex_a-timespec_getres.$(OBJEXT) \
-	$(am__objects_23)
-am__objects_25 = math/x64/lib64_libmingwex_a-sincos.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmingwex_a_OBJECTS = $(am__objects_24) \
-@LIB64_TRUE@	$(am__objects_25)
+	$(am__objects_24)
+am__objects_26 = math/x64/lib64_libmingwex_a-sincos.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libmingwex_a_OBJECTS = $(am__objects_25) \
+@LIB64_TRUE@	$(am__objects_26)
 lib64_libmingwex_a_OBJECTS = $(am_lib64_libmingwex_a_OBJECTS)
 lib64_libmingwthrd_a_AR = $(AR) $(ARFLAGS)
 lib64_libmingwthrd_a_RANLIB = $(RANLIB)
 lib64_libmingwthrd_a_LIBADD =
 am__lib64_libmingwthrd_a_SOURCES_DIST = libsrc/mingwthrd_mt.c
-am__objects_26 = libsrc/lib64_libmingwthrd_a-mingwthrd_mt.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmingwthrd_a_OBJECTS = $(am__objects_26)
+am__objects_27 = libsrc/lib64_libmingwthrd_a-mingwthrd_mt.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libmingwthrd_a_OBJECTS = $(am__objects_27)
 lib64_libmingwthrd_a_OBJECTS = $(am_lib64_libmingwthrd_a_OBJECTS)
 lib64_libmoldname_a_AR = $(AR) $(ARFLAGS)
 lib64_libmoldname_a_RANLIB = $(RANLIB)
 lib64_libmoldname_a_LIBADD =
 am__lib64_libmoldname_a_SOURCES_DIST = _libm_dummy.c
-am__objects_27 = lib64_libmoldname_a-_libm_dummy.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmoldname_a_OBJECTS = $(am__objects_27)
+am__objects_28 = lib64_libmoldname_a-_libm_dummy.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libmoldname_a_OBJECTS = $(am__objects_28)
 lib64_libmoldname_a_OBJECTS = $(am_lib64_libmoldname_a_OBJECTS)
 lib64_libmsxml2_a_AR = $(AR) $(ARFLAGS)
 lib64_libmsxml2_a_RANLIB = $(RANLIB)
 lib64_libmsxml2_a_LIBADD =
 am__lib64_libmsxml2_a_SOURCES_DIST = libsrc/msxml2.c
-am__objects_28 = libsrc/lib64_libmsxml2_a-msxml2.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmsxml2_a_OBJECTS = $(am__objects_28)
+am__objects_29 = libsrc/lib64_libmsxml2_a-msxml2.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libmsxml2_a_OBJECTS = $(am__objects_29)
 lib64_libmsxml2_a_OBJECTS = $(am_lib64_libmsxml2_a_OBJECTS)
 lib64_libmsxml6_a_AR = $(AR) $(ARFLAGS)
 lib64_libmsxml6_a_RANLIB = $(RANLIB)
 lib64_libmsxml6_a_LIBADD =
 am__lib64_libmsxml6_a_SOURCES_DIST = libsrc/msxml6.c
-am__objects_29 = libsrc/lib64_libmsxml6_a-msxml6.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libmsxml6_a_OBJECTS = $(am__objects_29)
+am__objects_30 = libsrc/lib64_libmsxml6_a-msxml6.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libmsxml6_a_OBJECTS = $(am__objects_30)
 lib64_libmsxml6_a_OBJECTS = $(am_lib64_libmsxml6_a_OBJECTS)
 lib64_libportabledeviceguids_a_AR = $(AR) $(ARFLAGS)
 lib64_libportabledeviceguids_a_RANLIB = $(RANLIB)
 lib64_libportabledeviceguids_a_LIBADD =
 am__lib64_libportabledeviceguids_a_SOURCES_DIST =  \
 	libsrc/portabledeviceguids.c
-am__objects_30 = libsrc/lib64_libportabledeviceguids_a-portabledeviceguids.$(OBJEXT)
+am__objects_31 = libsrc/lib64_libportabledeviceguids_a-portabledeviceguids.$(OBJEXT)
 @LIB64_TRUE@am_lib64_libportabledeviceguids_a_OBJECTS =  \
-@LIB64_TRUE@	$(am__objects_30)
+@LIB64_TRUE@	$(am__objects_31)
 lib64_libportabledeviceguids_a_OBJECTS =  \
 	$(am_lib64_libportabledeviceguids_a_OBJECTS)
 lib64_libsapi_a_AR = $(AR) $(ARFLAGS)
 lib64_libsapi_a_RANLIB = $(RANLIB)
 lib64_libsapi_a_LIBADD =
 am__lib64_libsapi_a_SOURCES_DIST = libsrc/sapi.c
-am__objects_31 = libsrc/lib64_libsapi_a-sapi.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libsapi_a_OBJECTS = $(am__objects_31)
+am__objects_32 = libsrc/lib64_libsapi_a-sapi.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libsapi_a_OBJECTS = $(am__objects_32)
 lib64_libsapi_a_OBJECTS = $(am_lib64_libsapi_a_OBJECTS)
 lib64_libscrnsave_a_AR = $(AR) $(ARFLAGS)
 lib64_libscrnsave_a_RANLIB = $(RANLIB)
 lib64_libscrnsave_a_LIBADD =
 am__lib64_libscrnsave_a_SOURCES_DIST = libsrc/scrnsave.c
-am__objects_32 = libsrc/lib64_libscrnsave_a-scrnsave.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libscrnsave_a_OBJECTS = $(am__objects_32)
+am__objects_33 = libsrc/lib64_libscrnsave_a-scrnsave.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libscrnsave_a_OBJECTS = $(am__objects_33)
 lib64_libscrnsave_a_OBJECTS = $(am_lib64_libscrnsave_a_OBJECTS)
 lib64_libscrnsavw_a_AR = $(AR) $(ARFLAGS)
 lib64_libscrnsavw_a_RANLIB = $(RANLIB)
@@ -876,28 +877,28 @@ lib64_libsensorsapi_a_AR = $(AR) $(ARFLAGS)
 lib64_libsensorsapi_a_RANLIB = $(RANLIB)
 lib64_libsensorsapi_a_LIBADD =
 am__lib64_libsensorsapi_a_SOURCES_DIST = libsrc/sensorsapi.c
-am__objects_33 = libsrc/lib64_libsensorsapi_a-sensorsapi.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libsensorsapi_a_OBJECTS = $(am__objects_33)
+am__objects_34 = libsrc/lib64_libsensorsapi_a-sensorsapi.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libsensorsapi_a_OBJECTS = $(am__objects_34)
 lib64_libsensorsapi_a_OBJECTS = $(am_lib64_libsensorsapi_a_OBJECTS)
 lib64_libshell32_a_RANLIB = $(RANLIB)
 lib64_libshell32_a_LIBADD =
 am__lib64_libshell32_a_SOURCES_DIST = libsrc/shell32.c
-am__objects_34 = libsrc/lib64_libshell32_a-shell32.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libshell32_a_OBJECTS = $(am__objects_34)
+am__objects_35 = libsrc/lib64_libshell32_a-shell32.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libshell32_a_OBJECTS = $(am__objects_35)
 lib64_libshell32_a_OBJECTS = $(am_lib64_libshell32_a_OBJECTS)
 lib64_libstrmiids_a_AR = $(AR) $(ARFLAGS)
 lib64_libstrmiids_a_RANLIB = $(RANLIB)
 lib64_libstrmiids_a_LIBADD =
 am__lib64_libstrmiids_a_SOURCES_DIST = libsrc/strmiids.c
-am__objects_35 = libsrc/lib64_libstrmiids_a-strmiids.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libstrmiids_a_OBJECTS = $(am__objects_35)
+am__objects_36 = libsrc/lib64_libstrmiids_a-strmiids.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libstrmiids_a_OBJECTS = $(am__objects_36)
 lib64_libstrmiids_a_OBJECTS = $(am_lib64_libstrmiids_a_OBJECTS)
 lib64_libtaskschd_a_AR = $(AR) $(ARFLAGS)
 lib64_libtaskschd_a_RANLIB = $(RANLIB)
 lib64_libtaskschd_a_LIBADD =
 am__lib64_libtaskschd_a_SOURCES_DIST = libsrc/taskschd.c
-am__objects_36 = libsrc/lib64_libtaskschd_a-taskschd.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libtaskschd_a_OBJECTS = $(am__objects_36)
+am__objects_37 = libsrc/lib64_libtaskschd_a-taskschd.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libtaskschd_a_OBJECTS = $(am__objects_37)
 lib64_libtaskschd_a_OBJECTS = $(am_lib64_libtaskschd_a_OBJECTS)
 lib64_libucrt_extra_a_AR = $(AR) $(ARFLAGS)
 lib64_libucrt_extra_a_RANLIB = $(RANLIB)
@@ -925,7 +926,7 @@ am__lib64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	stdio/ucrt_wprintf.c stdio/ucrt_wscanf.c string/ucrt__wcstok.c \
 	math/x64/fabsf.c math/x64/ldexp.c math/x64/scalbn.S \
 	math/x64/scalbnf.S
-am__objects_37 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
+am__objects_38 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-frexpf.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-ldexpf.$(OBJEXT) \
 	math/lib64_libucrt_extra_a-lgamma.$(OBJEXT) \
@@ -976,12 +977,12 @@ am__objects_37 = math/lib64_libucrt_extra_a-_huge.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_wprintf.$(OBJEXT) \
 	stdio/lib64_libucrt_extra_a-ucrt_wscanf.$(OBJEXT) \
 	string/lib64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT)
-am__objects_38 = $(am__objects_37) \
+am__objects_39 = $(am__objects_38) \
 	math/x64/lib64_libucrt_extra_a-fabsf.$(OBJEXT) \
 	math/x64/lib64_libucrt_extra_a-ldexp.$(OBJEXT) \
 	math/x64/lib64_libucrt_extra_a-scalbn.$(OBJEXT) \
 	math/x64/lib64_libucrt_extra_a-scalbnf.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libucrt_extra_a_OBJECTS = $(am__objects_38)
+@LIB64_TRUE@am_lib64_libucrt_extra_a_OBJECTS = $(am__objects_39)
 lib64_libucrt_extra_a_OBJECTS = $(am_lib64_libucrt_extra_a_OBJECTS)
 lib64_libucrtapp_extra_a_AR = $(AR) $(ARFLAGS)
 lib64_libucrtapp_extra_a_RANLIB = $(RANLIB)
@@ -992,7 +993,7 @@ am__lib64_libucrtapp_extra_a_SOURCES_DIST =  \
 	string/memmove.c string/strchr.c string/strrchr.c \
 	string/strstr.c string/wcschr.c string/wcsrchr.c \
 	string/wcsstr.c
-am__objects_39 =  \
+am__objects_40 =  \
 	misc/lib64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT) \
 	misc/lib64_libucrtapp_extra_a-longjmp.$(OBJEXT) \
 	misc/lib64_libucrtapp_extra_a-setjmp.$(OBJEXT) \
@@ -1006,7 +1007,7 @@ am__objects_39 =  \
 	string/lib64_libucrtapp_extra_a-wcschr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-wcsrchr.$(OBJEXT) \
 	string/lib64_libucrtapp_extra_a-wcsstr.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libucrtapp_extra_a_OBJECTS = $(am__objects_39)
+@LIB64_TRUE@am_lib64_libucrtapp_extra_a_OBJECTS = $(am__objects_40)
 lib64_libucrtapp_extra_a_OBJECTS =  \
 	$(am_lib64_libucrtapp_extra_a_OBJECTS)
 lib64_libuuid_a_AR = $(AR) $(ARFLAGS)
@@ -1032,7 +1033,7 @@ am__lib64_libuuid_a_SOURCES_DIST = libsrc/ativscp-uuid.c \
 	libsrc/usbiodef-uuid.c libsrc/uuid.c libsrc/vds-uuid.c \
 	libsrc/virtdisk-uuid.c libsrc/vss-uuid.c libsrc/wia-uuid.c \
 	libsrc/windowscodecs.c
-am__objects_40 = libsrc/lib64_libuuid_a-ativscp-uuid.$(OBJEXT) \
+am__objects_41 = libsrc/lib64_libuuid_a-ativscp-uuid.$(OBJEXT) \
 	libsrc/lib64_libuuid_a-atsmedia-uuid.$(OBJEXT) \
 	libsrc/lib64_libuuid_a-bth-uuid.$(OBJEXT) \
 	libsrc/lib64_libuuid_a-cguid-uuid.$(OBJEXT) \
@@ -1079,30 +1080,30 @@ am__objects_40 = libsrc/lib64_libuuid_a-ativscp-uuid.$(OBJEXT) \
 	libsrc/lib64_libuuid_a-vss-uuid.$(OBJEXT) \
 	libsrc/lib64_libuuid_a-wia-uuid.$(OBJEXT) \
 	libsrc/lib64_libuuid_a-windowscodecs.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libuuid_a_OBJECTS = $(am__objects_40)
+@LIB64_TRUE@am_lib64_libuuid_a_OBJECTS = $(am__objects_41)
 lib64_libuuid_a_OBJECTS = $(am_lib64_libuuid_a_OBJECTS)
 lib64_libwbemuuid_a_AR = $(AR) $(ARFLAGS)
 lib64_libwbemuuid_a_RANLIB = $(RANLIB)
 lib64_libwbemuuid_a_LIBADD =
 am__lib64_libwbemuuid_a_SOURCES_DIST = libsrc/wbemuuid.c
-am__objects_41 = libsrc/lib64_libwbemuuid_a-wbemuuid.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libwbemuuid_a_OBJECTS = $(am__objects_41)
+am__objects_42 = libsrc/lib64_libwbemuuid_a-wbemuuid.$(OBJEXT)
+@LIB64_TRUE@am_lib64_libwbemuuid_a_OBJECTS = $(am__objects_42)
 lib64_libwbemuuid_a_OBJECTS = $(am_lib64_libwbemuuid_a_OBJECTS)
 lib64_libwindowscodecs_a_RANLIB = $(RANLIB)
 lib64_libwindowscodecs_a_LIBADD =
 am__lib64_libwindowscodecs_a_SOURCES_DIST = libsrc/windowscodecs.c
-am__objects_42 =  \
+am__objects_43 =  \
 	libsrc/lib64_libwindowscodecs_a-windowscodecs.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libwindowscodecs_a_OBJECTS = $(am__objects_42)
+@LIB64_TRUE@am_lib64_libwindowscodecs_a_OBJECTS = $(am__objects_43)
 lib64_libwindowscodecs_a_OBJECTS =  \
 	$(am_lib64_libwindowscodecs_a_OBJECTS)
 lib64_libwmcodecdspuuid_a_AR = $(AR) $(ARFLAGS)
 lib64_libwmcodecdspuuid_a_RANLIB = $(RANLIB)
 lib64_libwmcodecdspuuid_a_LIBADD =
 am__lib64_libwmcodecdspuuid_a_SOURCES_DIST = libsrc/wmcodecdspuuid.c
-am__objects_43 =  \
+am__objects_44 =  \
 	libsrc/lib64_libwmcodecdspuuid_a-wmcodecdspuuid.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libwmcodecdspuuid_a_OBJECTS = $(am__objects_43)
+@LIB64_TRUE@am_lib64_libwmcodecdspuuid_a_OBJECTS = $(am__objects_44)
 lib64_libwmcodecdspuuid_a_OBJECTS =  \
 	$(am_lib64_libwmcodecdspuuid_a_OBJECTS)
 lib64_libws2_32_a_RANLIB = $(RANLIB)
@@ -1150,7 +1151,7 @@ am__lib64_libws2_32_a_SOURCES_DIST = libsrc/ws2_32.c \
 	libsrc/wspiapi/WspiapiParseV4Address.c \
 	libsrc/wspiapi/WspiapiQueryDNS.c \
 	libsrc/wspiapi/WspiapiStrdup.c lib-common/ws2_32.def.in
-am__objects_44 = libsrc/lib64_libws2_32_a-ws2_32.$(OBJEXT) \
+am__objects_45 = libsrc/lib64_libws2_32_a-ws2_32.$(OBJEXT) \
 	libsrc/ws2tcpip/lib64_libws2_32_a-gai_strerrorA.$(OBJEXT) \
 	libsrc/ws2tcpip/lib64_libws2_32_a-gai_strerrorW.$(OBJEXT) \
 	libsrc/ws2tcpip/lib64_libws2_32_a-in6_addr_equal.$(OBJEXT) \
@@ -1193,108 +1194,113 @@ am__objects_44 = libsrc/lib64_libws2_32_a-ws2_32.$(OBJEXT) \
 	libsrc/wspiapi/lib64_libws2_32_a-WspiapiParseV4Address.$(OBJEXT) \
 	libsrc/wspiapi/lib64_libws2_32_a-WspiapiQueryDNS.$(OBJEXT) \
 	libsrc/wspiapi/lib64_libws2_32_a-WspiapiStrdup.$(OBJEXT)
-@LIB64_TRUE@am_lib64_libws2_32_a_OBJECTS = $(am__objects_44)
+@LIB64_TRUE@am_lib64_libws2_32_a_OBJECTS = $(am__objects_45)
 lib64_libws2_32_a_OBJECTS = $(am_lib64_libws2_32_a_OBJECTS)
 libarm64_libadsiid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libadsiid_a_RANLIB = $(RANLIB)
 libarm64_libadsiid_a_LIBADD =
 am__libarm64_libadsiid_a_SOURCES_DIST = libsrc/activeds-uuid.c
-am__objects_45 = libsrc/libarm64_libadsiid_a-activeds-uuid.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libadsiid_a_OBJECTS = $(am__objects_45)
+am__objects_46 = libsrc/libarm64_libadsiid_a-activeds-uuid.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libadsiid_a_OBJECTS = $(am__objects_46)
 libarm64_libadsiid_a_OBJECTS = $(am_libarm64_libadsiid_a_OBJECTS)
 libarm64_libamstrmid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libamstrmid_a_RANLIB = $(RANLIB)
 libarm64_libamstrmid_a_LIBADD =
 am__libarm64_libamstrmid_a_SOURCES_DIST = libsrc/amstrmid.c
-am__objects_46 = libsrc/libarm64_libamstrmid_a-amstrmid.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libamstrmid_a_OBJECTS = $(am__objects_46)
+am__objects_47 = libsrc/libarm64_libamstrmid_a-amstrmid.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libamstrmid_a_OBJECTS = $(am__objects_47)
 libarm64_libamstrmid_a_OBJECTS = $(am_libarm64_libamstrmid_a_OBJECTS)
 libarm64_libbits_a_AR = $(AR) $(ARFLAGS)
 libarm64_libbits_a_RANLIB = $(RANLIB)
 libarm64_libbits_a_LIBADD =
 am__libarm64_libbits_a_SOURCES_DIST = libsrc/bits.c
-am__objects_47 = libsrc/libarm64_libbits_a-bits.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libbits_a_OBJECTS = $(am__objects_47)
+am__objects_48 = libsrc/libarm64_libbits_a-bits.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libbits_a_OBJECTS = $(am__objects_48)
 libarm64_libbits_a_OBJECTS = $(am_libarm64_libbits_a_OBJECTS)
 libarm64_libdelayimp_a_AR = $(AR) $(ARFLAGS)
 libarm64_libdelayimp_a_RANLIB = $(RANLIB)
 libarm64_libdelayimp_a_LIBADD =
-am_libarm64_libdelayimp_a_OBJECTS =
+am__libarm64_libdelayimp_a_SOURCES_DIST = misc/delay-f.c \
+	misc/delay-n.c misc/delayimp.c
+am__objects_49 = misc/libarm64_libdelayimp_a-delay-f.$(OBJEXT) \
+	misc/libarm64_libdelayimp_a-delay-n.$(OBJEXT) \
+	misc/libarm64_libdelayimp_a-delayimp.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libdelayimp_a_OBJECTS = $(am__objects_49)
 libarm64_libdelayimp_a_OBJECTS = $(am_libarm64_libdelayimp_a_OBJECTS)
 libarm64_libdinput_a_RANLIB = $(RANLIB)
 libarm64_libdinput_a_LIBADD =
 am__libarm64_libdinput_a_SOURCES_DIST = libsrc/dinput_joy.c \
 	libsrc/dinput_joy2.c libsrc/dinput_kbd.c libsrc/dinput_mouse.c \
 	libsrc/dinput_mouse2.c
-am__objects_48 = libsrc/libarm64_libdinput_a-dinput_joy.$(OBJEXT) \
+am__objects_50 = libsrc/libarm64_libdinput_a-dinput_joy.$(OBJEXT) \
 	libsrc/libarm64_libdinput_a-dinput_joy2.$(OBJEXT) \
 	libsrc/libarm64_libdinput_a-dinput_kbd.$(OBJEXT) \
 	libsrc/libarm64_libdinput_a-dinput_mouse.$(OBJEXT) \
 	libsrc/libarm64_libdinput_a-dinput_mouse2.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libdinput_a_OBJECTS = $(am__objects_48)
+@LIBARM64_TRUE@am_libarm64_libdinput_a_OBJECTS = $(am__objects_50)
 libarm64_libdinput_a_OBJECTS = $(am_libarm64_libdinput_a_OBJECTS)
 libarm64_libdinput8_a_RANLIB = $(RANLIB)
 libarm64_libdinput8_a_LIBADD =
 am__libarm64_libdinput8_a_SOURCES_DIST = libsrc/dinput_joy.c \
 	libsrc/dinput_joy2.c libsrc/dinput_kbd.c libsrc/dinput_mouse.c \
 	libsrc/dinput_mouse2.c
-am__objects_49 = libsrc/libarm64_libdinput8_a-dinput_joy.$(OBJEXT) \
+am__objects_51 = libsrc/libarm64_libdinput8_a-dinput_joy.$(OBJEXT) \
 	libsrc/libarm64_libdinput8_a-dinput_joy2.$(OBJEXT) \
 	libsrc/libarm64_libdinput8_a-dinput_kbd.$(OBJEXT) \
 	libsrc/libarm64_libdinput8_a-dinput_mouse.$(OBJEXT) \
 	libsrc/libarm64_libdinput8_a-dinput_mouse2.$(OBJEXT)
-am__objects_50 = $(am__objects_49)
-@LIBARM64_TRUE@am_libarm64_libdinput8_a_OBJECTS = $(am__objects_50)
+am__objects_52 = $(am__objects_51)
+@LIBARM64_TRUE@am_libarm64_libdinput8_a_OBJECTS = $(am__objects_52)
 libarm64_libdinput8_a_OBJECTS = $(am_libarm64_libdinput8_a_OBJECTS)
 libarm64_libdloadhelper_a_AR = $(AR) $(ARFLAGS)
 libarm64_libdloadhelper_a_RANLIB = $(RANLIB)
 libarm64_libdloadhelper_a_LIBADD =
 am__libarm64_libdloadhelper_a_SOURCES_DIST = libsrc/dloadhelper.c \
 	misc/delay-f.c
-am__objects_51 =  \
+am__objects_53 =  \
 	libsrc/libarm64_libdloadhelper_a-dloadhelper.$(OBJEXT) \
 	misc/libarm64_libdloadhelper_a-delay-f.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libdloadhelper_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_51)
+@LIBARM64_TRUE@	$(am__objects_53)
 libarm64_libdloadhelper_a_OBJECTS =  \
 	$(am_libarm64_libdloadhelper_a_OBJECTS)
 libarm64_libdmoguids_a_AR = $(AR) $(ARFLAGS)
 libarm64_libdmoguids_a_RANLIB = $(RANLIB)
 libarm64_libdmoguids_a_LIBADD =
 am__libarm64_libdmoguids_a_SOURCES_DIST = libsrc/dmoguids.c
-am__objects_52 = libsrc/libarm64_libdmoguids_a-dmoguids.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libdmoguids_a_OBJECTS = $(am__objects_52)
+am__objects_54 = libsrc/libarm64_libdmoguids_a-dmoguids.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libdmoguids_a_OBJECTS = $(am__objects_54)
 libarm64_libdmoguids_a_OBJECTS = $(am_libarm64_libdmoguids_a_OBJECTS)
 libarm64_libdxerr8_a_AR = $(AR) $(ARFLAGS)
 libarm64_libdxerr8_a_RANLIB = $(RANLIB)
 libarm64_libdxerr8_a_LIBADD =
 am__libarm64_libdxerr8_a_SOURCES_DIST = libsrc/dxerr8.c \
 	libsrc/dxerr8w.c
-am__objects_53 = libsrc/libarm64_libdxerr8_a-dxerr8.$(OBJEXT) \
+am__objects_55 = libsrc/libarm64_libdxerr8_a-dxerr8.$(OBJEXT) \
 	libsrc/libarm64_libdxerr8_a-dxerr8w.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libdxerr8_a_OBJECTS = $(am__objects_53)
+@LIBARM64_TRUE@am_libarm64_libdxerr8_a_OBJECTS = $(am__objects_55)
 libarm64_libdxerr8_a_OBJECTS = $(am_libarm64_libdxerr8_a_OBJECTS)
 libarm64_libdxerr9_a_AR = $(AR) $(ARFLAGS)
 libarm64_libdxerr9_a_RANLIB = $(RANLIB)
 libarm64_libdxerr9_a_LIBADD =
 am__libarm64_libdxerr9_a_SOURCES_DIST = libsrc/dxerr9.c \
 	libsrc/dxerr9w.c
-am__objects_54 = libsrc/libarm64_libdxerr9_a-dxerr9.$(OBJEXT) \
+am__objects_56 = libsrc/libarm64_libdxerr9_a-dxerr9.$(OBJEXT) \
 	libsrc/libarm64_libdxerr9_a-dxerr9w.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libdxerr9_a_OBJECTS = $(am__objects_54)
+@LIBARM64_TRUE@am_libarm64_libdxerr9_a_OBJECTS = $(am__objects_56)
 libarm64_libdxerr9_a_OBJECTS = $(am_libarm64_libdxerr9_a_OBJECTS)
 libarm64_libdxguid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libdxguid_a_RANLIB = $(RANLIB)
 libarm64_libdxguid_a_LIBADD =
 am__libarm64_libdxguid_a_SOURCES_DIST = libsrc/dxguid.c
-am__objects_55 = libsrc/libarm64_libdxguid_a-dxguid.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libdxguid_a_OBJECTS = $(am__objects_55)
+am__objects_57 = libsrc/libarm64_libdxguid_a-dxguid.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libdxguid_a_OBJECTS = $(am__objects_57)
 libarm64_libdxguid_a_OBJECTS = $(am_libarm64_libdxguid_a_OBJECTS)
 libarm64_libgdiplus_a_RANLIB = $(RANLIB)
 libarm64_libgdiplus_a_LIBADD =
 am__libarm64_libgdiplus_a_SOURCES_DIST = libsrc/gdiplus.c
-am__objects_56 = libsrc/libarm64_libgdiplus_a-gdiplus.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libgdiplus_a_OBJECTS = $(am__objects_56)
+am__objects_58 = libsrc/libarm64_libgdiplus_a-gdiplus.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libgdiplus_a_OBJECTS = $(am__objects_58)
 libarm64_libgdiplus_a_OBJECTS = $(am_libarm64_libgdiplus_a_OBJECTS)
 libarm64_libkernel32_a_RANLIB = $(RANLIB)
 libarm64_libkernel32_a_LIBADD =
@@ -1325,7 +1331,7 @@ am__libarm64_libkernel32_a_SOURCES_DIST = intrincs/__int2c.c \
 	intrincs/RtlSecureZeroMemory.c intrincs/writecr0.c \
 	intrincs/writecr2.c intrincs/writecr3.c intrincs/writecr4.c \
 	intrincs/writemsr.c lib-common/kernel32.def.in
-am__objects_57 = intrincs/libarm64_libkernel32_a-__int2c.$(OBJEXT) \
+am__objects_59 = intrincs/libarm64_libkernel32_a-__int2c.$(OBJEXT) \
 	intrincs/libarm64_libkernel32_a-__movsb.$(OBJEXT) \
 	intrincs/libarm64_libkernel32_a-__movsd.$(OBJEXT) \
 	intrincs/libarm64_libkernel32_a-__movsw.$(OBJEXT) \
@@ -1389,53 +1395,53 @@ am__objects_57 = intrincs/libarm64_libkernel32_a-__int2c.$(OBJEXT) \
 	intrincs/libarm64_libkernel32_a-writecr3.$(OBJEXT) \
 	intrincs/libarm64_libkernel32_a-writecr4.$(OBJEXT) \
 	intrincs/libarm64_libkernel32_a-writemsr.$(OBJEXT)
-am__objects_58 =
-@LIBARM64_TRUE@am_libarm64_libkernel32_a_OBJECTS = $(am__objects_57) \
-@LIBARM64_TRUE@	$(am__objects_58)
+am__objects_60 =
+@LIBARM64_TRUE@am_libarm64_libkernel32_a_OBJECTS = $(am__objects_59) \
+@LIBARM64_TRUE@	$(am__objects_60)
 libarm64_libkernel32_a_OBJECTS = $(am_libarm64_libkernel32_a_OBJECTS)
 libarm64_libksguid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libksguid_a_RANLIB = $(RANLIB)
 libarm64_libksguid_a_LIBADD =
 am__libarm64_libksguid_a_SOURCES_DIST = libsrc/ksuser.c
-am__objects_59 = libsrc/libarm64_libksguid_a-ksuser.$(OBJEXT)
-am__objects_60 = $(am__objects_59)
-@LIBARM64_TRUE@am_libarm64_libksguid_a_OBJECTS = $(am__objects_60)
+am__objects_61 = libsrc/libarm64_libksguid_a-ksuser.$(OBJEXT)
+am__objects_62 = $(am__objects_61)
+@LIBARM64_TRUE@am_libarm64_libksguid_a_OBJECTS = $(am__objects_62)
 libarm64_libksguid_a_OBJECTS = $(am_libarm64_libksguid_a_OBJECTS)
 libarm64_libksuser_a_RANLIB = $(RANLIB)
 libarm64_libksuser_a_LIBADD =
 am__libarm64_libksuser_a_SOURCES_DIST = libsrc/ksuser.c
-am__objects_61 = libsrc/libarm64_libksuser_a-ksuser.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libksuser_a_OBJECTS = $(am__objects_61)
+am__objects_63 = libsrc/libarm64_libksuser_a-ksuser.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libksuser_a_OBJECTS = $(am__objects_63)
 libarm64_libksuser_a_OBJECTS = $(am_libarm64_libksuser_a_OBJECTS)
 libarm64_liblargeint_a_AR = $(AR) $(ARFLAGS)
 libarm64_liblargeint_a_RANLIB = $(RANLIB)
 libarm64_liblargeint_a_LIBADD =
 am__libarm64_liblargeint_a_SOURCES_DIST = libsrc/largeint.c
-am__objects_62 = libsrc/libarm64_liblargeint_a-largeint.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_liblargeint_a_OBJECTS = $(am__objects_62)
+am__objects_64 = libsrc/libarm64_liblargeint_a-largeint.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_liblargeint_a_OBJECTS = $(am__objects_64)
 libarm64_liblargeint_a_OBJECTS = $(am_libarm64_liblargeint_a_OBJECTS)
 libarm64_liblocationapi_a_AR = $(AR) $(ARFLAGS)
 libarm64_liblocationapi_a_RANLIB = $(RANLIB)
 libarm64_liblocationapi_a_LIBADD =
 am__libarm64_liblocationapi_a_SOURCES_DIST = libsrc/locationapi.c
-am__objects_63 =  \
+am__objects_65 =  \
 	libsrc/libarm64_liblocationapi_a-locationapi.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_liblocationapi_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_63)
+@LIBARM64_TRUE@	$(am__objects_65)
 libarm64_liblocationapi_a_OBJECTS =  \
 	$(am_libarm64_liblocationapi_a_OBJECTS)
 libarm64_libm_a_AR = $(AR) $(ARFLAGS)
 libarm64_libm_a_RANLIB = $(RANLIB)
 libarm64_libm_a_LIBADD =
-am__objects_64 = libarm64_libm_a-_libm_dummy.$(OBJEXT)
-@LIBARM64_TRUE@nodist_libarm64_libm_a_OBJECTS = $(am__objects_64)
+am__objects_66 = libarm64_libm_a-_libm_dummy.$(OBJEXT)
+@LIBARM64_TRUE@nodist_libarm64_libm_a_OBJECTS = $(am__objects_66)
 libarm64_libm_a_OBJECTS = $(nodist_libarm64_libm_a_OBJECTS)
 libarm64_libmfuuid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmfuuid_a_RANLIB = $(RANLIB)
 libarm64_libmfuuid_a_LIBADD =
 am__libarm64_libmfuuid_a_SOURCES_DIST = libsrc/mfuuid.c
-am__objects_65 = libsrc/libarm64_libmfuuid_a-mfuuid.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmfuuid_a_OBJECTS = $(am__objects_65)
+am__objects_67 = libsrc/libarm64_libmfuuid_a-mfuuid.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libmfuuid_a_OBJECTS = $(am__objects_67)
 libarm64_libmfuuid_a_OBJECTS = $(am_libarm64_libmfuuid_a_OBJECTS)
 libarm64_libmingw32_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmingw32_a_RANLIB = $(RANLIB)
@@ -1450,7 +1456,7 @@ am__libarm64_libmingw32_a_SOURCES_DIST = crt/_newmode.c crt/charmax.c \
 	crt/tlsthrd.c crt/ucrt_exit_wrappers.c crt/ucrtexewin.c \
 	crt/udll_argv.c crt/udllargc.c crt/usermatherr.c \
 	crt/wildcard.c crt/xncommod.c crt/xthdloc.c crt/xtxtmode.c
-am__objects_66 = crt/libarm64_libmingw32_a-_newmode.$(OBJEXT) \
+am__objects_68 = crt/libarm64_libmingw32_a-_newmode.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-charmax.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-cinitexe.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-CRT_fp8.$(OBJEXT) \
@@ -1483,7 +1489,7 @@ am__objects_66 = crt/libarm64_libmingw32_a-_newmode.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-xncommod.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-xthdloc.$(OBJEXT) \
 	crt/libarm64_libmingw32_a-xtxtmode.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmingw32_a_OBJECTS = $(am__objects_66)
+@LIBARM64_TRUE@am_libarm64_libmingw32_a_OBJECTS = $(am__objects_68)
 libarm64_libmingw32_a_OBJECTS = $(am_libarm64_libmingw32_a_OBJECTS)
 libarm64_libmingwex_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmingwex_a_RANLIB = $(RANLIB)
@@ -1510,14 +1516,14 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	math/isnan.c math/isnanf.c math/signbit.c math/signbitf.c \
 	misc/a64l.c misc/alarm.c misc/arc4random.c \
 	misc/arc4random_buf.c misc/arc4random_uniform.c \
-	misc/clearenv.c misc/delay-f.c misc/delay-n.c misc/delayimp.c \
-	misc/dirent.c misc/dirname.c misc/dllentrypoint.c \
-	misc/dllmain.c misc/ftruncate64.c misc/ftw.c misc/ftw64.c \
-	misc/fwide.c misc/getentropy.c misc/getlogin.c misc/getopt.c \
-	misc/gettimeofday.c misc/insque.c misc/l64a.c \
-	misc/malloc_usable_size.c misc/mempcpy.c misc/mingw_getsp.S \
-	misc/mingw_longjmp.S misc/mingw_matherr.c misc/mingw_usleep.c \
-	misc/mkdtemp.c misc/mkstemp.c misc/mkstemps.c misc/qsort_r.c \
+	misc/clearenv.c misc/dirent.c misc/dirname.c \
+	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate64.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getentropy.c \
+	misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
+	misc/insque.c misc/l64a.c misc/malloc_usable_size.c \
+	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
+	misc/mingw_matherr.c misc/mingw_usleep.c misc/mkdtemp.c \
+	misc/mkstemp.c misc/mkstemps.c misc/qsort_r.c \
 	misc/reallocarray.c misc/realpath.c misc/setenv.c misc/sleep.c \
 	misc/strsafe.c misc/tdelete.c misc/tdestroy.c misc/tfind.c \
 	misc/tsearch.c misc/twalk.c misc/unsetenv.c misc/wdirent.c \
@@ -1539,8 +1545,8 @@ am__libarm64_libmingwex_a_SOURCES_DIST =  \
 	time/nanosleep.c time/timespec_getres.c \
 	cfguard/mingw_cfguard_loadcfg.S math/arm64/sincos.S \
 	math/arm64/sincosf.S
-@CFGUARD_TRUE@am__objects_67 = cfguard/libarm64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
-am__objects_68 =  \
+@CFGUARD_TRUE@am__objects_69 = cfguard/libarm64_libmingwex_a-mingw_cfguard_loadcfg.$(OBJEXT)
+am__objects_70 =  \
 	cfguard/libarm64_libmingwex_a-mingw_cfguard_support.$(OBJEXT) \
 	complex/libarm64_libmingwex_a-cabs.$(OBJEXT) \
 	complex/libarm64_libmingwex_a-cabsf.$(OBJEXT) \
@@ -1608,9 +1614,6 @@ am__objects_68 =  \
 	misc/libarm64_libmingwex_a-arc4random_buf.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-arc4random_uniform.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-clearenv.$(OBJEXT) \
-	misc/libarm64_libmingwex_a-delay-f.$(OBJEXT) \
-	misc/libarm64_libmingwex_a-delay-n.$(OBJEXT) \
-	misc/libarm64_libmingwex_a-delayimp.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-dirent.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-dirname.$(OBJEXT) \
 	misc/libarm64_libmingwex_a-dllentrypoint.$(OBJEXT) \
@@ -1696,95 +1699,95 @@ am__objects_68 =  \
 	time/libarm64_libmingwex_a-localtime_r.$(OBJEXT) \
 	time/libarm64_libmingwex_a-nanosleep.$(OBJEXT) \
 	time/libarm64_libmingwex_a-timespec_getres.$(OBJEXT) \
-	$(am__objects_67)
-am__objects_69 = math/arm64/libarm64_libmingwex_a-sincos.$(OBJEXT) \
+	$(am__objects_69)
+am__objects_71 = math/arm64/libarm64_libmingwex_a-sincos.$(OBJEXT) \
 	math/arm64/libarm64_libmingwex_a-sincosf.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmingwex_a_OBJECTS = $(am__objects_68) \
-@LIBARM64_TRUE@	$(am__objects_69)
+@LIBARM64_TRUE@am_libarm64_libmingwex_a_OBJECTS = $(am__objects_70) \
+@LIBARM64_TRUE@	$(am__objects_71)
 libarm64_libmingwex_a_OBJECTS = $(am_libarm64_libmingwex_a_OBJECTS)
 libarm64_libmingwthrd_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmingwthrd_a_RANLIB = $(RANLIB)
 libarm64_libmingwthrd_a_LIBADD =
 am__libarm64_libmingwthrd_a_SOURCES_DIST = libsrc/mingwthrd_mt.c
-am__objects_70 =  \
+am__objects_72 =  \
 	libsrc/libarm64_libmingwthrd_a-mingwthrd_mt.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmingwthrd_a_OBJECTS = $(am__objects_70)
+@LIBARM64_TRUE@am_libarm64_libmingwthrd_a_OBJECTS = $(am__objects_72)
 libarm64_libmingwthrd_a_OBJECTS =  \
 	$(am_libarm64_libmingwthrd_a_OBJECTS)
 libarm64_libmoldname_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmoldname_a_RANLIB = $(RANLIB)
 libarm64_libmoldname_a_LIBADD =
 am__libarm64_libmoldname_a_SOURCES_DIST = _libm_dummy.c
-am__objects_71 = libarm64_libmoldname_a-_libm_dummy.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmoldname_a_OBJECTS = $(am__objects_71)
+am__objects_73 = libarm64_libmoldname_a-_libm_dummy.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libmoldname_a_OBJECTS = $(am__objects_73)
 libarm64_libmoldname_a_OBJECTS = $(am_libarm64_libmoldname_a_OBJECTS)
 libarm64_libmsxml2_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmsxml2_a_RANLIB = $(RANLIB)
 libarm64_libmsxml2_a_LIBADD =
 am__libarm64_libmsxml2_a_SOURCES_DIST = libsrc/msxml2.c
-am__objects_72 = libsrc/libarm64_libmsxml2_a-msxml2.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmsxml2_a_OBJECTS = $(am__objects_72)
+am__objects_74 = libsrc/libarm64_libmsxml2_a-msxml2.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libmsxml2_a_OBJECTS = $(am__objects_74)
 libarm64_libmsxml2_a_OBJECTS = $(am_libarm64_libmsxml2_a_OBJECTS)
 libarm64_libmsxml6_a_AR = $(AR) $(ARFLAGS)
 libarm64_libmsxml6_a_RANLIB = $(RANLIB)
 libarm64_libmsxml6_a_LIBADD =
 am__libarm64_libmsxml6_a_SOURCES_DIST = libsrc/msxml6.c
-am__objects_73 = libsrc/libarm64_libmsxml6_a-msxml6.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libmsxml6_a_OBJECTS = $(am__objects_73)
+am__objects_75 = libsrc/libarm64_libmsxml6_a-msxml6.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libmsxml6_a_OBJECTS = $(am__objects_75)
 libarm64_libmsxml6_a_OBJECTS = $(am_libarm64_libmsxml6_a_OBJECTS)
 libarm64_libportabledeviceguids_a_AR = $(AR) $(ARFLAGS)
 libarm64_libportabledeviceguids_a_RANLIB = $(RANLIB)
 libarm64_libportabledeviceguids_a_LIBADD =
 am__libarm64_libportabledeviceguids_a_SOURCES_DIST =  \
 	libsrc/portabledeviceguids.c
-am__objects_74 = libsrc/libarm64_libportabledeviceguids_a-portabledeviceguids.$(OBJEXT)
+am__objects_76 = libsrc/libarm64_libportabledeviceguids_a-portabledeviceguids.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libportabledeviceguids_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_74)
+@LIBARM64_TRUE@	$(am__objects_76)
 libarm64_libportabledeviceguids_a_OBJECTS =  \
 	$(am_libarm64_libportabledeviceguids_a_OBJECTS)
 libarm64_libsapi_a_AR = $(AR) $(ARFLAGS)
 libarm64_libsapi_a_RANLIB = $(RANLIB)
 libarm64_libsapi_a_LIBADD =
 am__libarm64_libsapi_a_SOURCES_DIST = libsrc/sapi.c
-am__objects_75 = libsrc/libarm64_libsapi_a-sapi.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libsapi_a_OBJECTS = $(am__objects_75)
+am__objects_77 = libsrc/libarm64_libsapi_a-sapi.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libsapi_a_OBJECTS = $(am__objects_77)
 libarm64_libsapi_a_OBJECTS = $(am_libarm64_libsapi_a_OBJECTS)
 libarm64_libscrnsave_a_AR = $(AR) $(ARFLAGS)
 libarm64_libscrnsave_a_RANLIB = $(RANLIB)
 libarm64_libscrnsave_a_LIBADD =
 am__libarm64_libscrnsave_a_SOURCES_DIST = libsrc/scrnsave.c
-am__objects_76 = libsrc/libarm64_libscrnsave_a-scrnsave.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libscrnsave_a_OBJECTS = $(am__objects_76)
+am__objects_78 = libsrc/libarm64_libscrnsave_a-scrnsave.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libscrnsave_a_OBJECTS = $(am__objects_78)
 libarm64_libscrnsave_a_OBJECTS = $(am_libarm64_libscrnsave_a_OBJECTS)
 libarm64_libscrnsavw_a_AR = $(AR) $(ARFLAGS)
 libarm64_libscrnsavw_a_RANLIB = $(RANLIB)
 libarm64_libscrnsavw_a_LIBADD =
 am__libarm64_libscrnsavw_a_SOURCES_DIST = libsrc/scrnsave.c
-am__objects_77 = libsrc/libarm64_libscrnsavw_a-scrnsave.$(OBJEXT)
-am__objects_78 = $(am__objects_77)
-@LIBARM64_TRUE@am_libarm64_libscrnsavw_a_OBJECTS = $(am__objects_78)
+am__objects_79 = libsrc/libarm64_libscrnsavw_a-scrnsave.$(OBJEXT)
+am__objects_80 = $(am__objects_79)
+@LIBARM64_TRUE@am_libarm64_libscrnsavw_a_OBJECTS = $(am__objects_80)
 libarm64_libscrnsavw_a_OBJECTS = $(am_libarm64_libscrnsavw_a_OBJECTS)
 libarm64_libsensorsapi_a_AR = $(AR) $(ARFLAGS)
 libarm64_libsensorsapi_a_RANLIB = $(RANLIB)
 libarm64_libsensorsapi_a_LIBADD =
 am__libarm64_libsensorsapi_a_SOURCES_DIST = libsrc/sensorsapi.c
-am__objects_79 = libsrc/libarm64_libsensorsapi_a-sensorsapi.$(OBJEXT)
+am__objects_81 = libsrc/libarm64_libsensorsapi_a-sensorsapi.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libsensorsapi_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_79)
+@LIBARM64_TRUE@	$(am__objects_81)
 libarm64_libsensorsapi_a_OBJECTS =  \
 	$(am_libarm64_libsensorsapi_a_OBJECTS)
 libarm64_libshell32_a_RANLIB = $(RANLIB)
 libarm64_libshell32_a_LIBADD =
 am__libarm64_libshell32_a_SOURCES_DIST = libsrc/shell32.c
-am__objects_80 = libsrc/libarm64_libshell32_a-shell32.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libshell32_a_OBJECTS = $(am__objects_80)
+am__objects_82 = libsrc/libarm64_libshell32_a-shell32.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libshell32_a_OBJECTS = $(am__objects_82)
 libarm64_libshell32_a_OBJECTS = $(am_libarm64_libshell32_a_OBJECTS)
 libarm64_libstrmiids_a_AR = $(AR) $(ARFLAGS)
 libarm64_libstrmiids_a_RANLIB = $(RANLIB)
 libarm64_libstrmiids_a_LIBADD =
 am__libarm64_libstrmiids_a_SOURCES_DIST = libsrc/strmiids.c
-am__objects_81 = libsrc/libarm64_libstrmiids_a-strmiids.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libstrmiids_a_OBJECTS = $(am__objects_81)
+am__objects_83 = libsrc/libarm64_libstrmiids_a-strmiids.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libstrmiids_a_OBJECTS = $(am__objects_83)
 libarm64_libstrmiids_a_OBJECTS = $(am_libarm64_libstrmiids_a_OBJECTS)
 libarm64_libucrt_extra_a_AR = $(AR) $(ARFLAGS)
 libarm64_libucrt_extra_a_RANLIB = $(RANLIB)
@@ -1811,7 +1814,7 @@ am__libarm64_libucrt_extra_a_SOURCES_DIST = math/_huge.c math/frexpf.c \
 	stdio/ucrt_vwprintf.c stdio/ucrt_vwscanf.c \
 	stdio/ucrt_wprintf.c stdio/ucrt_wscanf.c string/ucrt__wcstok.c \
 	math/arm64/scalbn.c
-am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
+am__objects_84 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-frexpf.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-ldexpf.$(OBJEXT) \
 	math/libarm64_libucrt_extra_a-lgamma.$(OBJEXT) \
@@ -1862,10 +1865,10 @@ am__objects_82 = math/libarm64_libucrt_extra_a-_huge.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_wprintf.$(OBJEXT) \
 	stdio/libarm64_libucrt_extra_a-ucrt_wscanf.$(OBJEXT) \
 	string/libarm64_libucrt_extra_a-ucrt__wcstok.$(OBJEXT)
-am__objects_83 = $(am__objects_82) \
+am__objects_85 = $(am__objects_84) \
 	math/arm64/libarm64_libucrt_extra_a-scalbn.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libucrt_extra_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_83)
+@LIBARM64_TRUE@	$(am__objects_85)
 libarm64_libucrt_extra_a_OBJECTS =  \
 	$(am_libarm64_libucrt_extra_a_OBJECTS)
 libarm64_libucrtapp_extra_a_AR = $(AR) $(ARFLAGS)
@@ -1877,7 +1880,7 @@ am__libarm64_libucrtapp_extra_a_SOURCES_DIST =  \
 	string/memmove.c string/strchr.c string/strrchr.c \
 	string/strstr.c string/wcschr.c string/wcsrchr.c \
 	string/wcsstr.c
-am__objects_84 = misc/libarm64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT) \
+am__objects_86 = misc/libarm64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT) \
 	misc/libarm64_libucrtapp_extra_a-longjmp.$(OBJEXT) \
 	misc/libarm64_libucrtapp_extra_a-setjmp.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-memchr.$(OBJEXT) \
@@ -1891,7 +1894,7 @@ am__objects_84 = misc/libarm64_libucrtapp_extra_a-__C_specific_handler.$(OBJEXT)
 	string/libarm64_libucrtapp_extra_a-wcsrchr.$(OBJEXT) \
 	string/libarm64_libucrtapp_extra_a-wcsstr.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libucrtapp_extra_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_84)
+@LIBARM64_TRUE@	$(am__objects_86)
 libarm64_libucrtapp_extra_a_OBJECTS =  \
 	$(am_libarm64_libucrtapp_extra_a_OBJECTS)
 libarm64_libuuid_a_AR = $(AR) $(ARFLAGS)
@@ -1917,7 +1920,7 @@ am__libarm64_libuuid_a_SOURCES_DIST = libsrc/ativscp-uuid.c \
 	libsrc/usbiodef-uuid.c libsrc/uuid.c libsrc/vds-uuid.c \
 	libsrc/virtdisk-uuid.c libsrc/vss-uuid.c libsrc/wia-uuid.c \
 	libsrc/windowscodecs.c
-am__objects_85 = libsrc/libarm64_libuuid_a-ativscp-uuid.$(OBJEXT) \
+am__objects_87 = libsrc/libarm64_libuuid_a-ativscp-uuid.$(OBJEXT) \
 	libsrc/libarm64_libuuid_a-atsmedia-uuid.$(OBJEXT) \
 	libsrc/libarm64_libuuid_a-bth-uuid.$(OBJEXT) \
 	libsrc/libarm64_libuuid_a-cguid-uuid.$(OBJEXT) \
@@ -1964,22 +1967,22 @@ am__objects_85 = libsrc/libarm64_libuuid_a-ativscp-uuid.$(OBJEXT) \
 	libsrc/libarm64_libuuid_a-vss-uuid.$(OBJEXT) \
 	libsrc/libarm64_libuuid_a-wia-uuid.$(OBJEXT) \
 	libsrc/libarm64_libuuid_a-windowscodecs.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libuuid_a_OBJECTS = $(am__objects_85)
+@LIBARM64_TRUE@am_libarm64_libuuid_a_OBJECTS = $(am__objects_87)
 libarm64_libuuid_a_OBJECTS = $(am_libarm64_libuuid_a_OBJECTS)
 libarm64_libwbemuuid_a_AR = $(AR) $(ARFLAGS)
 libarm64_libwbemuuid_a_RANLIB = $(RANLIB)
 libarm64_libwbemuuid_a_LIBADD =
 am__libarm64_libwbemuuid_a_SOURCES_DIST = libsrc/wbemuuid.c
-am__objects_86 = libsrc/libarm64_libwbemuuid_a-wbemuuid.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libwbemuuid_a_OBJECTS = $(am__objects_86)
+am__objects_88 = libsrc/libarm64_libwbemuuid_a-wbemuuid.$(OBJEXT)
+@LIBARM64_TRUE@am_libarm64_libwbemuuid_a_OBJECTS = $(am__objects_88)
 libarm64_libwbemuuid_a_OBJECTS = $(am_libarm64_libwbemuuid_a_OBJECTS)
 libarm64_libwindowscodecs_a_RANLIB = $(RANLIB)
 libarm64_libwindowscodecs_a_LIBADD =
 am__libarm64_libwindowscodecs_a_SOURCES_DIST = libsrc/windowscodecs.c
-am__objects_87 =  \
+am__objects_89 =  \
 	libsrc/libarm64_libwindowscodecs_a-windowscodecs.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libwindowscodecs_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_87)
+@LIBARM64_TRUE@	$(am__objects_89)
 libarm64_libwindowscodecs_a_OBJECTS =  \
 	$(am_libarm64_libwindowscodecs_a_OBJECTS)
 libarm64_libwmcodecdspuuid_a_AR = $(AR) $(ARFLAGS)
@@ -1987,10 +1990,10 @@ libarm64_libwmcodecdspuuid_a_RANLIB = $(RANLIB)
 libarm64_libwmcodecdspuuid_a_LIBADD =
 am__libarm64_libwmcodecdspuuid_a_SOURCES_DIST =  \
 	libsrc/wmcodecdspuuid.c
-am__objects_88 =  \
+am__objects_90 =  \
 	libsrc/libarm64_libwmcodecdspuuid_a-wmcodecdspuuid.$(OBJEXT)
 @LIBARM64_TRUE@am_libarm64_libwmcodecdspuuid_a_OBJECTS =  \
-@LIBARM64_TRUE@	$(am__objects_88)
+@LIBARM64_TRUE@	$(am__objects_90)
 libarm64_libwmcodecdspuuid_a_OBJECTS =  \
 	$(am_libarm64_libwmcodecdspuuid_a_OBJECTS)
 libarm64_libws2_32_a_RANLIB = $(RANLIB)
@@ -2038,7 +2041,7 @@ am__libarm64_libws2_32_a_SOURCES_DIST = libsrc/ws2_32.c \
 	libsrc/wspiapi/WspiapiParseV4Address.c \
 	libsrc/wspiapi/WspiapiQueryDNS.c \
 	libsrc/wspiapi/WspiapiStrdup.c lib-common/libws2_32.def.in
-am__objects_89 = libsrc/libarm64_libws2_32_a-ws2_32.$(OBJEXT) \
+am__objects_91 = libsrc/libarm64_libws2_32_a-ws2_32.$(OBJEXT) \
 	libsrc/ws2tcpip/libarm64_libws2_32_a-gai_strerrorA.$(OBJEXT) \
 	libsrc/ws2tcpip/libarm64_libws2_32_a-gai_strerrorW.$(OBJEXT) \
 	libsrc/ws2tcpip/libarm64_libws2_32_a-in6_addr_equal.$(OBJEXT) \
@@ -2081,7 +2084,7 @@ am__objects_89 = libsrc/libarm64_libws2_32_a-ws2_32.$(OBJEXT) \
 	libsrc/wspiapi/libarm64_libws2_32_a-WspiapiParseV4Address.$(OBJEXT) \
 	libsrc/wspiapi/libarm64_libws2_32_a-WspiapiQueryDNS.$(OBJEXT) \
 	libsrc/wspiapi/libarm64_libws2_32_a-WspiapiStrdup.$(OBJEXT)
-@LIBARM64_TRUE@am_libarm64_libws2_32_a_OBJECTS = $(am__objects_89)
+@LIBARM64_TRUE@am_libarm64_libws2_32_a_OBJECTS = $(am__objects_91)
 libarm64_libws2_32_a_OBJECTS = $(am_libarm64_libws2_32_a_OBJECTS)
 tests64_libnewcomplextests_a_AR = $(AR) $(ARFLAGS)
 tests64_libnewcomplextests_a_RANLIB = $(RANLIB)
@@ -2099,7 +2102,7 @@ am__tests64_libnewcomplextests_a_SOURCES_DIST =  \
 	testcases/complex/csin.c testcases/complex/csinh.c \
 	testcases/complex/csqrt.c testcases/complex/ctan.c \
 	testcases/complex/ctanh.c
-am__objects_90 =  \
+am__objects_92 =  \
 	testcases/complex/tests64_libnewcomplextests_a-cabs.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextests_a-cacos.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextests_a-cacosh.$(OBJEXT) \
@@ -2123,7 +2126,7 @@ am__objects_90 =  \
 	testcases/complex/tests64_libnewcomplextests_a-ctan.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextests_a-ctanh.$(OBJEXT)
 @LIB64_TRUE@am_tests64_libnewcomplextests_a_OBJECTS =  \
-@LIB64_TRUE@	$(am__objects_90)
+@LIB64_TRUE@	$(am__objects_92)
 tests64_libnewcomplextests_a_OBJECTS =  \
 	$(am_tests64_libnewcomplextests_a_OBJECTS)
 tests64_libnewcomplextestsf_a_AR = $(AR) $(ARFLAGS)
@@ -2142,7 +2145,7 @@ am__tests64_libnewcomplextestsf_a_SOURCES_DIST =  \
 	testcases/complex/csin.c testcases/complex/csinh.c \
 	testcases/complex/csqrt.c testcases/complex/ctan.c \
 	testcases/complex/ctanh.c
-am__objects_91 = testcases/complex/tests64_libnewcomplextestsf_a-cabs.$(OBJEXT) \
+am__objects_93 = testcases/complex/tests64_libnewcomplextestsf_a-cabs.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsf_a-cacos.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsf_a-cacosh.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsf_a-carg.$(OBJEXT) \
@@ -2165,7 +2168,7 @@ am__objects_91 = testcases/complex/tests64_libnewcomplextestsf_a-cabs.$(OBJEXT) 
 	testcases/complex/tests64_libnewcomplextestsf_a-ctan.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsf_a-ctanh.$(OBJEXT)
 @LIB64_TRUE@am_tests64_libnewcomplextestsf_a_OBJECTS =  \
-@LIB64_TRUE@	$(am__objects_91)
+@LIB64_TRUE@	$(am__objects_93)
 tests64_libnewcomplextestsf_a_OBJECTS =  \
 	$(am_tests64_libnewcomplextestsf_a_OBJECTS)
 tests64_libnewcomplextestsld_a_AR = $(AR) $(ARFLAGS)
@@ -2184,7 +2187,7 @@ am__tests64_libnewcomplextestsld_a_SOURCES_DIST =  \
 	testcases/complex/csin.c testcases/complex/csinh.c \
 	testcases/complex/csqrt.c testcases/complex/ctan.c \
 	testcases/complex/ctanh.c
-am__objects_92 = testcases/complex/tests64_libnewcomplextestsld_a-cabs.$(OBJEXT) \
+am__objects_94 = testcases/complex/tests64_libnewcomplextestsld_a-cabs.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsld_a-cacos.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsld_a-cacosh.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsld_a-carg.$(OBJEXT) \
@@ -2207,7 +2210,7 @@ am__objects_92 = testcases/complex/tests64_libnewcomplextestsld_a-cabs.$(OBJEXT)
 	testcases/complex/tests64_libnewcomplextestsld_a-ctan.$(OBJEXT) \
 	testcases/complex/tests64_libnewcomplextestsld_a-ctanh.$(OBJEXT)
 @LIB64_TRUE@am_tests64_libnewcomplextestsld_a_OBJECTS =  \
-@LIB64_TRUE@	$(am__objects_92)
+@LIB64_TRUE@	$(am__objects_94)
 tests64_libnewcomplextestsld_a_OBJECTS =  \
 	$(am_tests64_libnewcomplextestsld_a_OBJECTS)
 testcases_t_ansi_io_SOURCES = testcases/t_ansi_io.c
@@ -3114,6 +3117,9 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	math/x64/$(DEPDIR)/lib64_libucrt_extra_a-ldexp.Po \
 	math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbn.Po \
 	math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbnf.Po \
+	misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Po \
+	misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Po \
+	misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Po \
 	misc/$(DEPDIR)/lib64_libdloadhelper_a-delay-f.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-a64l.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-alarm.Po \
@@ -3121,9 +3127,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_buf.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_uniform.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-clearenv.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Po \
-	misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-dirent.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po \
 	misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po \
@@ -3184,6 +3187,9 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/lib64_libucrtapp_extra_a-__C_specific_handler.Po \
 	misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po \
 	misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po \
+	misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Po \
+	misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Po \
+	misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Po \
 	misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-a64l.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-alarm.Po \
@@ -3191,9 +3197,6 @@ am__depfiles_remade = ./$(DEPDIR)/lib64_libm_a-_libm_dummy.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_buf.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_uniform.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-clearenv.Po \
-	misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Po \
-	misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Po \
-	misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-dirent.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po \
 	misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po \
@@ -3669,7 +3672,7 @@ SOURCES = $(lib64_libadsiid_a_SOURCES) $(lib64_libamstrmid_a_SOURCES) \
 DIST_SOURCES = $(am__lib64_libadsiid_a_SOURCES_DIST) \
 	$(am__lib64_libamstrmid_a_SOURCES_DIST) \
 	$(am__lib64_libbits_a_SOURCES_DIST) \
-	$(lib64_libdelayimp_a_SOURCES) \
+	$(am__lib64_libdelayimp_a_SOURCES_DIST) \
 	$(am__lib64_libdinput_a_SOURCES_DIST) \
 	$(am__lib64_libdinput8_a_SOURCES_DIST) \
 	$(am__lib64_libdloadhelper_a_SOURCES_DIST) \
@@ -3709,7 +3712,7 @@ DIST_SOURCES = $(am__lib64_libadsiid_a_SOURCES_DIST) \
 	$(am__libarm64_libadsiid_a_SOURCES_DIST) \
 	$(am__libarm64_libamstrmid_a_SOURCES_DIST) \
 	$(am__libarm64_libbits_a_SOURCES_DIST) \
-	$(libarm64_libdelayimp_a_SOURCES) \
+	$(am__libarm64_libdelayimp_a_SOURCES_DIST) \
 	$(am__libarm64_libdinput_a_SOURCES_DIST) \
 	$(am__libarm64_libdinput8_a_SOURCES_DIST) \
 	$(am__libarm64_libdloadhelper_a_SOURCES_DIST) \
@@ -4157,8 +4160,7 @@ AM_CFLAGS = -pipe -std=gnu17 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ 
 AM_CXXFLAGS = @ADD_C_CXX_WARNING_FLAGS@ @ADD_CXX_ONLY_WARNING_FLAGS@
 CPPFLAGSARM64 = 
 CPPFLAGS64 = -m64 -masm=att
-AM_DLLTOOLFLAGS = -k --as=$(AS) --output-lib $@ $(am__append_1) \
-	$(am__append_2)
+AM_DLLTOOLFLAGS = -k --as=$(AS) --output-lib $@ $(am__append_1)
 DLLTOOLFLAGSARM64 = -m arm64
 DLLTOOLFLAGS64 = --as-flags=--64 -m i386:x86-64
 DTDEFARM64 = $(DLLTOOL) $(DLLTOOLFLAGSARM64) $(AM_DLLTOOLFLAGS) --input-def
@@ -4168,8 +4170,8 @@ DTLIB64 = $(DTDEF64) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
 LDFLAGSARM64 = -L$(top_builddir)/libarm64
 LDFLAGS64 = -m64 -L$(top_builddir)/lib64
 extra_include = -I$(top_srcdir)/include
-processed_defs = $(am__append_4) $(am__append_6)
-noinst_LIBRARIES = $(am__append_5) $(am__append_7)
+processed_defs = $(am__append_3) $(am__append_5)
+noinst_LIBRARIES = $(am__append_4) $(am__append_6)
 
 # default directx import library names
 xinput = xinput1_4
@@ -4208,6 +4210,7 @@ src_libportabledeviceguids = libsrc/portabledeviceguids.c
 src_libtaskschd = libsrc/taskschd.c
 src_libntoskrnl = libsrc/memcmp.c
 src_libdloadhelper = libsrc/dloadhelper.c misc/delay-f.c
+src_libdelayimp = misc/delay-f.c misc/delay-n.c misc/delayimp.c
 src_libmingw32 = \
   crt/_newmode.c       crt/charmax.c     crt/cinitexe.c           crt/CRT_fp8.c       crt/crt_handler.c        \
   crt/crtexewin.c      crt/cxa_atexit.c  crt/cxa_thread_atexit.c  crt/dll_argv.c      crt/dllargv.c            \
@@ -4313,14 +4316,14 @@ src_libmingwex = cfguard/mingw_cfguard_support.c complex/cabs.c \
 	math/isnan.c math/isnanf.c math/signbit.c math/signbitf.c \
 	misc/a64l.c misc/alarm.c misc/arc4random.c \
 	misc/arc4random_buf.c misc/arc4random_uniform.c \
-	misc/clearenv.c misc/delay-f.c misc/delay-n.c misc/delayimp.c \
-	misc/dirent.c misc/dirname.c misc/dllentrypoint.c \
-	misc/dllmain.c misc/ftruncate64.c misc/ftw.c misc/ftw64.c \
-	misc/fwide.c misc/getentropy.c misc/getlogin.c misc/getopt.c \
-	misc/gettimeofday.c misc/insque.c misc/l64a.c \
-	misc/malloc_usable_size.c misc/mempcpy.c misc/mingw_getsp.S \
-	misc/mingw_longjmp.S misc/mingw_matherr.c misc/mingw_usleep.c \
-	misc/mkdtemp.c misc/mkstemp.c misc/mkstemps.c misc/qsort_r.c \
+	misc/clearenv.c misc/dirent.c misc/dirname.c \
+	misc/dllentrypoint.c misc/dllmain.c misc/ftruncate64.c \
+	misc/ftw.c misc/ftw64.c misc/fwide.c misc/getentropy.c \
+	misc/getlogin.c misc/getopt.c misc/gettimeofday.c \
+	misc/insque.c misc/l64a.c misc/malloc_usable_size.c \
+	misc/mempcpy.c misc/mingw_getsp.S misc/mingw_longjmp.S \
+	misc/mingw_matherr.c misc/mingw_usleep.c misc/mkdtemp.c \
+	misc/mkstemp.c misc/mkstemps.c misc/qsort_r.c \
 	misc/reallocarray.c misc/realpath.c misc/setenv.c misc/sleep.c \
 	misc/strsafe.c misc/tdelete.c misc/tdestroy.c misc/tfind.c \
 	misc/tsearch.c misc/twalk.c misc/unsetenv.c misc/wdirent.c \
@@ -4339,7 +4342,7 @@ src_libmingwex = cfguard/mingw_cfguard_support.c complex/cabs.c \
 	string/strndup.c string/strsep.c string/strverscmp.c \
 	string/xsi_strerror_r.c time/asctime_r.c time/clock.c \
 	time/ctime_r.c time/gmtime_r.c time/localtime_r.c \
-	time/nanosleep.c time/timespec_getres.c $(am__append_3)
+	time/nanosleep.c time/timespec_getres.c $(am__append_2)
 
 # these only go into the x86_64 version:
 src_libmingwex64 = math/x64/sincos.c
@@ -4755,7 +4758,8 @@ src_intrincsarm64 =
 @LIB64_TRUE@lib64_libadsiid_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
 @LIB64_TRUE@lib64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 @LIB64_TRUE@lib64_libdloadhelper_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-@LIB64_TRUE@lib64_libdelayimp_a_SOURCES = 
+@LIB64_TRUE@lib64_libdelayimp_a_SOURCES = $(src_libdelayimp)
+@LIB64_TRUE@lib64_libdelayimp_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
 @LIB64_TRUE@nodist_lib64_libm_a_SOURCES = $(src_libm)
 @LIB64_TRUE@lib64_libm_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
 @LIB64_TRUE@lib64_libgmon_a_SOURCES = profile/mcount.c \
@@ -5115,7 +5119,8 @@ src_intrincsarm64 =
 @LIBARM64_TRUE@libarm64_libadsiid_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@libarm64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
 @LIBARM64_TRUE@libarm64_libdloadhelper_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-@LIBARM64_TRUE@libarm64_libdelayimp_a_SOURCES = 
+@LIBARM64_TRUE@libarm64_libdelayimp_a_SOURCES = $(src_libdelayimp)
+@LIBARM64_TRUE@libarm64_libdelayimp_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@nodist_libarm64_libm_a_SOURCES = $(src_libm)
 @LIBARM64_TRUE@libarm64_libm_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
 @LIBARM64_TRUE@libarm64_liblargeint_a_SOURCES = $(src_liblargeint)
@@ -5178,7 +5183,7 @@ testcase_progs = testcases/tstmainc testcases/tstmaincpp \
 	testcases/t_speed_powl testcases/t_stat testcases/t_stdint \
 	testcases/t_time testcases/t_tls1 testcases/t_trycatch \
 	testcases/t_stat_slash testcases/t_vsscanf \
-	testcases/t_wreaddir testcases/t_fseeko64 $(am__append_8)
+	testcases/t_wreaddir testcases/t_fseeko64 $(am__append_7)
 testcases_tstmaincpp_SOURCES = testcases/tstmaincpp.cpp
 testcases_t_trycatch_SOURCES = testcases/t_trycatch.cpp
 testcases_t_intrinc_CFLAGS = -std=c17
@@ -5187,7 +5192,7 @@ testcases_t_intrinc_CFLAGS = -std=c17
 
 # Do not specify TESTS = check_PROGRAMS, because some TESTS
 # may not be check_PROGRAMS.
-check_LIBRARIES = $(am__append_9)
+check_LIBRARIES = $(am__append_8)
 
 # Complex library check sources.
 check_complex_lib_sources = \
@@ -5504,6 +5509,18 @@ lib64/libbits.a: $(lib64_libbits_a_OBJECTS) $(lib64_libbits_a_DEPENDENCIES) $(EX
 	$(AM_V_at)-rm -f lib64/libbits.a
 	$(AM_V_AR)$(lib64_libbits_a_AR) lib64/libbits.a $(lib64_libbits_a_OBJECTS) $(lib64_libbits_a_LIBADD)
 	$(AM_V_at)$(lib64_libbits_a_RANLIB) lib64/libbits.a
+misc/$(am__dirstamp):
+	@$(MKDIR_P) misc
+	@: >>misc/$(am__dirstamp)
+misc/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) misc/$(DEPDIR)
+	@: >>misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libdelayimp_a-delay-f.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libdelayimp_a-delay-n.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
+misc/lib64_libdelayimp_a-delayimp.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
 
 lib64/libdelayimp.a: $(lib64_libdelayimp_a_OBJECTS) $(lib64_libdelayimp_a_DEPENDENCIES) $(EXTRA_lib64_libdelayimp_a_DEPENDENCIES) lib64/$(am__dirstamp)
 	$(AM_V_at)-rm -f lib64/libdelayimp.a
@@ -5541,12 +5558,6 @@ lib64/libdinput8.a: $(lib64_libdinput8_a_OBJECTS) $(lib64_libdinput8_a_DEPENDENC
 	$(AM_V_at)$(lib64_libdinput8_a_RANLIB) lib64/libdinput8.a
 libsrc/lib64_libdloadhelper_a-dloadhelper.$(OBJEXT):  \
 	libsrc/$(am__dirstamp) libsrc/$(DEPDIR)/$(am__dirstamp)
-misc/$(am__dirstamp):
-	@$(MKDIR_P) misc
-	@: >>misc/$(am__dirstamp)
-misc/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) misc/$(DEPDIR)
-	@: >>misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libdloadhelper_a-delay-f.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 
@@ -6079,12 +6090,6 @@ misc/lib64_libmingwex_a-arc4random_buf.$(OBJEXT):  \
 misc/lib64_libmingwex_a-arc4random_uniform.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-clearenv.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-delay-f.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-delay-n.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/lib64_libmingwex_a-delayimp.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/lib64_libmingwex_a-dirent.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
@@ -6812,6 +6817,12 @@ libarm64/libbits.a: $(libarm64_libbits_a_OBJECTS) $(libarm64_libbits_a_DEPENDENC
 	$(AM_V_at)-rm -f libarm64/libbits.a
 	$(AM_V_AR)$(libarm64_libbits_a_AR) libarm64/libbits.a $(libarm64_libbits_a_OBJECTS) $(libarm64_libbits_a_LIBADD)
 	$(AM_V_at)$(libarm64_libbits_a_RANLIB) libarm64/libbits.a
+misc/libarm64_libdelayimp_a-delay-f.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libdelayimp_a-delay-n.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
+misc/libarm64_libdelayimp_a-delayimp.$(OBJEXT): misc/$(am__dirstamp) \
+	misc/$(DEPDIR)/$(am__dirstamp)
 
 libarm64/libdelayimp.a: $(libarm64_libdelayimp_a_OBJECTS) $(libarm64_libdelayimp_a_DEPENDENCIES) $(EXTRA_libarm64_libdelayimp_a_DEPENDENCIES) libarm64/$(am__dirstamp)
 	$(AM_V_at)-rm -f libarm64/libdelayimp.a
@@ -7272,12 +7283,6 @@ misc/libarm64_libmingwex_a-arc4random_buf.$(OBJEXT):  \
 misc/libarm64_libmingwex_a-arc4random_uniform.$(OBJEXT):  \
 	misc/$(am__dirstamp) misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-clearenv.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libmingwex_a-delay-f.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libmingwex_a-delay-n.$(OBJEXT): misc/$(am__dirstamp) \
-	misc/$(DEPDIR)/$(am__dirstamp)
-misc/libarm64_libmingwex_a-delayimp.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
 misc/libarm64_libmingwex_a-dirent.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
@@ -9163,6 +9168,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@math/x64/$(DEPDIR)/lib64_libucrt_extra_a-ldexp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbn.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbnf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libdloadhelper_a-delay-f.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-a64l.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-alarm.Po@am__quote@ # am--include-marker
@@ -9170,9 +9178,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_buf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_uniform.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-clearenv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-dirent.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po@am__quote@ # am--include-marker
@@ -9233,6 +9238,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrtapp_extra_a-__C_specific_handler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-a64l.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-alarm.Po@am__quote@ # am--include-marker
@@ -9240,9 +9248,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_buf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_uniform.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-clearenv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-dirent.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po@am__quote@ # am--include-marker
@@ -9880,6 +9885,48 @@ libsrc/lib64_libbits_a-bits.obj: libsrc/bits.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libsrc/bits.c' object='libsrc/lib64_libbits_a-bits.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libbits_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libsrc/lib64_libbits_a-bits.obj `if test -f 'libsrc/bits.c'; then $(CYGPATH_W) 'libsrc/bits.c'; else $(CYGPATH_W) '$(srcdir)/libsrc/bits.c'; fi`
+
+misc/lib64_libdelayimp_a-delay-f.o: misc/delay-f.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libdelayimp_a-delay-f.o -MD -MP -MF misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Tpo -c -o misc/lib64_libdelayimp_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Tpo misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/lib64_libdelayimp_a-delay-f.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libdelayimp_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
+
+misc/lib64_libdelayimp_a-delay-f.obj: misc/delay-f.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libdelayimp_a-delay-f.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Tpo -c -o misc/lib64_libdelayimp_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Tpo misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/lib64_libdelayimp_a-delay-f.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libdelayimp_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
+
+misc/lib64_libdelayimp_a-delay-n.o: misc/delay-n.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libdelayimp_a-delay-n.o -MD -MP -MF misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Tpo -c -o misc/lib64_libdelayimp_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Tpo misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/lib64_libdelayimp_a-delay-n.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libdelayimp_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
+
+misc/lib64_libdelayimp_a-delay-n.obj: misc/delay-n.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libdelayimp_a-delay-n.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Tpo -c -o misc/lib64_libdelayimp_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Tpo misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/lib64_libdelayimp_a-delay-n.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libdelayimp_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
+
+misc/lib64_libdelayimp_a-delayimp.o: misc/delayimp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libdelayimp_a-delayimp.o -MD -MP -MF misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Tpo -c -o misc/lib64_libdelayimp_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Tpo misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/lib64_libdelayimp_a-delayimp.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libdelayimp_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
+
+misc/lib64_libdelayimp_a-delayimp.obj: misc/delayimp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libdelayimp_a-delayimp.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Tpo -c -o misc/lib64_libdelayimp_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Tpo misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/lib64_libdelayimp_a-delayimp.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libdelayimp_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
 
 libsrc/lib64_libdinput_a-dinput_joy.o: libsrc/dinput_joy.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libdinput_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libsrc/lib64_libdinput_a-dinput_joy.o -MD -MP -MF libsrc/$(DEPDIR)/lib64_libdinput_a-dinput_joy.Tpo -c -o libsrc/lib64_libdinput_a-dinput_joy.o `test -f 'libsrc/dinput_joy.c' || echo '$(srcdir)/'`libsrc/dinput_joy.c
@@ -12988,48 +13035,6 @@ misc/lib64_libmingwex_a-clearenv.obj: misc/clearenv.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/clearenv.c' object='misc/lib64_libmingwex_a-clearenv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-clearenv.obj `if test -f 'misc/clearenv.c'; then $(CYGPATH_W) 'misc/clearenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/clearenv.c'; fi`
-
-misc/lib64_libmingwex_a-delay-f.o: misc/delay-f.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-delay-f.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Tpo -c -o misc/lib64_libmingwex_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/lib64_libmingwex_a-delay-f.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
-
-misc/lib64_libmingwex_a-delay-f.obj: misc/delay-f.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-delay-f.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Tpo -c -o misc/lib64_libmingwex_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/lib64_libmingwex_a-delay-f.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
-
-misc/lib64_libmingwex_a-delay-n.o: misc/delay-n.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-delay-n.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Tpo -c -o misc/lib64_libmingwex_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/lib64_libmingwex_a-delay-n.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
-
-misc/lib64_libmingwex_a-delay-n.obj: misc/delay-n.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-delay-n.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Tpo -c -o misc/lib64_libmingwex_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/lib64_libmingwex_a-delay-n.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
-
-misc/lib64_libmingwex_a-delayimp.o: misc/delayimp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-delayimp.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Tpo -c -o misc/lib64_libmingwex_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/lib64_libmingwex_a-delayimp.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
-
-misc/lib64_libmingwex_a-delayimp.obj: misc/delayimp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-delayimp.obj -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Tpo -c -o misc/lib64_libmingwex_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Tpo misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/lib64_libmingwex_a-delayimp.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/lib64_libmingwex_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
 
 misc/lib64_libmingwex_a-dirent.o: misc/dirent.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(lib64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/lib64_libmingwex_a-dirent.o -MD -MP -MF misc/$(DEPDIR)/lib64_libmingwex_a-dirent.Tpo -c -o misc/lib64_libmingwex_a-dirent.o `test -f 'misc/dirent.c' || echo '$(srcdir)/'`misc/dirent.c
@@ -16615,6 +16620,48 @@ libsrc/libarm64_libbits_a-bits.obj: libsrc/bits.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libbits_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libsrc/libarm64_libbits_a-bits.obj `if test -f 'libsrc/bits.c'; then $(CYGPATH_W) 'libsrc/bits.c'; else $(CYGPATH_W) '$(srcdir)/libsrc/bits.c'; fi`
 
+misc/libarm64_libdelayimp_a-delay-f.o: misc/delay-f.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libdelayimp_a-delay-f.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Tpo -c -o misc/libarm64_libdelayimp_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Tpo misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/libarm64_libdelayimp_a-delay-f.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libdelayimp_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
+
+misc/libarm64_libdelayimp_a-delay-f.obj: misc/delay-f.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libdelayimp_a-delay-f.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Tpo -c -o misc/libarm64_libdelayimp_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Tpo misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/libarm64_libdelayimp_a-delay-f.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libdelayimp_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
+
+misc/libarm64_libdelayimp_a-delay-n.o: misc/delay-n.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libdelayimp_a-delay-n.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Tpo -c -o misc/libarm64_libdelayimp_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Tpo misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/libarm64_libdelayimp_a-delay-n.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libdelayimp_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
+
+misc/libarm64_libdelayimp_a-delay-n.obj: misc/delay-n.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libdelayimp_a-delay-n.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Tpo -c -o misc/libarm64_libdelayimp_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Tpo misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/libarm64_libdelayimp_a-delay-n.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libdelayimp_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
+
+misc/libarm64_libdelayimp_a-delayimp.o: misc/delayimp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libdelayimp_a-delayimp.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Tpo -c -o misc/libarm64_libdelayimp_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Tpo misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/libarm64_libdelayimp_a-delayimp.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libdelayimp_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
+
+misc/libarm64_libdelayimp_a-delayimp.obj: misc/delayimp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libdelayimp_a-delayimp.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Tpo -c -o misc/libarm64_libdelayimp_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Tpo misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/libarm64_libdelayimp_a-delayimp.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdelayimp_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libdelayimp_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
+
 libsrc/libarm64_libdinput_a-dinput_joy.o: libsrc/dinput_joy.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libdinput_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libsrc/libarm64_libdinput_a-dinput_joy.o -MD -MP -MF libsrc/$(DEPDIR)/libarm64_libdinput_a-dinput_joy.Tpo -c -o libsrc/libarm64_libdinput_a-dinput_joy.o `test -f 'libsrc/dinput_joy.c' || echo '$(srcdir)/'`libsrc/dinput_joy.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) libsrc/$(DEPDIR)/libarm64_libdinput_a-dinput_joy.Tpo libsrc/$(DEPDIR)/libarm64_libdinput_a-dinput_joy.Po
@@ -19260,48 +19307,6 @@ misc/libarm64_libmingwex_a-clearenv.obj: misc/clearenv.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/clearenv.c' object='misc/libarm64_libmingwex_a-clearenv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-clearenv.obj `if test -f 'misc/clearenv.c'; then $(CYGPATH_W) 'misc/clearenv.c'; else $(CYGPATH_W) '$(srcdir)/misc/clearenv.c'; fi`
-
-misc/libarm64_libmingwex_a-delay-f.o: misc/delay-f.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-delay-f.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Tpo -c -o misc/libarm64_libmingwex_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/libarm64_libmingwex_a-delay-f.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-delay-f.o `test -f 'misc/delay-f.c' || echo '$(srcdir)/'`misc/delay-f.c
-
-misc/libarm64_libmingwex_a-delay-f.obj: misc/delay-f.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-delay-f.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Tpo -c -o misc/libarm64_libmingwex_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-f.c' object='misc/libarm64_libmingwex_a-delay-f.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-delay-f.obj `if test -f 'misc/delay-f.c'; then $(CYGPATH_W) 'misc/delay-f.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-f.c'; fi`
-
-misc/libarm64_libmingwex_a-delay-n.o: misc/delay-n.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-delay-n.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Tpo -c -o misc/libarm64_libmingwex_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/libarm64_libmingwex_a-delay-n.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-delay-n.o `test -f 'misc/delay-n.c' || echo '$(srcdir)/'`misc/delay-n.c
-
-misc/libarm64_libmingwex_a-delay-n.obj: misc/delay-n.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-delay-n.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Tpo -c -o misc/libarm64_libmingwex_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delay-n.c' object='misc/libarm64_libmingwex_a-delay-n.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-delay-n.obj `if test -f 'misc/delay-n.c'; then $(CYGPATH_W) 'misc/delay-n.c'; else $(CYGPATH_W) '$(srcdir)/misc/delay-n.c'; fi`
-
-misc/libarm64_libmingwex_a-delayimp.o: misc/delayimp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-delayimp.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Tpo -c -o misc/libarm64_libmingwex_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/libarm64_libmingwex_a-delayimp.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-delayimp.o `test -f 'misc/delayimp.c' || echo '$(srcdir)/'`misc/delayimp.c
-
-misc/libarm64_libmingwex_a-delayimp.obj: misc/delayimp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-delayimp.obj -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Tpo -c -o misc/libarm64_libmingwex_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Tpo misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc/delayimp.c' object='misc/libarm64_libmingwex_a-delayimp.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o misc/libarm64_libmingwex_a-delayimp.obj `if test -f 'misc/delayimp.c'; then $(CYGPATH_W) 'misc/delayimp.c'; else $(CYGPATH_W) '$(srcdir)/misc/delayimp.c'; fi`
 
 misc/libarm64_libmingwex_a-dirent.o: misc/dirent.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libarm64_libmingwex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT misc/libarm64_libmingwex_a-dirent.o -MD -MP -MF misc/$(DEPDIR)/libarm64_libmingwex_a-dirent.Tpo -c -o misc/libarm64_libmingwex_a-dirent.o `test -f 'misc/dirent.c' || echo '$(srcdir)/'`misc/dirent.c
@@ -25710,6 +25715,9 @@ distclean: distclean-am
 	-rm -f math/x64/$(DEPDIR)/lib64_libucrt_extra_a-ldexp.Po
 	-rm -f math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbn.Po
 	-rm -f math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbnf.Po
+	-rm -f misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Po
+	-rm -f misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Po
+	-rm -f misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libdloadhelper_a-delay-f.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-a64l.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-alarm.Po
@@ -25717,9 +25725,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_buf.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_uniform.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-clearenv.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dirent.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po
@@ -25780,6 +25785,9 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-__C_specific_handler.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-a64l.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-alarm.Po
@@ -25787,9 +25795,6 @@ distclean: distclean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_buf.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_uniform.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-clearenv.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dirent.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po
@@ -26819,6 +26824,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f math/x64/$(DEPDIR)/lib64_libucrt_extra_a-ldexp.Po
 	-rm -f math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbn.Po
 	-rm -f math/x64/$(DEPDIR)/lib64_libucrt_extra_a-scalbnf.Po
+	-rm -f misc/$(DEPDIR)/lib64_libdelayimp_a-delay-f.Po
+	-rm -f misc/$(DEPDIR)/lib64_libdelayimp_a-delay-n.Po
+	-rm -f misc/$(DEPDIR)/lib64_libdelayimp_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libdloadhelper_a-delay-f.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-a64l.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-alarm.Po
@@ -26826,9 +26834,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_buf.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-arc4random_uniform.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-clearenv.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-delay-f.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-delay-n.Po
-	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dirent.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/lib64_libmingwex_a-dllentrypoint.Po
@@ -26889,6 +26894,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-__C_specific_handler.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-longjmp.Po
 	-rm -f misc/$(DEPDIR)/lib64_libucrtapp_extra_a-setjmp.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-f.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libdelayimp_a-delay-n.Po
+	-rm -f misc/$(DEPDIR)/libarm64_libdelayimp_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libdloadhelper_a-delay-f.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-a64l.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-alarm.Po
@@ -26896,9 +26904,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_buf.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-arc4random_uniform.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-clearenv.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-delay-f.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-delay-n.Po
-	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-delayimp.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dirent.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dirname.Po
 	-rm -f misc/$(DEPDIR)/libarm64_libmingwex_a-dllentrypoint.Po

@@ -656,8 +656,6 @@ ENABLE_TESTS_UNICODE_TRUE
 CFGUARD_CFLAGS
 CFGUARD_FALSE
 CFGUARD_TRUE
-DELAY_IMPORT_LIBS_FALSE
-DELAY_IMPORT_LIBS_TRUE
 LIBARM64SUFFIXDIR
 LIBX8664SUFFIXDIR
 LIBARM64_FALSE
@@ -796,7 +794,6 @@ enable_dependency_tracking
 enable_lib64
 enable_libarm64
 enable_wildcard
-enable_delay_import_libs
 enable_cfguard
 enable_tests_unicode
 enable_warnings
@@ -1455,8 +1452,6 @@ Optional Features:
   --enable-lib64          Build the Win64 libraries
   --enable-libarm64       Build the WinARM64 libraries
   --enable-wildcard       Enable command line globbing
-  --enable-delay-import-libs
-                          Enable creation of delay-import libraries
   --enable-cfguard        Enable building with Control Flow Guard support
                           (Clang)
   --enable-tests-unicode  Enable the unicode testsuite without testing the
@@ -6643,36 +6638,6 @@ printf "%s\n" "#define __ENABLE_GLOBBING $enable_wildcard_value" >>confdefs.h
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $enable_wildcard" >&5
 printf "%s\n" "$enable_wildcard" >&6; }
 
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to enable delay import libs" >&5
-printf %s "checking whether to enable delay import libs... " >&6; }
-# Check whether --enable-delay-import-libs was given.
-if test ${enable_delay_import_libs+y}
-then :
-  enableval=$enable_delay_import_libs;
-else case e in #(
-  e) enable_delay_import_libs=no ;;
-esac
-fi
-
-case $enable_delay_import_libs in #(
-  yes) :
-     ;; #(
-  no) :
-     ;; #(
-  *) :
-    as_fn_error $? "Please only use --enable-delay-import-libs  or --disable-delay-import-libs, without any additional arguments." "$LINENO" 5 ;;
-esac
- if test $enable_delay_import_libs = yes; then
-  DELAY_IMPORT_LIBS_TRUE=
-  DELAY_IMPORT_LIBS_FALSE='#'
-else
-  DELAY_IMPORT_LIBS_TRUE='#'
-  DELAY_IMPORT_LIBS_FALSE=
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $enable_delay_import_libs" >&5
-printf "%s\n" "$enable_delay_import_libs" >&6; }
-
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to include support for Control Flow Guard" >&5
 printf %s "checking whether to include support for Control Flow Guard... " >&6; }
 # Check whether --enable-cfguard was given.
@@ -7069,10 +7034,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${LIBARM64_TRUE}" && test -z "${LIBARM64_FALSE}"; then
   as_fn_error $? "conditional \"LIBARM64\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${DELAY_IMPORT_LIBS_TRUE}" && test -z "${DELAY_IMPORT_LIBS_FALSE}"; then
-  as_fn_error $? "conditional \"DELAY_IMPORT_LIBS\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${CFGUARD_TRUE}" && test -z "${CFGUARD_FALSE}"; then
