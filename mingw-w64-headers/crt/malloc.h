@@ -129,6 +129,19 @@ __MINGW_BEGIN_C_DECLS
     }
   }
 
+  extern size_t __cdecl malloc_usable_size(void *_Ptr);
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE
+  size_t __cdecl malloc_usable_size(void *_Ptr)
+  {
+    if(!_Ptr)
+    {
+      return 0;
+    }
+    return _msize(_Ptr);
+  }
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _MALLOC_H_ */
