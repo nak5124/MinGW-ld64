@@ -151,19 +151,6 @@ AS_CASE([$enable_wildcard],
 AC_DEFINE_UNQUOTED([__ENABLE_GLOBBING],[$enable_wildcard_value],[Define as -1 to enable command line globbing or 0 to disable it.])
 AC_MSG_RESULT([$enable_wildcard])
 
-AC_MSG_CHECKING([whether to enable delay import libs])
-AC_ARG_ENABLE([delay-import-libs],
-  [AS_HELP_STRING([--enable-delay-import-libs],
-    [Enable creation of delay-import libraries])],
-  [],
-  [enable_delay_import_libs=no])
-AS_CASE([$enable_delay_import_libs],
-  [yes],[],
-  [no],[],
-  [AC_MSG_ERROR([Please only use --enable-delay-import-libs  or --disable-delay-import-libs, without any additional arguments.])])
-AM_CONDITIONAL([DELAY_IMPORT_LIBS],[test $enable_delay_import_libs = yes])
-AC_MSG_RESULT([$enable_delay_import_libs])
-
 AC_MSG_CHECKING([whether to include support for Control Flow Guard])
 AC_ARG_ENABLE([cfguard],
   [AS_HELP_STRING([--enable-cfguard],

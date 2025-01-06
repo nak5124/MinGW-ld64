@@ -19,9 +19,6 @@ DTDEF64=$(DLLTOOL) $(DLLTOOLFLAGS64) $(AM_DLLTOOLFLAGS) --input-def
 if DLLTOOL_HAS_TEMP_PREFIX
   AM_DLLTOOLFLAGS += --temp-prefix $(basename $@)
 endif
-if DELAY_IMPORT_LIBS
-  AM_DLLTOOLFLAGS += --output-delaylib $@.delayimp.a
-endif
 DTLIBARM64=$(DTDEFARM64) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
 DTLIB64=$(DTDEF64) $(top_srcdir)/`echo $@ | $(SED) 's|/lib|/|;s|\.a|.def|'`
 LDFLAGSARM64= -L$(top_builddir)/libarm64
