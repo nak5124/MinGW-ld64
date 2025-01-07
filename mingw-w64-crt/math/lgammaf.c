@@ -4,7 +4,81 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 /* log gamma(x+2), -.5 < x < .5 */
-#include "cephes_mconf.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <errno.h>
+
+#define M_PIF 3.141592653589793238F
+
+/*              polevlf.c
+ *              p1evlf.c
+ *
+ *  Evaluate polynomial
+ *
+ *
+ *
+ * SYNOPSIS:
+ *
+ * int N;
+ * float x, y, coef[N+1], polevlf[];
+ *
+ * y = polevlf( x, coef, N );
+ *
+ *
+ *
+ * DESCRIPTION:
+ *
+ * Evaluates polynomial of degree N:
+ *
+ *                     2          N
+ * y  =  C  + C x + C x  +...+ C x
+ *        0    1     2          N
+ *
+ * Coefficients are stored in reverse order:
+ *
+ * coef[0] = C  , ..., coef[N] = C  .
+ *            N                   0
+ *
+ *  The function p1evl() assumes that coef[N] = 1.0 and is
+ * omitted from the array.  Its calling arguments are
+ * otherwise the same as polevl().
+ *
+ *
+ * SPEED:
+ *
+ * In the interest of speed, there are no checks for out
+ * of bounds arithmetic.  This routine is used by most of
+ * the functions in the library.  Depending on available
+ * equipment features, the user may wish to rewrite the
+ * program in microcode or assembly language.
+ *
+ */
+/*
+Cephes Math Library Release 2.1:  December, 1988
+Copyright 1984, 1987, 1988 by Stephen L. Moshier
+Direct inquiries to 30 Frost Street, Cambridge, MA 02140
+*/
+static __inline__ float polevlf(float x, const float* coef, int N)
+{
+  float ans;
+  float *p;
+  int i;
+
+  p = (float*)coef;
+  ans = *p++;
+
+  /*
+  for (i = 0; i < N; i++)
+    ans = ans * x  +  *p++;
+  */
+
+  i = N;
+  do
+    ans = ans * x  +  *p++;
+  while (--i);
+
+  return (ans);
+}
 
 static const float B[] =
 {
@@ -47,15 +121,15 @@ static float __lgammaf_r(float x, int* sgngamf)
   int i, direction;
 
   *sgngamf = 1;
-#ifdef NANS
   if(isnan(x))
-    return (x);
-#endif
+  {
+    return x;
+  }
 
-#ifdef INFINITIES
   if(!isfinite(x))
-    return (INFINITY);
-#endif
+  {
+    return HUGE_VALF;
+  }
 
   if(x < 0.0)
   {
@@ -65,30 +139,31 @@ static float __lgammaf_r(float x, int* sgngamf)
     if (p == q)
     {
 lgsing:
-      _SET_ERRNO(EDOM);
-      mtherr("lgamf", SING);
-#ifdef INFINITIES
-      return (INFINITYF);
-#else
-      return(*sgngamf * MAXNUMF);
-#endif
+      errno = EDOM;
+      return HUGE_VALF;
     }
     i = p;
     if((i & 1) == 0)
+    {
       *sgngamf = -1;
+    }
     else
+    {
       *sgngamf = 1;
+    }
     z = q - p;
     if(z > 0.5)
     {
       p += 1.0;
       z = p - q;
     }
-    z = q * sinf(PIF * z);
+    z = q * sinf(M_PIF * z);
     if(z == 0.0)
+    {
       goto lgsing;
+    }
     z = -logf(PIINV * z) - w;
-    return (z);
+    return z;
   }
 
   if(x < 6.5)
@@ -127,7 +202,9 @@ iv1r5:
     while(tx < 1.5)
     {
       if(tx == 0.0)
+      {
         goto lgsing;
+      }
       z *=tx;
       nx += 1.0;
       tx = x + nx;
@@ -148,21 +225,17 @@ cont:
     }
     q = logf(z);
     if(direction)
+    {
       q = -q;
+    }
 contz:
     return (p + q);
   }
 
   if(x > MAXLGM)
   {
-    _SET_ERRNO(ERANGE);
-    mtherr("lgamf", OVERFLOW);
-#ifdef INFINITIES
-    return (*sgngamf * INFINITYF);
-#else
-    return (*sgngamf * MAXNUMF);
-#endif
-
+    errno = ERANGE;
+    return *sgngamf * HUGE_VALF;
   }
 
 /* Note, though an asymptotic formula could be used for x >= 3,
@@ -174,17 +247,15 @@ contz:
   {
     z = 1.0 / x;
     p = z * z;
-    q += ((6.789774945028216E-004  * p
-         - 2.769887652139868E-003) * p
-         + 8.333316229807355E-002) * z;
+    q += ((6.789774945028216E-004 * p - 2.769887652139868E-003) * p + 8.333316229807355E-002) * z;
   }
-  return (q);
+  return q;
 }
 
 /* This is the C99 version */
 float __cdecl lgammaf(float x)
 {
-  return (__lgammaf_r(x, &signgam));
+  return __lgammaf_r(x, &signgam);
 }
 
 float __cdecl (*__MINGW_IMP_SYMBOL(lgammaf))(float x) = lgammaf;
