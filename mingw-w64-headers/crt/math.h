@@ -680,6 +680,17 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP float       __cdecl modff(float _X, float *_Y);
   extern  long double __cdecl modfl(long double _X, long double *_Y);
 
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE
+  long double __cdecl modfl(long double _X, long double *_Y)
+  {
+    double _fraction, _integer;
+    _fraction = modf((double)_X, &_integer);
+    *_Y = _integer;
+    return _fraction;
+  }
+#endif
+
 /* 7.12.6.13 */
   extern double      __cdecl scalbn(double _X, int _Y);
   extern float       __cdecl scalbnf(float _X, int _Y);
