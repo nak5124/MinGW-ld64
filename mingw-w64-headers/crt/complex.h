@@ -42,14 +42,14 @@ __MINGW_BEGIN_C_DECLS
 #define I _Complex_I
 
 #ifdef __MINGW_USE_ISOC11
-# ifdef __clang__
-#   define CMPLX(x, y)  ((double complex){ x, y })
-#   define CMPLXF(x, y) ((float complex){ x, y })
-#   define CMPLXL(x, y) ((long double complex){ x, y })
-# elif __MINGW_GNUC_PREREQ(4, 7)
+# if __MINGW_GNUC_PREREQ(4, 7) || __mingw_clang_prereq(12, 0)
 #   define CMPLX(x, y)  __builtin_complex((double)(x), (double)(y))
 #   define CMPLXF(x, y) __builtin_complex((float)(x), (float)(y))
 #   define CMPLXL(x, y) __builtin_complex((long double)(x), (long double)(y))
+# elif defined(__clang__)
+#   define CMPLX(x, y)  ((double complex){ x, y })
+#   define CMPLXF(x, y) ((float complex){ x, y })
+#   define CMPLXL(x, y) ((long double complex){ x, y })
 # endif
 #endif  /* __MINGW_USE_ISOC11 */
 
