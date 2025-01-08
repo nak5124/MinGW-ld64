@@ -47,3 +47,5 @@ __FLT_ABI(norm) (__FLT_TYPE __complex__ z)
 {
   return __real__ z * __real__ z + __imag__ z * __imag__ z;
 }
+
+__FLT_TYPE __cdecl (*__FLT_IMP(norm))(__FLT_TYPE __complex__ z) = __FLT_ABI(norm);

@@ -105,3 +105,5 @@ __FLT_ABI(csinh) (__FLT_TYPE __complex__ z)
     __real__ ret = -__real__ ret;
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(csinh))(__FLT_TYPE __complex__ z) = __FLT_ABI(csinh);

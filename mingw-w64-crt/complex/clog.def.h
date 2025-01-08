@@ -69,3 +69,5 @@ __FLT_ABI(clog) (__FLT_TYPE __complex__ z)
   __imag__ ret = __FLT_ABI(atan2) (__imag__ z, __real__ z);
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(clog))(__FLT_TYPE __complex__ z) = __FLT_ABI(clog);

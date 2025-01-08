@@ -46,3 +46,7 @@
 #define  _NEW_COMPLEX_DOUBLE 1
 #include "complex_internal.h"
 #include "cproj.def.h"
+
+long double __complex__ __cdecl cprojl(long double __complex__ z) __attribute__((alias("cproj")));
+extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(cprojl))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(cproj)))));

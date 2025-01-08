@@ -47,3 +47,7 @@
 #define _GNU_SOURCE
 #include "complex_internal.h"
 #include "clog10.def.h"
+
+long double __complex__ __cdecl clog10l(long double __complex__ z) __attribute__((alias("clog10")));
+extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(clog10l))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(clog10)))));

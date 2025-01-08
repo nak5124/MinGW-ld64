@@ -154,3 +154,5 @@ __FLT_ABI(casinh) (__FLT_TYPE __complex__ z)
 
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(casinh))(__FLT_TYPE __complex__ z) = __FLT_ABI(casinh);

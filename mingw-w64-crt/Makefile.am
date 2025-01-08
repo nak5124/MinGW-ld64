@@ -124,6 +124,15 @@ src_libws2_32=\
 
 # Files included in libucrt*.a
 src_ucrtbase=\
+  complex/cabs.c             complex/cabsf.c           complex/cacos.c            complex/cacosf.c         complex/carg.c              \
+  complex/cargf.c            complex/casin.c           complex/casinf.c           complex/catan.c          complex/catanf.c            \
+  complex/ccos.c             complex/ccosf.c           complex/cexp.c             complex/cexpf.c          complex/cimag.c             \
+  complex/cimagf.c           complex/clog.c            complex/clog10.c           complex/clog10f.c        complex/clogf.c             \
+  complex/conj.c             complex/conjf.c           complex/cpow.c             complex/cpowf.c          complex/cproj.c             \
+  complex/cprojf.c           complex/creal.c           complex/crealf.c           complex/csin.c           complex/csinf.c             \
+  complex/csqrt.c            complex/csqrtf.c          complex/ctan.c             complex/ctanf.c          complex/norm.c              \
+  complex/normf.c            \
+  \
   math/_huge.c               math/frexpf.c             math/ldexpf.c              math/lgamma.c            math/lgammaf.c              \
   math/modfl.c               math/signgam.c            \
   \
@@ -158,18 +167,6 @@ src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
 # These mingwex sources are target independent:
 src_libmingwex=\
   cfguard/mingw_cfguard_support.c  \
-  \
-  complex/cabs.c                   complex/cabsf.c         complex/cabsl.c           complex/cacos.c            complex/cacosf.c          \
-  complex/cacosl.c                 complex/carg.c          complex/cargf.c           complex/cargl.c            complex/casin.c           \
-  complex/casinf.c                 complex/casinl.c        complex/catan.c           complex/catanf.c           complex/catanl.c          \
-  complex/ccos.c                   complex/ccosf.c         complex/ccosl.c           complex/cexp.c             complex/cexpf.c           \
-  complex/cexpl.c                  complex/cimag.c         complex/cimagf.c          complex/cimagl.c           complex/clog.c            \
-  complex/clog10.c                 complex/clog10f.c       complex/clog10l.c         complex/clogf.c            complex/clogl.c           \
-  complex/conj.c                   complex/conjf.c         complex/conjl.c           complex/cpow.c             complex/cpowf.c           \
-  complex/cpowl.c                  complex/cproj.c         complex/cprojf.c          complex/cprojl.c           complex/creal.c           \
-  complex/crealf.c                 complex/creall.c        complex/csin.c            complex/csinf.c            complex/csinl.c           \
-  complex/csqrt.c                  complex/csqrtf.c        complex/csqrtl.c          complex/ctan.c             complex/ctanf.c           \
-  complex/ctanl.c                  complex/norm.c          complex/normf.c           complex/norml.c            \
   \
   math/fpclassify.c                math/fpclassifyf.c      math/isnan.c              math/isnanf.c              math/signbit.c            \
   math/signbitf.c                  \

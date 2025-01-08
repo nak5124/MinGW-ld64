@@ -46,3 +46,7 @@
 #define  _NEW_COMPLEX_DOUBLE 1
 #include "complex_internal.h"
 #include "csqrt.def.h"
+
+long double __complex__ __cdecl csqrtl(long double __complex__ z) __attribute__((alias("csqrt")));
+extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(csqrtl))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(csqrt)))));

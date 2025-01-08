@@ -119,3 +119,5 @@ __FLT_ABI(cacosh) (__FLT_TYPE __complex__ z)
 
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(cacosh))(__FLT_TYPE __complex__ z) = __FLT_ABI(cacosh);

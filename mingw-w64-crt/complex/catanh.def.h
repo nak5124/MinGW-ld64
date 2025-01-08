@@ -116,3 +116,5 @@ __FLT_ABI(catanh) (__FLT_TYPE __complex__ z)
 
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(catanh))(__FLT_TYPE __complex__ z) = __FLT_ABI(catanh);

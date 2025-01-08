@@ -59,3 +59,5 @@ __FLT_ABI(ctan) (__FLT_TYPE __complex__ z)
 
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(ctan))(__FLT_TYPE __complex__ z) = __FLT_ABI(ctan);

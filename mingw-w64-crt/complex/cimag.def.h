@@ -47,3 +47,5 @@ __FLT_ABI(cimag) (__FLT_TYPE __complex z)
 {
   return __imag__ z;
 }
+
+__FLT_TYPE __cdecl (*__FLT_IMP(cimag))(__FLT_TYPE __complex__ z) = __FLT_ABI(cimag);

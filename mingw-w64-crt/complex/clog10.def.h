@@ -69,3 +69,5 @@ __FLT_ABI(clog10) (__FLT_TYPE __complex__ z)
   __imag__ ret = __FLT_LOG10E * __FLT_ABI(atan2) (__imag__ z, __real__ z);
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(clog10))(__FLT_TYPE __complex__ z) = __FLT_ABI(clog10);

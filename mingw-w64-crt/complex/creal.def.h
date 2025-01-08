@@ -47,3 +47,5 @@ __FLT_ABI(creal) (__FLT_TYPE __complex__ z)
 {
   return __real__ z;
 }
+
+__FLT_TYPE __cdecl (*__FLT_IMP(creal))(__FLT_TYPE __complex__ z) = __FLT_ABI(creal);

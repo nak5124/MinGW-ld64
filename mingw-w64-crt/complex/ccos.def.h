@@ -52,3 +52,5 @@ __FLT_ABI(ccos) (__FLT_TYPE __complex__ z)
 
   return __FLT_ABI(ccosh) (x);
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(ccos))(__FLT_TYPE __complex__ z) = __FLT_ABI(ccos);

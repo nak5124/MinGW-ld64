@@ -93,3 +93,5 @@ __FLT_ABI(ccosh) (__FLT_TYPE __complex__ z)
   __imag__ ret = __FLT_ABI(sinh) (__real__ z) * s_x;
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(ccosh))(__FLT_TYPE __complex__ z) = __FLT_ABI(ccosh);

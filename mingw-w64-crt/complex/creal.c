@@ -46,3 +46,7 @@
 #define  _NEW_COMPLEX_DOUBLE 1
 #include "complex_internal.h"
 #include "creal.def.h"
+
+long double __cdecl creall(long double __complex__ z) __attribute__((alias("creal")));
+extern long double (__cdecl *__MINGW_IMP_SYMBOL(creall))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(creal)))));

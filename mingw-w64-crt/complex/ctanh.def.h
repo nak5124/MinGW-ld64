@@ -92,3 +92,5 @@ __FLT_ABI(ctanh) (__FLT_TYPE __complex__ z)
   __imag__ ret = s / d;
   return ret;
 }
+
+__FLT_TYPE __complex__ __cdecl (*__FLT_IMP(ctanh))(__FLT_TYPE __complex__ z) = __FLT_ABI(ctanh);

@@ -48,3 +48,11 @@
 
 #include "ccosh.def.h"
 #include "ccos.def.h"
+
+long double __complex__ __cdecl ccoshl(long double __complex__ z) __attribute__((alias("ccosh")));
+extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(ccoshl))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(ccosh)))));
+
+long double __complex__ __cdecl ccosl(long double __complex__ z) __attribute__((alias("ccos")));
+extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(ccosl))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(ccos)))));

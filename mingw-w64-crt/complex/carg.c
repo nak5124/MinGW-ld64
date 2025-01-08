@@ -46,3 +46,7 @@
 #define  _NEW_COMPLEX_DOUBLE 1
 #include "complex_internal.h"
 #include "carg.def.h"
+
+long double __cdecl cargl(long double __complex__ z) __attribute__((alias("carg")));
+extern long double (__cdecl *__MINGW_IMP_SYMBOL(cargl))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(carg)))));

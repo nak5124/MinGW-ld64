@@ -46,3 +46,7 @@
 #define  _NEW_COMPLEX_DOUBLE 1
 #include "complex_internal.h"
 #include "cimag.def.h"
+
+long double __cdecl cimagl(long double __complex__ z) __attribute__((alias("cimag")));
+extern long double (__cdecl *__MINGW_IMP_SYMBOL(cimagl))(long double __complex__ z)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(cimag)))));

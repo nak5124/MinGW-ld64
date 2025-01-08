@@ -46,3 +46,7 @@
 #define  _NEW_COMPLEX_DOUBLE 1
 #include "complex_internal.h"
 #include "cpow.def.h"
+
+long double __complex__ __cdecl cpowl(long double __complex__ z, long double __complex__ x) __attribute__((alias("cpow")));
+extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(cpowl))(long double __complex__ z, long double __complex__ x)
+  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(cpow)))));
