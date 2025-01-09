@@ -169,7 +169,7 @@ src_libmingwex=\
   cfguard/mingw_cfguard_support.c  \
   \
   math/fpclassify.c                math/fpclassifyf.c      math/isnan.c              math/isnanf.c              math/signbit.c            \
-  math/signbitf.c                  \
+  math/signbitf.c                  math/sincos.c           math/sincosf.c            \
   \
   misc/a64l.c                      misc/alarm.c            misc/arc4random.c         misc/arc4random_buf.c      misc/arc4random_uniform.c \
   misc/clearenv.c                  misc/dirent.c           misc/dirname.c            misc/dllentrypoint.c       misc/dllmain.c            \
@@ -201,12 +201,6 @@ if CFGUARD
 src_libmingwex+=\
   cfguard/mingw_cfguard_loadcfg.S
 endif
-
-# these only go into the x86_64 version:
-src_libmingwex64=math/x64/sincos.c
-
-# these only go into the ARM64 version:
-src_libmingwexarm64=math/arm64/sincos.S  math/arm64/sincosf.S
 
 # These intrinsics are target independent:
 src_intrincs= \
@@ -430,7 +424,7 @@ lib64_libmingw32_a_SOURCES = $(src_libmingw32)
 
 lib64_LIBRARIES += lib64/libmingwex.a
 lib64_libmingwex_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
-lib64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwex64)
+lib64_libmingwex_a_SOURCES = $(src_libmingwex)
 
 lib64_LIBRARIES += lib64/libmoldname.a
 lib64_libmoldname_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
@@ -698,7 +692,7 @@ libarm64_libmingw32_a_SOURCES = $(src_libmingw32)
 
 libarm64_LIBRARIES += libarm64/libmingwex.a
 libarm64_libmingwex_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
-libarm64_libmingwex_a_SOURCES = $(src_libmingwex) $(src_libmingwexarm64)
+libarm64_libmingwex_a_SOURCES = $(src_libmingwex)
 
 libarm64_LIBRARIES += libarm64/libmoldname.a
 libarm64_libmoldname_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
