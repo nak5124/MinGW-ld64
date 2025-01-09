@@ -933,6 +933,12 @@ __MINGW_BEGIN_C_DECLS
   extern long double __cdecl pow10l(long double _X);
 #endif
 
+#ifdef __MINGW_USE_ISOC23
+  extern double      __cdecl exp10m1(double _X);
+  extern float       __cdecl exp10m1f(float _X);
+  extern long double __cdecl exp10m1l(long double _X);
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _MATH_H_ */
