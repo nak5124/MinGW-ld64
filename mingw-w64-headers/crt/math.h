@@ -921,6 +921,18 @@ __MINGW_BEGIN_C_DECLS
 # define HUGE    _HUGE
 #endif
 
+#if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_ISOC23)
+  extern double      __cdecl exp10(double _X);
+  extern float       __cdecl exp10f(float _X);
+  extern long double __cdecl exp10l(long double _X);
+#endif
+
+#ifdef __MINGW_USE_GNU
+  extern double      __cdecl pow10(double _X);
+  extern float       __cdecl pow10f(float _X);
+  extern long double __cdecl pow10l(long double _X);
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _MATH_H_ */

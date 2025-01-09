@@ -168,8 +168,8 @@ src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
 src_libmingwex=\
   cfguard/mingw_cfguard_support.c  \
   \
-  math/fpclassify.c                math/fpclassifyf.c      math/isnan.c              math/isnanf.c              math/signbit.c            \
-  math/signbitf.c                  math/sincos.c           math/sincosf.c            \
+  math/exp10.c                     math/exp10f.c           math/fpclassify.c         math/fpclassifyf.c         math/isnan.c              \
+  math/isnanf.c                    math/signbit.c          math/signbitf.c           math/sincos.c              math/sincosf.c            \
   \
   misc/a64l.c                      misc/alarm.c            misc/arc4random.c         misc/arc4random_buf.c      misc/arc4random_uniform.c \
   misc/clearenv.c                  misc/dirent.c           misc/dirname.c            misc/dllentrypoint.c       misc/dllmain.c            \
