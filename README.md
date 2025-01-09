@@ -42,9 +42,9 @@ Differences from official MinGW-w64
    - timespec_getres
    - timegm/timelocal
    - malloc_usable_size
-   - Replace sincosf/sincos by CORE-MATH implementation
    - exp10/exp10f/exp10l/pow10/pow10f/pow10l(CORE-MATH)
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
+ - Replace sincosf/sincos by CORE-MATH implementation
  - Various other cosmetics.
 
 GCC patches
