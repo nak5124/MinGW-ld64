@@ -15,7 +15,7 @@ double __cdecl asinpi(double x)
     return __builtin_nan("1");
   }
   double ret = asin(x) / M_PI;
-  return __builtin_isgreater(__builtin_fabs(ret), 0.5) ? copysign(0.5, ret) : ret;
+  return __builtin_isgreater(__builtin_fabs(ret), 0.5) ? __builtin_copysign(0.5, ret) : ret;
 }
 
 long double __cdecl asinpil(long double _X) __attribute__((alias("asinpi")));
