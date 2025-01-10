@@ -936,6 +936,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_ISOC23
 
 #define iscanonical(x) ((void)(__typeof__(x))(x), 1)
+#define issubnormal(x) (fpclassify(x) == FP_SUBNORMAL)
 
   extern double      __cdecl exp10m1(double _X);
   extern float       __cdecl exp10m1f(float _X);
