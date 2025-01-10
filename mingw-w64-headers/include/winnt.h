@@ -10783,6 +10783,9 @@ extern "C" {
   NTSYSAPI VOID             __cdecl RtlRestoreContext(PCONTEXT ContextRecord, struct _EXCEPTION_RECORD *ExceptionRecord) __MINGW_NORETURN;
   NTSYSAPI VOID               NTAPI RtlUnwindEx(PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable);
   NTSYSAPI PEXCEPTION_ROUTINE NTAPI RtlVirtualUnwind(DWORD HandlerType, DWORD64 ImageBase, DWORD64 ControlPc, PRUNTIME_FUNCTION FunctionEntry, PCONTEXT ContextRecord, PVOID *HandlerData, PDWORD64 EstablisherFrame, PKNONVOLATILE_CONTEXT_POINTERS ContextPointers);
+#   ifdef _M_ARM64EC
+  NTSYSAPI BOOLEAN NTAPI RtlIsEcCode(DWORD64 CodePointer);
+#   endif
 # endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_GAMES) */
 #endif  /* _AMD64_ */
 #ifdef _ARM64_
