@@ -111,16 +111,12 @@ float __cdecl exp10f(float x){
       double y = 0x1p-149 + (z + 0x1.66d3e7bd9a403p+5)*0x1.a934f0979a37p-149;
       y = __builtin_fmax(y, 0x1p-151);
       float r = y;
-#ifdef CORE_MATH_SUPPORT_ERRNO
       if(r==0.0f) errno = ERANGE;
-#endif
       return r;
     }
     if(t.u<0x80000000u){ // x > 0x1.344134p+5
       float r = 0x1p127f * 0x1p127f;
-#ifdef CORE_MATH_SUPPORT_ERRNO
       if(r>0x1.fffffep127f) errno = ERANGE;
-#endif
       return r;
     }
   }

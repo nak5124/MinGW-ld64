@@ -169,9 +169,7 @@ static void __attribute__((noinline)) as_sincosf_big(float x, float *sout, float
       *cout = x + x;
       return; // nan
     }
-#ifdef CORE_MATH_SUPPORT_ERRNO
     errno = EDOM;
-#endif
     *sout = 0.0f/0.0f; // to raise FE_INVALID
     *cout = 0.0f/0.0f; // to raise FE_INVALID
     return;
@@ -199,16 +197,16 @@ void __cdecl sincosf(float x, float *sout, float *cout){
   if(__builtin_expect(ax<0x822d97c8u, 1)){
     if (__builtin_expect(ax<0x73000000, 0)){
       if (__builtin_expect(ax<0x66000000u, 0)){
-	if (__builtin_expect(ax==0u, 0)){
-	  *sout = x;
-	  *cout = 1.0f;
-	} else {
-	  *sout = __builtin_fmaf(-x, __builtin_fabsf(x), x);
-	  *cout = 1.0f - 0x1p-25f;
-	}
+        if (__builtin_expect(ax==0u, 0)){
+          *sout = x;
+          *cout = 1.0f;
+        } else {
+          *sout = __builtin_fmaf(-x, __builtin_fabsf(x), x);
+          *cout = 1.0f - 0x1p-25f;
+        }
       } else {
-	*sout = (-0x1.555556p-3f*x)*(x*x) + x;
-	*cout = (-0x1p-1f*x)*x + 1.0f;
+        *sout = (-0x1.555556p-3f*x)*(x*x) + x;
+        *cout = (-0x1p-1f*x)*x + 1.0f;
       }
       return;
     }

@@ -279,9 +279,9 @@ static double __attribute__((noinline)) as_exp10_accurate(double x){
       fh = fasttwosum(fh, fl, &fl);
       ix.f = fh;
       if(!(ix.u<<12)){
-	b64u64_u l = {.f = fl};
-	i64 sfh = ((i64)ix.u>>63)^((i64)l.u>>63);
-	ix.u += ((i64)1<<51)^sfh;
+        b64u64_u l = {.f = fl};
+        i64 sfh = ((i64)ix.u>>63)^((i64)l.u>>63);
+        ix.u += ((i64)1<<51)^sfh;
       }
       fh = th + ix.f;
     } else {
@@ -309,9 +309,9 @@ double __cdecl exp10(double x){
     if(aix>0x7ff0000000000000ull) return x + x; // nan
     if(aix==0x7ff0000000000000ull){
       if(ix.u>>63)
-	return 0.0;
+        return 0.0;
       else
-	return x;
+        return x;
     }
     if(!(ix.u>>63)) return 0x1p1023*2.0;
     if(aix>0x407439b746e36b52ull) return 0x1.5p-1022*0x1p-55;
@@ -320,12 +320,12 @@ double __cdecl exp10(double x){
     if( (aix>>48) <= 0x4036){
       double kx = roundeven_finite(x);
       if(kx==x){
-	i64 k = kx;
-	if(k>=0){
-	  double r = 1.0;
-	  for(i64 i=0; i<k; i++) r *= 10.0;
-	  return r;
-	}
+        i64 k = kx;
+        if(k>=0){
+          double r = 1.0;
+          for(i64 i=0; i<k; i++) r *= 10.0;
+          return r;
+        }
       }
     }
   }

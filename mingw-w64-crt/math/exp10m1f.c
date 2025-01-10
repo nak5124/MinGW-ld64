@@ -59,63 +59,61 @@ float __cdecl exp10m1f(float x){
     return (ux == 0xff800000) ? q[1][0] : q[1][0] + q[1][1];
   } else if(__builtin_expect(ax>0x421a209au, 0)){  // x > 38.5318
     if(ax>=(0xffu<<23)) return x + x; // +Inf or NaN
-#ifdef CORE_MATH_SUPPORT_ERRNO
     errno = ERANGE;
-#endif
     return q[0][0] + q[0][1];
   } else if (__builtin_expect(ax<0x3d89c604u, 0)){ // |x| < 0.1549/log(10)
     double z2 = z*z, r;
     if (__builtin_expect(ax<0x3d1622fbu, 0)){ // |x| < 8.44e-2/log(10)
       if (__builtin_expect(ax<0x3c8b76a3u, 0)){ // |x| < 3.92e-2/log(10)
-	if (__builtin_expect(ax<0x3bcced04u, 0)){ // |x| < 1.44e-2/log(10)
-	  if (__builtin_expect(ax<0x3acf33ebu, 0)){ // |x| < 3.64e-3/log(10)
-	    if (__builtin_expect(ax<0x395a966bu, 0)){ // |x| < 4.8e-4/log(10)
-	      if (__builtin_expect(ax<0x36fe4a4bu, 0)){ // |x| < 1.745e-5/log(10)
-		if (__builtin_expect(ax<0x32407f39u, 0)){ // |x| < 2.58e-8/log(10)
-		  if (__builtin_expect(ax<0x245e5bd9u, 0)){ // |x| < 4.82164e-17
-		    r = 0x1.26bb1bbb55516p+1;
-		  } else {
-		    if (__builtin_expect(ux == 0x2c994b7bu, 0)) return 0x1.60f974p-37f - 0x1p-90f;
-		    r = 0x1.26bb1bbb55516p+1 + z * 0x1.53524c73cea69p+1;
-		  }
-		} else {
-		  if (__builtin_expect(ux == 0xb6fa215bu, 0)) return -0x1.1ff87ep-16 + 0x1p-68;
-		  r = 0x1.26bb1bbb55516p+1 + z * (0x1.53524c73ea62fp+1 + z * 0x1.0470591de2c75p+1);
-		}
-	      } else {
-		static const double cp[] =
-		  {0x1.26bb1bbb55515p+1, 0x1.53524c73cea69p+1, 0x1.0470595038cc2p+1, 0x1.2bd7609fe1561p+0};
-		r = (cp[0] + z * cp[1]) + z2 * (cp[2] + z * cp[3]);
-	      }
-	    } else {
-	      static const double cp[] =
-		{0x1.26bb1bbb55516p+1, 0x1.53524c73ce6dbp+1, 0x1.0470591de3024p+1, 0x1.2bd76b79060e6p+0,
-		 0x1.1429ffd3a963dp-1};
-	      r = (cp[0] + z * cp[1]) + z2 * (cp[2] + z * (cp[3] + z * cp[4]));
-	    }
-	  } else {
-	    static const double cp[] =
-	      {0x1.26bb1bbb55516p+1, 0x1.53524c73cea67p+1, 0x1.0470591dc2953p+1, 0x1.2bd760a004d64p+0,
-	       0x1.142a85da6f072p-1, 0x1.a7ed70725b00ep-3};
-	    r = (cp[0] + z * cp[1]) + z2 * ((cp[2] + z * cp[3]) + z2 * (cp[4] + z * cp[5]));
-	  }
-	} else {
-	  static const double cp[] =
-	    {0x1.26bb1bbb55516p+1, 0x1.53524c73ceadep+1, 0x1.0470591de2bb4p+1, 0x1.2bd76099a9d33p+0,
-	     0x1.1429ffd829b0bp-1, 0x1.a7f2a6a0f7dc8p-3, 0x1.16e4dfbce0f56p-4};
-	  r = (cp[0] + z * cp[1]) + z2 * ((cp[2] + z * cp[3]) + z2 * (cp[4] + z * (cp[5] + z * cp[6])));
-	}
+        if (__builtin_expect(ax<0x3bcced04u, 0)){ // |x| < 1.44e-2/log(10)
+          if (__builtin_expect(ax<0x3acf33ebu, 0)){ // |x| < 3.64e-3/log(10)
+            if (__builtin_expect(ax<0x395a966bu, 0)){ // |x| < 4.8e-4/log(10)
+              if (__builtin_expect(ax<0x36fe4a4bu, 0)){ // |x| < 1.745e-5/log(10)
+                if (__builtin_expect(ax<0x32407f39u, 0)){ // |x| < 2.58e-8/log(10)
+                  if (__builtin_expect(ax<0x245e5bd9u, 0)){ // |x| < 4.82164e-17
+                    r = 0x1.26bb1bbb55516p+1;
+                  } else {
+                    if (__builtin_expect(ux == 0x2c994b7bu, 0)) return 0x1.60f974p-37f - 0x1p-90f;
+                    r = 0x1.26bb1bbb55516p+1 + z * 0x1.53524c73cea69p+1;
+                  }
+                } else {
+                  if (__builtin_expect(ux == 0xb6fa215bu, 0)) return -0x1.1ff87ep-16 + 0x1p-68;
+                  r = 0x1.26bb1bbb55516p+1 + z * (0x1.53524c73ea62fp+1 + z * 0x1.0470591de2c75p+1);
+                }
+              } else {
+                static const double cp[] =
+                  {0x1.26bb1bbb55515p+1, 0x1.53524c73cea69p+1, 0x1.0470595038cc2p+1, 0x1.2bd7609fe1561p+0};
+                r = (cp[0] + z * cp[1]) + z2 * (cp[2] + z * cp[3]);
+              }
+            } else {
+              static const double cp[] =
+                {0x1.26bb1bbb55516p+1, 0x1.53524c73ce6dbp+1, 0x1.0470591de3024p+1, 0x1.2bd76b79060e6p+0,
+                 0x1.1429ffd3a963dp-1};
+              r = (cp[0] + z * cp[1]) + z2 * (cp[2] + z * (cp[3] + z * cp[4]));
+            }
+          } else {
+            static const double cp[] =
+              {0x1.26bb1bbb55516p+1, 0x1.53524c73cea67p+1, 0x1.0470591dc2953p+1, 0x1.2bd760a004d64p+0,
+               0x1.142a85da6f072p-1, 0x1.a7ed70725b00ep-3};
+            r = (cp[0] + z * cp[1]) + z2 * ((cp[2] + z * cp[3]) + z2 * (cp[4] + z * cp[5]));
+          }
+        } else {
+          static const double cp[] =
+            {0x1.26bb1bbb55516p+1, 0x1.53524c73ceadep+1, 0x1.0470591de2bb4p+1, 0x1.2bd76099a9d33p+0,
+             0x1.1429ffd829b0bp-1, 0x1.a7f2a6a0f7dc8p-3, 0x1.16e4dfbce0f56p-4};
+          r = (cp[0] + z * cp[1]) + z2 * ((cp[2] + z * cp[3]) + z2 * (cp[4] + z * (cp[5] + z * cp[6])));
+        }
       } else {
-	static const double cp[] =
-	  {0x1.26bb1bbb55515p+1, 0x1.53524c73cea6ap+1, 0x1.0470591de476p+1, 0x1.2bd7609fd4ee2p+0,
-	   0x1.1429ff70a9b48p-1, 0x1.a7ed71259ba5bp-3, 0x1.16f3004fb3ac1p-4, 0x1.4116b0388aa9fp-6};
-	r = ((cp[0] + z * cp[1]) + z2 * (cp[2] + z * cp[3])) + (z2*z2) * ((cp[4] + z * cp[5]) + z2 * (cp[6] + z * cp[7]));
+        static const double cp[] =
+          {0x1.26bb1bbb55515p+1, 0x1.53524c73cea6ap+1, 0x1.0470591de476p+1, 0x1.2bd7609fd4ee2p+0,
+           0x1.1429ff70a9b48p-1, 0x1.a7ed71259ba5bp-3, 0x1.16f3004fb3ac1p-4, 0x1.4116b0388aa9fp-6};
+        r = ((cp[0] + z * cp[1]) + z2 * (cp[2] + z * cp[3])) + (z2*z2) * ((cp[4] + z * cp[5]) + z2 * (cp[6] + z * cp[7]));
       }
     } else {
       static const double cp[] =
-	{0x1.26bb1bbb55515p+1, 0x1.53524c73cea42p+1, 0x1.0470591de2d1dp+1, 0x1.2bd760a010a53p+0,
-	 0x1.1429ffd16170cp-1, 0x1.a7ed6b2a0d97fp-3, 0x1.16e4e37fa51e4p-4, 0x1.4147fe4c1676fp-6,
-	 0x1.4897c4b3e329ap-8};
+        {0x1.26bb1bbb55515p+1, 0x1.53524c73cea42p+1, 0x1.0470591de2d1dp+1, 0x1.2bd760a010a53p+0,
+         0x1.1429ffd16170cp-1, 0x1.a7ed6b2a0d97fp-3, 0x1.16e4e37fa51e4p-4, 0x1.4147fe4c1676fp-6,
+         0x1.4897c4b3e329ap-8};
       r = ((cp[0] + z * cp[1]) + z2 * (cp[2] + z * cp[3])) + (z2*z2) * ((cp[4] + z * cp[5]) + z2 * (cp[6] + z * (cp[7] + z *cp[8])));
     }
     r *= z;
@@ -124,13 +122,13 @@ float __cdecl exp10m1f(float x){
     if(__builtin_expect((ux<<11)==0,0)){
       uint32_t k = (ux>>21) - 0x1fc;
       if(k<=0xb){
-	if(k== 0) return 10.0f-1.0f;
-	if(k== 4) return 100.0f-1.0f;
-	if(k== 6) return 1000.0f-1.0f;
-	if(k== 8) return 10000.0f-1.0f;
-	if(k== 9) return 100000.0f-1.0f;
-	if(k==10) return 1000000.0f-1.0f;
-	if(k==11) return 10000000.0f-1.0f;
+        if(k== 0) return 10.0f-1.0f;
+        if(k== 4) return 100.0f-1.0f;
+        if(k== 6) return 1000.0f-1.0f;
+        if(k== 8) return 10000.0f-1.0f;
+        if(k== 9) return 100000.0f-1.0f;
+        if(k==10) return 1000000.0f-1.0f;
+        if(k==11) return 10000000.0f-1.0f;
       }
     }
     double a = iln10h*z, ia = __builtin_floor(a), h = (a - ia) + iln10l*z;
