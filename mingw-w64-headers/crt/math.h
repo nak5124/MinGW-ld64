@@ -33,6 +33,40 @@ __MINGW_BEGIN_C_DECLS
 # define M_SQRT1_2  0.707106781186547524401
 #endif
 
+#ifdef __MINGW_USE_GNU
+# define M_Ef        2.7182818284590452354f
+# define M_LOG2Ef    1.4426950408889634074f
+# define M_LOG10Ef   0.43429448190325182765f
+# define M_LN2f      0.69314718055994530942f
+# define M_LN10f     2.30258509299404568402f
+# define M_PIf       3.14159265358979323846f
+# define M_PI_2f     1.57079632679489661923f
+# define M_PI_4f     0.78539816339744830962f
+# define M_1_PIf     0.31830988618379067154f
+# define M_2_PIf     0.63661977236758134308f
+# define M_2_SQRTPIf 1.12837916709551257390f
+# define M_SQRT2f    1.41421356237309504880f
+# define M_SQRT1_2f  0.70710678118654752440f
+
+# define M_El        M_E
+# define M_LOG2El    M_LOG2E
+# define M_LOG10El   M_LOG10E
+# define M_LN2l      M_LN2
+# define M_LN10l     M_LN10
+# define M_PIl       M_PI
+# define M_PI_2l     M_PI_2
+# define M_PI_4l     M_PI_4
+# define M_1_PIl     M_1_PI
+# define M_2_PIl     M_2_PI
+# define M_2_SQRTPIl M_2_SQRTPI
+# define M_SQRT2l    M_SQRT2
+# define M_SQRT1_2l  M_SQRT1_2
+#endif
+
+#ifdef __MINGW_USE_XOPEN
+# define MAXFLOAT __FLT_MAX__
+#endif
+
 /* See also float.h  */
 #ifndef __MINGW_FPCLASS_DEFINED
 # define __MINGW_FPCLASS_DEFINED 1
@@ -333,6 +367,10 @@ __MINGW_BEGIN_C_DECLS
 #define HUGE_VALL __builtin_huge_vall()
 #define INFINITY  __builtin_inff()
 #define NAN       __builtin_nanf("")
+
+#define SNAN  __builtin_nans("")
+#define SNANF __builtin_nansf("")
+#define SNANL __builtin_nansl("")
 
 /* Use the compiler's builtin define for FLT_EVAL_METHOD to
    set float_t and double_t.  */
