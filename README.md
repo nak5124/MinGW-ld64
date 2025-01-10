@@ -42,8 +42,9 @@ Differences from official MinGW-w64
    - timespec_getres
    - timegm/timelocal
    - malloc_usable_size
-   - exp10/exp10f/exp10l/pow10/pow10f/pow10l(CORE-MATH)
-   - exp10m1/exp10m1f/exp10m1l(CORE-MATH)
+   - exp10/exp10f/exp10l/pow10/pow10f/pow10l(all:CORE-MATH)
+   - exp10m1/exp10m1f/exp10m1l(all:CORE-MATH)
+   - acospi/acospif/acospil(f:CORE-MATH)
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Various other cosmetics.
@@ -56,7 +57,7 @@ To use GCC where long double equals double, [GCC patches](https://github.com/nak
 ToDo
 ----
 Add missing math functions
-  - acospi/asinpi/atan2pi/atanpi
+  - asinpi/atan2pi/atanpi
   - cospi/sinpi/tanpi
   - exp2m1
   - log10p1/log2p1

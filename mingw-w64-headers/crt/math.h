@@ -880,12 +880,12 @@ __MINGW_BEGIN_C_DECLS
  *  false whenever a NaN is involved, with the exception of the != op,
  *  which always returns true: yes, (NaN != NaN) is true).
  */
-#define isgreater(x, y)      __builtin_isgreater(x, y)
-#define isgreaterequal(x, y) __builtin_isgreaterequal(x, y)
-#define isless(x, y)         __builtin_isless(x, y)
-#define islessequal(x, y)    __builtin_islessequal(x, y)
-#define islessgreater(x, y)  __builtin_islessgreater(x, y)
-#define isunordered(x, y)    __builtin_isunordered(x, y)
+#define isgreater(_X, _Y)      __builtin_isgreater(_X, _Y)
+#define isgreaterequal(_X, _Y) __builtin_isgreaterequal(_X, _Y)
+#define isless(_X, _Y)         __builtin_isless(_X, _Y)
+#define islessequal(_X, _Y)    __builtin_islessequal(_X, _Y)
+#define islessgreater(_X, _Y)  __builtin_islessgreater(_X, _Y)
+#define isunordered(_X, _Y)    __builtin_isunordered(_X, _Y)
 
 #endif
 
@@ -935,19 +935,24 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_USE_ISOC23
 
-#define iscanonical(x) ((void)(__typeof__(x))(x), 1)
+#define iscanonical(_X) ((void)(__typeof__(_X))(_X), 1)
 
-#define issubnormal(x) (fpclassify(x) == FP_SUBNORMAL)
+#define issubnormal(_X) (fpclassify(_X) == FP_SUBNORMAL)
 
 #ifdef __SUPPORT_SNAN__
-# define iszero(x) (fpclassify(x) == FP_ZERO)
+# define iszero(_X) (fpclassify(_X) == FP_ZERO)
 #else
-# define iszero(x) (((__typeof__(x))(x)) == 0)
+# define iszero(_X) (((__typeof__(_X))(_X)) == 0)
 #endif
+
+  extern double      __cdecl acospi(double _X);
+  extern float       __cdecl acospif(float _X);
+  extern long double __cdecl acospil(long double _X);
 
   extern double      __cdecl exp10m1(double _X);
   extern float       __cdecl exp10m1f(float _X);
   extern long double __cdecl exp10m1l(long double _X);
+
 #endif
 
 __MINGW_END_C_DECLS
