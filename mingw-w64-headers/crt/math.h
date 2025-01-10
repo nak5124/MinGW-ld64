@@ -953,6 +953,30 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl exp10m1f(float _X);
   extern long double __cdecl exp10m1l(long double _X);
 
+  extern double      __cdecl roundeven(double _X);
+  extern float       __cdecl roundevenf(float _X);
+  extern long double __cdecl roundevenl(long double _X);
+
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE
+  double __cdecl roundeven(double _X)
+  {
+    return __builtin_roundeven(_X);
+  }
+
+  __CRT_INLINE
+  float __cdecl roundevenf(float _X)
+  {
+    return __builtin_roundevenf(_X);
+  }
+
+  __CRT_INLINE
+  long double __cdecl roundevenl(long double _X)
+  {
+    return __builtin_roundevenl(_X);
+  }
+#endif
+
 #endif
 
 __MINGW_END_C_DECLS
