@@ -51,6 +51,7 @@ Differences from official MinGW-w64
    - atan2pi/atan2pif/atan2pil(f:CORE-MATH)
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
+ - Replace lgammaf by CORE-MATH implementation
  - Various other cosmetics.
 
 GCC patches
