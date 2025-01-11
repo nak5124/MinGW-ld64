@@ -1023,6 +1023,10 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl log10p1f(float _X);
   extern long double __cdecl log10p1l(long double _X);
 
+  /**/   double      __cdecl logp1(double _X);
+  /**/   float       __cdecl logp1f(float _X);
+  /**/   long double __cdecl logp1l(long double _X);
+
   extern double      __cdecl roundeven(double _X);
   extern float       __cdecl roundevenf(float _X);
   extern long double __cdecl roundevenl(long double _X);

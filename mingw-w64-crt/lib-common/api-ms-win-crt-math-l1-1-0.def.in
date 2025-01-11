@@ -258,8 +258,11 @@ log10
 log10f
 log10l == log10
 log1p
+logp1 == log1p
 log1pf
+logp1f == log1pf
 log1pl
+logp1l == log1pl
 log2
 log2f
 log2l

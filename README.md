@@ -54,6 +54,7 @@ Differences from official MinGW-w64
    - tanpi/tanpif/tanpil(f:CORE-MATH)
    - exp2m1/exp2m1f/exp2m1l(all:CORE-MATH)
    - log10p1/log10p1f/log10p1l(f:CORE-MATH)
+   - logp1/logp1f/logp1l aliases for log1p/log1pf/log1pl
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
