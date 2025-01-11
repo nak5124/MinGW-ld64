@@ -68,4 +68,6 @@ Add missing math functions
   - log10p1/log2p1
   - rsqrt
 
+Add stdbit.h
+
 Update libonecore/libonecoreuap_apiset
