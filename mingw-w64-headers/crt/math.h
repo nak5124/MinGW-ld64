@@ -1019,6 +1019,10 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl exp2m1f(float _X);
   extern long double __cdecl exp2m1l(long double _X);
 
+  extern double      __cdecl log10p1(double _X);
+  extern float       __cdecl log10p1f(float _X);
+  extern long double __cdecl log10p1l(long double _X);
+
   extern double      __cdecl roundeven(double _X);
   extern float       __cdecl roundevenf(float _X);
   extern long double __cdecl roundevenl(long double _X);

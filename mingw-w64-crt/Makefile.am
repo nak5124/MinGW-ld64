@@ -172,6 +172,7 @@ src_libmingwex=\
   math/atan2pif.c                  math/atanpi.c           math/atanpif.c            math/cospi.c               math/cospif.c             \
   math/exp10.c                     math/exp10f.c           math/exp10m1.c            math/exp10m1f.c            math/exp2m1.c             \
   math/exp2m1f.c                   math/fpclassify.c       math/fpclassifyf.c        math/isnan.c               math/isnanf.c             \
+  math/log10p1.c                   math/log10p1f.c         \
   math/roundeven.c                 math/roundevenf.c       math/signbit.c            math/signbitf.c            math/sincos.c             \
   math/sincosf.c                   math/sinpi.c            math/sinpif.c             math/tanpi.c               math/tanpif.c             \
   \
