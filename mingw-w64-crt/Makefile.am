@@ -172,7 +172,8 @@ src_libmingwex=\
   math/atan2pif.c                  math/atanpi.c           math/atanpif.c            math/cospi.c               math/cospif.c             \
   math/exp10.c                     math/exp10f.c           math/exp10m1.c            math/exp10m1f.c            math/fpclassify.c         \
   math/fpclassifyf.c               math/isnan.c            math/isnanf.c             math/roundeven.c           math/roundevenf.c         \
-  math/signbit.c                   math/signbitf.c         math/sincos.c             math/sincosf.c             \
+  math/signbit.c                   math/signbitf.c         math/sincos.c             math/sincosf.c             math/sinpi.c              \
+  math/sinpif.c                    \
   \
   misc/a64l.c                      misc/alarm.c            misc/arc4random.c         misc/arc4random_buf.c      misc/arc4random_uniform.c \
   misc/clearenv.c                  misc/dirent.c           misc/dirname.c            misc/dllentrypoint.c       misc/dllmain.c            \

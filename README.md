@@ -50,6 +50,7 @@ Differences from official MinGW-w64
    - atanpi/atanpif/atanpil(all:CORE-MATH)
    - atan2pi/atan2pif/atan2pil(f:CORE-MATH)
    - cospi/cospif/cospil(f:CORE-MATH)
+   - sinpi/sinpif/sinpil(f:CORE-MATH)
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
@@ -63,7 +64,7 @@ To use GCC where long double equals double, [GCC patches](https://github.com/nak
 ToDo
 ----
 Add missing math functions
-  - sinpi/tanpi
+  - tanpi
   - exp2m1
   - log10p1/log2p1
   - rsqrt
