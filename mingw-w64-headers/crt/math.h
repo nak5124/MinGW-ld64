@@ -999,6 +999,10 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl atan2pif(float _Y, float _X);
   extern long double __cdecl atan2pil(long double _Y, long double _X);
 
+  extern double      __cdecl cospi(double _X);
+  extern float       __cdecl cospif(float _X);
+  extern long double __cdecl cospil(long double _X);
+
   extern double      __cdecl exp10m1(double _X);
   extern float       __cdecl exp10m1f(float _X);
   extern long double __cdecl exp10m1l(long double _X);
