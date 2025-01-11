@@ -1007,6 +1007,10 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl sinpif(float _X);
   extern long double __cdecl sinpil(long double _X);
 
+  extern double      __cdecl tanpi(double _X);
+  extern float       __cdecl tanpif(float _X);
+  extern long double __cdecl tanpil(long double _X);
+
   extern double      __cdecl exp10m1(double _X);
   extern float       __cdecl exp10m1f(float _X);
   extern long double __cdecl exp10m1l(long double _X);
