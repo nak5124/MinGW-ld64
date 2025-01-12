@@ -1055,6 +1055,8 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
+#define iseqsig(_X, _Y) __builtin_iseqsig(_X, _Y)
+
 #endif
 
 __MINGW_END_C_DECLS

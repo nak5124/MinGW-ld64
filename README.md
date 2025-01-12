@@ -69,7 +69,19 @@ To use GCC where long double equals double, [GCC patches](https://github.com/nak
 ToDo
 ----
 Add missing math functions
+  - compoundn
+  - pown
+  - powr
+  - rootn
   - rsqrt
+  - fromfp/ufromfp/fromfpx/ufromfpx
+  - nextup/nextdown
+  - canonicalize
+  - fmaximum/fmaximum
+  - fmaximum_mag/fminimum_mag
+  - fmaximum_num/fminimum_num
+  - fmaximum_mag_num/fminimum_mag_num
+  - fadd/fsub/fmul/fdiv/ffma/fsqrt
 
 Add stdbit.h
 
