@@ -55,6 +55,7 @@ Differences from official MinGW-w64
    - exp2m1/exp2m1f/exp2m1l(all:CORE-MATH)
    - log10p1/log10p1f/log10p1l(f:CORE-MATH)
    - logp1/logp1f/logp1l aliases for log1p/log1pf/log1pl
+   - log2p1/log2p1f/log2p1l(f:CORE-MATH)
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
@@ -68,7 +69,6 @@ To use GCC where long double equals double, [GCC patches](https://github.com/nak
 ToDo
 ----
 Add missing math functions
-  - log2p1
   - rsqrt
 
 Add stdbit.h
