@@ -192,6 +192,21 @@ src_libmingwex=\
   ssp/memset_chk.c                 ssp/stack_chk_fail.c    ssp/stack_chk_guard.c     ssp/stpcpy_chk.c           ssp/strcat_chk.c          \
   ssp/strcpy_chk.c                 ssp/strncat_chk.c       ssp/strncpy_chk.c         \
   \
+  stdbit/stdc_bit_ceil_uc.c             stdbit/stdc_bit_ceil_ui.c             stdbit/stdc_bit_ceil_ull.c             stdbit/stdc_bit_ceil_us.c            \
+  stdbit/stdc_bit_floor_uc.c            stdbit/stdc_bit_floor_ui.c            stdbit/stdc_bit_floor_ull.c            stdbit/stdc_bit_floor_us.c           \
+  stdbit/stdc_bit_width_uc.c            stdbit/stdc_bit_width_ui.c            stdbit/stdc_bit_width_ull.c            stdbit/stdc_bit_width_us.c           \
+  stdbit/stdc_count_ones_uc.c           stdbit/stdc_count_ones_ui.c           stdbit/stdc_count_ones_ull.c           stdbit/stdc_count_ones_us.c          \
+  stdbit/stdc_count_zeros_uc.c          stdbit/stdc_count_zeros_ui.c          stdbit/stdc_count_zeros_ull.c          stdbit/stdc_count_zeros_us.c         \
+  stdbit/stdc_first_leading_one_uc.c    stdbit/stdc_first_leading_one_ui.c    stdbit/stdc_first_leading_one_ull.c    stdbit/stdc_first_leading_one_us.c   \
+  stdbit/stdc_first_leading_zero_uc.c   stdbit/stdc_first_leading_zero_ui.c   stdbit/stdc_first_leading_zero_ull.c   stdbit/stdc_first_leading_zero_us.c  \
+  stdbit/stdc_first_trailing_one_uc.c   stdbit/stdc_first_trailing_one_ui.c   stdbit/stdc_first_trailing_one_ull.c   stdbit/stdc_first_trailing_one_us.c  \
+  stdbit/stdc_first_trailing_zero_uc.c  stdbit/stdc_first_trailing_zero_ui.c  stdbit/stdc_first_trailing_zero_ull.c  stdbit/stdc_first_trailing_zero_us.c \
+  stdbit/stdc_has_single_bit_uc.c       stdbit/stdc_has_single_bit_ui.c       stdbit/stdc_has_single_bit_ull.c       stdbit/stdc_has_single_bit_us.c      \
+  stdbit/stdc_leading_ones_uc.c         stdbit/stdc_leading_ones_ui.c         stdbit/stdc_leading_ones_ull.c         stdbit/stdc_leading_ones_us.c        \
+  stdbit/stdc_leading_zeros_uc.c        stdbit/stdc_leading_zeros_ui.c        stdbit/stdc_leading_zeros_ull.c        stdbit/stdc_leading_zeros_us.c       \
+  stdbit/stdc_trailing_ones_uc.c        stdbit/stdc_trailing_ones_ui.c        stdbit/stdc_trailing_ones_ull.c        stdbit/stdc_trailing_ones_us.c       \
+  stdbit/stdc_trailing_zeros_uc.c       stdbit/stdc_trailing_zeros_ui.c       stdbit/stdc_trailing_zeros_ull.c       stdbit/stdc_trailing_zeros_us.c      \
+  \
   stdio/asprintf.c                 stdio/truncate.c        stdio/vasprintf.c         \
   \
   string/bcopy.c                   string/bzero.c          string/explicit_bzero.c   string/ffs.c               string/ffsll.c            \

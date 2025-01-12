@@ -60,6 +60,7 @@ Differences from official MinGW-w64
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
+ - Add stdbit.h.
  - Various other cosmetics.
 
 GCC patches
@@ -82,7 +83,5 @@ Add missing math functions
   - fmaximum_num/fminimum_num
   - fmaximum_mag_num/fminimum_mag_num
   - fadd/fsub/fmul/fdiv/ffma/fsqrt
-
-Add stdbit.h
 
 Update libonecore/libonecoreuap_apiset
