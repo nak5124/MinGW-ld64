@@ -205,6 +205,7 @@ __MINGW_BEGIN_C_DECLS
   {
     memset(_Dest, _Ch, _Count);
     __asm__ __volatile__("" : : "r"(_Dest) : "memory");
+    return _Dest;
   }
 #endif
 #endif

@@ -11,4 +11,5 @@ void *__cdecl memset_explicit(void *_Dest, int _Ch, size_t _Count)
 {
     memset(_Dest, _Ch, _Count);
     __asm__ __volatile__("" : : "r"(_Dest) : "memory");
+    return _Dest;
 }
