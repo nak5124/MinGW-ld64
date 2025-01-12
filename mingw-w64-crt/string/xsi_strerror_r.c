@@ -3,10 +3,10 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#undef _GNU_SOURCE
-#define _POSIX_C_SOURCE 200112L
-#define __CRT__NO_INLINE
+#define _MS_SOURCE
 #include <string.h>
+
+int __cdecl __xsi_strerror_r(int _Errnum, char *_Buf, size_t _Buflen);
 
 int __cdecl __xsi_strerror_r(int _Errnum, char *_Buf, size_t _Buflen)
 {
