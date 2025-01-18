@@ -54,7 +54,7 @@ __MINGW_BEGIN_C_DECLS
   "\t.seh_handler __C_specific_handler, @except\n" \
   "\t.seh_handlerdata\n" \
   "\t.long 1\n" \
-  "\t.rva .l_startw, .l_endw, " __MINGW64_STRINGIFY(__MINGW_USYMBOL(pHandler)) " ,.l_endw\n" \
+  "\t.rva .l_startw, .l_endw, " __MINGW_STRING(__USYMBOL(pHandler)) " ,.l_endw\n" \
   "\t.text" \
   );
 #define __except1 \

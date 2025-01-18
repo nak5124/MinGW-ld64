@@ -23,8 +23,8 @@ double __cdecl ldexp(double x, int expn)
   return res;
 }
 
-double __cdecl (*__MINGW_IMP_SYMBOL(ldexp))(double x, int expn) = ldexp;
+double __cdecl (*__IMP_SYMBOL(ldexp))(double x, int expn) = ldexp;
 
 long double __cdecl ldexpl(long double x, int expn) __attribute__((alias("ldexp")));
-extern double (__cdecl *__MINGW_IMP_SYMBOL(ldexpl))(long double x, int expn)
-  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(ldexp)))));
+extern double (__cdecl *__IMP_SYMBOL(ldexpl))(long double x, int expn)
+  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(ldexp)))));

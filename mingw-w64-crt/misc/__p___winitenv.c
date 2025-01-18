@@ -7,11 +7,11 @@
 #include <_mingw.h>
 #include <stddef.h>
 
-extern wchar_t*** __MINGW_IMP_SYMBOL(__winitenv);
+extern wchar_t*** __IMP_SYMBOL(__winitenv);
 
 wchar_t*** __cdecl __p___winitenv(void);
 wchar_t*** __cdecl __p___winitenv(void)
 {
-    return __MINGW_IMP_SYMBOL(__winitenv);
+    return __IMP_SYMBOL(__winitenv);
 }
-wchar_t*** (__cdecl *__MINGW_IMP_SYMBOL(__p___winitenv))(void) = __p___winitenv;
+wchar_t*** (__cdecl *__IMP_SYMBOL(__p___winitenv))(void) = __p___winitenv;

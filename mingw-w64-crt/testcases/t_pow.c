@@ -12,7 +12,7 @@ static void set_pow_msvcrt(void)
   fpow = (my_pow) GetProcAddress (hMod, "pow");
 }
 
-static __attribute__((noinline)) double pow_by_log_exp (double x, double y)
+static __NOINLINE double pow_by_log_exp (double x, double y)
 {
   /* pow(x, n) = exp(n * log(x)) */
   if (x < 0.0)
@@ -28,7 +28,7 @@ static __attribute__((noinline)) double pow_by_log_exp (double x, double y)
   return exp(y * log(x));
 }
 
-static __attribute__((noinline)) void test(int cnt)
+static __NOINLINE void test(int cnt)
 {
   double x, y, z;
   unsigned int tiS = GetTickCount();

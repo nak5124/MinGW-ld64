@@ -40,15 +40,15 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
   typedef int (*__compar_fn_t)(const void *, const void *);
-  extern void *__cdecl tdelete(const void *__restrict __key, void **__restrict __rootp, __compar_fn_t __compar) __MINGW_NONNULL((2, 3));
-  extern void *__cdecl tfind(const void *__key, void * const *__rootp, __compar_fn_t __compar) __MINGW_NONNULL((2, 3));
-  extern void *__cdecl tsearch(const void *__key, void **__rootp, __compar_fn_t __compar) __MINGW_NONNULL((2, 3));
+  extern void *__cdecl tdelete(const void *__restrict __key, void **__restrict __rootp, __compar_fn_t __compar) __NONNULL((2, 3));
+  extern void *__cdecl tfind(const void *__key, void * const *__rootp, __compar_fn_t __compar) __NONNULL((2, 3));
+  extern void *__cdecl tsearch(const void *__key, void **__rootp, __compar_fn_t __compar) __NONNULL((2, 3));
   typedef void (*__action_fn_t)(const void *__nodep, VISIT __value, int __level);
   extern void  __cdecl twalk(const void *__root, __action_fn_t __action);
 
 #ifdef __MINGW_USE_GNU
   typedef void (*__free_fn_t)(void *__nodep);
-  extern void __cdecl tdestroy(void *__root, __free_fn_t __freenode) __MINGW_NONNULL((2));
+  extern void __cdecl tdestroy(void *__root, __free_fn_t __freenode) __NONNULL((2));
 #endif
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN_EXT)

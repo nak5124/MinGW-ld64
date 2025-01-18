@@ -7,104 +7,52 @@
 #ifndef _INC_CORECRT
 #define _INC_CORECRT
 
-#ifndef _UCRT
-# define _UCRT
-#endif
-
 #include <vadefs.h>
 
 __MINGW_BEGIN_C_DECLS
 
-#ifndef _HAS_EXCEPTIONS
-# define _HAS_EXCEPTIONS 1
-#endif
-
-#define _CRT_CONCATENATE_(a, b) a ## b
-#define _CRT_CONCATENATE(a, b)  _CRT_CONCATENATE_(a, b)
-
-#define _CRT_UNPARENTHESIZE_(...) __VA_ARGS__
-#define _CRT_UNPARENTHESIZE(...)  _CRT_UNPARENTHESIZE_ __VA_ARGS__
-
-#ifndef __CRTDECL
-# ifndef __cplusplus
-#   define __CRTDECL __cdecl __MINGW_UNUSED
-# else
-#   define __CRTDECL __cdecl
-# endif
-#endif
-
-#ifndef __WIDL__
-# ifndef _CONST_RETURN
-#   define _CONST_RETURN
-# endif
-# define _WConst_return _CONST_RETURN
-#endif  /* __WIDL__ */
-
-#ifndef _SIZE_T_DEFINED
-# define _SIZE_T_DEFINED
-# undef size_t
-  __MINGW_EXTENSION typedef unsigned __int64 size_t;
-#endif  /* _SIZE_T_DEFINED */
-
-#ifndef _PTRDIFF_T_DEFINED
-# define _PTRDIFF_T_DEFINED
-# ifndef _PTRDIFF_T_
-#   define _PTRDIFF_T_
-#   undef ptrdiff_t
-    __MINGW_EXTENSION typedef __int64 ptrdiff_t;
-# endif  /* _PTRDIFF_T_ */
-#endif  /* _PTRDIFF_T_DEFINED */
-
-#ifndef _INTPTR_T_DEFINED
-# define _INTPTR_T_DEFINED
-# ifndef __intptr_t_defined
-#   define __intptr_t_defined
-#   undef intptr_t
-    __MINGW_EXTENSION typedef __int64 intptr_t;
-# endif  /* __intptr_t_defined */
-#endif  /* _INTPTR_T_DEFINED */
-
-#ifndef _WCHAR_T_DEFINED
-# define _WCHAR_T_DEFINED
-# if !defined(__cplusplus) && !defined(__WIDL__)
-    typedef unsigned short wchar_t;
-# endif  /* !defined(__cplusplus) && !defined(__WIDL__) */
-#endif  /* _WCHAR_T_DEFINED */
-
-#ifndef NULL
-# ifdef __cplusplus
-#   define NULL 0LL
-# else
-#   define NULL ((void *)0)
-# endif  /* __cplusplus */
-#endif  /* NULL */
-
-#ifndef __WIDL__
-# ifndef _UNALIGNED
-#   define _UNALIGNED __unaligned
-#   define  UNALIGNED _UNALIGNED
-# endif  /* _UNALIGNED */
-#endif  /* __WIDL__ */
-
 #ifndef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
 # ifdef WINAPI_FAMILY
 #   include <winapifamily.h>
-#   if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
+#   if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 #     define _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
+#   else
+#     ifdef WINAPI_FAMILY_PHONE_APP
+#       if WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
+#         define _CRT_USE_WINAPI_FAMILY_PHONE_APP
+#       endif
+#     endif
+#     ifdef WINAPI_FAMILY_GAMES
+#       if WINAPI_FAMILY == WINAPI_FAMILY_GAMES
+#         define _CRT_USE_WINAPI_FAMILY_GAMES
+#       endif
+#     endif
 #   endif
 # else
 #   define _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
 # endif  /* WINAPI_FAMILY */
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-#ifndef _CRTIMP_ALTERNATIVE
-# define _CRT_ALTERNATIVE_IMPORTED
-# define _CRTIMP_ALTERNATIVE _CRTIMP
-#endif  /* _CRTIMP_ALTERNATIVE */
+/* MSVC compability */
+#define _ACRTIMP     _CRTIMP
+#define _ACRTIMP_ALT _CRTIMP
+#define _DCRTIMP     _CRTIMP
+#define _CRTRESTRICT
+#define _CRTALLOCATOR
+#define _CRT_JIT_INTRINSIC
+#define _CRT_INLINE_PURE_SECURITYCRITICAL_ATTRIBUTE
 
-#ifndef _CRTRESTRICT
-# define _CRTRESTRICT
-#endif
+#ifndef __WIDL__
+# ifndef _CONST_RETURN
+#   ifdef __cplusplus
+#     define _CONST_RETURN const
+#     define _CRT_CONST_CORRECT_OVERLOADS
+#   else
+#     define _CONST_RETURN
+#   endif
+# endif
+# define _WConst_return _CONST_RETURN
+#endif  /* __WIDL__ */
 
 #ifndef __WIDL__
 # ifndef _CRT_ALIGN
@@ -112,14 +60,20 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif  /* __WIDL__ */
 
-#ifndef __crt_typefix
-# define __crt_typefix(ctype)
+#define _Check_return_opt_
+#define _Check_return_wat_
+#define __crt_typefix(ctype)
+
+#ifndef _CRT_NOEXCEPT
+# ifdef __cplusplus
+#   define _CRT_NOEXCEPT noexcept
+# else
+#   define _CRT_NOEXCEPT
+# endif
 #endif
 
-#define _ARGMAX 100
-#ifndef _TRUNCATE
-# define _TRUNCATE ((size_t)-1)
-#endif
+#define _ARGMAX       100
+#define _TRUNCATE     ((size_t)-1)
 #define _CRT_INT_MAX  2147483647
 #define _CRT_SIZE_MAX ((size_t)-1)
 
@@ -138,8 +92,46 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif
 
+#ifndef NULL
+# ifdef __cplusplus
+#   define NULL 0LL
+# else
+#   define NULL ((void *)0)
+# endif  /* __cplusplus */
+#endif  /* NULL */
+
 #ifndef _CRT_UNUSED
 # define _CRT_UNUSED(x) (void)x
+#endif
+
+  _CRTIMP void __cdecl _invalid_parameter_noinfo(void);
+  _CRTIMP void __cdecl _invalid_parameter_noinfo_noreturn(void) __NORETURN;
+
+  _CRTIMP void __cdecl _invoke_watson
+  (
+    wchar_t const *_Expression, wchar_t const *_FunctionName, wchar_t const *_FileName, unsigned int _LineNo, uintptr_t _Reserved
+  ) __NORETURN;
+
+#define _CRT_WARNING_MESSAGE(NUMBER, MESSAGE) __FILE__ "(" _CRT_STRINGIZE(__LINE__) "): warning " NUMBER ": " MESSAGE
+
+#ifdef __MINGW_USE_MS
+# define _CRT_INTERNAL_NONSTDC_NAMES 1
+#else
+# define _CRT_INTERNAL_NONSTDC_NAMES 0
+#endif
+
+#if defined(_CRT_NONSTDC_NO_DEPRECATE) && !defined(_CRT_NONSTDC_NO_WARNINGS)
+# define _CRT_NONSTDC_NO_WARNINGS
+#endif
+
+#ifndef _CRT_NONSTDC_DEPRECATE
+# ifdef _CRT_NONSTDC_NO_WARNINGS
+#   define _CRT_NONSTDC_DEPRECATE(_NewName)
+# else
+#   define _CRT_NONSTDC_DEPRECATE(_NewName) _CRT_DEPRECATE_TEXT(             \
+      "The POSIX name for this item is deprecated. Instead, use the ISO C "  \
+      "and C++ conformant name: " #_NewName ". See online help for details.")
+#endif
 #endif
 
 #ifndef _PGLOBAL
@@ -179,29 +171,48 @@ __MINGW_BEGIN_C_DECLS
 # define _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_MEMORY 0
 #endif  /* __cplusplus */
 
-#ifndef _CRT_SECURE_CPP_NOTHROW
-# define _CRT_SECURE_CPP_NOTHROW throw()
+#define __STDC_SECURE_LIB__ 200411L
+#define __GOT_SECURE_LIB__  __STDC_SECURE_LIB__
+
+#if !__STDC_WANT_SECURE_LIB__ && !defined(_CRT_SECURE_NO_WARNINGS)
+# define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#ifndef _SSIZE_T_DEFINED
-# define _SSIZE_T_DEFINED
-# undef ssize_t
-  __MINGW_EXTENSION typedef __int64 ssize_t;
-#endif  /* _SSIZE_T_DEFINED */
+#if defined(_CRT_SECURE_NO_DEPRECATE_GLOBALS) && !defined(_CRT_SECURE_NO_WARNINGS_GLOBALS)
+# define _CRT_SECURE_NO_WARNINGS_GLOBALS
+#endif
 
-#ifndef _UINTPTR_T_DEFINED
-# define _UINTPTR_T_DEFINED
-# ifndef __uintptr_t_defined
-#   define __uintptr_t_defined
-#   undef uintptr_t
-    __MINGW_EXTENSION typedef unsigned __int64 uintptr_t;
-# endif  /* __uintptr_t_defined */
-#endif  /* _UINTPTR_T_DEFINED */
+#ifndef _CRT_INSECURE_DEPRECATE_GLOBALS
+# ifdef _CRT_SECURE_NO_WARNINGS_GLOBALS
+#   define _CRT_INSECURE_DEPRECATE_GLOBALS(replacement)
+# else
+#   define _CRT_INSECURE_DEPRECATE_GLOBALS(replacement) _CRT_INSECURE_DEPRECATE(replacement)
+# endif
+#endif
 
-#ifndef _RSIZE_T_DEFINED
-# define _RSIZE_T_DEFINED
-# undef rsize_t
-  typedef size_t rsize_t;
+#if defined(_CRT_MANAGED_HEAP_NO_DEPRECATE) && !defined(_CRT_MANAGED_HEAP_NO_WARNINGS)
+# define _CRT_MANAGED_HEAP_NO_WARNINGS
+#endif
+
+#define _SECURECRT_FILL_BUFFER_PATTERN 0xFE
+
+#if defined(_CRT_OBSOLETE_NO_DEPRECATE) && !defined(_CRT_OBSOLETE_NO_WARNINGS)
+# define _CRT_OBSOLETE_NO_WARNINGS
+#endif
+
+#ifndef _CRT_OBSOLETE
+# ifdef _CRT_OBSOLETE_NO_WARNINGS
+#   define _CRT_OBSOLETE(_NewItem)
+# else
+#   define _CRT_OBSOLETE(_NewItem) _CRT_DEPRECATE_TEXT(                  \
+      "This function or variable has been superceded by newer library "  \
+      "or operating system functionality. Consider using " #_NewItem " " \
+      "instead. See online help for details.")
+# endif
+#endif
+
+#ifndef _CRT_SECURE_CPP_NOTHROW
+# define _CRT_SECURE_CPP_NOTHROW throw()
 #endif
 
 #ifndef _ERRCODE_DEFINED
@@ -228,6 +239,27 @@ __MINGW_BEGIN_C_DECLS
   __MINGW_EXTENSION typedef __int64 __time64_t;
 #endif  /* _TIME64_T_DEFINED */
 
+  typedef struct __crt_locale_data_public
+  {
+    unsigned short const *_locale_pctype;
+    int                   _locale_mb_cur_max;
+    unsigned int          _locale_lc_codepage;
+  } __crt_locale_data_public;
+
+  typedef struct __crt_locale_pointers
+  {
+    struct __crt_locale_data    *locinfo;
+    struct __crt_multibyte_data *mbcinfo;
+  } __crt_locale_pointers;
+
+  typedef struct _Mbstatet
+  {
+    unsigned long  _Wchar;
+    unsigned short _Byte, _State;
+  } _Mbstatet;
+
+  typedef _Mbstatet mbstate_t;
+
 #ifdef _USE_32BIT_TIME_T
 # error You cannot use 32-bit time_t (_USE_32BIT_TIME_T) with _WIN64
 # undef _USE_32BIT_TIME_T
@@ -238,21 +270,17 @@ __MINGW_BEGIN_C_DECLS
   typedef __time64_t time_t;
 #endif  /* _TIME_T_DEFINED */
 
-  _CRTIMP_ALTERNATIVE void __cdecl _invalid_parameter_noinfo(void);
-  _CRTIMP             void __cdecl _invalid_parameter_noinfo_noreturn(void) __MINGW_NORETURN;
+#ifndef _RSIZE_T_DEFINED
+# define _RSIZE_T_DEFINED
+# undef rsize_t
+  typedef size_t rsize_t;
+#endif
 
-  _CRTIMP void __cdecl _invoke_watson
-  (
-    wchar_t const *_Expression, wchar_t const *_FunctionName, wchar_t const *_FileName, unsigned int _LineNo, uintptr_t _Reserved
-  ) __MINGW_NORETURN;
-
-  typedef struct _Mbstatet
-  {
-    unsigned long  _Wchar;
-    unsigned short _Byte, _State;
-  } _Mbstatet;
-
-  typedef _Mbstatet mbstate_t;
+#ifndef _SSIZE_T_DEFINED
+# define _SSIZE_T_DEFINED
+# undef ssize_t
+  __MINGW_EXTENSION typedef __int64 ssize_t;
+#endif  /* _SSIZE_T_DEFINED */
 
 #if defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES
 

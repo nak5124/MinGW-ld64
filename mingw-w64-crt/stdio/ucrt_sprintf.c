@@ -16,4 +16,4 @@ int __cdecl sprintf(char *__restrict _Buffer, const char *__restrict _Format, ..
     return _Ret < 0 ? -1 : _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(sprintf))(char *__restrict, const char *__restrict, ...) = sprintf;
+int __cdecl (*__IMP_SYMBOL(sprintf))(char *__restrict, const char *__restrict, ...) = sprintf;

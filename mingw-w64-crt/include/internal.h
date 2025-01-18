@@ -44,13 +44,13 @@ __MINGW_BEGIN_C_DECLS
 #define _tm_unicode_safe(i) (_pioinfo_safe(i)->unicode)
 
 #ifndef __badioinfo
-  extern ioinfo * __MINGW_IMP_SYMBOL(__badioinfo);
-# define __badioinfo (* __MINGW_IMP_SYMBOL(__badioinfo))
+  extern ioinfo * __IMP_SYMBOL(__badioinfo);
+# define __badioinfo (* __IMP_SYMBOL(__badioinfo))
 #endif
 
 #ifndef __pioinfo
-  extern ioinfo ** __MINGW_IMP_SYMBOL(__pioinfo)[];
-# define __pioinfo (* __MINGW_IMP_SYMBOL(__pioinfo))
+  extern ioinfo ** __IMP_SYMBOL(__pioinfo)[];
+# define __pioinfo (* __IMP_SYMBOL(__pioinfo))
 #endif
 
   extern int _dowildcard;
@@ -62,7 +62,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char *** __cdecl __p___initenv(void);
 #define __initenv (*__p___initenv())
 
-  _CRTIMP void __cdecl _amsg_exit(int) __MINGW_NORETURN;
+  _CRTIMP void __cdecl _amsg_exit(int) __NORETURN;
 
   extern int __CRTDECL  _setargv(void);
   extern int __CRTDECL __setargv(void);

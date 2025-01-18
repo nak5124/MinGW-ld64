@@ -51,7 +51,7 @@ DWORD WINAPI GetFileSize(HANDLE hFile, LPDWORD lpFileSizeHigh)
 }
 
 #ifdef _X86_
-DWORD (WINAPI *__MINGW_IMP_SYMBOL(GetFileSize))(HANDLE hFile, LPDWORD lpFileSizeHigh) __asm__("__imp__GetFileSize@8") = GetFileSize;
+DWORD (WINAPI *__IMP_SYMBOL(GetFileSize))(HANDLE hFile, LPDWORD lpFileSizeHigh) __asm__("__imp__GetFileSize@8") = GetFileSize;
 #else
-DWORD (WINAPI *__MINGW_IMP_SYMBOL(GetFileSize))(HANDLE hFile, LPDWORD lpFileSizeHigh) __asm__("__imp_GetFileSize") = GetFileSize;
+DWORD (WINAPI *__IMP_SYMBOL(GetFileSize))(HANDLE hFile, LPDWORD lpFileSizeHigh) __asm__("__imp_GetFileSize") = GetFileSize;
 #endif

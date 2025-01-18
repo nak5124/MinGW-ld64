@@ -45,12 +45,12 @@ __MINGW_BEGIN_C_DECLS
 #define _ftime   _ftime64
 #define _ftime_s _ftime64_s
 
-  _CRTIMP void    __cdecl _ftime32(struct __timeb32 *_Time) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void    __cdecl _ftime32(struct __timeb32 *_Time) __NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _ftime32_s(struct __timeb32 *_Time);
-  _CRTIMP void    __cdecl _ftime64(struct __timeb64 *_Time) __MINGW_NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void    __cdecl _ftime64(struct __timeb64 *_Time) __NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _ftime64_s(struct __timeb64 *_Time);
 
-  void __cdecl ftime(struct timeb *_Time) __MINGW_ASM_CALL(_ftime64) __MINGW_NONNULL((1));
+  void __cdecl ftime(struct timeb *_Time) __ASM_CALL(_ftime64) __NONNULL((1));
 
   struct _timespec32
   {

@@ -252,8 +252,8 @@ __MINGW_BEGIN_C_DECLS
 #define SCNuLEAST8 "hhu"
 #define SCNuFAST8  "hhu"
 
-  _CRTIMP intmax_t  __cdecl imaxabs(intmax_t _Number)                           __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP imaxdiv_t __cdecl imaxdiv(intmax_t _Numerator, intmax_t _Denominator) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP intmax_t  __cdecl imaxabs(intmax_t _Number)                           __NOTHROW __CONST;
+  _CRTIMP imaxdiv_t __cdecl imaxdiv(intmax_t _Numerator, intmax_t _Denominator) __NOTHROW __CONST;
 
 /* 7.8.2 Conversion functions for greatest-width integer types */
 

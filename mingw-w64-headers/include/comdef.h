@@ -168,7 +168,7 @@ inline void WINAPI _com_raise_error(HRESULT hr, IErrorInfo *perrinfo = 0) {
 #endif
 }
 
-__MINGW_SELECTANY void (WINAPI *__mingw_com_error_handler)(HRESULT hr,IErrorInfo *perrinfo) = _com_raise_error;
+__SELECTANY void (WINAPI *__mingw_com_error_handler)(HRESULT hr,IErrorInfo *perrinfo) = _com_raise_error;
 
 inline void WINAPI _set_com_error_handler(void (WINAPI *pHandler)(HRESULT hr,IErrorInfo *perrinfo)) {
   __mingw_com_error_handler = pHandler;

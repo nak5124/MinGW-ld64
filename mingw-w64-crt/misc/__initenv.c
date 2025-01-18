@@ -7,4 +7,4 @@
 #include <_mingw.h>
 
 static char ** local__initenv;
-char *** __MINGW_IMP_SYMBOL(__initenv) = &local__initenv;
+char *** __IMP_SYMBOL(__initenv) = &local__initenv;

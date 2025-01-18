@@ -145,7 +145,7 @@ static inline double as_todenormal(double x){
 #endif
 }
 
-static double __attribute__((noinline)) as_exp10_database(double x, double f){
+static double __NOINLINE as_exp10_database(double x, double f){
   static const double db[] = {
     0x1.821e0f2afb97p-11, 0x1.7c3ddd23ac8cap-10, 0x1.a2d7c1699e82dp-10, 0x1.ec65645edc394p-8,
     0x1.90d7373b3a546p-7, 0x1.7e3c84f2cb9b5p-6, 0x1.25765968ecd68p-5, 0x1.9aa6fd4d21a47p-5,
@@ -256,7 +256,7 @@ static const double t1[][2] = {
   {0x1.4a47a505b3a46p-54, 0x1.02b338c811703p+0}, {0x1.e47120223468p-54, 0x1.02be6e199c811p+0},
 };
 
-static double __attribute__((noinline)) as_exp10_accurate(double x){
+static double __NOINLINE as_exp10_accurate(double x){
   static const double c[][2] = {
     {0x1.26bb1bbb55516p+1, -0x1.f48ad494ea102p-53}, {0x1.53524c73cea69p+1, -0x1.e2bfab318d399p-53},
     {0x1.0470591de2ca4p+1, 0x1.81f50779e162bp-53}, {0x1.2bd7609fd98c4p+0, 0x1.31a5cc5d3d313p-54},

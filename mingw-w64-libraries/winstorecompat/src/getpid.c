@@ -35,7 +35,7 @@ int getpid( void )
 }
 
 #ifdef _X86_
-int (__cdecl *__MINGW_IMP_SYMBOL(getpid))(void) __asm__("__imp__getpid") = getpid;
+int (__cdecl *__IMP_SYMBOL(getpid))(void) __asm__("__imp__getpid") = getpid;
 #else
-int (__cdecl *__MINGW_IMP_SYMBOL(getpid))(void) __asm__("__imp_getpid") = getpid;
+int (__cdecl *__IMP_SYMBOL(getpid))(void) __asm__("__imp_getpid") = getpid;
 #endif

@@ -12,7 +12,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ERRNO_DEFINED  /* Also in stdlib.h and stddef.h */
 # define _CRT_ERRNO_DEFINED
-  _CRTIMP int *__cdecl _errno(void);
+  _CRTIMP int *__cdecl _errno(void) __NOTHROW __CONST;
 # define errno (*_errno())
   _CRTIMP errno_t __cdecl _set_errno(int _Value);
   _CRTIMP errno_t __cdecl _get_errno(int *_Value);

@@ -19,4 +19,4 @@ int __cdecl __getmainargs(int *argc, char ***argv, char ***env, int DoWildCard, 
   _set_new_mode(StartInfo->newmode);
   return 0;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(__getmainargs))(int *, char ***, char ***, int, _startupinfo *) = __getmainargs;
+int __cdecl (*__IMP_SYMBOL(__getmainargs))(int *, char ***, char ***, int, _startupinfo *) = __getmainargs;

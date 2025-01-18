@@ -226,12 +226,12 @@ __MINGW_BEGIN_C_DECLS
   /* Set the FPU control word as cw = (cw & ~unMask) | (unNew & unMask),
    * i.e. change the bits in unMask to have the values they have in unNew,
    * leaving other bits unchanged. */
-  _CRTIMP unsigned int __cdecl _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP unsigned int __cdecl _controlfp(unsigned int _NewValue, unsigned int _Mask) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t      __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
-  _CRTIMP unsigned int __cdecl _control87(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW;
+  _CRTIMP unsigned int __cdecl _control87(unsigned int _NewValue, unsigned int _Mask) __NOTHROW;
 
-  _CRTIMP unsigned int __cdecl _clearfp(void)  __MINGW_NOTHROW;  /* Clear the FPU status word */
-  _CRTIMP unsigned int __cdecl _statusfp(void) __MINGW_NOTHROW;  /* Report the FPU status word */
+  _CRTIMP unsigned int __cdecl _clearfp(void)  __NOTHROW;  /* Clear the FPU status word */
+  _CRTIMP unsigned int __cdecl _statusfp(void) __NOTHROW;  /* Report the FPU status word */
 #define _clear87  _clearfp
 #define _status87 _statusfp
 
@@ -246,11 +246,11 @@ __MINGW_BEGIN_C_DECLS
    *  per fninit. To use the MSVCRT.dll _fpreset, include CRT_fp8.o when
    *  building your application.
    */
-  void __cdecl _fpreset(void) __MINGW_NOTHROW;
-  void __cdecl  fpreset(void) __MINGW_NOTHROW;
+  void __cdecl _fpreset(void) __NOTHROW;
+  void __cdecl  fpreset(void) __NOTHROW;
 
   /* Global 'variable' for the current floating point error code. */
-  _CRTIMP int *__cdecl __fpecode(void) __MINGW_NOTHROW;
+  _CRTIMP int *__cdecl __fpecode(void) __NOTHROW;
 #define _fpecode (*(__fpecode()))
 
   _CRTIMP int __cdecl __fpe_flt_rounds(void);
@@ -262,14 +262,14 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _SIGN_DEFINED  /* Also in math.h */
 # define _SIGN_DEFINED
-  _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _chgsign(double _X)                     __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _scalb(double _X, long _Y)              __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _logb(double _X)                        __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __MINGW_NOTHROW;
-  _CRTIMP int    __cdecl _finite(double _X)                      __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int    __cdecl _isnan(double _X)                       __MINGW_NOTHROW;
-  _CRTIMP int    __cdecl _fpclass(double _X)                     __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __NOTHROW __CONST;
+  _CRTIMP double __cdecl _chgsign(double _X)                     __NOTHROW;
+  _CRTIMP double __cdecl _scalb(double _X, long _Y)              __NOTHROW;
+  _CRTIMP double __cdecl _logb(double _X)                        __NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __NOTHROW;
+  _CRTIMP int    __cdecl _finite(double _X)                      __NOTHROW __CONST;
+  _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW;
+  _CRTIMP int    __cdecl _fpclass(double _X)                     __NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
   _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
 #endif

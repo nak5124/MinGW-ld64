@@ -49,9 +49,9 @@ HMODULE WINAPI LoadLibraryA(LPCSTR lpFileName)
 }
 
 #ifdef _X86_
-HMODULE (WINAPI *__MINGW_IMP_SYMBOL(LoadLibraryW))(LPCWSTR lpFileName) __asm__("__imp__LoadLibraryW@4") = LoadLibraryW;
-HMODULE (WINAPI *__MINGW_IMP_SYMBOL(LoadLibraryA))(LPCSTR lpFileName) __asm__("__imp__LoadLibraryA@4") = LoadLibraryA;
+HMODULE (WINAPI *__IMP_SYMBOL(LoadLibraryW))(LPCWSTR lpFileName) __asm__("__imp__LoadLibraryW@4") = LoadLibraryW;
+HMODULE (WINAPI *__IMP_SYMBOL(LoadLibraryA))(LPCSTR lpFileName) __asm__("__imp__LoadLibraryA@4") = LoadLibraryA;
 #else
-HMODULE (WINAPI *__MINGW_IMP_SYMBOL(LoadLibraryW))(LPCWSTR lpFileName) __asm__("__imp_LoadLibraryW") = LoadLibraryW;
-HMODULE (WINAPI *__MINGW_IMP_SYMBOL(LoadLibraryA))(LPCSTR lpFileName) __asm__("__imp_LoadLibraryA") = LoadLibraryA;
+HMODULE (WINAPI *__IMP_SYMBOL(LoadLibraryW))(LPCWSTR lpFileName) __asm__("__imp_LoadLibraryW") = LoadLibraryW;
+HMODULE (WINAPI *__IMP_SYMBOL(LoadLibraryA))(LPCSTR lpFileName) __asm__("__imp_LoadLibraryA") = LoadLibraryA;
 #endif

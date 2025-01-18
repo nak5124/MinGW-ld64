@@ -3,12 +3,13 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#include <_mingw_mac.h>
+#define __NO_INTRIN_DECL
+#include <_mingw.h>
 
 #if defined(__aarch64__) || defined(_ARM64_)
-	.globl __MINGW_USYMBOL(__mingw_setjmp)
-	.def	__MINGW_USYMBOL(__mingw_setjmp);	.scl	2;	.type	32;	.endef
-__MINGW_USYMBOL(__mingw_setjmp):
+	.globl __USYMBOL(__mingw_setjmp)
+	.def	__USYMBOL(__mingw_setjmp);	.scl	2;	.type	32;	.endef
+__USYMBOL(__mingw_setjmp):
 	str     xzr, [x0]             /* jmp_buf->Frame */
 	stp     x19, x20, [x0, #0x10] /* jmp_buf->X19, X20 */
 	stp     x21, x22, [x0, #0x20] /* jmp_buf->X21, X22 */
@@ -29,9 +30,9 @@ __MINGW_USYMBOL(__mingw_setjmp):
 	mov     x0,  #0
 	ret
 
-	.globl __MINGW_USYMBOL(__mingw_longjmp)
-	.def	__MINGW_USYMBOL(__mingw_longjmp);	.scl	2;	.type	32;	.endef
-__MINGW_USYMBOL(__mingw_longjmp):
+	.globl __USYMBOL(__mingw_longjmp)
+	.def	__USYMBOL(__mingw_longjmp);	.scl	2;	.type	32;	.endef
+__USYMBOL(__mingw_longjmp):
 	ldp     x19, x20, [x0, #0x10] /* jmp_buf->X19, X20 */
 	ldp     x21, x22, [x0, #0x20] /* jmp_buf->X21, X22 */
 	ldp     x23, x24, [x0, #0x30] /* jmp_buf->X23, X24 */

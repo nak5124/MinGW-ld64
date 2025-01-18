@@ -156,7 +156,7 @@ DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 }
 
 static
-__declspec(noinline) WINBOOL
+__NOINLINE WINBOOL
 __DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 {
   WINBOOL retcode = TRUE;

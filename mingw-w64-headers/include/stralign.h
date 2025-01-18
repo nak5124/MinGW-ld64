@@ -19,7 +19,7 @@
 # if defined(_WINDOWS_SECURE_NO_DEPRECATE) || !_STRALIGN_USE_SECURE_CRT
 #   define _WINDOWS_INSECURE_DEPRECATE
 # else
-#   define _WINDOWS_INSECURE_DEPRECATE __declspec(deprecated)
+#   define _WINDOWS_INSECURE_DEPRECATE __ATTR_DEPRECATED
 # endif
 #endif
 

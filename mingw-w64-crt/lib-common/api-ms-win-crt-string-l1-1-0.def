@@ -48,6 +48,7 @@ _memicmp
 memicmp == _memicmp
 _memicmp_l
 _strcoll_l
+strcoll_l = _strcoll_l
 _strdup
 strdup == _strdup
 _stricmp

@@ -28,4 +28,4 @@ int __cdecl swprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wch
     return _Ret < 0 ? -1 : _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(swprintf))(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...) = swprintf;
+int __cdecl (*__IMP_SYMBOL(swprintf))(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...) = swprintf;

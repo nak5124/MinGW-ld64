@@ -13,4 +13,4 @@ int __cdecl vsprintf(char *__restrict _Buffer, const char *__restrict _Format, v
     return _Ret < 0 ? -1 : _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(vsprintf))(char *__restrict, const char *__restrict, va_list) = vsprintf;
+int __cdecl (*__IMP_SYMBOL(vsprintf))(char *__restrict, const char *__restrict, va_list) = vsprintf;

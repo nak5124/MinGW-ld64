@@ -75,7 +75,7 @@ typedef union {double f; uint64_t u;} b64u64_u;
 typedef unsigned __int128 u128;
 typedef uint64_t u64;
 
-static double __attribute__((noinline)) rbig(uint32_t u, int *q){
+static double __NOINLINE rbig(uint32_t u, int *q){
   static const u64 ipi[] = {0xfe5163abdebbc562, 0xdb6295993c439041, 0xfc2757d1f534ddc0, 0xa2f9836e4e441529};
   int e = (u>>23)&0xff, i;
   u64 m = (u&(~0u>>9))|1<<23;
@@ -125,7 +125,7 @@ static inline float add_sign(float x, float rh, float rl){
   return sgn*rh + sgn*rl;
 }
 
-static void __attribute__((noinline)) as_sincosf_database(float x, float *sout, float *cout){
+static void __NOINLINE as_sincosf_database(float x, float *sout, float *cout){
   static const struct {union{float arg; uint32_t uarg;}; float sh, sl, ch, cl;} st[] = {
     {{0x1.33333p+13}, -0x1.63f4bap-2, -0x1p-27, -0x1.e01216p-1, -0x1p-26},
     {{0x1.75b8a2p-1}, 0x1.55688ap-1, -0x1p-26, 0x1.7d8e1ep-1, 0x1p-26},
@@ -160,7 +160,7 @@ static const double tb[] =
    -0x1p+0, -0x1.f6297cff75cbp-1, -0x1.d906bcf328d46p-1, -0x1.a9b66290ea1a3p-1,
    -0x1.6a09e667f3bcdp-1, -0x1.1c73b39ae68c8p-1, -0x1.87de2a6aea963p-2, -0x1.8f8b83c69a60bp-3};
 
-static void __attribute__((noinline)) as_sincosf_big(float x, float *sout, float *cout){
+static void __NOINLINE as_sincosf_big(float x, float *sout, float *cout){
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
   if(__builtin_expect(ax>=0xffu<<24, 0)){ // nan or +-inf

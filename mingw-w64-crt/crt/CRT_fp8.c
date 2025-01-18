@@ -6,12 +6,12 @@
 
 #include <_mingw.h>
 
-extern void (* __MINGW_IMP_SYMBOL(_fpreset))(void);
+extern void (* __IMP_SYMBOL(_fpreset))(void);
 void _fpreset (void);
 
 void _fpreset (void)
 {
-  (* __MINGW_IMP_SYMBOL(_fpreset))();
+  (* __IMP_SYMBOL(_fpreset))();
 }
 
 void __attribute__ ((alias ("_fpreset"))) fpreset(void);

@@ -13,7 +13,7 @@
 
 __MINGW_BEGIN_C_DECLS
 
-#define __MINGW_STDBIT_INLINE static __inline__ __attribute__((__always_inline__))
+#define __MINGW_STDBIT_INLINE static __inline __always_inline
 
 /* 7.18.1 General */
 #define __STDC_VERSION_STDBIT_H__ 202311L
@@ -24,11 +24,11 @@ __MINGW_BEGIN_C_DECLS
 #define __STDC_ENDIAN_NATIVE__ __BYTE_ORDER__
 
 /* 7.18.3 Count Leading Zeros */
-  extern unsigned int stdc_leading_zeros_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_zeros_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_zeros_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_zeros_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_zeros_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_leading_zeros_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_leading_zeros_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_leading_zeros_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_leading_zeros_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_leading_zeros_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_leading_zeros(value) (__builtin_stdc_leading_zeros(value))
 
@@ -63,11 +63,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_leading_zeros_ull(value) (__leading_zeros_64(value))
 
 /* 7.18.4 Count Leading Ones */
-  extern unsigned int stdc_leading_ones_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_ones_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_ones_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_ones_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_leading_ones_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_leading_ones_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_leading_ones_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_leading_ones_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_leading_ones_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_leading_ones_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_leading_ones(value) (__builtin_stdc_leading_ones(value))
 
@@ -102,11 +102,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_leading_ones_ull(value) (__leading_ones_64(value))
 
 /* 7.18.5 Count Trailing Zeros */
-  extern unsigned int stdc_trailing_zeros_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_zeros_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_zeros_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_zeros_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_zeros_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_trailing_zeros_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_zeros_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_zeros_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_zeros_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_zeros_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_trailing_zeros(value) (__builtin_stdc_trailing_zeros(value))
 
@@ -141,11 +141,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_trailing_zeros_ull(value) (__trailing_zeros_64(value))
 
 /* 7.18.6 Count Trailing Ones */
-  extern unsigned int stdc_trailing_ones_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_ones_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_ones_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_ones_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_trailing_ones_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_trailing_ones_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_ones_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_ones_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_ones_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_trailing_ones_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_trailing_ones(value) (__builtin_stdc_trailing_ones(value))
 
@@ -180,11 +180,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_trailing_ones_ull(value) (__trailing_ones_64(value))
 
 /* 7.18.7 First Leading Zero */
-  extern unsigned int stdc_first_leading_zero_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_zero_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_zero_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_zero_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_zero_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_first_leading_zero_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_zero_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_zero_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_zero_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_zero_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_first_leading_zero(value) (__builtin_stdc_first_leading_zero(value))
 
@@ -223,11 +223,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_first_leading_zero_ull(value) (__first_leading_zero_64(value))
 
 /* 7.18.8 First Leading One */
-  extern unsigned int stdc_first_leading_one_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_one_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_one_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_one_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_leading_one_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_first_leading_one_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_one_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_one_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_one_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_first_leading_one_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_first_leading_one(value) (__builtin_stdc_first_leading_one(value))
 
@@ -262,11 +262,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_first_leading_one_ull(value) (__first_leading_one_64(value))
 
 /* 7.18.9 First Trailing Zero */
-  extern unsigned int stdc_first_trailing_zero_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_zero_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_zero_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_zero_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_zero_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_first_trailing_zero_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_zero_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_zero_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_zero_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_zero_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_first_trailing_zero(value) (__builtin_stdc_first_trailing_zero(value))
 
@@ -301,11 +301,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_first_trailing_zero_ull(value) (__first_trailing_zero_64(value))
 
 /* 7.18.10 First Trailing One */
-  extern unsigned int stdc_first_trailing_one_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_one_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_one_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_one_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_first_trailing_one_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_first_trailing_one_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_one_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_one_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_one_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_first_trailing_one_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_first_trailing_one(value) (__builtin_stdc_first_trailing_one(value))
 
@@ -340,11 +340,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_first_trailing_one_ull(value) (__first_trailing_one_64(value))
 
 /* 7.18.11 Count Zeros */
-  extern unsigned int stdc_count_zeros_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_zeros_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_zeros_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_zeros_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_zeros_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_count_zeros_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_count_zeros_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_count_zeros_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_count_zeros_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_count_zeros_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_count_zeros(value) (__builtin_stdc_count_zeros(value))
 
@@ -379,11 +379,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_count_zeros_ull(value) (__count_zeros_64(value))
 
 /* 7.18.12 Count Ones */
-  extern unsigned int stdc_count_ones_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_ones_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_ones_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_ones_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_count_ones_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_count_ones_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_count_ones_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_count_ones_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_count_ones_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_count_ones_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_count_ones(value) (__builtin_stdc_count_ones(value))
 
@@ -418,11 +418,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_count_ones_ull(value) (__count_ones_64(value))
 
 /* 7.18.13 Single-bit Check */
-  extern bool stdc_has_single_bit_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern bool stdc_has_single_bit_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern bool stdc_has_single_bit_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern bool stdc_has_single_bit_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern bool stdc_has_single_bit_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern bool stdc_has_single_bit_uc(unsigned char value)           __NOTHROW __CONST;
+  extern bool stdc_has_single_bit_us(unsigned short value)          __NOTHROW __CONST;
+  extern bool stdc_has_single_bit_ui(unsigned int value)            __NOTHROW __CONST;
+  extern bool stdc_has_single_bit_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern bool stdc_has_single_bit_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_has_single_bit(value) (__builtin_stdc_has_single_bit(value))
 
@@ -457,11 +457,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_has_single_bit_ull(value) (__has_single_bit_64(value))
 
 /* 7.18.14 Bit Width */
-  extern unsigned int stdc_bit_width_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_bit_width_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_bit_width_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_bit_width_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int stdc_bit_width_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned int stdc_bit_width_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned int stdc_bit_width_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int stdc_bit_width_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned int stdc_bit_width_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned int stdc_bit_width_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_bit_width(value) (__builtin_stdc_bit_width(value))
 
@@ -496,11 +496,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_bit_width_ull(value) (__bit_width_64(value))
 
 /* 7.18.15 Bit Floor */
-  extern unsigned char          stdc_bit_floor_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned short         stdc_bit_floor_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int           stdc_bit_floor_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned long int      stdc_bit_floor_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned long long int stdc_bit_floor_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned char          stdc_bit_floor_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned short         stdc_bit_floor_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int           stdc_bit_floor_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned long int      stdc_bit_floor_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned long long int stdc_bit_floor_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_bit_floor(value) (__builtin_stdc_bit_floor(value))
 
@@ -535,11 +535,11 @@ __MINGW_BEGIN_C_DECLS
 #define stdc_bit_floor_ull(value) ((unsigned long long int)__bit_floor_64(value))
 
 /* 7.18.16 Bit Ceiling */
-  extern unsigned char          stdc_bit_ceil_uc(unsigned char value)           __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned short         stdc_bit_ceil_us(unsigned short value)          __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned int           stdc_bit_ceil_ui(unsigned int value)            __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned long int      stdc_bit_ceil_ul(unsigned long int value)       __MINGW_NOTHROW __MINGW_CONST;
-  extern unsigned long long int stdc_bit_ceil_ull(unsigned long long int value) __MINGW_NOTHROW __MINGW_CONST;
+  extern unsigned char          stdc_bit_ceil_uc(unsigned char value)           __NOTHROW __CONST;
+  extern unsigned short         stdc_bit_ceil_us(unsigned short value)          __NOTHROW __CONST;
+  extern unsigned int           stdc_bit_ceil_ui(unsigned int value)            __NOTHROW __CONST;
+  extern unsigned long int      stdc_bit_ceil_ul(unsigned long int value)       __NOTHROW __CONST;
+  extern unsigned long long int stdc_bit_ceil_ull(unsigned long long int value) __NOTHROW __CONST;
 
 #define stdc_bit_ceil(value) (__builtin_stdc_bit_ceil(value))
 

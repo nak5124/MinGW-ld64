@@ -16,4 +16,4 @@ int __cdecl swscanf(const wchar_t *__restrict _Buffer, const wchar_t *__restrict
     return _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(swscanf))(const wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, ...) = swscanf;
+int __cdecl (*__IMP_SYMBOL(swscanf))(const wchar_t *__restrict _Buffer, const wchar_t *__restrict _Format, ...) = swscanf;

@@ -46,35 +46,35 @@ __MINGW_BEGIN_C_DECLS
 #pragma pop_macro("sleep")
 
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC)
-  extern int __cdecl usleep(useconds_t __useconds) __MINGW_NOTHROW;
+  extern int __cdecl usleep(useconds_t __useconds) __NOTHROW;
 #endif
 
 #if defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    extern int __cdecl truncate(const char *__file, off_t __length) __MINGW_NONNULL((1));
+    extern int __cdecl truncate(const char *__file, off_t __length) __NOTHROW __NONNULL((1)) __WUR_FORTIFY;
 # else
-    extern int __cdecl truncate(const char *__file, off_t __length) __MINGW_ASM_CALL(truncate64) __MINGW_NONNULL((1));
+    extern int __cdecl truncate(const char *__file, off_t __length) __ASM_CALL_NTH(truncate64) __NONNULL((1)) __WUR_FORTIFY;
 # endif
 # ifdef __MINGW_USE_LFS64
-    extern int __cdecl truncate64(const char *__file, off64_t __length) __MINGW_NONNULL((1));
+    extern int __cdecl truncate64(const char *__file, off64_t __length) __NOTHROW __NONNULL((1)) __WUR_FORTIFY;
 # endif
 #endif
 
 #if defined(__MINGW_USE_POSIX199309) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K)
 # ifndef __MINGW_USE_FOB64
-    /**/   int __cdecl ftruncate(int __fd, off_t __length);
+    /**/   int __cdecl ftruncate(int __fd, off_t __length) __NOTHROW __WUR_FORTIFY;
 # else
-    extern int __cdecl ftruncate(int __fd, off_t __length) __MINGW_ASM_CALL(ftruncate64);
+    extern int __cdecl ftruncate(int __fd, off_t __length) __ASM_CALL_NTH(ftruncate64) __WUR_FORTIFY;
 # endif
 # ifdef __MINGW_USE_LFS64
-    extern int __cdecl ftruncate64(int __fd, off64_t __length);
+    extern int __cdecl ftruncate64(int __fd, off64_t __length) __NOTHROW __WUR_FORTIFY;
 # endif
 #endif
 
 #ifndef _CRT_SWAB_DEFINED  /* Also in stdlib.h */
 # define _CRT_SWAB_DEFINED
 # if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* _CRT_SWAB_DEFINED */
 
@@ -86,7 +86,7 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 
 #ifdef __MINGW_USE_MISC
-  extern int __cdecl getentropy(void *_Buffer, size_t _Length);
+  extern int __cdecl getentropy(void *_Buffer, size_t _Length) __WUR_FORTIFY;
 #endif
 
 __MINGW_END_C_DECLS

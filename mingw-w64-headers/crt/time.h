@@ -50,35 +50,35 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl _get_timezone(long *_Timezone);
   _CRTIMP errno_t __cdecl _get_tzname(size_t *_ReturnValue, char *_Buffer, size_t _SizeInBytes, int _Index);
 
-  _CRTIMP char *__cdecl asctime(const struct tm *_Tm) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char *__cdecl asctime(const struct tm *_Tm) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, asctime_s, char, _Buffer, const struct tm *, _Time)
 #endif
-  _CRTIMP clock_t    __cdecl  clock(void) __MINGW_NOTHROW;
-  _CRTIMP char      *__cdecl _ctime32(const __time32_t *_Time) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP clock_t    __cdecl  clock(void) __NOTHROW;
+  _CRTIMP char      *__cdecl _ctime32(const __time32_t *_Time) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _ctime32_s(char *_Buf, size_t _SizeInBytes, const __time32_t *_Time);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _ctime32_s, char, _Buffer, const __time32_t *, _Time)
-  _CRTIMP char      *__cdecl _ctime64(const __time64_t *_Time) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP char      *__cdecl _ctime64(const __time64_t *_Time) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _ctime64_s(char *_Buf, size_t _SizeInBytes, const __time64_t *_Time);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _ctime64_s, char, _Buffer, const __time64_t *, _Time)
   _CRTIMP double     __cdecl _difftime32(__time32_t _Time1, __time32_t _Time2);
   _CRTIMP double     __cdecl _difftime64(__time64_t _Time1, __time64_t _Time2);
-  _CRTIMP struct tm *__cdecl _gmtime32(const __time32_t *_Time) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP struct tm *__cdecl _gmtime32(const __time32_t *_Time) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _gmtime32_s(struct tm *_Tm, const __time32_t *_Time);
-  _CRTIMP struct tm *__cdecl _gmtime64(const __time64_t *_Time) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP struct tm *__cdecl _gmtime64(const __time64_t *_Time) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _gmtime64_s(struct tm *_Tm, const __time64_t *_Time);
-  _CRTIMP struct tm *__cdecl _localtime32(const __time32_t *_Time) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP struct tm *__cdecl _localtime32(const __time32_t *_Time) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _localtime32_s(struct tm *_Tm, const __time32_t *_Time);
-  _CRTIMP struct tm *__cdecl _localtime64(const __time64_t *_Time) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP struct tm *__cdecl _localtime64(const __time64_t *_Time) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _localtime64_s(struct tm *_Tm, const __time64_t *_Time);
   _CRTIMP __time32_t __cdecl _mkgmtime32(struct tm *_Tm);
   _CRTIMP __time64_t __cdecl _mkgmtime64(struct tm *_Tm);
-  _CRTIMP __time32_t __cdecl _mktime32(struct tm *_Tm) __MINGW_NOTHROW;
-  _CRTIMP __time64_t __cdecl _mktime64(struct tm *_Tm) __MINGW_NOTHROW;
+  _CRTIMP __time32_t __cdecl _mktime32(struct tm *_Tm) __NOTHROW;
+  _CRTIMP __time64_t __cdecl _mktime64(struct tm *_Tm) __NOTHROW;
 
   _CRTIMP size_t     __cdecl  strftime(char *__restrict _Buf, size_t _SizeInBytes, const char *__restrict _Format, const struct tm *__restrict _Tm)
-                                          __MINGW_GNU_STRFTIME(3, 0) __MINGW_NONNULL((1, 3, 4)) __MINGW_NOTHROW;
+                                          __NOTHROW __MINGW_GNU_STRFTIME(3, 0) __NONNULL((1, 3, 4));
   _CRTIMP size_t     __cdecl _strftime_l(char *__restrict _Buf, size_t _Max_size, const char *__restrict _Format,const struct tm *__restrict _Tm, _locale_t _Locale);
   _CRTIMP char      *__cdecl _strdate(char *_Buffer) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _strdate_s(char *_Buf, size_t _SizeInBytes);
@@ -86,29 +86,29 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char      *__cdecl _strtime(char *_Buffer) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t    __cdecl _strtime_s(char *_Buf, size_t _SizeInBytes);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strtime_s, char, _Str)
-  _CRTIMP __time32_t __cdecl _time32(__time32_t *_Time) __MINGW_NOTHROW;
-  _CRTIMP __time64_t __cdecl _time64(__time64_t *_Time) __MINGW_NOTHROW;
-  _CRTIMP int        __cdecl _timespec32_get(struct _timespec32 *_Ts, int _Base) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
-  _CRTIMP int        __cdecl _timespec64_get(struct _timespec64 *_Ts, int _Base) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  _CRTIMP __time32_t __cdecl _time32(__time32_t *_Time) __NOTHROW;
+  _CRTIMP __time64_t __cdecl _time64(__time64_t *_Time) __NOTHROW;
+  _CRTIMP int        __cdecl _timespec32_get(struct _timespec32 *_Ts, int _Base) __NOTHROW __NONNULL((1));
+  _CRTIMP int        __cdecl _timespec64_get(struct _timespec64 *_Ts, int _Base) __NOTHROW __NONNULL((1));
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
-  extern void      __cdecl _tzset(void)                                   __MINGW_NOTHROW;
-  _CRTIMP unsigned __cdecl _getsystime(struct tm *_Tm)                    __MINGW_DEPRECATED;
-  _CRTIMP unsigned __cdecl _setsystime(struct tm *_Tm,unsigned _MilliSec) __MINGW_DEPRECATED;
+  extern void      __cdecl _tzset(void) __NOTHROW;
+  _CRTIMP unsigned __cdecl _getsystime(struct tm *_Tm)                    __ATTR_DEPRECATED;
+  _CRTIMP unsigned __cdecl _setsystime(struct tm *_Tm,unsigned _MilliSec) __ATTR_DEPRECATED;
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
-  char      *__cdecl  ctime(const time_t *_Time)             __MINGW_ASM_CALL(_ctime64)     __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
-  double     __cdecl  difftime(time_t _Time1, time_t _Time2) __MINGW_ASM_CALL(_difftime64);
-  struct tm *__cdecl  gmtime(const time_t *_Time)            __MINGW_ASM_CALL(_gmtime64)    __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
-  struct tm *__cdecl  localtime(const time_t *_Time)         __MINGW_ASM_CALL(_localtime64) __MINGW_NOTHROW __MINGW_DEPRECATED_SEC_WARN;
-  time_t     __cdecl _mkgmtime(struct tm *_Tm)               __MINGW_ASM_CALL(_mkgmtime64);
-  time_t     __cdecl  mktime(struct tm *_Tm)                 __MINGW_ASM_CALL(_mktime64)    __MINGW_NOTHROW;
-  time_t     __cdecl  time(time_t *_Time)                    __MINGW_ASM_CALL(_time64)      __MINGW_NOTHROW;
+  char      *__cdecl  ctime(const time_t *_Time)             __ASM_CALL_NTH(_ctime64)     __MINGW_DEPRECATED_SEC_WARN;
+  double     __cdecl  difftime(time_t _Time1, time_t _Time2) __ASM_CALL(_difftime64);
+  struct tm *__cdecl  gmtime(const time_t *_Time)            __ASM_CALL_NTH(_gmtime64)    __MINGW_DEPRECATED_SEC_WARN;
+  struct tm *__cdecl  localtime(const time_t *_Time)         __ASM_CALL_NTH(_localtime64) __MINGW_DEPRECATED_SEC_WARN;
+  time_t     __cdecl _mkgmtime(struct tm *_Tm)               __ASM_CALL(_mkgmtime64);
+  time_t     __cdecl  mktime(struct tm *_Tm)                 __ASM_CALL_NTH(_mktime64);
+  time_t     __cdecl  time(time_t *_Time)                    __ASM_CALL_NTH(_time64);
 #ifdef __MINGW_USE_ISOC11
-  int __cdecl timespec_get(struct timespec *_Ts, int _Base) __MINGW_ASM_CALL(_timespec64_get) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  int __cdecl timespec_get(struct timespec *_Ts, int _Base)  __ASM_CALL_NTH(_timespec64_get) __NONNULL((1));
 #endif
 #ifdef __MINGW_USE_SECAPI
-  errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __MINGW_ASM_CALL(_ctime64_s);
+  errno_t __cdecl ctime_s(char *_Buf, size_t _SizeInBytes, const time_t *_Time) __ASM_CALL(_ctime64_s);
 # if _CRT_USE_CONFORMING_ANNEX_K_TIME
   __mingw_ovr
   errno_t gmtime_s(const time_t *_Time, struct tm *_Tm)
@@ -130,8 +130,8 @@ __MINGW_BEGIN_C_DECLS
     return NULL;
   }
 # else
-  errno_t __cdecl gmtime_s(struct tm *_Tm, const time_t *_Time)    __MINGW_ASM_CALL(_gmtime64_s);
-  errno_t __cdecl localtime_s(struct tm *_Tm, const time_t *_Time) __MINGW_ASM_CALL(_localtime64_s);
+  errno_t __cdecl gmtime_s(struct tm *_Tm, const time_t *_Time)    __ASM_CALL(_gmtime64_s);
+  errno_t __cdecl localtime_s(struct tm *_Tm, const time_t *_Time) __ASM_CALL(_localtime64_s);
 # endif
 #endif
 
@@ -140,11 +140,11 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if (defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)) && defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP)
-  extern void __cdecl tzset(void) __MINGW_NOTHROW __MINGW_DEPRECATED_MSVC2005;
+  extern void __cdecl tzset(void) __NOTHROW __MINGW_DEPRECATED_MSVC2005;
 #endif
 
 #define __MINGW_DEPRECATED_UCRT \
-  __MINGW_DEPRECATED_MSG( \
+  __ATTR_DEPRECATED_MSG( \
     "Only provided for source compatibility; this variable might " \
     "not always be accurate when linking to UCRT.")
 
@@ -166,18 +166,18 @@ __MINGW_BEGIN_C_DECLS
     int tz_dsttime;
   };
 
-  extern int __cdecl mingw_gettimeofday(struct timeval *__tv, struct timezone *__tz) __MINGW_NONNULL((1)) __MINGW_NOTHROW;
+  extern int __cdecl mingw_gettimeofday(struct timeval *__tv, struct timezone *__tz) __NOTHROW __NONNULL((1));
 #endif  /* _TIMEZONE_DEFINED */
 
 #include <errno.h>
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_POSIX)
-  extern struct tm *__cdecl localtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm) __MINGW_NOTHROW;
-  extern struct tm *__cdecl gmtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)    __MINGW_NOTHROW;
+  extern struct tm *__cdecl localtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm) __NOTHROW;
+  extern struct tm *__cdecl gmtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)    __NOTHROW;
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_NOTHROW
-  struct tm *__cdecl localtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)
+  __CRT_INLINE
+  __NTH_FNC(struct tm *__cdecl localtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm))
   {
     errno_t ret = _localtime64_s(_Tm, _Time);
     if(ret == 0)
@@ -188,8 +188,8 @@ __MINGW_BEGIN_C_DECLS
     return NULL;
   }
 
-  __CRT_INLINE __MINGW_NOTHROW
-  struct tm *__cdecl gmtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm)
+  __CRT_INLINE
+  __NTH_FNC(struct tm *__cdecl gmtime_r(const time_t *__restrict _Time, struct tm *__restrict _Tm))
   {
     errno_t ret = _gmtime64_s(_Tm, _Time);
     if(ret == 0)
@@ -203,12 +203,12 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_POSIX
-  extern char *__cdecl ctime_r(const time_t *__restrict _Time, char *__restrict _Buf)    __MINGW_NOTHROW;
-  extern char *__cdecl asctime_r(const struct tm *__restrict _Tm, char *__restrict _Buf) __MINGW_NOTHROW;
+  extern char *__cdecl ctime_r(const time_t *__restrict _Time, char *__restrict _Buf)    __NOTHROW;
+  extern char *__cdecl asctime_r(const struct tm *__restrict _Tm, char *__restrict _Buf) __NOTHROW;
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_NOTHROW
-  char *__cdecl ctime_r(const time_t *__restrict _Time, char *__restrict _Buf)
+  __CRT_INLINE
+  __NTH_FNC(char *__cdecl ctime_r(const time_t *__restrict _Time, char *__restrict _Buf))
   {
     errno_t ret = _ctime64_s(_Buf, 26, _Time);
     if(ret == 0)
@@ -219,9 +219,9 @@ __MINGW_BEGIN_C_DECLS
     return NULL;
   }
 
-  _CRTIMP errno_t __cdecl _asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm) __MINGW_ASM_CALL(asctime_s);
-  __CRT_INLINE __MINGW_NOTHROW
-  char *__cdecl asctime_r(const struct tm *__restrict _Tm, char *__restrict _Buf)
+  _CRTIMP errno_t __cdecl _asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm) __ASM_CALL(asctime_s);
+  __CRT_INLINE
+  __NTH_FNC(char *__cdecl asctime_r(const struct tm *__restrict _Tm, char *__restrict _Buf))
   {
     errno_t ret = _asctime_s(_Buf, 26, _Tm);
     if(ret == 0)
@@ -290,8 +290,8 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl nanosleep(const struct timespec *request, struct timespec *remain);
   extern int __cdecl clock_nanosleep(clockid_t clock_id, int flags, const struct timespec *request, struct timespec *remain);
   extern int __cdecl clock_getres(clockid_t clock_id, struct timespec *res);
-  extern int __cdecl clock_gettime(clockid_t clock_id, struct timespec *tp)       __MINGW_NONNULL((2));
-  extern int __cdecl clock_settime(clockid_t clock_id, const struct timespec *tp) __MINGW_NONNULL((2));
+  extern int __cdecl clock_gettime(clockid_t clock_id, struct timespec *tp)       __NONNULL((2));
+  extern int __cdecl clock_settime(clockid_t clock_id, const struct timespec *tp) __NONNULL((2));
 #endif
 
 #endif  /* __MINGW_USE_POSIX199309 */

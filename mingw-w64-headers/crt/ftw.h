@@ -41,25 +41,25 @@ __MINGW_BEGIN_C_DECLS
 
   typedef int (*__ftw_func_t)(const char *__filename, const struct stat *__status, int __flag);
 #if !defined(__MINGW_USE_FOB64) || defined(_CRTBLD)
-  extern int ftw(const char *__dir, __ftw_func_t __func, int __descriptors) __MINGW_NONNULL((1, 2));
+  extern int ftw(const char *__dir, __ftw_func_t __func, int __descriptors) __NONNULL((1, 2));
 #else
-  extern int ftw(const char *__dir, __ftw_func_t __func, int __descriptors) __MINGW_ASM_CALL(ftw64) __MINGW_NONNULL((1, 2));
+  extern int ftw(const char *__dir, __ftw_func_t __func, int __descriptors) __ASM_CALL(ftw64) __NONNULL((1, 2));
 #endif
 #ifdef __MINGW_USE_LFS64
   typedef int (*__ftw64_func_t)(const char *__filename, const struct stat64 *__status, int __flag);
-  extern int ftw64(const char *__dir, __ftw64_func_t __func, int __descriptors) __MINGW_NONNULL((1, 2));
+  extern int ftw64(const char *__dir, __ftw64_func_t __func, int __descriptors) __NONNULL((1, 2));
 #endif
 
 #ifdef __MINGW_USE_XOPEN_EXT
   typedef int (*__nftw_func_t)(const char *__filename, const struct stat *__status, int __flag, struct FTW *__info);
 # if !defined(__MINGW_USE_FOB64) || defined(_CRTBLD)
-  extern int nftw(const char *__dir, __nftw_func_t __func, int __descriptors, int __flag) __MINGW_NONNULL((1, 2));
+  extern int nftw(const char *__dir, __nftw_func_t __func, int __descriptors, int __flag) __NONNULL((1, 2));
 # else
-  extern int nftw(const char *__dir, __nftw_func_t __func, int __descriptors, int __flag) __MINGW_ASM_CALL(nftw64) __MINGW_NONNULL((1, 2));
+  extern int nftw(const char *__dir, __nftw_func_t __func, int __descriptors, int __flag) __ASM_CALL(nftw64) __NONNULL((1, 2));
 # endif
 # ifdef __MINGW_USE_LFS64
   typedef int (*__nftw64_func_t)(const char *__filename, const struct stat64 *__status, int __flag, struct FTW *__info);
-  extern int nftw64(const char *__dir, __nftw64_func_t __func, int __descriptors, int __flag) __MINGW_NONNULL((1, 2));
+  extern int nftw64(const char *__dir, __nftw64_func_t __func, int __descriptors, int __flag) __NONNULL((1, 2));
 # endif
 #endif
 

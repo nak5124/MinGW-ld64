@@ -178,7 +178,7 @@ __MINGW_BEGIN_C_DECLS
     __MACHINE(unsigned __LONG32                  __cdecl  _byteswap_ulong(unsigned __LONG32 value))
     __MACHINE(__MINGW_EXTENSION unsigned __int64 __cdecl  _byteswap_uint64(unsigned __int64 value))
     __MACHINE(void                               __cdecl __debugbreak(void))
-    __MACHINE(void                               __cdecl __fastfail(unsigned int code) __MINGW_NORETURN)
+    __MACHINE(void                               __cdecl __fastfail(unsigned int code) __NORETURN)
 #if 0  /* moved to psdk_inc/intrin-impl.h */
     __MACHINEI(__LONG32                     _InterlockedDecrement(__LONG32 volatile *))
     __MACHINEX64(__MINGW_EXTENSION __int64  _InterlockedDecrement64(__int64 volatile *))
@@ -219,8 +219,8 @@ __MINGW_BEGIN_C_DECLS
     __MACHINE(__MINGW_EXTENSION unsigned __int64 __cdecl _rotr64(unsigned __int64, int))
 #define _rotl64 __rolq
 #define _rotr64 __rorq
-    __MACHINE(int    __cdecl _setjmp(jmp_buf, void *) __MINGW_NOTHROW __MINGW_RETURN_TWICE)
-    __MACHINEX64(int __cdecl _setjmpex(jmp_buf, void *) __MINGW_NOTHROW __MINGW_RETURN_TWICE)
+    __MACHINE(int    __cdecl _setjmp(jmp_buf, void *) __NOTHROW __RETURNS_TWICE)
+    __MACHINEX64(int __cdecl _setjmpex(jmp_buf, void *) __NOTHROW __RETURNS_TWICE)
     __MACHINE(char  *__cdecl _strset(char *, int))
     __MACHINE(char  *__cdecl  strset(char *, int))
 #if 0  /* moved to psdk_inc/intrin-impl.h */

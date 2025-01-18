@@ -20,5 +20,5 @@ int __cdecl at_quick_exit(void (__cdecl *func)(void))
     return 0;
   return _crt_at_quick_exit(func);
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(at_quick_exit))(void (__cdecl *)(void)) = at_quick_exit;
+int __cdecl (*__IMP_SYMBOL(at_quick_exit))(void (__cdecl *)(void)) = at_quick_exit;
 #endif  // __USING_MCFGTHREAD__

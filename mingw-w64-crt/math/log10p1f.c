@@ -49,7 +49,7 @@ get_nan (void)
   return v.f;
 }
 
-static __attribute__((noinline)) float as_special(float x){
+static __NOINLINE float as_special(float x){
   b32u32_u t = {.f = x};
   uint32_t ux = t.u;
   if(ux == 0x7f800000u) return x; // +inf

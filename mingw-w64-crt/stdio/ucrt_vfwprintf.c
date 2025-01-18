@@ -11,4 +11,4 @@ int __cdecl vfwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Forma
     return __stdio_common_vfwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(vfwprintf))(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList) = vfwprintf;
+int __cdecl (*__IMP_SYMBOL(vfwprintf))(FILE *__restrict _Stream, const wchar_t *__restrict _Format, va_list _ArgList) = vfwprintf;

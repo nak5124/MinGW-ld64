@@ -11,28 +11,28 @@
 #endif
 
 /* `exit()`, C89  */
-void exit(int status) __MINGW_NORETURN;
-extern void (*__MINGW_IMP_SYMBOL(exit))(int) __MINGW_NORETURN;
+void exit(int status) __NORETURN;
+extern void (*__IMP_SYMBOL(exit))(int) __NORETURN;
 
 void exit(int status)
 {
 #ifdef __USING_MCFGTHREAD__
   __MCF_exit(status);
 #else
-  (*__MINGW_IMP_SYMBOL(exit))(status);
+  (*__IMP_SYMBOL(exit))(status);
 #endif
 }
 
 /* `_exit()`, POSIX  */
-void _exit(int status) __MINGW_NORETURN;
-extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __MINGW_NORETURN;
+void _exit(int status) __NORETURN;
+extern void (*__IMP_SYMBOL(_exit))(int) __NORETURN;
 
 void _exit(int status)
 {
 #ifdef __USING_MCFGTHREAD__
   __MCF__Exit(status);
 #else
-  (*__MINGW_IMP_SYMBOL(_exit))(status);
+  (*__IMP_SYMBOL(_exit))(status);
 #endif
 }
 

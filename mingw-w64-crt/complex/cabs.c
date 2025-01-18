@@ -48,5 +48,5 @@
 #include "cabs.def.h"
 
 long double __cdecl cabsl(long double __complex__ z) __attribute__((alias("cabs")));
-extern long double (__cdecl *__MINGW_IMP_SYMBOL(cabsl))(long double __complex__ z)
-  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(cabs)))));
+extern long double (__cdecl *__IMP_SYMBOL(cabsl))(long double __complex__ z)
+  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(cabs)))));

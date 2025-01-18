@@ -42,11 +42,11 @@ __MINGW_BEGIN_C_DECLS
 # define __STDC_UTF_32__ 1
 #endif
 
-  _CRTIMP size_t __cdecl mbrtoc16(char16_t *__restrict _Pc16, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __MINGW_NOTHROW;
-  _CRTIMP size_t __cdecl c16rtomb(char *__restrict _S, char16_t _C16, mbstate_t *__restrict _Ps)                               __MINGW_NOTHROW;
+  _CRTIMP size_t __cdecl mbrtoc16(char16_t *__restrict _Pc16, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __NOTHROW;
+  _CRTIMP size_t __cdecl c16rtomb(char *__restrict _S, char16_t _C16, mbstate_t *__restrict _Ps)                               __NOTHROW;
 
-  _CRTIMP size_t __cdecl mbrtoc32(char32_t *__restrict _Pc32, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __MINGW_NOTHROW;
-  _CRTIMP size_t __cdecl c32rtomb(char *__restrict _S, char32_t _C32, mbstate_t *__restrict _Ps)                               __MINGW_NOTHROW;
+  _CRTIMP size_t __cdecl mbrtoc32(char32_t *__restrict _Pc32, const char *__restrict _S, size_t _N, mbstate_t *__restrict _Ps) __NOTHROW;
+  _CRTIMP size_t __cdecl c32rtomb(char *__restrict _S, char32_t _C32, mbstate_t *__restrict _Ps)                               __NOTHROW;
 
 __MINGW_END_C_DECLS
 

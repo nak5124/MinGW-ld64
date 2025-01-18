@@ -42,6 +42,10 @@
 # define __mingw_clang_prereq(maj, min) 0
 #endif
 
+#if !__MINGW_GNUC_PREREQ(14, 1) && !__mingw_clang_prereq(19, 1) && !defined(__WIDL__)
+# error Only supported for GCC 14.1 and above or clang 19.1 and above
+#endif
+
 #ifdef _ISOC2X_SOURCE
 # undef  _ISOC2X_SOURCE
 # undef  _ISOC23_SOURCE
@@ -222,33 +226,25 @@
 #endif
 
 #if defined(_MS_SOURCE) || defined(__STDC_WANT_LIB_EXT1__) || defined(__STDC_WANT_SECURE_LIB__)
+# undef  __STDC_WANT_SECURE_LIB__
+# define __STDC_WANT_SECURE_LIB__ 1
 # define __MINGW_USE_SECAPI 1
+#else
+# define __STDC_WANT_SECURE_LIB__ 0
 #endif
 
 #if defined(__MINGW_USE_GNU) || (defined(__STDC_WANT_LIB_EXT2__) && __STDC_WANT_LIB_EXT2__ > 0)
 # define __MINGW_USE_LIB_EXT2 1
 #endif
 
-#pragma push_macro("__has_builtin")
-#ifndef __has_builtin
-# define __has_builtin(x) 0
-#endif
-
 #if defined(_FORTIFY_SOURCE) && _FORTIFY_SOURCE > 0
 # if !defined(__OPTIMIZE__) || __OPTIMIZE__ <= 0
 #   warning _FORTIFY_SOURCE requires compiling with optimization (-O)
-# elif !__MINGW_GNUC_PREREQ(4, 1)
-#   warning _FORTIFY_SOURCE requires GCC 4.1 or later
-# elif _FORTIFY_SOURCE > 3
-#   warning Using _FORTIFY_SOURCE=3 (levels > 3 are not supported)
-# endif
-# if _FORTIFY_SOURCE > 2
-#   if __has_builtin(__builtin_dynamic_object_size)
-#     define __MINGW_FORTIFY_LEVEL 3
-#   else
-#     warning Using _FORTIFY_SOURCE=2 (level 3 requires __builtin_dynamic_object_size support)
-#     define __MINGW_FORTIFY_LEVEL 2
+# elif _FORTIFY_SOURCE > 2
+#   if _FORTIFY_SOURCE > 3
+#     warning _FORTIFY_SOURCE > 3 is treated like 3
 #   endif
+#   define __MINGW_FORTIFY_LEVEL 3
 # elif _FORTIFY_SOURCE > 1
 #   define __MINGW_FORTIFY_LEVEL 2
 # else
@@ -258,12 +254,17 @@
 # define __MINGW_FORTIFY_LEVEL 0
 #endif
 
+/* This is required when compiling assembler source code. */
+#pragma push_macro("__has_builtin")
+#ifndef __has_builtin
+# define __has_builtin(x) 0
+#endif
+
 /* If _FORTIFY_SOURCE is enabled, some inline functions may use
  * __builtin_va_arg_pack().  GCC may report an error if the address
  * of such a function is used.  Set _FORTIFY_VA_ARG=0 in this case.
- * Clang doesn't, as of version 15, yet implement __builtin_va_arg_pack().  */
-#if __MINGW_FORTIFY_LEVEL > 0 \
-  && ((__MINGW_GNUC_PREREQ(4, 3) && !defined(__clang__)) || __has_builtin(__builtin_va_arg_pack)) \
+ * Clang doesn't, as of version 19, yet implement __builtin_va_arg_pack().  */
+#if __MINGW_FORTIFY_LEVEL > 0 && __has_builtin(__builtin_va_arg_pack) && __has_builtin(__builtin_va_arg_pack_len) \
   && (!defined(_FORTIFY_VA_ARG) || _FORTIFY_VA_ARG > 0)
 # define __MINGW_FORTIFY_VA_ARG 1
 #else

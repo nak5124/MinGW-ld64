@@ -50,9 +50,9 @@
 #include "catan.def.h"
 
 long double __complex__ __cdecl catanhl(long double __complex__ z) __attribute__((alias("catanh")));
-extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(catanhl))(long double __complex__ z)
-  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(catanh)))));
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(catanhl))(long double __complex__ z)
+  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(catanh)))));
 
 long double __complex__ __cdecl catanl(long double __complex__ z) __attribute__((alias("catan")));
-extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(catanl))(long double __complex__ z)
-  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(catan)))));
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(catanl))(long double __complex__ z)
+  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(catan)))));

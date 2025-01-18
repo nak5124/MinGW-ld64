@@ -10,37 +10,37 @@
 
 __MINGW_BEGIN_C_DECLS
 
-  _CRTIMP wchar_t *__cdecl wcscat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *__cdecl wcscat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t  __cdecl wcscat_s(wchar_t *_Dst, rsize_t _SizeInWords, const wchar_t *_Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, wcscat_s, wchar_t, _Dest, const wchar_t *, _Source)
 #endif
-  _CRTIMP wchar_t *__cdecl wcscpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *__cdecl wcscpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t  __cdecl wcscpy_s(wchar_t *_Dst, rsize_t _SizeInWords, const wchar_t *_Src);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, wcscpy_s, wchar_t, _Dest, const wchar_t *, _Source)
 #endif
-  _CRTIMP wchar_t *__cdecl wcsncat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source, size_t _Count) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *__cdecl wcsncat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source, size_t _Count) __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t  __cdecl wcsncat_s(wchar_t *_Dst, size_t _DstSizeInChars, const wchar_t *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, wcsncat_s, wchar_t, _Dst, const wchar_t *, _Src, size_t, _MaxCount)
 #endif
-  _CRTIMP wchar_t *__cdecl wcsncpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source, size_t _Count) __MINGW_NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *__cdecl wcsncpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source, size_t _Count) __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t  __cdecl wcsncpy_s(wchar_t *_Dst, size_t _DstSizeInChars, const wchar_t *_Src, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, wcsncpy_s, wchar_t, _Dest, const wchar_t *, _Source, size_t, _MaxCount)
 #endif
-  _CRTIMP wchar_t *__cdecl wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim, wchar_t **__restrict _Ptr) __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wchar_t *__cdecl wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim, wchar_t **__restrict _Ptr) __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP wchar_t *__cdecl wcstok_s(wchar_t *_Str, const wchar_t *_Delim, wchar_t **_Context);
 #endif
 
-  _CRTIMP wchar_t *__cdecl _wcsdup(const wchar_t *_Str) __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC_FREE;
-  _CRTIMP int      __cdecl  wcscmp(const wchar_t *_Str1, const wchar_t *_Str2)    __MINGW_NONNULL((1, 2)) __MINGW_PURE;
-  _CRTIMP size_t   __cdecl  wcscspn(const wchar_t *_Str, const wchar_t *_Control) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
-  _CRTIMP size_t   __cdecl  wcslen(const wchar_t *_Str)                           __MINGW_NONNULL((1))    __MINGW_PURE;
+  _CRTIMP wchar_t *__cdecl _wcsdup(const wchar_t *_Str) __NOTHROW __NONNULL((1)) __ATTR_MALLOC __ATTR_DEALLOC_FREE;
+  _CRTIMP int      __cdecl  wcscmp(const wchar_t *_Str1, const wchar_t *_Str2) __NOTHROW __PURE __NONNULL((1, 2));
+  _CRTIMP size_t   __cdecl  wcscspn(const wchar_t *_Str, const wchar_t *_Control)        __PURE __NONNULL((1, 2));
+  _CRTIMP size_t   __cdecl  wcslen(const wchar_t *_Str)                                  __PURE __NONNULL((1));
 #if defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MS)
-  _CRTIMP size_t   __cdecl  wcsnlen(const wchar_t *_Src, size_t _MaxCount)        __MINGW_NONNULL((1))    __MINGW_PURE;
+  _CRTIMP size_t   __cdecl  wcsnlen(const wchar_t *_Src, size_t _MaxCount) __PURE __NONNULL((1));
 #endif
 
 #ifdef __MINGW_USE_SECAPI
@@ -51,9 +51,9 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  _CRTIMP int                    __cdecl wcsncmp(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount) __MINGW_NONNULL((1, 2)) __MINGW_PURE;
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control)                 __MINGW_NONNULL((1, 2)) __MINGW_PURE;
-  _CRTIMP size_t                 __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control)                  __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+  _CRTIMP int                    __cdecl wcsncmp(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount) __NONNULL((1, 2)) __PURE;
+  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control)                 __NONNULL((1, 2)) __PURE;
+  _CRTIMP size_t                 __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control)                  __NONNULL((1, 2)) __PURE;
 
   extern wchar_t *__cdecl _wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim) __MINGW_DEPRECATED_SEC_WARN;
 #ifndef __CRT__NO_INLINE
@@ -68,7 +68,7 @@ __MINGW_BEGIN_C_DECLS
 # ifndef __cplusplus
 #   define wcstok _wcstok
 # elif !defined(_CRT_NO_INLINE_DEPRECATED_WCSTOK)
-  extern "C++" inline __MINGW_NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
+  extern "C++" inline __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
   wchar_t *__CRTDECL wcstok(wchar_t *_Str, const wchar_t *_Delim)
   {
     return wcstok(_Str, _Delim, NULL);
@@ -105,9 +105,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP wchar_t *__cdecl  _wcsupr_l(wchar_t *_String, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t  __cdecl  _wcsupr_s_l(wchar_t *_Str, size_t _Size, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _wcsupr_s_l, wchar_t, _Str, _locale_t, _Locale)
-  _CRTIMP size_t   __cdecl   wcsxfrm(wchar_t *__restrict _Dst, const wchar_t *__restrict _Src, size_t _MaxCount) __MINGW_NONNULL((2));
+  _CRTIMP size_t   __cdecl   wcsxfrm(wchar_t *__restrict _Dst, const wchar_t *__restrict _Src, size_t _MaxCount) __NONNULL((2));
   _CRTIMP size_t   __cdecl  _wcsxfrm_l(wchar_t *__restrict _Dst, const wchar_t *__restrict _Src, size_t _MaxCount, _locale_t _Locale);
-  _CRTIMP int      __cdecl   wcscoll(const wchar_t *_Str1, const wchar_t *_Str2) __MINGW_NONNULL((1, 2));
+  _CRTIMP int      __cdecl   wcscoll(const wchar_t *_Str1, const wchar_t *_Str2) __NONNULL((1, 2));
   _CRTIMP int      __cdecl  _wcscoll_l(const wchar_t *_Str1, const wchar_t *_Str2, _locale_t _Locale);
   _CRTIMP int      __cdecl  _wcsicoll(const wchar_t *_Str1, const wchar_t *_Str2);
   _CRTIMP int      __cdecl  _wcsicoll_l(const wchar_t *_Str1, const wchar_t *_Str2, _locale_t _Locale);
@@ -116,16 +116,14 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int      __cdecl  _wcsnicoll(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount);
   _CRTIMP int      __cdecl  _wcsnicoll_l(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount, _locale_t _Locale);
 
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch)
-    __MINGW_NONNULL((1)) __MINGW_PURE;
+  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch) __NOTHROW __PURE __NONNULL((1));
   _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsrchr(const wchar_t *_Str, wchar_t _Ch)
-    __MINGW_NONNULL((1)) __MINGW_PURE;
+    __NONNULL((1)) __PURE;
   _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr)
-    __MINGW_NONNULL((1, 2)) __MINGW_PURE;
+    __NONNULL((1, 2)) __PURE;
 
 #if defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MS)
-  _CRTIMP wchar_t *__cdecl wcsdup(const wchar_t *_Str)
-    __MINGW_NONNULL((1)) __MINGW_MALLOC __MINGW_DEALLOC_FREE __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP wchar_t *__cdecl wcsdup(const wchar_t *_Str) __NOTHROW __NONNULL((1)) __ATTR_MALLOC __ATTR_DEALLOC_FREE __MINGW_DEPRECATED_MSVC2005;
 #endif
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
 # define wcswcs wcsstr
@@ -148,10 +146,10 @@ __MINGW_BEGIN_C_DECLS
   __mingw_bos_declare;
 #endif
 
-  wchar_t *__cdecl __mingw_call_wcscpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __MINGW_ASM_CALL(wcscpy);
-  wchar_t *__cdecl __mingw_call_wcscat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __MINGW_ASM_CALL(wcscat);
+  wchar_t *__cdecl __mingw_call_wcscpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __ASM_CALL(wcscpy);
+  wchar_t *__cdecl __mingw_call_wcscat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __ASM_CALL(wcscat);
 
-  __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))
+  __mingw_bos_extern_ovr __NONNULL((1, 2))
   wchar_t *wcscpy(wchar_t *__restrict __dst, const wchar_t *__restrict __src)
   {
     if(__mingw_bos_known(__dst))
@@ -162,7 +160,7 @@ __MINGW_BEGIN_C_DECLS
     return __mingw_call_wcscpy(__dst, __src);
   }
 
-  __mingw_bos_extern_ovr __MINGW_NONNULL((1, 2))
+  __mingw_bos_extern_ovr __NONNULL((1, 2))
   wchar_t *wcscat(wchar_t *__restrict __dst, const wchar_t *__restrict __src)
   {
     if(__mingw_bos_known(__dst))

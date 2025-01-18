@@ -7,12 +7,12 @@
 #include <stdlib.h>
 #include <internal.h>
 
-extern void (*__MINGW_IMP_SYMBOL(_exit))(int) __MINGW_NORETURN;
+extern void (*__IMP_SYMBOL(_exit))(int) __NORETURN;
 
-__MINGW_NORETURN
+__NORETURN
 void __cdecl _amsg_exit(int ret)
 {
   fprintf(stderr, "runtime error %d\n", ret);
-  (*__MINGW_IMP_SYMBOL(_exit))(255);
+  (*__IMP_SYMBOL(_exit))(255);
 }
-void __cdecl (*__MINGW_IMP_SYMBOL(_amsg_exit))(int) = _amsg_exit;
+void __cdecl (*__IMP_SYMBOL(_amsg_exit))(int) = _amsg_exit;

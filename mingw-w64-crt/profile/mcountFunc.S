@@ -3,7 +3,8 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#include <_mingw_mac.h>
+#define __NO_INTRIN_DECL
+#include <_mingw.h>
 
 	.file "mcountFunc.S"
 	.text
@@ -28,7 +29,7 @@ _mcount:
 	movq (%rbp),%rax
 	movq 8(%rax),%rcx
 	sub $40, %rsp
-	call __MINGW_USYMBOL(_mcount_private)
+	call __USYMBOL(_mcount_private)
 	add $40, %rsp
 	pop %r11
 	pop %r10
@@ -59,7 +60,7 @@ __fentry__:
 	movq 8(%rbp),%rdx
 	movq 16(%rbp),%rcx
 	sub $40, %rsp
-	call __MINGW_USYMBOL(_mcount_private)
+	call __USYMBOL(_mcount_private)
 	add $40, %rsp
 	pop %r11
 	pop %r10

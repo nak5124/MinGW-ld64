@@ -235,7 +235,7 @@ static double atanpi_tiny (double x)
   return h + l;
 }
 
-static double __attribute__((noinline)) as_atan_refine2(double x, double a){
+static double __NOINLINE as_atan_refine2(double x, double a){
   if (__builtin_fabs (x) > 0x1.bep20)
     return atanpi_asympt (x);
   if (__builtin_fabs (x) < 0x1.c7p-27)

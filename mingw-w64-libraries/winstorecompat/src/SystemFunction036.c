@@ -46,7 +46,7 @@ BOOLEAN WINAPI SystemFunction036(PVOID RandomBuffer, ULONG RandomBufferLength)
 }
 
 #ifdef _X86_
-BOOLEAN (WINAPI *__MINGW_IMP_SYMBOL(SystemFunction036))(PVOID RandomBuffer, ULONG RandomBufferLength) __asm__("__imp__SystemFunction036@8") = SystemFunction036;
+BOOLEAN (WINAPI *__IMP_SYMBOL(SystemFunction036))(PVOID RandomBuffer, ULONG RandomBufferLength) __asm__("__imp__SystemFunction036@8") = SystemFunction036;
 #else
-BOOLEAN (WINAPI *__MINGW_IMP_SYMBOL(SystemFunction036))(PVOID RandomBuffer, ULONG RandomBufferLength) __asm__("__imp_SystemFunction036") = SystemFunction036;
+BOOLEAN (WINAPI *__IMP_SYMBOL(SystemFunction036))(PVOID RandomBuffer, ULONG RandomBufferLength) __asm__("__imp_SystemFunction036") = SystemFunction036;
 #endif

@@ -27,8 +27,8 @@ __MINGW_BEGIN_C_DECLS
 #   define _pwctype (__pwctype_func())
 # endif
 # if !defined(_wctype) && defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP)
-    extern const unsigned short ** __MINGW_IMP_SYMBOL(_wctype);
-#   define _wctype (* __MINGW_IMP_SYMBOL(_wctype))
+    extern const unsigned short ** __IMP_SYMBOL(_wctype);
+#   define _wctype (* __IMP_SYMBOL(_wctype))
 # endif
 #endif  /* _CTYPE_DISABLE_MACROS */
 
@@ -44,7 +44,7 @@ __MINGW_BEGIN_C_DECLS
 #define _LEADBYTE  0x8000
 #define _ALPHA    (0x0100 | _UPPER | _LOWER)
 
-  _CRTIMP int __cdecl   iswalnum(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP int __cdecl   iswalnum(wint_t _C) __NOTHROW __PURE;
   _CRTIMP int __cdecl   iswalpha(wint_t _C);
 #ifdef __MINGW_USE_MS
   _CRTIMP int __cdecl   iswascii(wint_t _C);
@@ -55,7 +55,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl   iswcntrl(wint_t _C);
   _CRTIMP int __cdecl   iswdigit(wint_t _C);
   _CRTIMP int __cdecl   iswgraph(wint_t _C);
-  _CRTIMP int __cdecl   iswlower(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP int __cdecl   iswlower(wint_t _C) __NOTHROW __PURE;
   _CRTIMP int __cdecl   iswprint(wint_t _C);
   _CRTIMP int __cdecl   iswpunct(wint_t _C);
   _CRTIMP int __cdecl   iswspace(wint_t _C);
@@ -79,8 +79,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _iswcsymf_l(wint_t _C, _locale_t _Locale);
   _CRTIMP int __cdecl _iswcsym_l(wint_t _C, _locale_t _Locale);
 
-  _CRTIMP wint_t __cdecl towupper(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
-  _CRTIMP wint_t __cdecl towlower(wint_t _C) __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP wint_t __cdecl towupper(wint_t _C) __NOTHROW __PURE;
+  _CRTIMP wint_t __cdecl towlower(wint_t _C) __NOTHROW __PURE;
   _CRTIMP int    __cdecl iswctype(wint_t _C, wctype_t _Type);
 
   _CRTIMP wint_t __cdecl _towupper_l(wint_t _C, _locale_t _Locale);
@@ -91,7 +91,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl  isleadbyte(int _C);
   _CRTIMP int __cdecl _isleadbyte_l(int _C, _locale_t _Locale);
 
-  _CRTIMP int __cdecl  is_wctype(wint_t _C, wctype_t _Type) __MINGW_DEPRECATED;
+  _CRTIMP int __cdecl  is_wctype(wint_t _C, wctype_t _Type) __ATTR_DEPRECATED;
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
 #ifndef _CTYPE_DISABLE_MACROS

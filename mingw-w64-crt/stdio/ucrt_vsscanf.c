@@ -11,4 +11,4 @@ int __cdecl vsscanf(const char *__restrict _Buffer, const char *__restrict _Form
     return __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(vsscanf))(const char *__restrict, const char *__restrict, va_list) = vsscanf;
+int __cdecl (*__IMP_SYMBOL(vsscanf))(const char *__restrict, const char *__restrict, va_list) = vsscanf;

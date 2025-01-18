@@ -47,7 +47,7 @@
 /* gcc always assumes the mcount public symbol has a single leading underscore
  * for our target.  See gcc/config/i386.h; it isn't overridden in
  * config/i386/cygming.h or any other places for mingw */
-  extern void __MINGW_LSYMBOL(mcount)(void);
+  extern void __LSYMBOL(mcount)(void);
 
 /* FIXME: This works, but it would be cleaner to convert mcount into an
  * assembler stub that calls an extern  _mcount.

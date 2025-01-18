@@ -3,17 +3,18 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#include <_mingw_mac.h>
+#define __NO_INTRIN_DECL
+#include <_mingw.h>
 
   .file "scalbn.S"
   .text
   .align 8
-  .globl __MINGW_USYMBOL(scalbn)
-  .globl __MINGW_USYMBOL(scalbnl)
-  .def   __MINGW_USYMBOL(scalbn); .scl 2; .type 32; .endef
-  .def   __MINGW_USYMBOL(scalbnl); .scl 2; .type 32; .endef
-__MINGW_USYMBOL(scalbn):
-__MINGW_USYMBOL(scalbnl):
+  .globl __USYMBOL(scalbn)
+  .globl __USYMBOL(scalbnl)
+  .def   __USYMBOL(scalbn); .scl 2; .type 32; .endef
+  .def   __USYMBOL(scalbnl); .scl 2; .type 32; .endef
+__USYMBOL(scalbn):
+__USYMBOL(scalbnl):
   subq  $24,    %rsp
   movq  %rdx,   (%rsp)
   fildl (%rsp)
@@ -28,30 +29,30 @@ __MINGW_USYMBOL(scalbnl):
 
   .data
   .align 8
-  .globl __MINGW_IMP_LSYMBOL(scalbn)
-__MINGW_IMP_LSYMBOL(scalbn):
-  .quad  __MINGW_USYMBOL(scalbn)
+  .globl __IMP_LSYMBOL(scalbn)
+__IMP_LSYMBOL(scalbn):
+  .quad  __USYMBOL(scalbn)
 
-  .globl __MINGW_USYMBOL(scalbln)
-  .set __MINGW_USYMBOL(scalbln), __MINGW_USYMBOL(scalbn)
-
-  .data
-  .align 8
-  .globl __MINGW_IMP_LSYMBOL(scalbln)
-__MINGW_IMP_LSYMBOL(scalbln):
-  .quad  __MINGW_USYMBOL(scalbln)
+  .globl __USYMBOL(scalbln)
+  .set __USYMBOL(scalbln), __USYMBOL(scalbn)
 
   .data
   .align 8
-  .globl __MINGW_IMP_LSYMBOL(scalbnl)
-__MINGW_IMP_LSYMBOL(scalbnl):
-  .quad  __MINGW_USYMBOL(scalbnl)
-
-  .globl __MINGW_USYMBOL(scalblnl)
-  .set  __MINGW_USYMBOL(scalblnl), __MINGW_USYMBOL(scalbnl)
+  .globl __IMP_LSYMBOL(scalbln)
+__IMP_LSYMBOL(scalbln):
+  .quad  __USYMBOL(scalbln)
 
   .data
   .align 8
-  .globl __MINGW_IMP_LSYMBOL(scalblnl)
-__MINGW_IMP_LSYMBOL(scalblnl):
-  .quad  __MINGW_USYMBOL(scalblnl)
+  .globl __IMP_LSYMBOL(scalbnl)
+__IMP_LSYMBOL(scalbnl):
+  .quad  __USYMBOL(scalbnl)
+
+  .globl __USYMBOL(scalblnl)
+  .set  __USYMBOL(scalblnl), __USYMBOL(scalbnl)
+
+  .data
+  .align 8
+  .globl __IMP_LSYMBOL(scalblnl)
+__IMP_LSYMBOL(scalblnl):
+  .quad  __USYMBOL(scalblnl)

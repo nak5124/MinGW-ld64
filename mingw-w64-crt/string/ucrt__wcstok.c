@@ -11,4 +11,4 @@ wchar_t *__cdecl _wcstok(wchar_t *restrict str, const wchar_t *restrict delim)
   /* NULL as a third param can be specified only for UCRT version of wcstok() */
   return wcstok(str, delim, NULL);
 }
-wchar_t *(__cdecl *__MINGW_IMP_SYMBOL(_wcstok))(wchar_t *restrict, const wchar_t *restrict) = _wcstok;
+wchar_t *(__cdecl *__IMP_SYMBOL(_wcstok))(wchar_t *restrict, const wchar_t *restrict) = _wcstok;

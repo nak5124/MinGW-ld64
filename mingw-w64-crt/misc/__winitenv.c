@@ -8,4 +8,4 @@
 #include <stddef.h>
 
 static wchar_t ** local__winitenv;
-wchar_t *** __MINGW_IMP_SYMBOL(__winitenv) = &local__winitenv;
+wchar_t *** __IMP_SYMBOL(__winitenv) = &local__winitenv;

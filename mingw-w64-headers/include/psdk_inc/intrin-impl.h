@@ -420,7 +420,7 @@ Parameters: (FunctionName, DataType, RegisterNumber)
 supports ReadWriteBarrier, map all 3 to do the same. */
 #ifndef _ReadWriteBarrier
 
-#define _ReadWriteBarrier() __asm__ __volatile__ ("" ::: "memory")
+#define _ReadWriteBarrier() __asm__ __volatile__ ("" : : : "memory")
 #define _ReadBarrier _ReadWriteBarrier
 #define _WriteBarrier _ReadWriteBarrier
 

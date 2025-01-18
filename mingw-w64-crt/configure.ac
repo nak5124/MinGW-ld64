@@ -229,11 +229,11 @@ fi
 rm -f conftest$ac_exeext conftest.$ac_ext
 AC_MSG_RESULT([$ld_provides_imagebase])
 AS_CASE([$ld_provides_imagebase],
-  [no],[AS_VAR_SET([IMAGEBASE_CFLAGS],["-D__ImageBase=__MINGW_LSYMBOL\(_image_base__\)"])],
+  [no],[AS_VAR_SET([IMAGEBASE_CFLAGS],["-D__ImageBase=__LSYMBOL\(_image_base__\)"])],
   [AS_VAR_SET([IMAGEBASE_CFLAGS])])
 AC_SUBST([IMAGEBASE_CFLAGS])
 
-AC_CHECK_HEADER([_mingw_mac.h], [], [AC_MSG_ERROR([Please check if the mingw-w64 header set and the build/host option are set properly.])])
+AC_CHECK_HEADER([_mingw.h], [], [AC_MSG_ERROR([Please check if the mingw-w64 header set and the build/host option are set properly.])])
 
 #Warnings and errors, default level is 3
 AC_MSG_CHECKING([for warning levels])

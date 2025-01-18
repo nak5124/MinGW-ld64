@@ -204,7 +204,7 @@
  \
 		_SEHBeginExcept:; \
  \
-		__attribute__((noinline)) __SEH_DEFINE_FINALLY(_SEHFinally) \
+		__attribute__((__noinline__)) __SEH_DEFINE_FINALLY(_SEHFinally) \
 		{ \
 			__SEH_END_SCOPE_CHAIN \
  \

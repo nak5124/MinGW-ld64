@@ -56,7 +56,7 @@ typedef uint64_t u64;
 typedef int64_t i64;
 typedef union {double f; uint64_t u;} b64u64_u;
 
-static double __attribute__((noinline)) as_rsqrt_refine(double rf, double a){
+static double __NOINLINE as_rsqrt_refine(double rf, double a){
   b64u64_u ir = {.f = rf}, ia = {.f = a};
   if(ia.u < 1ll<<52){
     i64 nz = __builtin_clzll(ia.u);

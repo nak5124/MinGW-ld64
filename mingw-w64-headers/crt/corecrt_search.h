@@ -14,11 +14,11 @@ __MINGW_BEGIN_C_DECLS
   typedef int (__cdecl *_CoreCrtSecureSearchSortCompareFunction)(void *, const void *, const void *);
   typedef int (__cdecl *_CoreCrtNonSecureSearchSortCompareFunction)(const void *, const void *);
 
-  _CRTIMP void *__cdecl bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 2, 5));
+  _CRTIMP void *__cdecl bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __NONNULL((1, 2, 5)) __WUR_FORTIFY;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP void *__cdecl bsearch_s(const void *_Key, const void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 #endif
-  _CRTIMP void  __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __MINGW_NONNULL((1, 4));
+  _CRTIMP void  __cdecl qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction) __NONNULL((1, 4));
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP void  __cdecl qsort_s(void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, _CoreCrtSecureSearchSortCompareFunction _CompareFunction, void *_Context);
 #endif

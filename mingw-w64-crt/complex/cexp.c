@@ -48,5 +48,5 @@
 #include "cexp.def.h"
 
 long double __complex__ __cdecl cexpl(long double __complex__ z) __attribute__((alias("cexp")));
-extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(cexpl))(long double __complex__ z)
-  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(cexp)))));
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(cexpl))(long double __complex__ z)
+  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(cexp)))));

@@ -196,7 +196,7 @@ int mainCRTStartup (void)
 }
 
 static
-__declspec(noinline) int
+__NOINLINE int
 __tmainCRTStartup (void)
 {
     void *lock_free = NULL;

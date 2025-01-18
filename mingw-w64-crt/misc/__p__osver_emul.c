@@ -38,25 +38,25 @@ unsigned int* __cdecl __p__osver(void)
     init_versions();
     return &_osver;
 }
-unsigned int* (__cdecl *__MINGW_IMP_SYMBOL(__p__osver))(void) = __p__osver;
+unsigned int* (__cdecl *__IMP_SYMBOL(__p__osver))(void) = __p__osver;
 
 unsigned int* __cdecl __p__winmajor(void)
 {
     init_versions();
     return &_winmajor;
 }
-unsigned int* (__cdecl *__MINGW_IMP_SYMBOL(__p__winmajor))(void) = __p__winmajor;
+unsigned int* (__cdecl *__IMP_SYMBOL(__p__winmajor))(void) = __p__winmajor;
 
 unsigned int* __cdecl __p__winminor(void)
 {
     init_versions();
     return &_winminor;
 }
-unsigned int* (__cdecl *__MINGW_IMP_SYMBOL(__p__winminor))(void) = __p__winminor;
+unsigned int* (__cdecl *__IMP_SYMBOL(__p__winminor))(void) = __p__winminor;
 
 unsigned int* __cdecl __p__winver(void)
 {
     init_versions();
     return &_winver;
 }
-unsigned int* (__cdecl *__MINGW_IMP_SYMBOL(__p__winver))(void) = __p__winver;
+unsigned int* (__cdecl *__IMP_SYMBOL(__p__winver))(void) = __p__winver;

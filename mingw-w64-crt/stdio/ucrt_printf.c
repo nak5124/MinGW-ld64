@@ -16,4 +16,4 @@ int __cdecl printf(const char *__restrict _Format,...)
     return _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(printf))(const char *__restrict, ...) = printf;
+int __cdecl (*__IMP_SYMBOL(printf))(const char *__restrict, ...) = printf;

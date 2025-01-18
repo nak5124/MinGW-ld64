@@ -16,4 +16,4 @@ int __cdecl fwprintf(FILE *__restrict _Stream, const wchar_t *__restrict _Format
     return _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(fwprintf))(FILE *__restrict, const wchar_t *__restrict, ...) = fwprintf;
+int __cdecl (*__IMP_SYMBOL(fwprintf))(FILE *__restrict, const wchar_t *__restrict, ...) = fwprintf;

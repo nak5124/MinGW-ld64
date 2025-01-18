@@ -3,13 +3,13 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
+#define __NO_INTRIN_DECL
+#include <_mingw.h>
 
-#include <_mingw_mac.h>
+        .globl  __USYMBOL(longjmp)
+        .def    __USYMBOL(longjmp); .scl 2; .type 32; .endef
 
-        .globl  __MINGW_USYMBOL(longjmp)
-        .def    __MINGW_USYMBOL(longjmp); .scl 2; .type 32; .endef
-
-__MINGW_USYMBOL(longjmp):
+__USYMBOL(longjmp):
 #if defined(__x86_64__)
         movq    %rdx,%rax            /* retval */
         movq    0x8(%rcx),%rbx       /* jmp_buf->Rbx */
@@ -58,6 +58,6 @@ __MINGW_USYMBOL(longjmp):
 #endif
 
         .data
-        .globl  __MINGW_IMP_LSYMBOL(longjmp)
-__MINGW_IMP_LSYMBOL(longjmp):
-        .quad   __MINGW_USYMBOL(longjmp)
+        .globl  __IMP_LSYMBOL(longjmp)
+__IMP_LSYMBOL(longjmp):
+        .quad   __USYMBOL(longjmp)

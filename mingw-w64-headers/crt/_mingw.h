@@ -7,73 +7,292 @@
 #ifndef _INC__MINGW_H
 #define _INC__MINGW_H
 
-#ifndef __WIDL__
-# ifndef __GNUC__
-#   error Only GNU compatible compilers are supported!
-# endif
-# if !defined(__x86_64__) && !defined(__aarch64__)
-#   error Only x86_64 and aarch64 are supported!
-# endif
+#include <_mingw_features.h>
+
+#if !defined(__x86_64__) && !defined(__aarch64__) && !defined(__WIDL__)
+# error Only x86_64 and aarch64 are supported!
 #endif
 
 #ifndef _WIN32
 # error Only Win32 target is supported!
 #endif
 
-#include <_mingw_mac.h>
+#define __STRING(x)       #x
+#define __MINGW_STRING(x) __STRING(x)
 
+/* version number of MinGW-w64 */
+#define __MINGW64_VERSION_MAJOR  13
+#define __MINGW64_VERSION_MINOR  0
+#define __MINGW64_VERSION_BUGFIX 0
+
+#define __MINGW64_VERSION_STR                 \
+  __MINGW_STRING(__MINGW64_VERSION_MAJOR) "." \
+  __MINGW_STRING(__MINGW64_VERSION_MINOR) "." \
+  __MINGW_STRING(__MINGW64_VERSION_BUGFIX)
+
+#define __MINGW64_VERSION_STATE "alpha"
+
+/* mingw.org's version macros: these make gcc to define
+ * MINGW32_SUPPORTS_MT_EH and to use the _CRT_MT global
+ * and the __mingwthr_key_dtor() function from the MinGW
+ * CRT in its private gthr-win32.h header. */
+#define __MINGW32_MAJOR_VERSION 3
+#define __MINGW32_MINOR_VERSION 11
+
+/* Set VC specific compiler target macros. */
+#ifdef __x86_64__
+# ifdef _X86_
+#   undef _X86_
+# endif
+# define _M_AMD64 100
+# define _M_X64   100
+# ifndef _AMD64_
+#   define _AMD64_ 1
+# endif
+#endif
+
+#ifdef __aarch64__
+# define _M_ARM64 1
+# ifndef _ARM64_
+#   define _ARM64_  1
+# endif
+#endif
+
+#ifdef __arm64ec__
+# define _M_ARM64EC 1
+# ifndef _ARM64EC_
+#   define _ARM64EC_ 1
+# endif
+#endif
+
+#define __IMP_SYMBOL(sym)  __imp_##sym
+#define __IMP_LSYMBOL(sym) __imp_##sym
+#define __USYMBOL(sym)     sym
+#define __LSYMBOL(sym)     _##sym
+
+#define __ASM_CALL(func)     __asm__(__MINGW_STRING(__USYMBOL(func)))
+#define __ASM_CRT_CALL(func) __asm__(__STRING(func))
+
+#undef __MINGW_EXTENSION
+#ifdef __WIDL__
+# define __MINGW_EXTENSION
+#else
+# define __MINGW_EXTENSION __extension__
+#endif  /* __WIDL__ */
+
+#ifndef __GNU_EXTENSION
+# define __GNU_EXTENSION __MINGW_EXTENSION
+#endif
+
+/* Special case nameless struct/union.  */
+#ifndef __C89_NAMELESS
+# define __C89_NAMELESS __MINGW_EXTENSION
+# define __C89_NAMELESSSTRUCTNAME
+# define __C89_NAMELESSSTRUCTNAME1
+# define __C89_NAMELESSSTRUCTNAME2
+# define __C89_NAMELESSSTRUCTNAME3
+# define __C89_NAMELESSSTRUCTNAME4
+# define __C89_NAMELESSSTRUCTNAME5
+# define __C89_NAMELESSUNIONNAME
+# define __C89_NAMELESSUNIONNAME1
+# define __C89_NAMELESSUNIONNAME2
+# define __C89_NAMELESSUNIONNAME3
+# define __C89_NAMELESSUNIONNAME4
+# define __C89_NAMELESSUNIONNAME5
+# define __C89_NAMELESSUNIONNAME6
+# define __C89_NAMELESSUNIONNAME7
+# define __C89_NAMELESSUNIONNAME8
+#endif
+
+/* ToDo: Remove these macros */
+#ifndef __MSABI_LONG
+# define __MSABI_LONG(x) x ## l
+#endif  /* __MSABI_LONG */
 #define __LONG32 long
 
-/* C/C++ specific language defines.  */
-#ifdef __declspec
-#  ifndef __MINGW_IMPORT
-/* Note the extern. This is needed to work around GCC's
-limitations in handling dllimport attribute.  */
-#    define __MINGW_IMPORT extern __attribute__((__dllimport__))
-#  endif
-#  ifndef _CRTIMP
-#    undef __USE_CRTIMP
-#    if !defined(_CRTBLD) && !defined(_SYSCRT)
-#      define __USE_CRTIMP 1
-#    endif
-#    ifdef __USE_CRTIMP
-#      define _CRTIMP __attribute__((__dllimport__))
-#    else
-#      define _CRTIMP
-#    endif
-#  endif
-#  define __DECLSPEC_SUPPORTED
-#else
-# undef __DECLSPEC_SUPPORTED
-# undef __MINGW_IMPORT
-# ifndef _CRTIMP
-#   define _CRTIMP
+/* Attributes */
+#ifdef __cplusplus
+# if __cplusplus >= 201103L
+#   define __NOTHROW noexcept(true)
+# else
+#   define __NOTHROW throw()
 # endif
-#endif  /* __declspec */
+# define __ASM_CALL_NTH(func) __NOTHROW __asm__(__MINGW_STRING(__USYMBOL(func)))
+# define __NTH_FNC(func)      func __NOTHROW
+#else
+# define __NOTHROW            __attribute__((__nothrow__))
+# define __ASM_CALL_NTH(func) __asm__(__MINGW_STRING(__USYMBOL(func))) __NOTHROW
+# define __NTH_FNC(func)      __NOTHROW func
+#endif
 
-#define USE___UUIDOF 0
+#define __COLD __attribute__((__cold__))
 
+#define __ATTR_MALLOC      __attribute__((__malloc__))
+#define __ALLOC_SIZE(args) __attribute__((__alloc_size__ args))
+
+#define __PURE   __attribute__((__pure__))
+#define __CONST  __attribute__((__const__))
+
+#define __ATTR_UNUSED __attribute__((__unused__))
+#ifdef __cplusplus
+# define __UNUSED_PARAM(x)
+#else
+# define __UNUSED_PARAM(x) x __ATTR_UNUSED
+#endif
+#define __ATTR_USED __attribute__((__used__))
+#define __NOINLINE  __attribute__((__noinline__))
+
+#define __ATTR_DEPRECATED          __attribute__((__deprecated__))
+#define __ATTR_DEPRECATED_MSG(msg) __attribute__((__deprecated__(msg)))
+
+#ifdef __MINGW_MSVC_COMPAT_WARNINGS
+# define __MINGW_DEPRECATED_MSG(msg) __ATTR_DEPRECATED_MSG(msg)
+#else
+# define __MINGW_DEPRECATED_MSG(msg)
+#endif  /* __MINGW_MSVC_COMPAT_WARNINGS */
+
+#define __MINGW_MSVC2005_DEPREC_STR \
+  "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
+
+#define __MINGW_SEC_WARN_STR \
+  "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
+
+#ifndef _CRT_NONSTDC_NO_DEPRECATE
+# define __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_MSG(__MINGW_MSVC2005_DEPREC_STR)
+#else
+# define __MINGW_DEPRECATED_MSVC2005
+#endif
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+# define __MINGW_DEPRECATED_SEC_WARN __MINGW_DEPRECATED_MSG(__MINGW_SEC_WARN_STR)
+#else
+# define __MINGW_DEPRECATED_SEC_WARN
+#endif
+
+#define __NONNULL(args) __attribute__((__nonnull__ args))
+
+#define __WUR __attribute__((__warn_unused_result__))
+#if defined(__MINGW_FORTIFY_LEVEL) && __MINGW_FORTIFY_LEVEL > 0
+# define __WUR_FORTIFY __WUR
+#else
+# define __WUR_FORTIFY
+#endif
+
+#define __ARTIFICIAL __attribute__((__artificial__))
+
+#ifndef __cplusplus
+# define __restrict_arr __restrict
+#else
+# define __restrict_arr
+#endif
+
+#define __mingw_unlikely(cond) __builtin_expect((cond), 0)
+#define __mingw_likely(cond)   __builtin_expect((cond), 1)
+
+#define __NORETURN __attribute__((__noreturn__))
+
+#define __ATTR_DEALLOC(dealloc, argno) __attribute__((__malloc__(dealloc, argno)))
+#define __ATTR_DEALLOC_FREE            __ATTR_DEALLOC(__builtin_free, 1)
+
+#define __RETURNS_TWICE __attribute__((__returns_twice__))
+
+#define __NO_OPTIMIZE __attribute__((__optimize__("O0")))
+
+#define __SELECTANY __attribute__((__selectany__))
+
+#ifdef __clang__
+# define __MINGW_PRINTF_FORMAT   __printf__
+# define __MINGW_SCANF_FORMAT    __scanf__
+# define __MINGW_STRFTIME_FORMAT __strftime__
+#else
+# define __MINGW_PRINTF_FORMAT   __gnu_printf__
+# define __MINGW_SCANF_FORMAT    __gnu_scanf__
+# define __MINGW_STRFTIME_FORMAT __gnu_strftime__
+#endif
+
+#define __MINGW_GNU_PRINTF(__format, __args) \
+  __attribute__((__format__(__MINGW_PRINTF_FORMAT, __format, __args)))
+
+#define __MINGW_GNU_SCANF(__format, __args) \
+  __attribute__((__format__(__MINGW_SCANF_FORMAT, __format, __args)))
+
+#define __MINGW_GNU_STRFTIME(__format, __args) \
+  __attribute__((__format__(__MINGW_STRFTIME_FORMAT, __format, __args)))
+
+/* inline function-related macros */
 #ifndef _inline
 # define _inline __inline
 #endif
 
+#define __always_inline __attribute__((__always_inline__))
+#define __gnu_inline    __attribute__((__gnu_inline__))
+
+#undef __mingw_ovr
+#ifdef __cplusplus
+# define __mingw_ovr inline __cdecl
+#else
+# define __mingw_ovr static __ATTR_UNUSED __inline __cdecl
+#endif
+
+#undef __CRT_INLINE
 #ifdef __cplusplus
 # define __CRT_INLINE inline
 #else
-# if ((__MINGW_GNUC_PREREQ(4, 3) || defined(__clang__)) && __STDC_VERSION__ >= 199901L)
-#   define __CRT_INLINE extern inline __attribute__((__gnu_inline__))
+# if defined(__STDC_VERSION__) && (__STDC_VERSION__ - 0) >= 199901L
+#   define __CRT_INLINE extern inline __gnu_inline
 # else
-#   define __CRT_INLINE extern __inline__
+#   define __CRT_INLINE extern __inline
 # endif
 #endif
 
 #ifndef __MINGW_INTRIN_INLINE
-# define __MINGW_INTRIN_INLINE extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
+# define __MINGW_INTRIN_INLINE extern __inline __always_inline __gnu_inline
 #endif
 
 #ifdef __NO_INLINE__
 # undef  __CRT__NO_INLINE
 # define __CRT__NO_INLINE 1
+#endif
+
+#ifdef __cplusplus
+# define __forceinline inline __always_inline
+#else
+# define __forceinline extern __inline __always_inline __gnu_inline
+#endif
+
+#if __MINGW_FORTIFY_LEVEL > 0
+  /* Calling an function with __attribute__((__warning__("...")))
+   * from a system include __inline__ function does not print
+   * a warning unless caller has __attribute__((__artificial__)). */
+# define __mingw_bos_declare                                            \
+    void __cdecl __chk_fail(void) __NORETURN;                           \
+    void __cdecl __mingw_chk_fail_warn(void) __ASM_CALL(__chk_fail)     \
+    __NORETURN __attribute__((__warning__("Buffer overflow detected")))
+# if __MINGW_FORTIFY_LEVEL > 2
+#   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)
+#   define __mingw_bos_known(p)    (__builtin_object_size(p, 0) != (size_t)-1 || !__builtin_constant_p(__mingw_bos(p, 0)))
+# else
+#   define __mingw_bos(p, maxtype) __builtin_object_size((p), ((maxtype) > 0) && (__MINGW_FORTIFY_LEVEL > 1))
+#   define __mingw_bos_known(p)    (__mingw_bos(p, 0) != (size_t)-1)
+# endif
+# define __mingw_bos_cond_chk(c)            (__builtin_expect((c), 1) ? (void)0 : __chk_fail())
+# define __mingw_bos_ptr_chk(p, n, maxtype) __mingw_bos_cond_chk(!__mingw_bos_known(p) || __mingw_bos(p, maxtype) >= (size_t)(n))
+# define __mingw_bos_ptr_chk_warn(p, n, maxtype)                   \
+    ((__mingw_bos_known(p)                                         \
+    && __builtin_constant_p(__mingw_bos(p, maxtype) < (size_t)(n)) \
+    && __mingw_bos(p, maxtype) < (size_t)(n))                      \
+    ? __mingw_chk_fail_warn() : __mingw_bos_ptr_chk(p, n, maxtype))
+# define __mingw_bos_ovr        __mingw_ovr __always_inline __ARTIFICIAL
+# define __mingw_bos_extern_ovr extern __inline __cdecl __always_inline __gnu_inline __ARTIFICIAL
+#else
+# define __mingw_bos_ovr __mingw_ovr
+#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
+
+/* Enable workaround for ABI incompatibility on affected platforms */
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
+# ifdef __cplusplus
+#   define  WIDL_EXPLICIT_AGGREGATE_RETURNS
+# endif
 #endif
 
 /* Recent MSVC supports C++14 but it doesn't define __cplusplus accordingly.  */
@@ -90,30 +309,15 @@ limitations in handling dllimport attribute.  */
 # endif
 #endif
 
-#ifdef __cplusplus
-# define __UNUSED_PARAM(x)
-#else
-# define __UNUSED_PARAM(x) x __MINGW_UNUSED
+/* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
+#ifdef __MINGW_USE_ISOCXX11
+# define _NATIVE_NULLPTR_SUPPORTED
 #endif
 
-#if __MINGW_GNUC_PREREQ(3, 1) && !defined(__cplusplus)
-# define __restrict_arr __restrict
-#else
-# define __restrict_arr
+/* for backward compatibility */
+#ifndef MINGW_HAS_SECURE_API
+# define MINGW_HAS_SECURE_API 1
 #endif
-
-#ifndef _CRT_STRINGIZE
-# define __CRT_STRINGIZE(_Value) #_Value
-# define  _CRT_STRINGIZE(_Value) __CRT_STRINGIZE(_Value)
-#endif  /* _CRT_STRINGIZE */
-
-#ifndef _CRT_WIDE
-# define __CRT_WIDE(_String) L ## _String
-# define  _CRT_WIDE(_String) __CRT_WIDE(_String)
-#endif  /* _CRT_WIDE */
-
-#define __MINGW_BROKEN_INTERFACE(x) \
-  __MINGW_PRAGMA_PARAM(message ("Interface " _CRT_STRINGIZE(x) " has unverified layout."))
 
 #ifndef __MSVCRT_VERSION__
 /*  High byte is the major version, low byte is the minor. */
@@ -122,47 +326,6 @@ limitations in handling dllimport attribute.  */
 
 #ifndef _WIN32_WINNT
 # define _WIN32_WINNT 0x0A00
-#endif
-
-#ifndef _INT128_DEFINED
-# define _INT128_DEFINED
-# define __int8  char
-# define __int16 short
-# define __int32 int
-# define __int64 long long
-# if __mingw_clang_prereq(3, 1) && !defined(__SIZEOF_INT128__)
-    /* clang >= 3.1 has __int128 but no size macro */
-#   define __SIZEOF_INT128__ 16
-# endif
-# ifndef __SIZEOF_INT128__
-    typedef int __int128 __attribute__((__mode__(TI)));
-# endif
-#endif  /* _INT128_DEFINED */
-
-#define __ptr32
-#define __ptr64
-#ifndef __unaligned
-# define __unaligned
-#endif
-#ifndef __w64
-# define __w64
-#endif
-#ifdef __cplusplus
-# define __forceinline inline __attribute__((__always_inline__))
-#else
-# define __forceinline extern __inline__ __attribute__((__always_inline__, __gnu_inline__))
-#endif  /* __cplusplus */
-
-#ifndef __nothrow
-# ifdef __cplusplus
-#   define __nothrow __MINGW_NOTHROW
-# else
-#   define __nothrow
-# endif
-#endif  /* __nothrow */
-
-#ifndef _W64
-# define _W64
 #endif
 
 /* We have to define _DLL for gcc based mingw version. This define is set
@@ -178,7 +341,110 @@ limitations in handling dllimport attribute.  */
 # define _MT
 #endif
 
-#define _CRT_DEPRECATE_TEXT(_Text) __MINGW_DEPRECATED_MSG(_Text)
+/* _dowildcard is an int that controls the globbing of the command line.
+ * The MinGW32 (mingw.org) runtime calls it _CRT_glob, so we are adding
+ * a compatibility definition here:  you can use either of _CRT_glob or
+ * _dowildcard .
+ * If _dowildcard is non-zero, the command line will be globbed:  *.*
+ * will be expanded to be all files in the startup directory.
+ * In the mingw-w64 library a _dowildcard variable is defined as being
+ * 0, therefore command line globbing is DISABLED by default. To turn it
+ * on and to leave wildcard command line processing MS's globbing code,
+ * include a line in one of your source modules defining _dowildcard and
+ * setting it to -1, like so:
+ * int _dowildcard = -1;
+ */
+#undef  _CRT_glob
+#define _CRT_glob _dowildcard
+
+#ifndef _UCRT
+# define _UCRT
+#endif
+
+/* C/C++ specific language defines.  */
+#ifndef __MINGW_IMPORT
+# define __MINGW_IMPORT extern __attribute__((__dllimport__))
+#endif
+#ifndef _CRTIMP
+# undef __USE_CRTIMP
+# if !defined(_CRTBLD) && !defined(_SYSCRT)
+#   define __USE_CRTIMP 1
+# endif
+# ifdef __USE_CRTIMP
+#   define _CRTIMP __attribute__((__dllimport__))
+# else
+#   define _CRTIMP
+# endif
+#endif
+#define __DECLSPEC_SUPPORTED
+
+#ifndef __CRTDECL
+# ifndef __cplusplus
+#   define __CRTDECL __cdecl __ATTR_UNUSED
+# else
+#   define __CRTDECL __cdecl
+# endif
+#endif
+
+#undef  _CRT_PACKING
+#define _CRT_PACKING 8
+#ifdef __cplusplus
+# define __MINGW_BEGIN_C_DECLS                        \
+    _Pragma(__MINGW_STRING(pack(push, _CRT_PACKING))) \
+    extern "C" {
+# define __MINGW_END_C_DECLS     \
+    }                            \
+    _Pragma(__STRING(pack(pop)))
+#else
+# define __MINGW_BEGIN_C_DECLS _Pragma(__MINGW_STRING(pack(push, _CRT_PACKING)))
+# define __MINGW_END_C_DECLS   _Pragma(__STRING(pack(pop)))
+#endif
+
+#ifndef _HAS_EXCEPTIONS
+# define _HAS_EXCEPTIONS 1
+#endif
+
+#define _CRT_STRINGIZE_(_Value) #_Value
+#define _CRT_STRINGIZE(_Value)  _CRT_STRINGIZE_(_Value)
+
+#define _CRT_WIDE_(_String) L ## _String
+#define _CRT_WIDE(_String)  _CRT_WIDE_(_String)
+
+#define _CRT_CONCATENATE_(a, b) a ## b
+#define _CRT_CONCATENATE(a, b)  _CRT_CONCATENATE_(a, b)
+
+#define _CRT_UNPARENTHESIZE_(...) __VA_ARGS__
+#define _CRT_UNPARENTHESIZE(...)  _CRT_UNPARENTHESIZE_ __VA_ARGS__
+
+#define __MINGW_BROKEN_INTERFACE(x) __MINGW_PRAGMA_PARAM(message ("Interface " _CRT_STRINGIZE(x) " has unverified layout."))
+
+/* MSVC compability */
+#define _VCRTIMP _CRTIMP
+#define _MRTIMP
+
+/* Microsoft-specific sized integer types */
+#define __int8  char
+#define __int16 short
+#define __int32 int
+#define __int64 long long
+
+#define __ptr32
+#define __ptr64
+#ifndef __unaligned
+# define __unaligned
+#endif
+#ifndef __w64
+# define __w64
+#endif
+
+#ifndef __WIDL__
+# ifndef _UNALIGNED
+#   define _UNALIGNED __unaligned
+#   define  UNALIGNED _UNALIGNED
+# endif  /* _UNALIGNED */
+#endif  /* __WIDL__ */
+
+#define _CRT_DEPRECATE_TEXT(_Text) __ATTR_DEPRECATED_MSG(_Text)
 
 #if defined(_CRT_SECURE_NO_DEPRECATE) && !defined(_CRT_SECURE_NO_WARNINGS)
 # define _CRT_SECURE_NO_WARNINGS
@@ -207,57 +473,6 @@ limitations in handling dllimport attribute.  */
 #   define _CRT_INSECURE_DEPRECATE_MEMORY(_Replacement) _CRT_INSECURE_DEPRECATE(_Replacement)
 # endif
 #endif
-
-#ifndef _CRT_INSECURE_DEPRECATE_GLOBALS
-# ifdef _CRT_SECURE_NO_WARNINGS_GLOBALS
-#   define _CRT_INSECURE_DEPRECATE_GLOBALS(replacement)
-# else
-#   define _CRT_INSECURE_DEPRECATE_GLOBALS(replacement) _CRT_INSECURE_DEPRECATE(replacement)
-# endif
-#endif
-
-#if defined(_CRT_MANAGED_HEAP_NO_DEPRECATE) && !defined(_CRT_MANAGED_HEAP_NO_WARNINGS)
-# define _CRT_MANAGED_HEAP_NO_WARNINGS
-#endif
-
-#define _SECURECRT_FILL_BUFFER_PATTERN 0xFE
-
-#if defined(_CRT_OBSOLETE_NO_DEPRECATE) && !defined(_CRT_OBSOLETE_NO_WARNINGS)
-# define _CRT_OBSOLETE_NO_WARNINGS
-#endif
-
-#ifndef _CRT_OBSOLETE
-# ifdef _CRT_OBSOLETE_NO_WARNINGS
-#   define _CRT_OBSOLETE(_NewItem)
-# else
-#   define _CRT_OBSOLETE(_NewItem) _CRT_DEPRECATE_TEXT(                  \
-      "This function or variable has been superceded by newer library "  \
-      "or operating system functionality. Consider using " #_NewItem " " \
-      "instead. See online help for details.")
-# endif
-#endif
-
-/* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
-#if __MINGW_GNUC_PREREQ(4, 6) && defined(__MINGW_USE_ISOCXX11)
-# define _NATIVE_NULLPTR_SUPPORTED
-#endif
-
-/* _dowildcard is an int that controls the globbing of the command line.
- * The MinGW32 (mingw.org) runtime calls it _CRT_glob, so we are adding
- * a compatibility definition here:  you can use either of _CRT_glob or
- * _dowildcard .
- * If _dowildcard is non-zero, the command line will be globbed:  *.*
- * will be expanded to be all files in the startup directory.
- * In the mingw-w64 library a _dowildcard variable is defined as being
- * 0, therefore command line globbing is DISABLED by default. To turn it
- * on and to leave wildcard command line processing MS's globbing code,
- * include a line in one of your source modules defining _dowildcard and
- * setting it to -1, like so:
- * int _dowildcard = -1;
- */
-#undef  _CRT_glob
-#define _CRT_glob _dowildcard
-
 
 #if defined(NONAMELESSSTRUCT) && !defined(NONAMELESSUNION)
 # define NONAMELESSUNION 1
@@ -325,6 +540,7 @@ limitations in handling dllimport attribute.  */
 # endif
 #endif  /* DUMMYSTRUCTNAME */
 
+#define USE___UUIDOF 0
 
 /* Macros for __uuidof template-based emulation */
 #if defined(__cplusplus) && (USE___UUIDOF == 0)
@@ -376,16 +592,46 @@ limitations in handling dllimport attribute.  */
 
 __MINGW_BEGIN_C_DECLS
 
+#ifndef __NO_INTRIN_DECL
+
+#ifndef _SIZE_T_DEFINED
+# define _SIZE_T_DEFINED
+# undef size_t
+  __MINGW_EXTENSION typedef unsigned __int64 size_t;
+#endif  /* _SIZE_T_DEFINED */
+
+#ifndef _PTRDIFF_T_DEFINED
+# define _PTRDIFF_T_DEFINED
+# ifndef _PTRDIFF_T_
+#   define _PTRDIFF_T_
+#   undef ptrdiff_t
+    __MINGW_EXTENSION typedef __int64 ptrdiff_t;
+# endif  /* _PTRDIFF_T_ */
+#endif  /* _PTRDIFF_T_DEFINED */
+
+#ifndef _INTPTR_T_DEFINED
+# define _INTPTR_T_DEFINED
+# ifndef __intptr_t_defined
+#   define __intptr_t_defined
+#   undef intptr_t
+    __MINGW_EXTENSION typedef __int64 intptr_t;
+# endif  /* __intptr_t_defined */
+#endif  /* _INTPTR_T_DEFINED */
+
+#ifndef _WCHAR_T_DEFINED
+# define _WCHAR_T_DEFINED
+# if !defined(__cplusplus) && !defined(__WIDL__)
+    typedef unsigned short wchar_t;
+# endif  /* !defined(__cplusplus) && !defined(__WIDL__) */
+#endif  /* _WCHAR_T_DEFINED */
+
 #ifdef __MINGW_INTRIN_INLINE
 
-#ifdef __has_builtin
-# define __MINGW_DEBUGBREAK_IMPL !__has_builtin(__debugbreak)
-#else
-# define __MINGW_DEBUGBREAK_IMPL 1
-#endif  /* __has_builtin */
-#if __MINGW_DEBUGBREAK_IMPL == 1
+#define __MINGW_DEBUGBREAK_IMPL !__has_builtin(__debugbreak)
+#if __MINGW_DEBUGBREAK_IMPL
   void __cdecl __debugbreak(void);
-  __MINGW_INTRIN_INLINE void __cdecl __debugbreak(void)
+  __MINGW_INTRIN_INLINE
+  void __cdecl __debugbreak(void)
   {
 #if defined(__aarch64__) || defined(__arm64ec__)
     __asm__ __volatile__("brk #0xf000");
@@ -395,84 +641,41 @@ __MINGW_BEGIN_C_DECLS
     __asm__ __volatile__("unimplemented");
 #endif
 }
-#endif  /* __MINGW_DEBUGBREAK_IMPL == 1 */
+#endif  /* __MINGW_DEBUGBREAK_IMPL */
 
-#ifdef __has_builtin
-# define __MINGW_FASTFAIL_IMPL !__has_builtin(__fastfail)
-#else
-# define __MINGW_FASTFAIL_IMPL 1
-#endif  /* __has_builtin */
-#if __MINGW_FASTFAIL_IMPL == 1
-  void __cdecl __fastfail(unsigned int __code) __MINGW_NORETURN;
-  __MINGW_INTRIN_INLINE __MINGW_NORETURN
+#define __MINGW_FASTFAIL_IMPL !__has_builtin(__fastfail)
+#if __MINGW_FASTFAIL_IMPL
+  void __cdecl __fastfail(unsigned int __code) __NORETURN;
+  __MINGW_INTRIN_INLINE __NORETURN
   void __cdecl __fastfail(unsigned int __code)
   {
 #if defined(__aarch64__) || defined(__arm64ec__)
     register unsigned int w0 __asm__("w0") = __code;
-    __asm__ __volatile__("brk #0xf003"::"r"(w0));
+    __asm__ __volatile__("brk #0xf003" : : "r"(w0));
 #elif defined(__x86_64__)
-    __asm__ __volatile__("int {$}0x29"::"c"(__code));
+    __asm__ __volatile__("int {$}0x29" : : "c"(__code));
 #else
     __asm__ __volatile__("unimplemented");
 #endif
     __builtin_unreachable();
   }
-#endif  /* __MINGW_FASTFAIL_IMPL == 1 */
+#endif  /* __MINGW_FASTFAIL_IMPL */
 
-#ifdef __has_builtin
-# define __MINGW_PREFETCH_IMPL !__has_builtin(__prefetch)
-#else
-# define __MINGW_PREFETCH_IMPL 1
-#endif  /* __has_builtin */
-#if __MINGW_PREFETCH_IMPL == 1 && (defined(__aarch64__) || defined(__arm64ec__))
+#define __MINGW_PREFETCH_IMPL !__has_builtin(__prefetch)
+#if __MINGW_PREFETCH_IMPL && (defined(__aarch64__) || defined(__arm64ec__))
   void __cdecl __prefetch(const void *__addr);
   __MINGW_INTRIN_INLINE void __cdecl __prefetch(const void *__addr)
   {
     __asm__ __volatile__("prfm pldl1keep, [%0]"::"r"(__addr));
   }
-#endif  /* __MINGW_PREFETCH_IMPL == 1 && defined(__aarch64__) */
+#endif  /* __MINGW_PREFETCH_IMPL && defined(__aarch64__) */
 
 #endif  /* __MINGW_INTRIN_INLINE */
 
 /* mingw-w64 specific functions: */
   const char *__mingw_get_crt_info(void);
 
-#if __MINGW_FORTIFY_LEVEL > 0
-  /* Calling an function with __attribute__((__warning__("...")))
-   * from a system include __inline__ function does not print
-   * a warning unless caller has __attribute__((__artificial__)). */
-# define __mingw_bos_declare                                                  \
-    void __cdecl __chk_fail(void) __MINGW_NORETURN;                           \
-    void __cdecl __mingw_chk_fail_warn(void) __MINGW_ASM_CALL(__chk_fail)     \
-    __MINGW_NORETURN __attribute__((__warning__("Buffer overflow detected")))
-# if __MINGW_FORTIFY_LEVEL > 2
-#   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)
-#   define __mingw_bos_known(p)    (__builtin_object_size(p, 0) != (size_t)-1 || !__builtin_constant_p(__mingw_bos(p, 0)))
-# else
-#   define __mingw_bos(p, maxtype) __builtin_object_size((p), ((maxtype) > 0) && (__MINGW_FORTIFY_LEVEL > 1))
-#   define __mingw_bos_known(p)    (__mingw_bos(p, 0) != (size_t)-1)
-# endif
-# define __mingw_bos_cond_chk(c)            (__builtin_expect((c), 1) ? (void)0 : __chk_fail())
-# define __mingw_bos_ptr_chk(p, n, maxtype) __mingw_bos_cond_chk(!__mingw_bos_known(p) || __mingw_bos(p, maxtype) >= (size_t)(n))
-# define __mingw_bos_ptr_chk_warn(p, n, maxtype)                   \
-    ((__mingw_bos_known(p)                                         \
-    && __builtin_constant_p(__mingw_bos(p, maxtype) < (size_t)(n)) \
-    && __mingw_bos(p, maxtype) < (size_t)(n))                      \
-    ? __mingw_chk_fail_warn() : __mingw_bos_ptr_chk(p, n, maxtype))
-# define __mingw_bos_ovr __mingw_ovr __attribute__((__always_inline__)) __MINGW_ARTIFICIAL
-# define __mingw_bos_extern_ovr \
-    extern __inline__ __cdecl __attribute__((__always_inline__, __gnu_inline__)) __MINGW_ARTIFICIAL
-#else
-# define __mingw_bos_ovr __mingw_ovr
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
-/* for backward compatibility */
-#ifndef MINGW_HAS_SECURE_API
-# define MINGW_HAS_SECURE_API 1
-#endif
-
-#define __STDC_SECURE_LIB__ 200411L
-#define __GOT_SECURE_LIB__  __STDC_SECURE_LIB__
+#endif  /* __NO_INTRIN_DECL */
 
 __MINGW_END_C_DECLS
 
@@ -482,7 +685,7 @@ __MINGW_END_C_DECLS
 #define MINGW_SDK_INIT
 
 #ifndef __WIDL__
-#include <sdks/_mingw_ddk.h>
+# include <sdks/_mingw_ddk.h>
 #endif
 
 #endif  /* MINGW_SDK_INIT */

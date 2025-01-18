@@ -16,8 +16,8 @@
 __MINGW_BEGIN_C_DECLS
 
   typedef wchar_t wctrans_t;
-  _CRTIMP wint_t    __cdecl towctrans(wint_t _C, wctrans_t _Value) __MINGW_NOTHROW;
-  _CRTIMP wctrans_t __cdecl wctrans(const char *_Name)             __MINGW_NOTHROW;
+  _CRTIMP wint_t    __cdecl towctrans(wint_t _C, wctrans_t _Value) __NOTHROW;
+  _CRTIMP wctrans_t __cdecl wctrans(const char *_Name)             __NOTHROW;
   _CRTIMP wctype_t  __cdecl wctype(const char *_Name);
 
 __MINGW_END_C_DECLS

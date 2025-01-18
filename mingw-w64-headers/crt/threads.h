@@ -45,7 +45,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int  __cdecl  mtx_lock(mtx_t *_Mtx);
   _CRTIMP int  __cdecl _mtx_timedlock32(mtx_t *__restrict _Mtx, const struct _timespec32 *__restrict _Ts);
   _CRTIMP int  __cdecl _mtx_timedlock64(mtx_t *__restrict _Mtx, const struct _timespec64 *__restrict _Ts);
-  _CRTIMP int  __cdecl  mtx_timedlock(mtx_t *__restrict _Mtx, const struct timespec *__restrict _Ts) __MINGW_ASM_CALL(_mtx_timedlock64);
+  _CRTIMP int  __cdecl  mtx_timedlock(mtx_t *__restrict _Mtx, const struct timespec *__restrict _Ts) __ASM_CALL(_mtx_timedlock64);
   _CRTIMP int  __cdecl  mtx_trylock(mtx_t *_Mtx);
   _CRTIMP int  __cdecl  mtx_unlock(mtx_t *_Mtx);
 
@@ -60,7 +60,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int  __cdecl  cnd_signal(cnd_t *_Cond);
   _CRTIMP int  __cdecl _cnd_timedwait32(cnd_t *_Cond, mtx_t *_Mtx, const struct _timespec32 *_Ts);
   _CRTIMP int  __cdecl _cnd_timedwait64(cnd_t *_Cond, mtx_t *_Mtx, const struct _timespec64 *_Ts);
-  _CRTIMP int  __cdecl  cnd_timedwait(cnd_t *_Cond, mtx_t *_Mtx, const struct timespec *_Ts) __MINGW_ASM_CALL(_cnd_timedwait64);
+  _CRTIMP int  __cdecl  cnd_timedwait(cnd_t *_Cond, mtx_t *_Mtx, const struct timespec *_Ts) __ASM_CALL(_cnd_timedwait64);
   _CRTIMP int  __cdecl  cnd_wait(cnd_t *_Cond, mtx_t *_Mtx);
 
   typedef struct thrd_t
@@ -84,11 +84,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP thrd_t __cdecl  thrd_current(void);
   _CRTIMP int    __cdecl  thrd_detach(thrd_t _Thr);
   _CRTIMP int    __cdecl  thrd_equal(thrd_t _Thr0, thrd_t _Thr1);
-  _CRTIMP void   __cdecl  thrd_exit(int _Res) __MINGW_NORETURN;
+  _CRTIMP void   __cdecl  thrd_exit(int _Res) __NORETURN;
   _CRTIMP int    __cdecl  thrd_join(thrd_t _Thr, int* _Res);
   _CRTIMP int    __cdecl _thrd_sleep32(const struct _timespec32 *__time_point, struct _timespec32 *__remaining);
   _CRTIMP int    __cdecl _thrd_sleep64(const struct _timespec64 *__time_point, struct _timespec64 *__remaining);
-  _CRTIMP int    __cdecl  thrd_sleep(const struct timespec *__time_point, struct timespec *__remaining) __MINGW_ASM_CALL(_thrd_sleep64);
+  _CRTIMP int    __cdecl  thrd_sleep(const struct timespec *__time_point, struct timespec *__remaining) __ASM_CALL(_thrd_sleep64);
   _CRTIMP void   __cdecl  thrd_yield(void);
 
 #ifndef __CRT__NO_INLINE

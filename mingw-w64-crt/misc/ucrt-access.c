@@ -57,4 +57,4 @@ int __cdecl access(const char *fname, int mode)
     return 0;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(access))(const char *fname, int mode) = access;
+int __cdecl (*__IMP_SYMBOL(access))(const char *fname, int mode) = access;

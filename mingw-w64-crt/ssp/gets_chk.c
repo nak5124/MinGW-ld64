@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void __cdecl __chk_fail(void) __MINGW_NORETURN;
+void __cdecl __chk_fail(void) __NORETURN;
 _CRTIMP char   *__cdecl  gets(char *_Buffer) __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
 
 char *__cdecl __gets_chk(char *dst, size_t bufsize);

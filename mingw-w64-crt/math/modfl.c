@@ -15,4 +15,4 @@ long double __cdecl modfl(long double value, long double* iptr)
   return _fraction;
 }
 
-long double __cdecl (*__MINGW_IMP_SYMBOL(modfl))(long double value, long double *iptr) = modfl;
+long double __cdecl (*__IMP_SYMBOL(modfl))(long double value, long double *iptr) = modfl;

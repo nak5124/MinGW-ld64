@@ -13,4 +13,4 @@ static ioinfo __badioinfo = {
   .pipech = 10,
   .lockinitflag = 0,
 };
-ioinfo * __MINGW_IMP_SYMBOL(__badioinfo) = &__badioinfo;
+ioinfo * __IMP_SYMBOL(__badioinfo) = &__badioinfo;

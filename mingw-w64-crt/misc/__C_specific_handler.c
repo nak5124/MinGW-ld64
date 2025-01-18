@@ -25,7 +25,7 @@ __C_specific_handler(struct _EXCEPTION_RECORD *_ExceptionRecord,
 }
 
 EXCEPTION_DISPOSITION
-(__cdecl *__MINGW_IMP_SYMBOL(__C_specific_handler))(
+(__cdecl *__IMP_SYMBOL(__C_specific_handler))(
     struct _EXCEPTION_RECORD *_ExceptionRecord,
     void *_EstablisherFrame,
     struct _CONTEXT *_ContextRecord,

@@ -27,10 +27,6 @@
 
 #define ATTRIBUTE_NORETURN __attribute__ ((noreturn))
 
-#ifndef __MINGW_LSYMBOL
-#define __MINGW_LSYMBOL(sym) sym
-#endif
-
 extern char __RUNTIME_PSEUDO_RELOC_LIST__;
 extern char __RUNTIME_PSEUDO_RELOC_LIST_END__;
 extern IMAGE_DOS_HEADER __ImageBase;

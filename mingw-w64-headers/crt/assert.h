@@ -21,8 +21,8 @@ __MINGW_BEGIN_C_DECLS
 # define static_assert _Static_assert
 #endif
 
-  _CRTIMP void __cdecl _wassert(const wchar_t *_Message, const wchar_t *_File, unsigned _Line) __MINGW_NORETURN;
-  _CRTIMP void __cdecl _assert(const char *_Message, const char *_File, unsigned _Line)        __MINGW_NORETURN;
+  _CRTIMP void __cdecl _wassert(const wchar_t *_Message, const wchar_t *_File, unsigned _Line) __NORETURN __COLD;
+  _CRTIMP void __cdecl _assert(const char *_Message, const char *_File, unsigned _Line)        __NORETURN __COLD;
 
 __MINGW_END_C_DECLS
 

@@ -16,4 +16,4 @@ int __cdecl snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *
     return _Ret < 0 ? -1 : _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(snprintf))(char *__restrict, size_t, const char *__restrict, ...) = snprintf;
+int __cdecl (*__IMP_SYMBOL(snprintf))(char *__restrict, size_t, const char *__restrict, ...) = snprintf;

@@ -6,11 +6,11 @@
 
 #include <_mingw.h>
 
-extern char*** __MINGW_IMP_SYMBOL(__initenv);
+extern char*** __IMP_SYMBOL(__initenv);
 
 char*** __cdecl __p___initenv(void);
 char*** __cdecl __p___initenv(void)
 {
-    return __MINGW_IMP_SYMBOL(__initenv);
+    return __IMP_SYMBOL(__initenv);
 }
-char*** (__cdecl *__MINGW_IMP_SYMBOL(__p___initenv))(void) = __p___initenv;
+char*** (__cdecl *__IMP_SYMBOL(__p___initenv))(void) = __p___initenv;

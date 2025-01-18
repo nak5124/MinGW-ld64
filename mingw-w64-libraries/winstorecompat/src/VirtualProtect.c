@@ -44,7 +44,7 @@ BOOL WINAPI VirtualProtect(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, 
 }
 
 #ifdef _X86_
-BOOL (WINAPI *__MINGW_IMP_SYMBOL(VirtualProtect))(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect) __asm__("__imp__VirtualProtect@16") = VirtualProtect;
+BOOL (WINAPI *__IMP_SYMBOL(VirtualProtect))(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect) __asm__("__imp__VirtualProtect@16") = VirtualProtect;
 #else
-BOOL (WINAPI *__MINGW_IMP_SYMBOL(VirtualProtect))(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect) __asm__("__imp_VirtualProtect") = VirtualProtect;
+BOOL (WINAPI *__IMP_SYMBOL(VirtualProtect))(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect) __asm__("__imp_VirtualProtect") = VirtualProtect;
 #endif

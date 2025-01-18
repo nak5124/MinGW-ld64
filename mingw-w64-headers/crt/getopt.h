@@ -23,7 +23,7 @@ __MINGW_BEGIN_C_DECLS
 
   extern char *optarg;  /* pointer to argument of current option  */
 
-  extern int getopt(int ___argc, char * const *___argv, const char *__shortopts) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
+  extern int getopt(int ___argc, char * const *___argv, const char *__shortopts) __NOTHROW __NONNULL((2, 3));
 
 __MINGW_END_C_DECLS
 /*
@@ -69,8 +69,8 @@ __MINGW_BEGIN_C_DECLS
     optional_argument   /* option may take an argument  */
   };
 
-  extern int getopt_long(int ___argc, char *const *___argv, const char *__shortopts, const struct option *__longopts, int *__longidx)      __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
-  extern int getopt_long_only(int ___argc, char *const *___argv, const char *__shortopts, const struct option *__longopts, int *__longidx) __MINGW_NONNULL((2, 3)) __MINGW_NOTHROW;
+  extern int getopt_long(int ___argc, char *const *___argv, const char *__shortopts, const struct option *__longopts, int *__longidx)      __NOTHROW __NONNULL((2, 3));
+  extern int getopt_long_only(int ___argc, char *const *___argv, const char *__shortopts, const struct option *__longopts, int *__longidx) __NOTHROW __NONNULL((2, 3));
 /*
  * Previous MinGW implementation had...
  */

@@ -3,22 +3,22 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
+#define __NO_INTRIN_DECL
+#include <_mingw.h>
 
-#include <_mingw_mac.h>
+        .globl  __USYMBOL(__intrinsic_setjmp)
+        .def    __USYMBOL(__intrinsic_setjmp); .scl 2; .type 32; .endef
 
-        .globl  __MINGW_USYMBOL(__intrinsic_setjmp)
-        .def    __MINGW_USYMBOL(__intrinsic_setjmp); .scl 2; .type 32; .endef
-
-        .globl  __MINGW_USYMBOL(__intrinsic_setjmpex)
-        .def    __MINGW_USYMBOL(__intrinsic_setjmpex); .scl 2; .type 32; .endef
+        .globl  __USYMBOL(__intrinsic_setjmpex)
+        .def    __USYMBOL(__intrinsic_setjmpex); .scl 2; .type 32; .endef
 
 #if defined(__x86_64__)
-        .globl  __MINGW_USYMBOL(setjmp)
-        .def    __MINGW_USYMBOL(setjmp); .scl 2; .type 32; .endef
-__MINGW_USYMBOL(setjmp):
-__MINGW_USYMBOL(__intrinsic_setjmp):
+        .globl  __USYMBOL(setjmp)
+        .def    __USYMBOL(setjmp); .scl 2; .type 32; .endef
+__USYMBOL(setjmp):
+__USYMBOL(__intrinsic_setjmp):
         xorq    %rdx,%rdx
-__MINGW_USYMBOL(__intrinsic_setjmpex):
+__USYMBOL(__intrinsic_setjmpex):
         movq    %rdx,(%rcx)          /* jmp_buf->Frame */
         movq    %rbx,0x8(%rcx)       /* jmp_buf->Rbx */
         leaq    0x8(%rsp),%rax
@@ -48,9 +48,9 @@ __MINGW_USYMBOL(__intrinsic_setjmpex):
         retq
 
 #elif defined(__aarch64__)
-__MINGW_USYMBOL(__intrinsic_setjmp):
+__USYMBOL(__intrinsic_setjmp):
         mov     x1,  #0
-__MINGW_USYMBOL(__intrinsic_setjmpex):
+__USYMBOL(__intrinsic_setjmpex):
         str     x1,  [x0]             /* jmp_buf->Frame */
         stp     x19, x20, [x0, #0x10] /* jmp_buf->X19, X20 */
         stp     x21, x22, [x0, #0x20] /* jmp_buf->X21, X22 */

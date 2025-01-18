@@ -19,4 +19,4 @@ int __cdecl __wgetmainargs(int *argc, wchar_t ***argv, wchar_t ***env, int DoWil
   _set_new_mode(StartInfo->newmode);
   return 0;
 }
-int __cdecl (*__MINGW_IMP_SYMBOL(__wgetmainargs))(int *, wchar_t ***, wchar_t ***, int, _startupinfo *) = __wgetmainargs;
+int __cdecl (*__IMP_SYMBOL(__wgetmainargs))(int *, wchar_t ***, wchar_t ***, int, _startupinfo *) = __wgetmainargs;

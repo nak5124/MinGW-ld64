@@ -69,7 +69,7 @@ WINBOOL WINAPI GetFileInformationByHandle(HANDLE hFile, LPBY_HANDLE_FILE_INFORMA
 }
 
 #ifdef _X86_
-WINBOOL (WINAPI *__MINGW_IMP_SYMBOL(GetFileInformationByHandle))(HANDLE hFile, LPBY_HANDLE_FILE_INFORMATION lpInfo) __asm__("__imp__GetFileInformationByHandle@8") = GetFileInformationByHandle;
+WINBOOL (WINAPI *__IMP_SYMBOL(GetFileInformationByHandle))(HANDLE hFile, LPBY_HANDLE_FILE_INFORMATION lpInfo) __asm__("__imp__GetFileInformationByHandle@8") = GetFileInformationByHandle;
 #else
-WINBOOL (WINAPI *__MINGW_IMP_SYMBOL(GetFileInformationByHandle))(HANDLE hFile, LPBY_HANDLE_FILE_INFORMATION lpInfo) __asm__("__imp_GetFileInformationByHandle") = GetFileInformationByHandle;
+WINBOOL (WINAPI *__IMP_SYMBOL(GetFileInformationByHandle))(HANDLE hFile, LPBY_HANDLE_FILE_INFORMATION lpInfo) __asm__("__imp_GetFileInformationByHandle") = GetFileInformationByHandle;
 #endif

@@ -191,7 +191,7 @@
 #endif /* FORCEINLINE */
 
 #ifndef DECLSPEC_NOINLINE
-#define DECLSPEC_NOINLINE __attribute__((noinline))
+#define DECLSPEC_NOINLINE __attribute__((__noinline__))
 #endif /* DECLSPEC_NOINLINE */
 
 #if !defined(_M_CEE_PURE)

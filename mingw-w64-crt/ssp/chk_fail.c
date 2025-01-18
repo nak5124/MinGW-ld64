@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include <windows.h>
 
-void __cdecl __chk_fail(void) __MINGW_NORETURN;
+void __cdecl __chk_fail(void) __NORETURN;
 
-__MINGW_NORETURN
+__NORETURN
 void __cdecl __chk_fail(void) {
   static const char msg[] = "*** buffer overflow detected ***: terminated\n";
   write(STDERR_FILENO, msg, strlen(msg));

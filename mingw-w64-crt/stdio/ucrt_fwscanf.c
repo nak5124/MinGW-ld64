@@ -16,4 +16,4 @@ int __cdecl fwscanf(FILE *__restrict _Stream, const wchar_t *__restrict _Format,
     return _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(fwscanf))(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...) = fwscanf;
+int __cdecl (*__IMP_SYMBOL(fwscanf))(FILE *__restrict _Stream, const wchar_t *__restrict _Format, ...) = fwscanf;

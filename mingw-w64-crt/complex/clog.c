@@ -48,5 +48,5 @@
 #include "clog.def.h"
 
 long double __complex__ __cdecl clogl(long double __complex__ z) __attribute__((alias("clog")));
-extern long double __complex__ (__cdecl *__MINGW_IMP_SYMBOL(clogl))(long double __complex__ z)
-  __attribute__((alias(__MINGW64_STRINGIFY(__MINGW_IMP_SYMBOL(clog)))));
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(clogl))(long double __complex__ z)
+  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(clog)))));

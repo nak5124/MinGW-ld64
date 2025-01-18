@@ -16,4 +16,4 @@ int __cdecl snwprintf(wchar_t *__restrict _Buffer, size_t _BufferCount, const wc
     return _Ret;
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(snwprintf))(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...) = snwprintf;
+int __cdecl (*__IMP_SYMBOL(snwprintf))(wchar_t *__restrict _Buffer, size_t _BufferCount, const wchar_t *__restrict _Format, ...) = snwprintf;

@@ -11,4 +11,4 @@ int __cdecl vfscanf(FILE *__restrict _Stream,  const char *__restrict _Format, v
     return __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Stream, _Format, NULL, _ArgList);
 }
 
-int __cdecl (*__MINGW_IMP_SYMBOL(vfscanf))(FILE *__restrict, const char *__restrict, va_list) = vfscanf;
+int __cdecl (*__IMP_SYMBOL(vfscanf))(FILE *__restrict, const char *__restrict, va_list) = vfscanf;

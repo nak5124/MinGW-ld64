@@ -181,7 +181,7 @@ src_libmingwex=\
   misc/clearenv.c                  misc/dirent.c           misc/dirname.c            misc/dllentrypoint.c       misc/dllmain.c            \
   misc/ftruncate64.c               misc/ftw.c              misc/ftw64.c              misc/fwide.c               misc/getentropy.c         \
   misc/getlogin.c                  misc/getopt.c           misc/gettimeofday.c       misc/insque.c              misc/l64a.c               \
-  misc/malloc_usable_size.c        misc/mempcpy.c          misc/mingw_getsp.S        misc/mingw_longjmp.S       misc/mingw_matherr.c      \
+  misc/malloc_usable_size.c        misc/mempcpy.c          misc/mingw_longjmp.S      misc/mingw_matherr.c       \
   misc/mingw_usleep.c              misc/mkdtemp.c          misc/mkstemp.c            misc/mkstemps.c            misc/qsort_r.c            \
   misc/reallocarray.c              misc/realpath.c         misc/setenv.c             misc/sleep.c               misc/strsafe.c            \
   misc/tdelete.c                   misc/tdestroy.c         misc/tfind.c              misc/tsearch.c             misc/twalk.c              \
@@ -2470,7 +2470,7 @@ CLEANFILES = $(BUILT_SOURCES) $(crt64_DATA) $(lib64_DATA) $(processed_defs)
 #
 
 EXTRA_DIST = $(srcdir)/ChangeLog.*
-EXTRA_DIST += revstamp.h \
+EXTRA_DIST += \
   $(top_srcdir)/lib-common/*.def \
   $(top_srcdir)/lib64/*.def \
   $(top_srcdir)/lib64/*.mri \

@@ -10,6 +10,19 @@
 
 __MINGW_BEGIN_C_DECLS
 
+#ifndef _W64
+# define _W64
+#endif
+
+#ifndef _UINTPTR_T_DEFINED
+# define _UINTPTR_T_DEFINED
+# ifndef __uintptr_t_defined
+#   define __uintptr_t_defined
+#   undef uintptr_t
+    __MINGW_EXTENSION typedef unsigned __int64 uintptr_t;
+# endif  /* __uintptr_t_defined */
+#endif  /* _UINTPTR_T_DEFINED */
+
 #ifndef __GNUC_VA_LIST
 # define __GNUC_VA_LIST
   typedef __builtin_va_list __gnuc_va_list;
@@ -24,6 +37,15 @@ __MINGW_BEGIN_C_DECLS
 # define _ADDRESSOF(v) (&reinterpret_cast<const char &>(v))
 #else
 # define _ADDRESSOF(v) (&(v))
+#endif
+
+#if defined(__aarch64__) || defined(__arm64ec__)
+# define _VA_ALIGN       8
+# define _SLOTSIZEOF(t)  ((sizeof(t) + _VA_ALIGN - 1) & ~(_VA_ALIGN - 1))
+# define _APALIGN(t, ap) (((va_list)0 - (ap)) & (__alignof(t) - 1))
+#else
+# define _SLOTSIZEOF(t)  (sizeof(t))
+# define _APALIGN(t, ap) (__alignof(t))
 #endif
 
 /* Use GCC builtins */

@@ -144,8 +144,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifndef _HUGE
-  extern double * __MINGW_IMP_SYMBOL(_HUGE);
-# define _HUGE (* __MINGW_IMP_SYMBOL(_HUGE))
+  extern double * __IMP_SYMBOL(_HUGE);
+# define _HUGE (* __IMP_SYMBOL(_HUGE))
 #endif
 
 #define HUGE_VAL __builtin_huge_val()
@@ -183,9 +183,9 @@ __MINGW_BEGIN_C_DECLS
           double __cdecl log10(double _X);
           double __cdecl pow(double _X, double _Y);
           double __cdecl sqrt(double _X);
-  _CRTIMP double __cdecl ceil(double _X) __MINGW_CONST;
-  _CRTIMP double __cdecl floor(double _X) __MINGW_CONST;
-          double __cdecl fabs(double _X) __MINGW_CONST;
+  _CRTIMP double __cdecl ceil(double _X) __CONST;
+  _CRTIMP double __cdecl floor(double _X) __CONST;
+          double __cdecl fabs(double _X) __CONST;
 
           double __cdecl ldexp(double _X, int _Y);
   _CRTIMP double __cdecl frexp(double _X, int *_Y);
@@ -200,16 +200,16 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_ABS_DEFINED  /* Also in stdlib.h */
 # define _CRT_ABS_DEFINED
-  int  __cdecl abs(int _X)   __MINGW_CONST __MINGW_NOTHROW;
-  long __cdecl labs(long _X) __MINGW_CONST __MINGW_NOTHROW;
+  int  __cdecl abs(int _X)   __NOTHROW __CONST __WUR_FORTIFY;
+  long __cdecl labs(long _X) __NOTHROW __CONST __WUR_FORTIFY;
 # if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
-    __MINGW_EXTENSION long long __cdecl llabs(long long _X) __MINGW_CONST __MINGW_NOTHROW;
+    __MINGW_EXTENSION long long __cdecl llabs(long long _X) __NOTHROW __CONST __WUR_FORTIFY;
 # endif
 #endif  /* _CRT_ABS_DEFINED */
 
 #ifndef _CRT_ATOF_DEFINED  /* Also in stdlib.h */
 # define _CRT_ATOF_DEFINED
-  _CRTIMP double __cdecl  atof(const char *_String) __MINGW_NONNULL((1)) __MINGW_PURE __MINGW_NOTHROW;
+  _CRTIMP double __cdecl  atof(const char *_String) __NONNULL((1)) __NOTHROW __PURE;
   _CRTIMP double __cdecl _atof_l(const char *_String, _locale_t _Locale);
 #endif  /* _CRT_ATOF_DEFINED */
 
@@ -248,19 +248,19 @@ __MINGW_BEGIN_C_DECLS
  */
 #ifndef _SIGN_DEFINED  /* Also in float.h */
 # define _SIGN_DEFINED
-  _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _chgsign(double _X)                                   __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _scalb(double _X, long _Y)                            __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _logb(double _X)                                      __MINGW_NOTHROW;
-  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int    __cdecl _finite(double _X)                      __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int    __cdecl _isnan(double _X)                       __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int    __cdecl _fpclass(double _X)                                   __MINGW_NOTHROW;
+  _CRTIMP double __cdecl _copysign(double _Number, double _Sign) __NOTHROW __CONST;
+  _CRTIMP double __cdecl _chgsign(double _X)                     __NOTHROW;
+  _CRTIMP double __cdecl _scalb(double _X, long _Y)              __NOTHROW;
+  _CRTIMP double __cdecl _logb(double _X)                        __NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __NOTHROW __CONST;
+  _CRTIMP int    __cdecl _finite(double _X)                      __NOTHROW __CONST;
+  _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW __CONST;
+  _CRTIMP int    __cdecl _fpclass(double _X)                     __NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
   _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
 #endif
 
-  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __MINGW_CONST;
+  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __CONST;
   _CRTIMP long double __cdecl _chgsignl(long double _X);
 #endif  /* _SIGN_DEFINED */
 
@@ -290,7 +290,7 @@ __MINGW_BEGIN_C_DECLS
  *
  */
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl finite(double _X) __MINGW_CONST;
+  _CRTIMP int __cdecl finite(double _X) __CONST;
 #endif
 
 #ifdef __MINGW_USE_MS
@@ -312,10 +312,10 @@ __MINGW_BEGIN_C_DECLS
 
 #if ((defined(__MINGW_USE_XOPEN) && !defined(__MINGW_USE_XOPEN2K)) || defined(__MINGW_USE_MISC)) \
   && (!defined(__cplusplus) || !defined(__MINGW_USE_ISOCXX11))
-  extern int __cdecl isnan(double _X) __MINGW_CONST;
+  extern int __cdecl isnan(double _X) __CONST;
 
 # ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl isnan(double _X)
   {
     __mingw_dbl_type_t __hlp;
@@ -331,11 +331,11 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_MISC
-  extern int __cdecl isnanf(float _X)       __MINGW_CONST;
-  extern int __cdecl isnanl(long double _X) __MINGW_CONST;
+  extern int __cdecl isnanf(float _X)       __CONST;
+  extern int __cdecl isnanl(long double _X) __CONST;
 
 # ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl isnanf(float _X)
   {
     __mingw_flt_type_t __hlp;
@@ -346,7 +346,7 @@ __MINGW_BEGIN_C_DECLS
     return (int)(__i >> 31);
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl isnanl(long double _X)
   {
     __mingw_dbl_type_t __hlp;
@@ -414,12 +414,12 @@ __MINGW_BEGIN_C_DECLS
   (A normal long double value might become subnormal when
   converted to double, and zero when converted to float.)
 */
-  extern int __cdecl __fpclassify(double _X)       __MINGW_CONST;
-  extern int __cdecl __fpclassifyf(float _X)       __MINGW_CONST;
-  extern int __cdecl __fpclassifyl(long double _X) __MINGW_CONST;
+  extern int __cdecl __fpclassify(double _X)       __CONST;
+  extern int __cdecl __fpclassifyf(float _X)       __CONST;
+  extern int __cdecl __fpclassifyl(long double _X) __CONST;
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __fpclassify(double _X)
   {
     __mingw_dbl_type_t __hlp;
@@ -437,7 +437,7 @@ __MINGW_BEGIN_C_DECLS
     return FP_NORMAL;
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __fpclassifyf(float _X)
   {
     __mingw_flt_type_t __hlp;
@@ -452,7 +452,7 @@ __MINGW_BEGIN_C_DECLS
     return FP_NORMAL;
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __fpclassifyl(long double _X)
   {
     return __fpclassify(_X);
@@ -493,12 +493,12 @@ __MINGW_BEGIN_C_DECLS
 /* 7.12.3.4 */
 /* We don't need to worry about truncation here:
    A NaN stays a NaN. */
-  extern int __cdecl __isnan(double _X)       __MINGW_CONST;
-  extern int __cdecl __isnanf(float _X)       __MINGW_CONST;
-  extern int __cdecl __isnanl(long double _X) __MINGW_CONST;
+  extern int __cdecl __isnan(double _X)       __CONST;
+  extern int __cdecl __isnanf(float _X)       __CONST;
+  extern int __cdecl __isnanl(long double _X) __CONST;
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __isnan(double _X)
   {
     __mingw_dbl_type_t __hlp;
@@ -511,7 +511,7 @@ __MINGW_BEGIN_C_DECLS
     return (int)__h >> 31;
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __isnanf(float _X)
   {
     __mingw_flt_type_t __hlp;
@@ -522,7 +522,7 @@ __MINGW_BEGIN_C_DECLS
     return (int)(__i >> 31);
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __isnanl(long double _X)
   {
     return __isnan(_X);
@@ -553,12 +553,12 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.3.6 The signbit macro */
-  extern int __cdecl __signbit(double _X)       __MINGW_CONST;
-  extern int __cdecl __signbitf(float _X)       __MINGW_CONST;
-  extern int __cdecl __signbitl(long double _X) __MINGW_CONST;
+  extern int __cdecl __signbit(double _X)       __CONST;
+  extern int __cdecl __signbitf(float _X)       __CONST;
+  extern int __cdecl __signbitl(long double _X) __CONST;
 
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __signbit(double _X)
   {
     __mingw_dbl_type_t __hlp;
@@ -566,7 +566,7 @@ __MINGW_BEGIN_C_DECLS
     return ((__hlp.lh.high & 0x80000000) != 0);
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __signbitf(float _X)
   {
     __mingw_flt_type_t __hlp;
@@ -574,7 +574,7 @@ __MINGW_BEGIN_C_DECLS
     return (__hlp.val & 0x80000000) != 0;
   }
 
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   int __cdecl __signbitl(long double _X)
   {
     return __signbit(_X);
@@ -746,15 +746,15 @@ __MINGW_BEGIN_C_DECLS
 
 /* 7.12.7.2 The fabs functions: Double in C89 */
 #if defined(__aarch64__) || defined(_ARM64_)
-  _CRTIMP float       __cdecl fabsf(float _X) __MINGW_CONST;
+  _CRTIMP float       __cdecl fabsf(float _X) __CONST;
 #else
-  extern  float       __cdecl fabsf(float _X) __MINGW_CONST;
+  extern  float       __cdecl fabsf(float _X) __CONST;
 #endif
-  _CRTIMP long double __cdecl fabsl(long double _X) __MINGW_CONST;
+  _CRTIMP long double __cdecl fabsl(long double _X) __CONST;
 
 #ifndef __CRT__NO_INLINE
 #if defined(__x86_64__) || defined(_AMD64_)
-  __CRT_INLINE __MINGW_CONST
+  __CRT_INLINE __CONST
   float __cdecl fabsf(float _X)
   {
     return __builtin_fabsf(_X);
@@ -798,12 +798,12 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl tgammal(long double _X);
 
 /* 7.12.9.1 Double in C89 */
-  _CRTIMP float       __cdecl ceilf(float _X)       __MINGW_CONST;
-  _CRTIMP long double __cdecl ceill(long double _X) __MINGW_CONST;
+  _CRTIMP float       __cdecl ceilf(float _X)       __CONST;
+  _CRTIMP long double __cdecl ceill(long double _X) __CONST;
 
 /* 7.12.9.2 Double in C89 */
-  _CRTIMP float       __cdecl floorf(float _X)       __MINGW_CONST;
-  _CRTIMP long double __cdecl floorl(long double _X) __MINGW_CONST;
+  _CRTIMP float       __cdecl floorf(float _X)       __CONST;
+  _CRTIMP long double __cdecl floorl(long double _X) __CONST;
 
 /* 7.12.9.3 */
   _CRTIMP double      __cdecl nearbyint(double _X);
@@ -827,9 +827,9 @@ __MINGW_BEGIN_C_DECLS
 
 /* 7.12.9.6 */
 /* round away from zero, regardless of fpu control word settings */
-  _CRTIMP double      __cdecl round(double _X)       __MINGW_CONST;
-  _CRTIMP float       __cdecl roundf(float _X)       __MINGW_CONST;
-  _CRTIMP long double __cdecl roundl(long double _X) __MINGW_CONST;
+  _CRTIMP double      __cdecl round(double _X)       __CONST;
+  _CRTIMP float       __cdecl roundf(float _X)       __CONST;
+  _CRTIMP long double __cdecl roundl(long double _X) __CONST;
 
 /* 7.12.9.7  */
                     _CRTIMP long      __cdecl lround(double _X);
@@ -841,9 +841,9 @@ __MINGW_BEGIN_C_DECLS
 
 /* 7.12.9.8 */
 /* round towards zero, regardless of fpu control word settings */
-  _CRTIMP double      __cdecl trunc(double _X)       __MINGW_CONST;
-  _CRTIMP float       __cdecl truncf(float _X)       __MINGW_CONST;
-  _CRTIMP long double __cdecl truncl(long double _X) __MINGW_CONST;
+  _CRTIMP double      __cdecl trunc(double _X)       __CONST;
+  _CRTIMP float       __cdecl truncf(float _X)       __CONST;
+  _CRTIMP long double __cdecl truncl(long double _X) __CONST;
 
 /* 7.12.10.1 Double in C89 */
   _CRTIMP float       __cdecl fmodf(float _X, float _Y);
@@ -860,9 +860,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl remquol(long double _X, long double _Y, int *_Z);
 
 /* 7.12.11.1 */
-  _CRTIMP double      __cdecl copysign(double _Number, double _Sign)            __MINGW_CONST;
-  _CRTIMP float       __cdecl copysignf(float _Number, float _Sign)             __MINGW_CONST;
-  _CRTIMP long double __cdecl copysignl(long double _Number, long double _Sign) __MINGW_CONST;
+  _CRTIMP double      __cdecl copysign(double _Number, double _Sign)            __CONST;
+  _CRTIMP float       __cdecl copysignf(float _Number, float _Sign)             __CONST;
+  _CRTIMP long double __cdecl copysignl(long double _Number, long double _Sign) __CONST;
 
 /* 7.12.11.2 Return a NaN */
   _CRTIMP double      __cdecl nan(const char *_X);
@@ -874,14 +874,14 @@ __MINGW_BEGIN_C_DECLS
 #define _nanl() nanl("")
 
 /* 7.12.11.3 */
-  _CRTIMP double      __cdecl nextafter(double _X, double _Y)            __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP float       __cdecl nextafterf(float _X, float _Y)             __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP long double __cdecl nextafterl(long double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP double      __cdecl nextafter(double _X, double _Y)            __NOTHROW __CONST;
+  _CRTIMP float       __cdecl nextafterf(float _X, float _Y)             __NOTHROW __CONST;
+  _CRTIMP long double __cdecl nextafterl(long double _X, long double _Y) __NOTHROW __CONST;
 
 /* 7.12.11.4 The nexttoward functions */
-  _CRTIMP double      __cdecl nexttoward(double _X, long double _Y)       __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP float       __cdecl nexttowardf(float _X,  long double _Y)      __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP long double __cdecl nexttowardl(long double _X, long double _Y) __MINGW_CONST __MINGW_NOTHROW;
+  _CRTIMP double      __cdecl nexttoward(double _X, long double _Y)       __NOTHROW __CONST;
+  _CRTIMP float       __cdecl nexttowardf(float _X,  long double _Y)      __NOTHROW __CONST;
+  _CRTIMP long double __cdecl nexttowardl(long double _X, long double _Y) __NOTHROW __CONST;
 
 /* 7.12.12.1 */
 /*  x > y ? (x - y) : 0.0  */
@@ -895,14 +895,14 @@ __MINGW_BEGIN_C_DECLS
   value. */
 
 /* 7.12.12.2 */
-  _CRTIMP double      __cdecl fmax(double _X, double _Y)            __MINGW_CONST;
-  _CRTIMP float       __cdecl fmaxf(float _X, float _Y)             __MINGW_CONST;
-  _CRTIMP long double __cdecl fmaxl(long double _X, long double _Y) __MINGW_CONST;
+  _CRTIMP double      __cdecl fmax(double _X, double _Y)            __CONST;
+  _CRTIMP float       __cdecl fmaxf(float _X, float _Y)             __CONST;
+  _CRTIMP long double __cdecl fmaxl(long double _X, long double _Y) __CONST;
 
 /* 7.12.12.3 */
-  _CRTIMP double      __cdecl fmin(double _X, double _Y)            __MINGW_CONST;
-  _CRTIMP float       __cdecl fminf(float _X, float _Y)             __MINGW_CONST;
-  _CRTIMP long double __cdecl fminl(long double _X, long double _Y) __MINGW_CONST;
+  _CRTIMP double      __cdecl fmin(double _X, double _Y)            __CONST;
+  _CRTIMP float       __cdecl fminf(float _X, float _Y)             __CONST;
+  _CRTIMP long double __cdecl fminl(long double _X, long double _Y) __CONST;
 
 /* 7.12.13.1 */
 /* return x * y + z as a ternary op */
@@ -930,14 +930,14 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP float       __cdecl _hypotf(float _X, float _Y);
   _CRTIMP long double __cdecl _hypotl(long double _X, long double _Y);
 
-  _CRTIMP float __cdecl _copysignf(float _Number, float _Sign) __MINGW_CONST;
+  _CRTIMP float __cdecl _copysignf(float _Number, float _Sign) __CONST;
   _CRTIMP float __cdecl _chgsignf(float _X);
   _CRTIMP float __cdecl _logbf(float _X);
-  _CRTIMP int   __cdecl _finitef(float _X) __MINGW_CONST;
+  _CRTIMP int   __cdecl _finitef(float _X) __CONST;
 
 #if defined(__x86_64__) || defined(_AMD64_)
-  _CRTIMP float __cdecl _nextafterf(float _X, float _Y) __MINGW_CONST __MINGW_NOTHROW;
-  _CRTIMP int   __cdecl _isnanf(float _X) __MINGW_CONST;
+  _CRTIMP float __cdecl _nextafterf(float _X, float _Y) __NOTHROW __CONST;
+  _CRTIMP int   __cdecl _isnanf(float _X) __CONST;
   _CRTIMP int   __cdecl _fpclassf(float _X);
   _CRTIMP int   __cdecl _set_FMA3_enable(int _Flag);
   _CRTIMP int   __cdecl _get_FMA3_enable(void);

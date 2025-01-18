@@ -121,10 +121,10 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
 
   /* 7.6.2 Exception */
-  _CRTIMP int __cdecl feclearexcept(int _Flags)                           __MINGW_NOTHROW;
-  _CRTIMP int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags) __MINGW_NOTHROW;
-  __forceinline __MINGW_NOTHROW __attribute__((optimize("O0")))
-  int __cdecl feraiseexcept(int _Except)
+  _CRTIMP int __cdecl feclearexcept(int _Flags)                           __NOTHROW;
+  _CRTIMP int __cdecl fegetexceptflag(fexcept_t *_Except, int _TestFlags) __NOTHROW;
+  __forceinline __NO_OPTIMIZE
+  __NTH_FNC(int __cdecl feraiseexcept(int _Except))
   {
     static struct
     {
@@ -158,18 +158,18 @@ __MINGW_BEGIN_C_DECLS
     }
     return 0;
   }
-  _CRTIMP int __cdecl fesetexceptflag(const fexcept_t *_Except, int _SetFlags) __MINGW_NOTHROW;
-  _CRTIMP int __cdecl fetestexcept(int _Flags)                                 __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fesetexceptflag(const fexcept_t *_Except, int _SetFlags) __NOTHROW;
+  _CRTIMP int __cdecl fetestexcept(int _Flags)                                 __NOTHROW;
 
   /* 7.6.3 Rounding */
-  _CRTIMP int __cdecl fegetround(void)       __MINGW_PURE __MINGW_NOTHROW;
-  _CRTIMP int __cdecl fesetround(int _Round) __MINGW_NOTHROW;
+  _CRTIMP int __cdecl fegetround(void)       __NOTHROW __PURE;
+  _CRTIMP int __cdecl fesetround(int _Round) __NOTHROW;
 
   /* 7.6.4 Environment */
-  _CRTIMP int __cdecl fegetenv(fenv_t *_Env)           __MINGW_NOTHROW;
-  _CRTIMP int __cdecl fesetenv(const fenv_t *_Env)     __MINGW_NOTHROW;
-  __forceinline __MINGW_NOTHROW
-  int __cdecl feupdateenv(const fenv_t *_Penv)
+  _CRTIMP int __cdecl fegetenv(fenv_t *_Env)       __NOTHROW;
+  _CRTIMP int __cdecl fesetenv(const fenv_t *_Env) __NOTHROW;
+  __forceinline
+  __NTH_FNC(int __cdecl feupdateenv(const fenv_t *_Penv))
   {
     int _Except = fetestexcept(FE_ALL_EXCEPT);
     if(fesetenv(_Penv) != 0 || feraiseexcept(_Except) != 0)
@@ -178,7 +178,7 @@ __MINGW_BEGIN_C_DECLS
     }
     return 0;
   }
-  _CRTIMP int __cdecl feholdexcept(fenv_t *_Env)       __MINGW_NOTHROW;
+  _CRTIMP int __cdecl feholdexcept(fenv_t *_Env) __NOTHROW;
 
 __MINGW_END_C_DECLS
 

@@ -741,7 +741,7 @@
 
 #ifdef __cplusplus
 # ifndef __nothrow
-#   define __nothrow __declspec(nothrow)
+#   define __nothrow __attribute__((__nothrow__))
 # endif
 extern "C" {
 #else

@@ -21,4 +21,4 @@ unsigned int* __cdecl __p__osplatform(void)
     }
     return &_osplatform;
 }
-unsigned int* (__cdecl *__MINGW_IMP_SYMBOL(__p__osplatform))(void) = __p__osplatform;
+unsigned int* (__cdecl *__IMP_SYMBOL(__p__osplatform))(void) = __p__osplatform;

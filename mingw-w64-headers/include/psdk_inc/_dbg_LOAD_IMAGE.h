@@ -10,7 +10,7 @@
 #endif
 
 #define IMAGEAPI DECLSPEC_IMPORT WINAPI
-#define DBHLP_DEPRECIATED __declspec(deprecated)
+#define DBHLP_DEPRECIATED __ATTR_DEPRECATED
 
 #define DBHLPAPI IMAGEAPI
 
