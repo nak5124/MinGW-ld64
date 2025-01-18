@@ -4,6 +4,8 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
+#include <_mingw.h>
+
 void _fpreset (void);
 
 void _fpreset (void)
@@ -16,4 +18,4 @@ void _fpreset (void)
 #endif
 }
 
-void __attribute__ ((alias ("_fpreset"))) fpreset(void);
+void fpreset(void) __ALIAS(_fpreset);

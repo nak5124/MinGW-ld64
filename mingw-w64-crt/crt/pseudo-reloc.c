@@ -25,8 +25,6 @@
 
 #define NO_COPY
 
-#define ATTRIBUTE_NORETURN __attribute__ ((noreturn))
-
 extern char __RUNTIME_PSEUDO_RELOC_LIST__;
 extern char __RUNTIME_PSEUDO_RELOC_LIST_END__;
 extern IMAGE_DOS_HEADER __ImageBase;
@@ -61,7 +59,7 @@ typedef struct {
   DWORD version;
 } runtime_pseudo_reloc_v2;
 
-static void ATTRIBUTE_NORETURN
+static void __NORETURN
 __report_error (const char *msg, ...)
 {
   va_list argp;
@@ -356,7 +354,7 @@ do_pseudo_reloc (void * start, void * end, void * base)
      }
 }
 
-__attribute__((used)) /* required due to bug in gcc / ld */
+__ATTR_USED /* required due to bug in gcc / ld */
 void
 _pei386_runtime_relocator (void)
 {

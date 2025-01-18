@@ -12,6 +12,5 @@ _onexit_t __cdecl _onexit(_onexit_t func)
 }
 _onexit_t __cdecl (*__IMP_SYMBOL(_onexit))(_onexit_t func) = _onexit;
 
-onexit_t __attribute__ ((alias ("_onexit"))) __cdecl onexit(onexit_t func);
-extern onexit_t __attribute__ ((alias (__MINGW_STRING(__IMP_SYMBOL(_onexit)))))
-(__cdecl *__IMP_SYMBOL(onexit))(onexit_t func);
+onexit_t __cdecl onexit(onexit_t func) __ALIAS(_onexit);
+extern onexit_t (__cdecl *__IMP_SYMBOL(onexit))(onexit_t func) __ALIAS_IMP_SYM(_onexit);

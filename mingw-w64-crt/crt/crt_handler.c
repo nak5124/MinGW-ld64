@@ -78,9 +78,9 @@ extern void _fpreset (void);
 
 EXCEPTION_DISPOSITION
 __mingw_SEH_error_handler (struct _EXCEPTION_RECORD* ExceptionRecord,
-			   void *EstablisherFrame  __attribute__ ((unused)),
-			   struct _CONTEXT* ContextRecord __attribute__ ((unused)),
-			   void *DispatcherContext __attribute__ ((unused)))
+			   void *EstablisherFrame __ATTR_UNUSED,
+			   struct _CONTEXT* ContextRecord __ATTR_UNUSED,
+			   void *DispatcherContext __ATTR_UNUSED)
 {
   EXCEPTION_DISPOSITION action = ExceptionContinueSearch; /* EXCEPTION_CONTINUE_SEARCH; */
   void (*old_handler) (int);

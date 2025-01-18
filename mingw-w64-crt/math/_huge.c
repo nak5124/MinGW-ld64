@@ -4,4 +4,4 @@
 static double _HUGE = __builtin_huge_val();
 double * __IMP_SYMBOL(_HUGE) = &_HUGE;
 #undef HUGE
-extern double * __attribute__ ((alias (__MINGW_STRING(__IMP_SYMBOL(_HUGE))))) __IMP_SYMBOL(HUGE);
+extern double * __IMP_SYMBOL(HUGE) __ALIAS_IMP_SYM(_HUGE);

@@ -19,9 +19,9 @@ static unsigned int fake_set_output_format(unsigned int value)
     return InterlockedExchange((LONG*)&last_value, value);
 }
 
-unsigned int __attribute__ ((alias ("fake_set_output_format"))) _set_output_format(unsigned int);
+unsigned int _set_output_format(unsigned int) __ALIAS(fake_set_output_format);
 f_set_output_format __IMP_SYMBOL(_set_output_format) = _set_output_format;
 
 
-unsigned int __attribute__ ((alias ("fake_get_output_format"))) _get_output_format(void);
+unsigned int _get_output_format(void) __ALIAS(fake_get_output_format);
 f_get_output_format __IMP_SYMBOL(_get_output_format) = _get_output_format;

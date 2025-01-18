@@ -14,4 +14,4 @@ void _fpreset (void)
   (* __IMP_SYMBOL(_fpreset))();
 }
 
-void __attribute__ ((alias ("_fpreset"))) fpreset(void);
+void fpreset(void) __ALIAS(_fpreset);

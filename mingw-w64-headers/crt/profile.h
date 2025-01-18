@@ -41,8 +41,7 @@
 /* If compiler doesn't inline, at least avoid passing args on the stack. */
 #define _MCOUNT_CALL
 
-#define _MCOUNT_DECL __attribute__((gnu_inline)) __inline__ \
-  void _MCOUNT_CALL _mcount_private
+#define _MCOUNT_DECL __inline __gnu_inline void _MCOUNT_CALL _mcount_private
 
 /* gcc always assumes the mcount public symbol has a single leading underscore
  * for our target.  See gcc/config/i386.h; it isn't overridden in

@@ -38,7 +38,7 @@ _CRTALLOC(".tls$ZZZ") char *_tls_end = NULL;
 _CRTALLOC(".CRT$XLA") PIMAGE_TLS_CALLBACK __xl_a = 0;
 _CRTALLOC(".CRT$XLZ") PIMAGE_TLS_CALLBACK __xl_z = 0;
 
-__attribute__((used))
+__ATTR_USED
 const IMAGE_TLS_DIRECTORY _tls_used = {
   (ULONGLONG) &_tls_start, (ULONGLONG) &_tls_end,
   (ULONGLONG) &_tls_index, (ULONGLONG) (&__xl_a+1),

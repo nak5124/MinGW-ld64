@@ -702,7 +702,7 @@ exp2m1_accurate_tiny (double x)
   return h + l;
 }
 
-__attribute__((cold))
+__COLD
 static double exp2m1_accurate (double x)
 {
   b64u64_u t = {.f = x};
