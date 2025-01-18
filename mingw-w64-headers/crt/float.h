@@ -10,99 +10,95 @@
  * point controller.
  *
  */
-#if (__GNUC__ < 4  || (__GNUC__ == 4 && __GNUC_MINOR__ < 6)) || (__clang_major__ >=3)
-# if !defined(_FLOAT_H___) && !defined(__FLOAT_H) && !defined(__CLANG_FLOAT_H)
+#ifdef __clang__
+# ifndef __CLANG_FLOAT_H
 #   include_next <float.h>
 # endif
 #elif !defined(_FLOAT_H___)
-# if (__GNUC__ < 4)
-#   error Corrupt install of gcc-s internal headers, or search order was changed.
-# else
-    /* #include_next <float_ginclude.h> */
-    /* Number of decimal digits, q, such that any floating-point number with q
-     * decimal digits can be rounded into a floating-point number with p radix b
-     * digits and back again without change to the q decimal digits,
-     * p * log10(b)   if b is a power of 10
-     * floor((p - 1) * log10(b)) otherwise */
-#   undef  FLT_DIG
-#   undef  DBL_DIG
-#   undef  LDBL_DIG
-#   define FLT_DIG  __FLT_DIG__
-#   define DBL_DIG  __DBL_DIG__
-#   define LDBL_DIG __LDBL_DIG__
+  /* #include_next <float_ginclude.h> */
+  /* Number of decimal digits, q, such that any floating-point number with q
+   * decimal digits can be rounded into a floating-point number with p radix b
+   * digits and back again without change to the q decimal digits,
+   * p * log10(b)   if b is a power of 10
+   * floor((p - 1) * log10(b)) otherwise */
+# undef  FLT_DIG
+# undef  DBL_DIG
+# undef  LDBL_DIG
+# define FLT_DIG  __FLT_DIG__
+# define DBL_DIG  __DBL_DIG__
+# define LDBL_DIG __LDBL_DIG__
 
-    /* Maximum representable finite floating-point number,
-      (1 - b**-p) * b**emax */
-#   undef  FLT_MAX
-#   undef  DBL_MAX
-#   undef  LDBL_MAX
-#   define FLT_MAX  __FLT_MAX__
-#   define DBL_MAX  __DBL_MAX__
-#   define LDBL_MAX __LDBL_MAX__
+  /* Maximum representable finite floating-point number,
+    (1 - b**-p) * b**emax */
+# undef  FLT_MAX
+# undef  DBL_MAX
+# undef  LDBL_MAX
+# define FLT_MAX  __FLT_MAX__
+# define DBL_MAX  __DBL_MAX__
+# define LDBL_MAX __LDBL_MAX__
 
-    /* Minimum normalized positive floating-point number, b**(emin - 1).  */
-#   undef  FLT_MIN
-#   undef  DBL_MIN
-#   undef  LDBL_MIN
-#   define FLT_MIN  __FLT_MIN__
-#   define DBL_MIN  __DBL_MIN__
-#   define LDBL_MIN __LDBL_MIN__
+  /* Minimum normalized positive floating-point number, b**(emin - 1).  */
+# undef  FLT_MIN
+# undef  DBL_MIN
+# undef  LDBL_MIN
+# define FLT_MIN  __FLT_MIN__
+# define DBL_MIN  __DBL_MIN__
+# define LDBL_MIN __LDBL_MIN__
 
-    /* Needed for libjava building - Victor K. */
-    /* Radix of exponent representation, b. */
-#   undef  FLT_RADIX
-#   define FLT_RADIX __FLT_RADIX__
+  /* Needed for libjava building - Victor K. */
+  /* Radix of exponent representation, b. */
+# undef  FLT_RADIX
+# define FLT_RADIX __FLT_RADIX__
 
-    /* Minimum int x such that FLT_RADIX**(x-1) is a normalized float, emin */
-#   undef  FLT_MIN_EXP
-#   undef  DBL_MIN_EXP
-#   undef  LDBL_MIN_EXP
-#   define FLT_MIN_EXP  __FLT_MIN_EXP__
-#   define DBL_MIN_EXP  __DBL_MIN_EXP__
-#   define LDBL_MIN_EXP __LDBL_MIN_EXP__
+  /* Minimum int x such that FLT_RADIX**(x-1) is a normalized float, emin */
+# undef  FLT_MIN_EXP
+# undef  DBL_MIN_EXP
+# undef  LDBL_MIN_EXP
+# define FLT_MIN_EXP  __FLT_MIN_EXP__
+# define DBL_MIN_EXP  __DBL_MIN_EXP__
+# define LDBL_MIN_EXP __LDBL_MIN_EXP__
 
-    /* Minimum negative integer such that 10 raised to that power is in the
-     * range of normalized floating-point numbers,
-     * ceil(log10(b) * (emin - 1)) */
-#   undef  FLT_MIN_10_EXP
-#   undef  DBL_MIN_10_EXP
-#   undef  LDBL_MIN_10_EXP
-#   define FLT_MIN_10_EXP  __FLT_MIN_10_EXP__
-#   define DBL_MIN_10_EXP  __DBL_MIN_10_EXP__
-#   define LDBL_MIN_10_EXP __LDBL_MIN_10_EXP__
+  /* Minimum negative integer such that 10 raised to that power is in the
+   * range of normalized floating-point numbers,
+   * ceil(log10(b) * (emin - 1)) */
+# undef  FLT_MIN_10_EXP
+# undef  DBL_MIN_10_EXP
+# undef  LDBL_MIN_10_EXP
+# define FLT_MIN_10_EXP  __FLT_MIN_10_EXP__
+# define DBL_MIN_10_EXP  __DBL_MIN_10_EXP__
+# define LDBL_MIN_10_EXP __LDBL_MIN_10_EXP__
 
-    /* Maximum int x such that FLT_RADIX**(x-1) is a representable float, emax.  */
-#   undef  FLT_MAX_EXP
-#   undef  DBL_MAX_EXP
-#   undef  LDBL_MAX_EXP
-#   define FLT_MAX_EXP  __FLT_MAX_EXP__
-#   define DBL_MAX_EXP  __DBL_MAX_EXP__
-#   define LDBL_MAX_EXP __LDBL_MAX_EXP__
+  /* Maximum int x such that FLT_RADIX**(x-1) is a representable float, emax.  */
+# undef  FLT_MAX_EXP
+# undef  DBL_MAX_EXP
+# undef  LDBL_MAX_EXP
+# define FLT_MAX_EXP  __FLT_MAX_EXP__
+# define DBL_MAX_EXP  __DBL_MAX_EXP__
+# define LDBL_MAX_EXP __LDBL_MAX_EXP__
 
-    /* Maximum integer such that 10 raised to that power is in the range of
-     * representable finite floating-point numbers,
-     * floor(log10((1 - b**-p) * b**emax)) */
-#   undef  FLT_MAX_10_EXP
-#   undef  DBL_MAX_10_EXP
-#   undef  LDBL_MAX_10_EXP
-#   define FLT_MAX_10_EXP  __FLT_MAX_10_EXP__
-#   define DBL_MAX_10_EXP  __DBL_MAX_10_EXP__
-#   define LDBL_MAX_10_EXP __LDBL_MAX_10_EXP__
+  /* Maximum integer such that 10 raised to that power is in the range of
+   * representable finite floating-point numbers,
+   * floor(log10((1 - b**-p) * b**emax)) */
+# undef  FLT_MAX_10_EXP
+# undef  DBL_MAX_10_EXP
+# undef  LDBL_MAX_10_EXP
+# define FLT_MAX_10_EXP  __FLT_MAX_10_EXP__
+# define DBL_MAX_10_EXP  __DBL_MAX_10_EXP__
+# define LDBL_MAX_10_EXP __LDBL_MAX_10_EXP__
 
-    /* Addition rounds to 0: zero, 1: nearest, 2: +inf, 3: -inf, -1: unknown.  */
-    /* ??? This is supposed to change with calls to fesetround in <fenv.h>.  */
-#   undef  FLT_ROUNDS
-#   define FLT_ROUNDS 1
+  /* Addition rounds to 0: zero, 1: nearest, 2: +inf, 3: -inf, -1: unknown.  */
+  /* ??? This is supposed to change with calls to fesetround in <fenv.h>.  */
+# undef  FLT_ROUNDS
+# define FLT_ROUNDS 1
 
-#   undef  FLT_EPSILON
-#   undef  DBL_EPSILON
-#   undef  LDBL_EPSILON
-#   define FLT_EPSILON  __FLT_EPSILON__
-#   define DBL_EPSILON  __DBL_EPSILON__
-#   define LDBL_EPSILON __LDBL_EPSILON__
+# undef  FLT_EPSILON
+# undef  DBL_EPSILON
+# undef  LDBL_EPSILON
+# define FLT_EPSILON  __FLT_EPSILON__
+# define DBL_EPSILON  __DBL_EPSILON__
+# define LDBL_EPSILON __LDBL_EPSILON__
 
-#   define _FLOAT_H___
-# endif
+# define _FLOAT_H___
 #endif
 
 #ifndef _MINGW_FLOAT_H_
@@ -152,6 +148,14 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __MINGW_USE_ISOC99 */
 
+#ifdef __MINGW_USE_ISOC23
+# ifndef INFINITY
+#   define INFINITY  __builtin_inff()
+# endif
+# ifndef NAN
+#   define NAN       __builtin_nanf("")
+# endif
+#endif
 
 /* Control word values for unNew (use with related unMask above) */
 #define _DN_SAVE       0x00000000

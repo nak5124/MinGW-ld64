@@ -365,8 +365,12 @@ __MINGW_BEGIN_C_DECLS
 
 #define HUGE_VALF __builtin_huge_valf()
 #define HUGE_VALL __builtin_huge_vall()
-#define INFINITY  __builtin_inff()
-#define NAN       __builtin_nanf("")
+#ifndef INFINITY
+# define INFINITY __builtin_inff()
+#endif
+#ifndef NAN
+# define NAN      __builtin_nanf("")
+#endif
 
 #define SNAN  __builtin_nans("")
 #define SNANF __builtin_nansf("")
