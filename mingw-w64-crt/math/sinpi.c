@@ -48,4 +48,4 @@ double __cdecl sinpi(double x)
   return ((int)iabs_x % 2 == 0) ? ret : -ret;
 }
 
-long double __cdecl sinpil(long double _X) __attribute__((alias("sinpi")));
+long double __cdecl sinpil(long double _X) __ALIAS(sinpi);

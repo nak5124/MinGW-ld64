@@ -68,4 +68,4 @@ int __cdecl mkstemp(char *_Template)
     return -1;
 }
 
-int __cdecl mkstemp64(char *_Template) __attribute__((alias("mkstemp")));
+int __cdecl mkstemp64(char *_Template) __ALIAS(mkstemp);

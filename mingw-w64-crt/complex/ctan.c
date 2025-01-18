@@ -49,10 +49,8 @@
 #include "ctanh.def.h"
 #include "ctan.def.h"
 
-long double __complex__ __cdecl ctanhl(long double __complex__ z) __attribute__((alias("ctanh")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(ctanhl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(ctanh)))));
+long double __complex__ __cdecl ctanhl(long double __complex__ z) __ALIAS(ctanh);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(ctanhl))(long double __complex__ z) __ALIAS_IMP_SYM(ctanh);
 
-long double __complex__ __cdecl ctanl(long double __complex__ z) __attribute__((alias("ctan")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(ctanl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(ctan)))));
+long double __complex__ __cdecl ctanl(long double __complex__ z) __ALIAS(ctan);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(ctanl))(long double __complex__ z) __ALIAS_IMP_SYM(ctan);

@@ -49,10 +49,8 @@
 #include "casinh.def.h"
 #include "casin.def.h"
 
-long double __complex__ __cdecl casinhl(long double __complex__ z) __attribute__((alias("casinh")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(casinhl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(casinh)))));
+long double __complex__ __cdecl casinhl(long double __complex__ z) __ALIAS(casinh);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(casinhl))(long double __complex__ z) __ALIAS_IMP_SYM(casinh);
 
-long double __complex__ __cdecl casinl(long double __complex__ z) __attribute__((alias("casin")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(casinl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(casin)))));
+long double __complex__ __cdecl casinl(long double __complex__ z) __ALIAS(casin);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(casinl))(long double __complex__ z) __ALIAS_IMP_SYM(casin);

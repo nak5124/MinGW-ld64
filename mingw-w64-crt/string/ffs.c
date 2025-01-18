@@ -13,4 +13,4 @@ int __cdecl ffs(int _Int)
 }
 
 #undef ffsl
-int __cdecl ffsl(long _Long) __attribute__((alias("ffs")));
+int __cdecl ffsl(long _Long) __ALIAS(ffs);

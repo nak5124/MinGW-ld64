@@ -49,10 +49,8 @@
 #include "csinh.def.h"
 #include "csin.def.h"
 
-long double __complex__ __cdecl csinhl(long double __complex__ z) __attribute__((alias("csinh")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(csinhl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(csinh)))));
+long double __complex__ __cdecl csinhl(long double __complex__ z) __ALIAS(csinh);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(csinhl))(long double __complex__ z) __ALIAS_IMP_SYM(csinh);
 
-long double __complex__ __cdecl csinl(long double __complex__ z) __attribute__((alias("csin")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(csinl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(csin)))));
+long double __complex__ __cdecl csinl(long double __complex__ z) __ALIAS(csin);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(csinl))(long double __complex__ z) __ALIAS_IMP_SYM(csin);

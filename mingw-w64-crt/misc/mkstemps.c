@@ -53,4 +53,4 @@ int __cdecl mkstemps(char *_Template, int _Suffixlen)
     return -1;
 }
 
-int __cdecl mkstemps64(char *_Template, int _Suffixlen) __attribute__((alias("mkstemps")));
+int __cdecl mkstemps64(char *_Template, int _Suffixlen) __ALIAS(mkstemps);

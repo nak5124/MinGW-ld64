@@ -3,5 +3,5 @@
 
 #include <intrin.h>
 
-__LONG32 InterlockedAnd(__LONG32 volatile *, __LONG32) __attribute__((alias("_InterlockedAnd")));
+__LONG32 InterlockedAnd(__LONG32 volatile *, __LONG32) __ALIAS(_InterlockedAnd);
 

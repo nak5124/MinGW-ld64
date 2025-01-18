@@ -219,6 +219,9 @@
 #define __MINGW_GNU_STRFTIME(__format, __args) \
   __attribute__((__format__(__MINGW_STRFTIME_FORMAT, __format, __args)))
 
+#define __ALIAS(fnc)         __attribute__((__alias__(__STRING(fnc))))
+#define __ALIAS_IMP_SYM(sym) __attribute__((__alias__(__MINGW_STRING(__IMP_SYMBOL(sym)))))
+
 /* inline function-related macros */
 #ifndef _inline
 # define _inline __inline

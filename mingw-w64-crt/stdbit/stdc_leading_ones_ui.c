@@ -10,4 +10,4 @@ unsigned int (stdc_leading_ones_ui)(unsigned int value)
   return stdc_leading_ones_ui(value);
 }
 
-unsigned int (stdc_leading_ones_ul)(unsigned long int value) __attribute__((alias("stdc_leading_ones_ui")));
+unsigned int (stdc_leading_ones_ul)(unsigned long int value) __ALIAS(stdc_leading_ones_ui);

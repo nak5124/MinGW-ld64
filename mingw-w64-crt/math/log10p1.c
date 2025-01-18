@@ -28,4 +28,4 @@ double __cdecl log10p1(double x)
   return M_LOG10E * log1p(x);
 }
 
-long double __cdecl log10p1l(long double _X) __attribute__((alias("log10p1")));
+long double __cdecl log10p1l(long double _X) __ALIAS(log10p1);

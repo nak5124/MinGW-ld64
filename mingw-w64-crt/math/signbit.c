@@ -3,18 +3,8 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#define __FP_SIGNBIT 0x0200
-int __cdecl __signbit(double x);
-
-typedef union __mingw_dbl_type_t
-{
-  double x;
-  unsigned long long val;
-  __extension__ struct
-  {
-    unsigned int low, high;
-  } lh;
-} __mingw_dbl_type_t;
+#define __CRT__NO_INLINE
+#include <math.h>
 
 int __cdecl __signbit(double x)
 {
@@ -25,7 +15,7 @@ int __cdecl __signbit(double x)
 }
 
 #undef signbit
-int __cdecl signbit(double x) __attribute__((alias("__signbit")));
+int __cdecl signbit(double x) __ALIAS(__signbit);
 
-int __cdecl __signbitl(long double x) __attribute__((alias("__signbit")));
-int __cdecl signbitl(long double x) __attribute__((alias("__signbit")));
+int __cdecl __signbitl(long double x) __ALIAS(__signbit);
+int __cdecl signbitl(long double x) __ALIAS(__signbit);

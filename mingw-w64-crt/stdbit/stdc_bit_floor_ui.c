@@ -10,4 +10,4 @@ unsigned int (stdc_bit_floor_ui)(unsigned int value)
   return stdc_bit_floor_ui(value);
 }
 
-unsigned long int (stdc_bit_floor_ul)(unsigned long int value) __attribute__((alias("stdc_bit_floor_ui")));
+unsigned long int (stdc_bit_floor_ul)(unsigned long int value) __ALIAS(stdc_bit_floor_ui);

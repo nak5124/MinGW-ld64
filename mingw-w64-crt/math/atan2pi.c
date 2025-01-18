@@ -12,4 +12,4 @@ double __cdecl atan2pi(double y, double x)
   return __builtin_isgreater(__builtin_fabs(ret), 1.0) ? __builtin_copysign(1.0, ret) : ret;
 }
 
-long double __cdecl atan2pil(long double _Y, long double _X) __attribute__((alias("atan2pi")));
+long double __cdecl atan2pil(long double _Y, long double _X) __ALIAS(atan2pi);

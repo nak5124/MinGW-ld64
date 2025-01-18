@@ -19,7 +19,7 @@ int __cdecl __isnan(double _x)
 }
 
 #undef isnan
-int __cdecl isnan(double _x) __attribute__((alias("__isnan")));
+int __cdecl isnan(double _x) __ALIAS(__isnan);
 
-int __cdecl __isnanl(long double _x) __attribute__((alias("__isnan")));
-int __cdecl isnanl(long double _x) __attribute__((alias("__isnan")));
+int __cdecl __isnanl(long double _x) __ALIAS(__isnan);
+int __cdecl isnanl(long double _x) __ALIAS(__isnan);

@@ -356,6 +356,6 @@ double __cdecl exp10(double x){
   return fh;
 }
 
-long double __cdecl exp10l(long double _X) __attribute__((alias("exp10")));
-double __cdecl pow10(double _X) __attribute__((alias("exp10")));
-long double __cdecl pow10l(long double _X) __attribute__((alias("exp10")));
+long double __cdecl exp10l(long double _X) __ALIAS(exp10);
+double __cdecl pow10(double _X) __ALIAS(exp10);
+long double __cdecl pow10l(long double _X) __ALIAS(exp10);

@@ -47,6 +47,5 @@
 #include "complex_internal.h"
 #include "carg.def.h"
 
-long double __cdecl cargl(long double __complex__ z) __attribute__((alias("carg")));
-extern long double (__cdecl *__IMP_SYMBOL(cargl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(carg)))));
+long double __cdecl cargl(long double __complex__ z) __ALIAS(carg);
+extern long double (__cdecl *__IMP_SYMBOL(cargl))(long double __complex__ z) __ALIAS_IMP_SYM(carg);

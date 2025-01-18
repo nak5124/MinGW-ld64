@@ -66,4 +66,4 @@ double __cdecl tanpi(double x)
   return ret;
 }
 
-long double __cdecl tanpil(long double _X) __attribute__((alias("tanpi")));
+long double __cdecl tanpil(long double _X) __ALIAS(tanpi);

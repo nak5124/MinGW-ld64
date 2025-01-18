@@ -10,4 +10,4 @@ unsigned int (stdc_trailing_zeros_ui)(unsigned int value)
   return stdc_trailing_zeros_ui(value);
 }
 
-unsigned int (stdc_trailing_zeros_ul)(unsigned long int value) __attribute__((alias("stdc_trailing_zeros_ui")));
+unsigned int (stdc_trailing_zeros_ul)(unsigned long int value) __ALIAS(stdc_trailing_zeros_ui);

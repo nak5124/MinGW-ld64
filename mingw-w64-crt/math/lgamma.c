@@ -273,6 +273,5 @@ double __cdecl lgamma(double x)
 
 double __cdecl (*__IMP_SYMBOL(lgamma))(double x) = lgamma;
 
-long double __cdecl lgammal(long double x) __attribute__((alias("lgamma")));
-extern long double (__cdecl *__IMP_SYMBOL(lgammal))(long double x)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(lgamma)))));
+long double __cdecl lgammal(long double x) __ALIAS(lgamma);
+extern long double (__cdecl *__IMP_SYMBOL(lgammal))(long double x) __ALIAS_IMP_SYM(lgamma);

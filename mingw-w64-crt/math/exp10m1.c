@@ -1122,4 +1122,4 @@ exp10m1 (double x)
   return exp10m1_accurate (x);
 }
 
-long double __cdecl exp10m1l(long double _X) __attribute__((alias("exp10m1")));
+long double __cdecl exp10m1l(long double _X) __ALIAS(exp10m1);

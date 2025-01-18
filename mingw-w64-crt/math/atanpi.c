@@ -472,4 +472,4 @@ double __cdecl atanpi (double x){
   return as_atan_refine2(x, ub0);
 }
 
-long double __cdecl atanpil(long double _X) __attribute__((alias("atanpi")));
+long double __cdecl atanpil(long double _X) __ALIAS(atanpi);

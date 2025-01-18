@@ -12,4 +12,4 @@ double __cdecl roundeven(double _X)
   return __builtin_roundeven(_X);
 }
 
-long double __cdecl roundevenl(long double _X) __attribute__((alias("roundeven")));
+long double __cdecl roundevenl(long double _X) __ALIAS(roundeven);

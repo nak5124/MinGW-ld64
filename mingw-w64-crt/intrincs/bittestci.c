@@ -3,4 +3,4 @@
 
 #include <intrin.h>
 
-unsigned char InterlockedBitTestAndComplement(__LONG32 volatile *, __LONG32) __attribute__((alias("_interlockedbittestandcomplement")));
+unsigned char InterlockedBitTestAndComplement(__LONG32 volatile *, __LONG32) __ALIAS(_interlockedbittestandcomplement);

@@ -3,5 +3,5 @@
 
 #include <intrin.h>
 
-__LONG32 InterlockedXor(__LONG32 volatile *, __LONG32) __attribute__((alias("_InterlockedXor")));
+__LONG32 InterlockedXor(__LONG32 volatile *, __LONG32) __ALIAS(_InterlockedXor);
 

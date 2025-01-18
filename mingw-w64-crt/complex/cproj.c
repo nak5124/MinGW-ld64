@@ -47,6 +47,5 @@
 #include "complex_internal.h"
 #include "cproj.def.h"
 
-long double __complex__ __cdecl cprojl(long double __complex__ z) __attribute__((alias("cproj")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(cprojl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(cproj)))));
+long double __complex__ __cdecl cprojl(long double __complex__ z) __ALIAS(cproj);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(cprojl))(long double __complex__ z) __ALIAS_IMP_SYM(cproj);

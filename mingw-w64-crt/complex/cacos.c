@@ -49,10 +49,8 @@
 #include "cacosh.def.h"
 #include "cacos.def.h"
 
-long double __complex__ __cdecl cacoshl(long double __complex__ z) __attribute__((alias("cacosh")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(cacoshl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(cacosh)))));
+long double __complex__ __cdecl cacoshl(long double __complex__ z) __ALIAS(cacosh);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(cacoshl))(long double __complex__ z) __ALIAS_IMP_SYM(cacosh);
 
-long double __complex__ __cdecl cacosl(long double __complex__ z) __attribute__((alias("cacos")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(cacosl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(cacos)))));
+long double __complex__ __cdecl cacosl(long double __complex__ z) __ALIAS(cacos);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(cacosl))(long double __complex__ z) __ALIAS_IMP_SYM(cacos);

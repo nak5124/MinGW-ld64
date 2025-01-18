@@ -44,4 +44,4 @@ double __cdecl cospi(double x)
   return ((int)i_x % 2 == 0) ? ret : -ret;
 }
 
-long double __cdecl cospil(long double _X) __attribute__((alias("cospi")));
+long double __cdecl cospil(long double _X) __ALIAS(cospi);

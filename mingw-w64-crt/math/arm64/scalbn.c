@@ -18,26 +18,20 @@ float __cdecl scalbnf(float x, int exp)
 }
 float __cdecl (*__IMP_SYMBOL(scalbnf))(float x, int exp) = scalbnf;
 
-long double __cdecl scalbnl(long double x, int exp) __attribute__((alias("scalbn")));
-extern long double (__cdecl *__IMP_SYMBOL(scalbnl))(long double x, int exp)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(scalbn)))));
+long double __cdecl scalbnl(long double x, int exp) __ALIAS(scalbn);
+extern long double (__cdecl *__IMP_SYMBOL(scalbnl))(long double x, int exp) __ALIAS_IMP_SYM(scalbn);
 
-double __cdecl scalbln(double x, long exp) __attribute__((alias("scalbn")));
-extern double (__cdecl *__IMP_SYMBOL(scalbln))(double x, long exp)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(scalbn)))));
+double __cdecl scalbln(double x, long exp) __ALIAS(scalbn);
+extern double (__cdecl *__IMP_SYMBOL(scalbln))(double x, long exp) __ALIAS_IMP_SYM(scalbn);
 
-float __cdecl scalblnf(float x, long exp) __attribute__((alias("scalbnf")));
-extern float (__cdecl *__IMP_SYMBOL(scalblnf))(float x, long exp)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(scalbnf)))));
+float __cdecl scalblnf(float x, long exp) __ALIAS(scalbnf);
+extern float (__cdecl *__IMP_SYMBOL(scalblnf))(float x, long exp) __ALIAS_IMP_SYM(scalbnf);
 
-long double __cdecl scalblnl(long double x, long exp) __attribute__((alias("scalbn")));
-extern long double (__cdecl *__IMP_SYMBOL(scalblnl))(long double, long)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(scalbn)))));
+long double __cdecl scalblnl(long double x, long exp) __ALIAS(scalbn);
+extern long double (__cdecl *__IMP_SYMBOL(scalblnl))(long double, long) __ALIAS_IMP_SYM(scalbn);
 
-double __cdecl ldexp(double x, int exp) __attribute__((alias("scalbn")));
-extern double (__cdecl *__IMP_SYMBOL(ldexp))(double x, int exp)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(scalbn)))));
+double __cdecl ldexp(double x, int exp) __ALIAS(scalbn);
+extern double (__cdecl *__IMP_SYMBOL(ldexp))(double x, int exp) __ALIAS_IMP_SYM(scalbn);
 
-long double __cdecl ldexpl(long double x, int exp) __attribute__((alias("scalbn")));
-extern double (__cdecl *__IMP_SYMBOL(ldexpl))(long double x, int exp)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(scalbn)))));
+long double __cdecl ldexpl(long double x, int exp) __ALIAS(scalbn);
+extern double (__cdecl *__IMP_SYMBOL(ldexpl))(long double x, int exp) __ALIAS_IMP_SYM(scalbn);

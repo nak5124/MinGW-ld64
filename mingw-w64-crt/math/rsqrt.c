@@ -138,4 +138,4 @@ double __cdecl rsqrt(double x){
   return rf;
 }
 
-long double __cdecl rsqrtl(long double _X) __attribute__((alias("rsqrt")));
+long double __cdecl rsqrtl(long double _X) __ALIAS(rsqrt);

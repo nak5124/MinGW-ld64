@@ -15,4 +15,4 @@ int __isnanf(float _x)
   return (int)(((unsigned int)i) >> 31);
 }
 
-int __cdecl isnanf(float _x) __attribute__((alias("__isnanf")));
+int __cdecl isnanf(float _x) __ALIAS(__isnanf);

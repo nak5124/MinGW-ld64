@@ -47,6 +47,5 @@
 #include "complex_internal.h"
 #include "conj.def.h"
 
-long double __complex__ __cdecl conjl(long double __complex__ z) __attribute__((alias("conj")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(conjl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(conj)))));
+long double __complex__ __cdecl conjl(long double __complex__ z) __ALIAS(conj);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(conjl))(long double __complex__ z) __ALIAS_IMP_SYM(conj);

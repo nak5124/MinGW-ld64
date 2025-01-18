@@ -18,4 +18,4 @@ double __cdecl acospi(double x)
   return __builtin_isgreater(ret, 1.0) ? 1.0 : ret;
 }
 
-long double __cdecl acospil(long double _X) __attribute__((alias("acospi")));
+long double __cdecl acospil(long double _X) __ALIAS(acospi);

@@ -10,4 +10,4 @@ bool (stdc_has_single_bit_ui)(unsigned int value)
   return stdc_has_single_bit_ui(value);
 }
 
-bool (stdc_has_single_bit_ul)(unsigned long int value) __attribute__((alias("stdc_has_single_bit_ui")));
+bool (stdc_has_single_bit_ul)(unsigned long int value) __ALIAS(stdc_has_single_bit_ui);

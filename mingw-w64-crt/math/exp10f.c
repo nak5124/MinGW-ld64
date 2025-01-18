@@ -143,4 +143,4 @@ float __cdecl exp10f(float x){
   return ub;
 }
 
-float __cdecl pow10f(float _X) __attribute__((alias("exp10f")));
+float __cdecl pow10f(float _X) __ALIAS(exp10f);

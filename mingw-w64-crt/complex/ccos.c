@@ -49,10 +49,8 @@
 #include "ccosh.def.h"
 #include "ccos.def.h"
 
-long double __complex__ __cdecl ccoshl(long double __complex__ z) __attribute__((alias("ccosh")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(ccoshl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(ccosh)))));
+long double __complex__ __cdecl ccoshl(long double __complex__ z) __ALIAS(ccosh);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(ccoshl))(long double __complex__ z) __ALIAS_IMP_SYM(ccosh);
 
-long double __complex__ __cdecl ccosl(long double __complex__ z) __attribute__((alias("ccos")));
-extern long double __complex__ (__cdecl *__IMP_SYMBOL(ccosl))(long double __complex__ z)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(ccos)))));
+long double __complex__ __cdecl ccosl(long double __complex__ z) __ALIAS(ccos);
+extern long double __complex__ (__cdecl *__IMP_SYMBOL(ccosl))(long double __complex__ z) __ALIAS_IMP_SYM(ccos);

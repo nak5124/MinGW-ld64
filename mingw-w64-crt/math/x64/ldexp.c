@@ -25,6 +25,5 @@ double __cdecl ldexp(double x, int expn)
 
 double __cdecl (*__IMP_SYMBOL(ldexp))(double x, int expn) = ldexp;
 
-long double __cdecl ldexpl(long double x, int expn) __attribute__((alias("ldexp")));
-extern double (__cdecl *__IMP_SYMBOL(ldexpl))(long double x, int expn)
-  __attribute__((alias(__MINGW_STRING(__IMP_SYMBOL(ldexp)))));
+long double __cdecl ldexpl(long double x, int expn) __ALIAS(ldexp);
+extern double (__cdecl *__IMP_SYMBOL(ldexpl))(long double x, int expn) __ALIAS_IMP_SYM(ldexp);

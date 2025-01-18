@@ -33,4 +33,4 @@ int __cdecl __fpclassify(double _x)
   return FP_NORMAL;
 }
 
-int __cdecl __fpclassifyl(long double _x) __attribute__((alias("__fpclassify")));
+int __cdecl __fpclassifyl(long double _x) __ALIAS(__fpclassify);
