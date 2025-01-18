@@ -133,33 +133,33 @@ __MINGW_BEGIN_C_DECLS
 #define _wstat    _wstat64i32
 #define _wstati64 _wstat64
 
-  _CRTIMP int __cdecl _fstat32(int _FileDes, struct _stat32 *_Stat)       __NONNULL((2));
-  _CRTIMP int __cdecl _fstat32i64(int _FileDes, struct _stat32i64 *_Stat) __NONNULL((2));
-  _CRTIMP int __cdecl _fstat64i32(int _FileDes, struct _stat64i32 *_Stat) __NONNULL((2));
-  _CRTIMP int __cdecl _fstat64(int _FileDes, struct _stat64 *_Stat)       __NONNULL((2));
-  _CRTIMP int __cdecl _stat32(const char *_Name, struct _stat32 *_Stat)       __NONNULL((1, 2));
-  _CRTIMP int __cdecl _stat32i64(const char *_Name, struct _stat32i64 *_Stat) __NONNULL((1, 2));
-  _CRTIMP int __cdecl _stat64i32(const char *_Name, struct _stat64i32 *_Stat) __NONNULL((1, 2));
-  _CRTIMP int __cdecl _stat64(const char *_Name, struct _stat64 *_Stat)       __NONNULL((1, 2));
-  _CRTIMP int __cdecl _wstat32(const wchar_t *_Name, struct _stat32 *_Stat)       __NONNULL((1, 2));
-  _CRTIMP int __cdecl _wstat32i64(const wchar_t *_Name, struct _stat32i64 *_Stat) __NONNULL((1, 2));
-  _CRTIMP int __cdecl _wstat64i32(const wchar_t *_Name, struct _stat64i32 *_Stat) __NONNULL((1, 2));
-  _CRTIMP int __cdecl _wstat64(const wchar_t *_Name, struct _stat64 *_Stat)       __NONNULL((1, 2));
+  _CRTIMP int __cdecl _fstat32(int _FileDes, struct _stat32 *_Stat)               __NOTHROW __NONNULL((2));
+  _CRTIMP int __cdecl _fstat32i64(int _FileDes, struct _stat32i64 *_Stat)         __NOTHROW __NONNULL((2));
+  _CRTIMP int __cdecl _fstat64i32(int _FileDes, struct _stat64i32 *_Stat)         __NOTHROW __NONNULL((2));
+  _CRTIMP int __cdecl _fstat64(int _FileDes, struct _stat64 *_Stat)               __NOTHROW __NONNULL((2));
+  _CRTIMP int __cdecl _stat32(const char *_Name, struct _stat32 *_Stat)           __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _stat32i64(const char *_Name, struct _stat32i64 *_Stat)     __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _stat64i32(const char *_Name, struct _stat64i32 *_Stat)     __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _stat64(const char *_Name, struct _stat64 *_Stat)           __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _wstat32(const wchar_t *_Name, struct _stat32 *_Stat)       __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _wstat32i64(const wchar_t *_Name, struct _stat32i64 *_Stat) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _wstat64i32(const wchar_t *_Name, struct _stat64i32 *_Stat) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP int __cdecl _wstat64(const wchar_t *_Name, struct _stat64 *_Stat)       __NOTHROW __NONNULL((1, 2));
 
 #ifndef __MINGW_USE_FOB64
-  int __cdecl fstat(int _Desc, struct stat *_Stat)                __NONNULL((2));
-  int __cdecl stat(const char *_Filename, struct stat *_Stat)     __NONNULL((1, 2));
-  int __cdecl wstat(const wchar_t *_Filename, struct stat *_Stat) __NONNULL((1, 2));
+  int __cdecl fstat(int _Desc, struct stat *_Stat)                __NOTHROW __NONNULL((2));
+  int __cdecl stat(const char *_Filename, struct stat *_Stat)     __NOTHROW __NONNULL((1, 2));
+  int __cdecl wstat(const wchar_t *_Filename, struct stat *_Stat) __NOTHROW __NONNULL((1, 2));
 #else
-  int __cdecl fstat(int _Desc, struct stat *_Stat)                __ASM_CALL(fstat64) __NONNULL((2));
-  int __cdecl stat(const char *_Filename, struct stat *_Stat)     __ASM_CALL(stat64)  __NONNULL((1, 2));
-  int __cdecl wstat(const wchar_t *_Filename, struct stat *_Stat) __ASM_CALL(wstat64) __NONNULL((1, 2));
+  int __cdecl fstat(int _Desc, struct stat *_Stat)                __ASM_CALL_NTH(fstat64) __NONNULL((2));
+  int __cdecl stat(const char *_Filename, struct stat *_Stat)     __ASM_CALL_NTH(stat64)  __NONNULL((1, 2));
+  int __cdecl wstat(const wchar_t *_Filename, struct stat *_Stat) __ASM_CALL_NTH(wstat64) __NONNULL((1, 2));
 #endif
 
 #ifdef __MINGW_USE_LFS64
-  int __cdecl fstat64(int _FileDes, struct stat64 *_Stat)         __NONNULL((2));
-  int __cdecl stat64(const char *_Name, struct stat64 *_Stat)     __NONNULL((1, 2));
-  int __cdecl wstat64(const wchar_t *_Name, struct stat64 *_Stat) __NONNULL((1, 2));
+  int __cdecl fstat64(int _FileDes, struct stat64 *_Stat)         __NOTHROW __NONNULL((2));
+  int __cdecl stat64(const char *_Name, struct stat64 *_Stat)     __NOTHROW __NONNULL((1, 2));
+  int __cdecl wstat64(const wchar_t *_Name, struct stat64 *_Stat) __NOTHROW __NONNULL((1, 2));
 #endif
 
 #define _S_IFBLK 0x3000
@@ -195,16 +195,16 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CHMOD_UMASK_DEFINED  /* Also in io.h */
 # define _CHMOD_UMASK_DEFINED
-  _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode) __NONNULL((1));
-  _CRTIMP int __cdecl _umask(int _Mode) __MINGW_DEPRECATED_SEC_WARN;
-  _CRTIMP int __cdecl  chmod(const char *_Filename, int _AccessMode) __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl  umask(int _Mode) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl _chmod(const char *_Filename, int _Mode) __NOTHROW __NONNULL((1));
+  _CRTIMP int __cdecl _umask(int _Mode) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int __cdecl  chmod(const char *_Filename, int _AccessMode) __NOTHROW __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl  umask(int _Mode) __NOTHROW __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
 
 #ifndef _MKDIR_DEFINED  /* Also in direct.h */
 # define _MKDIR_DEFINED
-  _CRTIMP int __cdecl _mkdir(const char *_Path) __NONNULL((1));
-  _CRTIMP int __cdecl  mkdir(const char *_Path) __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl _mkdir(const char *_Path) __NOTHROW __NONNULL((1));
+  _CRTIMP int __cdecl  mkdir(const char *_Path) __NOTHROW __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 
 __MINGW_END_C_DECLS
