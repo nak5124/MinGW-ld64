@@ -1078,14 +1078,14 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __MINGW_FORTIFY_VA_ARG */
 
-#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2)
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_XOPEN2K24)
 
   extern int __cdecl vasprintf(char **__restrict _Strp, const char *__restrict _Format, va_list _ArgList)
     __NOTHROW __MINGW_GNU_PRINTF(2, 0) __NONNULL((1, 2)) __WUR_FORTIFY;
   extern int __cdecl asprintf(char **__restrict _Strp, const char *__restrict _Format, ...)
     __NOTHROW __MINGW_GNU_PRINTF(2, 3) __NONNULL((1, 2)) __WUR_FORTIFY;
 
-#endif  /* defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2) */
+#endif  /* defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_XOPEN2K24) */
 
 #pragma GCC diagnostic pop
 
