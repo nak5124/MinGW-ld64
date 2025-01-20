@@ -140,6 +140,10 @@ __MINGW_BEGIN_C_DECLS
   extern wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size) __NOTHROW __NONNULL((1, 2));
 #endif
 
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24)
+  extern size_t  __cdecl wcslcat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2));
+#endif
+
 __MINGW_END_C_DECLS
 
 #endif  /* _INC_WCHAR */
