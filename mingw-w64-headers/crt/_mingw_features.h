@@ -23,6 +23,7 @@
 #undef __MINGW_USE_XOPEN2K8
 #undef __MINGW_USE_XOPEN2K8XSI
 #undef __MINGW_USE_XOPEN2K24
+#undef __MINGW_USE_XOPEN2K24XSI
 #undef __MINGW_USE_MISC
 #undef __MINGW_USE_FOB64
 #undef __MINGW_USE_LFS
@@ -196,7 +197,8 @@
 #       define __MINGW_USE_XOPEN2K8XSI 1
 #       if (_XOPEN_SOURCE - 0) >= 800
 #         undef  __MINGW_USE_XOPEN2K24
-#         define __MINGW_USE_XOPEN2K24 1
+#         define __MINGW_USE_XOPEN2K24    1
+#         define __MINGW_USE_XOPEN2K24XSI 1
 #       endif
 #     endif
 #   endif

@@ -29,7 +29,7 @@
 
   char *__cdecl index(const char *_S, int _C)  __NOTHROW __PURE __NONNULL((1));
   char *__cdecl rindex(const char *_S, int _C) __NOTHROW __PURE __NONNULL((1));
-#endif
+#endif  /* defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) */
 
 #if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_XOPEN2K8XSI)
   extern int __cdecl ffs(int _Int) __NOTHROW __CONST;
@@ -40,9 +40,9 @@
     return __builtin_ffs(_Int);
   }
 #endif
-#endif
+#endif  /* defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_XOPEN2K8XSI) */
 
-#ifdef __MINGW_USE_MISC
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24XSI)
   /**/              extern int __cdecl ffsl(long _Long)        __NOTHROW __CONST;
   __MINGW_EXTENSION extern int __cdecl ffsll(long long _Llong) __NOTHROW __CONST;
 #ifndef __CRT__NO_INLINE
@@ -58,6 +58,6 @@
     return __builtin_ffsll(_Llong);
   }
 #endif
-#endif
+#endif  /* defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24XSI) */
 
 #endif  /* _STRINGS_H_ */
