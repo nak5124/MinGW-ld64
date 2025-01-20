@@ -47,7 +47,9 @@ __MINGW_BEGIN_C_DECLS
 # define M_2_SQRTPIf 1.12837916709551257390f
 # define M_SQRT2f    1.41421356237309504880f
 # define M_SQRT1_2f  0.70710678118654752440f
+#endif
 
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24XSI)
 # define M_El        M_E
 # define M_LOG2El    M_LOG2E
 # define M_LOG10El   M_LOG10E
