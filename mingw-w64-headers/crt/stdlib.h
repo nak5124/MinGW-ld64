@@ -574,7 +574,7 @@ __MINGW_BEGIN_C_DECLS
   extern char *__cdecl l64a(long _Value)        __NOTHROW __WUR_FORTIFY;
 #endif
 
-#ifdef __MINGW_USE_MISC
+#if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24)
   extern void *__cdecl reallocarray(void *_Ptr, size_t _Nmemb, size_t _Size) __NOTHROW __WUR __ALLOC_SIZE((2, 3)) __ATTR_DEALLOC_FREE;
   extern void *__cdecl reallocarray(void *_Ptr, size_t _Nmemb, size_t _Size) __NOTHROW __ATTR_DEALLOC(reallocarray, 1);
 #endif
