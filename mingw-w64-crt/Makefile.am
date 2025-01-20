@@ -213,7 +213,7 @@ src_libmingwex=\
   string/memmem.c                  string/memrchr.c        string/memset_explicit.c  string/memset_s.c          string/stpcpy.c           \
   string/stpncpy.c                 string/strcasestr.c     string/strchrnul.c        string/strerror_r.c        string/strlcat.c          \
   string/strlcpy.c                 string/strndup.c        string/strsep.c           string/strverscmp.c        string/wcslcat.c          \
-  string/xsi_strerror_r.c          \
+  string/wcslcpy.c                 string/xsi_strerror_r.c \
   \
   time/asctime_r.c                 time/clock.c            time/ctime_r.c            time/gmtime_r.c            time/localtime_r.c        \
   time/nanosleep.c                 time/timespec_getres.c
