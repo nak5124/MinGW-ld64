@@ -35,25 +35,25 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP _locale_t __cdecl _wcreate_locale(int _Category, const wchar_t *_Locale);
 #endif
 
-  _CRTIMP wint_t  __cdecl btowc(int);
-  _CRTIMP size_t  __cdecl mbrlen(const char *__restrict _Ch, size_t _SizeInBytes, mbstate_t *__restrict _State);
-  _CRTIMP size_t  __cdecl mbrtowc(wchar_t *__restrict _DstCh, const char *__restrict _SrcCh, size_t _SizeInBytes, mbstate_t *__restrict _State);
-  _CRTIMP size_t  __cdecl mbsrtowcs(wchar_t *__restrict _Dest, const char **__restrict _PSrc, size_t _Count, mbstate_t *__restrict _State) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP wint_t  __cdecl btowc(int) __NOTHROW;
+  _CRTIMP size_t  __cdecl mbrlen(const char *__restrict _Ch, size_t _SizeInBytes, mbstate_t *__restrict _State) __NOTHROW;
+  _CRTIMP size_t  __cdecl mbrtowc(wchar_t *__restrict _DstCh, const char *__restrict _SrcCh, size_t _SizeInBytes, mbstate_t *__restrict _State) __NOTHROW;
+  _CRTIMP size_t  __cdecl mbsrtowcs(wchar_t *__restrict _Dest, const char **__restrict _PSrc, size_t _Count, mbstate_t *__restrict _State) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl mbsrtowcs_s(size_t *_Retval, wchar_t *_Dst, size_t _SizeInWords, const char **_PSrc, size_t _N, mbstate_t *_State);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(errno_t, mbsrtowcs_s, size_t *, _Retval, wchar_t, _Dst, const char **, _PSrc, size_t, _N, mbstate_t *, _State)
 #endif
-  _CRTIMP size_t  __cdecl wcrtomb(char *__restrict _Dest, wchar_t _Source, mbstate_t *__restrict _State) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP size_t  __cdecl wcrtomb(char *__restrict _Dest, wchar_t _Source, mbstate_t *__restrict _State) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wcrtomb_s(size_t *_Retval, char *_Dst, size_t _SizeInBytes, wchar_t _Ch, mbstate_t *_State);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(errno_t, wcrtomb_s, size_t *, _Retval, char, _Dst, wchar_t, _Ch, mbstate_t *, _State)
 #endif
-  _CRTIMP size_t  __cdecl wcsrtombs(char *__restrict _Dest, const wchar_t **__restrict _PSource, size_t _Count, mbstate_t *__restrict _State) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP size_t  __cdecl wcsrtombs(char *__restrict _Dest, const wchar_t **__restrict _PSource, size_t _Count, mbstate_t *__restrict _State) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wcsrtombs_s(size_t *_Retval, char *_Dst, size_t _SizeInBytes, const wchar_t **_Src, size_t _Size, mbstate_t *_State);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(errno_t, wcsrtombs_s, size_t *, _Retval, char, _Dst, const wchar_t **, _Src, size_t, _Size, mbstate_t *, _State)
 #endif
-  _CRTIMP int     __cdecl wctob(wint_t _WCh);
+  _CRTIMP int     __cdecl wctob(wint_t _WCh) __NOTHROW;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl wmemcpy_s(wchar_t *_S1, rsize_t _N1, const wchar_t *_S2, rsize_t _N);
   _CRTIMP errno_t __cdecl wmemmove_s(wchar_t *_S1, rsize_t _N1, const wchar_t *_S2, rsize_t _N);
@@ -64,16 +64,16 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
   __mingw_ovr __PURE
-  int mbsinit(const mbstate_t *_P)
+  __NTH_FNC(int mbsinit(const mbstate_t *_P))
   {
     return (!_P || _P->_Wchar == 0);
   }
 
   _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N)          __NOTHROW __PURE __NONNULL((1));
   extern int             __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N) __NOTHROW __PURE __NONNULL((1, 2));
-  extern wchar_t        *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N) __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
-  extern wchar_t        *__cdecl wmemmove(wchar_t *_S1, const wchar_t *_S2, size_t _N)                      __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
-  extern wchar_t        *__cdecl wmemset(wchar_t *_S, wchar_t _C, size_t _N)                                __NONNULL((1));
+  extern wchar_t        *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  extern wchar_t        *__cdecl wmemmove(wchar_t *_S1, const wchar_t *_S2, size_t _N)                      __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  extern wchar_t        *__cdecl wmemset(wchar_t *_S, wchar_t _C, size_t _N)                                __NOTHROW __NONNULL((1));
 
 #ifndef __CRT__NO_INLINE
 
@@ -86,8 +86,8 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  __CRT_INLINE __NONNULL((1)) __PURE
-  _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N)
+  __CRT_INLINE __PURE __NONNULL((1))
+  __NTH_FNC(_CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N))
   {
     if(_S)
     {
@@ -98,8 +98,8 @@ __MINGW_BEGIN_C_DECLS
     return (_CONST_RETURN wchar_t *)NULL;
   }
 
-  __CRT_INLINE __NONNULL((1, 2)) __PURE
-  int __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N)
+  __CRT_INLINE __PURE __NONNULL((1, 2))
+  __NTH_FNC(int __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N))
   {
     if(_N == 0 || _S1 == _S2)
       return 0;  /* even for NULL pointers. */
@@ -112,19 +112,19 @@ __MINGW_BEGIN_C_DECLS
   }
 
   __CRT_INLINE __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN
-  wchar_t *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N)
+  __NTH_FNC(wchar_t *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N))
   {
     return (wchar_t *)memcpy(_S1, _S2, _N * sizeof(wchar_t));
   }
 
   __CRT_INLINE __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN
-  wchar_t *__cdecl wmemmove(wchar_t *_S1, const wchar_t *_S2, size_t _N)
+  __NTH_FNC(wchar_t *__cdecl wmemmove(wchar_t *_S1, const wchar_t *_S2, size_t _N))
   {
     return (wchar_t *)memmove(_S1, _S2, _N * sizeof(wchar_t));
   }
 
   __CRT_INLINE __NONNULL((1))
-  wchar_t *__cdecl wmemset(wchar_t *_S, wchar_t _C, size_t _N)
+  __NTH_FNC(wchar_t *__cdecl wmemset(wchar_t *_S, wchar_t _C, size_t _N))
   {
     wchar_t *_Su = _S;
     for( ; 0<_N; ++_Su, --_N)
@@ -137,7 +137,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_GNU
-  extern wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size) __NONNULL((1, 2));
+  extern wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size) __NOTHROW __NONNULL((1, 2));
 #endif
 
 __MINGW_END_C_DECLS

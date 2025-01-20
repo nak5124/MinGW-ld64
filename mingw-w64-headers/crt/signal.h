@@ -54,8 +54,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void **__cdecl __pxcptinfoptrs(void);
 #define _pxcptinfoptrs (*__pxcptinfoptrs())
 
-  _CRTIMP __p_sig_fn_t __cdecl signal(int _SigNum, __p_sig_fn_t _Func);
-  _CRTIMP int          __cdecl raise(int _SigNum);
+  _CRTIMP __p_sig_fn_t __cdecl signal(int _SigNum, __p_sig_fn_t _Func) __NOTHROW;
+  _CRTIMP int          __cdecl raise(int _SigNum)                      __NOTHROW;
 
 #ifdef __MINGW_USE_POSIX199506
 # ifndef pthread_sigmask

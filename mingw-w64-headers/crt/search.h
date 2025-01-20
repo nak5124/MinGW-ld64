@@ -61,8 +61,8 @@ __MINGW_BEGIN_C_DECLS
   };
 # endif
 
-  extern void __cdecl insque(void *_Elem, void *_Prev);
-  extern void __cdecl remque(void *_Elem);
+  extern void __cdecl insque(void *_Elem, void *_Prev) __NOTHROW;
+  extern void __cdecl remque(void *_Elem)              __NOTHROW;
 #endif
 
 __MINGW_END_C_DECLS

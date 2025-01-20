@@ -130,8 +130,8 @@
 #define __ATTR_MALLOC      __attribute__((__malloc__))
 #define __ALLOC_SIZE(args) __attribute__((__alloc_size__ args))
 
-#define __PURE   __attribute__((__pure__))
-#define __CONST  __attribute__((__const__))
+#define __PURE  __attribute__((__pure__))
+#define __CONST __attribute__((__const__))
 
 #define __ATTR_UNUSED __attribute__((__unused__))
 #ifdef __cplusplus

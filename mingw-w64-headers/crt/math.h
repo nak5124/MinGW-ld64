@@ -257,11 +257,11 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW __CONST;
   _CRTIMP int    __cdecl _fpclass(double _X)                     __NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
-  _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
+  _CRTIMP float  __cdecl _scalbf(float _X, long _Y) __NOTHROW;
 #endif
 
-  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __CONST;
-  _CRTIMP long double __cdecl _chgsignl(long double _X);
+  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __NOTHROW __CONST;
+  _CRTIMP long double __cdecl _chgsignl(long double _X) __NOTHROW;
 #endif  /* _SIGN_DEFINED */
 
 /* END FLOAT.H COPY */
@@ -290,7 +290,7 @@ __MINGW_BEGIN_C_DECLS
  *
  */
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl finite(double _X) __CONST;
+  _CRTIMP int __cdecl finite(double _X) __NOTHROW __CONST;
 #endif
 
 #ifdef __MINGW_USE_MS
@@ -714,9 +714,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl log2l(long double _X);
 
 /* 7.12.6.11 */
-  _CRTIMP double      __cdecl logb(double _X);
-  _CRTIMP float       __cdecl logbf(float _X);
-  _CRTIMP long double __cdecl logbl(long double _X);
+  _CRTIMP double      __cdecl logb(double _X)       __NOTHROW;
+  _CRTIMP float       __cdecl logbf(float _X)       __NOTHROW;
+  _CRTIMP long double __cdecl logbl(long double _X) __NOTHROW;
 
 /* 7.12.6.12  Double in C89 */
   _CRTIMP float       __cdecl modff(float _X, float *_Y);
@@ -864,9 +864,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl remquol(long double _X, long double _Y, int *_Z);
 
 /* 7.12.11.1 */
-  _CRTIMP double      __cdecl copysign(double _Number, double _Sign)            __CONST;
-  _CRTIMP float       __cdecl copysignf(float _Number, float _Sign)             __CONST;
-  _CRTIMP long double __cdecl copysignl(long double _Number, long double _Sign) __CONST;
+  _CRTIMP double      __cdecl copysign(double _Number, double _Sign)            __NOTHROW __CONST;
+  _CRTIMP float       __cdecl copysignf(float _Number, float _Sign)             __NOTHROW __CONST;
+  _CRTIMP long double __cdecl copysignl(long double _Number, long double _Sign) __NOTHROW __CONST;
 
 /* 7.12.11.2 Return a NaN */
   _CRTIMP double      __cdecl nan(const char *_X);
@@ -934,15 +934,15 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP float       __cdecl _hypotf(float _X, float _Y);
   _CRTIMP long double __cdecl _hypotl(long double _X, long double _Y);
 
-  _CRTIMP float __cdecl _copysignf(float _Number, float _Sign) __CONST;
-  _CRTIMP float __cdecl _chgsignf(float _X);
-  _CRTIMP float __cdecl _logbf(float _X);
-  _CRTIMP int   __cdecl _finitef(float _X) __CONST;
+  _CRTIMP float __cdecl _copysignf(float _Number, float _Sign) __NOTHROW __CONST;
+  _CRTIMP float __cdecl _chgsignf(float _X)                    __NOTHROW;
+  _CRTIMP float __cdecl _logbf(float _X)                       __NOTHROW;
+  _CRTIMP int   __cdecl _finitef(float _X)                     __NOTHROW __CONST;
 
 #if defined(__x86_64__) || defined(_AMD64_)
   _CRTIMP float __cdecl _nextafterf(float _X, float _Y) __NOTHROW __CONST;
-  _CRTIMP int   __cdecl _isnanf(float _X) __CONST;
-  _CRTIMP int   __cdecl _fpclassf(float _X);
+  _CRTIMP int   __cdecl _isnanf(float _X)               __NOTHROW __CONST;
+  _CRTIMP int   __cdecl _fpclassf(float _X)             __NOTHROW;
   _CRTIMP int   __cdecl _set_FMA3_enable(int _Flag);
   _CRTIMP int   __cdecl _get_FMA3_enable(void);
 #endif

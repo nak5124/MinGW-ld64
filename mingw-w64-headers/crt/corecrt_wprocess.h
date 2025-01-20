@@ -12,14 +12,14 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
 
-  _CRTIMP intptr_t __cdecl _wexecl(const wchar_t *_Filename, const wchar_t *_ArgList, ...) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexecle(const wchar_t *_Filename, const wchar_t *_ArgList, ...) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexeclp(const wchar_t *_Filename, const wchar_t *_ArgList, ...) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexeclpe(const wchar_t *_Filename, const wchar_t *_ArgList, ...) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexecv(const wchar_t *_Filename, const wchar_t *const *_ArgList) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexecve(const wchar_t *_Filename, const wchar_t *const *_ArgList, const wchar_t *const *_Env) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexecvp(const wchar_t *_Filename, const wchar_t *const *_ArgList) __NONNULL((1, 2));
-  _CRTIMP intptr_t __cdecl _wexecvpe(const wchar_t *_Filename, const wchar_t *const *_ArgList, const wchar_t *const *_Env) __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexecl(const wchar_t *_Filename, const wchar_t *_ArgList, ...)   __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexecle(const wchar_t *_Filename, const wchar_t *_ArgList, ...)  __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexeclp(const wchar_t *_Filename, const wchar_t *_ArgList, ...)  __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexeclpe(const wchar_t *_Filename, const wchar_t *_ArgList, ...) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexecv(const wchar_t *_Filename, const wchar_t *const *_ArgList) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexecve(const wchar_t *_Filename, const wchar_t *const *_ArgList, const wchar_t *const *_Env)  __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexecvp(const wchar_t *_Filename, const wchar_t *const *_ArgList)                              __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _wexecvpe(const wchar_t *_Filename, const wchar_t *const *_ArgList, const wchar_t *const *_Env) __NOTHROW __NONNULL((1, 2));
 
 #ifndef _WSPAWN_DEFINED  /* Also in corecrt_wstdio.h */
 # define _WSPAWN_DEFINED
@@ -35,7 +35,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_WSYSTEM_DEFINED  /* Also in corecrt_wstdlib.h */
 # define _CRT_WSYSTEM_DEFINED
-  _CRTIMP int __cdecl _wsystem(const wchar_t *_Command);
+  _CRTIMP int __cdecl _wsystem(const wchar_t *_Command) __WUR_FORTIFY;
 #endif
 
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */

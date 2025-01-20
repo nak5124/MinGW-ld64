@@ -15,17 +15,17 @@ __MINGW_BEGIN_C_DECLS
 #undef _wgetcwd
 #undef _wgetdcwd
 
-  _CRTIMP wchar_t *__cdecl _wgetcwd(wchar_t *_DstBuf, int _SizeInWords);
+  _CRTIMP wchar_t *__cdecl _wgetcwd(wchar_t *_DstBuf, int _SizeInWords) __NOTHROW __WUR_FORTIFY;
   _CRTIMP wchar_t *__cdecl _wgetdcwd(int _Drive, wchar_t *_DstBuf, int _SizeInWords);
 
-#define _wgetdcwd_nolock  _wgetdcwd
+#define _wgetdcwd_nolock _wgetdcwd
 
 #pragma pop_macro("_wgetcwd")
 #pragma pop_macro("_wgetdcwd")
 
-  _CRTIMP int __cdecl _wchdir(const wchar_t *_Path) __NONNULL((1));
-  _CRTIMP int __cdecl _wmkdir(const wchar_t *_Path) __NONNULL((1));
-  _CRTIMP int __cdecl _wrmdir(const wchar_t *_Path);
+  _CRTIMP int __cdecl _wchdir(const wchar_t *_Path) __NOTHROW __WUR_FORTIFY __NONNULL((1));
+  _CRTIMP int __cdecl _wmkdir(const wchar_t *_Path) __NOTHROW __NONNULL((1));
+  _CRTIMP int __cdecl _wrmdir(const wchar_t *_Path) __NOTHROW __NONNULL((1));
 
 __MINGW_END_C_DECLS
 

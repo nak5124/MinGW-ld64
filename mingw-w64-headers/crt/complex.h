@@ -34,23 +34,17 @@ __MINGW_BEGIN_C_DECLS
 # define complex _Complex
 #endif
 
-#define _Complex_I (__extension__  1.0iF)
+#define _Complex_I (__extension__ 1.0iF)
 
 /* GCC doesn't support _Imaginary type yet, so we don't
    define _Imaginary_I */
-
+#undef  I
 #define I _Complex_I
 
 #ifdef __MINGW_USE_ISOC11
-# if __MINGW_GNUC_PREREQ(4, 7) || __mingw_clang_prereq(12, 0)
-#   define CMPLX(x, y)  __builtin_complex((double)(x), (double)(y))
-#   define CMPLXF(x, y) __builtin_complex((float)(x), (float)(y))
-#   define CMPLXL(x, y) __builtin_complex((long double)(x), (long double)(y))
-# elif defined(__clang__)
-#   define CMPLX(x, y)  ((double complex){ x, y })
-#   define CMPLXF(x, y) ((float complex){ x, y })
-#   define CMPLXL(x, y) ((long double complex){ x, y })
-# endif
+# define CMPLX(x, y)  __builtin_complex((double)(x), (double)(y))
+# define CMPLXF(x, y) __builtin_complex((float)(x), (float)(y))
+# define CMPLXL(x, y) __builtin_complex((long double)(x), (long double)(y))
 #endif  /* __MINGW_USE_ISOC11 */
 
   extern double          cabs(double _Complex _Z) __CONST;

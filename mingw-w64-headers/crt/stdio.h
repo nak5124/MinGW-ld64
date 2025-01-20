@@ -141,11 +141,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _fprintf_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -155,11 +155,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _fprintf_s_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -168,11 +168,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int fprintf_s(FILE *__restrict _Stream, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -181,44 +181,44 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _fprintf_p_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _fprintf_p(FILE *__restrict _Stream, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _printf_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _printf_s_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -227,11 +227,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int printf_s(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -240,22 +240,22 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _printf_p_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _printf_p(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -308,22 +308,22 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int _fscanf_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Stream, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _fscanf_s_l(FILE *__restrict _Stream, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -332,11 +332,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int fscanf_s(FILE *__restrict _Stream, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Stream, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -345,22 +345,22 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int _scanf_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _scanf_s_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -369,11 +369,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int scanf_s(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, stdin, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -526,22 +526,22 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int _sprintf_l(char *__restrict _Buffer, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _sprintf_s_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -550,11 +550,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int sprintf_s(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(int, sprintf_s, vsprintf_s, char, _Buffer, const char *, _Format)
@@ -564,88 +564,88 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _sprintf_p_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _sprintf_p(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int _snprintf_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr __MINGW_GNU_PRINTF(3, 4) __NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN
   __NTH_FNC(int _snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...))
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _snprintf_c_l(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _snprintf_c(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _snprintf_s_l(char *__restrict _Buffer, size_t _BufferCount, size_t _MaxCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _snprintf_s(char *__restrict _Buffer, size_t _BufferCount, size_t _MaxCount, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsnprintf_s(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Buffer, _BufferCount, _MaxCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2_ARGLIST(int, _snprintf_s, _vsnprintf_s, char, _Buffer, size_t, _BufferCount, const char *, _Format)
@@ -653,44 +653,44 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int _scprintf_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr __PURE __MINGW_GNU_PRINTF(1, 2) __NONNULL((1))
   int _scprintf(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _scprintf_p_l(const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
   __mingw_ovr
   int _scprintf_p(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, NULL, 0, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -722,22 +722,22 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int _sscanf_l(const char *__restrict _Buffer, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _sscanf_s_l(const char *__restrict _Buffer, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -746,11 +746,11 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr
   int sscanf_s(const char *__restrict _Buffer, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -759,44 +759,44 @@ __MINGW_BEGIN_C_DECLS
   __mingw_ovr __MINGW_DEPRECATED_SEC_WARN
   int _snscanf_l(const char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr __MINGW_GNU_SCANF(3, 4) __NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN
   int _snscanf(const char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _snscanf_s_l(const char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, _locale_t _Locale, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Locale);
+    __crt_va_start(_ArgList, _Locale);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __mingw_ovr
   int _snscanf_s(const char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS | _CRT_INTERNAL_SCANF_SECURECRT, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -832,22 +832,22 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_GNU_PRINTF(2, 3) __NONNULL((1, 2))
   int __cdecl fprintf(FILE *__restrict _Stream, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Stream, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __CRT_INLINE __MINGW_GNU_PRINTF(1, 2) __NONNULL((1))
   int __cdecl printf(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, stdout, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -888,22 +888,22 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_GNU_SCANF(2, 3) __NONNULL((1, 2)) __WUR_FORTIFY __MINGW_DEPRECATED_SEC_WARN
   int __cdecl fscanf(FILE *__restrict _Stream, const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Stream, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
   __CRT_INLINE __MINGW_GNU_SCANF(1, 2) __NONNULL((1)) __WUR_FORTIFY __MINGW_DEPRECATED_SEC_WARN
   int __cdecl scanf(const char *__restrict _Format, ...)
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vfscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, stdin, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -931,11 +931,11 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_GNU_PRINTF(3, 4) __NONNULL((3))
   __NTH_FNC(int __cdecl snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...))
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, _Buffer, _BufferCount, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -965,11 +965,11 @@ __MINGW_BEGIN_C_DECLS
   __CRT_INLINE __MINGW_GNU_PRINTF(2, 3) __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
   __NTH_FNC(int __cdecl sprintf(char *__restrict _Buffer, const char *__restrict _Format, ...))
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS | _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret < 0 ? -1 : _Ret;
   }
 
@@ -980,12 +980,12 @@ __MINGW_BEGIN_C_DECLS
 #if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX)
 
   extern int __cdecl vsscanf(const char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList)
-    __MINGW_GNU_SCANF(2, 0) __NONNULL((2));
+    __NOTHROW __MINGW_GNU_SCANF(2, 0) __NONNULL((2));
 
 #ifndef __CRT__NO_INLINE
 
   __CRT_INLINE __MINGW_GNU_SCANF(2, 0) __NONNULL((2))
-  int __cdecl vsscanf(const char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList)
+  __NTH_FNC(int __cdecl vsscanf(const char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList))
   {
     return __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
   }
@@ -995,18 +995,18 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_C99FORGXX) */
 
   extern int __cdecl sscanf(const char *__restrict _Buffer, const char *__restrict _Format, ...)
-    __MINGW_GNU_SCANF(2, 3) __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
+    __NOTHROW __MINGW_GNU_SCANF(2, 3) __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
 
 #ifndef __CRT__NO_INLINE
 
   __CRT_INLINE __MINGW_GNU_SCANF(2, 3) __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN
-  int __cdecl sscanf(const char *__restrict _Buffer, const char *__restrict _Format, ...)
+  __NTH_FNC(int __cdecl sscanf(const char *__restrict _Buffer, const char *__restrict _Format, ...))
   {
-    __builtin_va_list _ArgList;
+    va_list _ArgList;
     int _Ret;
-    __builtin_va_start(_ArgList, _Format);
+    __crt_va_start(_ArgList, _Format);
     _Ret = __stdio_common_vsscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Buffer, (size_t)-1, _Format, NULL, _ArgList);
-    __builtin_va_end(_ArgList);
+    __crt_va_end(_ArgList);
     return _Ret;
   }
 
@@ -1106,15 +1106,15 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t  __cdecl  fread_s(void *_DstBuf, size_t _DstSize, size_t _ElementSize, size_t _Count, FILE *_File);
 #endif
 #ifndef __MINGW_USE_FOB64
-  _CRTIMP FILE   *__cdecl  freopen(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP FILE   *__cdecl  freopen(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN;
 #else
-  _CRTIMP FILE   *__cdecl  freopen(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __ASM_CALL(freopen64) __NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP FILE   *__cdecl  freopen(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __ASM_CALL(freopen64) __WUR_FORTIFY __NONNULL((3)) __MINGW_DEPRECATED_SEC_WARN;
 #endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl  freopen_s(FILE **_File, const char *_Filename, const char *_Mode, FILE *_Stream);
 #endif
 #ifdef __MINGW_USE_DEPRECATED_GETS
-  _CRTIMP char   *__cdecl  gets(char *_Buffer) __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
+  _CRTIMP char   *__cdecl  gets(char *_Buffer) __WUR_FORTIFY __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
 #endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP char   *__cdecl  gets_s(char *_Buffer, rsize_t _Size);
@@ -1136,23 +1136,23 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int     __cdecl _fcloseall(void);
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
 # ifndef __MINGW_USE_FOB64
-  _CRTIMP FILE   *__cdecl  fdopen(int _FileHandle, const char *_Mode) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP FILE   *__cdecl  fdopen(int _FileHandle, const char *_Mode) __NOTHROW __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
 # else
-  _CRTIMP FILE   *__cdecl  fdopen(int _FileHandle, const char *_Mode) __ASM_CALL(fdopen64) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP FILE   *__cdecl  fdopen(int _FileHandle, const char *_Mode) __ASM_CALL_NTH(fdopen64) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif
-  _CRTIMP FILE   *__cdecl _fdopen(int _FileHandle, const char *_Mode) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
+  _CRTIMP FILE   *__cdecl _fdopen(int _FileHandle, const char *_Mode) __NOTHROW __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
   _CRTIMP int     __cdecl  feof(FILE *_File)   __NOTHROW __WUR_FORTIFY __NONNULL((1));
   _CRTIMP int     __cdecl  ferror(FILE *_File) __NOTHROW __WUR_FORTIFY __NONNULL((1));
   _CRTIMP int     __cdecl  fflush(FILE *_File);
-  _CRTIMP int     __cdecl  fgetc(FILE *_File)  __NONNULL((1));
+  _CRTIMP int     __cdecl  fgetc(FILE *_File) __NONNULL((1));
   _CRTIMP int     __cdecl _fgetchar(void);
 #ifndef __MINGW_USE_FOB64
   _CRTIMP int     __cdecl  fgetpos(FILE *__restrict _File , fpos_t *__restrict _Pos) __NONNULL((1));
 #else
   _CRTIMP int     __cdecl  fgetpos(FILE *__restrict _File , fpos_t *__restrict _Pos) __ASM_CALL(fgetpos64) __NONNULL((1));
 #endif
-  _CRTIMP char   *__cdecl  fgets(char *__restrict _Buf, int _MaxCount, FILE *__restrict _File) __NONNULL((3));
+  _CRTIMP char   *__cdecl  fgets(char *__restrict _Buf, int _MaxCount, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3));
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
   _CRTIMP int     __cdecl  fileno(FILE *_File) __NOTHROW __WUR_FORTIFY __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #endif
@@ -1197,18 +1197,18 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int __cdecl _putw(int _Word, FILE *_File) __NONNULL((2));
 #ifndef _CRT_DIRECTORY_DEFINED  /* Also in io.h */
 # define _CRT_DIRECTORY_DEFINED
-  _CRTIMP int __cdecl  remove(const char *_Filename);
-  _CRTIMP int __cdecl  rename(const char *_OldFilename, const char *_NewFilename);
-  _CRTIMP int __cdecl _unlink(const char *_Filename);
+  _CRTIMP int __cdecl  remove(const char *_Filename) __NOTHROW;
+  _CRTIMP int __cdecl  rename(const char *_OldFilename, const char *_NewFilename) __NOTHROW;
+  _CRTIMP int __cdecl _unlink(const char *_Filename) __NOTHROW __NONNULL((1));
 #ifdef __MINGW_USE_MS
-  _CRTIMP int __cdecl  unlink(const char *_Filename) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl  unlink(const char *_Filename) __NOTHROW __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #endif  /* _CRT_DIRECTORY_DEFINED */
   _CRTIMP void  __cdecl  rewind(FILE *_File) __NONNULL((1));
   _CRTIMP int   __cdecl _rmtmp(void);
   _CRTIMP void  __cdecl  setbuf(FILE *__restrict _File, char *__restrict _Buffer) __NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP int   __cdecl _setmaxstdio(int _Max);
-  _CRTIMP int   __cdecl  setvbuf(FILE *__restrict _File, char *__restrict _Buf, int _Mode, size_t _Size) __NONNULL((1));
+  _CRTIMP int   __cdecl  setvbuf(FILE *__restrict _File, char *__restrict _Buf, int _Mode, size_t _Size) __NOTHROW __NONNULL((1));
   _CRTIMP char *__cdecl _tempnam(const char *_DirName, const char *_FilePrefix) __NOTHROW __ATTR_MALLOC __WUR_FORTIFY __ATTR_DEALLOC_FREE;
   _CRTIMP int   __cdecl  ungetc(int _Ch, FILE *_File) __NONNULL((2));
 
@@ -1216,18 +1216,18 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP void   __cdecl _unlock_file(FILE *_File);
   _CRTIMP int    __cdecl _fclose_nolock(FILE *_File);
   _CRTIMP int    __cdecl _fflush_nolock(FILE *_File);
-  _CRTIMP int    __cdecl _fgetc_nolock(FILE *_File);
-  _CRTIMP int    __cdecl _fputc_nolock(int _Char, FILE *_File);
-  _CRTIMP size_t __cdecl _fread_nolock(void *__restrict _DstBuf, size_t _ElementSize, size_t _Count, FILE *__restrict _File);
+  _CRTIMP int    __cdecl _fgetc_nolock(FILE *_File) __NONNULL((1));
+  _CRTIMP int    __cdecl _fputc_nolock(int _Char, FILE *_File) __NONNULL((2));
+  _CRTIMP size_t __cdecl _fread_nolock(void *__restrict _DstBuf, size_t _ElementSize, size_t _Count, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((4));
   _CRTIMP size_t __cdecl _fread_nolock_s(void *_DstBuf, size_t _DstSize, size_t _ElementSize, size_t _Count, FILE *_File);
-  _CRTIMP int    __cdecl _fseek_nolock(FILE *_File, long _Offset, int _Origin);
-  __MINGW_EXTENSION _CRTIMP int     __cdecl _fseeki64_nolock(FILE *_File, __int64 _Offset,int _Origin);
-  _CRTIMP long   __cdecl _ftell_nolock(FILE *_File);
-  __MINGW_EXTENSION _CRTIMP __int64 __cdecl _ftelli64_nolock(FILE *_File);
-  _CRTIMP size_t __cdecl _fwrite_nolock(const void *__restrict _DstBuf, size_t _Size, size_t _Count, FILE *__restrict _File);
-  _CRTIMP int    __cdecl _getc_nolock(FILE *_File);
-  _CRTIMP int    __cdecl _putc_nolock(int _Char, FILE *_File);
-  _CRTIMP int    __cdecl _ungetc_nolock(int _Ch, FILE *_File);
+  _CRTIMP int    __cdecl _fseek_nolock(FILE *_File, long _Offset, int _Origin) __NONNULL((1));
+  __MINGW_EXTENSION _CRTIMP int     __cdecl _fseeki64_nolock(FILE *_File, __int64 _Offset,int _Origin) __NONNULL((1));
+  _CRTIMP long   __cdecl _ftell_nolock(FILE *_File)                       __WUR_FORTIFY __NONNULL((1));
+  __MINGW_EXTENSION _CRTIMP __int64 __cdecl _ftelli64_nolock(FILE *_File) __WUR_FORTIFY __NONNULL((1));
+  _CRTIMP size_t __cdecl _fwrite_nolock(const void *__restrict _DstBuf, size_t _Size, size_t _Count, FILE *__restrict _File) __NONNULL((4));
+  _CRTIMP int    __cdecl _getc_nolock(FILE *_File)            __NONNULL((1));
+  _CRTIMP int    __cdecl _putc_nolock(int _Char, FILE *_File) __NONNULL((2));
+  _CRTIMP int    __cdecl _ungetc_nolock(int _Ch, FILE *_File) __NONNULL((2));
 
 #define _getchar_nolock()    _getc_nolock(stdin)
 #define _putchar_nolock(_c)  _putc_nolock((_c), stdout)
@@ -1275,9 +1275,9 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_LFS64
-  FILE *  __cdecl fdopen64(int _FileHandle, const char *_Mode)                            __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
-  FILE *  __cdecl fopen64(const char *__restrict _Filename, const char *__restrict _Mode) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
-  FILE *  __cdecl freopen64(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __NONNULL((3));
+  FILE *  __cdecl fdopen64(int _FileHandle, const char *_Mode)                   __NOTHROW __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
+  FILE *  __cdecl fopen64(const char *__restrict _Filename, const char *__restrict _Mode)  __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
+  FILE *  __cdecl freopen64(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3));
   int     __cdecl fgetpos64(FILE *__restrict _File, fpos_t *__restrict _Pos) __NONNULL((1));
   int     __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos)                 __NONNULL((1));
   int     __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin)        __NONNULL((1));

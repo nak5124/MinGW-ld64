@@ -257,14 +257,14 @@ __MINGW_BEGIN_C_DECLS
 
 /* 7.8.2 Conversion functions for greatest-width integer types */
 
-  _CRTIMP intmax_t  __cdecl  strtoimax(const char *__restrict _String, char **__restrict _EndPtr, int _Radix);
-  _CRTIMP intmax_t  __cdecl _strtoimax_l(const char *__restrict _String, char **__restrict _EndPtr, int _Radix, _locale_t _Locale);
-  _CRTIMP uintmax_t __cdecl  strtoumax(const char *__restrict _String, char **__restrict _EndPtr, int _Radix);
-  _CRTIMP uintmax_t __cdecl _strtoumax_l(const char *__restrict _String, char **__restrict _EndPtr, int _Radix, _locale_t _Locale);
-  _CRTIMP intmax_t  __cdecl  wcstoimax(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix);
-  _CRTIMP intmax_t  __cdecl _wcstoimax_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix, _locale_t _Locale);
-  _CRTIMP uintmax_t __cdecl  wcstoumax(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix);
-  _CRTIMP uintmax_t __cdecl _wcstoumax_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix, _locale_t _Locale);
+  _CRTIMP intmax_t  __cdecl  strtoimax(const char *__restrict _String, char **__restrict _EndPtr, int _Radix)                            __NOTHROW;
+  _CRTIMP intmax_t  __cdecl _strtoimax_l(const char *__restrict _String, char **__restrict _EndPtr, int _Radix, _locale_t _Locale)       __NOTHROW;
+  _CRTIMP uintmax_t __cdecl  strtoumax(const char *__restrict _String, char **__restrict _EndPtr, int _Radix)                            __NOTHROW;
+  _CRTIMP uintmax_t __cdecl _strtoumax_l(const char *__restrict _String, char **__restrict _EndPtr, int _Radix, _locale_t _Locale)       __NOTHROW;
+  _CRTIMP intmax_t  __cdecl  wcstoimax(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix)                      __NOTHROW;
+  _CRTIMP intmax_t  __cdecl _wcstoimax_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix, _locale_t _Locale) __NOTHROW;
+  _CRTIMP uintmax_t __cdecl  wcstoumax(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix)                      __NOTHROW;
+  _CRTIMP uintmax_t __cdecl _wcstoumax_l(const wchar_t *__restrict _String, wchar_t **__restrict _EndPtr, int _Radix, _locale_t _Locale) __NOTHROW;
 
 __MINGW_END_C_DECLS
 

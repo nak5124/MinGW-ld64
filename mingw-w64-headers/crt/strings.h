@@ -19,6 +19,7 @@
   {
     memmove(_Dst, _Src, _Size);
   }
+
   __CRT_INLINE __NONNULL((1))
   __NTH_FNC(void __cdecl bzero(void *_Ptr, size_t _N))
   {
@@ -57,10 +58,6 @@
     return __builtin_ffsll(_Llong);
   }
 #endif
-#endif
-
-#ifdef __MINGW_USE_GNU
-  extern int strverscmp(const char *_S1, const char *_S2) __NOTHROW __PURE __NONNULL((1, 2));
 #endif
 
 #endif  /* _STRINGS_H_ */

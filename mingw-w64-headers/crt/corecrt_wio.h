@@ -64,15 +64,15 @@ __MINGW_BEGIN_C_DECLS
 #define _wfindfirsti64 _wfindfirst64
 #define _wfindnexti64  _wfindnext64
 
-  _CRTIMP int      __cdecl _waccess(const wchar_t *_Filename, int _AccessMode) __NONNULL((1));
+  _CRTIMP int      __cdecl _waccess(const wchar_t *_Filename, int _AccessMode) __NOTHROW __NONNULL((1));
   _CRTIMP errno_t  __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);
-  _CRTIMP int      __cdecl _wchmod(const wchar_t *_Filename, int _Mode) __NONNULL((1));
+  _CRTIMP int      __cdecl _wchmod(const wchar_t *_Filename, int _Mode) __NOTHROW __NONNULL((1));
   _CRTIMP int      __cdecl _wcreat(const wchar_t *_Filename, int _PermissionMode) __NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);
   _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
-  _CRTIMP int      __cdecl _wunlink(const wchar_t *_Filename);
-  _CRTIMP int      __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename);
-  _CRTIMP wchar_t *__cdecl _wmktemp(wchar_t *_TemplateName) __NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP int      __cdecl _wunlink(const wchar_t *_Filename) __NOTHROW __NONNULL((1));
+  _CRTIMP int      __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename) __NOTHROW;
+  _CRTIMP wchar_t *__cdecl _wmktemp(wchar_t *_TemplateName) __NOTHROW __NONNULL((1)) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t  __cdecl _wmktemp_s(wchar_t *_TemplateName, size_t _SizeInWords);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _wmktemp_s, wchar_t, _TemplateName)
   _CRTIMP intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);
@@ -95,7 +95,9 @@ __MINGW_BEGIN_C_DECLS
 
 #if __MINGW_FORTIFY_VA_ARG
 
-#define _O_CREAT 0x0100
+#ifndef _O_CREAT
+# define _O_CREAT 0x0100
+#endif
 
   _CRTIMP int __cdecl __mingw_call__wopen(const wchar_t *_Filename, int _OpenFlag, ...) __ASM_CRT_CALL(_wopen);
   _CRTIMP int __cdecl __mingw_call__wopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, ...)

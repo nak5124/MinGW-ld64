@@ -129,10 +129,10 @@ __MINGW_BEGIN_C_DECLS
     }
   }
 
-  extern size_t __cdecl malloc_usable_size(void *_Ptr);
+  extern size_t __cdecl malloc_usable_size(void *_Ptr) __NOTHROW;
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE
-  size_t __cdecl malloc_usable_size(void *_Ptr)
+  __NTH_FNC(size_t __cdecl malloc_usable_size(void *_Ptr))
   {
     if(!_Ptr)
     {

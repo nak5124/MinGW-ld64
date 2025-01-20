@@ -45,7 +45,7 @@ __MINGW_BEGIN_C_DECLS
 
 #ifndef _CRT_SYSTEM_DEFINED  /* Also in stdlib.h */
 # define _CRT_SYSTEM_DEFINED
-  _CRTIMP int __cdecl system(const char *_Command);
+  _CRTIMP int __cdecl system(const char *_Command) __WUR_FORTIFY;
 #endif  /* _CRT_SYSTEM_DEFINED */
 
   _CRTIMP void __cdecl _cexit(void)  __NOTHROW;
@@ -79,14 +79,14 @@ __MINGW_BEGIN_C_DECLS
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   _CRTIMP int      __cdecl _getpid(void);
   _CRTIMP intptr_t __cdecl _cwait(int *_TermStat, intptr_t _ProcHandle, int _Action);
-  _CRTIMP intptr_t __cdecl _execl(const char *_Filename, const char *_ArgList, ...);
-  _CRTIMP intptr_t __cdecl _execle(const char *_Filename, const char *_ArgList, ...);
-  _CRTIMP intptr_t __cdecl _execlp(const char *_Filename, const char *_ArgList, ...);
-  _CRTIMP intptr_t __cdecl _execlpe(const char *_Filename, const char *_ArgList, ...);
-  _CRTIMP intptr_t __cdecl _execv(const char *_Filename, const char *const *_ArgList);
-  _CRTIMP intptr_t __cdecl _execve(const char *_Filename, const char *const *_ArgList, const char *const *_Env);
-  _CRTIMP intptr_t __cdecl _execvp(const char *_Filename, const char *const *_ArgList);
-  _CRTIMP intptr_t __cdecl _execvpe(const char *_Filename, const char *const *_ArgList, const char *const *_Env);
+  _CRTIMP intptr_t __cdecl _execl(const char *_Filename, const char *_ArgList, ...)   __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execle(const char *_Filename, const char *_ArgList, ...)  __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execlp(const char *_Filename, const char *_ArgList, ...)  __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execlpe(const char *_Filename, const char *_ArgList, ...) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execv(const char *_Filename, const char *const *_ArgList) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execve(const char *_Filename, const char *const *_ArgList, const char *const *_Env)  __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execvp(const char *_Filename, const char *const *_ArgList)                           __NOTHROW __NONNULL((1, 2));
+  _CRTIMP intptr_t __cdecl _execvpe(const char *_Filename, const char *const *_ArgList, const char *const *_Env) __NOTHROW __NONNULL((1, 2));
   _CRTIMP intptr_t __cdecl _spawnl(int _Mode, const char *_Filename, const char *_ArgList, ...);
   _CRTIMP intptr_t __cdecl _spawnle(int _Mode, const char *_Filename, const char *_ArgList, ...);
   _CRTIMP intptr_t __cdecl _spawnlp(int _Mode, const char *_Filename, const char *_ArgList, ...);
@@ -124,11 +124,11 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_MS
   _CRTIMP intptr_t __cdecl cwait(int *_TermStat, intptr_t _ProcHandle, int _Action) __MINGW_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int      __cdecl execl(const char *_Filename, const char *_ArgList, ...)  __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP int      __cdecl execle(const char *_Filename, const char *_ArgList, ...) __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP int      __cdecl execlp(const char *_Filename, const char *_ArgList, ...) __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int      __cdecl execl(const char *_Filename, const char *_ArgList, ...)   __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int      __cdecl execle(const char *_Filename, const char *_ArgList, ...)  __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int      __cdecl execlp(const char *_Filename, const char *_ArgList, ...)  __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP int      __cdecl execlpe(const char *_Filename, const char *_ArgList, ...) __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int      __cdecl execlpe(const char *_Filename, const char *_ArgList, ...) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP intptr_t __cdecl spawnl(int _Mode, const char *_Filename, const char *_ArgList, ...)   __MINGW_DEPRECATED_MSVC2005;
@@ -140,11 +140,11 @@ __MINGW_BEGIN_C_DECLS
    * stupid warnings, define them in POSIX way.  This is save, because those
    * methods do not return in success case, so that the return value is not
    * really dependent to its scalar width. */
-  _CRTIMP int __cdecl execv(const char *_Filename, char *const _ArgList[])                       __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execve(const char *_Filename, char *const _ArgList[], char *const _Env[])  __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
-  _CRTIMP int __cdecl execvp(const char *_Filename, char *const _ArgList[])                      __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execv(const char *_Filename, char *const _ArgList[])                       __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execve(const char *_Filename, char *const _ArgList[], char *const _Env[])  __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execvp(const char *_Filename, char *const _ArgList[])                      __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_MS)
-  _CRTIMP int __cdecl execvpe(const char *_Filename, char *const _ArgList[], char *const _Env[]) __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int __cdecl execvpe(const char *_Filename, char *const _ArgList[], char *const _Env[]) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP intptr_t __cdecl spawnv(int _Mode,const char *_Filename, char *const _ArgList[])                       __MINGW_DEPRECATED_MSVC2005;
@@ -158,7 +158,7 @@ __MINGW_BEGIN_C_DECLS
 #if defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT)
 # ifndef _CRT_GETPID_DEFINED  /* Also in unistd.h */
 #   define _CRT_GETPID_DEFINED
-    _CRTIMP int __cdecl getpid(void) __MINGW_DEPRECATED_MSVC2005;
+    _CRTIMP int __cdecl getpid(void) __NOTHROW __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 

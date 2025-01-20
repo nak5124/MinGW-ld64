@@ -270,16 +270,16 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP double __cdecl _chgsign(double _X)                     __NOTHROW;
   _CRTIMP double __cdecl _scalb(double _X, long _Y)              __NOTHROW;
   _CRTIMP double __cdecl _logb(double _X)                        __NOTHROW;
-  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __NOTHROW;
+  _CRTIMP double __cdecl _nextafter(double _X, double _Y)        __NOTHROW __CONST;
   _CRTIMP int    __cdecl _finite(double _X)                      __NOTHROW __CONST;
-  _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW;
+  _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW __CONST;
   _CRTIMP int    __cdecl _fpclass(double _X)                     __NOTHROW;
 #if defined(__x86_64__) || defined(_AMD64_)
-  _CRTIMP float  __cdecl _scalbf(float _X, long _Y);
+  _CRTIMP float  __cdecl _scalbf(float _X, long _Y) __NOTHROW;
 #endif
 
-  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign);
-  _CRTIMP long double __cdecl _chgsignl(long double _X);
+  _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __NOTHROW __CONST;
+  _CRTIMP long double __cdecl _chgsignl(long double _X) __NOTHROW;
 #endif  /* _SIGN_DEFINED */
 
 #define clear87   _clear87
