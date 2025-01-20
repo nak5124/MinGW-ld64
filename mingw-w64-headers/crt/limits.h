@@ -85,4 +85,8 @@
 
 #endif
 
+#ifdef __MINGW_USE_XOPEN2K24
+# define GETENTROPY_MAX 256
+#endif
+
 #endif  /* _INC_LIMITS */

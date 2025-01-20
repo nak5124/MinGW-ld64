@@ -3,8 +3,9 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#define _DEFAULT_SOURCE
+#define _POSIX_C_SOURCE 202405L
 #include <unistd.h>
+#include <limits.h>
 #define WIN32_LEAN_AND_MEAN
 #define NOSERVICE
 #define NOMCX
@@ -15,9 +16,9 @@
 
 int __cdecl getentropy(void *_Buffer, size_t _Length)
 {
-    if(_Buffer == NULL || _Length > 256)
+    if(_Length > GETENTROPY_MAX)
     {
-        errno = EIO;
+        errno = EINVAL;
         return -1;
     }
 

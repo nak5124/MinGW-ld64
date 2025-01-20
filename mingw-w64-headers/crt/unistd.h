@@ -85,9 +85,9 @@ __MINGW_BEGIN_C_DECLS
 # endif
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 
-#ifdef __MINGW_USE_MISC
+#if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K24)
   extern int __cdecl getentropy(void *_Buffer, size_t _Length) __WUR_FORTIFY;
-#endif
+#endif  /* defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K24) */
 
 __MINGW_END_C_DECLS
 
