@@ -22,6 +22,7 @@
 #undef __MINGW_USE_XOPEN2KXSI
 #undef __MINGW_USE_XOPEN2K8
 #undef __MINGW_USE_XOPEN2K8XSI
+#undef __MINGW_USE_XOPEN2K24
 #undef __MINGW_USE_MISC
 #undef __MINGW_USE_FOB64
 #undef __MINGW_USE_LFS
@@ -67,8 +68,8 @@
 # define _ISOC99_SOURCE         1
 # define _ISOC11_SOURCE         1
 # define _ISOC23_SOURCE         1
-# define _POSIX_C_SOURCE        200809L
-# define _XOPEN_SOURCE          700
+# define _POSIX_C_SOURCE        202405L
+# define _XOPEN_SOURCE          800
 # define _XOPEN_SOURCE_EXTENDED 1
 # define _DEFAULT_SOURCE        1
 # define _LARGEFILE_SOURCE      1
@@ -120,7 +121,7 @@
 
 #ifdef _DEFAULT_SOURCE
 # undef  _POSIX_C_SOURCE
-# define _POSIX_C_SOURCE 200809L
+# define _POSIX_C_SOURCE 202405L
 #endif
 
 #if (!defined(__STRICT_ANSI__) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) >= 500)) && !defined(_POSIX_C_SOURCE)
@@ -130,8 +131,10 @@
 #   define _POSIX_C_SOURCE 199506L
 # elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 700
 #   define _POSIX_C_SOURCE 200112L
-# else
+# elif defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0) < 800
 #   define _POSIX_C_SOURCE 200809L
+# else
+#   define _POSIX_C_SOURCE 202405L
 # endif
 #endif
 
@@ -156,6 +159,11 @@
 #         define __MINGW_USE_XOPEN2K 1
 #         if (_POSIX_C_SOURCE - 0) >= 200809L
 #           define __MINGW_USE_XOPEN2K8 1
+#           if (_POSIX_C_SOURCE - 0) >= 202405L
+#             undef  __MINGW_USE_ISOC11
+#             define __MINGW_USE_ISOC11    1
+#             define __MINGW_USE_XOPEN2K24 1
+#           endif
 #         endif
 #       endif
 #     endif
@@ -186,6 +194,10 @@
 #       undef  __MINGW_USE_XOPEN2K8
 #       define __MINGW_USE_XOPEN2K8    1
 #       define __MINGW_USE_XOPEN2K8XSI 1
+#       if (_XOPEN_SOURCE - 0) >= 800
+#         undef  __MINGW_USE_XOPEN2K24
+#         define __MINGW_USE_XOPEN2K24 1
+#       endif
 #     endif
 #   endif
 # else
