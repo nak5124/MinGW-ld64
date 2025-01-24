@@ -305,7 +305,7 @@ static double __NOINLINE as_exp10_accurate(double x){
 double __cdecl exp10(double x){
   b64u64_u ix = {.f = x};
   u64 aix = ix.u & (~(u64)0>>1);
-  if(__builtin_expect(aix>0x40734413509f79feull, 0)){
+  if(__builtin_expect(aix>0x40734413509f79feull, 0)){ // |x| > 0x1.34413509f79fep+8
     if(aix>0x7ff0000000000000ull) return x + x; // nan
     if(aix==0x7ff0000000000000ull){
       if(ix.u>>63)
@@ -313,9 +313,11 @@ double __cdecl exp10(double x){
       else
         return x;
     }
-    if(!(ix.u>>63)) return 0x1p1023*2.0;
-    if(aix>0x407439b746e36b52ull) return 0x1.5p-1022*0x1p-55;
+    if(!(ix.u>>63)) return 0x1p1023*2.0; // x > 0x1.34413509f79fep+8
+    if(aix>0x407439b746e36b52ull) // x < -0x1.439b746e36b52p+8
+      return 0x1.5p-1022*0x1p-55;
   }
+  // check x integer to avoid a spurious inexact exception
   if(__builtin_expect(!(ix.u<<16), 0)){
     if( (aix>>48) <= 0x4036){
       double kx = roundeven_finite(x);
@@ -329,6 +331,10 @@ double __cdecl exp10(double x){
       }
     }
   }
+  /* avoid spurious underflow: for |x| <= 0x1.bcb7b1526e50ep-56,
+     exp10(x) rounds to 1 to nearest */
+  if (__builtin_expect (aix <= 0x3c7bcb7b1526e50eull, 0))
+    return 1.0 + x; // |x| <= 0x1.bcb7b1526e50ep-56
   double t = roundeven_finite(0x1.a934f0979a371p+13*x);
   i64 jt = t, i1 = jt&0x3f, i0 = (jt>>6)&0x3f, ie = jt>>12;
   double t0h = t0[i0][1], t0l = t0[i0][0];
