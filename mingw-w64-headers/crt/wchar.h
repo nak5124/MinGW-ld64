@@ -141,8 +141,10 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24)
-  extern size_t  __cdecl wcslcat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2));
-  extern size_t  __cdecl wcslcpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2));
+  extern size_t  __cdecl wcslcat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Src, size_t _N)
+    __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__read_write__, 1, 3));
+  extern size_t  __cdecl wcslcpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Src, size_t _N)
+    __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__write_only__, 1, 3));
 #endif
 
 __MINGW_END_C_DECLS

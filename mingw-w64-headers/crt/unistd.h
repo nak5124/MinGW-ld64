@@ -74,7 +74,8 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _CRT_SWAB_DEFINED  /* Also in stdlib.h */
 # define _CRT_SWAB_DEFINED
 # if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes)
+      __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__read_only__, 1, 3)) __ATTR_ACCESS((__write_only__, 2, 3)) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* _CRT_SWAB_DEFINED */
 
@@ -86,7 +87,7 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP) || defined(WINSTORECOMPAT) */
 
 #if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K24)
-  extern int __cdecl getentropy(void *_Buffer, size_t _Length) __WUR_FORTIFY;
+  extern int __cdecl getentropy(void *_Buffer, size_t _Length) __WUR_FORTIFY __ATTR_ACCESS((__write_only__, 1, 2));
 #endif  /* defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K24) */
 
 __MINGW_END_C_DECLS

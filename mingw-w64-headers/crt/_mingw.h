@@ -195,6 +195,13 @@
 
 #define __NORETURN __attribute__((__noreturn__))
 
+#define __ATTR_ACCESS(args) __attribute__((__access__ args))
+#if defined(__MINGW_FORTIFY_LEVEL) && __MINGW_FORTIFY_LEVEL > 2
+# define __ATTR_ACCESS_FORTIFY(amode, refi, sizei)
+#else
+# define __ATTR_ACCESS_FORTIFY(amode, refi, sizei) __ATTR_ACCESS((amode, refi, sizei))
+#endif
+
 #define __ATTR_DEALLOC(dealloc, argno) __attribute__((__malloc__(dealloc, argno)))
 #define __ATTR_DEALLOC_FREE            __ATTR_DEALLOC(__builtin_free, 1)
 

@@ -1086,7 +1086,7 @@ __MINGW_BEGIN_C_DECLS
 #else
   _CRTIMP int     __cdecl  fgetpos(FILE *__restrict _File , fpos_t *__restrict _Pos) __ASM_CALL(fgetpos64) __NONNULL((1));
 #endif
-  _CRTIMP char   *__cdecl  fgets(char *__restrict _Buf, int _MaxCount, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3));
+  _CRTIMP char   *__cdecl  fgets(char *__restrict _Buf, int _MaxCount, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3)) __ATTR_ACCESS_FORTIFY(__write_only__, 1, 2);
 #if defined(__MINGW_USE_POSIX) || defined(__MINGW_USE_MS)
   _CRTIMP int     __cdecl  fileno(FILE *_File) __NOTHROW __WUR_FORTIFY __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
 #endif

@@ -87,6 +87,7 @@ _strupr_l
 _strupr_s
 _strupr_s_l
 _strxfrm_l
+strxfrm_l == _strxfrm_l
 _tolower
 _tolower_l
 _toupper

@@ -113,7 +113,7 @@ __MINGW_BEGIN_C_DECLS
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   _CRTIMP int      __cdecl _pipe(int *_PtHandles, unsigned int _PipeSize, int _TextMode);
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
-  _CRTIMP int      __cdecl _read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount) __WUR_FORTIFY;
+  _CRTIMP int      __cdecl _read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount) __WUR_FORTIFY __ATTR_ACCESS_FORTIFY(__write_only__, 2, 3);
 #ifndef _CRT_DIRECTORY_DEFINED  /* Also in stdio.h */
 # define _CRT_DIRECTORY_DEFINED
   _CRTIMP int __cdecl  remove(const char *_Filename) __NOTHROW;
@@ -126,7 +126,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int      __cdecl _setmode(int _FileHandle, int _Mode);
   _CRTIMP long     __cdecl _tell(int _FileHandle);
   _CRTIMP errno_t  __cdecl _umask_s(int _NewMode, int *_OldMode);
-  _CRTIMP int      __cdecl _write(int _FileHandle, const void *_Buf, unsigned int _MaxCharCount) __WUR_FORTIFY;
+  _CRTIMP int      __cdecl _write(int _FileHandle, const void *_Buf, unsigned int _MaxCharCount) __WUR_FORTIFY __ATTR_ACCESS((__read_only__, 2, 3));
   __MINGW_EXTENSION
   _CRTIMP __int64  __cdecl _filelengthi64(int _FileHandle);
   _CRTIMP intptr_t __cdecl _findfirst32i64(const char *_Filename, struct _finddata32i64_t *_FindData);
@@ -174,13 +174,13 @@ __MINGW_BEGIN_C_DECLS
 #else
   _CRTIMP int   __cdecl open(const char *_Filename, int _OpenFlag, ...) __ASM_CALL(open64) __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
-  _CRTIMP int   __cdecl read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int   __cdecl read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount) __WUR_FORTIFY __ATTR_ACCESS_FORTIFY(__write_only__, 2, 3) __MINGW_DEPRECATED_MSVC2005;
   _CRTIMP int   __cdecl setmode(int _FileHandle, int _Mode) __MINGW_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
   _CRTIMP int   __cdecl sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP long  __cdecl tell(int _FileHandle) __MINGW_DEPRECATED_MSVC2005;
 #endif
-  _CRTIMP int   __cdecl write(int _Filehandle, const void *_Buf, unsigned int _MaxCharCount) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP int   __cdecl write(int _Filehandle, const void *_Buf, unsigned int _MaxCharCount) __WUR_FORTIFY __ATTR_ACCESS((__read_only__, 2, 3)) __MINGW_DEPRECATED_MSVC2005;
 
 #ifdef __MINGW_USE_LFS64
   int     __cdecl open64(const char *_Filename, int _OpenFlag, ...) __NONNULL((1));

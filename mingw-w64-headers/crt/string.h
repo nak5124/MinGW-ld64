@@ -99,8 +99,9 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char               *__cdecl _strupr_l(char *_String, _locale_t _Locale) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t             __cdecl _strupr_s_l(char *_Str, size_t _Size, _locale_t _Locale);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _strupr_s_l, char, _Str, _locale_t, _Locale)
-  _CRTIMP size_t              __cdecl  strxfrm(char *__restrict _Dst, const char *__restrict _Src, size_t _MaxCount) __NOTHROW __NONNULL((2));
-  _CRTIMP size_t              __cdecl _strxfrm_l(char *__restrict _Dst, const char *__restrict _Src, size_t _MaxCount, _locale_t _Locale) __NOTHROW __NONNULL((2, 4));
+  _CRTIMP size_t              __cdecl  strxfrm(char *__restrict _Dst, const char *__restrict _Src, size_t _MaxCount) __NOTHROW __NONNULL((2)) __ATTR_ACCESS((__write_only__, 1, 3));
+  _CRTIMP size_t              __cdecl _strxfrm_l(char *__restrict _Dst, const char *__restrict _Src, size_t _MaxCount, _locale_t _Locale)
+    __NOTHROW __NONNULL((2, 4)) __ATTR_ACCESS((__write_only__, 1, 3));
 
   _CRTIMP _CONST_RETURN char *__cdecl strchr(const char *_Str, int _Val)            __NOTHROW __PURE __NONNULL((1));
   _CRTIMP _CONST_RETURN char *__cdecl strrchr(const char *_Str, int _Ch)            __NOTHROW __PURE __NONNULL((1));
@@ -138,9 +139,10 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24)
-  extern void   *__cdecl memmem(const void *_Haystack, size_t _Haystacklen, const void *_Needle, size_t _Needlelen) __NOTHROW __PURE __NONNULL((1, 3));
-  extern size_t  __cdecl strlcat(char *__restrict _Dest, const char *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2));
-  extern size_t  __cdecl strlcpy(char *__restrict _Dest, const char *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2));
+  extern void   *__cdecl memmem(const void *_Haystack, size_t _Haystacklen, const void *_Needle, size_t _Needlelen)
+    __NOTHROW __PURE __NONNULL((1, 3)) __ATTR_ACCESS((__read_only__, 1, 2)) __ATTR_ACCESS((__read_only__, 3, 4));
+  extern size_t  __cdecl strlcat(char *__restrict _Dest, const char *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__read_write__, 1, 3));
+  extern size_t  __cdecl strlcpy(char *__restrict _Dest, const char *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__write_only__, 1, 3));
 #endif
 
 #ifdef __MINGW_USE_GNU
@@ -165,7 +167,7 @@ __MINGW_BEGIN_C_DECLS
     })                                                       \
   )
 
-  extern void *__cdecl memrchr(const void *_S, int _C, size_t _N)   __NOTHROW __PURE __NONNULL((1));
+  extern void *__cdecl memrchr(const void *_S, int _C, size_t _N)   __NOTHROW __PURE __NONNULL((1)) __ATTR_ACCESS((__read_only__, 1, 3));
   extern int   __cdecl strverscmp(const char *_S1, const char *_S2) __NOTHROW __PURE __NONNULL((1, 2));
 #endif
 
@@ -174,9 +176,9 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_GNU
-  extern char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __NOTHROW __WUR_FORTIFY __NONNULL((2));
+  extern char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __NOTHROW __WUR_FORTIFY __NONNULL((2)) __ATTR_ACCESS((__write_only__, 2, 3));
 # if !defined(__CRT__NO_INLINE) && defined(__MINGW_USE_SECAPI)
-  __CRT_INLINE __WUR_FORTIFY __NONNULL((2))
+  __CRT_INLINE __WUR_FORTIFY __NONNULL((2)) __ATTR_ACCESS((__write_only__, 2, 3))
   __NTH_FNC(char *__cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen))
   {
     errno_t err = strerror_s(_Buf, _Buflen, _Errnum);
@@ -188,9 +190,9 @@ __MINGW_BEGIN_C_DECLS
   }
 # endif
 #elif defined(__MINGW_USE_XOPEN2K)
-  extern int   __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __ASM_CALL_NTH(__xsi_strerror_r) __NONNULL((2));
+  extern int   __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen) __ASM_CALL_NTH(__xsi_strerror_r) __NONNULL((2)) __ATTR_ACCESS((__write_only__, 2, 3));
 # if !defined(__CRT__NO_INLINE) && defined(__MINGW_USE_SECAPI)
-  __CRT_INLINE __NONNULL((2))
+  __CRT_INLINE __NONNULL((2)) __ATTR_ACCESS((__write_only__, 2, 3))
   __NTH_FNC(int __cdecl strerror_r(int _Errnum, char *_Buf, size_t _Buflen))
   {
     return strerror_s(_Buf, _Buflen, _Errnum);
@@ -201,9 +203,9 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_MISC
 #include <strings.h>
 
-  extern void __cdecl explicit_bzero(void *_Ptr, size_t _N) __NOTHROW __NONNULL((1));
+  extern void __cdecl explicit_bzero(void *_Ptr, size_t _N) __NOTHROW __NONNULL((1)) __ATTR_ACCESS_FORTIFY(__write_only__, 1, 2);
 #if !defined(__CRT__NO_INLINE) && defined(SecureZeroMemory)
-  __CRT_INLINE __NONNULL((1))
+  __CRT_INLINE __NONNULL((1)) __ATTR_ACCESS_FORTIFY(__write_only__, 1, 2)
   __NTH_FNC(void __cdecl explicit_bzero(void *_Ptr, size_t _N))
   {
     SecureZeroMemory(_Ptr, _N);
@@ -214,9 +216,11 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_XOPEN2K8
-  extern char *__cdecl stpcpy(char *__restrict _Dest, const char *__restrict _Source)             __NOTHROW __NONNULL((1, 2));
-  extern char *__cdecl stpncpy(char *__restrict _Dest, const char *__restrict _Source, size_t _N) __NOTHROW __NONNULL((1, 2));
-  /**/   int   __cdecl strcoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale) __NOTHROW __PURE __NONNULL((1, 2, 3));
+  extern char   *__cdecl stpcpy(char *__restrict _Dest, const char *__restrict _Source)             __NOTHROW __NONNULL((1, 2));
+  extern char   *__cdecl stpncpy(char *__restrict _Dest, const char *__restrict _Source, size_t _N) __NOTHROW __NONNULL((1, 2));
+  /**/   int     __cdecl strcoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale) __NOTHROW __PURE __NONNULL((1, 2, 3));
+  /**/   size_t  __cdecl strxfrm_l(char *__restrict _Dst, const char *__restrict _Src, size_t _MaxCount, _locale_t _Locale)
+    __NOTHROW __NONNULL((2, 4)) __ATTR_ACCESS((__write_only__, 1, 3));
 #endif
 
 #ifdef __MINGW_USE_SECAPI

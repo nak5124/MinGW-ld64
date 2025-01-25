@@ -29,7 +29,8 @@ __MINGW_BEGIN_C_DECLS
 #define __max(a, b) (((a) > (b)) ? (a) : (b))
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 
-  _CRTIMP void __cdecl _swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP void __cdecl _swab(char *_Buf1, char *_Buf2, int _SizeInBytes)
+    __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__read_only__, 1, 3)) __ATTR_ACCESS((__write_only__, 2, 3));
 
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
@@ -341,7 +342,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t  __cdecl _mbstrnlen_l(const char *_Str, size_t _MaxCount, _locale_t _Locale);
   _CRTIMP int     __cdecl  mbtowc(wchar_t *__restrict _DstCh, const char *__restrict _SrcCh, size_t _SrcSizeInBytes) __NOTHROW;
   _CRTIMP int     __cdecl _mbtowc_l(wchar_t *__restrict _DstCh, const char *__restrict _SrcCh, size_t _SrcSizeInBytes, _locale_t _Locale) __NOTHROW;
-  _CRTIMP size_t  __cdecl  mbstowcs(wchar_t *__restrict _Dest, const char *__restrict _Source, size_t _MaxCount) __NOTHROW;
+  _CRTIMP size_t  __cdecl  mbstowcs(wchar_t *__restrict _Dest, const char *__restrict _Source, size_t _MaxCount) __NOTHROW __ATTR_ACCESS((__read_only__, 2));
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl  mbstowcs_s(size_t *_PtNumOfCharConverted, wchar_t *_DstBuf, size_t _SizeInWords, const char *_SrcBuf, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(errno_t, mbstowcs_s, size_t *, _PtNumOfCharConverted, wchar_t, _Dest, const char *, _Source, size_t, _MaxCount)
@@ -356,7 +357,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
   _CRTIMP int     __cdecl _wctomb_l(char *_MbCh, wchar_t _WCh, _locale_t _Locale) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t __cdecl _wctomb_s_l(int *_SizeConverted, char *_MbCh, size_t _SizeInBytes, wchar_t _WCh, _locale_t _Locale);
-  _CRTIMP size_t  __cdecl  wcstombs(char *__restrict _Dest, const wchar_t *__restrict _Source, size_t _MaxCount) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP size_t  __cdecl  wcstombs(char *__restrict _Dest, const wchar_t *__restrict _Source, size_t _MaxCount)
+    __NOTHROW __ATTR_ACCESS_FORTIFY(__write_only__, 1, 3) __ATTR_ACCESS((__read_only__, 2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl  wcstombs_s(size_t *_PtNumOfCharConverted, char *_Dst, size_t _DstSizeInBytes, const wchar_t *_Src, size_t _MaxCountInBytes);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(errno_t, wcstombs_s, size_t *, _PtNumOfCharConverted, char, _Dst, const wchar_t *, _Src, size_t, _MaxCountInBytes)
@@ -479,7 +481,8 @@ __MINGW_BEGIN_C_DECLS
 #ifndef _CRT_SWAB_DEFINED  /* Also in unistd.h */
 # define _CRT_SWAB_DEFINED
 # if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+    _CRTIMP void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes)
+      __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__read_only__, 1, 3)) __ATTR_ACCESS((__write_only__, 2, 3)) __MINGW_DEPRECATED_MSVC2005;
 # endif
 #endif  /* _CRT_SWAB_DEFINED */
 

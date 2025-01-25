@@ -10,12 +10,13 @@
 
 __MINGW_BEGIN_C_DECLS
 
-  _CRTIMP void *__cdecl _memccpy(void *__restrict _Dst, const void *__restrict _Src, int _Val, size_t _MaxCount) __NOTHROW __NONNULL((1, 2));
+  _CRTIMP void *__cdecl _memccpy(void *__restrict _Dst, const void *__restrict _Src, int _Val, size_t _MaxCount) __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__write_only__, 1, 4));
   _CRTIMP int   __cdecl _memicmp(const void *_Buf1, const void *_Buf2, size_t _Size);
   _CRTIMP int   __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
-  _CRTIMP void *__cdecl  memccpy(void *__restrict _Dst, const void *__restrict _Src, int _Val, size_t _Size) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_MSVC2005;
+  _CRTIMP void *__cdecl  memccpy(void *__restrict _Dst, const void *__restrict _Src, int _Val, size_t _Size)
+    __NOTHROW __NONNULL((1, 2)) __ATTR_ACCESS((__write_only__, 1, 4)) __MINGW_DEPRECATED_MSVC2005;
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP int   __cdecl  memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_DEPRECATED_MSVC2005;
