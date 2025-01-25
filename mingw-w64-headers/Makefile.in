@@ -257,6 +257,7 @@ PATH_SEPARATOR = @PATH_SEPARATOR@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SSPHEAD_LIST = @SSPHEAD_LIST@
 STRIP = @STRIP@
 SYSHEAD_LIST = @SYSHEAD_LIST@
 VERSION = @VERSION@
@@ -358,6 +359,7 @@ EXTRA_HEADERS = \
   include/wrl/wrappers/*.h \
   crt/*.h \
   crt/sys/*.h \
+  crt/ssp/*.h \
   ddk/include/ddk/*.h \
   tlb/*.tlb
 
