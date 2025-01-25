@@ -1012,72 +1012,6 @@ __MINGW_BEGIN_C_DECLS
 
 #endif  /* __CRT__NO_INLINE */
 
-#if __MINGW_FORTIFY_LEVEL > 0
-
-  int __cdecl __mingw_call_vsprintf(char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList) __ASM_CALL(vsprintf);
-  int __cdecl __mingw_call_vsnprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, va_list _ArgList) __ASM_CALL(vsnprintf);
-
-  __mingw_bos_extern_ovr
-  __MINGW_GNU_PRINTF(2, 0) __NONNULL((3))
-  __NTH_FNC(int vsprintf(char *__restrict _Buffer, const char *__restrict _Format, va_list _ArgList))
-  {
-    if(__mingw_bos_known(_Buffer))
-    {
-      int _Ret = __mingw_call_vsnprintf(_Buffer, __mingw_bos(_Buffer, 1), _Format, _ArgList);
-      if(_Ret >= 0)
-        __mingw_bos_ptr_chk(_Buffer, (size_t)_Ret + 1, 1);
-      return _Ret;
-    }
-    return __mingw_call_vsprintf(_Buffer, _Format, _ArgList);
-  }
-
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
-
-  __mingw_bos_extern_ovr
-  __MINGW_GNU_PRINTF(3, 0) __NONNULL((3))
-  __NTH_FNC(int vsnprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, va_list _ArgList))
-  {
-    __mingw_bos_ptr_chk_warn(_Buffer, _BufferCount, 1);
-    return __mingw_call_vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-  }
-
-#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
-#if __MINGW_FORTIFY_VA_ARG
-
-  int __cdecl __mingw_call_sprintf(char *__restrict _Buffer, const char *__restrict __Format, ...)                      __ASM_CALL(sprintf);
-  int __cdecl __mingw_call_snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...) __ASM_CALL(snprintf);
-
-  __mingw_bos_extern_ovr
-  __MINGW_GNU_PRINTF(2, 3) __NONNULL((2))
-  __NTH_FNC(int sprintf(char *__restrict _Buffer, const char *__restrict _Format, ...))
-  {
-    if(__mingw_bos_known(_Buffer))
-    {
-      int _Ret = __mingw_call_snprintf(_Buffer, __mingw_bos(_Buffer, 1), _Format, __builtin_va_arg_pack());
-      if(_Ret >= 0)
-        __mingw_bos_ptr_chk(_Buffer, (size_t)_Ret + 1, 1);
-      return _Ret;
-    }
-    return __mingw_call_sprintf(_Buffer, _Format, __builtin_va_arg_pack());
-  }
-
-#if defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX)
-
-  __mingw_bos_extern_ovr
-  __MINGW_GNU_PRINTF(3, 4) __NONNULL((3))
-  __NTH_FNC(int snprintf(char *__restrict _Buffer, size_t _BufferCount, const char *__restrict _Format, ...))
-  {
-    __mingw_bos_ptr_chk_warn(_Buffer, _BufferCount, 1);
-    return __mingw_call_snprintf(_Buffer, _BufferCount, _Format, __builtin_va_arg_pack());
-  }
-
-#endif  /* defined(__MINGW_USE_ISOC99) || defined(__MINGW_USE_UNIX98) || defined(__MINGW_USE_C99FORGXX) */
-
-#endif  /* __MINGW_FORTIFY_VA_ARG */
-
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_XOPEN2K24)
 
   extern int __cdecl vasprintf(char **__restrict _Strp, const char *__restrict _Format, va_list _ArgList)
@@ -1114,7 +1048,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t __cdecl  freopen_s(FILE **_File, const char *_Filename, const char *_Mode, FILE *_Stream);
 #endif
 #ifdef __MINGW_USE_DEPRECATED_GETS
-  _CRTIMP char   *__cdecl  gets(char *_Buffer) __WUR_FORTIFY __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
+  _CRTIMP char   *__cdecl  gets(char *_Buffer) __WUR_FORTIFY __ATTR_WARN("Using gets() is always unsafe - use fgets() instead");
 #endif
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP char   *__cdecl  gets_s(char *_Buffer, rsize_t _Size);
@@ -1275,60 +1209,17 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_LFS64
-  FILE *  __cdecl fdopen64(int _FileHandle, const char *_Mode)                   __NOTHROW __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
-  FILE *  __cdecl fopen64(const char *__restrict _Filename, const char *__restrict _Mode)  __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
-  FILE *  __cdecl freopen64(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3));
-  int     __cdecl fgetpos64(FILE *__restrict _File, fpos_t *__restrict _Pos) __NONNULL((1));
-  int     __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos)                 __NONNULL((1));
-  int     __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin)        __NONNULL((1));
-  off64_t __cdecl ftello64(FILE *_File)                        __WUR_FORTIFY __NONNULL((1));
-  FILE   *__cdecl tmpfile64(void) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
+  FILE    *__cdecl fdopen64(int _FileHandle, const char *_Mode)                   __NOTHROW __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
+  FILE    *__cdecl fopen64(const char *__restrict _Filename, const char *__restrict _Mode)  __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
+  FILE    *__cdecl freopen64(const char *__restrict _Filename, const char *__restrict _Mode, FILE *__restrict _File) __WUR_FORTIFY __NONNULL((3));
+  int      __cdecl fgetpos64(FILE *__restrict _File, fpos_t *__restrict _Pos) __NONNULL((1));
+  int      __cdecl fsetpos64(FILE *_File, const fpos_t *_Pos)                 __NONNULL((1));
+  int      __cdecl fseeko64(FILE *_File, off64_t _Offset, int _Origin)        __NONNULL((1));
+  off64_t  __cdecl ftello64(FILE *_File)                        __WUR_FORTIFY __NONNULL((1));
+  FILE    *__cdecl tmpfile64(void) __ATTR_MALLOC __ATTR_DEALLOC(fclose, 1) __WUR_FORTIFY;
 #endif
 
   extern unsigned int __cdecl _get_output_format(void);
-
-#if __MINGW_FORTIFY_LEVEL > 0
-
-#ifdef __MINGW_USE_DEPRECATED_GETS
-  char * __cdecl __gets_chk(char *__dst, size_t __bufsize) __WUR_FORTIFY;
-  char * __cdecl __mingw_call_gets_warn(char *__dst) __ASM_CALL(gets) __WUR_FORTIFY
-    __attribute__((__warning__("Using gets() is always unsafe - use fgets() instead")));
-
-  __mingw_bos_extern_ovr __WUR_FORTIFY
-  char * gets(char * __dst)
-  {
-    if(__mingw_bos_known(__dst))
-      return __gets_chk(__dst, __mingw_bos(__dst, 1));
-    return __mingw_call_gets_warn(__dst);
-  }
-#endif
-
-  char  *__cdecl __mingw_call_fgets(char *__restrict __buf, int __maxcount, FILE *__restrict __file) __ASM_CALL(fgets) __WUR_FORTIFY;
-  size_t __cdecl __mingw_call_fread(void *__restrict __dstbuf, size_t __size, size_t __count, FILE *__restrict __file) __ASM_CALL(fread) __WUR_FORTIFY;
-  char  *__cdecl __mingw_call_tmpnam(char *__buf) __ASM_CALL_NTH(tmpnam) __WUR_FORTIFY;
-
-  __mingw_bos_extern_ovr __WUR_FORTIFY __NONNULL((3))
-  char *fgets(char *__restrict __dst, int __n, FILE * __restrict __f)
-  {
-    __mingw_bos_ptr_chk_warn(__dst, __n, 1);
-    return __mingw_call_fgets(__dst, __n, __f);
-  }
-
-  __mingw_bos_extern_ovr __WUR_FORTIFY __NONNULL((4))
-  size_t fread(void *__restrict __dst, size_t __sz, size_t __n, FILE *__restrict __f)
-  {
-    __mingw_bos_ptr_chk_warn(__dst, __sz * __n, 0);
-    return __mingw_call_fread(__dst, __sz, __n, __f);
-  }
-
-  __mingw_bos_extern_ovr __WUR_FORTIFY
-  __NTH_FNC(char *tmpnam(char *__dst))
-  {
-    __mingw_bos_ptr_chk_warn(__dst, L_tmpnam, 1);
-    return __mingw_call_tmpnam(__dst);
-  }
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
 #ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
 
@@ -1355,6 +1246,8 @@ __MINGW_BEGIN_C_DECLS
 #endif  /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
 __MINGW_END_C_DECLS
+
+#include <ssp/stdio.h>
 
 #pragma pop_macro("snprintf")
 #pragma pop_macro("vsnprintf")

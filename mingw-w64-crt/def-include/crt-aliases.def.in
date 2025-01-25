@@ -186,6 +186,7 @@ ftello == ftell
 ftello64 == _ftelli64
 fopen64 == fopen
 lseek64 == _lseeki64
+open64 == _open64
 tmpfile64 == tmpfile
 index == strchr
 rindex == strrchr

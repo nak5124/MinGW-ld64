@@ -86,59 +86,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP errno_t  __cdecl _wsopen_s(int *_FileHandle, const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionFlag);
   _CRTIMP errno_t  __cdecl _wsopen_dispatch(const wchar_t *_FileName, int _OFlag, int _ShFlag, int _PMode, int *_PFileHandle, int _BSecure);
 
-#if __MINGW_FORTIFY_LEVEL > 0
-
-#ifndef __MINGW_BOS_DECLARE_DEFINED
-# define __MINGW_BOS_DECLARE_DEFINED
-  __mingw_bos_declare;
-#endif
-
-#if __MINGW_FORTIFY_VA_ARG
-
-#ifndef _O_CREAT
-# define _O_CREAT 0x0100
-#endif
-
-  _CRTIMP int __cdecl __mingw_call__wopen(const wchar_t *_Filename, int _OpenFlag, ...) __ASM_CRT_CALL(_wopen);
-  _CRTIMP int __cdecl __mingw_call__wopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, ...)
-    __ASM_CRT_CALL(_wopen) __attribute__((__warning__("_wopen(): too many arguments")));
-  _CRTIMP int __cdecl __mingw_call__wopen_warn_missing(const wchar_t *_Filename, int _OpenFlag, ...)
-    __ASM_CRT_CALL(_wopen) __attribute__((__warning__("_wopen(..._O_CREAT...): missing argument")));
-
-  __mingw_bos_extern_ovr __NONNULL((1))
-  int _wopen(const wchar_t *__filename, int __flags, ...)
-  {
-    if(__builtin_va_arg_pack_len() > 1)
-      return __mingw_call__wopen_warn_toomany(__filename, __flags, __builtin_va_arg_pack());
-    if(__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags & _O_CREAT) && (__flags & _O_CREAT))
-      return __mingw_call__wopen_warn_missing(__filename, __flags, 0);
-    if(__builtin_va_arg_pack_len() < 1)
-      return __mingw_call__wopen(__filename, __flags, 0);
-    return __mingw_call__wopen(__filename, __flags, __builtin_va_arg_pack());
-  }
-
-  _CRTIMP int __cdecl __mingw_call__wsopen(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...) __ASM_CRT_CALL(_wsopen);
-  _CRTIMP int __cdecl __mingw_call__wsopen_warn_toomany(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...)
-    __ASM_CRT_CALL(_wsopen) __attribute__((__warning__("_wsopen(): too many arguments")));
-  _CRTIMP int __cdecl __mingw_call__wsopen_warn_missing(const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, ...)
-    __ASM_CRT_CALL(_wsopen) __attribute__((__warning__("_wsopen(..._O_CREAT...): missing argument")));
-
-  __mingw_bos_extern_ovr
-  int _wsopen(const wchar_t *__filename, int __flags, int __share, ...)
-  {
-    if(__builtin_va_arg_pack_len() > 1)
-      return __mingw_call__wsopen_warn_toomany(__filename, __flags, __share, __builtin_va_arg_pack());
-    if(__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags & _O_CREAT) && (__flags & _O_CREAT))
-      return __mingw_call__wsopen_warn_missing(__filename, __flags, __share, 0);
-    if(__builtin_va_arg_pack_len() < 1)
-      return __mingw_call__wsopen(__filename, __flags, __share, 0);
-    return __mingw_call__wsopen(__filename, __flags, __share, __builtin_va_arg_pack());
-  }
-
-#endif  /* __MINGW_FORTIFY_VA_ARG */
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
 __MINGW_END_C_DECLS
+
+#include <ssp/wio.h>
 
 #endif  /* _INC_CORECRT_WIO */

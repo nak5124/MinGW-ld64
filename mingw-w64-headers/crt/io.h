@@ -3,8 +3,8 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#ifndef _IO_H_
-#define _IO_H_
+#ifndef _INC_IO
+#define _INC_IO
 
 #include <corecrt.h>
 #include <share.h>
@@ -169,7 +169,11 @@ __MINGW_BEGIN_C_DECLS
 #if (defined(__MINGW_USE_XOPEN_EXT) && !defined(__MINGW_USE_XOPEN2K8)) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
   _CRTIMP char *__cdecl mktemp(char *_TemplateName) __NOTHROW __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
 #endif
+#ifndef __MINGW_USE_FOB64
   _CRTIMP int   __cdecl open(const char *_Filename, int _OpenFlag, ...) __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+#else
+  _CRTIMP int   __cdecl open(const char *_Filename, int _OpenFlag, ...) __ASM_CALL(open64) __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005 __MINGW_DEPRECATED_SEC_WARN;
+#endif
   _CRTIMP int   __cdecl read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
   _CRTIMP int   __cdecl setmode(int _FileHandle, int _Mode) __MINGW_DEPRECATED_MSVC2005;
 #ifdef __MINGW_USE_MS
@@ -178,82 +182,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
   _CRTIMP int   __cdecl write(int _Filehandle, const void *_Buf, unsigned int _MaxCharCount) __WUR_FORTIFY __MINGW_DEPRECATED_MSVC2005;
 
-#if __MINGW_FORTIFY_LEVEL > 0
-
-  _CRTIMP int __cdecl __mingw_call__read(int _FileHandle, void *_DstBuf, unsigned int _MaxCharCount) __ASM_CRT_CALL(_read) __WUR_FORTIFY;
-
-  __mingw_bos_extern_ovr __WUR_FORTIFY
-  int _read(int __fh, void *__dst, unsigned int __n)
-  {
-    __mingw_bos_ptr_chk_warn(__dst, __n, 0);
-    return __mingw_call__read(__fh, __dst, __n);
-  }
-
-  __mingw_bos_extern_ovr __WUR_FORTIFY
-  int read(int __fh, void *__dst, unsigned int __n)
-  {
-    return _read(__fh, __dst, __n);
-  }
-
-#if __MINGW_FORTIFY_VA_ARG
-
-#ifndef _O_CREAT
-# define _O_CREAT 0x0100
-#endif
-
-  _CRTIMP int __cdecl __mingw_call__open(const char *_Filename, int _OpenFlag, ...) __ASM_CRT_CALL(_open);
-  _CRTIMP int __cdecl __mingw_call__open_warn_toomany(const char *_Filename, int _OpenFlag, ...)
-    __ASM_CRT_CALL(_open) __attribute__((__warning__("_open(): too many arguments")));
-  _CRTIMP int __cdecl __mingw_call__open_warn_missing(const char *_Filename, int _OpenFlag, ...)
-    __ASM_CRT_CALL(_open) __attribute__((__warning__("_open(..._O_CREAT...): missing argument")));
-
-  __mingw_bos_extern_ovr __NONNULL((1))
-  int _open(const char *__filename, int __flags, ...)
-  {
-    if(__builtin_va_arg_pack_len() > 1)
-      return __mingw_call__open_warn_toomany(__filename, __flags, __builtin_va_arg_pack());
-    if(__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags & _O_CREAT) && (__flags & _O_CREAT))
-      return __mingw_call__open_warn_missing(__filename, __flags, 0);
-    if(__builtin_va_arg_pack_len() < 1)
-      return __mingw_call__open(__filename, __flags, 0);
-    return __mingw_call__open(__filename, __flags, __builtin_va_arg_pack());
-  }
-
-  _CRTIMP int __cdecl __mingw_call__sopen(const char *_Filename, int _OpenFlag, int _ShareFlag, ...) __ASM_CRT_CALL(_sopen);
-  _CRTIMP int __cdecl __mingw_call__sopen_warn_toomany(const char *_Filename, int _OpenFlag, int _ShareFlag, ...)
-    __ASM_CRT_CALL(_sopen) __attribute__((__warning__("_sopen(): too many arguments")));
-  _CRTIMP int __cdecl __mingw_call__sopen_warn_missing(const char *_Filename, int _OpenFlag, int _ShareFlag, ...)
-    __ASM_CRT_CALL(_sopen) __attribute__((__warning__("_sopen(..._O_CREAT...): missing argument")));
-
-  __mingw_bos_extern_ovr
-  int _sopen(const char *__filename, int __flags, int __share, ...)
-  {
-    if(__builtin_va_arg_pack_len() > 1)
-      return __mingw_call__sopen_warn_toomany(__filename, __flags, __share, __builtin_va_arg_pack());
-    if(__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags & _O_CREAT) && (__flags & _O_CREAT))
-      return __mingw_call__sopen_warn_missing(__filename, __flags, __share, 0);
-    if(__builtin_va_arg_pack_len() < 1)
-      return __mingw_call__sopen(__filename, __flags, __share, 0);
-    return __mingw_call__sopen(__filename, __flags, __share, __builtin_va_arg_pack());
-  }
-
-  __mingw_bos_extern_ovr __NONNULL((1))
-  int open(const char *__filename, int __flags, ...)
-  {
-    return _open(__filename, __flags, __builtin_va_arg_pack());
-  }
-
-  __mingw_bos_extern_ovr
-  int sopen(const char *__filename, int __flags, int __share, ...)
-  {
-    return _sopen(__filename, __flags, __share, __builtin_va_arg_pack());
-  }
-
-#endif  /* __MINGW_FORTIFY_VA_ARG */
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
 #ifdef __MINGW_USE_LFS64
+  int     __cdecl open64(const char *_Filename, int _OpenFlag, ...) __NONNULL((1));
   off64_t __cdecl lseek64(int __fd, off64_t __offset, int __whence) __NOTHROW;
 #endif
 
@@ -266,4 +196,6 @@ __MINGW_BEGIN_C_DECLS
 
 __MINGW_END_C_DECLS
 
-#endif  /* _IO_H_ */
+#include <ssp/io.h>
+
+#endif  /* _INC_IO */

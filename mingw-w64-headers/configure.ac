@@ -43,6 +43,7 @@ done
 
 BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/crt/*.h
 SYSHEAD_LIST=$srcdir/crt/sys/*.h
+SSPHEAD_LIST=$srcdir/crt/ssp/*.h
 GDIPLUSHEAD_LIST=$srcdir/include/gdiplus/*.h
 WRLHEAD_LIST=$srcdir/include/wrl/*.h
 WRLWRAPPERSHEAD_LIST=$srcdir/include/wrl/wrappers/*.h

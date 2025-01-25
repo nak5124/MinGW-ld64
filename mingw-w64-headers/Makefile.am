@@ -1,6 +1,7 @@
 
 baseheaddir = $(includedir)
 sysheaddir = $(baseheaddir)/sys
+sspgeaddur = $(baseheaddir)/ssp
 glheaddir = $(baseheaddir)/GL
 khrheaddir = $(baseheaddir)/KHR
 gdiplusheaddir = $(baseheaddir)/gdiplus
@@ -11,6 +12,7 @@ sdksheaddir = $(baseheaddir)/sdks
 
 basehead_HEADERS = @BASEHEAD_LIST@
 syshead_HEADERS = @SYSHEAD_LIST@
+ssphead_HEADERS = @SSPHEAD_LIST@
 glhead_HEADERS = @GLHEAD_LIST@
 khrhead_HEADERS = @KHRHEAD_LIST@
 gdiplushead_HEADERS = @GDIPLUSHEAD_LIST@

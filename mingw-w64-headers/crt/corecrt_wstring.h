@@ -137,40 +137,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int      __cdecl wcsicoll(const wchar_t *_Str1, const wchar_t *_Str2)                   __MINGW_DEPRECATED_MSVC2005;
 #endif
 
-#if __MINGW_FORTIFY_LEVEL > 0
-
-#ifndef __MINGW_BOS_DECLARE_DEFINED
-# define __MINGW_BOS_DECLARE_DEFINED
-  __mingw_bos_declare;
-#endif
-
-  wchar_t *__cdecl __mingw_call_wcscpy(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __ASM_CALL_NTH(wcscpy);
-  wchar_t *__cdecl __mingw_call_wcscat(wchar_t *__restrict _Dest, const wchar_t *__restrict _Source) __ASM_CALL_NTH(wcscat);
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(wchar_t *wcscpy(wchar_t *__restrict __dst, const wchar_t *__restrict __src))
-  {
-    if(__mingw_bos_known(__dst))
-    {
-      __mingw_bos_cond_chk(!wcscpy_s(__dst, __mingw_bos(__dst, 1) / sizeof(wchar_t), __src));
-      return __dst;
-    }
-    return __mingw_call_wcscpy(__dst, __src);
-  }
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(wchar_t *wcscat(wchar_t *__restrict __dst, const wchar_t *__restrict __src))
-  {
-    if(__mingw_bos_known(__dst))
-    {
-      __mingw_bos_cond_chk(!wcscat_s(__dst, __mingw_bos(__dst, 1) / sizeof(wchar_t), __src));
-      return __dst;
-    }
-    return __mingw_call_wcscat(__dst, __src);
-  }
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
 __MINGW_END_C_DECLS
+
+#include <ssp/wstring.h>
 
 #endif  /* _INC_CORECRT_WSTRING */

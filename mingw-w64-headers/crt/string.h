@@ -132,7 +132,7 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_MISC
-  extern void   *__cdecl mempcpy(void *_Dst, const void *_Src, size_t _Size) __NOTHROW __NONNULL((1, 2));
+  extern void   *__cdecl mempcpy(void *__restrict _Dest, const void *__restrict _Source, size_t _Size) __NOTHROW __NONNULL((1, 2));
   extern char   *__cdecl strchrnul(const char *_S, int _C)                      __NOTHROW __PURE __NONNULL((1));
   extern char   *__cdecl strcasestr(const char *_Haystack, const char *_Needle) __NOTHROW __PURE __NONNULL((1, 2));
 #endif
@@ -193,8 +193,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_XOPEN2K8
-  extern char *__cdecl stpcpy(char *__restrict _Dest, const char *__restrict _Src)             __NOTHROW __NONNULL((1, 2));
-  extern char *__cdecl stpncpy(char *__restrict _Dest, const char *__restrict _Src, size_t _N) __NOTHROW __NONNULL((1, 2));
+  extern char *__cdecl stpcpy(char *__restrict _Dest, const char *__restrict _Source)             __NOTHROW __NONNULL((1, 2));
+  extern char *__cdecl stpncpy(char *__restrict _Dest, const char *__restrict _Source, size_t _N) __NOTHROW __NONNULL((1, 2));
   /**/   int   __cdecl strcoll_l(const char *_Str1, const char *_Str2, _locale_t _Locale) __NOTHROW __PURE __NONNULL((1, 2, 3));
 #endif
 
@@ -215,42 +215,8 @@ __MINGW_BEGIN_C_DECLS
 #endif
 #endif
 
-#if __MINGW_FORTIFY_LEVEL > 0
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(char *strcpy(char *__restrict __dst, const char *__restrict __src))
-  {
-    return __builtin___strcpy_chk(__dst, __src, __mingw_bos(__dst, 1));
-  }
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(char *strcat(char *__restrict __dst, const char *__restrict __src))
-  {
-    return __builtin___strcat_chk(__dst, __src, __mingw_bos(__dst, 1));
-  }
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(char *strncat(char *__restrict __dst, const char *__restrict __src, size_t __n))
-  {
-    return __builtin___strncat_chk(__dst, __src, __n, __mingw_bos(__dst, 1));
-  }
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(char *strncpy(char *__restrict __dst, const char *__restrict __src, size_t __n))
-  {
-    return __builtin___strncpy_chk(__dst, __src, __n, __mingw_bos(__dst, 1));
-  }
-
-#ifdef __MINGW_USE_MISC
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(void *mempcpy(void *__dst, const void *__src, size_t __n))
-  {
-    return __builtin___mempcpy_chk(__dst, __src, __n, __mingw_bos(__dst, 0));
-  }
-#endif
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
 __MINGW_END_C_DECLS
+
+#include <ssp/string.h>
 
 #endif  /* _INC_STRING */

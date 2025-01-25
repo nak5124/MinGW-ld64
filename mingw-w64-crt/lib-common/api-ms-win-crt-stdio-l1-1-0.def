@@ -102,6 +102,7 @@ mktemp == _mktemp
 _mktemp_s
 _open
 open == _open
+open64 == _open
 _open_osfhandle
 _pclose
 pclose == _pclose

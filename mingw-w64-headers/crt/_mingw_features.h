@@ -33,7 +33,6 @@
 #undef __MINGW_USE_SECAPI
 #undef __MINGW_USE_LIB_EXT2
 #undef __MINGW_FORTIFY_LEVEL
-#undef __MINGW_FORTIFY_VA_ARG
 #undef __MINGW_USE_C99FORGXX
 #undef __MINGW_USE_DEPRECATED_GETS
 
@@ -267,24 +266,5 @@
 #else
 # define __MINGW_FORTIFY_LEVEL 0
 #endif
-
-/* This is required when compiling assembler source code. */
-#pragma push_macro("__has_builtin")
-#ifndef __has_builtin
-# define __has_builtin(x) 0
-#endif
-
-/* If _FORTIFY_SOURCE is enabled, some inline functions may use
- * __builtin_va_arg_pack().  GCC may report an error if the address
- * of such a function is used.  Set _FORTIFY_VA_ARG=0 in this case.
- * Clang doesn't, as of version 19, yet implement __builtin_va_arg_pack().  */
-#if __MINGW_FORTIFY_LEVEL > 0 && __has_builtin(__builtin_va_arg_pack) && __has_builtin(__builtin_va_arg_pack_len) \
-  && (!defined(_FORTIFY_VA_ARG) || _FORTIFY_VA_ARG > 0)
-# define __MINGW_FORTIFY_VA_ARG 1
-#else
-# define __MINGW_FORTIFY_VA_ARG 0
-#endif
-
-#pragma pop_macro("__has_builtin")
 
 #endif  /* _INC_FEATURES_H */

@@ -31,13 +31,6 @@ __MINGW_BEGIN_C_DECLS
 #define stdout (__acrt_iob_func(1))
 #define stderr (__acrt_iob_func(2))
 
-#if __MINGW_FORTIFY_LEVEL > 0
-# ifndef __MINGW_BOS_DECLARE_DEFINED
-#   define __MINGW_BOS_DECLARE_DEFINED
-    __mingw_bos_declare;
-# endif
-#endif
-
   _CRTIMP int __cdecl __stdio_common_vfwprintf(unsigned __int64 _Options, FILE *_Stream, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP int __cdecl __stdio_common_vfwprintf_s(unsigned __int64 _Options, FILE *_Stream, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP int __cdecl __stdio_common_vfwprintf_p(unsigned __int64 _Options, FILE *_Stream, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);

@@ -33,44 +33,8 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int   __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size)         __NOTHROW __PURE __NONNULL((1, 2));
   _CRTIMP void *__cdecl memset(void *_Dst, int _Val, size_t _Size)                         __NOTHROW __NONNULL((1));
 
-#if __MINGW_FORTIFY_LEVEL > 0
-
-#ifndef __MINGW_BOS_DECLARE_DEFINED
-# define __MINGW_BOS_DECLARE_DEFINED
-  __mingw_bos_declare;
-#endif
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(void *__cdecl memcpy(void *__restrict __dst, const void *__restrict __src, size_t __n))
-  {
-    return __builtin___memcpy_chk(__dst, __src, __n, __mingw_bos(__dst, 0));
-  }
-
-#ifdef __MINGW_USE_SECAPI
-  _CRTIMP errno_t __cdecl __mingw_call_memcpy_s(void *_Dst, size_t _DstSize, const void *_Src, size_t _SrcSize) __ASM_CRT_CALL(memcpy_s);
-
-  __mingw_bos_extern_ovr
-  errno_t __cdecl memcpy_s(void *__dst, size_t __os, const void *__src, size_t __n)
-  {
-    __mingw_bos_ptr_chk_warn(__dst, __os, 0);
-    return __mingw_call_memcpy_s(__dst, __os, __src, __n);
-  }
-#endif
-
-  __mingw_bos_extern_ovr __NONNULL((1, 2))
-  __NTH_FNC(void *__cdecl memmove(void *__dst, const void *__src, size_t __n))
-  {
-    return __builtin___memmove_chk(__dst, __src, __n, __mingw_bos(__dst, 0));
-  }
-
-  __mingw_bos_extern_ovr __NONNULL((1))
-  __NTH_FNC(void *__cdecl memset(void *__dst, int __val, size_t __n))
-  {
-    return __builtin___memset_chk(__dst, __val, __n, __mingw_bos(__dst, 0));
-  }
-
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
-
 __MINGW_END_C_DECLS
+
+#include <ssp/memory.h>
 
 #endif  /* _INC_MEMORY */

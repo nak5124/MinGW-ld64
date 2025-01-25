@@ -117,12 +117,14 @@
 # else
 #   define __NOTHROW throw()
 # endif
-# define __ASM_CALL_NTH(func) __NOTHROW __asm__(__MINGW_STRING(__USYMBOL(func)))
-# define __NTH_FNC(func)      func __NOTHROW
+# define __ASM_CALL_NTH(func)     __NOTHROW __asm__(__MINGW_STRING(__USYMBOL(func)))
+# define __ASM_CRT_CALL_NTH(func) __NOTHROW __asm__(__STRING(func))
+# define __NTH_FNC(func)          func __NOTHROW
 #else
-# define __NOTHROW            __attribute__((__nothrow__))
-# define __ASM_CALL_NTH(func) __asm__(__MINGW_STRING(__USYMBOL(func))) __NOTHROW
-# define __NTH_FNC(func)      __NOTHROW func
+# define __NOTHROW                __attribute__((__nothrow__))
+# define __ASM_CALL_NTH(func)     __asm__(__MINGW_STRING(__USYMBOL(func))) __NOTHROW
+# define __ASM_CRT_CALL_NTH(func) __asm__(__STRING(func)) __NOTHROW
+# define __NTH_FNC(func)          __NOTHROW func
 #endif
 
 #define __COLD __attribute__((__cold__))
@@ -168,6 +170,8 @@
 #else
 # define __MINGW_DEPRECATED_SEC_WARN
 #endif
+
+#define __ATTR_WARN(msg) __attribute__((__warning__(msg)))
 
 #define __NONNULL(args) __attribute__((__nonnull__ args))
 
@@ -262,34 +266,6 @@
 #else
 # define __forceinline extern __inline __always_inline __gnu_inline
 #endif
-
-#if __MINGW_FORTIFY_LEVEL > 0
-  /* Calling an function with __attribute__((__warning__("...")))
-   * from a system include __inline__ function does not print
-   * a warning unless caller has __attribute__((__artificial__)). */
-# define __mingw_bos_declare                                            \
-    void __cdecl __chk_fail(void) __NORETURN;                           \
-    void __cdecl __mingw_chk_fail_warn(void) __ASM_CALL(__chk_fail)     \
-    __NORETURN __attribute__((__warning__("Buffer overflow detected")))
-# if __MINGW_FORTIFY_LEVEL > 2
-#   define __mingw_bos(p, maxtype) __builtin_dynamic_object_size((p), (maxtype) > 0)
-#   define __mingw_bos_known(p)    (__builtin_object_size(p, 0) != (size_t)-1 || !__builtin_constant_p(__mingw_bos(p, 0)))
-# else
-#   define __mingw_bos(p, maxtype) __builtin_object_size((p), ((maxtype) > 0) && (__MINGW_FORTIFY_LEVEL > 1))
-#   define __mingw_bos_known(p)    (__mingw_bos(p, 0) != (size_t)-1)
-# endif
-# define __mingw_bos_cond_chk(c)            (__builtin_expect((c), 1) ? (void)0 : __chk_fail())
-# define __mingw_bos_ptr_chk(p, n, maxtype) __mingw_bos_cond_chk(!__mingw_bos_known(p) || __mingw_bos(p, maxtype) >= (size_t)(n))
-# define __mingw_bos_ptr_chk_warn(p, n, maxtype)                   \
-    ((__mingw_bos_known(p)                                         \
-    && __builtin_constant_p(__mingw_bos(p, maxtype) < (size_t)(n)) \
-    && __mingw_bos(p, maxtype) < (size_t)(n))                      \
-    ? __mingw_chk_fail_warn() : __mingw_bos_ptr_chk(p, n, maxtype))
-# define __mingw_bos_ovr        __mingw_ovr __always_inline __ARTIFICIAL
-# define __mingw_bos_extern_ovr extern __inline __cdecl __always_inline __gnu_inline __ARTIFICIAL
-#else
-# define __mingw_bos_ovr __mingw_ovr
-#endif  /* __MINGW_FORTIFY_LEVEL > 0 */
 
 /* Enable workaround for ABI incompatibility on affected platforms */
 #ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
