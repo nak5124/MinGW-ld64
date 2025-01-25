@@ -144,6 +144,27 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_GNU
+#define strdupa(__s)                                         \
+  (__MINGW_EXTENSION                                         \
+    ({                                                       \
+      const char *__src  = (__s);                            \
+      size_t      __size = strlen(__src) + 1;                \
+      char       *__dst  = (char *)__builtin_alloca(__size); \
+      (char *)memcpy(__dst, __src, __size);                  \
+    })                                                       \
+  )
+
+#define strndupa(__s, __n)                                   \
+  (__MINGW_EXTENSION                                         \
+    ({                                                       \
+      const char *__src  = (__s);                            \
+      size_t      __size = strnlen(__src, (__n)) + 1;        \
+      char       *__dst  = (char *)__builtin_alloca(__size); \
+      __dst[__size - 1]  = '\0';                             \
+      (char *)memcpy(__dst, __src, __size);                  \
+    })                                                       \
+  )
+
   extern void *__cdecl memrchr(const void *_S, int _C, size_t _N)   __NOTHROW __PURE __NONNULL((1));
   extern int   __cdecl strverscmp(const char *_S1, const char *_S2) __NOTHROW __PURE __NONNULL((1, 2));
 #endif
