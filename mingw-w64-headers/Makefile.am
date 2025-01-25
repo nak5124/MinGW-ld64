@@ -1,7 +1,7 @@
 
 baseheaddir = $(includedir)
 sysheaddir = $(baseheaddir)/sys
-sspgeaddur = $(baseheaddir)/ssp
+sspheaddir = $(baseheaddir)/ssp
 glheaddir = $(baseheaddir)/GL
 khrheaddir = $(baseheaddir)/KHR
 gdiplusheaddir = $(baseheaddir)/gdiplus

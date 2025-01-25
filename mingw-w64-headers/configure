@@ -2959,13 +2959,14 @@ fi
 
 # Checks for header files.
 
-BASEHEAD_LIST="crt/_bsd_types.h crt/_mingw.h crt/_mingw_features.h crt/_mingw_mac.h crt/_mingw_unicode.h crt/_timeval.h crt/crtdefs.h crt/corecrt.h crt/excpt.h crt/intrin.h crt/vadefs.h crt/tchar.h "$srcdir/include/*.h
+BASEHEAD_LIST="crt/_bsd_types.h crt/_mingw.h crt/_mingw_features.h crt/_mingw_unicode.h crt/_timeval.h crt/crtdefs.h crt/corecrt.h crt/excpt.h crt/intrin.h crt/vadefs.h crt/tchar.h "$srcdir/include/*.h
 for i in c inl dlg h16 hxx rh ver; do
   BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/include/*.$i
 done
 
 BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/crt/*.h
 SYSHEAD_LIST=$srcdir/crt/sys/*.h
+SSPHEAD_LIST=$srcdir/crt/ssp/*.h
 GDIPLUSHEAD_LIST=$srcdir/include/gdiplus/*.h
 WRLHEAD_LIST=$srcdir/include/wrl/*.h
 WRLWRAPPERSHEAD_LIST=$srcdir/include/wrl/wrappers/*.h

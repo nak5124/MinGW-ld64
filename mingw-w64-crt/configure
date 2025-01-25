@@ -6759,7 +6759,7 @@ rm -f conftest$ac_exeext conftest.$ac_ext
 printf "%s\n" "$ld_provides_imagebase" >&6; }
 case $ld_provides_imagebase in #(
   no) :
-    IMAGEBASE_CFLAGS="-D__ImageBase=__MINGW_LSYMBOL\(_image_base__\)" ;; #(
+    IMAGEBASE_CFLAGS="-D__ImageBase=__LSYMBOL\(_image_base__\)" ;; #(
   *) :
     IMAGEBASE_CFLAGS= ;;
 esac
@@ -6794,8 +6794,8 @@ then :
 printf "%s\n" "#define STDC_HEADERS 1" >>confdefs.h
 
 fi
-ac_fn_c_check_header_compile "$LINENO" "_mingw_mac.h" "ac_cv_header__mingw_mac_h" "$ac_includes_default"
-if test "x$ac_cv_header__mingw_mac_h" = xyes
+ac_fn_c_check_header_compile "$LINENO" "_mingw.h" "ac_cv_header__mingw_h" "$ac_includes_default"
+if test "x$ac_cv_header__mingw_h" = xyes
 then :
 
 else case e in #(
