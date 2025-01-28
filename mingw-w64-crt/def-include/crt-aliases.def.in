@@ -168,6 +168,9 @@ timespec_get == _timespec64_get
 logp1 == log1p
 logp1f == log1pf
 logp1l == log1pl
+llogb == ilogb
+llogbf == ilogbf
+llogbl == ilogbl
 
 ; This is list of symbol aliases for POSIX functions
 ADD_DOUBLE_UNDERSCORE(isascii)

@@ -965,12 +965,6 @@ __MINGW_BEGIN_C_DECLS
 # define HUGE    _HUGE
 #endif
 
-#if defined(__MINGW_USE_GNU) || defined(__MINGW_USE_ISOC23)
-  extern double      __cdecl exp10(double _X);
-  extern float       __cdecl exp10f(float _X);
-  extern long double __cdecl exp10l(long double _X);
-#endif
-
 #ifdef __MINGW_USE_GNU
   extern double      __cdecl pow10(double _X);
   extern float       __cdecl pow10f(float _X);
@@ -1017,6 +1011,10 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl tanpif(float _X);
   extern long double __cdecl tanpil(long double _X);
 
+  extern double      __cdecl exp10(double _X);
+  extern float       __cdecl exp10f(float _X);
+  extern long double __cdecl exp10l(long double _X);
+
   extern double      __cdecl exp10m1(double _X);
   extern float       __cdecl exp10m1f(float _X);
   extern long double __cdecl exp10m1l(long double _X);
@@ -1024,6 +1022,10 @@ __MINGW_BEGIN_C_DECLS
   extern double      __cdecl exp2m1(double _X);
   extern float       __cdecl exp2m1f(float _X);
   extern long double __cdecl exp2m1l(long double _X);
+
+  /**/   double      __cdecl llogb(double _X);
+  /**/   float       __cdecl llogbf(float _X);
+  /**/   long double __cdecl llogbl(long double _X);
 
   extern double      __cdecl log10p1(double _X);
   extern float       __cdecl log10p1f(float _X);

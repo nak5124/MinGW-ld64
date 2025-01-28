@@ -239,8 +239,11 @@ hypot
 hypotf == _hypotf
 hypotl == hypot
 ilogb
+llogb == ilogb
 ilogbf
+llogbf == ilogbf
 ilogbl
+llogbl == ilogbl
 ; The UCRT implementation of ldexp has a minor spec incompliance
 ; ldexp
 ; The UCRT lgamma functions don't set/provide the signgam variable like the mingw ones do.
