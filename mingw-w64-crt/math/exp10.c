@@ -137,10 +137,14 @@ static inline double as_todenormal(double x){
   __m128d r; asm("":"=x"(r):"0"(x));
 #endif
   r = _mm_and_pd(r, (__m128d)sb);
+  // forces the underflow exception
+  _mm_setcsr (_mm_getcsr () | _MM_EXCEPT_UNDERFLOW);
   return r[0];
 #else
   b64u64_u ix = {.f = x};
   ix.u &= ~(u64)0>>12;
+  // forces the underflow exception
+  feraiseexcept (FE_UNDERFLOW);
   return ix.f;
 #endif
 }

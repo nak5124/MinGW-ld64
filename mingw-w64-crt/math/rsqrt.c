@@ -108,24 +108,28 @@ static double __NOINLINE as_rsqrt_refine(double rf, double a){
 double __cdecl rsqrt(double x){
   b64u64_u ix = {.f = x};
   double r;
-  if(__builtin_expect(ix.u < 1ll<<52, 0)){
-    if(__builtin_expect(ix.u, 1)){
+  if(__builtin_expect(ix.u < 1ll<<52, 0)){ // 0 <= x < 0x1p-1022
+    if(__builtin_expect(ix.u, 1)){ // x <> +0
       r = __builtin_sqrt(x)/x;
     } else {
-      return __builtin_inf();
+      return __builtin_inf(); // case x = +0
     }
-  } else if(__builtin_expect(ix.u >= 0x7ffull<<52, 0)){
+  } else if(__builtin_expect(ix.u >= 0x7ffull<<52, 0)){ // NaN, Inf, x <= 0
     if(!(ix.u<<1)) return -__builtin_inf(); // x=-0
-    if(ix.u > 0xfff0000000000000ull) return x + x; // nan
-    if(ix.u >> 63){
+    if(ix.u > 0xfff0000000000000ull) return x + x; // -NaN
+    if(ix.u >> 63){ // x < 0
       errno = EDOM;
       feraiseexcept (FE_INVALID);
       return __builtin_nan("<0");
     }
-    if(!(ix.u<<12)) return 0.0; // +Inf
-    return x + x; // nan
-  } else {
-    r = (1/x)*__builtin_sqrt(x);
+    if(!(ix.u<<12)) return 0.0; // +/-Inf
+    return x + x; // +NaN
+  } else { // 0x1p-1022 <= x < 2^1024
+    if (__builtin_expect (ix.u > 0x7fd000000000000ull, 0)) // x > 2^1022
+      // avoid spurious underflow in 1/x
+      r = (4.0 / x) * (0.25 * __builtin_sqrt(x));
+    else
+      r = (1.0 / x) * __builtin_sqrt(x);
   }
   double rx = r*x, drx = __builtin_fma(r, x, -rx);
   double h = __builtin_fma(r,rx,-1.0) + r*drx, dr = (r*0.5)*h;
