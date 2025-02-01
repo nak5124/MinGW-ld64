@@ -25,6 +25,7 @@ SOFTWARE.
 */
 
 #include <stdint.h>
+#include <errno.h>
 #if defined(__x86_64__)
 #include <x86intrin.h>
 #endif
@@ -130,7 +131,7 @@ static inline double as_ldexp(double x, i64 i){
 
 static inline double as_todenormal(double x){
 #ifdef __x86_64__
-  __m128i sb; sb[0] = ~(u64)0>>12;
+  __m128i sb = {~(u64)0>>12, 0};
 #if defined(__clang__)
   __m128d r = _mm_set_sd(x);
 #else
@@ -317,7 +318,10 @@ double __cdecl exp10(double x){
       else
         return x;
     }
-    if(!(ix.u>>63)) return 0x1p1023*2.0; // x > 0x1.34413509f79fep+8
+    if(!(ix.u>>63)) {
+      errno = ERANGE;
+      return 0x1p1023*2.0; // x > 0x1.34413509f79fep+8
+    }
     if(aix>0x407439b746e36b52ull) // x < -0x1.439b746e36b52p+8
       return 0x1.5p-1022*0x1p-55;
   }

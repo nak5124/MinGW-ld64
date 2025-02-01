@@ -40,21 +40,24 @@ typedef union {float f; uint32_t u;} b32u32_u;
 typedef union {double f; uint64_t u;} b64u64_u;
 
 float __cdecl exp2m1f(float x){
-  static const float q[][2] = {{0x1.fffffep127f, 0x1.fffffep127f}, {-1.0f, 0x1p-26f}};
+  static const float q[][2] = {{0x1.fffffep127f, 0x1.fffffep127f},
+                               {0x1.fffffep127f, 0x1p+103f},
+                               {-1.0f, 0x1p-26f}};
   b32u32_u t = {.f = x};
   double z = x;
   uint32_t ux = t.u, ax = ux&(~0u>>1);
   if(__builtin_expect(ux>=0xc1c80000u, 0)){ // x <= -25
     if(ax>(0xffu<<23)) return x + x; // nan
     // avoid spurious inexact exception for -Inf
-    return (ux == 0xff800000) ? q[1][0] : q[1][0] + q[1][1];
+    return (ux == 0xff800000) ? q[2][0] : q[2][0] + q[2][1];
   } else if(__builtin_expect(ax>=0x43000000u, 0)){  // x >= 128
     if(ax>(0xffu<<23)) return x + x; // nan
     // for x=128 and rounding downward or to zero, there is no overflow
-    if (!(x == 128.0f && (0x1.fffffep+127f + 0x1p+103f == 0x1.fffffep+127f)))
+    int special = x == 128.0f && (q[1][0] + q[1][1] == q[1][0]);
+    if (!special)
       errno = ERANGE;
     // avoid spurious inexact exception for +Inf
-    return (ux == 0x7f800000) ? x : q[0][0] + q[0][1];
+    return (ux == 0x7f800000) ? x : q[special][0] + q[special][1];
   } else if (__builtin_expect(ax<0x3df95f1fu, 0)){ // |x| < 8.44e-2/log(2)
     double z2 = z*z, r;
     if (__builtin_expect(ax<0x3d67a4ccu, 0)){ // |x| < 3.92e-2/log(2)

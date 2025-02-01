@@ -117,14 +117,14 @@ static float __lgammaf_r(float x, int *signgamf){
 
   float fx = __builtin_floor(x), ax = __builtin_fabsf(x);
   b32u32_u t = {.f = ax};
-  if(__builtin_expect(t.u>=(0xffu<<23), 0)){
+  if(__builtin_expect(t.u>=(0xffu<<23), 0)){ // NaN or Inf
     if(t.u==(0xffu<<23)){ // +-inf
       *signgamf = 1;
       return __builtin_inff();
     }
     return x + x; // nan
   }
-  if(__builtin_expect(fx==x, 0)){
+  if(__builtin_expect(fx==x, 0)){ // x integer
     if(x <= 0.0f) {
       errno = ERANGE;
       return 1.0f/0.0f;
@@ -155,10 +155,13 @@ static float __lgammaf_r(float x, int *signgamf){
        -0x1.7dd25af0b83d4p+0, -0x1.36bf1880125fcp+0, -0x1.1379fc8023d9cp+0, -0x1.03712e41525d2p+0};
     double s = x;
     f = (c0*s)*as_r8(s, rn)/as_r8(s, rd) - as_ln(z);
-  } else {
+  } else { // |x| >= 0x1.52p-1
     if(ax > 0x1.afc1ap+1f){
       if(__builtin_expect(x >= 0x1.895f1cp+121f, 0)){
-        float r = 0x1p127f * 0x1p127f;
+        /* for x=0x1.895f1cp+121, lgamma(x) < 2^128, thus there is no
+           overflow for rounding towards zero or downwards */
+        float r = (x > 0x1.895f1cp+121f) ? 0x1p127f * 0x1p127f
+          : 0x1.fffffep+127f + 0x1p+103f;
         if(r>0x1.fffffep+127f) errno = ERANGE;
         return r;
       }
