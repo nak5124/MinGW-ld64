@@ -1319,12 +1319,12 @@ extern "C" {
 #define FS_JOHAB       0x00200000L
 #define FS_SYMBOL      0x80000000L
 
-#define FF_DONTCARE   (0 << 4)
-#define FF_ROMAN      (1 << 4)
-#define FF_SWISS      (2 << 4)
-#define FF_MODERN     (3 << 4)
-#define FF_SCRIPT     (4 << 4)
-#define FF_DECORATIVE (5 << 4)
+#define FF_DONTCARE   0x00
+#define FF_ROMAN      0x10
+#define FF_SWISS      0x20
+#define FF_MODERN     0x30
+#define FF_SCRIPT     0x40
+#define FF_DECORATIVE 0x50
 
 #define FW_DONTCARE   0
 #define FW_THIN       100
