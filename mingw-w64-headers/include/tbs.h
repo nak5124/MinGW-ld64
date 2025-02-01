@@ -87,6 +87,7 @@ extern "C" {
   typedef const TBS_CONTEXT_PARAMS *PCTBS_CONTEXT_PARAMS;
 
   TBS_RESULT WINAPI Tbsi_Context_Create(PCTBS_CONTEXT_PARAMS pContextParams, PTBS_HCONTEXT phContext);
+  TBS_RESULT WINAPI Tbsi_Tpm_Vendor_Maintenance_Mode(PCTBS_CONTEXT_PARAMS pContextParams, PTBS_HCONTEXT phContext);
   TBS_RESULT WINAPI Tbsip_Context_Close(TBS_HCONTEXT hContext);
   TBS_RESULT WINAPI Tbsip_Submit_Command(TBS_HCONTEXT hContext, TBS_COMMAND_LOCALITY Locality, TBS_COMMAND_PRIORITY Priority, PCBYTE pabCommand, UINT32 cbCommand, PBYTE pabResult, PUINT32 pcbResult);
   TBS_RESULT WINAPI Tbsip_Cancel_Commands(TBS_HCONTEXT hContext);
