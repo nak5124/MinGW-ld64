@@ -59,6 +59,7 @@ Differences from official MinGW-w64
    - rsqrt/rsqrtf/rsqrtl(all:CORE-MATH)
    - wcslcat/wcslcpy
    - llogb/llogbf/llogbl aliases for ilogb/ilogbf/ilogbl
+   - nextup/nextupf/nextupl/nextdown/nextdownf/nextdownl
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
@@ -78,7 +79,6 @@ Add missing math functions
   - powr
   - rootn
   - fromfp/ufromfp/fromfpx/ufromfpx
-  - nextup/nextdown
   - canonicalize
   - fmaximum/fmaximum
   - fmaximum_mag/fminimum_mag

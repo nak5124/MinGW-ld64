@@ -103,6 +103,8 @@ __MINGW_BEGIN_C_DECLS
 # define log2p1(x)     __TGMATH_R1(x, log2p1)
 # define rsqrt(x)      __TGMATH_R1(x, rsqrt)
 # define roundeven(x)  __TGMATH_R1(x, roundeven)
+# define nextup(x)     __TGMATH_R1(x, nextup)
+# define nextdown(x)   __TGMATH_R1(x, nextdown)
 #endif
 
 #ifdef __MINGW_USE_MS

@@ -1067,6 +1067,14 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
+  extern double      __cdecl nextup(double _X);
+  extern float       __cdecl nextupf(float _X);
+  extern long double __cdecl nextupl(long double _X);
+
+  extern double      __cdecl nextdown(double _X);
+  extern float       __cdecl nextdownf(float _X);
+  extern long double __cdecl nextdownl(long double _X);
+
 #define iseqsig(_X, _Y) __builtin_iseqsig(_X, _Y)
 
 #endif
