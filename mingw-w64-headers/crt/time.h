@@ -286,7 +286,7 @@ __MINGW_BEGIN_C_DECLS
 # define CLOCK_REALTIME_COARSE 4
 #endif
 
-#ifndef _POSIX_TIMERS_DEFINED
+#if !defined(_POSIX_TIMERS_DEFINED) && !defined(IN_WINPTHREAD)
 # define _POSIX_TIMERS_DEFINED
   extern int __cdecl nanosleep(const struct timespec *request, struct timespec *remain);
   extern int __cdecl clock_nanosleep(clockid_t clock_id, int flags, const struct timespec *request, struct timespec *remain);
@@ -295,7 +295,7 @@ __MINGW_BEGIN_C_DECLS
   extern int __cdecl clock_settime(clockid_t clock_id, const struct timespec *tp) __NOTHROW __NONNULL((2));
 #endif
 
-#endif  /* __MINGW_USE_POSIX199309 */
+#endif  /* !defined(_POSIX_TIMERS_DEFINED) && !defined(IN_WINPTHREAD) */
 
 #ifdef __MINGW_USE_ISOC23
   extern int __cdecl timespec_getres(struct timespec *_Ts, int _Base);
