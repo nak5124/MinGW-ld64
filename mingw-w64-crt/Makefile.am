@@ -184,9 +184,9 @@ src_libmingwex=\
   misc/malloc_usable_size.c        misc/mempcpy.c          misc/mingw_longjmp.S      misc/mingw_matherr.c       \
   misc/mingw_usleep.c              misc/mkdtemp.c          misc/mkstemp.c            misc/mkstemps.c            misc/qsort_r.c            \
   misc/reallocarray.c              misc/realpath.c         misc/setenv.c             misc/sleep.c               misc/strsafe.c            \
-  misc/tdelete.c                   misc/tdestroy.c         misc/tfind.c              misc/tsearch.c             misc/twalk.c              \
-  misc/unsetenv.c                  misc/wdirent.c          misc/wmemchr.c            misc/wmemcmp.c             misc/wmemcpy.c            \
-  misc/wmemmove.c                  misc/wmempcpy.c         misc/wmemset.c            \
+  misc/tdelete.c                   misc/tdestroy.c         misc/tfind.c              misc/truncate.c            misc/truncate64.c         \
+  misc/tsearch.c                   misc/twalk.c            misc/unsetenv.c           misc/wdirent.c             misc/wmemchr.c            \
+  misc/wmemcmp.c                   misc/wmemcpy.c          misc/wmemmove.c           misc/wmempcpy.c            misc/wmemset.c            \
   \
   ssp/chk_fail.c                   ssp/gets_chk.c          ssp/memcpy_chk.c          ssp/memmove_chk.c          ssp/mempcpy_chk.c         \
   ssp/memset_chk.c                 ssp/stack_chk_fail.c    ssp/stack_chk_guard.c     ssp/stpcpy_chk.c           ssp/strcat_chk.c          \
@@ -207,7 +207,7 @@ src_libmingwex=\
   stdbit/stdc_trailing_ones_uc.c        stdbit/stdc_trailing_ones_ui.c        stdbit/stdc_trailing_ones_ull.c        stdbit/stdc_trailing_ones_us.c       \
   stdbit/stdc_trailing_zeros_uc.c       stdbit/stdc_trailing_zeros_ui.c       stdbit/stdc_trailing_zeros_ull.c       stdbit/stdc_trailing_zeros_us.c      \
   \
-  stdio/asprintf.c                 stdio/truncate.c        stdio/vasprintf.c         \
+  stdio/asprintf.c                 stdio/vasprintf.c       \
   \
   string/bcopy.c                   string/bzero.c          string/explicit_bzero.c   string/ffs.c               string/ffsll.c            \
   string/memmem.c                  string/memrchr.c        string/memset_explicit.c  string/memset_s.c          string/stpcpy.c           \
