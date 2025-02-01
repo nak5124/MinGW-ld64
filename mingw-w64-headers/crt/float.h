@@ -10,12 +10,26 @@
  * point controller.
  *
  */
+#include <corecrt.h>
+
 #ifdef __clang__
 # ifndef __CLANG_FLOAT_H
 #   include_next <float.h>
 # endif
 #elif !defined(_FLOAT_H___)
-  /* #include_next <float_ginclude.h> */
+
+  /* Radix of exponent representation, b. */
+# undef  FLT_RADIX
+# define FLT_RADIX __FLT_RADIX__
+
+  /* Number of base-FLT_RADIX digits in the significand, p. */
+# undef  FLT_MANT_DIG
+# undef  DBL_MANT_DIG
+# undef  LDBL_MANT_DIG
+# define FLT_MANT_DIG  __FLT_MANT_DIG__
+# define DBL_MANT_DIG  __DBL_MANT_DIG__
+# define LDBL_MANT_DIG __LDBL_MANT_DIG__
+
   /* Number of decimal digits, q, such that any floating-point number with q
    * decimal digits can be rounded into a floating-point number with p radix b
    * digits and back again without change to the q decimal digits,
@@ -27,28 +41,6 @@
 # define FLT_DIG  __FLT_DIG__
 # define DBL_DIG  __DBL_DIG__
 # define LDBL_DIG __LDBL_DIG__
-
-  /* Maximum representable finite floating-point number,
-    (1 - b**-p) * b**emax */
-# undef  FLT_MAX
-# undef  DBL_MAX
-# undef  LDBL_MAX
-# define FLT_MAX  __FLT_MAX__
-# define DBL_MAX  __DBL_MAX__
-# define LDBL_MAX __LDBL_MAX__
-
-  /* Minimum normalized positive floating-point number, b**(emin - 1).  */
-# undef  FLT_MIN
-# undef  DBL_MIN
-# undef  LDBL_MIN
-# define FLT_MIN  __FLT_MIN__
-# define DBL_MIN  __DBL_MIN__
-# define LDBL_MIN __LDBL_MIN__
-
-  /* Needed for libjava building - Victor K. */
-  /* Radix of exponent representation, b. */
-# undef  FLT_RADIX
-# define FLT_RADIX __FLT_RADIX__
 
   /* Minimum int x such that FLT_RADIX**(x-1) is a normalized float, emin */
 # undef  FLT_MIN_EXP
@@ -86,11 +78,17 @@
 # define DBL_MAX_10_EXP  __DBL_MAX_10_EXP__
 # define LDBL_MAX_10_EXP __LDBL_MAX_10_EXP__
 
-  /* Addition rounds to 0: zero, 1: nearest, 2: +inf, 3: -inf, -1: unknown.  */
-  /* ??? This is supposed to change with calls to fesetround in <fenv.h>.  */
-# undef  FLT_ROUNDS
-# define FLT_ROUNDS 1
+  /* Maximum representable finite floating-point number,
+    (1 - b**-p) * b**emax */
+# undef  FLT_MAX
+# undef  DBL_MAX
+# undef  LDBL_MAX
+# define FLT_MAX  __FLT_MAX__
+# define DBL_MAX  __DBL_MAX__
+# define LDBL_MAX __LDBL_MAX__
 
+  /* The difference between 1 and the least value greater than 1 that is
+   * representable in the given floating point type, b**1-p. */
 # undef  FLT_EPSILON
 # undef  DBL_EPSILON
 # undef  LDBL_EPSILON
@@ -98,13 +96,113 @@
 # define DBL_EPSILON  __DBL_EPSILON__
 # define LDBL_EPSILON __LDBL_EPSILON__
 
+  /* Minimum normalized positive floating-point number, b**(emin - 1). */
+# undef  FLT_MIN
+# undef  DBL_MIN
+# undef  LDBL_MIN
+# define FLT_MIN  __FLT_MIN__
+# define DBL_MIN  __DBL_MIN__
+# define LDBL_MIN __LDBL_MIN__
+
+  /* Addition rounds to 0: zero, 1: nearest, 2: +inf, 3: -inf, -1: unknown.  */
+  /* ??? This is supposed to change with calls to fesetround in <fenv.h>.  */
+# undef  FLT_ROUNDS
+# define FLT_ROUNDS 1
+
+# ifdef __MINGW_USE_ISOC99
+    /* The floating-point expression evaluation method.
+     *    -1  indeterminate
+     *     0  evaluate all operations and constants just to the range and
+     * precision of the type
+     *     1  evaluate operations and constants of type float and double
+     * to the range and precision of the double type, evaluate
+     * long double operations and constants to the range and
+     * precision of the long double type
+     *     2  evaluate all operations and constants to the range and
+     * precision of the long double type
+     *
+     * ??? This ought to change with the setting of the fp control word;
+     * the value provided by the compiler assumes the widest setting. */
+#   undef  FLT_EVAL_METHOD
+#   define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
+
+    /* Number of decimal digits, n, such that any floating-point number in the
+     * widest supported floating type with pmax radix b digits can be rounded
+     * to a floating-point number with n decimal digits and back again without
+     * change to the value,
+     *
+     * pmax * log10(b)      if b is a power of 10
+     * ceil(1 + pmax * log10(b))  otherwise */
+#   undef  DECIMAL_DIG
+#   define DECIMAL_DIG __DECIMAL_DIG__
+# endif  /* __MINGW_USE_ISOC99 */
+
+# ifdef __MINGW_USE_ISOC11
+    /* Versions of DECIMAL_DIG for each floating-point type.  */
+#   undef  FLT_DECIMAL_DIG
+#   undef  DBL_DECIMAL_DIG
+#   undef  LDBL_DECIMAL_DIG
+#   define FLT_DECIMAL_DIG  __FLT_DECIMAL_DIG__
+#   define DBL_DECIMAL_DIG  __DBL_DECIMAL_DIG__
+#   define LDBL_DECIMAL_DIG __LDBL_DECIMAL_DIG__
+
+    /* Whether types support subnormal numbers.  */
+#   undef  FLT_HAS_SUBNORM
+#   undef  DBL_HAS_SUBNORM
+#   undef  LDBL_HAS_SUBNORM
+#   define FLT_HAS_SUBNORM  __FLT_HAS_DENORM__
+#   define DBL_HAS_SUBNORM  __DBL_HAS_DENORM__
+#   define LDBL_HAS_SUBNORM __LDBL_HAS_DENORM__
+
+    /* Minimum positive values, including subnormals.  */
+#   undef  FLT_TRUE_MIN
+#   undef  DBL_TRUE_MIN
+#   undef  LDBL_TRUE_MIN
+#   define FLT_TRUE_MIN  __FLT_DENORM_MIN__
+#   define DBL_TRUE_MIN  __DBL_DENORM_MIN__
+#   define LDBL_TRUE_MIN __LDBL_DENORM_MIN__
+# endif
+
+# ifdef __MINGW_USE_ISOC23
+    /* Maximum finite positive value with MANT_DIG digits in the
+     * significand taking their maximum value. */
+#   undef  FLT_NORM_MAX
+#   undef  DBL_NORM_MAX
+#   undef  LDBL_NORM_MAX
+#   define FLT_NORM_MAX  __FLT_NORM_MAX__
+#   define DBL_NORM_MAX  __DBL_NORM_MAX__
+#   define LDBL_NORM_MAX __LDBL_NORM_MAX__
+
+    /* Whether each type matches an IEC 60559 format. */
+#   undef  FLT_IS_IEC_60559
+#   undef  DBL_IS_IEC_60559
+#   undef  LDBL_IS_IEC_60559
+#   define FLT_IS_IEC_60559  __FLT_IS_IEC_60559__
+#   define DBL_IS_IEC_60559  __DBL_IS_IEC_60559__
+#   define LDBL_IS_IEC_60559 __LDBL_IS_IEC_60559__
+
+    /* Signaling NaN, if supported for each type.  All formats supported
+     * by GCC support either both quiet and signaling NaNs, or neither
+     * kind of NaN. */
+#   if __FLT_HAS_QUIET_NAN__
+#     undef  FLT_SNAN
+#     define FLT_SNAN (__builtin_nansf(""))
+#   endif
+#   if __DBL_HAS_QUIET_NAN__
+#     undef  DBL_SNAN
+#     define DBL_SNAN (__builtin_nans(""))
+#   endif
+#   if __LDBL_HAS_QUIET_NAN__
+#     undef  LDBL_SNAN
+#     define LDBL_SNAN (__builtin_nansl(""))
+#   endif
+# endif
+
 # define _FLOAT_H___
 #endif
 
 #ifndef _MINGW_FLOAT_H_
 #define _MINGW_FLOAT_H_
-
-#include <corecrt.h>
 
 __MINGW_BEGIN_C_DECLS
 
@@ -120,33 +218,6 @@ __MINGW_BEGIN_C_DECLS
 #define _MCW_IC  0x00040000  /* Infinity */
 #define _MCW_RC  0x00000300  /* Rounding */
 #define _MCW_PC  0x00030000  /* Precision */
-
-/* Number of base-FLT_RADIX digits in the significand, p.  */
-#undef  FLT_MANT_DIG
-#undef  DBL_MANT_DIG
-#undef  LDBL_MANT_DIG
-#define FLT_MANT_DIG  __FLT_MANT_DIG__
-#define DBL_MANT_DIG  __DBL_MANT_DIG__
-#define LDBL_MANT_DIG __LDBL_MANT_DIG__
-
-#ifdef __MINGW_USE_ISOC99
-/* The floating-point expression evaluation method.
- *    -1  indeterminate
- *     0  evaluate all operations and constants just to the range and
- * precision of the type
- *     1  evaluate operations and constants of type float and double
- * to the range and precision of the double type, evaluate
- * long double operations and constants to the range and
- * precision of the long double type
- *     2  evaluate all operations and constants to the range and
- * precision of the long double type
-
- * ??? This ought to change with the setting of the fp control word;
- * the value provided by the compiler assumes the widest setting.  */
-# undef  FLT_EVAL_METHOD
-# define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
-
-#endif  /* __MINGW_USE_ISOC99 */
 
 #ifdef __MINGW_USE_ISOC23
 # ifndef INFINITY
