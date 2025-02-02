@@ -176,7 +176,7 @@ extern "C" {
 #endif
 
 #ifndef DECLSPEC_SELECTANY
-# define DECLSPEC_SELECTANY __declspec(selectany)
+# define DECLSPEC_SELECTANY __attribute__((__selectany__))
 #endif
 
 #ifndef NOP_FUNCTION

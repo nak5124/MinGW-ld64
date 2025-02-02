@@ -6,7 +6,7 @@
 #define USE_STUBLESS_PROXY
 
 #ifndef __REDQ_RPCPROXY_H_VERSION__
-#define __REQUIRED_RPCPROXY_H_VERSION__ 475
+#define __REQUIRED_RPCPROXY_H_VERSION__ 477
 #endif
 
 #include "rpcproxy.h"
