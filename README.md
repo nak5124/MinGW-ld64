@@ -42,6 +42,7 @@ Differences from official MinGW-w64
    - timespec_getres
    - timegm/timelocal
    - malloc_usable_size
+   - iscanonical/issignaling/issubnormal/iszero/iseqsig
    - exp10/exp10f/exp10l/pow10/pow10f/pow10l(all:CORE-MATH)
    - exp10m1/exp10m1f/exp10m1l(all:CORE-MATH)
    - acospi/acospif/acospil(f:CORE-MATH)
@@ -64,6 +65,7 @@ Differences from official MinGW-w64
    - fmaximum_mag/fmaximum_magf/fmaximum_magl/fminimum_mag/fminimum_magf/fminimum_magl
    - fmaximum_num/fmaximum_numf/fmaximum_numl/fminimum_num/fminimum_numf/fminimum_numl
    - fmaximum_mag_num/fmaximum_mag_numf/fmaximum_mag_numl/fminimum_mag_num/fminimum_mag_numf/fminimum_mag_numl
+   - canonicalize/canonicalizef/canonicalizel
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
@@ -83,7 +85,6 @@ Add missing math functions
   - powr
   - rootn
   - fromfp/ufromfp/fromfpx/ufromfpx
-  - canonicalize
   - fadd/fsub/fmul/fdiv/ffma/fsqrt
 
 Update libonecore/libonecoreuap_apiset

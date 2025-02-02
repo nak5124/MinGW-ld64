@@ -168,33 +168,33 @@ src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
 src_libmingwex=\
   cfguard/mingw_cfguard_support.c  \
   \
-  math/acospi.c              math/acospif.c           math/asinpi.c             math/asinpif.c           math/atan2pi.c            \
-  math/atan2pif.c            math/atanpi.c            math/atanpif.c            math/cospi.c             math/cospif.c             \
-  math/exp10.c               math/exp10f.c            math/exp10m1.c            math/exp10m1f.c          math/exp2m1.c             \
-  math/exp2m1f.c             math/fmaximum.c          math/fmaximum_mag.c       math/fmaximum_mag_num.c  math/fmaximum_mag_numf.c  \
-  math/fmaximum_magf.c       math/fmaximum_num.c      math/fmaximum_numf.c      math/fmaximumf.c         math/fminimum.c           \
-  math/fminimum_mag.c        math/fminimum_mag_num.c  math/fminimum_mag_numf.c  math/fminimum_magf.c     math/fminimum_num.c       \
-  math/fminimum_numf.c       math/fminimumf.c         math/fpclassify.c         math/fpclassifyf.c       math/isnan.c              \
-  math/isnanf.c              math/log10p1.c           math/log10p1f.c           math/log2p1.c            math/log2p1f.c            \
-  math/nextdown.c            math/nextdownf.c         math/nextup.c             math/nextupf.c           math/roundeven.c          \
-  math/roundevenf.c          math/rsqrt.c             math/rsqrtf.c             math/signbit.c           math/signbitf.c           \
-  math/sincos.c              math/sincosf.c           math/sinpi.c              math/sinpif.c            math/tanpi.c              \
-  math/tanpif.c              \
+  math/acospi.c              math/acospif.c            math/asinpi.c          math/asinpif.c           math/atan2pi.c            \
+  math/atan2pif.c            math/atanpi.c             math/atanpif.c         math/canonicalize.c      math/canonicalizef.c      \
+  math/cospi.c               math/cospif.c             math/exp10.c           math/exp10f.c            math/exp10m1.c            \
+  math/exp10m1f.c            math/exp2m1.c             math/exp2m1f.c         math/fmaximum.c          math/fmaximum_mag.c       \
+  math/fmaximum_mag_num.c    math/fmaximum_mag_numf.c  math/fmaximum_magf.c   math/fmaximum_num.c      math/fmaximum_numf.c      \
+  math/fmaximumf.c           math/fminimum.c           math/fminimum_mag.c    math/fminimum_mag_num.c  math/fminimum_mag_numf.c  \
+  math/fminimum_magf.c       math/fminimum_num.c       math/fminimum_numf.c   math/fminimumf.c         math/fpclassify.c         \
+  math/fpclassifyf.c         math/isnan.c              math/isnanf.c          math/log10p1.c           math/log10p1f.c           \
+  math/log2p1.c              math/log2p1f.c            math/nextdown.c        math/nextdownf.c         math/nextup.c             \
+  math/nextupf.c             math/roundeven.c          math/roundevenf.c      math/rsqrt.c             math/rsqrtf.c             \
+  math/signbit.c             math/signbitf.c           math/sincos.c          math/sincosf.c           math/sinpi.c              \
+  math/sinpif.c              math/tanpi.c              math/tanpif.c          \
   \
-  misc/a64l.c                misc/alarm.c             misc/arc4random.c         misc/arc4random_buf.c    misc/arc4random_uniform.c \
-  misc/clearenv.c            misc/dirent.c            misc/dirname.c            misc/dllentrypoint.c     misc/dllmain.c            \
-  misc/ftruncate64.c         misc/ftw.c               misc/ftw64.c              misc/fwide.c             misc/getentropy.c         \
-  misc/getlogin.c            misc/getopt.c            misc/gettimeofday.c       misc/insque.c            misc/l64a.c               \
-  misc/malloc_usable_size.c  misc/mempcpy.c           misc/mingw_longjmp.S      misc/mingw_matherr.c     misc/mingw_usleep.c       \
-  misc/mkdtemp.c             misc/mkstemp.c           misc/mkstemps.c           misc/qsort_r.c           misc/reallocarray.c       \
-  misc/realpath.c            misc/setenv.c            misc/sleep.c              misc/strsafe.c           misc/tdelete.c            \
-  misc/tdestroy.c            misc/tfind.c             misc/truncate.c           misc/truncate64.c        misc/tsearch.c            \
-  misc/twalk.c               misc/unsetenv.c          misc/wdirent.c            misc/wmemchr.c           misc/wmemcmp.c            \
-  misc/wmemcpy.c             misc/wmemmove.c          misc/wmempcpy.c           misc/wmemset.c           \
+  misc/a64l.c                misc/alarm.c              misc/arc4random.c      misc/arc4random_buf.c    misc/arc4random_uniform.c \
+  misc/clearenv.c            misc/dirent.c             misc/dirname.c         misc/dllentrypoint.c     misc/dllmain.c            \
+  misc/ftruncate64.c         misc/ftw.c                misc/ftw64.c           misc/fwide.c             misc/getentropy.c         \
+  misc/getlogin.c            misc/getopt.c             misc/gettimeofday.c    misc/insque.c            misc/l64a.c               \
+  misc/malloc_usable_size.c  misc/mempcpy.c            misc/mingw_longjmp.S   misc/mingw_matherr.c     misc/mingw_usleep.c       \
+  misc/mkdtemp.c             misc/mkstemp.c            misc/mkstemps.c        misc/qsort_r.c           misc/reallocarray.c       \
+  misc/realpath.c            misc/setenv.c             misc/sleep.c           misc/strsafe.c           misc/tdelete.c            \
+  misc/tdestroy.c            misc/tfind.c              misc/truncate.c        misc/truncate64.c        misc/tsearch.c            \
+  misc/twalk.c               misc/unsetenv.c           misc/wdirent.c         misc/wmemchr.c           misc/wmemcmp.c            \
+  misc/wmemcpy.c             misc/wmemmove.c           misc/wmempcpy.c        misc/wmemset.c           \
   \
-  ssp/chk_fail.c             ssp/gets_chk.c           ssp/memcpy_chk.c          ssp/memmove_chk.c        ssp/mempcpy_chk.c         \
-  ssp/memset_chk.c           ssp/stack_chk_fail.c     ssp/stack_chk_guard.c     ssp/stpcpy_chk.c         ssp/strcat_chk.c          \
-  ssp/strcpy_chk.c           ssp/strncat_chk.c        ssp/strncpy_chk.c         \
+  ssp/chk_fail.c             ssp/gets_chk.c            ssp/memcpy_chk.c       ssp/memmove_chk.c        ssp/mempcpy_chk.c         \
+  ssp/memset_chk.c           ssp/stack_chk_fail.c      ssp/stack_chk_guard.c  ssp/stpcpy_chk.c         ssp/strcat_chk.c          \
+  ssp/strcpy_chk.c           ssp/strncat_chk.c         ssp/strncpy_chk.c      \
   \
   stdbit/stdc_bit_ceil_uc.c             stdbit/stdc_bit_ceil_ui.c             stdbit/stdc_bit_ceil_ull.c             stdbit/stdc_bit_ceil_us.c            \
   stdbit/stdc_bit_floor_uc.c            stdbit/stdc_bit_floor_ui.c            stdbit/stdc_bit_floor_ull.c            stdbit/stdc_bit_floor_us.c           \

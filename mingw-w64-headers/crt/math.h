@@ -975,6 +975,8 @@ __MINGW_BEGIN_C_DECLS
 
 #define iscanonical(_X) ((void)(__typeof__(_X))(_X), 1)
 
+#define issignaling(_X) __builtin_issignaling(_X)
+
 #define issubnormal(_X) (fpclassify(_X) == FP_SUBNORMAL)
 
 #ifdef __SUPPORT_SNAN__
@@ -1074,6 +1076,10 @@ __MINGW_BEGIN_C_DECLS
   extern double      __cdecl nextdown(double _X);
   extern float       __cdecl nextdownf(float _X);
   extern long double __cdecl nextdownl(long double _X);
+
+  extern int         __cdecl canonicalize(double *_CX, const double *_X);
+  extern int         __cdecl canonicalizef(float *_CX, const float *_X);
+  extern int         __cdecl canonicalizel(long double *_CX, const long double *_X);
 
   extern double      __cdecl fmaximum(double _X, double _Y);
   extern float       __cdecl fmaximumf(float _X, float _Y);
