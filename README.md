@@ -60,6 +60,10 @@ Differences from official MinGW-w64
    - wcslcat/wcslcpy
    - llogb/llogbf/llogbl aliases for ilogb/ilogbf/ilogbl
    - nextup/nextupf/nextupl/nextdown/nextdownf/nextdownl
+   - fmaximum/fmaximumf/fmaximuml/fminimum/fminimumf/fminimuml
+   - fmaximum_mag/fmaximum_magf/fmaximum_magl/fminimum_mag/fminimum_magf/fminimum_magl
+   - fmaximum_num/fmaximum_numf/fmaximum_numl/fminimum_num/fminimum_numf/fminimum_numl
+   - fmaximum_mag_num/fmaximum_mag_numf/fmaximum_mag_numl/fminimum_mag_num/fminimum_mag_numf/fminimum_mag_numl
  - The printf format specifier is ISO-C compatible because _CRT_STDIO_ISO_WIDE_SPECIFIERS is defined by default.
  - Replace sincosf/sincos by CORE-MATH implementation
  - Replace lgammaf by CORE-MATH implementation
@@ -80,10 +84,6 @@ Add missing math functions
   - rootn
   - fromfp/ufromfp/fromfpx/ufromfpx
   - canonicalize
-  - fmaximum/fmaximum
-  - fmaximum_mag/fminimum_mag
-  - fmaximum_num/fminimum_num
-  - fmaximum_mag_num/fminimum_mag_num
   - fadd/fsub/fmul/fdiv/ffma/fsqrt
 
 Update libonecore/libonecoreuap_apiset

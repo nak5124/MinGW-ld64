@@ -1075,6 +1075,38 @@ __MINGW_BEGIN_C_DECLS
   extern float       __cdecl nextdownf(float _X);
   extern long double __cdecl nextdownl(long double _X);
 
+  extern double      __cdecl fmaximum(double _X, double _Y);
+  extern float       __cdecl fmaximumf(float _X, float _Y);
+  extern long double __cdecl fmaximuml(long double _X, long double _Y);
+
+  extern double      __cdecl fminimum(double _X, double _Y);
+  extern float       __cdecl fminimumf(float _X, float _Y);
+  extern long double __cdecl fminimuml(long double _X, long double _Y);
+
+  extern double      __cdecl fmaximum_mag(double _X, double _Y);
+  extern float       __cdecl fmaximum_magf(float _X, float _Y);
+  extern long double __cdecl fmaximum_magl(long double _X, long double _Y);
+
+  extern double      __cdecl fminimum_mag(double _X, double _Y);
+  extern float       __cdecl fminimum_magf(float _X, float _Y);
+  extern long double __cdecl fminimum_magl(long double _X, long double _Y);
+
+  extern double      __cdecl fmaximum_num(double _X, double _Y);
+  extern float       __cdecl fmaximum_numf(float _X, float _Y);
+  extern long double __cdecl fmaximum_numl(long double _X, long double _Y);
+
+  extern double      __cdecl fminimum_num(double _X, double _Y);
+  extern float       __cdecl fminimum_numf(float _X, float _Y);
+  extern long double __cdecl fminimum_numl(long double _X, long double _Y);
+
+  extern double      __cdecl fmaximum_mag_num(double _X, double _Y);
+  extern float       __cdecl fmaximum_mag_numf(float _X, float _Y);
+  extern long double __cdecl fmaximum_mag_numl(long double _X, long double _Y);
+
+  extern double      __cdecl fminimum_mag_num(double _X, double _Y);
+  extern float       __cdecl fminimum_mag_numf(float _X, float _Y);
+  extern long double __cdecl fminimum_mag_numl(long double _X, long double _Y);
+
 #define iseqsig(_X, _Y) __builtin_iseqsig(_X, _Y)
 
 #endif
