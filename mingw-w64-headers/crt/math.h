@@ -398,7 +398,13 @@ __MINGW_BEGIN_C_DECLS
 
 #define MATH_ERRNO       1
 #define MATH_ERREXCEPT   2
-#define math_errhandling (MATH_ERRNO | MATH_ERREXCEPT)
+#ifdef __FAST_MATH__
+# define math_errhandling 0
+#elif defined(__NO_MATH_ERRNO__)
+# define math_errhandling MATH_ERREXCEPT
+#else
+# define math_errhandling (MATH_ERRNO | MATH_ERREXCEPT)
+#endif
 
 /* 7.12.3.1 */
 /*
@@ -465,9 +471,8 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#if ((__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)) \
-  && (!defined(__OPTIMIZE_SIZE__) || defined(__cplusplus))
-# define fpclassify(_X) (__builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, _X))
+#if !defined(__OPTIMIZE_SIZE__) || defined(__cplusplus)
+# define fpclassify(_X) __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, _X)
 #else
 # define fpclassify(_X)                                            \
     __mingw_choose_expr(                                           \
@@ -483,18 +488,10 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 /* 7.12.3.2 */
-#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)
-# define isfinite(_X) __builtin_isfinite(_X)
-#else
-# define isfinite(_X) ((fpclassify(_X) & FP_NAN) == 0)
-#endif
+#define isfinite(_X) __builtin_isfinite(_X)
 
 /* 7.12.3.3 */
-#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(3, 7)
-# define isinf(_X) __builtin_isinf_sign(_X)
-#else
-# define isinf(_X) (fpclassify(_X) == FP_INFINITE)
-#endif
+#define isinf(_X) __builtin_isinf_sign(_X)
 
 /* 7.12.3.4 */
 /* We don't need to worry about truncation here:
@@ -535,28 +532,10 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)
-# define isnan(_X) __builtin_isnan(_X)
-#else
-# define isnan(_X)                                                 \
-    __mingw_choose_expr(                                           \
-      __mingw_types_compatible_p(__typeof__(_X), double),          \
-      __isnan((double)(_X)),                                       \
-      __mingw_choose_expr(                                         \
-        __mingw_types_compatible_p(__typeof__(_X), float),         \
-        __isnanf((float)(_X)),                                     \
-        __mingw_choose_expr(                                       \
-          __mingw_types_compatible_p(__typeof__(_X), long double), \
-          __isnanl((long double)(_X)),                             \
-          (__builtin_trap(), (int)0))))
-#endif
+#define isnan(_X) __builtin_isnan(_X)
 
 /* 7.12.3.5 */
-#if (__MINGW_GNUC_PREREQ(4, 4) && !defined(__SUPPORT_SNAN__)) || __mingw_clang_prereq(2, 8)
-# define isnormal(_X) __builtin_isnormal(_X)
-#else
-# define isnormal(_X) (fpclassify(_X) == FP_NORMAL)
-#endif
+#define isnormal(_X) __builtin_isnormal(_X)
 
 /* 7.12.3.6 The signbit macro */
   extern int __cdecl __signbit(double _X)       __CONST;
@@ -587,21 +566,7 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif  /* __CRT__NO_INLINE */
 
-#if __MINGW_GNUC_PREREQ(6, 0) || __mingw_clang_prereq(3, 3)
-# define signbit(_X) __builtin_signbit(_X)
-#else
-# define signbit(_X)                                               \
-    __mingw_choose_expr(                                           \
-      __mingw_types_compatible_p(__typeof__(_X), double),          \
-      __signbit(_X),                                               \
-      __mingw_choose_expr(                                         \
-        __mingw_types_compatible_p(__typeof__(_X), float),         \
-        __signbitf(_X),                                            \
-        __mingw_choose_expr(                                       \
-          __mingw_types_compatible_p(__typeof__(_X), long double), \
-          __signbitl(_X),                                          \
-          (__builtin_trap(), _X))))
-#endif
+#define signbit(_X) __builtin_signbit(_X)
 
 /* 7.12.4 Trigonometric functions: Double in C89 */
   _CRTIMP float       __cdecl sinf(float _X);
@@ -973,16 +938,45 @@ __MINGW_BEGIN_C_DECLS
 
 #ifdef __MINGW_USE_ISOC23
 
+#define FP_LLOGB0   FP_ILOGB0
+#define FP_LLOGBNAN FP_ILOGBNAN
+
 #define iscanonical(_X) ((void)(__typeof__(_X))(_X), 1)
 
 #define issignaling(_X) __builtin_issignaling(_X)
 
 #define issubnormal(_X) (fpclassify(_X) == FP_SUBNORMAL)
 
-#ifdef __SUPPORT_SNAN__
-# define iszero(_X) (fpclassify(_X) == FP_ZERO)
+#ifndef __cplusplus
+# ifdef __SUPPORT_SNAN__
+#   define iszero(_X) (fpclassify(_X) == FP_ZERO)
+# else
+#   define iszero(_X) (((__typeof__(_X))(_X)) == 0)
+# endif
 #else
-# define iszero(_X) (((__typeof__(_X))(_X)) == 0)
+  extern "C++"
+  {
+# ifdef __SUPPORT_SNAN__
+    inline int iszero(float _X)
+    {
+      return __fpclassifyf(_X) == FP_ZERO;
+    }
+    inline int iszero(double _X)
+    {
+      return __fpclassify(_X) == FP_ZERO;
+    }
+    inline int iszero(long double _X)
+    {
+      return __fpclassifyl(_X) == FP_ZERO;
+    }
+# else
+    template <class __T>
+    inline bool iszero(__T _X)
+    {
+      return _X == 0;
+    }
+# endif
+}
 #endif
 
   extern double      __cdecl acospi(double _X);
