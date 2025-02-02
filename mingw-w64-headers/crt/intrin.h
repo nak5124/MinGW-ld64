@@ -36,20 +36,6 @@
 #include <stddef.h>
 #include <psdk_inc/intrin-impl.h>
 
-/*
- * Intrins shiped with GCC conflict with our versions in C++, because they don't use extern "C"
- * linkage while our variants use them. We try to work around this by including those headers
- * here wrapped in extern "C" block. It's still possible that those intrins will get default
- * C++ linkage (when GCC headers are explicitly included before intrin.h), but at least their
- * guards will prevent duplicated declarations and avoid conflicts.
- *
- * On GCC 4.9 and Clang we may always include those headers. On older GCCs, we may do it only if CPU
- * features used by them are enabled, so we need to check macros like __SSE__ or __MMX__ first.
- */
-#if __MINGW_GNUC_PREREQ(4, 9) || defined(__clang__)
-# define __MINGW_FORCE_SYS_INTRINS
-#endif
-
 #if defined(__x86_64__) && !defined(__arm64ec__)
 #include <stdlib.h>
 #include <errno.h>
@@ -62,60 +48,12 @@ __MINGW_BEGIN_C_DECLS
 /* Undefine the GCC one taking 5 parameters to prefer the mingw-w64 one. */
 #undef __cpuid
 
-/* Before 4.9.2, x86intrin.h had broken versions of these. */
-#undef _lrotl
-#undef _lrotr
-
 __MINGW_END_C_DECLS
 
-#endif
-
-#ifndef __MINGW_FORCE_SYS_INTRINS
-# ifndef __MMX__
-    typedef union __m64 { char v[7]; } __m64;
-# endif
-# ifndef __SSE__
-    typedef union __m128 { char v[16]; } __m128;
-# endif
-# ifndef __SSE2__
-    typedef union __m128d { char v[16]; } __m128d;
-    typedef union __m128i { char v[16]; } __m128i;
-# endif
 #endif
 
 #ifndef WINAPI
 # define WINAPI __stdcall
-#endif
-
-#if defined(__x86_64__) && !defined(__arm64ec__)
-
-#if defined(__MMX__) || defined(__MINGW_FORCE_SYS_INTRINS)
-__MINGW_BEGIN_C_DECLS
-#include <mmintrin.h>
-__MINGW_END_C_DECLS
-#endif
-
-/* Note: mm3dnow.h intentionally not included; 3DNow! is deprecated. */
-
-/* NOTE: it's not included by MS version, but we do it to try work around C++/C linkage differences */
-#if defined(__SSE__) || defined(__MINGW_FORCE_SYS_INTRINS)
-__MINGW_BEGIN_C_DECLS
-#include <xmmintrin.h>
-__MINGW_END_C_DECLS
-#endif
-
-#if defined(__SSE2__) || defined(__MINGW_FORCE_SYS_INTRINS)
-__MINGW_BEGIN_C_DECLS
-#include <emmintrin.h>
-__MINGW_END_C_DECLS
-#endif
-
-#if defined(__SSE3__) || defined(__MINGW_FORCE_SYS_INTRINS)
-__MINGW_BEGIN_C_DECLS
-#include <pmmintrin.h>
-__MINGW_END_C_DECLS
-#endif
-
 #endif
 
 #define __MACHINEX64         __MACHINE
