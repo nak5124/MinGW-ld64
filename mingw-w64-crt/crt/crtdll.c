@@ -83,10 +83,13 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	{
 	  __native_startup_state = __initializing;
 	  
+	  _pei386_runtime_relocator ();
 	  ret = _initterm_e (__xi_a, __xi_z);
 	  if (ret != 0)
 	    goto i__leave;
 	  _initterm (__xc_a, __xc_z);
+	  __main ();
+
 	  __native_startup_state = __initialized;
 	}
 i__leave:
@@ -160,7 +163,6 @@ __DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	retcode = FALSE;
 	goto i__leave;
     }
-  _pei386_runtime_relocator ();
 
   if (dwReason == DLL_PROCESS_ATTACH || dwReason == DLL_THREAD_ATTACH)
     {
@@ -175,15 +177,14 @@ __DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	    goto i__leave;
 	  }
     }
+#ifdef __USING_MCFGTHREAD__
   if (dwReason == DLL_PROCESS_ATTACH)
     {
-#ifdef __USING_MCFGTHREAD__
       /* Register `fflush(NULL)` before user-defined constructors, so
        * it will be executed after all user-defined destructors.  */
       __MCF_cxa_atexit ((__MCF_cxa_dtor_cdecl*)(intptr_t) fflush, NULL, &__dso_handle);
-#endif
-      __main ();
     }
+#endif
   retcode = DllMain(hDllHandle,dwReason,lpreserved);
   if (dwReason == DLL_PROCESS_ATTACH && ! retcode)
     {
