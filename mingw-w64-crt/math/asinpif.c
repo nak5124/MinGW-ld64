@@ -102,7 +102,7 @@ float __cdecl asinpif(float x){
     return z*c0;
   } else {
     double f = __builtin_sqrt(1-az);
-    double c0 = __builtin_fma(az, c[1], c[0]);
+    double c0 = c[0] + az*c[1];
     double c2 = c[2] + az*c[3];
     double c4 = c[4] + az*c[5];
     double c6 = c[6] + az*c[7];
