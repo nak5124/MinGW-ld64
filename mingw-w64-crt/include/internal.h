@@ -94,7 +94,7 @@ __MINGW_BEGIN_C_DECLS
   } __enative_startup_state;
 
   extern volatile __enative_startup_state  __native_startup_state;
-  extern volatile void                    *__native_startup_lock;
+  extern void * volatile                   __native_startup_lock;
 
   extern volatile unsigned int __native_dllmain_reason;
   extern volatile unsigned int __native_vcclrit_reason;

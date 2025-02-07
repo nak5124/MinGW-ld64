@@ -64,8 +64,8 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
       void *fiberid = ((PNT_TIB)NtCurrentTeb ())->StackBase;
       int nested = FALSE;
       
-      while ((lock_free = InterlockedCompareExchangePointer ((volatile PVOID *) &__native_startup_lock,
-							     fiberid, 0)) != 0)
+      while ((lock_free = InterlockedCompareExchangePointer (&__native_startup_lock,
+							     fiberid, NULL)) != 0)
 	{
 	  if (lock_free == fiberid)
 	    {
@@ -92,7 +92,7 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	}
       if (! nested)
 	{
-	  (void) InterlockedExchangePointer ((volatile PVOID *) &__native_startup_lock, 0);
+	  (void) InterlockedExchangePointer (&__native_startup_lock, NULL);
 	}
       if (__dyn_tls_init_callback != NULL)
 	{
@@ -103,7 +103,7 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
   else if (dwReason == DLL_PROCESS_DETACH)
     {
       void *lock_free = NULL;
-      while ((lock_free = InterlockedCompareExchangePointer ((volatile PVOID *) &__native_startup_lock,(PVOID) 1, 0)) != 0)
+      while ((lock_free = InterlockedCompareExchangePointer (&__native_startup_lock, (PVOID) 1, NULL)) != 0)
 	{
 	  Sleep(1000);
 	}
@@ -115,7 +115,7 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	{
           _execute_onexit_table(&atexit_table);
 	  __native_startup_state = __uninitialized;
-	  (void) InterlockedExchangePointer ((volatile PVOID *) &__native_startup_lock, 0);
+	  (void) InterlockedExchangePointer (&__native_startup_lock, NULL);
 	}
     }
   return TRUE;
