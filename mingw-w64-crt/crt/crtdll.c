@@ -17,7 +17,6 @@
 
 extern HANDLE __dso_handle;
 
-extern void __cdecl _initterm(_PVFV *,_PVFV *);
 extern void __main ();
 extern void _pei386_runtime_relocator (void);
 extern _PIFV __xi_a[];
@@ -34,8 +33,6 @@ static int __proc_attached = 0;
 static _onexit_table_t atexit_table;
 
 extern int __mingw_app_type;
-
-extern WINBOOL WINAPI DllMain (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved);
 
 extern WINBOOL WINAPI DllEntryPoint (HANDLE, DWORD, LPVOID);
 
