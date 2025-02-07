@@ -139,24 +139,15 @@ i__leave:
   return TRUE;
 }
 
-static WINBOOL __DllMainCRTStartup (HANDLE, DWORD, LPVOID);
-
 WINBOOL WINAPI DllMainCRTStartup (HANDLE, DWORD, LPVOID);
 
 __ATTR_USED /* required due to GNU LD bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30300 */
 WINBOOL WINAPI
 DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 {
-  __mingw_app_type = 0;
-  return __DllMainCRTStartup (hDllHandle, dwReason, lpreserved);
-}
-
-static
-__NOINLINE WINBOOL
-__DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
-{
   WINBOOL retcode = TRUE;
 
+  __mingw_app_type = 0;
   __native_dllmain_reason = dwReason;
   if (dwReason == DLL_PROCESS_DETACH && __proc_attached <= 0)
     {
