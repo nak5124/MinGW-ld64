@@ -7,7 +7,6 @@
 #ifndef VER_H
 #define VER_H
 
-//#include <_mingw.h>
 #include <_mingw_unicode.h>
 #include <specstrings.h>
 #include <verrsrc.h>

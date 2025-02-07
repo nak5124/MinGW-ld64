@@ -3,155 +3,253 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#ifndef _INC_PERFLIB
-#define _INC_PERFLIB
+#ifndef _PERFLIB_H_
+#define _PERFLIB_H_
+
+#include <winapifamily.h>
+
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <apisetcconv.h>
+#define PERF_PROVIDER_USER_MODE   0
+#define PERF_PROVIDER_KERNEL_MODE 1
+#define PERF_PROVIDER_DRIVER      2
 
-typedef LPVOID (CALLBACK *PERF_MEM_ALLOC)(SIZE_T AllocSize,LPVOID pContext);
-typedef ULONG (WINAPI *PERFLIBREQUEST)(ULONG RequestCode,PVOID Buffer,ULONG BufferSize);
-typedef void (CALLBACK *PERF_MEM_FREE)(LPVOID pBuffer,LPVOID pContext);
+#define PERF_COUNTERSET_FLAG_MULTIPLE             2
+#define PERF_COUNTERSET_FLAG_AGGREGATE            4
+#define PERF_COUNTERSET_FLAG_HISTORY              8
+#define PERF_COUNTERSET_FLAG_INSTANCE            16
+#define PERF_COUNTERSET_SINGLE_INSTANCE           0
+#define PERF_COUNTERSET_MULTI_INSTANCES          (PERF_COUNTERSET_FLAG_MULTIPLE                                     )
+#define PERF_COUNTERSET_SINGLE_AGGREGATE         (PERF_COUNTERSET_FLAG_AGGREGATE                                    )
+#define PERF_COUNTERSET_MULTI_AGGREGATE          (PERF_COUNTERSET_FLAG_AGGREGATE  | PERF_COUNTERSET_FLAG_MULTIPLE   )
+#define PERF_COUNTERSET_SINGLE_AGGREGATE_HISTORY (PERF_COUNTERSET_FLAG_HISTORY    | PERF_COUNTERSET_SINGLE_AGGREGATE)
+#define PERF_COUNTERSET_INSTANCE_AGGREGATE       (PERF_COUNTERSET_MULTI_AGGREGATE | PERF_COUNTERSET_FLAG_INSTANCE   )
 
-typedef struct _PERF_PROVIDER_CONTEXT {
-  DWORD          ContextSize;
-  DWORD          Reserved;
-  PERFLIBREQUEST ControlCallback;
-  PERF_MEM_ALLOC MemAllocRoutine;
-  PERF_MEM_FREE  MemFreeRoutine;
-  LPVOID         pMemContext;
-} PERF_PROVIDER_CONTEXT, *PPERF_PROVIDER_CONTEXT;
+#define PERF_AGGREGATE_UNDEFINED 0
+#define PERF_AGGREGATE_TOTAL     1
+#define PERF_AGGREGATE_AVG       2
+#define PERF_AGGREGATE_MIN       3
+#define PERF_AGGREGATE_MAX       4
 
-typedef struct _PERF_COUNTER_IDENTITY {
-  GUID  CounterSetGuid;
-  ULONG BufferSize;
-  ULONG CounterId;
-  ULONG InstanceId;
-  ULONG MachineOffset;
-  ULONG NameOffset;
-  ULONG Reserved;
-} PERF_COUNTER_IDENTITY, *PPERF_COUNTER_IDENTITY;
+#define PERF_ATTRIB_BY_REFERENCE       0x0000000000000001
+#define PERF_ATTRIB_NO_DISPLAYABLE     0x0000000000000002
+#define PERF_ATTRIB_NO_GROUP_SEPARATOR 0x0000000000000004
+#define PERF_ATTRIB_DISPLAY_AS_REAL    0x0000000000000008
+#define PERF_ATTRIB_DISPLAY_AS_HEX     0x0000000000000010
 
-typedef struct _PERF_COUNTER_INFO {
-  ULONG     CounterId;
-  ULONG     Type;
-  ULONGLONG Attrib;
-  ULONG     Size;
-  ULONG     DetailLevel;
-  LONG      Scale;
-  ULONG     Offset;
-} PERF_COUNTER_INFO, *PPERF_COUNTER_INFO;
+  typedef struct _PERF_COUNTERSET_INFO
+  {
+    GUID  CounterSetGuid;
+    GUID  ProviderGuid;
+    ULONG NumCounters;
+    ULONG InstanceType;
+  } PERF_COUNTERSET_INFO, *PPERF_COUNTERSET_INFO;
 
-typedef struct _PERF_COUNTERSET_INFO {
-  GUID  CounterSetGuid;
-  GUID  ProviderGuid;
-  ULONG NumCounters;
-  ULONG InstanceType;
-} PERF_COUNTERSET_INFO, *PPERF_COUNTERSET_INFO;
+  typedef struct _PERF_COUNTER_INFO
+  {
+    ULONG     CounterId;
+    ULONG     Type;
+    ULONGLONG Attrib;
+    ULONG     Size;
+    ULONG     DetailLevel;
+    LONG      Scale;
+    ULONG     Offset;
+  } PERF_COUNTER_INFO, *PPERF_COUNTER_INFO;
 
-typedef struct _PERF_COUNTERSET_INSTANCE {
-  GUID  CounterSetGuid;
-  ULONG dwSize;
-  ULONG InstanceId;
-  ULONG InstanceNameOffset;
-  ULONG InstanceNameSize;
-} PERF_COUNTERSET_INSTANCE, *PPERF_COUNTERSET_INSTANCE;
+  typedef struct _PERF_COUNTERSET_INSTANCE
+  {
+    GUID  CounterSetGuid;
+    ULONG dwSize;
+    ULONG InstanceId;
+    ULONG InstanceNameOffset;
+    ULONG InstanceNameSize;
+  } PERF_COUNTERSET_INSTANCE, *PPERF_COUNTERSET_INSTANCE;
 
-WINADVAPI PPERF_COUNTERSET_INSTANCE WINAPI PerfCreateInstance(
-  HANDLE hProvider,
-  LPCGUID CounterSetGuid,
-  LPCWSTR szInstanceName,
-  ULONG dwInstance
-);
+  typedef struct _PERF_COUNTER_IDENTITY
+  {
+    GUID  CounterSetGuid;
+    ULONG BufferSize;
+    ULONG CounterId;
+    ULONG InstanceId;
+    ULONG MachineOffset;
+    ULONG NameOffset;
+    ULONG Reserved;
+  } PERF_COUNTER_IDENTITY, *PPERF_COUNTER_IDENTITY;
 
-WINADVAPI ULONG WINAPI PerfDecrementULongCounterValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  ULONG lValue
-);
+#define PERF_WILDCARD_COUNTER   0xFFFFFFFF
+#define PERF_WILDCARD_INSTANCE  L"*"
+#define PERF_AGGREGATE_INSTANCE L"_Total"
+#define PERF_MAX_INSTANCE_NAME  1024
 
-WINADVAPI ULONG WINAPI PerfDecrementULongLongCounterValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  ULONGLONG llValue
-);
+#define PERF_ADD_COUNTER    1
+#define PERF_REMOVE_COUNTER 2
+#define PERF_ENUM_INSTANCES 3
+#define PERF_COLLECT_START  5
+#define PERF_COLLECT_END    6
+#define PERF_FILTER         9
 
-WINADVAPI ULONG WINAPI PerfDeleteInstance(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE InstanceBlock
-);
+  typedef ULONG (WINAPI *PERFLIBREQUEST)(ULONG RequestCode, PVOID Buffer, ULONG BufferSize);
 
-WINADVAPI ULONG WINAPI PerfIncrementULongCounterValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  ULONG lValue
-);
+  ULONG WINAPI PerfStartProvider(LPGUID ProviderGuid, PERFLIBREQUEST ControlCallback, HANDLE *phProvider);
 
-WINADVAPI ULONG WINAPI PerfIncrementULongLongCounterValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  ULONGLONG llValue
-);
+  typedef LPVOID (CALLBACK *PERF_MEM_ALLOC)(SIZE_T AllocSize, LPVOID pContext);
+  typedef void   (CALLBACK *PERF_MEM_FREE) (LPVOID pBuffer, LPVOID pContext);
 
-WINADVAPI PPERF_COUNTERSET_INSTANCE WINAPI PerfQueryInstance(
-  HANDLE hProvider,
-  LPCGUID CounterSetGuid,
-  LPCWSTR szInstance,
-  ULONG dwInstance
-);
+  typedef struct _PROVIDER_CONTEXT
+  {
+    DWORD          ContextSize;
+    DWORD          Reserved;
+    PERFLIBREQUEST ControlCallback;
+    PERF_MEM_ALLOC MemAllocRoutine;
+    PERF_MEM_FREE  MemFreeRoutine;
+    LPVOID         pMemContext;
+  } PERF_PROVIDER_CONTEXT, *PPERF_PROVIDER_CONTEXT;
 
-WINADVAPI ULONG WINAPI PerfSetCounterRefValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  PVOID lpAddr
-);
+  ULONG                     WINAPI PerfStartProviderEx(LPGUID ProviderGuid, PPERF_PROVIDER_CONTEXT ProviderContext, PHANDLE Provider);
+  ULONG                     WINAPI PerfStartProvider(LPGUID ProviderGuid, PERFLIBREQUEST ControlCallback, PHANDLE Provider);
+  ULONG                     WINAPI PerfStopProvider(HANDLE ProviderHandle);
+  ULONG                     WINAPI PerfSetCounterSetInfo(HANDLE ProviderHandle, PPERF_COUNTERSET_INFO Template, ULONG TemplateSize);
+  PPERF_COUNTERSET_INSTANCE WINAPI PerfCreateInstance(HANDLE ProviderHandle, LPCGUID CounterSetGuid, PCWSTR Name, ULONG Id);
+  ULONG                     WINAPI PerfDeleteInstance(HANDLE Provider, PPERF_COUNTERSET_INSTANCE InstanceBlock);
+  PPERF_COUNTERSET_INSTANCE WINAPI PerfQueryInstance(HANDLE ProviderHandle, LPCGUID CounterSetGuid, PCWSTR Name, ULONG Id);
+  ULONG                     WINAPI PerfSetCounterRefValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, PVOID Address);
+  ULONG                     WINAPI PerfSetULongCounterValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, ULONG Value);
+  ULONG                     WINAPI PerfSetULongLongCounterValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, ULONGLONG Value);
+  ULONG                     WINAPI PerfIncrementULongCounterValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, ULONG Value);
+  ULONG                     WINAPI PerfIncrementULongLongCounterValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, ULONGLONG Value);
+  ULONG                     WINAPI PerfDecrementULongCounterValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, ULONG Value);
+  ULONG                     WINAPI PerfDecrementULongLongCounterValue(HANDLE Provider, PPERF_COUNTERSET_INSTANCE Instance, ULONG CounterId, ULONGLONG Value);
 
-WINADVAPI ULONG WINAPI PerfSetCounterSetInfo(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INFO pTemplate,
-  ULONG dwTemplateSize
-);
+  typedef struct _PERF_INSTANCE_HEADER
+  {
+    ULONG Size;
+    ULONG InstanceId;
+  } PERF_INSTANCE_HEADER, *PPERF_INSTANCE_HEADER;
 
-WINADVAPI ULONG WINAPI PerfSetULongCounterValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  ULONG lValue
-);
+  typedef enum _PerfRegInfoType
+  {
+    PERF_REG_COUNTERSET_STRUCT = 1,
+    PERF_REG_COUNTER_STRUCT,
+    PERF_REG_COUNTERSET_NAME_STRING,
+    PERF_REG_COUNTERSET_HELP_STRING,
+    PERF_REG_COUNTER_NAME_STRINGS,
+    PERF_REG_COUNTER_HELP_STRINGS,
+    PERF_REG_PROVIDER_NAME,
+    PERF_REG_PROVIDER_GUID,
+    PERF_REG_COUNTERSET_ENGLISH_NAME,
+    PERF_REG_COUNTER_ENGLISH_NAMES
+  } PerfRegInfoType;
 
-WINADVAPI ULONG WINAPI PerfSetULongLongCounterValue(
-  HANDLE hProvider,
-  PPERF_COUNTERSET_INSTANCE pInstance,
-  ULONG CounterId,
-  ULONGLONG llValue
-);
+  typedef struct _PERF_COUNTERSET_REG_INFO
+  {
+    GUID  CounterSetGuid;
+    ULONG CounterSetType;
+    ULONG DetailLevel;
+    ULONG NumCounters;
+    ULONG InstanceType;
+  } PERF_COUNTERSET_REG_INFO, *PPERF_COUNTERSET_REG_INFO;
 
-WINADVAPI ULONG WINAPI PerfStartProvider(
-  LPGUID ProviderGuid,
-  PERFLIBREQUEST ControlCallback,
-  HANDLE *phProvider
-);
+  typedef struct _PERF_COUNTER_REG_INFO
+  {
+    ULONG     CounterId;
+    ULONG     Type;
+    ULONGLONG Attrib;
+    ULONG     DetailLevel;
+    LONG      DefaultScale;
+    ULONG     BaseCounterId;
+    ULONG     PerfTimeId;
+    ULONG     PerfFreqId;
+    ULONG     MultiId;
+    ULONG     AggregateFunc;
+    ULONG     Reserved;
+  } PERF_COUNTER_REG_INFO, *PPERF_COUNTER_REG_INFO;
 
-WINADVAPI ULONG WINAPI PerfStartProviderEx(
-  LPGUID ProviderGuid,
-  PPERF_PROVIDER_CONTEXT ProviderContext,
-  HANDLE *phProvider
-);
+  typedef struct _STRING_BUFFER_HEADER
+  {
+    DWORD dwSize;
+    DWORD dwCounters;
+  } PERF_STRING_BUFFER_HEADER, *PPERF_STRING_BUFFER_HEADER;
 
-WINADVAPI ULONG WINAPI PerfStopProvider(
-  HANDLE hProvider
-);
+  typedef struct _STRING_COUNTER_HEADER
+  {
+    DWORD  dwCounterId;
+    DWORD  dwOffset;
+  } PERF_STRING_COUNTER_HEADER, *PPERF_STRING_COUNTER_HEADER;
+
+  typedef struct _PERF_COUNTER_IDENTIFIER
+  {
+    GUID  CounterSetGuid;
+    ULONG Status;
+    ULONG Size;
+    ULONG CounterId;
+    ULONG InstanceId;
+    ULONG Index;
+    ULONG Reserved;
+  } PERF_COUNTER_IDENTIFIER, *PPERF_COUNTER_IDENTIFIER;
+
+  typedef struct _PERF_DATA_HEADER
+  {
+    ULONG      dwTotalSize;
+    ULONG      dwNumCounters;
+    LONGLONG   PerfTimeStamp;
+    LONGLONG   PerfTime100NSec;
+    LONGLONG   PerfFreq;
+    SYSTEMTIME SystemTime;
+  } PERF_DATA_HEADER, * PPERF_DATA_HEADER;
+
+  typedef enum _PerfCounterDataType
+  {
+    PERF_ERROR_RETURN       = 0,
+    PERF_SINGLE_COUNTER     = 1,
+    PERF_MULTIPLE_COUNTERS  = 2,
+    PERF_MULTIPLE_INSTANCES = 4,
+    PERF_COUNTERSET         = 6
+  } PerfCounterDataType;
+
+  typedef struct _PERF_COUNTER_HEADER
+  {
+    ULONG               dwStatus;
+    PerfCounterDataType dwType;
+    ULONG               dwSize;
+    ULONG               Reserved;
+  } PERF_COUNTER_HEADER, *PPERF_COUNTER_HEADER;
+
+  typedef struct _PERF_MULTI_INSTANCES
+  {
+    ULONG dwTotalSize;
+    ULONG dwInstances;
+  } PERF_MULTI_INSTANCES, *PPERF_MULTI_INSTANCES;
+
+  typedef struct _PERF_MULTI_COUNTERS
+  {
+    ULONG dwSize;
+    ULONG dwCounters;
+  } PERF_MULTI_COUNTERS, *PPERF_MULTI_COUNTERS;
+
+  typedef struct _PERF_COUNTER_DATA
+  {
+    ULONG dwDataSize;
+    ULONG dwSize;
+  } PERF_COUNTER_DATA, *PPERF_COUNTER_DATA;
+
+  ULONG WINAPI PerfEnumerateCounterSet(LPCWSTR szMachine, LPGUID pCounterSetIds, DWORD cCounterSetIds, LPDWORD pcCounterSetIdsActual);
+  ULONG WINAPI PerfEnumerateCounterSetInstances(LPCWSTR szMachine, LPCGUID pCounterSetId, PPERF_INSTANCE_HEADER pInstances, DWORD cbInstances, LPDWORD pcbInstancesActual);
+  ULONG WINAPI PerfQueryCounterSetRegistrationInfo(LPCWSTR szMachine, LPCGUID pCounterSetId, PerfRegInfoType requestCode, DWORD requestLangId, LPBYTE pbRegInfo, DWORD cbRegInfo, LPDWORD pcbRegInfoActual);
+  ULONG WINAPI PerfOpenQueryHandle(LPCWSTR szMachine, HANDLE *phQuery);
+  ULONG WINAPI PerfCloseQueryHandle(HANDLE hQuery);
+  ULONG WINAPI PerfQueryCounterInfo(HANDLE hQuery, PPERF_COUNTER_IDENTIFIER pCounters, DWORD cbCounters, LPDWORD pcbCountersActual);
+  ULONG WINAPI PerfQueryCounterData(HANDLE hQuery, PPERF_DATA_HEADER pCounterBlock, DWORD cbCounterBlock, LPDWORD pcbCounterBlockActual);
+  ULONG WINAPI PerfAddCounters(HANDLE hQuery, PPERF_COUNTER_IDENTIFIER pCounters, DWORD cbCounters);
+  ULONG WINAPI PerfDeleteCounters(HANDLE hQuery, PPERF_COUNTER_IDENTIFIER pCounters, DWORD cbCounters);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /*_INC_PERFLIB*/
+#endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM) */
+
+#endif  /* _PERFLIB_H_ */
