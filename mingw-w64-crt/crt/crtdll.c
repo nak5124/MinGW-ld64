@@ -34,8 +34,6 @@ static _onexit_table_t atexit_table;
 
 extern int __mingw_app_type;
 
-extern WINBOOL WINAPI DllEntryPoint (HANDLE, DWORD, LPVOID);
-
 WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 {
   if (dwReason == DLL_PROCESS_DETACH)
@@ -150,13 +148,6 @@ DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
         retcode = _CRT_INIT (hDllHandle, dwReason, lpreserved);
         if (!retcode)
           goto i__leave;
-        retcode = DllEntryPoint (hDllHandle, dwReason, lpreserved);
-	if (! retcode)
-	  {
-	    if (dwReason == DLL_PROCESS_ATTACH)
-	      _CRT_INIT (hDllHandle, DLL_PROCESS_DETACH, lpreserved);
-	    goto i__leave;
-	  }
     }
 #ifdef __USING_MCFGTHREAD__
   if (dwReason == DLL_PROCESS_ATTACH)
@@ -170,14 +161,11 @@ DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
   if (dwReason == DLL_PROCESS_ATTACH && ! retcode)
     {
 	DllMain (hDllHandle, DLL_PROCESS_DETACH, lpreserved);
-	DllEntryPoint (hDllHandle, DLL_PROCESS_DETACH, lpreserved);
 	_CRT_INIT (hDllHandle, DLL_PROCESS_DETACH, lpreserved);
     }
   if (dwReason == DLL_PROCESS_DETACH || dwReason == DLL_THREAD_DETACH)
     {
-        retcode = DllEntryPoint (hDllHandle, dwReason, lpreserved);
-	if (_CRT_INIT (hDllHandle, dwReason, lpreserved) == FALSE)
-	  retcode = FALSE;
+	retcode = _CRT_INIT (hDllHandle, dwReason, lpreserved);
     }
 #ifdef __USING_MCFGTHREAD__
   if (dwReason == DLL_PROCESS_DETACH && lpreserved == NULL)
