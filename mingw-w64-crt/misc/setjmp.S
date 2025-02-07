@@ -3,7 +3,6 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#define __NO_INTRIN_DECL
 #include <_mingw.h>
 
         .globl  __USYMBOL(__intrinsic_setjmp)

@@ -3,7 +3,6 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-#define __NO_INTRIN_DECL
 #include <_mingw.h>
 
 #if defined(__aarch64__) || defined(_ARM64_)

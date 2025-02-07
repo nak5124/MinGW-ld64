@@ -578,8 +578,6 @@
 
 __MINGW_BEGIN_C_DECLS
 
-#ifndef __NO_INTRIN_DECL
-
 #ifndef _SIZE_T_DEFINED
 # define _SIZE_T_DEFINED
 # undef size_t
@@ -610,6 +608,8 @@ __MINGW_BEGIN_C_DECLS
     typedef unsigned short wchar_t;
 # endif  /* !defined(__cplusplus) && !defined(__WIDL__) */
 #endif  /* _WCHAR_T_DEFINED */
+
+#ifndef __ASSEMBLER__
 
 #ifdef __MINGW_INTRIN_INLINE
 
@@ -661,7 +661,7 @@ __MINGW_BEGIN_C_DECLS
 /* mingw-w64 specific functions: */
   const char *__mingw_get_crt_info(void);
 
-#endif  /* __NO_INTRIN_DECL */
+#endif  /* __ASSEMBLER__ */
 
 __MINGW_END_C_DECLS
 
