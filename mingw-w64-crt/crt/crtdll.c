@@ -39,16 +39,6 @@ extern WINBOOL WINAPI DllMain (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreser
 
 extern WINBOOL WINAPI DllEntryPoint (HANDLE, DWORD, LPVOID);
 
-static int pre_c_init (void);
-
-_CRTALLOC(".CRT$XIAA") _PIFV pcinit = pre_c_init;
-
-static int
-pre_c_init (void)
-{
-  return _initialize_onexit_table(&atexit_table);
-}
-
 WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 {
   if (dwReason == DLL_PROCESS_DETACH)
@@ -84,6 +74,9 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	  __native_startup_state = __initializing;
 	  
 	  _pei386_runtime_relocator ();
+	  ret = _initialize_onexit_table (&atexit_table);
+	  if (ret != 0)
+	    goto i__leave;
 	  ret = _initterm_e (__xi_a, __xi_z);
 	  if (ret != 0)
 	    goto i__leave;
