@@ -1,0 +1,10 @@
+LIBRARY api-ms-win-deprecated-apis-obsolete-l1-1-0
+
+EXPORTS
+
+CharLowerA
+CharNextA
+CharUpperA
+CompareStringA
+lstrcmpiA
+lstrcmpiW

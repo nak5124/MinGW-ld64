@@ -1,0 +1,5 @@
+LIBRARY ext-ms-win-lighting-lamparray-l1-1-1
+
+EXPORTS
+
+RegisterLampArrayStatusCallback

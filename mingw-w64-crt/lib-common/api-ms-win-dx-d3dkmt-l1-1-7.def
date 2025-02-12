@@ -1,0 +1,7 @@
+LIBRARY api-ms-win-dx-d3dkmt-l1-1-7
+
+EXPORTS
+
+D3DKMTGetProperties
+D3DKMTGetSwapChainSurfacePhysicalAddress
+D3DKMTSetProperties

@@ -1,4 +1,4 @@
-LIBRARY webauthn
+LIBRARY webauthn.dll
 
 EXPORTS
 

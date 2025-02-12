@@ -1,4 +1,4 @@
-LIBRARY urlmon
+LIBRARY urlmon.dll
 
 EXPORTS
 

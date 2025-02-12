@@ -1,4 +1,4 @@
-LIBRARY dxgi
+LIBRARY dxgi.dll
 
 EXPORTS
 

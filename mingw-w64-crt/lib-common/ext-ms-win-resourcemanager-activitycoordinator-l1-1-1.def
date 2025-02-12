@@ -1,0 +1,5 @@
+LIBRARY ext-ms-win-resourcemanager-activitycoordinator-l1-1-1
+
+EXPORTS
+
+IsActivityCoordinatorResourceSupported

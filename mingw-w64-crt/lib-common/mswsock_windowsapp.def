@@ -1,4 +1,4 @@
-LIBRARY mswsock
+LIBRARY MSWSOCK.dll
 
 EXPORTS
 

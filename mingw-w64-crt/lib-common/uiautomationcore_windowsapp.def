@@ -1,4 +1,4 @@
-LIBRARY uiautomationcore
+LIBRARY UIAutomationCore.DLL
 
 EXPORTS
 

@@ -1,0 +1,9 @@
+CREATE libshcore.a
+ADDLIB libapi-ms-win-core-featurestaging-l1-1-0.a
+ADDLIB libapi-ms-win-core-featurestaging-l1-1-1.a
+ADDLIB libapi-ms-win-shcore-scaling-l1-1-0.a
+ADDLIB libapi-ms-win-shcore-scaling-l1-1-1_shcore.a
+ADDLIB libapi-ms-win-shcore-scaling-l1-1-2.a
+ADDLIB libapi-ms-win-shcore-stream-winrt-l1-1-0.a
+SAVE
+END

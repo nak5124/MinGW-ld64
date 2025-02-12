@@ -1,0 +1,10 @@
+LIBRARY api-ms-win-appmodel-runtime-l1-1-7
+
+EXPORTS
+
+AddPackageDependency2
+FindPackageDependency
+GetPackageDependencyInformation
+GetProcessesUsingPackageDependency
+GetResolvedPackageFullNameForPackageDependency2
+TryCreatePackageDependency2

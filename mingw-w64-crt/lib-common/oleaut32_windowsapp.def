@@ -1,4 +1,4 @@
-LIBRARY oleaut32
+LIBRARY OLEAUT32.dll
 
 EXPORTS
 
@@ -241,6 +241,13 @@ VarI8FromUI1
 VarI8FromUI2
 VarI8FromUI4
 VarI8FromUI8
+VariantChangeType
+VariantChangeTypeEx
+VariantClear
+VariantCopy
+VariantCopyInd
+VariantInit
+VariantTimeToSystemTime
 VARIANT_UserFree
 VARIANT_UserFree64
 VARIANT_UserMarshal
@@ -249,13 +256,6 @@ VARIANT_UserSize
 VARIANT_UserSize64
 VARIANT_UserUnmarshal
 VARIANT_UserUnmarshal64
-VariantChangeType
-VariantChangeTypeEx
-VariantClear
-VariantCopy
-VariantCopyInd
-VariantInit
-VariantTimeToSystemTime
 VarIdiv
 VarImp
 VarInt

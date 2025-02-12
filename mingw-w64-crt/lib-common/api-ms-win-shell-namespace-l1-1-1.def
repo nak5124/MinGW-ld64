@@ -1,0 +1,6 @@
+LIBRARY api-ms-win-shell-namespace-l1-1-1
+
+EXPORTS
+
+SHCreateShellItemArrayFromIDLists
+SHCreateShellItemArrayFromShellItem

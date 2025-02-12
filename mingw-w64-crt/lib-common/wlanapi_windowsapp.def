@@ -1,4 +1,4 @@
-LIBRARY wlanapi
+LIBRARY wlanapi.dll
 
 EXPORTS
 

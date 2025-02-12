@@ -1,8 +1,10 @@
-LIBRARY mfplat
+LIBRARY MFPlat.DLL
 
 EXPORTS
 
 MFAllocateSerialWorkQueue
+MFAverageTimePerFrameToFrameRate
+MFCalculateImageSize
 MFCancelWorkItem
 MFCombineSamples
 MFCopyImage
@@ -13,6 +15,7 @@ MFCreateAttributes
 MFCreateCollection
 MFCreateContentDecryptorContext
 MFCreateContentProtectionDevice
+MFCreateD3D12SynchronizationObject
 MFCreateDXGIDeviceManager
 MFCreateDXGISurfaceBuffer
 MFCreateEventQueue
@@ -35,8 +38,10 @@ MFCreateTrackedSample
 MFCreateVideoSampleAllocatorEx
 MFCreateWaveFormatExFromMFMediaType
 MFDeserializeAttributesFromStream
+MFFrameRateToAverageTimePerFrame
 MFGetAttributesAsBlob
 MFGetAttributesAsBlobSize
+MFGetStrideForBitmapInfoHeader
 MFGetSystemTime
 MFInitAttributesFromBlob
 MFInitMediaTypeFromWaveFormatEx

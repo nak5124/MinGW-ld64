@@ -6,17 +6,17 @@
 ;
 LIBRARY "CRYPT32.dll"
 EXPORTS
-; ord_1001 @1001 NONAME
-; ord_1002 @1002 NONAME
-; ord_1003 @1003 NONAME
-; ord_1004 @1004 NONAME
-; ord_1005 @1005 NONAME
-; ord_1006 @1006 NONAME
-; ord_1007 @1007 NONAME
-; ord_1008 @1008 NONAME
-; ord_1009 @1009 NONAME
-; ord_1010 @1010 NONAME
-; ord_1011 @1011 NONAME
+;ord_1001 @1001 NONAME
+;ord_1002 @1002 NONAME
+;ord_1003 @1003 NONAME
+;ord_1004 @1004 NONAME
+;ord_1005 @1005 NONAME
+;ord_1006 @1006 NONAME
+;ord_1007 @1007 NONAME
+;ord_1008 @1008 NONAME
+;ord_1009 @1009 NONAME
+;ord_1010 @1010 NONAME
+;ord_1011 @1011 NONAME
 CryptObjectLocatorFree
 CryptObjectLocatorGet
 CryptObjectLocatorGetContent
@@ -312,4 +312,7 @@ PFXExportCertStoreEx
 PFXImportCertStore
 PFXIsPFXBlob
 PFXVerifyPassword
-; ord_2000 @2000 NONAME
+;ord_2000 @2000 NONAME
+;
+DbgInitOSS
+DbgPrintf

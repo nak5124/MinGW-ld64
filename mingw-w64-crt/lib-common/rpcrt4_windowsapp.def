@@ -1,4 +1,4 @@
-LIBRARY rpcrt4
+LIBRARY RPCRT4.dll
 
 EXPORTS
 
@@ -15,10 +15,10 @@ CStdStubBuffer_IsIIDSupported
 CStdStubBuffer_QueryInterface
 DceErrorInqTextA
 DceErrorInqTextW
-I_RpcExceptionFilter
 IUnknown_AddRef_Proxy
 IUnknown_QueryInterface_Proxy
 IUnknown_Release_Proxy
+I_RpcExceptionFilter
 Ndr64AsyncClientCall
 Ndr64AsyncServerCall64
 Ndr64AsyncServerCallAll
@@ -81,8 +81,8 @@ NdrCorrelationFree
 NdrCorrelationInitialize
 NdrCorrelationPass
 NdrCreateServerInterfaceFromStub
-NdrCStdStubBuffer_Release
 NdrCStdStubBuffer2_Release
+NdrCStdStubBuffer_Release
 NdrDllCanUnloadNow
 NdrDllGetClassObject
 NdrDllRegisterProxy

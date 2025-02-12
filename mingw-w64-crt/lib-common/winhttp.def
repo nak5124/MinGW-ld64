@@ -6,8 +6,8 @@
 ;
 LIBRARY "WINHTTP.dll"
 EXPORTS
-; DllCanUnloadNow
-; DllGetClassObject
+;DllCanUnloadNow
+;DllGetClassObject
 Private1
 SvchostPushServiceGlobals
 WinHttpAddRequestHeaders

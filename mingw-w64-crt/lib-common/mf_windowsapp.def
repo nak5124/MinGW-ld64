@@ -1,4 +1,4 @@
-LIBRARY mf
+LIBRARY MF.dll
 
 EXPORTS
 

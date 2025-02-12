@@ -1,4 +1,4 @@
-LIBRARY webservices
+LIBRARY webservices.dll
 
 EXPORTS
 

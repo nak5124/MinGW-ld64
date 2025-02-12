@@ -1,4 +1,4 @@
-LIBRARY ncrypt
+LIBRARY ncrypt.dll
 
 EXPORTS
 

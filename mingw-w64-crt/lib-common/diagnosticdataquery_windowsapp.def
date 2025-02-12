@@ -1,4 +1,4 @@
-LIBRARY diagnosticdataquery
+LIBRARY DiagnosticDataQuery.dll
 
 EXPORTS
 

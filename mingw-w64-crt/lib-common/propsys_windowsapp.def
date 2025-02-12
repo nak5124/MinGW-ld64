@@ -1,4 +1,4 @@
-LIBRARY propsys
+LIBRARY PROPSYS.dll
 
 EXPORTS
 

@@ -6,7 +6,7 @@
 ;
 LIBRARY "USERENV.dll"
 EXPORTS
-; ord_104 @104 NONAME
+;ord_104 @104 NONAME
 RsopLoggingEnabled
 AreThereVisibleLogoffScripts
 AreThereVisibleShutdownScripts
@@ -19,12 +19,12 @@ DeleteProfileW
 DeriveAppContainerSidFromAppContainerName
 DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName
 DestroyEnvironmentBlock
-; DllCanUnloadNow
-; DllGetClassObject
-; DllRegisterServer
-; DllUnregisterServer
+;DllCanUnloadNow
+;DllGetClassObject
+;DllRegisterServer
+;DllUnregisterServer
 EnterCriticalPolicySection
-; ord_122 @122 NONAME
+;ord_122 @122 NONAME
 ExpandEnvironmentStringsForUserA
 ExpandEnvironmentStringsForUserW
 ForceSyncFgPolicy
@@ -37,11 +37,11 @@ GetAppContainerFolderPath
 GetAppContainerRegistryLocation
 GetAppliedGPOListA
 GetAppliedGPOListW
-; ord_135 @135 NONAME
+;ord_135 @135 NONAME
 GetDefaultUserProfileDirectoryA
-; ord_137 @137 NONAME
+;ord_137 @137 NONAME
 GetDefaultUserProfileDirectoryW
-; ord_139 @139 NONAME
+;ord_139 @139 NONAME
 GetGPOListA
 GetGPOListW
 GetNextFgPolicyRefreshInfo
@@ -70,18 +70,39 @@ UnloadUserProfile
 UnregisterGPNotification
 WaitForMachinePolicyForegroundProcessing
 WaitForUserPolicyForegroundProcessing
-; ord_175 @175 NONAME
-; ord_202 @202 NONAME
-; ord_203 @203 NONAME
-; ord_206 @206 NONAME
-; ord_207 @207 NONAME
-; ord_208 @208 NONAME
-; ord_209 @209 NONAME
-; ord_210 @210 NONAME
-; ord_211 @211 NONAME
-; ord_212 @212 NONAME
-; ord_213 @213 NONAME
-; ord_214 @214 NONAME
-; ord_217 @217 NONAME
-; ord_218 @218 NONAME
-; ord_219 @219 NONAME
+;ord_175 @175 NONAME
+;ord_202 @202 NONAME
+;ord_203 @203 NONAME
+;ord_206 @206 NONAME
+;ord_207 @207 NONAME
+;ord_208 @208 NONAME
+;ord_209 @209 NONAME
+;ord_210 @210 NONAME
+;ord_211 @211 NONAME
+;ord_212 @212 NONAME
+;ord_213 @213 NONAME
+;ord_214 @214 NONAME
+;ord_217 @217 NONAME
+;ord_218 @218 NONAME
+;ord_219 @219 NONAME
+;
+CheckDirectoryOwnership
+CheckXForestLogon
+CopyProfileDirectoryEx2
+CreateAppContainerProfileInternal
+CreateDirectoryJunctionsForSystem
+CreateDirectoryJunctionsForUserProfile
+CreateGroupEx
+CreateLinkFileEx
+DeleteAppContainerProfileInternal
+DeleteGroup
+DeleteLinkFile
+DeleteProfileDirectory
+DeleteProfileDirectory2
+GetLongProfilePathName
+GetUserProfileDirectoryForUserSidW
+IsAppContainerProfilePresentInternal
+LookupAppContainerDisplayName
+PingComputer
+RemapProfile
+UpdateAppContainerProfile

@@ -1,0 +1,6 @@
+LIBRARY ext-ms-win-windowing-external-l1-1-0
+
+EXPORTS
+
+GetWindowFromWindowId
+GetWindowIdFromWindow

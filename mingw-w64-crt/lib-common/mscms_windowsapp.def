@@ -1,15 +1,7 @@
-LIBRARY mscms
+LIBRARY mscms.dll
 
 EXPORTS
 
-ColorAdapterGetCurrentProfileCalibration
-ColorAdapterGetDisplayCurrentStateID
-ColorAdapterGetDisplayProfile
-ColorAdapterGetDisplayTargetWhitePoint
-ColorAdapterGetDisplayTransformData
-ColorAdapterGetSystemModifyWhitePointCaps
-ColorAdapterRegisterOEMColorService
-ColorAdapterUnregisterOEMColorService
 ColorProfileAddDisplayAssociation
 ColorProfileGetDisplayDefault
 ColorProfileGetDisplayList

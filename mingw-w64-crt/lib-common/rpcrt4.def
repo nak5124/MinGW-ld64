@@ -6,7 +6,7 @@
 ;
 LIBRARY "RPCRT4.dll"
 EXPORTS
-; ord_1000 @1000 NONAME
+;ord_1000 @1000 NONAME
 I_RpcBindingInqCurrentModifiedId
 I_RpcFixTransferSyntax
 I_RpcFwThisIsTheManager
@@ -41,8 +41,8 @@ CreateProxyFromTypeInfo
 CreateStubFromTypeInfo
 DceErrorInqTextA
 DceErrorInqTextW
-; DllGetClassObject
-; DllRegisterServer
+;DllGetClassObject
+;DllRegisterServer
 IUnknown_AddRef_Proxy
 IUnknown_QueryInterface_Proxy
 IUnknown_Release_Proxy

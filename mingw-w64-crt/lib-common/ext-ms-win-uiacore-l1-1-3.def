@@ -1,0 +1,5 @@
+LIBRARY ext-ms-win-uiacore-l1-1-3
+
+EXPORTS
+
+UiaRaiseChangesEvent

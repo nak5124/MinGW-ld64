@@ -1,4 +1,4 @@
-LIBRARY coremessaging
+LIBRARY CoreMessaging.dll
 
 EXPORTS
 

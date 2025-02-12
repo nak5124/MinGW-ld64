@@ -1,0 +1,10 @@
+LIBRARY ext-ms-win-resourcemanager-activitycoordinator-l1-1-0
+
+EXPORTS
+
+CreateActivityCoordinatorPolicy
+DestroyActivityCoordinatorPolicy
+GetActivityCoordinatorPolicyResourceCondition
+SetActivityCoordinatorPolicyResourceCondition
+SubscribeActivityCoordinatorPolicy
+UnsubscribeActivityCoordinatorPolicy

@@ -1,4 +1,4 @@
-LIBRARY psapi
+LIBRARY PSAPI.DLL
 
 EXPORTS
 
@@ -8,3 +8,5 @@ GetModuleFileNameExA
 GetModuleFileNameExW
 GetModuleInformation
 GetProcessMemoryInfo
+QueryWorkingSet
+QueryWorkingSetEx

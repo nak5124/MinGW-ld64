@@ -1,0 +1,13 @@
+LIBRARY CFGMGR32.dll
+
+EXPORTS
+
+SwDeviceClose
+SwDeviceCreate
+SwDeviceGetLifetime
+SwDeviceInterfacePropertySet
+SwDeviceInterfaceRegister
+SwDeviceInterfaceSetState
+SwDevicePropertySet
+SwDeviceSetLifetime
+SwMemFree

@@ -1,4 +1,4 @@
-LIBRARY mmdevapi
+LIBRARY MMDevAPI.DLL
 
 EXPORTS
 

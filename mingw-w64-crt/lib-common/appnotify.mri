@@ -1,0 +1,5 @@
+CREATE libappnotify.a
+ADDLIB libapi-ms-win-core-psm-appnotify-l1-1-0.a
+ADDLIB libapi-ms-win-core-psm-appnotify-l1-1-1.a
+SAVE
+END

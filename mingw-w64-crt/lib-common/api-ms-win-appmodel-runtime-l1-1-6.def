@@ -1,0 +1,5 @@
+LIBRARY api-ms-win-appmodel-runtime-l1-1-6
+
+EXPORTS
+
+GetPackageGraphRevisionId

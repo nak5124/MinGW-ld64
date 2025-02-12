@@ -1,0 +1,17 @@
+LIBRARY WDSMC.dll
+
+EXPORTS
+
+ClosePerfCounters
+CollectPerfCounters
+OpenPerfCounters
+WdsProviderInitialize
+WdsTransportServerCanJoinNamespace
+WdsTransportServerRegisterNotification
+WdsTransportServerUnRegisterNotification
+WdsTransportServerAllocateBuffer
+WdsTransportServerCompleteRead
+WdsTransportServerFreeBuffer
+WdsTransportServerRegisterCallback
+WdsTransportServerTrace
+WdsTransportServerTraceV

@@ -1,0 +1,9 @@
+LIBRARY rasuser.dll
+
+EXPORTS
+
+GetEapProviders
+IASCreateProfileAdvancedPage
+IASDeleteProfileAdvancedPage
+OpenRAS_IASProfileDlg2
+OpenRAS_IASProfileDlg

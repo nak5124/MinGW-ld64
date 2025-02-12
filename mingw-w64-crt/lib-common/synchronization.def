@@ -1,0 +1,7 @@
+LIBRARY api-ms-win-core-synch-l1-2-0
+
+EXPORTS
+
+WaitOnAddress
+WakeByAddressAll
+WakeByAddressSingle

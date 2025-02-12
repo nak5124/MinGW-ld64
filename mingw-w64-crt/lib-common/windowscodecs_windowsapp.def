@@ -1,4 +1,4 @@
-LIBRARY windowscodecs
+LIBRARY WindowsCodecs.dll
 
 EXPORTS
 

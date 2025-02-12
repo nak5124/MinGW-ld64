@@ -86,5 +86,3 @@ Add missing math functions
   - rootn
   - fromfp/ufromfp/fromfpx/ufromfpx
   - fadd/fsub/fmul/fdiv/ffma/fsqrt
-
-Update libonecore/libonecoreuap_apiset

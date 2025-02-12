@@ -1,4 +1,4 @@
-LIBRARY dnsapi
+LIBRARY DNSAPI.dll
 
 EXPORTS
 

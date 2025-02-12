@@ -1,0 +1,7 @@
+LIBRARY ext-ms-win-lighting-lamparray-l1-1-0
+
+EXPORTS
+
+RegisterLampArrayCallback
+TrySetLampArrayWorkerThreadAffinityMask
+UnregisterLampArrayCallback

@@ -1,0 +1,6 @@
+LIBRARY api-ms-win-shell-associations-l1-1-3
+
+EXPORTS
+
+SHAssocEnumHandlers
+SHAssocEnumHandlersForProtocolByApplication

@@ -1,0 +1,5 @@
+LIBRARY api-ms-win-deprecated-apis-advapi-l1-1-0
+
+EXPORTS
+
+RegDeleteKeyW

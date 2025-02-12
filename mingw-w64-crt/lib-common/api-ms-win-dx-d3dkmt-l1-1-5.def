@@ -1,0 +1,5 @@
+LIBRARY api-ms-win-dx-d3dkmt-l1-1-5
+
+EXPORTS
+
+D3DKMTDispMgrOperation

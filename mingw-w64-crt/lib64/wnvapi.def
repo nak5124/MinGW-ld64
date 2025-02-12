@@ -1,0 +1,6 @@
+LIBRARY wnvapi.dll
+
+EXPORTS
+
+WnvOpen
+WnvRequestNotification

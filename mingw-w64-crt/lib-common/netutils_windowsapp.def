@@ -1,4 +1,4 @@
-LIBRARY netutils
+LIBRARY netutils.dll
 
 EXPORTS
 

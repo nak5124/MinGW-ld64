@@ -1197,14 +1197,12 @@ ReadFileEx
 ReadFileScatter
 ReadProcessMemory
 ReadThreadProfilingData
+ReclaimVirtualMemory
 ;
 ; MSDN says these functions are exported
 ; from advapi32.dll. Commented out for
 ; compatibility with older versions of
 ; Windows.
-;
-; RegKrnGetGlobalState and RegKrnInitialize
-; are known exceptions.
 ;
 ;RegCloseKey
 ;RegCopyTreeW
@@ -1225,8 +1223,6 @@ ReadThreadProfilingData
 ;RegGetKeySecurity
 ;RegGetValueA
 ;RegGetValueW
-RegKrnGetGlobalState
-RegKrnInitialize
 ;RegLoadKeyA
 ;RegLoadKeyW
 ;RegLoadMUIStringA

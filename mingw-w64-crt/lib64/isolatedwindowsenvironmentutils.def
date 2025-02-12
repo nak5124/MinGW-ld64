@@ -1,0 +1,13 @@
+LIBRARY IsolatedWindowsEnvironmentUtils.dll
+
+EXPORTS
+
+HvsiLaunchBrowserOnHostIfNeeded
+HvsiPostEncodedVectorBuffer
+HvsiQueryUrlTrustedOnHost
+OpenContainerDownloadsFolderOnHost
+HvsiHvRpcInitialize
+HvsiHvRpcUninitialize
+HvsiR_ResolverQuery
+IsCrossIsolatedEnvironmentClipboardContent
+IsProcessInIsolatedWindowsEnvironment

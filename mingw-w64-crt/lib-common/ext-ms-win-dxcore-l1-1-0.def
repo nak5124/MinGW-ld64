@@ -1,0 +1,5 @@
+LIBRARY ext-ms-win-dxcore-l1-1-0
+
+EXPORTS
+
+DXCoreCreateAdapterFactory

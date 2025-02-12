@@ -1,4 +1,4 @@
-LIBRARY crypt32
+LIBRARY CRYPT32.dll
 
 EXPORTS
 
@@ -76,6 +76,8 @@ CertNameToStrA
 CertNameToStrW
 CertOIDToAlgId
 CertOpenStore
+CertOpenSystemStoreA
+CertOpenSystemStoreW
 CertRDNValueToStrA
 CertRDNValueToStrW
 CertRegisterSystemStore

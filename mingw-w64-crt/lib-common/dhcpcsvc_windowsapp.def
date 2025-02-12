@@ -1,4 +1,4 @@
-LIBRARY dhcpcsvc
+LIBRARY dhcpcsvc.DLL
 
 EXPORTS
 

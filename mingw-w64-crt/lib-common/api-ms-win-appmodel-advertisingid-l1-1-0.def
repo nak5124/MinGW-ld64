@@ -1,0 +1,23 @@
+LIBRARY api-ms-win-appmodel-advertisingid-l1-1-0
+
+EXPORTS
+
+CreateDeviceAccessInstance
+CreateNewAdvertisingId
+EnableAdvertisingId
+EnableAdvertisingIdForUser
+ProcessTrackerInsertOrWait
+ProcessTrackerRemove
+QueryAdvertisingId
+QueryAdvertisingIdStatus
+QueryAdvertisingIdStatusForUser
+TokenBindingDeleteAllBindings
+TokenBindingDeleteBinding
+TokenBindingGenerateBinding
+TokenBindingGenerateID
+TokenBindingGenerateIDForUri
+TokenBindingGenerateMessage
+TokenBindingGetHighestSupportedVersion
+TokenBindingGetKeyTypesClient
+TokenBindingGetKeyTypesServer
+TokenBindingVerifyMessage

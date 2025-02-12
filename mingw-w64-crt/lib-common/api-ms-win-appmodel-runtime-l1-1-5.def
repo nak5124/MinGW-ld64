@@ -1,0 +1,10 @@
+LIBRARY api-ms-win-appmodel-runtime-l1-1-5
+
+EXPORTS
+
+AddPackageDependency
+DeletePackageDependency
+GetIdForPackageDependencyContext
+GetResolvedPackageFullNameForPackageDependency
+RemovePackageDependency
+TryCreatePackageDependency

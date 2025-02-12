@@ -19,8 +19,8 @@ CryptInstallCancelRetrieval
 CryptRetrieveObjectByUrlA
 CryptRetrieveObjectByUrlW
 CryptUninstallCancelRetrieval
-; DllRegisterServer
-; DllUnregisterServer
+;DllRegisterServer
+;DllUnregisterServer
 I_CryptNetAutoFlush
 I_CryptNetEnumUrlCacheEntry
 I_CryptNetFlushOfflineUrl

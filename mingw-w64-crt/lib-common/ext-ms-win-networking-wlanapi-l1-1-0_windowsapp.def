@@ -1,0 +1,15 @@
+LIBRARY ext-ms-win-networking-wlanapi-l1-1-0
+
+EXPORTS
+
+WlanCloseHandle
+WlanDeleteProfile
+WlanEnumInterfaces
+WlanFreeMemory
+WlanGetAvailableNetworkList
+WlanGetProfile
+WlanGetProfileList
+WlanOpenHandle
+WlanQueryInterface
+WlanReasonCodeToString
+WlanSetProfile

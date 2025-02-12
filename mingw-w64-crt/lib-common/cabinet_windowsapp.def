@@ -1,4 +1,4 @@
-LIBRARY cabinet
+LIBRARY Cabinet.dll
 
 EXPORTS
 

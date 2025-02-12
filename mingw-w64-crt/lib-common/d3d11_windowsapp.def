@@ -1,4 +1,4 @@
-LIBRARY d3d11
+LIBRARY d3d11.dll
 
 EXPORTS
 

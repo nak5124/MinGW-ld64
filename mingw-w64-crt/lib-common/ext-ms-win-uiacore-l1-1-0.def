@@ -1,0 +1,6 @@
+LIBRARY ext-ms-win-uiacore-l1-1-0
+
+EXPORTS
+
+UiaHostProviderFromHwnd
+UiaReturnRawElementProvider

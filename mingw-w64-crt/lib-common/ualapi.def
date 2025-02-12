@@ -1,0 +1,14 @@
+LIBRARY ualapi.dll
+
+EXPORTS
+
+SumInstrumentationDataAddress
+SumInstrumentationStartGuid
+SumInstrumentationStopGuid
+SumInstrumentationData
+SumInstrumentationStart
+SumInstrumentationStop
+UalInstrument
+UalRegisterProduct
+UalStart
+UalStop

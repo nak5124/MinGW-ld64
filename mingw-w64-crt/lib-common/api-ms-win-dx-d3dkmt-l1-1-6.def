@@ -1,0 +1,9 @@
+LIBRARY api-ms-win-dx-d3dkmt-l1-1-6
+
+EXPORTS
+
+D3DKMTDisplayPortOperation
+D3DKMTDuplicateHandle
+D3DKMTEnumAdapters3
+D3DKMTPinResources
+D3DKMTUnpinResources

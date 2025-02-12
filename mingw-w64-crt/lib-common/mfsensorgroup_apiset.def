@@ -1,0 +1,14 @@
+LIBRARY MFSENSORGROUP.dll
+
+EXPORTS
+
+MFCreateCameraControlMonitor
+MFCreateCameraOcclusionStateMonitor
+MFCreateRelativePanelWatcher
+MFCreateSensorActivityMonitor
+MFCreateSensorGroup
+MFCreateSensorProfile
+MFCreateSensorProfileCollection
+MFCreateSensorStream
+MFCreateVirtualCamera
+MFIsVirtualCameraTypeSupported

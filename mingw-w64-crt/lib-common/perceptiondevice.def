@@ -1,0 +1,6 @@
+LIBRARY PerceptionDevice.dll
+
+EXPORTS
+
+PerceptionDeviceCreateFactory
+PerceptionDeviceSetCreateFactoryOverride

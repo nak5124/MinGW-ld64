@@ -1,4 +1,4 @@
-LIBRARY hrtfapo
+LIBRARY HrtfApo.dll
 
 EXPORTS
 

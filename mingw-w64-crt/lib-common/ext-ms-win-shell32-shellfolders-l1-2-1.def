@@ -1,0 +1,5 @@
+LIBRARY ext-ms-win-shell32-shellfolders-l1-2-1
+
+EXPORTS
+
+SHOpenFolderAndSelectItems

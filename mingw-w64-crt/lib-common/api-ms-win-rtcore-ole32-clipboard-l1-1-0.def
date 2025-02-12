@@ -1,0 +1,8 @@
+LIBRARY api-ms-win-rtcore-ole32-clipboard-l1-1-0
+
+EXPORTS
+
+OleFlushClipboard
+OleGetClipboard
+OleIsCurrentClipboard
+OleSetClipboard
