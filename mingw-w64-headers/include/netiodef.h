@@ -902,6 +902,7 @@ typedef ICMP_MESSAGE ICMPV4_MESSAGE, *PICMPV4_MESSAGE;
     ND_OPT_ROUTE_INFO             = 24,
     ND_OPT_RDNSS                  = 25,
     ND_OPT_DNSSL                  = 31,
+    ND_OPT_PREF64                 = 38
   } ND_OPTION_TYPE, *PND_OPTION_TYPE;
 
   typedef struct nd_opt_prefix_info
@@ -997,6 +998,32 @@ typedef ICMP_MESSAGE ICMPV4_MESSAGE, *PICMPV4_MESSAGE;
   } ND_OPTION_DNSSL, *PND_OPTION_DNSSL;
 
 #define ND_OPT_DNSSL_MIN_LEN 16
+
+  typedef struct nd_opt_pref64_info
+  {
+    UINT8 nd_opt_p64_type;
+    UINT8 nd_opt_p64_len;
+    __C89_NAMELESS union
+    {
+      UINT16 nd_opt_p64_lifetime_plc;
+      __C89_NAMELESS struct
+      {
+        UINT16 nd_opt_p64_prefix_length_code : 3;
+        UINT16 nd_opt_p64_scaled_lifetime    : 13;
+      };
+    };
+    UINT8 nd_opt_p64_prefix[12];
+  } ND_OPTION_PREF64, *PND_OPTION_PREF64;
+
+  typedef enum
+  {
+    ND_OPT_PREF64_PREFIX_LENGTH_96 = 0,
+    ND_OPT_PREF64_PREFIX_LENGTH_64,
+    ND_OPT_PREF64_PREFIX_LENGTH_56,
+    ND_OPT_PREF64_PREFIX_LENGTH_48,
+    ND_OPT_PREF64_PREFIX_LENGTH_40,
+    ND_OPT_PREF64_PREFIX_LENGTH_32,
+  } ND_OPT_PREF64_PREFIX_LENGTH_CODE;
 
   typedef struct _MLD_HEADER
   {
