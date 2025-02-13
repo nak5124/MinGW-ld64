@@ -17,6 +17,9 @@
 # error Only Win32 target is supported!
 #endif
 
+#define __CONCAT(x, y)       x ## y
+#define __MINGW_CONCAT(x, y) __CONCAT(x, y)
+
 #define __STRING(x)       #x
 #define __MINGW_STRING(x) __STRING(x)
 
@@ -65,10 +68,10 @@
 # endif
 #endif
 
-#define __IMP_SYMBOL(sym)  __imp_##sym
-#define __IMP_LSYMBOL(sym) __imp_##sym
+#define __IMP_SYMBOL(sym)  __MINGW_CONCAT(__imp_, sym)
+#define __IMP_LSYMBOL(sym) __MINGW_CONCAT(__imp_, sym)
 #define __USYMBOL(sym)     sym
-#define __LSYMBOL(sym)     _##sym
+#define __LSYMBOL(sym)     __MINGW_CONCAT(_, sym)
 
 #define __ASM_CALL(func)     __asm__(__MINGW_STRING(__USYMBOL(func)))
 #define __ASM_CRT_CALL(func) __asm__(__STRING(func))
@@ -106,7 +109,7 @@
 
 /* ToDo: Remove these macros */
 #ifndef __MSABI_LONG
-# define __MSABI_LONG(x) x ## l
+# define __MSABI_LONG(x) __MINGW_CONCAT(x, l)
 #endif  /* __MSABI_LONG */
 #define __LONG32 long
 
