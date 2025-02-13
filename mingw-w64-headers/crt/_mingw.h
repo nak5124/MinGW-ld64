@@ -581,6 +581,8 @@
 
 __MINGW_BEGIN_C_DECLS
 
+#ifndef __ASSEMBLER__
+
 #ifndef _SIZE_T_DEFINED
 # define _SIZE_T_DEFINED
 # undef size_t
@@ -611,8 +613,6 @@ __MINGW_BEGIN_C_DECLS
     typedef unsigned short wchar_t;
 # endif  /* !defined(__cplusplus) && !defined(__WIDL__) */
 #endif  /* _WCHAR_T_DEFINED */
-
-#ifndef __ASSEMBLER__
 
 #ifdef __MINGW_INTRIN_INLINE
 
