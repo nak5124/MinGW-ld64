@@ -49,7 +49,7 @@ float __cdecl atanpif(float x){
     }
     // Warning: 0x1.45f306p-2f / x underflows for |x| >= 0x1.45f306p+124
     if (__builtin_fabsf (x) >= 0x1.45f306p+124f)
-      return f - 4.0f / x;
+      return f - __builtin_copysignf(0x1p-26f, x);
     else
       return f - 0x1.45f306p-2f / x;
   }

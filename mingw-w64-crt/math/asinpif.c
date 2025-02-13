@@ -53,11 +53,12 @@ float __cdecl asinpif(float x){
     return __builtin_nanf("1");
   }
   int32_t s = 146 - e, i = 0;
+  // s<32 corresponds to |x| >= 2^-12
   if(__builtin_expect(s<32, 1)) i = ((t.u&(~0u>>9))|1<<23)>>s;
   static const double ch[][8] = {
     {0x1.45f306dc9c882p-2, 0x1.b2995e7b7dc2fp-5, 0x1.8723a1cf50c7ep-6, 0x1.d1a4591d16a29p-7,
     0x1.3ce3aa68ddaeep-7, 0x1.d3182ab0cc1bfp-8, 0x1.62b379a8b88e3p-8, 0x1.6811411fcfec2p-8},
-    {0x1.ffffffffd3cdap-2, -0x1.17cc1b3355fdcp-4, 0x1.d067a1e8d5a99p-6, -0x1.08e16fb09314ap-6,
+    {0x1.ffffffffd3cdap-2, -0x1.17cc1b3355fddp-4, 0x1.d067a1e8d5a99p-6, -0x1.08e16fb09314ap-6,
     0x1.5eed43d42dcb2p-7, -0x1.f58baca7acc71p-8, 0x1.5dab64e2dcf15p-8, -0x1.59270e30797acp-9},
     {0x1.fffffff7c4617p-2, -0x1.17cc149ded3a2p-4, 0x1.d0654d4cb2c1ap-6, -0x1.08c3ba713d33ap-6,
     0x1.5d2053481079cp-7, -0x1.e485ebc545e7ep-8, 0x1.303baca167dddp-8, -0x1.dee8d16d06b38p-10},
@@ -89,7 +90,7 @@ float __cdecl asinpif(float x){
     0x1.93ab06911033cp-8, -0x1.1ee5560967fd5p-9, 0x1.07d31060838bfp-11, -0x1.c96f33a283115p-15}};
   const double *c = ch[i];
   double z2 = z*z, z4 = z2*z2;
-  if(__builtin_expect(!i, 0)){
+  if(__builtin_expect(!i, 0)){ // |x| < 2^-4
     double c0 = c[0] + z2*c[1];
     double c2 = c[2] + z2*c[3];
     double c4 = c[4] + z2*c[5];
@@ -100,7 +101,7 @@ float __cdecl asinpif(float x){
     if (__builtin_expect(ax <= 0x1.921fb4p-126f && ax != 0.0f, 0))
       errno = ERANGE; // underflow
     return z*c0;
-  } else {
+  } else { // |x| >= 2^-4
     double f = __builtin_sqrt(1-az);
     double c0 = c[0] + az*c[1];
     double c2 = c[2] + az*c[3];

@@ -78,33 +78,36 @@ typedef union {float f; uint32_t u;} b32u32_u;
 float __cdecl tanpif(float x){
   b32u32_u ix = {.f = x};
   uint32_t e = ix.u&(0xff<<23);
-  if(__builtin_expect(e > (150<<23), 0)){
-    if(e==(0xff<<23)){
-      if(!(ix.u << 9)){
-	errno = EDOM;
-	feraiseexcept (FE_INVALID);
-	return __builtin_nanf("inf");
+  if(__builtin_expect(e > (150<<23), 0)){ // |x| > 2^23
+    if(e==(0xff<<23)){ // x = nan or inf
+      if(!(ix.u << 9)){ // x = inf
+        errno = EDOM;
+        feraiseexcept (FE_INVALID);
+        return __builtin_nanf("inf");
       }
-      return x + x; // nan
+      return x + x; // x = nan
     }
     return __builtin_copysign(0.0f, x);
   }
   float x4 = 4.0f*x, nx4 = roundevenf_finite(x4), dx4 = x4-nx4;
   float ni = roundevenf_finite(x), zf = x-ni;
-  if(__builtin_expect(dx4 == 0.0f, 0)){
+  if(__builtin_expect(dx4 == 0.0f, 0)){ // 4*x integer
     int k = x4;
-    if(k&1) return __builtin_copysignf(1.0f,zf);
-    k &= 7;
-    if(k==0) return  __builtin_copysignf(0.0f,x);
-    if(k==4) return  -__builtin_copysignf(0.0f,x);
+    if(k&1) return __builtin_copysignf(1.0f,zf); // x = 1/4 mod 1/2
+    k &= 6;
+    if(k==0) return  __builtin_copysignf(0.0f,x); // x = 0 mod 2
+    if(k==4) return  -__builtin_copysignf(0.0f,x); // x = 1 mod 2
     errno = ERANGE;
-    if(k==2) return  1.0f/0.0f;
-    if(k==6) return -1.0f/0.0f;
+    if(k==2) return  1.0f/0.0f; // x = 1/2 mod 2
+    // now necessarily k=6
+    return -1.0f/0.0f; // x = -1/2 mod 2
   }
   ix.f = zf;
   uint32_t a = ix.u&(~0u>>1);
+  // x=0x1.267004p-2 is not correctly rounded for RNDZ/RNDD by the code below
   if(__builtin_expect(a == 0x3e933802u, 0)) return  __builtin_copysignf(0x1.44cfbap+0f,zf) + __builtin_copysignf(0x1p-25f,zf);
-  if(__builtin_expect(a == 0x38f26685u, 0)) return  __builtin_copysignf(0x1.7cc304p-12,zf) + __builtin_copysignf(0x1p-37f,zf);;
+  // x=-0x1.e4cd0ap-14 is not correctly rounded for RNDU by the code below
+  if(__builtin_expect(a == 0x38f26685u, 0)) return  __builtin_copysignf(0x1.7cc304p-12,zf) + __builtin_copysignf(0x1p-37f,zf);
   double z = zf, z2 = z*z;
 
   static const double cn[] = {0x1.921fb54442d19p-1, -0x1.1f458b3e1f8d6p-2, 0x1.68a34bd0b8f6ap-6, -0x1.e4866f7a25f99p-13};
