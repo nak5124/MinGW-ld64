@@ -24,10 +24,6 @@
 #include <mcfgthread/cxa.h>
 #endif
 
-#if defined(__SEH__) && (!defined(__clang__) || __clang_major__ >= 7)
-#define SEH_INLINE_ASM
-#endif
-
 extern IMAGE_DOS_HEADER __ImageBase;
 
 extern void _fpreset (void);
@@ -151,12 +147,9 @@ __ATTR_USED /* required due to GNU LD bug: https://sourceware.org/bugzilla/show_
 int WinMainCRTStartup (void)
 {
   int ret = 255;
-#ifdef SEH_INLINE_ASM
   asm ("\t.l_startw:\n");
-#endif
   __mingw_app_type = 1;
   ret = __tmainCRTStartup ();
-#ifdef SEH_INLINE_ASM
   asm ("\tnop\n"
     "\t.l_endw: nop\n"
     "\t.seh_handler __C_specific_handler, @except\n"
@@ -164,26 +157,18 @@ int WinMainCRTStartup (void)
     "\t.long 1\n"
     "\t.rva .l_startw, .l_endw, _gnu_exception_handler ,.l_endw\n"
     "\t.text");
-#endif
   return ret;
 }
 
 int mainCRTStartup (void);
 
-#if defined(__x86_64__) && !defined(__SEH__)
-int __mingw_init_ehandler (void);
-#endif
-
 __ATTR_USED /* required due to GNU LD bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30300 */
 int mainCRTStartup (void)
 {
   int ret = 255;
-#ifdef SEH_INLINE_ASM
   asm ("\t.l_start:\n");
-#endif
   __mingw_app_type = 0;
   ret = __tmainCRTStartup ();
-#ifdef SEH_INLINE_ASM
   asm ("\tnop\n"
     "\t.l_end: nop\n"
     "\t.seh_handler __C_specific_handler, @except\n"
@@ -191,7 +176,6 @@ int mainCRTStartup (void)
     "\t.long 1\n"
     "\t.rva .l_start, .l_end, _gnu_exception_handler ,.l_end\n"
     "\t.text");
-#endif
   return ret;
 }
 
@@ -233,17 +217,14 @@ __tmainCRTStartup (void)
     _ASSERTE(__native_startup_state == __initialized);
     if (! nested)
       (VOID)InterlockedExchangePointer ((volatile PVOID *) &__native_startup_lock, 0);
-    
+
     if (__dyn_tls_init_callback != NULL)
       __dyn_tls_init_callback (NULL, DLL_THREAD_ATTACH, NULL);
-    
+
     _pei386_runtime_relocator ();
     __mingw_oldexcpt_handler = SetUnhandledExceptionFilter (_gnu_exception_handler);
-#if defined(__x86_64__) && !defined(__SEH__)
-    __mingw_init_ehandler ();
-#endif
     _set_invalid_parameter_handler (__mingw_invalidParameterHandler);
-    
+
     _fpreset ();
 
     duplicate_ppstrings (argc, &argv);
@@ -314,7 +295,7 @@ static void duplicate_ppstrings (int ac, _TCHAR ***av)
 	_TCHAR **avl;
 	int i;
 	_TCHAR **n = (_TCHAR **) malloc (sizeof (_TCHAR *) * (ac + 1));
-	
+
 	avl=*av;
 	for (i=0; i < ac; i++)
 	  {

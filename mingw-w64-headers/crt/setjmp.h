@@ -92,30 +92,16 @@ __MINGW_BEGIN_C_DECLS
 #define _setjmp   __intrinsic_setjmpex
 #define _setjmpex __intrinsic_setjmpex
 #ifndef _INC_SETJMPEX
-# if (defined(__aarch64__) || defined(_ARM64_)) && (!defined(__SEH__) || !__has_builtin(__builtin_sponentry) || defined(__USE_MINGW_SETJMP_NON_SEH))
-#   define setjmp(BUF) __mingw_setjmp((BUF))
-#   define longjmp     __mingw_longjmp
-    extern int  __cdecl __mingw_setjmp(jmp_buf _Buf)              __NOTHROW __RETURNS_TWICE;
-    extern void __cdecl __mingw_longjmp(jmp_buf _Buf, int _Value) __NOTHROW __NORETURN;
-# elif defined(__SEH__) && !defined(__USE_MINGW_SETJMP_NON_SEH)
-#   if defined(__aarch64__) || defined(_ARM64_)
-#     define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())
-#   else
-#     define setjmp(BUF) _setjmp((BUF), __builtin_frame_address(0))
-#   endif
+# if defined(__aarch64__) || defined(_ARM64_)
+#   define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())
 # else
-#   define setjmp(BUF) _setjmp((BUF), NULL)
+#   define setjmp(BUF) _setjmp((BUF), __builtin_frame_address(0))
 # endif
   int __cdecl _setjmp(jmp_buf _Buf, void *_Ctx) __NOTHROW __RETURNS_TWICE;
 #else
 # undef setjmp
-# ifdef __SEH__
-#   define setjmp(BUF)   _setjmpex((BUF), __builtin_frame_address(0))
-#   define setjmpex(BUF) _setjmpex((BUF), __builtin_frame_address(0))
-# else
-#   define setjmp(BUF)   _setjmpex((BUF), NULL)
-#   define setjmpex(BUF) _setjmpex((BUF), NULL)
-# endif
+# define setjmp(BUF)   _setjmpex((BUF), __builtin_frame_address(0))
+# define setjmpex(BUF) _setjmpex((BUF), __builtin_frame_address(0))
   int __cdecl _setjmpex(jmp_buf _Buf, void *_Ctx) __NOTHROW __RETURNS_TWICE;
 #endif
 

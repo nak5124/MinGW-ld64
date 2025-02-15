@@ -143,9 +143,6 @@ WINBOOL WINAPI _CRT_INIT (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 static WINBOOL __DllMainCRTStartup (HANDLE, DWORD, LPVOID);
 
 WINBOOL WINAPI DllMainCRTStartup (HANDLE, DWORD, LPVOID);
-#if defined(__x86_64__) && !defined(__SEH__)
-int __mingw_init_ehandler (void);
-#endif
 
 __ATTR_USED /* required due to GNU LD bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30300 */
 WINBOOL WINAPI
@@ -168,11 +165,6 @@ __DllMainCRTStartup (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
 	goto i__leave;
     }
   _pei386_runtime_relocator ();
-
-#if defined(__x86_64__) && !defined(__SEH__)
-  if (dwReason == DLL_PROCESS_ATTACH)
-    __mingw_init_ehandler ();
-#endif
 
   if (dwReason == DLL_PROCESS_ATTACH || dwReason == DLL_THREAD_ATTACH)
     {
