@@ -69,6 +69,7 @@ src_libuuid=\
   libsrc/wia-uuid.c       libsrc/windowscodecs.c
 
 src_libwbemuuid=libsrc/wbemuuid.c
+src_libwiaguid=libsrc/wia-uuid.c
 src_libwindowscodecs=libsrc/windowscodecs.c
 src_libwmcodecdspuuid=libsrc/wmcodecdspuuid.c
 
@@ -378,6 +379,10 @@ lib64_LIBRARIES += lib64/libwbemuuid.a
 lib64_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
 lib64_libwbemuuid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
+lib64_LIBRARIES += lib64/libwiaguid.a
+lib64_libwiaguid_a_SOURCES = $(src_libwiaguid)
+lib64_libwiaguid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
 lib64_LIBRARIES += lib64/libwindowscodecs.a
 lib64_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)
 lib64_libwindowscodecs_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
@@ -586,6 +591,10 @@ libarm64_libuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 libarm64_LIBRARIES += libarm64/libwbemuuid.a
 libarm64_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
 libarm64_libwbemuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libwiaguid.a
+libarm64_libwiaguid_a_SOURCES = $(src_libwiaguid)
+libarm64_libwiaguid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libwindowscodecs.a
 libarm64_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)

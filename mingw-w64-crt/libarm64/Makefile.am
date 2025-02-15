@@ -319,6 +319,7 @@ libarm64_DATA += %reldir%/libwebsocket.a
 libarm64_DATA += %reldir%/libwecapi.a
 libarm64_DATA += %reldir%/libwer.a
 libarm64_DATA += %reldir%/libwevtapi.a
+#libarm64_DATA += %reldir%/libwiaguid.a  # Handled by custom rule
 libarm64_DATA += %reldir%/libwiaservc.a
 libarm64_DATA += %reldir%/libwinbio.a
 libarm64_DATA += %reldir%/libwindows.ai.machinelearning.a
