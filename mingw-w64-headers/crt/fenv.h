@@ -62,9 +62,6 @@ __MINGW_BEGIN_C_DECLS
 
 #if defined(__aarch64__) || defined(_ARM64_)
 
-  /* Type representing exception flags. */
-  typedef unsigned int fexcept_t;
-
   /* Type representing floating-point environment.  */
   typedef struct
   {
@@ -75,13 +72,6 @@ __MINGW_BEGIN_C_DECLS
 #define FE_DFL_ENV ((const fenv_t *) -1l)
 
 #else
-
-  /*
-    For now, support only for the basic abstraction of flags that are
-    either set or clear. fexcept_t could be  structure that holds more
-    info about the fp environment.
-  */
-  typedef unsigned short fexcept_t;
 
   /* This 32-byte struct represents the entire floating point
     environment as stored by fnstenv or fstenv, augmented by
@@ -119,6 +109,9 @@ __MINGW_BEGIN_C_DECLS
 #define FE_DFL_ENV ((const fenv_t *)0)
 
 #endif  /* defined(__aarch64__) || defined(_ARM64_) */
+
+  /* Type representing exception flags. */
+  typedef unsigned long fexcept_t;
 
   /* 7.6.2 Exception */
   _CRTIMP int __cdecl feclearexcept(int _Flags)                           __NOTHROW;
