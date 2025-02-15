@@ -1653,7 +1653,7 @@ WriteProfileStringW
 WriteTapemark
 ZombifyActCtx
 ZombifyActCtxWorker
-F_X64(__C_specific_handler)
+;__C_specific_handler
 ; This isn't always available and shouldn't be linked from here, but should
 ; be statically linked from the compiler support library.
 ;__chkstk
@@ -1663,7 +1663,7 @@ _hwrite
 _lclose
 _lcreat
 _llseek
-_local_unwind
+;_local_unwind
 _lopen
 _lread
 _lwrite
