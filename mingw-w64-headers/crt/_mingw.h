@@ -669,12 +669,3 @@ __MINGW_BEGIN_C_DECLS
 __MINGW_END_C_DECLS
 
 #endif  /* _INC__MINGW_H */
-
-#ifndef MINGW_SDK_INIT
-#define MINGW_SDK_INIT
-
-#ifndef __WIDL__
-# include <sdks/_mingw_ddk.h>
-#endif
-
-#endif  /* MINGW_SDK_INIT */

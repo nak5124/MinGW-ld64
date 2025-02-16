@@ -60,34 +60,6 @@ AC_SUBST([MINGWHELPERHEAD_LIST])
 AC_SUBST([SYSHEAD_LIST])
 AC_SUBST([SSPHEAD_LIST])
 
-AC_MSG_CHECKING([for optional sdk headers])
-AC_ARG_ENABLE([sdk],
-  [AS_HELP_STRING([--enable-sdk=ARG],
-    [Add the desired SDK, where ARG can be one of ddk, no or all.  Default is all.])],
-  [],
-  [AS_VAR_SET([enable_sdk],[all])])
-
-AS_CASE([$enable_sdk],
-  [all|yes],[
-    AS_VAR_SET([enable_sdk],[ddk])
-    AS_VAR_SET([enable_ddk],[yes])],
-  [ddk],[
-    AS_VAR_SET([enable_ddk],[yes])],
-  [directx],[
-    AC_MSG_WARN([Deprecated option: directx.  directx headers are always enabled.])],
-  [no],[],
-  [AC_MSG_ERROR([Invalid option: $enable_sdk.  Please choose one of ddk, no or all.])])
-AC_MSG_RESULT([$enable_sdk])
-
-AS_VAR_IF([enable_ddk],[yes],[
-    DDKHEAD_LIST=$srcdir/ddk/include/ddk/*.h
-    MINGW_HAS_DDK=1
-  ],[
-    MINGW_HAS_DDK=0
-  ])
-AC_SUBST([DDKHEAD_LIST])
-AC_SUBST([MINGW_HAS_DDK])
-
 AC_MSG_CHECKING([if installing idl files is enabled])
 AC_ARG_ENABLE([idl],
     [AS_HELP_STRING([--enable-idl],

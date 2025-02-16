@@ -8,7 +8,6 @@ gdiplusheaddir = $(baseheaddir)/gdiplus
 wrlheaddir = $(baseheaddir)/wrl
 wrlwrappersheaddir = $(baseheaddir)/wrl/wrappers
 mingwhelperheaddir = $(baseheaddir)/psdk_inc
-sdksheaddir = $(baseheaddir)/sdks
 
 basehead_HEADERS = @BASEHEAD_LIST@
 syshead_HEADERS = @SYSHEAD_LIST@
@@ -19,20 +18,14 @@ gdiplushead_HEADERS = @GDIPLUSHEAD_LIST@
 wrlhead_HEADERS = @WRLHEAD_LIST@
 wrlwrappershead_HEADERS = @WRLWRAPPERSHEAD_LIST@
 mingwhelperhead_HEADERS = @MINGWHELPERHEAD_LIST@
-nodist_sdkshead_HEADERS = _mingw_ddk.h
-noinst_HEADERS = crt/sdks/_mingw_ddk.h.in
 
-ddkheaddir = $(baseheaddir)/ddk
 idlheaddir = $(baseheaddir)
 
-ddkhead_HEADERS = @DDKHEAD_LIST@
 idlhead_HEADERS = @IDLHEAD_LIST@
 
-CLEANFILES = $(nodist_sdkshead_HEADERS)
+DISTCHECK_CONFIGURE_FLAGS = --enable-idl
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-sdk=all --enable-idl
-
-EXTRA_DIST = $(srcdir)/ChangeLog.* include crt ddk tlb
+EXTRA_DIST = $(srcdir)/ChangeLog.* include crt tlb
 
 dist-hook:
 	find $(distdir) -name ".svn" -type d -delete
@@ -55,7 +48,6 @@ EXTRA_HEADERS = \
   crt/*.h \
   crt/sys/*.h \
   crt/ssp/*.h \
-  ddk/include/ddk/*.h \
   tlb/*.tlb
 
 if HAVE_WIDL
@@ -378,13 +370,13 @@ TLB_SRCS = \
 
 BUILT_SOURCES = $(IDL_SRCS:.idl=.h) $(TLB_SRCS:.idl=.tlb)
 
-%.h: %.idl crt/_mingw.h
+%.h: %.idl
 	$(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -h -o $@ $<
 
 %.tlb: %.idl
 	$(WIDL) -I$(srcdir)/include -L$(srcdir)/tlb -t -o $@ $<
 
-%_i.c: %.idl crt/_mingw.h
+%_i.c: %.idl
 	$(WIDL) -DBOOL=WINBOOL -I$(srcdir)/include -Icrt -I$(srcdir)/crt -u -o $@ $<
 
 # following headers are not meant to be generated from IDLs, so override default rule
@@ -392,6 +384,3 @@ include/prsht.h: ;
 include/wincrypt.h: ;
 
 endif
-
-_mingw_ddk.h: $(srcdir)/crt/sdks/_mingw_ddk.h.in
-	$(SED) s/MINGW_HAS_DDK$$/@MINGW_HAS_DDK@/ $< > $@
