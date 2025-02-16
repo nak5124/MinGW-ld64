@@ -3,11 +3,6 @@
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-
-#ifdef CRTDLL
-#undef CRTDLL
-#endif
-
 #include <internal.h>
 
 int __CRTDECL

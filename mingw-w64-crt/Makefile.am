@@ -8,7 +8,7 @@ endif
 
 AM_CPPFLAGS=$(sysincludes)
 AM_CFLAGS=-pipe -std=gnu23 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
-AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@ @ADD_CXX_ONLY_WARNING_FLAGS@
+AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@
 CPPFLAGSARM64=
 CPPFLAGS64=-m64 -masm=att
 AM_DLLTOOLFLAGS=-k --as=$(AS) --output-lib $@
@@ -35,43 +35,26 @@ _libm_dummy.c:
 
 src_libm=_libm_dummy.c
 
+src_libadsiid=libsrc/activeds-uuid.c
+src_libamstrmid=libsrc/amstrmid.c
 src_libbits=libsrc/bits.c
-src_libshell32=libsrc/shell32.c
 src_libdinput8=libsrc/dinput_joy.c libsrc/dinput_joy2.c libsrc/dinput_kbd.c libsrc/dinput_mouse.c libsrc/dinput_mouse2.c
+src_libdloadhelper=libsrc/dloadhelper.c libsrc/delay-f.c
 src_libdmoguids=libsrc/dmoguids.c
+src_libdxguid=libsrc/dxguid.c
+src_libgdiplus=libsrc/gdiplus.c
+src_libksuser=libsrc/ksuser.c
+src_liblocationapi=libsrc/locationapi.c
 src_libmfuuid=libsrc/mfuuid.c
 src_libmsxml2=libsrc/msxml2.c
 src_libmsxml6=libsrc/msxml6.c
-src_libamstrmid=libsrc/amstrmid.c
-src_libwbemuuid=libsrc/wbemuuid.c
-src_libwmcodecdspuuid=libsrc/wmcodecdspuuid.c
-src_libwindowscodecs=libsrc/windowscodecs.c
-src_libdxguid=libsrc/dxguid.c
-src_libksuser=libsrc/ksuser.c
-src_liblocationapi=libsrc/locationapi.c
-src_libsapi=libsrc/sapi.c
-src_libsensorsapi=libsrc/sensorsapi.c
 src_libportabledeviceguids=libsrc/portabledeviceguids.c
-src_libtaskschd=libsrc/taskschd.c
-src_libdloadhelper=libsrc/dloadhelper.c libsrc/delay-f.c
-
-src_libmingw32=\
-  crt/_newmode.c       crt/charmax.c     crt/cinitexe.c           crt/CRT_fp8.c       crt/crt_handler.c        \
-  crt/crtexewin.c      crt/cxa_atexit.c  crt/cxa_thread_atexit.c  crt/dll_argv.c      crt/dllargv.c            \
-  crt/exit_wrappers.c  crt/gccmain.c     crt/merr.c               crt/mingw_custom.c  crt/mingw_helpers.c      \
-  crt/natstart.c       crt/pesect.c      crt/pseudo-reloc-list.c  crt/pseudo-reloc.c  crt/tls_atexit.c         \
-  crt/tlsmcrt.c        crt/tlsmthread.c  crt/tlssup.c             crt/tlsthrd.c       crt/ucrt_exit_wrappers.c \
-  crt/ucrtexewin.c     crt/udll_argv.c   crt/udllargc.c           crt/usermatherr.c   crt/wildcard.c           \
-  crt/xncommod.c       crt/xthdloc.c     crt/xtxtmode.c
-
+src_libsapi=libsrc/sapi.c
 src_libscrnsave=libsrc/scrnsave.c
-src_libscrnsavw=$(src_libscrnsave)
+src_libsensorsapi=libsrc/sensorsapi.c
+src_libshell32=libsrc/shell32.c
 src_libstrmiids=libsrc/strmiids.c
-src_libmingwthrd=libsrc/mingwthrd_mt.c
-
-src_libgdiplus=libsrc/gdiplus.c
-
-src_adsiid=libsrc/activeds-uuid.c
+src_libtaskschd=libsrc/taskschd.c
 
 src_libuuid=\
   libsrc/ativscp-uuid.c   libsrc/atsmedia-uuid.c  libsrc/bth-uuid.c       libsrc/cguid-uuid.c        libsrc/comcat-uuid.c   \
@@ -84,6 +67,10 @@ src_libuuid=\
   libsrc/oleidl-uuid.c    libsrc/power-uuid.c     libsrc/powrprof-uuid.c  libsrc/uianimation-uuid.c  libsrc/usbcamdi-uuid.c \
   libsrc/usbiodef-uuid.c  libsrc/uuid.c           libsrc/vds-uuid.c       libsrc/virtdisk-uuid.c     libsrc/vss-uuid.c      \
   libsrc/wia-uuid.c       libsrc/windowscodecs.c
+
+src_libwbemuuid=libsrc/wbemuuid.c
+src_libwindowscodecs=libsrc/windowscodecs.c
+src_libwmcodecdspuuid=libsrc/wmcodecdspuuid.c
 
 src_libws2_32=\
   libsrc/ws2_32.c                                        \
@@ -105,47 +92,43 @@ src_libws2_32=\
   libsrc/wspiapi/WspiapiNewAddrInfo.c                    libsrc/wspiapi/WspiapiParseV4Address.c               libsrc/wspiapi/WspiapiQueryDNS.c           \
   libsrc/wspiapi/WspiapiStrdup.c
 
-# Files included in libucrt*.a
-src_ucrtbase=\
-  complex/cabs.c             complex/cabsf.c           complex/cacos.c            complex/cacosf.c         complex/carg.c              \
-  complex/cargf.c            complex/casin.c           complex/casinf.c           complex/catan.c          complex/catanf.c            \
-  complex/ccos.c             complex/ccosf.c           complex/cexp.c             complex/cexpf.c          complex/cimag.c             \
-  complex/cimagf.c           complex/clog.c            complex/clog10.c           complex/clog10f.c        complex/clogf.c             \
-  complex/conj.c             complex/conjf.c           complex/cpow.c             complex/cpowf.c          complex/cproj.c             \
-  complex/cprojf.c           complex/creal.c           complex/crealf.c           complex/csin.c           complex/csinf.c             \
-  complex/csqrt.c            complex/csqrtf.c          complex/ctan.c             complex/ctanf.c          complex/norm.c              \
-  complex/normf.c            \
-  \
-  math/_huge.c               math/frexpf.c             math/ldexpf.c              math/lgamma.c            math/lgammaf.c              \
-  math/modfl.c               math/signgam.c            \
-  \
-  misc/__badioinfo.c         misc/__initenv.c          misc/__p___initenv.c       misc/__p___winitenv.c    misc/__p__osplatform_emul.c \
-  misc/__p__osver_emul.c     misc/__winitenv.c         misc/_onexit.c             misc/output_format.c     misc/ucrt__getmainargs.c    \
-  misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
-  \
-  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c       stdio/ucrt_fwprintf.c      stdio/ucrt_fwscanf.c     stdio/ucrt_printf.c         \
-  stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c     stdio/ucrt_snwprintf.c     stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c         \
-  stdio/ucrt_swprintf.c      stdio/ucrt_swscanf.c      stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c     stdio/ucrt_vfwprintf.c      \
-  stdio/ucrt_vfwscanf.c      stdio/ucrt_vprintf.c      stdio/ucrt_vscanf.c        stdio/ucrt_vsnprintf.c   stdio/ucrt_vsnwprintf.c     \
-  stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c      stdio/ucrt_vswprintf.c     stdio/ucrt_vswscanf.c    stdio/ucrt_vwprintf.c       \
-  stdio/ucrt_vwscanf.c       stdio/ucrt_wprintf.c      stdio/ucrt_wscanf.c        \
-  \
-  string/ucrt__wcstok.c
+# These intrinsics are target independent:
+src_intrincs= \
+  intrincs/__int2c.c         intrincs/__movsb.c       intrincs/__movsd.c         intrincs/__movsw.c              intrincs/__stosb.c       \
+  intrincs/__stosd.c         intrincs/__stosw.c       intrincs/_rotl64.c         intrincs/_rotr64.c              intrincs/bitscanfwd.c    \
+  intrincs/bitscanrev.c      intrincs/bittest.c       intrincs/bittestc.c        intrincs/bittestci.c            intrincs/bittestr.c      \
+  intrincs/bittestri.c       intrincs/bittests.c      intrincs/bittestsi.c       intrincs/cpuid.c                intrincs/ilockadd.c      \
+  intrincs/ilockand.c        intrincs/ilockand64.c    intrincs/ilockcxch.c       intrincs/ilockcxch16.c          intrincs/ilockcxch64.c   \
+  intrincs/ilockcxchptr.c    intrincs/ilockdec.c      intrincs/ilockdec16.c      intrincs/ilockdec64.c           intrincs/ilockexch.c     \
+  intrincs/ilockexch64.c     intrincs/ilockexchadd.c  intrincs/ilockexchadd64.c  intrincs/ilockexchptr.c         intrincs/ilockinc.c      \
+  intrincs/ilockinc16.c      intrincs/ilockinc64.c    intrincs/ilockor.c         intrincs/ilockor64.c            intrincs/ilockxor.c      \
+  intrincs/ilockxor64.c      intrincs/inbyte.c        intrincs/inbytestring.c    intrincs/indword.c              intrincs/indwordstring.c \
+  intrincs/inword.c          intrincs/inwordstring.c  intrincs/outbyte.c         intrincs/outbytestring.c        intrincs/outdword.c      \
+  intrincs/outdwordstring.c  intrincs/outword.c       intrincs/outwordstring.c   intrincs/readcr0.c              intrincs/readcr2.c       \
+  intrincs/readcr3.c         intrincs/readcr4.c       intrincs/readmsr.c         intrincs/RtlSecureZeroMemory.c  intrincs/writecr0.c      \
+  intrincs/writecr2.c        intrincs/writecr3.c      intrincs/writecr4.c        intrincs/writemsr.c
 
-# Files included in libucrtapp.a
-src_ucrtapp=\
-  misc/__C_specific_handler.c  misc/longjmp.S   misc/setjmp.S    \
-  \
-  string/memchr.c              string/memcmp.c  string/memcpy.c  string/memmove.c  string/strchr.c \
-  string/strrchr.c             string/strstr.c  string/wcschr.c  string/wcsrchr.c  string/wcsstr.c
+# these only go into the x86_64 version:
+src_intrincs64=\
+  $(src_intrincs)              \
+  intrincs/__faststorefence.c  intrincs/__movsq.c      intrincs/__shiftleft128.c  intrincs/__shiftright128.c  intrincs/__stosq.c     \
+  intrincs/_mul128.c           intrincs/_umul128.c     intrincs/bitscanfwd64.c    intrincs/bitscanrev64.c     intrincs/bittest64.c   \
+  intrincs/bittestc64.c        intrincs/bittestci64.c  intrincs/bittestr64.c      intrincs/bittestri64.c      intrincs/bittests64.c  \
+  intrincs/bittestsi64.c       intrincs/ilockadd64.c   intrincs/mul128ex.c        intrincs/rdtsc.c            intrincs/readcr8.c     \
+  intrincs/readgsbyte.c        intrincs/readgsdword.c  intrincs/readgsqword.c     intrincs/readgsword.c       intrincs/umul128ex.c   \
+  intrincs/writecr8.c          intrincs/writegsbyte.c  intrincs/writegsdword.c    intrincs/writegsqword.c     intrincs/writegsword.c
 
-# Files included in libucrt*.a on x86_64
-src_ucrtbase64=\
-  $(src_ucrtbase)  math/x64/fabsf.c  math/x64/ldexp.c  math/x64/scalbn.S  math/x64/scalbnf.S
+# these only go into the ARM64 version:
+src_intrincsarm64=$(src_intrincs)
 
-
-# Files included in libucrt*.a on ARM64
-src_ucrtbasearm64=$(src_ucrtbase) math/arm64/scalbn.c
+src_libmingw32=\
+  crt/_newmode.c       crt/charmax.c     crt/cinitexe.c           crt/CRT_fp8.c       crt/crt_handler.c        \
+  crt/crtexewin.c      crt/cxa_atexit.c  crt/cxa_thread_atexit.c  crt/dll_argv.c      crt/dllargv.c            \
+  crt/exit_wrappers.c  crt/gccmain.c     crt/merr.c               crt/mingw_custom.c  crt/mingw_helpers.c      \
+  crt/natstart.c       crt/pesect.c      crt/pseudo-reloc-list.c  crt/pseudo-reloc.c  crt/tls_atexit.c         \
+  crt/tlsmcrt.c        crt/tlsmthread.c  crt/tlssup.c             crt/tlsthrd.c       crt/ucrt_exit_wrappers.c \
+  crt/ucrtexewin.c     crt/udll_argv.c   crt/udllargc.c           crt/usermatherr.c   crt/wildcard.c           \
+  crt/xncommod.c       crt/xthdloc.c     crt/xtxtmode.c
 
 # These mingwex sources are target independent:
 src_libmingwex=\
@@ -211,33 +194,49 @@ src_libmingwex+=\
   cfguard/mingw_cfguard_loadcfg.S
 endif
 
-# These intrinsics are target independent:
-src_intrincs= \
-  intrincs/__int2c.c         intrincs/__movsb.c       intrincs/__movsd.c         intrincs/__movsw.c              intrincs/__stosb.c       \
-  intrincs/__stosd.c         intrincs/__stosw.c       intrincs/_rotl64.c         intrincs/_rotr64.c              intrincs/bitscanfwd.c    \
-  intrincs/bitscanrev.c      intrincs/bittest.c       intrincs/bittestc.c        intrincs/bittestci.c            intrincs/bittestr.c      \
-  intrincs/bittestri.c       intrincs/bittests.c      intrincs/bittestsi.c       intrincs/cpuid.c                intrincs/ilockadd.c      \
-  intrincs/ilockand.c        intrincs/ilockand64.c    intrincs/ilockcxch.c       intrincs/ilockcxch16.c          intrincs/ilockcxch64.c   \
-  intrincs/ilockcxchptr.c    intrincs/ilockdec.c      intrincs/ilockdec16.c      intrincs/ilockdec64.c           intrincs/ilockexch.c     \
-  intrincs/ilockexch64.c     intrincs/ilockexchadd.c  intrincs/ilockexchadd64.c  intrincs/ilockexchptr.c         intrincs/ilockinc.c      \
-  intrincs/ilockinc16.c      intrincs/ilockinc64.c    intrincs/ilockor.c         intrincs/ilockor64.c            intrincs/ilockxor.c      \
-  intrincs/ilockxor64.c      intrincs/inbyte.c        intrincs/inbytestring.c    intrincs/indword.c              intrincs/indwordstring.c \
-  intrincs/inword.c          intrincs/inwordstring.c  intrincs/outbyte.c         intrincs/outbytestring.c        intrincs/outdword.c      \
-  intrincs/outdwordstring.c  intrincs/outword.c       intrincs/outwordstring.c   intrincs/readcr0.c              intrincs/readcr2.c       \
-  intrincs/readcr3.c         intrincs/readcr4.c       intrincs/readmsr.c         intrincs/RtlSecureZeroMemory.c  intrincs/writecr0.c      \
-  intrincs/writecr2.c        intrincs/writecr3.c      intrincs/writecr4.c        intrincs/writemsr.c
+src_libmingwthrd=libsrc/mingwthrd_mt.c
 
-# these only go into the x86_64 version:
-src_intrincs64=\
-  intrincs/__faststorefence.c  intrincs/__movsq.c      intrincs/__shiftleft128.c  intrincs/__shiftright128.c  intrincs/__stosq.c     \
-  intrincs/_mul128.c           intrincs/_umul128.c     intrincs/bitscanfwd64.c    intrincs/bitscanrev64.c     intrincs/bittest64.c   \
-  intrincs/bittestc64.c        intrincs/bittestci64.c  intrincs/bittestr64.c      intrincs/bittestri64.c      intrincs/bittests64.c  \
-  intrincs/bittestsi64.c       intrincs/ilockadd64.c   intrincs/mul128ex.c        intrincs/rdtsc.c            intrincs/readcr8.c     \
-  intrincs/readgsbyte.c        intrincs/readgsdword.c  intrincs/readgsqword.c     intrincs/readgsword.c       intrincs/umul128ex.c   \
-  intrincs/writecr8.c          intrincs/writegsbyte.c  intrincs/writegsdword.c    intrincs/writegsqword.c     intrincs/writegsword.c
+# Files included in libucrt*.a
+src_libucrt=\
+  complex/cabs.c             complex/cabsf.c           complex/cacos.c            complex/cacosf.c         complex/carg.c              \
+  complex/cargf.c            complex/casin.c           complex/casinf.c           complex/catan.c          complex/catanf.c            \
+  complex/ccos.c             complex/ccosf.c           complex/cexp.c             complex/cexpf.c          complex/cimag.c             \
+  complex/cimagf.c           complex/clog.c            complex/clog10.c           complex/clog10f.c        complex/clogf.c             \
+  complex/conj.c             complex/conjf.c           complex/cpow.c             complex/cpowf.c          complex/cproj.c             \
+  complex/cprojf.c           complex/creal.c           complex/crealf.c           complex/csin.c           complex/csinf.c             \
+  complex/csqrt.c            complex/csqrtf.c          complex/ctan.c             complex/ctanf.c          complex/norm.c              \
+  complex/normf.c            \
+  \
+  math/_huge.c               math/frexpf.c             math/ldexpf.c              math/lgamma.c            math/lgammaf.c              \
+  math/modfl.c               math/signgam.c            \
+  \
+  misc/__badioinfo.c         misc/__initenv.c          misc/__p___initenv.c       misc/__p___winitenv.c    misc/__p__osplatform_emul.c \
+  misc/__p__osver_emul.c     misc/__winitenv.c         misc/_onexit.c             misc/output_format.c     misc/ucrt__getmainargs.c    \
+  misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
+  \
+  stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c       stdio/ucrt_fwprintf.c      stdio/ucrt_fwscanf.c     stdio/ucrt_printf.c         \
+  stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c     stdio/ucrt_snwprintf.c     stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c         \
+  stdio/ucrt_swprintf.c      stdio/ucrt_swscanf.c      stdio/ucrt_vfprintf.c      stdio/ucrt_vfscanf.c     stdio/ucrt_vfwprintf.c      \
+  stdio/ucrt_vfwscanf.c      stdio/ucrt_vprintf.c      stdio/ucrt_vscanf.c        stdio/ucrt_vsnprintf.c   stdio/ucrt_vsnwprintf.c     \
+  stdio/ucrt_vsprintf.c      stdio/ucrt_vsscanf.c      stdio/ucrt_vswprintf.c     stdio/ucrt_vswscanf.c    stdio/ucrt_vwprintf.c       \
+  stdio/ucrt_vwscanf.c       stdio/ucrt_wprintf.c      stdio/ucrt_wscanf.c        \
+  \
+  string/ucrt__wcstok.c
 
-# these only go into the ARM64 version:
-src_intrincsarm64=
+# Files included in libucrtapp.a
+src_libucrtapp=\
+  misc/__C_specific_handler.c  misc/longjmp.S   misc/setjmp.S    \
+  \
+  string/memchr.c              string/memcmp.c  string/memcpy.c  string/memmove.c  string/strchr.c \
+  string/strrchr.c             string/strstr.c  string/wcschr.c  string/wcsrchr.c  string/wcsstr.c
+
+# Files included in libucrt*.a on x86_64
+src_libucrt64=\
+  $(src_libucrt)  math/x64/fabsf.c  math/x64/ldexp.c  math/x64/scalbn.S  math/x64/scalbnf.S
+
+
+# Files included in libucrt*.a on ARM64
+src_libucrtarm64=$(src_libucrt) math/arm64/scalbn.c
 
 if LIB64
 #########################################################################
@@ -246,15 +245,13 @@ if LIB64
 
 lib64dir=$(prefix)/@LIBX8664SUFFIXDIR@
 crt64dir=$(lib64dir)
-winrt64dir=$(lib64dir)
-dx64dir=$(lib64dir)
 
 crt64_DATA = \
   lib64/binmode.o  lib64/CRT_fp10.o  lib64/CRT_fp8.o   lib64/CRT_glob.o  lib64/CRT_noglob.o \
   lib64/crt2.o     lib64/crt2u.o     lib64/crtbegin.o  lib64/crtend.o    lib64/dllcrt2.o    \
   lib64/gcrt2.o    lib64/txtmode.o
 
-COMPILE64=$(COMPILE) $(CPPFLAGS64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
+COMPILE64=$(COMPILE) $(CPPFLAGS64) $(extra_include)
 lib64/crt2.o: crt/crtexe.c
 	$(COMPILE64) -c $< -o $@
 lib64/crt2u.o: crt/ucrtexe.c
@@ -268,177 +265,170 @@ lib64/gcrt2.o: profile/gcrt0.c
 lib64/%.o: crt/%.c
 	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
 
-lib64_LIBRARIES = lib64/libkernel32.a
-lib64_libkernel32_a_SOURCES = $(src_intrincs) $(src_intrincs64) lib-common/kernel32.def.in
-lib64_libkernel32_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
-lib64_libkernel32_a_AR = $(DTDEF64) lib64/kernel32.def && $(AR) $(ARFLAGS)
-EXTRA_lib64_libkernel32_a_DEPENDENCIES=lib64/kernel32.def
-
 noinst_LIBRARIES += lib64/libintrincs.a
-lib64_libintrincs_a_SOURCES = $(src_intrincs) $(src_intrincs64)
-lib64_libintrincs_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
+lib64_libintrincs_a_SOURCES = $(src_intrincs64)
+lib64_libintrincs_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
 lib64_DATA =
 lib64_DATA += lib64/libmsvcrt.a
 lib64/libmsvcrt.a: lib64/libucrt.a
 	cp $< $@
 
-lib64_LIBRARIES += lib64/libbits.a
-lib64_libbits_a_SOURCES = $(src_libbits)
-lib64_libbits_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libshell32.a
-lib64_libshell32_a_SOURCES = $(src_libshell32)
-lib64_libshell32_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-lib64_libshell32_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/shell32.def && $(AR) $(ARFLAGS)
-
-lib64_LIBRARIES += lib64/libdinput8.a
-lib64_libdinput8_a_SOURCES = $(src_libdinput8)
-lib64_libdinput8_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-lib64_libdinput8_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/dinput8.def && $(AR) $(ARFLAGS)
-
-lib64_LIBRARIES += lib64/libdmoguids.a
-lib64_libdmoguids_a_SOURCES = $(src_libdmoguids)
-lib64_libdmoguids_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libmsxml2.a
-lib64_libmsxml2_a_SOURCES = $(src_libmsxml2)
-lib64_libmsxml2_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libmsxml6.a
-lib64_libmsxml6_a_SOURCES = $(src_libmsxml6)
-lib64_libmsxml6_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libmfuuid.a
-lib64_libmfuuid_a_SOURCES = $(src_libmfuuid)
-lib64_libmfuuid_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+lib64_LIBRARIES =
+lib64_LIBRARIES += lib64/libadsiid.a
+lib64_libadsiid_a_SOURCES = $(src_libadsiid)
+lib64_libadsiid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
 lib64_LIBRARIES += lib64/libamstrmid.a
 lib64_libamstrmid_a_SOURCES = $(src_libamstrmid)
-lib64_libamstrmid_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+lib64_libamstrmid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
-lib64_LIBRARIES += lib64/libwmcodecdspuuid.a
-lib64_libwmcodecdspuuid_a_SOURCES = $(src_libwmcodecdspuuid)
-lib64_libwmcodecdspuuid_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
+lib64_LIBRARIES += lib64/libbits.a
+lib64_libbits_a_SOURCES = $(src_libbits)
+lib64_libbits_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
-lib64_LIBRARIES += lib64/libwindowscodecs.a
-lib64_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)
-lib64_libwindowscodecs_a_CPPFLAGS = $(CPPFLAGS64) $(sysincludes)
-lib64_libwindowscodecs_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/windowscodecs.def && $(AR) $(ARFLAGS)
-
-lib64_LIBRARIES += lib64/libwbemuuid.a
-lib64_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
-lib64_libwbemuuid_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libdxguid.a
-lib64_libdxguid_a_SOURCES = $(src_libdxguid)
-lib64_libdxguid_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/liblocationapi.a
-lib64_liblocationapi_a_SOURCES = $(src_liblocationapi)
-lib64_liblocationapi_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libsapi.a
-lib64_libsapi_a_SOURCES = $(src_libsapi)
-lib64_libsapi_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libsensorsapi.a
-lib64_libsensorsapi_a_SOURCES = $(src_libsensorsapi)
-lib64_libsensorsapi_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libportabledeviceguids.a
-lib64_libportabledeviceguids_a_SOURCES = $(src_libportabledeviceguids)
-lib64_libportabledeviceguids_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libksuser.a
-lib64_libksuser_a_SOURCES = $(src_libksuser)
-lib64_libksuser_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-lib64_libksuser_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/ksuser.def && $(AR) $(ARFLAGS)
-
-lib64_LIBRARIES += lib64/libscrnsave.a
-lib64_libscrnsave_a_SOURCES = $(src_libscrnsave)
-lib64_libscrnsave_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libscrnsavw.a
-lib64_libscrnsavw_a_SOURCES = libsrc/scrnsave.c
-lib64_libscrnsavw_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-lib64_libscrnsavw_a_CFLAGS = -DUNICODE
-
-lib64_LIBRARIES += lib64/libstrmiids.a
-lib64_libstrmiids_a_SOURCES = $(src_libstrmiids)
-lib64_libstrmiids_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libuuid.a
-lib64_libuuid_a_SOURCES = $(src_libuuid)
-lib64_libuuid_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libgdiplus.a
-lib64_libgdiplus_a_SOURCES = $(src_libgdiplus)
-lib64_libgdiplus_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-lib64_libgdiplus_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/gdiplus.def && $(AR) $(ARFLAGS)
-
-lib64_LIBRARIES += lib64/libws2_32.a
-lib64_libws2_32_a_SOURCES = $(src_libws2_32)
-lib64_libws2_32_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-lib64_libws2_32_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/ws2_32.def && $(AR) $(ARFLAGS)
-
-lib64_LIBRARIES += lib64/libtaskschd.a
-lib64_libtaskschd_a_SOURCES = $(src_libtaskschd)
-lib64_libtaskschd_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libadsiid.a
-lib64_libadsiid_a_SOURCES = $(src_adsiid)
-lib64_libadsiid_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
+lib64_LIBRARIES += lib64/libdinput8.a
+lib64_libdinput8_a_SOURCES = $(src_libdinput8)
+lib64_libdinput8_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libdinput8_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/dinput8.def && $(AR) $(ARFLAGS)
 
 lib64_LIBRARIES += lib64/libdloadhelper.a
 lib64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
-lib64_libdloadhelper_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
+lib64_libdloadhelper_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libdmoguids.a
+lib64_libdmoguids_a_SOURCES = $(src_libdmoguids)
+lib64_libdmoguids_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libdxguid.a
+lib64_libdxguid_a_SOURCES = $(src_libdxguid)
+lib64_libdxguid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libgdiplus.a
+lib64_libgdiplus_a_SOURCES = $(src_libgdiplus)
+lib64_libgdiplus_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libgdiplus_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/gdiplus.def && $(AR) $(ARFLAGS)
+
+lib64_LIBRARIES += lib64/libkernel32.a
+lib64_libkernel32_a_SOURCES = $(src_intrincs64) lib-common/kernel32.def.in
+lib64_libkernel32_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libkernel32_a_AR = $(DTDEF64) lib64/kernel32.def && $(AR) $(ARFLAGS)
+EXTRA_lib64_libkernel32_a_DEPENDENCIES = lib64/kernel32.def
+
+lib64_LIBRARIES += lib64/libksuser.a
+lib64_libksuser_a_SOURCES = $(src_libksuser)
+lib64_libksuser_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libksuser_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/ksuser.def && $(AR) $(ARFLAGS)
+
+lib64_LIBRARIES += lib64/liblocationapi.a
+lib64_liblocationapi_a_SOURCES = $(src_liblocationapi)
+lib64_liblocationapi_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libmfuuid.a
+lib64_libmfuuid_a_SOURCES = $(src_libmfuuid)
+lib64_libmfuuid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libmsxml2.a
+lib64_libmsxml2_a_SOURCES = $(src_libmsxml2)
+lib64_libmsxml2_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libmsxml6.a
+lib64_libmsxml6_a_SOURCES = $(src_libmsxml6)
+lib64_libmsxml6_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libportabledeviceguids.a
+lib64_libportabledeviceguids_a_SOURCES = $(src_libportabledeviceguids)
+lib64_libportabledeviceguids_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libsapi.a
+lib64_libsapi_a_SOURCES = $(src_libsapi)
+lib64_libsapi_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libscrnsave.a
+lib64_libscrnsave_a_SOURCES = $(src_libscrnsave)
+lib64_libscrnsave_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libscrnsavw.a
+lib64_libscrnsavw_a_SOURCES = $(src_libscrnsave)
+lib64_libscrnsavw_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libscrnsavw_a_CFLAGS = -DUNICODE
+
+lib64_LIBRARIES += lib64/libsensorsapi.a
+lib64_libsensorsapi_a_SOURCES = $(src_libsensorsapi)
+lib64_libsensorsapi_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libshell32.a
+lib64_libshell32_a_SOURCES = $(src_libshell32)
+lib64_libshell32_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libshell32_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/shell32.def && $(AR) $(ARFLAGS)
+
+lib64_LIBRARIES += lib64/libstrmiids.a
+lib64_libstrmiids_a_SOURCES = $(src_libstrmiids)
+lib64_libstrmiids_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libtaskschd.a
+lib64_libtaskschd_a_SOURCES = $(src_libtaskschd)
+lib64_libtaskschd_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libuuid.a
+lib64_libuuid_a_SOURCES = $(src_libuuid)
+lib64_libuuid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libwbemuuid.a
+lib64_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
+lib64_libwbemuuid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libwindowscodecs.a
+lib64_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)
+lib64_libwindowscodecs_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libwindowscodecs_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/windowscodecs.def && $(AR) $(ARFLAGS)
+
+lib64_LIBRARIES += lib64/libwmcodecdspuuid.a
+lib64_libwmcodecdspuuid_a_SOURCES = $(src_libwmcodecdspuuid)
+lib64_libwmcodecdspuuid_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+lib64_LIBRARIES += lib64/libws2_32.a
+lib64_libws2_32_a_SOURCES = $(src_libws2_32)
+lib64_libws2_32_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+lib64_libws2_32_a_AR = $(DTDEF64) $(top_srcdir)/lib-common/ws2_32.def && $(AR) $(ARFLAGS)
+
+lib64_LIBRARIES += lib64/libgmon.a
+lib64_libgmon_a_SOURCES = profile/mcount.c profile/profil.c profile/gmon.c profile/mcountFunc.S
+lib64_libgmon_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
 lib64_LIBRARIES += lib64/libm.a
 nodist_lib64_libm_a_SOURCES = $(src_libm)
-lib64_libm_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
-
-lib64_LIBRARIES += lib64/libgmon.a
-lib64_libgmon_a_SOURCES = profile/mcount.c \
-  profile/profil.h profile/profil.c        \
-  profile/gmon.h   profile/gmon.c \
-  profile/mcountFunc.S
-lib64_libgmon_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
+lib64_libm_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
 lib64_LIBRARIES += lib64/libmingw32.a
-lib64_libmingw32_a_CPPFLAGS=$(CPPFLAGS64) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
 lib64_libmingw32_a_SOURCES = $(src_libmingw32)
+lib64_libmingw32_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
 
 lib64_LIBRARIES += lib64/libmingwex.a
-lib64_libmingwex_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
 lib64_libmingwex_a_SOURCES = $(src_libmingwex)
-
-lib64_LIBRARIES += lib64/libmoldname.a
-lib64_libmoldname_a_CPPFLAGS=$(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
-lib64_libmoldname_a_SOURCES = $(src_libm)
+lib64_libmingwex_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
 
 lib64_LIBRARIES += lib64/libmingwthrd.a
 lib64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
-lib64_libmingwthrd_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
+lib64_libmingwthrd_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
 
-processed_defs += lib64/ucrtbase.def \
-				  lib64/kernel32.def \
-				  lib64/winhvplatform.def \
-				  lib64/api-ms-win-crt-math-l1-1-0.def lib64/api-ms-win-crt-private-l1-1-0.def lib64/api-ms-win-crt-runtime-l1-1-0.def \
-				  lib64/api-ms-win-crt-filesystem-l1-1-0.def lib64/api-ms-win-crt-time-l1-1-0.def
+lib64_LIBRARIES += lib64/libmoldname.a
+lib64_libmoldname_a_SOURCES = $(src_libm)
+lib64_libmoldname_a_CPPFLAGS = $(CPPFLAGS64) $(AM_CPPFLAGS)
+
+processed_defs += \
+  lib64/ucrtbase.def                          lib64/kernel32.def                    lib64/winhvplatform.def                 \
+  lib64/api-ms-win-crt-filesystem-l1-1-0.def  lib64/api-ms-win-crt-math-l1-1-0.def  lib64/api-ms-win-crt-private-l1-1-0.def \
+  lib64/api-ms-win-crt-runtime-l1-1-0.def     lib64/api-ms-win-crt-time-l1-1-0.def
 
 include lib64/Makefile.am
 
-lib64_DATA += lib64/libucrtbase.a
-lib64/libucrtbase.a: lib-common/ucrtbase.mri lib64/libucrtbase_def.a lib64/libucrt_extra.a lib64/libvcruntime140_threads.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-lib64_DATA += lib64/libucrt.a lib64/libucrtapp.a
+lib64_DATA += lib64/libucrt.a lib64/libucrtapp.a lib64/libucrtbase.a
 noinst_LIBRARIES += lib64/libucrt_extra.a lib64/libucrtapp_extra.a
-lib64_libucrt_extra_a_SOURCES = $(src_ucrtbase64)
-lib64_libucrt_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-lib64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
-lib64_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+lib64_libucrt_extra_a_SOURCES = $(src_libucrt64)
+lib64_libucrt_extra_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
+lib64_libucrtapp_extra_a_SOURCES = $(src_libucrtapp)
+lib64_libucrtapp_extra_a_CPPFLAGS = $(CPPFLAGS64) $(extra_include) $(AM_CPPFLAGS)
 
 lib64/lib%.a: lib64/%.def
 	$(DTDEF64) $<
@@ -458,21 +448,19 @@ endif
 
 
 if LIBARM64
-#########
+#########################################################################
 # Compiling ARM 64-bit runtime
-#
+# #######################################################################
 
 libarm64dir=$(prefix)/@LIBARM64SUFFIXDIR@
 crt64dir=$(libarm64dir)
-winrt64dir=$(libarm64dir)
-dx64dir=$(libarm64dir)
 
 crt64_DATA = \
   libarm64/binmode.o  libarm64/CRT_fp10.o  libarm64/CRT_fp8.o   libarm64/CRT_glob.o  libarm64/CRT_noglob.o \
   libarm64/crt2.o     libarm64/crt2u.o     libarm64/crtbegin.o  libarm64/crtend.o    libarm64/dllcrt2.o    \
   libarm64/gcrt2.o    libarm64/txtmode.o
 
-COMPILE64=$(COMPILE) $(CPPFLAGSARM64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
+COMPILE64=$(COMPILE) $(CPPFLAGSARM64) $(extra_include)
 libarm64/crt2.o: crt/crtexe.c
 	$(COMPILE64) -c $< -o $@
 libarm64/crt2u.o: crt/ucrtexe.c
@@ -486,172 +474,166 @@ libarm64/gcrt2.o: profile/gcrt0.c
 libarm64/%.o: crt/%.c
 	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
 
-# These source files aren't compiled in to any library yet.  I'm not sure how / where to do so.
-# The source files that I did compile somewhere I just guessed at anyway.
-#
-
-temp= test.c
-
-libarm64_LIBRARIES = libarm64/libkernel32.a
-libarm64_libkernel32_a_SOURCES = $(src_intrincs) $(src_intrincsarm64) lib-common/kernel32.def.in
-libarm64_libkernel32_a_AR = $(DTDEFARM64) libarm64/kernel32.def && $(AR) $(ARFLAGS)
-libarm64_libkernel32_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
-EXTRA_libarm64_libkernel32_a_DEPENDENCIES=libarm64/kernel32.def
-
 noinst_LIBRARIES += libarm64/libintrincs.a
-libarm64_libintrincs_a_SOURCES = $(src_intrincs) $(src_intrincsarm64)
-libarm64_libintrincs_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
+libarm64_libintrincs_a_SOURCES = $(src_intrincsarm64)
+libarm64_libintrincs_a_CPPFLAGS=$(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_DATA =
 libarm64_DATA += libarm64/libmsvcrt.a
 libarm64/libmsvcrt.a: libarm64/libucrt.a
 	cp $< $@
 
-libarm64_LIBRARIES += libarm64/libbits.a
-libarm64_libbits_a_SOURCES = $(src_libbits)
-libarm64_libbits_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-
-libarm64_LIBRARIES += libarm64/libshell32.a
-libarm64_libshell32_a_SOURCES = $(src_libshell32)
-libarm64_libshell32_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/shell32.def && $(AR) $(ARFLAGS)
-libarm64_libshell32_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-
-libarm64_LIBRARIES += libarm64/libdinput8.a
-libarm64_libdinput8_a_SOURCES = $(src_libdinput8)
-libarm64_libdinput8_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-libarm64_libdinput8_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/dinput8.def && $(AR) $(ARFLAGS)
-
-libarm64_LIBRARIES += libarm64/libdmoguids.a
-libarm64_libdmoguids_a_SOURCES = $(src_libdmoguids)
-libarm64_libdmoguids_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-
-libarm64_LIBRARIES += libarm64/libmsxml2.a
-libarm64_libmsxml2_a_SOURCES = $(src_libmsxml2)
-libarm64_libmsxml2_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-
-libarm64_LIBRARIES += libarm64/libmsxml6.a
-libarm64_libmsxml6_a_SOURCES = $(src_libmsxml6)
-libarm64_libmsxml6_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-
-libarm64_LIBRARIES += libarm64/libmfuuid.a
-libarm64_libmfuuid_a_SOURCES = $(src_libmfuuid)
-libarm64_libmfuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+libarm64_LIBRARIES =
+libarm64_LIBRARIES += libarm64/libadsiid.a
+libarm64_libadsiid_a_SOURCES = $(src_libadsiid)
+libarm64_libadsiid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libamstrmid.a
 libarm64_libamstrmid_a_SOURCES = $(src_libamstrmid)
-libarm64_libamstrmid_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+libarm64_libamstrmid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
-libarm64_LIBRARIES += libarm64/libwmcodecdspuuid.a
-libarm64_libwmcodecdspuuid_a_SOURCES = $(src_libwmcodecdspuuid)
-libarm64_libwmcodecdspuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+libarm64_LIBRARIES += libarm64/libbits.a
+libarm64_libbits_a_SOURCES = $(src_libbits)
+libarm64_libbits_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
-libarm64_LIBRARIES += libarm64/libwindowscodecs.a
-libarm64_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)
-libarm64_libwindowscodecs_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
-libarm64_libwindowscodecs_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/windowscodecs.def && $(AR) $(ARFLAGS)
+libarm64_LIBRARIES += libarm64/libdinput8.a
+libarm64_libdinput8_a_SOURCES = $(src_libdinput8)
+libarm64_libdinput8_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+libarm64_libdinput8_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/dinput8.def && $(AR) $(ARFLAGS)
 
-libarm64_LIBRARIES += libarm64/libwbemuuid.a
-libarm64_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
-libarm64_libwbemuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(sysincludes)
+libarm64_LIBRARIES += libarm64/libdloadhelper.a
+libarm64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
+libarm64_libdloadhelper_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libdmoguids.a
+libarm64_libdmoguids_a_SOURCES = $(src_libdmoguids)
+libarm64_libdmoguids_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libdxguid.a
 libarm64_libdxguid_a_SOURCES = $(src_libdxguid)
-libarm64_libdxguid_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libdxguid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libgdiplus.a
+libarm64_libgdiplus_a_SOURCES = $(src_libgdiplus)
+libarm64_libgdiplus_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+libarm64_libgdiplus_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/gdiplus.def && $(AR) $(ARFLAGS)
+
+libarm64_LIBRARIES += libarm64/libkernel32.a
+libarm64_libkernel32_a_SOURCES = $(src_intrincs) $(src_intrincsarm64) lib-common/kernel32.def.in
+libarm64_libkernel32_a_AR = $(DTDEFARM64) libarm64/kernel32.def && $(AR) $(ARFLAGS)
+libarm64_libkernel32_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+EXTRA_libarm64_libkernel32_a_DEPENDENCIES = libarm64/kernel32.def
 
 libarm64_LIBRARIES += libarm64/libksuser.a
 libarm64_libksuser_a_SOURCES = $(src_libksuser)
-libarm64_libksuser_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libksuser_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 libarm64_libksuser_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/ksuser.def && $(AR) $(ARFLAGS)
 
 libarm64_LIBRARIES += libarm64/liblocationapi.a
 libarm64_liblocationapi_a_SOURCES = $(src_liblocationapi)
-libarm64_liblocationapi_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_liblocationapi_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
-libarm64_LIBRARIES += libarm64/libsensorsapi.a
-libarm64_libsensorsapi_a_SOURCES = $(src_libsensorsapi)
-libarm64_libsensorsapi_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_LIBRARIES += libarm64/libmfuuid.a
+libarm64_libmfuuid_a_SOURCES = $(src_libmfuuid)
+libarm64_libmfuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
-libarm64_LIBRARIES += libarm64/libsapi.a
-libarm64_libsapi_a_SOURCES = $(src_libsapi)
-libarm64_libsapi_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_LIBRARIES += libarm64/libmsxml2.a
+libarm64_libmsxml2_a_SOURCES = $(src_libmsxml2)
+libarm64_libmsxml2_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libmsxml6.a
+libarm64_libmsxml6_a_SOURCES = $(src_libmsxml6)
+libarm64_libmsxml6_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libportabledeviceguids.a
 libarm64_libportabledeviceguids_a_SOURCES = $(src_libportabledeviceguids)
-libarm64_libportabledeviceguids_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libportabledeviceguids_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libsapi.a
+libarm64_libsapi_a_SOURCES = $(src_libsapi)
+libarm64_libsapi_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libscrnsave.a
 libarm64_libscrnsave_a_SOURCES = $(src_libscrnsave)
-libarm64_libscrnsave_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libscrnsave_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libscrnsavw.a
-libarm64_libscrnsavw_a_SOURCES = $(src_libscrnsavw)
-libarm64_libscrnsavw_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libscrnsavw_a_SOURCES = $(src_libscrnsave)
+libarm64_libscrnsavw_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 libarm64_libscrnsavw_a_CFLAGS = -DUNICODE
+
+libarm64_LIBRARIES += libarm64/libsensorsapi.a
+libarm64_libsensorsapi_a_SOURCES = $(src_libsensorsapi)
+libarm64_libsensorsapi_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libshell32.a
+libarm64_libshell32_a_SOURCES = $(src_libshell32)
+libarm64_libshell32_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+libarm64_libshell32_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/shell32.def && $(AR) $(ARFLAGS)
 
 libarm64_LIBRARIES += libarm64/libstrmiids.a
 libarm64_libstrmiids_a_SOURCES = $(src_libstrmiids)
-libarm64_libstrmiids_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libstrmiids_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libtaskschd.a
+libarm64_libtaskschd_a_SOURCES = $(src_libtaskschd)
+libarm64_libtaskschd_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libuuid.a
 libarm64_libuuid_a_SOURCES = $(src_libuuid)
-libarm64_libuuid_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
-libarm64_LIBRARIES += libarm64/libgdiplus.a
-libarm64_libgdiplus_a_SOURCES = $(src_libgdiplus)
-libarm64_libgdiplus_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-libarm64_libgdiplus_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/gdiplus.def && $(AR) $(ARFLAGS)
+libarm64_LIBRARIES += libarm64/libwbemuuid.a
+libarm64_libwbemuuid_a_SOURCES = $(src_libwbemuuid)
+libarm64_libwbemuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+libarm64_LIBRARIES += libarm64/libwindowscodecs.a
+libarm64_libwindowscodecs_a_SOURCES = $(src_libwindowscodecs)
+libarm64_libwindowscodecs_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+libarm64_libwindowscodecs_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/windowscodecs.def && $(AR) $(ARFLAGS)
+
+libarm64_LIBRARIES += libarm64/libwmcodecdspuuid.a
+libarm64_libwmcodecdspuuid_a_SOURCES = $(src_libwmcodecdspuuid)
+libarm64_libwmcodecdspuuid_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libws2_32.a
 libarm64_libws2_32_a_SOURCES = $(src_libws2_32)
-libarm64_libws2_32_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libws2_32_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 libarm64_libws2_32_a_AR = $(DTDEFARM64) $(top_srcdir)/lib-common/ws2_32.def && $(AR) $(ARFLAGS)
-
-libarm64_LIBRARIES += libarm64/libadsiid.a
-libarm64_libadsiid_a_SOURCES = $(src_adsiid)
-libarm64_libadsiid_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
-
-libarm64_LIBRARIES += libarm64/libdloadhelper.a
-libarm64_libdloadhelper_a_SOURCES = $(src_libdloadhelper)
-libarm64_libdloadhelper_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
 
 libarm64_LIBRARIES += libarm64/libm.a
 nodist_libarm64_libm_a_SOURCES = $(src_libm)
-libarm64_libm_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libm_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libmingw32.a
-libarm64_libmingw32_a_CPPFLAGS=$(CPPFLAGSARM64) -D_SYSCRT=1 -DCRTDLL=1 $(extra_include) $(AM_CPPFLAGS)
 libarm64_libmingw32_a_SOURCES = $(src_libmingw32)
+libarm64_libmingw32_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libmingwex.a
-libarm64_libmingwex_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
 libarm64_libmingwex_a_SOURCES = $(src_libmingwex)
-
-libarm64_LIBRARIES += libarm64/libmoldname.a
-libarm64_libmoldname_a_CPPFLAGS=$(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
-libarm64_libmoldname_a_SOURCES = $(src_libm)
+libarm64_libmingwex_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
 
 libarm64_LIBRARIES += libarm64/libmingwthrd.a
 libarm64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
-libarm64_libmingwthrd_a_CPPFLAGS=$(CPPFLAGSARM64) $(sysincludes)
+libarm64_libmingwthrd_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
 
-processed_defs += libarm64/ucrtbase.def \
-				  libarm64/kernel32.def \
-				  libarm64/winhvplatform.def \
-				  libarm64/api-ms-win-crt-math-l1-1-0.def libarm64/api-ms-win-crt-private-l1-1-0.def libarm64/api-ms-win-crt-runtime-l1-1-0.def \
-				  libarm64/api-ms-win-crt-filesystem-l1-1-0.def libarm64/api-ms-win-crt-time-l1-1-0.def
+libarm64_LIBRARIES += libarm64/libmoldname.a
+libarm64_libmoldname_a_SOURCES = $(src_libm)
+libarm64_libmoldname_a_CPPFLAGS = $(CPPFLAGSARM64) $(AM_CPPFLAGS)
+
+processed_defs += \
+  libarm64/ucrtbase.def                          libarm64/kernel32.def                    libarm64/winhvplatform.def                 \
+  libarm64/api-ms-win-crt-filesystem-l1-1-0.def  libarm64/api-ms-win-crt-math-l1-1-0.def  libarm64/api-ms-win-crt-private-l1-1-0.def \
+  libarm64/api-ms-win-crt-runtime-l1-1-0.def     libarm64/api-ms-win-crt-time-l1-1-0.def
 
 include libarm64/Makefile.am
 
-libarm64_DATA += libarm64/libucrtbase.a
-libarm64/libucrtbase.a: lib-common/ucrtbase.mri libarm64/libucrtbase_def.a libarm64/libucrt_extra.a libarm64/libvcruntime140_threads.a
-	cd $(dir $@) && $(AR) -M < $(abspath $<)
-
-libarm64_DATA += libarm64/libucrt.a libarm64/libucrtapp.a
+libarm64_DATA += libarm64/libucrt.a libarm64/libucrtapp.a libarm64/libucrtbase.a
 noinst_LIBRARIES += libarm64/libucrt_extra.a libarm64/libucrtapp_extra.a
-libarm64_libucrt_extra_a_SOURCES = $(src_ucrtbasearm64)
-libarm64_libucrt_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-libarm64_libucrtapp_extra_a_SOURCES = $(src_ucrtapp)
-libarm64_libucrtapp_extra_a_CPPFLAGS=$(CPPFLAGSARM64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+libarm64_libucrt_extra_a_SOURCES = $(src_libucrtarm64)
+libarm64_libucrt_extra_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
+libarm64_libucrtapp_extra_a_SOURCES = $(src_libucrtapp)
+libarm64_libucrtapp_extra_a_CPPFLAGS = $(CPPFLAGSARM64) $(extra_include) $(AM_CPPFLAGS)
 
 libarm64/lib%.a: libarm64/%.def
 	$(DTDEFARM64) $<
@@ -2604,12 +2586,23 @@ endif
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
 	$(RANLIB) $@
 
-%/libucrt.a: lib-common/ucrt.mri %/libucrt_extra.a \
-		%/libapi-ms-win-crt-conio-l1-1-0.a %/libapi-ms-win-crt-convert-l1-1-0.a %/libapi-ms-win-crt-environment-l1-1-0.a \
-		%/libapi-ms-win-crt-filesystem-l1-1-0.a %/libapi-ms-win-crt-heap-l1-1-0.a %/libapi-ms-win-crt-locale-l1-1-0.a \
-		%/libapi-ms-win-crt-math-l1-1-0.a %/libapi-ms-win-crt-multibyte-l1-1-0.a %/libapi-ms-win-crt-private-l1-1-0.a \
-		%/libapi-ms-win-crt-process-l1-1-0.a %/libapi-ms-win-crt-runtime-l1-1-0.a %/libapi-ms-win-crt-stdio-l1-1-0.a \
-		%/libapi-ms-win-crt-string-l1-1-0.a %/libapi-ms-win-crt-time-l1-1-0.a %/libapi-ms-win-crt-utility-l1-1-0.a \
+%/libucrt.a: lib-common/ucrt.mri \
+		%/libapi-ms-win-crt-conio-l1-1-0.a \
+		%/libapi-ms-win-crt-convert-l1-1-0.a \
+		%/libapi-ms-win-crt-environment-l1-1-0.a \
+		%/libapi-ms-win-crt-filesystem-l1-1-0.a \
+		%/libapi-ms-win-crt-heap-l1-1-0.a \
+		%/libapi-ms-win-crt-locale-l1-1-0.a \
+		%/libapi-ms-win-crt-math-l1-1-0.a \
+		%/libapi-ms-win-crt-multibyte-l1-1-0.a \
+		%/libapi-ms-win-crt-private-l1-1-0.a \
+		%/libapi-ms-win-crt-process-l1-1-0.a \
+		%/libapi-ms-win-crt-runtime-l1-1-0.a \
+		%/libapi-ms-win-crt-stdio-l1-1-0.a \
+		%/libapi-ms-win-crt-string-l1-1-0.a \
+		%/libapi-ms-win-crt-time-l1-1-0.a \
+		%/libapi-ms-win-crt-utility-l1-1-0.a \
+		%/libucrt_extra.a \
 		%/libvcruntime140_threads.a
 	rm -f $@
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
@@ -2617,12 +2610,31 @@ endif
 
 # The same as libucrt.a above, but without the -private lib and with some more
 # statically linked functions.
-%/libucrtapp.a: lib-common/ucrtapp.mri %/libucrt_extra.a %/libucrtapp_extra.a \
-		%/libapi-ms-win-crt-conio-l1-1-0.a %/libapi-ms-win-crt-convert-l1-1-0.a %/libapi-ms-win-crt-environment-l1-1-0.a \
-		%/libapi-ms-win-crt-filesystem-l1-1-0.a %/libapi-ms-win-crt-heap-l1-1-0.a %/libapi-ms-win-crt-locale-l1-1-0.a \
-		%/libapi-ms-win-crt-math-l1-1-0.a %/libapi-ms-win-crt-multibyte-l1-1-0.a \
-		%/libapi-ms-win-crt-process-l1-1-0.a %/libapi-ms-win-crt-runtime-l1-1-0.a %/libapi-ms-win-crt-stdio-l1-1-0.a \
-		%/libapi-ms-win-crt-string-l1-1-0.a %/libapi-ms-win-crt-time-l1-1-0.a %/libapi-ms-win-crt-utility-l1-1-0.a \
+%/libucrtapp.a: lib-common/ucrtapp.mri \
+		%/libapi-ms-win-crt-conio-l1-1-0.a \
+		%/libapi-ms-win-crt-convert-l1-1-0.a \
+		%/libapi-ms-win-crt-environment-l1-1-0.a \
+		%/libapi-ms-win-crt-filesystem-l1-1-0.a \
+		%/libapi-ms-win-crt-heap-l1-1-0.a \
+		%/libapi-ms-win-crt-locale-l1-1-0.a \
+		%/libapi-ms-win-crt-math-l1-1-0.a \
+		%/libapi-ms-win-crt-multibyte-l1-1-0.a \
+		%/libapi-ms-win-crt-process-l1-1-0.a \
+		%/libapi-ms-win-crt-runtime-l1-1-0.a \
+		%/libapi-ms-win-crt-stdio-l1-1-0.a \
+		%/libapi-ms-win-crt-string-l1-1-0.a \
+		%/libapi-ms-win-crt-time-l1-1-0.a \
+		%/libapi-ms-win-crt-utility-l1-1-0.a \
+		%/libucrt_extra.a \
+		%/libucrtapp_extra.a \
+		%/libvcruntime140_threads.a
+	rm -f $@
+	cd $(dir $@) && $(AR) -M < $(abspath $<)
+	$(RANLIB) $@
+
+%/libucrtbase.a: lib-common/ucrtbase.mri \
+		%/libucrtbase_def.a \
+		%/libucrt_extra.a \
 		%/libvcruntime140_threads.a
 	rm -f $@
 	cd $(dir $@) && $(AR) -M < $(abspath $<)
@@ -2657,7 +2669,7 @@ noinst_HEADERS = include/internal.h
 # Cleaning options
 #
 
-CLEANFILES = $(BUILT_SOURCES) $(crt64_DATA) $(lib64_DATA) $(processed_defs)
+CLEANFILES = $(BUILT_SOURCES) $(crt64_DATA) $(lib64_DATA) $(processed_defs) $(noinst_LIBRARIES)
 
 # Distribution options
 #
@@ -2686,9 +2698,6 @@ EXTRA_DIST += \
   profile/CYGWIN_LICENSE
 
 DISTCHECK_CONFIGURE_FLAGS = --host=$(host_triplet) $(withsys)
-
-dist-hook:
-	find $(top_distdir) -name ".svn" -delete
 
 # Testsuite options
 #

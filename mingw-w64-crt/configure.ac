@@ -270,7 +270,6 @@ AS_CASE([$warning_level],
 
 AC_SUBST(ADD_C_ONLY_WARNING_FLAGS)
 AC_SUBST(ADD_C_CXX_WARNING_FLAGS)
-AC_SUBST(ADD_CXX_ONLY_WARNING_FLAGS)
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
@@ -288,7 +287,6 @@ AC_MSG_NOTICE([])
 AC_MSG_NOTICE([  WinARM64 runtime.....: $enable_libarm64])
 AC_MSG_NOTICE([  Win64 runtime........: $enable_lib64])
 AC_MSG_NOTICE([  C Warning Flags......: $ADD_C_ONLY_WARNING_FLAGS])
-AC_MSG_NOTICE([  C++ Warning Flags....: $ADD_CXX_ONLY_WARNING_FLAGS])
 AC_MSG_NOTICE([  Common Warning Flags.: $ADD_C_CXX_WARNING_FLAGS])
 AC_MSG_NOTICE([  Control Flow Guard...: $enable_cfguard])
 AC_MSG_NOTICE([])

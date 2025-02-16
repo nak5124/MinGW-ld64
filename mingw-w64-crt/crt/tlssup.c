@@ -5,11 +5,6 @@
  *
  * Written by Kai Tietz  <kai.tietz@onevision.com>
  */
-
-#ifdef CRTDLL
-#undef CRTDLL
-#endif
-
 #include <internal.h>
 #include <stdio.h>
 #include <memory.h>
