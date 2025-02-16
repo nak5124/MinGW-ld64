@@ -647,7 +647,6 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
-ADD_CXX_ONLY_WARNING_FLAGS
 ADD_C_CXX_WARNING_FLAGS
 ADD_C_ONLY_WARNING_FLAGS
 IMAGEBASE_CFLAGS
@@ -6860,7 +6859,6 @@ esac
 
 
 
-
 ac_config_files="$ac_config_files Makefile"
 
 cat >confcache <<\_ACEOF
@@ -8393,8 +8391,6 @@ printf "%s\n" "$as_me:   WinARM64 runtime.....: $enable_libarm64" >&6;}
 printf "%s\n" "$as_me:   Win64 runtime........: $enable_lib64" >&6;}
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   C Warning Flags......: $ADD_C_ONLY_WARNING_FLAGS" >&5
 printf "%s\n" "$as_me:   C Warning Flags......: $ADD_C_ONLY_WARNING_FLAGS" >&6;}
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}:   C++ Warning Flags....: $ADD_CXX_ONLY_WARNING_FLAGS" >&5
-printf "%s\n" "$as_me:   C++ Warning Flags....: $ADD_CXX_ONLY_WARNING_FLAGS" >&6;}
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   Common Warning Flags.: $ADD_C_CXX_WARNING_FLAGS" >&5
 printf "%s\n" "$as_me:   Common Warning Flags.: $ADD_C_CXX_WARNING_FLAGS" >&6;}
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   Control Flow Guard...: $enable_cfguard" >&5

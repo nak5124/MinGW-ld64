@@ -612,8 +612,6 @@ PACKAGE_URL=''
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 IDLHEAD_LIST
-MINGW_HAS_DDK
-DDKHEAD_LIST
 SSPHEAD_LIST
 SYSHEAD_LIST
 MINGWHELPERHEAD_LIST
@@ -715,7 +713,6 @@ enable_option_checking
 enable_silent_rules
 enable_maintainer_mode
 with_widl
-enable_sdk
 enable_idl
 '
       ac_precious_vars='build_alias
@@ -1354,8 +1351,6 @@ Optional Features:
   --enable-maintainer-mode
                           enable make rules and dependencies not useful (and
                           sometimes confusing) to the casual installer
-  --enable-sdk=ARG        Add the desired SDK, where ARG can be one of ddk, no
-                          or all. Default is all.
   --enable-idl            Enable installing idl files
 
 Optional Packages:
@@ -2981,53 +2976,6 @@ MINGWHELPERHEAD_LIST=$srcdir/include/psdk_inc/*.h
 
 
 
-
-
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for optional sdk headers" >&5
-printf %s "checking for optional sdk headers... " >&6; }
-# Check whether --enable-sdk was given.
-if test ${enable_sdk+y}
-then :
-  enableval=$enable_sdk;
-else case e in #(
-  e) enable_sdk=all ;;
-esac
-fi
-
-
-case $enable_sdk in #(
-  all|yes) :
-
-    enable_sdk=ddk
-    enable_ddk=yes ;; #(
-  ddk) :
-
-    enable_ddk=yes ;; #(
-  directx) :
-
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Deprecated option: directx.  directx headers are always enabled." >&5
-printf "%s\n" "$as_me: WARNING: Deprecated option: directx.  directx headers are always enabled." >&2;} ;; #(
-  no) :
-     ;; #(
-  *) :
-    as_fn_error $? "Invalid option: $enable_sdk.  Please choose one of ddk, no or all." "$LINENO" 5 ;;
-esac
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $enable_sdk" >&5
-printf "%s\n" "$enable_sdk" >&6; }
-
-if test "x$enable_ddk" = xyes
-then :
-
-    DDKHEAD_LIST=$srcdir/ddk/include/ddk/*.h
-    MINGW_HAS_DDK=1
-
-else case e in #(
-  e)
-    MINGW_HAS_DDK=0
-   ;;
-esac
-fi
 
 
 
