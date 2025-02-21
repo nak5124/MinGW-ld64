@@ -657,11 +657,6 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
-COPY_STATIC_FALSE
-COPY_STATIC_TRUE
-COPY_SHARED_FALSE
-COPY_SHARED_TRUE
-LT_OBJDIR
 RC
 LT_SYS_LIBRARY_PATH
 OTOOL64
@@ -14439,34 +14434,6 @@ CC=$lt_save_CC
 CFLAGS=$lt_save_CFLAGS
 
 
-LT_OBJDIR=$lt_cv_objdir
-
-
-if test "x$enable_shared" = xyes
-then :
-  copy_shared=
-fi
-if test "x$enable_static" = xyes
-then :
-  copy_static=
-fi
- if test ${copy_shared+y} ; then
-  COPY_SHARED_TRUE=
-  COPY_SHARED_FALSE='#'
-else
-  COPY_SHARED_TRUE='#'
-  COPY_SHARED_FALSE=
-fi
-
- if test ${copy_static+y} ; then
-  COPY_STATIC_TRUE=
-  COPY_STATIC_FALSE='#'
-else
-  COPY_STATIC_TRUE='#'
-  COPY_STATIC_FALSE=
-fi
-
-
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-lpthread':
 #AC_CHECK_LIB([pthread], [main])
@@ -14695,14 +14662,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${MSVC_TRUE}" && test -z "${MSVC_FALSE}"; then
   as_fn_error $? "conditional \"MSVC\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${COPY_SHARED_TRUE}" && test -z "${COPY_SHARED_FALSE}"; then
-  as_fn_error $? "conditional \"COPY_SHARED\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${COPY_STATIC_TRUE}" && test -z "${COPY_STATIC_FALSE}"; then
-  as_fn_error $? "conditional \"COPY_STATIC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 
