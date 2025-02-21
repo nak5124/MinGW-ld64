@@ -211,6 +211,7 @@ for f in \
 	proofofpossessioncookieinfo \
 	qedit \
 	relogger \
+	restrictedErrorInfo \
 	rtworkq \
 	spatialaudioclient \
 	taskschd \

@@ -200,6 +200,7 @@ IDL_SRCS = \
   include/propsys.idl \
   include/rdpencomapi.idl \
   include/regbag.idl \
+  include/restrictederrorinfo.idl \
   include/sapi51.idl \
   include/sapi53.idl \
   include/sapi54.idl \
