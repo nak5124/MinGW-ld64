@@ -10,13 +10,6 @@
 #include <apiset.h>
 #include <apisetcconv.h>
 
-#ifdef _CONTRACT_GEN
-#include <nt.h>
-#include <ntrtl.h>
-#include <nturtl.h>
-#include <minwindef.h>
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
