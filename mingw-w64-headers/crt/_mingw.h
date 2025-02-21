@@ -384,9 +384,12 @@
 # define __MINGW_END_C_DECLS     \
     }                            \
     _Pragma(__STRING(pack(pop)))
-#else
+#elif !defined(__WIDL__)
 # define __MINGW_BEGIN_C_DECLS _Pragma(__MINGW_STRING(pack(push, _CRT_PACKING)))
 # define __MINGW_END_C_DECLS   _Pragma(__STRING(pack(pop)))
+#else
+# define __MINGW_BEGIN_C_DECLS
+# define __MINGW_END_C_DECLS
 #endif
 
 #ifndef _HAS_EXCEPTIONS
@@ -412,10 +415,12 @@
 #define _MRTIMP
 
 /* Microsoft-specific sized integer types */
-#define __int8  char
-#define __int16 short
-#define __int32 int
-#define __int64 long long
+#ifndef __WIDL__
+# define __int8  char
+# define __int16 short
+# define __int32 int
+# define __int64 long long
+#endif
 
 #define __ptr32
 #define __ptr64
@@ -581,7 +586,7 @@
 
 __MINGW_BEGIN_C_DECLS
 
-#ifndef __ASSEMBLER__
+#if !defined(__ASSEMBLER__) && !defined(__WIDL__)
 
 #ifndef _SIZE_T_DEFINED
 # define _SIZE_T_DEFINED
@@ -664,7 +669,7 @@ __MINGW_BEGIN_C_DECLS
 /* mingw-w64 specific functions: */
   const char *__mingw_get_crt_info(void);
 
-#endif  /* __ASSEMBLER__ */
+#endif  /* !defined(__ASSEMBLER__) && !defined(__WIDL__) */
 
 __MINGW_END_C_DECLS
 
