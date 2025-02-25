@@ -6,7 +6,7 @@
 #ifndef __TRAFFIC_H
 #define __TRAFFIC_H
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <ntddndis.h>
 
 #ifdef __cplusplus

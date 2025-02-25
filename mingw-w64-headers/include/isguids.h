@@ -6,7 +6,7 @@
 #ifndef _ISGUIDS_H_
 #define _ISGUIDS_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #define IID_IUniformResourceLocator __MINGW_NAME_AW(IID_IUniformResourceLocator)
 

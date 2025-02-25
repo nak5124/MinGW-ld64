@@ -6,7 +6,7 @@
 #ifndef __ERRORREP_H__
 #define __ERRORREP_H__
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 typedef enum tagEFaultRepRetVal {
   frrvOk = 0,

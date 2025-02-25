@@ -5,7 +5,7 @@
  */
 #ifndef _DBT_H
 #define _DBT_H
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #define WM_DEVICECHANGE 0x0219
 

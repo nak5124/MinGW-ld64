@@ -7,7 +7,6 @@
 #define _WINCRED_H_
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 #include <apisetcconv.h>
 
 #if !defined(CREDUIAPI)

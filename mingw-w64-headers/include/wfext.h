@@ -6,7 +6,7 @@
 #ifndef _INC_WFEXT
 #define _INC_WFEXT
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

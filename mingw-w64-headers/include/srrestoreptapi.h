@@ -6,7 +6,7 @@
 #if !defined(_SRRESTOREPTAPI_H)
 #define _SRRESTOREPTAPI_H
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #define MIN_EVENT 100
 #define BEGIN_SYSTEM_CHANGE 100

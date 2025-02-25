@@ -6,7 +6,7 @@
 #define __ACCESS_CONTROL__
 
 #ifndef __WIDL__
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <wtypes.h>
 #endif
 

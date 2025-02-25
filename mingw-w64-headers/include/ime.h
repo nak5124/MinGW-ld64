@@ -6,7 +6,7 @@
 #ifndef _IME_
 #define _IME_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

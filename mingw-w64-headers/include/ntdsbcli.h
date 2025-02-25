@@ -6,7 +6,7 @@
 #ifndef _NTDSBCLI_H_
 #define _NTDSBCLI_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

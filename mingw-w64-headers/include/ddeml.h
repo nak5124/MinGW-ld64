@@ -7,7 +7,7 @@
 #ifndef _INC_DDEMLH
 #define _INC_DDEMLH
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

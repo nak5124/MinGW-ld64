@@ -6,7 +6,7 @@
 #ifndef _INC_ESENT
 #define _INC_ESENT
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

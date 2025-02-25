@@ -1,4 +1,4 @@
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 /*
  * Copyright (C) 2008 Tony Wasserka
  *

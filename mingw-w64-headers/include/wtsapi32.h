@@ -6,7 +6,7 @@
 #ifndef _INC_WTSAPI
 #define _INC_WTSAPI
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

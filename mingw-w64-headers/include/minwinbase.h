@@ -6,7 +6,7 @@
 #ifndef _MINWINBASE_
 #define _MINWINBASE_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

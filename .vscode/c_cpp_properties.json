@@ -13,7 +13,9 @@
                 "_GNU_SOURCE",
                 "_FORTIFY_SOURCE=3",
                 "_WIN32_WINNT=0x0A00",
-                "WINVER=0x0A00"
+                "WINVER=0x0A00",
+                "UNICODE",
+                "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.26100.0",
             "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",

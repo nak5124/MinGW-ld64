@@ -7,7 +7,6 @@
 #define __WINCRYPT_H__
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 #include <specstrings.h>
 #include <winapifamily.h>
 #include <guiddef.h>

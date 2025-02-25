@@ -1,4 +1,4 @@
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 /*
  * Copyright 2010 Christian Costa
  *

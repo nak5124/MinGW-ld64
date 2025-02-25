@@ -3,7 +3,7 @@
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <psdk_inc/_push_BOOL.h>
 
 #define MSH_MOUSEWHEEL __MINGW_STRING_AW("MSWHEEL_ROLLMSG")

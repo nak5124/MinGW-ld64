@@ -7,7 +7,6 @@
 #define _CFGMGR32_H_
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 #include <winapifamily.h>
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_APP)

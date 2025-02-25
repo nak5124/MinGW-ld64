@@ -6,7 +6,7 @@
 #ifndef _INC_DIGITALV
 #define _INC_DIGITALV 100
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <pshpack1.h>
 
 #ifdef __cplusplus

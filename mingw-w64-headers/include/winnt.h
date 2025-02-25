@@ -10,7 +10,6 @@ extern "C" {
 #endif
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 #include <ctype.h>
 #include <winapifamily.h>
 

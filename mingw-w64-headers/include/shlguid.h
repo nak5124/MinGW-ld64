@@ -6,7 +6,7 @@
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifndef _WIN32_IE
 #define _WIN32_IE 0x0501

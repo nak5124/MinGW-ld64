@@ -5,7 +5,7 @@
 #ifndef _PATCHAPI_H_
 #define _PATCHAPI_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)

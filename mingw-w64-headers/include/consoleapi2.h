@@ -6,7 +6,7 @@
 #ifndef _APISETCONSOLEL2_
 #define _APISETCONSOLEL2_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <minwindef.h>

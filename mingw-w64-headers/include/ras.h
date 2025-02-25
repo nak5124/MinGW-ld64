@@ -8,7 +8,7 @@
 #ifndef _RAS_H_
 #define _RAS_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 

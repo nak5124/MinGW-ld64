@@ -6,7 +6,7 @@
 #ifndef _WINNETWK_
 #define _WINNETWK_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -4,7 +4,7 @@
  */
 
 #include <winapifamily.h>
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 

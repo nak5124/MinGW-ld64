@@ -7,7 +7,6 @@
 #define _WINSVC_
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 #include <winapifamily.h>
 #include <apisetcconv.h>
 

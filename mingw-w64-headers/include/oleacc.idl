@@ -4,7 +4,7 @@
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-cpp_quote("#include <_mingw_unicode.h>")
+cpp_quote("#include <_mingw.h>")
 
 import "oaidl.idl";
 

@@ -16,7 +16,7 @@ import_header() {
     unicode_fix=
     if test -n "$(grep WINELIB_NAME_AW\\\|DECL_WINELIB_TYPE_AW $srcfile)"; then
         unicode_fix="yes"
-        echo '#include <_mingw_unicode.h>' >>$dstfile
+        echo '#include <_mingw.h>' >>$dstfile
     fi
     if test -n "$(grep -w INTERFACE $srcfile)"; then
         echo '#undef INTERFACE' >>$dstfile

@@ -7,7 +7,7 @@
 #ifndef _IMM_
 #define _IMM_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

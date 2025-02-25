@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #undef INTERFACE
 
 #ifndef __DSOUND_INCLUDED__

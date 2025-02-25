@@ -9,7 +9,6 @@
 #define _INC_COMMDLG
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 
 #ifdef DEFINE_GUID
   DEFINE_GUID(IID_IPrintDialogCallback, 0x5852a2c3, 0x6530, 0x11d1, 0xb6, 0xa3, 0x0, 0x0, 0xf8, 0x75, 0x7b, 0xf9);

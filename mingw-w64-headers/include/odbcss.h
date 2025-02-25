@@ -6,7 +6,7 @@
 #ifndef __ODBCSS
 #define __ODBCSS
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

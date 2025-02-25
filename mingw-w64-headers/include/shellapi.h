@@ -6,7 +6,7 @@
 #ifndef _INC_SHELLAPI
 #define _INC_SHELLAPI
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <specstrings.h>
 
 #ifndef WINSHELLAPI

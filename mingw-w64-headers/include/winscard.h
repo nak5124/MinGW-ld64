@@ -7,7 +7,6 @@
 #define _WINSCARD_H_
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 #include <wtypes.h>
 #include <winioctl.h>
 #include "winsmcrd.h"

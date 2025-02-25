@@ -7,7 +7,7 @@
 #ifndef __RPCNSI_H__
 #define __RPCNSI_H__
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 

@@ -12,7 +12,7 @@
 # warning Please include winsock2.h before windows.h
 #endif
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #ifndef _WINSOCK_DEPRECATED_BY

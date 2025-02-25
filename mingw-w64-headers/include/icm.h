@@ -6,7 +6,7 @@
 #ifndef _ICM_H_
 #define _ICM_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

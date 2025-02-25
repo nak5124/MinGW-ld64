@@ -6,7 +6,7 @@
 #ifndef _PDH_H_
 #define _PDH_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <windows.h>
 #include <winperf.h>
 

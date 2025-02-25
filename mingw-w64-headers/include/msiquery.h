@@ -6,7 +6,7 @@
 #ifndef _MSIQUERY_H_
 #define _MSIQUERY_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include "msi.h"
 
 #define MSI_NULL_INTEGER 0x80000000

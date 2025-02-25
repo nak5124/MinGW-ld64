@@ -6,7 +6,7 @@
 #ifndef _WS2TCPIP_H_
 #define _WS2TCPIP_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #ifndef _WINSOCK_DEPRECATED_BY

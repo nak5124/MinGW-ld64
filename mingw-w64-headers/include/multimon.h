@@ -3,7 +3,7 @@
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)

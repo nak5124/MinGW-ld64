@@ -6,7 +6,7 @@
 #ifndef _SHLOBJ_H_
 #define _SHLOBJ_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <wtypesbase.h>
 #include <wincrypt.h>
 #include <winapifamily.h>
@@ -42,8 +42,6 @@ typedef enum {
 #endif
 
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
-
-#include <_mingw_unicode.h>
 
 #ifndef _WINRESRC_
 #ifndef _WIN32_IE

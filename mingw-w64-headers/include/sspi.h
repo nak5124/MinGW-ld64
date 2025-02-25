@@ -6,7 +6,7 @@
 #ifndef __SSPI_H__
 #define __SSPI_H__
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <ntsecapi.h>
 
 #ifdef __cplusplus

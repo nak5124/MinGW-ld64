@@ -6,7 +6,7 @@
 #ifndef __XOLEHLP__H__
 #define __XOLEHLP__H__
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #define EXPORTAPI __declspec(dllexport) HRESULT
 

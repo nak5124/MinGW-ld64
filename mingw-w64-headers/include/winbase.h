@@ -6,7 +6,7 @@
 #ifndef _WINBASE_
 #define _WINBASE_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #include <apisetcconv.h>
 #include <minwinbase.h>

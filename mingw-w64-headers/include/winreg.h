@@ -6,7 +6,7 @@
 #ifndef _WINREG_
 #define _WINREG_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #include <apiset.h>

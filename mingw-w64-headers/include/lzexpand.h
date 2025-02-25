@@ -6,7 +6,7 @@
 #ifndef _LZEXPAND_
 #define _LZEXPAND_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #ifdef __cplusplus

@@ -6,7 +6,7 @@
 #ifndef _WINUSER_
 #define _WINUSER_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <apisetcconv.h>
 
 #ifdef __cplusplus

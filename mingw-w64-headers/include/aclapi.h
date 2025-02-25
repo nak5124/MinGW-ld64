@@ -7,7 +7,7 @@
 
 #include <winapifamily.h>
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <windows.h>
 #include <accctrl.h>
 

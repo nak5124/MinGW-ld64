@@ -6,7 +6,7 @@
 #ifndef _IMAGEHLP_
 #define _IMAGEHLP_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <dbghelp.h>
 
 #ifndef WINTRUST_H

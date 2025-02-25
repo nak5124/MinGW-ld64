@@ -6,7 +6,7 @@
 #ifndef _INC_SHLWAPI
 #define _INC_SHLWAPI
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #ifndef NOSHLWAPI

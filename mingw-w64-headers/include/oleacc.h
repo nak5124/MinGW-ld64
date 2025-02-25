@@ -34,7 +34,7 @@ interface IAccessible;
 extern "C" {
 #endif
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #ifndef __IAccessibleHandler_FWD_DEFINED__
 #define __IAccessibleHandler_FWD_DEFINED__
 typedef struct IAccessibleHandler IAccessibleHandler;

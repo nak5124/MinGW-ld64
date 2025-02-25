@@ -6,7 +6,7 @@
 #ifndef _SMX_H_
 #define _SMX_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #define MENU_TEXT_LEN 50
 

@@ -2453,7 +2453,7 @@ extern "C" {
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 
 #include <sherrors.h>

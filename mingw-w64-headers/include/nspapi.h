@@ -6,7 +6,7 @@
 #ifndef _NSPAPI_INCLUDED
 #define _NSPAPI_INCLUDED
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifdef __cplusplus
 extern "C" {

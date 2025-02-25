@@ -6,7 +6,7 @@
 #ifndef _SHFOLDER_H_
 #define _SHFOLDER_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifndef SHFOLDERAPI
 #if defined(_SHFOLDER_)

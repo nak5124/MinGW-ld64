@@ -6,7 +6,7 @@
 #ifndef __SCHANNEL_H__
 #define __SCHANNEL_H__
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <wincrypt.h>
 
 #define UNISP_NAME_A "Microsoft Unified Security Protocol Provider"

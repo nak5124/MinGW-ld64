@@ -6,7 +6,7 @@
 #ifndef _MSI_H_
 #define _MSI_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifndef NTDDI_WIN2K
 #define NTDDI_WIN2K 0x05000000

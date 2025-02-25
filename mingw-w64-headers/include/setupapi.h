@@ -6,7 +6,7 @@
 #ifndef _INC_SETUPAPI
 #define _INC_SETUPAPI
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifndef _SETUPAPI_
 #define WINSETUPAPI DECLSPEC_IMPORT

@@ -6,7 +6,7 @@
 #ifndef _OLEDLG_H_
 #define _OLEDLG_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifndef RC_INVOKED
 #ifndef __cplusplus

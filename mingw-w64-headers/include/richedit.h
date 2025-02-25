@@ -6,7 +6,7 @@
 #ifndef _RICHEDIT_
 #define _RICHEDIT_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 #include <wtypes.h>
 #include <objbase.h>

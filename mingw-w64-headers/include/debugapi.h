@@ -5,7 +5,7 @@
 #ifndef _APISETDEBUG_
 #define _APISETDEBUG_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <minwindef.h>

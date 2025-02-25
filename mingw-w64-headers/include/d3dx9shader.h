@@ -1,4 +1,4 @@
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #undef INTERFACE
 /*
  * Copyright 2008 Luis Busquets

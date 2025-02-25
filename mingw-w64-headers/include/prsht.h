@@ -8,7 +8,6 @@
 #define _PRSHT_H_
 
 #include <_mingw.h>
-#include <_mingw_unicode.h>
 
 #ifndef WINCOMMCTRLAPI
 # define WINCOMMCTRLAPI DECLSPEC_IMPORT

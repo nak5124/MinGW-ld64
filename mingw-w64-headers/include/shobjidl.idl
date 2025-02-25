@@ -7,7 +7,7 @@ cpp_quote("#include <winapifamily.h>")
 cpp_quote("")
 cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)")
 cpp_quote("")
-cpp_quote("#include <_mingw_unicode.h>")
+cpp_quote("#include <_mingw.h>")
 cpp_quote("")
 
 import "objidl.idl";

@@ -6,7 +6,7 @@
 #ifndef _DSGETDC_
 #define _DSGETDC_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #ifndef _DSGETDCAPI_
 #define DSGETDCAPI DECLSPEC_IMPORT

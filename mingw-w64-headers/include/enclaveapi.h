@@ -6,7 +6,7 @@
 #ifndef _ENCLAVEAPI_H_
 #define _ENCLAVEAPI_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <minwindef.h>

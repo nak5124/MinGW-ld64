@@ -5,7 +5,7 @@
 #ifndef _WOW64APISET_H_
 #define _WOW64APISET_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <minwindef.h>

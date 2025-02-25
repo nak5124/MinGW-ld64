@@ -6,7 +6,7 @@
 #ifndef _WINSPOOL_
 #define _WINSPOOL_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <winapifamily.h>
 
 #ifdef _WINUSER_

@@ -6,7 +6,7 @@
 #ifndef _STRSAFE_H_INCLUDED_
 #define _STRSAFE_H_INCLUDED_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>

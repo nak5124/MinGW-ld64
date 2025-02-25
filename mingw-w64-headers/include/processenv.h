@@ -6,7 +6,7 @@
 #ifndef _PROCESSENV_
 #define _PROCESSENV_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <minwindef.h>

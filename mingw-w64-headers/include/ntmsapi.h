@@ -6,7 +6,7 @@
 #ifndef _INCL_NTMSAPI_H_
 #define _INCL_NTMSAPI_H_
 
-#include <_mingw_unicode.h>
+#include <_mingw.h>
 
 #pragma pack(8)
 
