@@ -434,6 +434,18 @@
 #define _VCRTIMP _CRTIMP
 #define _MRTIMP
 
+#ifndef __WIDL__
+# ifndef _CONST_RETURN
+#   ifdef __cplusplus
+#     define _CONST_RETURN const
+#     define _CRT_CONST_CORRECT_OVERLOADS
+#   else
+#     define _CONST_RETURN
+#   endif
+# endif
+# define _WConst_return _CONST_RETURN
+#endif  /* __WIDL__ */
+
 /* Microsoft-specific sized integer types */
 #ifndef __WIDL__
 # define __int8  char
@@ -450,6 +462,14 @@
 #ifndef __w64
 # define __w64
 #endif
+
+#ifndef NULL
+# ifdef __cplusplus
+#   define NULL 0LL
+# else
+#   define NULL ((void *)0)
+# endif  /* __cplusplus */
+#endif  /* NULL */
 
 #ifndef __WIDL__
 # ifndef _UNALIGNED
