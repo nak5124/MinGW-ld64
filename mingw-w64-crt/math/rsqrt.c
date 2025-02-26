@@ -34,8 +34,7 @@ SOFTWARE.
 double      __cdecl rsqrt(double _X);
 long double __cdecl rsqrtl(long double _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 

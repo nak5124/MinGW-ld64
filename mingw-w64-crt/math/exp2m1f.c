@@ -1,6 +1,6 @@
 /* Correctly-rounded base-2 exponent function biased by 1 for binary32 value.
 
-Copyright (c) 2022 Alexei Sibidanov.
+Copyright (c) 2022-2025 Alexei Sibidanov.
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -29,8 +29,7 @@ SOFTWARE.
 
 float __cdecl exp2m1f(float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -66,7 +65,14 @@ float __cdecl exp2m1f(float x){
           if (__builtin_expect(ax<0x3a358876u, 0)){ // |x| < 4.8e-4/log(2)
             if (__builtin_expect(ax<0x37d32ef6u, 0)){ // |x| < 1.745e-5/log(2)
               if (__builtin_expect(ax<0x331fdd82u, 0)){ // |x| < 2.58e-8/log(2)
-                if (__builtin_expect(ax<0x2538aa3bu, 0)){ // |x| < 1.60171e-16
+                if (__builtin_expect(ax<0x2538aa3bu, 0)){ // |x| < 0x1.715476p-53
+                  /* exp2m1(x) underflows:
+                   * for |x| <= 0x1.715476p-126 for rounding toward zero
+                   * for |x| <= 0x1.715474p-126 for rounding to nearest/away */
+                    if (x != 0 && (__builtin_fabsf (x) <= 0x1.715474p-126f ||
+                                   (__builtin_fabsf (x) == 0x1.715476p-126f &&
+                                    __builtin_fabsf (x * 5.0f) <= 0x1.cda992p-124f)))
+                      errno = ERANGE; // underflow
                   r = 0x1.62e42fefa39efp-1;
                 } else {
                   r = 0x1.62e42fefa39fp-1 + z * 0x1.ebfbdff82c58fp-3;

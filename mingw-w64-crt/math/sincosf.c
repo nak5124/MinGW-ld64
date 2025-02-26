@@ -1,6 +1,6 @@
 /* Correctly-rounded sincos of binary32 value.
 
-Copyright (c) 2024 Alexei Sibidanov
+Copyright (c) 2024-2025 Alexei Sibidanov
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -28,47 +28,11 @@ SOFTWARE.
 
 void __cdecl sincosf(float __x, float *__sin, float *__cos);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
 #pragma STDC FENV_ACCESS ON
-
-/* __builtin_roundeven was introduced in gcc 10:
-   https://gcc.gnu.org/gcc-10/changes.html,
-   and in clang 17 */
-#if (defined(__GNUC__) && __GNUC__ >= 10) || (defined(__clang__) && __clang_major__ >= 17)
-# define roundeven_finite(x) __builtin_roundeven (x)
-#else
-/* round x to nearest integer, breaking ties to even */
-static double
-roundeven_finite (double x)
-{
-  double ix;
-# if (defined(__GNUC__) || defined(__clang__)) && (defined(__AVX__) || defined(__SSE4_1__) || (__ARM_ARCH >= 8))
-#  if defined __AVX__
-   __asm__("vroundsd $0x8,%1,%1,%0":"=x"(ix):"x"(x));
-#  elif __ARM_ARCH >= 8
-   __asm__ ("frintn %d0, %d1":"=w"(ix):"w"(x));
-#  else /* __SSE4_1__ */
-   __asm__("roundsd $0x8,%1,%0":"=x"(ix):"x"(x));
-#  endif
-# else
-  ix = __builtin_round (x); /* nearest, away from 0 */
-  if (__builtin_fabs (ix - x) == 0.5)
-  {
-    /* if ix is odd, we should return ix-1 if x>0, and ix+1 if x<0 */
-    union { double f; uint64_t n; } u, v;
-    u.f = ix;
-    v.f = ix - __builtin_copysign (1.0, x);
-    if (__builtin_ctz (v.n) > __builtin_ctz (u.n))
-      ix = v.f;
-  }
-# endif
-  return ix;
-}
-#endif
 
 typedef union {float f; uint32_t u;} b32u32_u;
 typedef union {double f; uint64_t u;} b64u64_u;
@@ -109,13 +73,13 @@ static double __NOINLINE rbig(uint32_t u, int *q){
 
 static inline double rltl(float z, int *q){
   double x = z;
-  double idl = -0x1.b1bbead603d8bp-29*x, idh = 0x1.45f306ep+2*x, id = roundeven_finite(idh);
+  double idl = -0x1.b1bbead603d8bp-29*x, idh = 0x1.45f306ep+2*x, id = __builtin_roundeven(idh);
   b64u64_u Q = {.f = 0x1.8p52 + id}; *q = Q.u;
   return (idh - id) + idl;
 }
 
 static inline double rltl0(double x, int *q){
-  double idh = 0x1.45f306dc9c883p+2*x, id = roundeven_finite(idh);
+  double idh = 0x1.45f306dc9c883p+2*x, id = __builtin_roundeven(idh);
   b64u64_u Q = {.f = 0x1.8p52 + id}; *q = Q.u;
   return idh - id;
 }
@@ -194,14 +158,19 @@ void __cdecl sincosf(float x, float *sout, float *cout){
   uint32_t ax = t.u<<1;
   int ia;
   double z0 = x, z;
-  if(__builtin_expect(ax<0x822d97c8u, 1)){
-    if (__builtin_expect(ax<0x73000000, 0)){
-      if (__builtin_expect(ax<0x66000000u, 0)){
+  if(__builtin_expect(ax<0x822d97c8u, 1)){ // |x| < 0x1.2d97c8p+3
+    if (__builtin_expect(ax<0x73000000u, 0)){ // |x| < 0x1p-12
+      if (__builtin_expect(ax<0x66000000u, 0)){ // |x| < 0x1p-25
         if (__builtin_expect(ax==0u, 0)){
           *sout = x;
           *cout = 1.0f;
         } else {
           *sout = __builtin_fmaf(-x, __builtin_fabsf(x), x);
+          /* We have underflow when |x| <= 0x1p-126 for rounding towards zero,
+             and when |x| < 0x1p-126 for rounding to nearest or away from zero.
+             In all cases this is when |sout| < 0x1p-126. */
+          if (__builtin_fabsf(*sout) < 0x1p-126)
+            errno = ERANGE; // underflow
           *cout = 1.0f - 0x1p-25f;
         }
       } else {

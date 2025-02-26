@@ -1,6 +1,6 @@
 /* Correctly-rounded tangent of binary32 value for angles in half-revolutions
 
-Copyright (c) 2022 Alexei Sibidanov.
+Copyright (c) 2022-2025 Alexei Sibidanov.
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -31,47 +31,11 @@ SOFTWARE.
 
 float __cdecl tanpif(float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
 #pragma STDC FENV_ACCESS ON
-
-/* __builtin_roundeven was introduced in gcc 10:
-   https://gcc.gnu.org/gcc-10/changes.html,
-   and in clang 17 */
-#if (defined(__GNUC__) && __GNUC__ >= 10) || (defined(__clang__) && __clang_major__ >= 17)
-# define roundevenf_finite(x) __builtin_roundevenf (x)
-#else
-/* round x to nearest integer, breaking ties to even */
-static float
-roundevenf_finite (float x)
-{
-  float ix;
-# if (defined(__GNUC__) || defined(__clang__)) && (defined(__AVX__) || defined(__SSE4_1__) || (__ARM_ARCH >= 8))
-#  if defined __AVX__
-   __asm__("vroundss $0x8,%1,%1,%0":"=x"(ix):"x"(x));
-#  elif __ARM_ARCH >= 8
-   __asm__ ("frintn %s0, %s1":"=w"(ix):"w"(x));
-#  else /* __SSE4_1__ */
-   __asm__("roundss $0x8,%1,%0":"=x"(ix):"x"(x));
-#  endif
-# else
-  ix = __builtin_roundf (x); /* nearest, away from 0 */
-  if (__builtin_fabsf (ix - x) == 0.5)
-  {
-    /* if ix is odd, we should return ix-1 if x>0, and ix+1 if x<0 */
-    union { float f; uint32_t n; } u, v;
-    u.f = ix;
-    v.f = ix - __builtin_copysign (1.0, x);
-    if (__builtin_ctz (v.n) > __builtin_ctz (u.n))
-      ix = v.f;
-  }
-# endif
-  return ix;
-}
-#endif
 
 typedef union {float f; uint32_t u;} b32u32_u;
 
@@ -89,8 +53,8 @@ float __cdecl tanpif(float x){
     }
     return __builtin_copysign(0.0f, x);
   }
-  float x4 = 4.0f*x, nx4 = roundevenf_finite(x4), dx4 = x4-nx4;
-  float ni = roundevenf_finite(x), zf = x-ni;
+  float x4 = 4.0f*x, nx4 = __builtin_roundevenf(x4), dx4 = x4-nx4;
+  float ni = __builtin_roundevenf(x), zf = x-ni;
   if(__builtin_expect(dx4 == 0.0f, 0)){ // 4*x integer
     int k = x4;
     if(k&1) return __builtin_copysignf(1.0f,zf); // x = 1/4 mod 1/2
@@ -102,6 +66,10 @@ float __cdecl tanpif(float x){
     // now necessarily k=6
     return -1.0f/0.0f; // x = -1/2 mod 2
   }
+
+  if (__builtin_fabsf (x) <= 0x1.45f306p-128f)
+    errno = ERANGE; // underflow
+
   ix.f = zf;
   uint32_t a = ix.u&(~0u>>1);
   // x=0x1.267004p-2 is not correctly rounded for RNDZ/RNDD by the code below

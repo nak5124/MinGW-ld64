@@ -31,12 +31,12 @@ SOFTWARE.
 #include <stdint.h>
 #include <inttypes.h>
 #include <fenv.h>
+#include <errno.h>
 
 void __cdecl sincos(double __x, double *__sin, double *__cos);
 void __cdecl sincosl(long double __x, long double *__sin, long double *__cos);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -44,11 +44,7 @@ void __cdecl sincosl(long double __x, long double *__sin, long double *__cos);
 
 /******************** code copied from dint.h and pow.[ch] *******************/
 
-#if (defined(__clang__) && __clang_major__ >= 14) || (defined(__GNUC__) && __GNUC__ >= 14)
 typedef unsigned _BitInt(128) u128;
-#else
-typedef unsigned __int128 u128;
-#endif
 
 typedef union {
   struct {
@@ -2201,6 +2197,8 @@ sincos (double x, double *s, double *c)
     // for x=-0, fma (x, -0x1p-54, x) returns +0
     *s = (x == 0) ? x : __builtin_fma (x, -0x1p-54, x);
     *c = (x == 0) ? 1.0 : 1.0 - 0x1p-54;
+    if (x != 0 && __builtin_fabs (*s) < 0x1p-1022)
+      errno = ERANGE;
     return;
   }
 

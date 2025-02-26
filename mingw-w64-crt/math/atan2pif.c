@@ -1,6 +1,6 @@
 /* Correctly-rounded half revolution arctangent function of two binary32 values.
 
-Copyright (c) 2022 Alexei Sibidanov.
+Copyright (c) 2022-2025 Alexei Sibidanov.
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -30,8 +30,7 @@ SOFTWARE.
 
 float __cdecl atan2pif(float _Y, float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -134,6 +133,7 @@ float __cdecl atan2pif(float y, float x){
   r = z*r + off[i];
   b64u64_u res = {.f = r};
   if(__builtin_expect((res.u<<1) > 0x6d40000000000000 && ((res.u + 8)&0xfffffff) <= 16, 0)){
+    // |res| > 0x1p-149
     if(ax==ay) {
       static const double off2[] = {0.25, 0.75, -0.25, -0.75};
       r = off2[(uy>>31)*2 + (ux>>31)];
@@ -181,7 +181,7 @@ float __cdecl atan2pif(float y, float x){
     }
   }
   float rf = r;
-  if (__builtin_expect (rf == 0.0f && y != 0.0f, 0))
+  if (__builtin_expect (__builtin_fabsf (rf) < 0x1p-126f && y != 0.0f, 0))
     errno = ERANGE;
   return rf;
 }

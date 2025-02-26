@@ -1,6 +1,6 @@
 /* Correctly-rounded biased argument base-10 logarithm function for binary32 value.
 
-Copyright (c) 2022-2023 Alexei Sibidanov.
+Copyright (c) 2022-2025 Alexei Sibidanov.
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -30,8 +30,7 @@ SOFTWARE.
 
 float __cdecl log10p1f(float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -132,7 +131,7 @@ float __cdecl log10p1f(float x){
   double v2 = v*v, f = (h[0] + v*h[1]) + v2*(h[2] + v*h[3]), r = off + v*f;
   float ub = r, lb = r + 0x1.5cp-42;
   if(__builtin_expect(ub != lb, 0)){
-    if(__builtin_expect(ax<0x3d32743eu, 0)){ // 0x1.64e87cp-5f
+    if(__builtin_expect(ax<0x3d32743eu, 0)){ // |x| < 0x1.64e87cp-5f
       if(__builtin_expect(ux==0xa6aba8afu,0)) return -0x1.2a33bcp-51f + 0x1p-76f;
       if(__builtin_expect(ux==0xaf39b9a7u,0)) return -0x1.42a342p-34f + 0x1p-59f;
       if(__builtin_expect(ux==0x399a7c00u,0)) return  0x1.0c53cap-13f + 0x1p-38f;
@@ -140,6 +139,8 @@ float __cdecl log10p1f(float x){
       double z2 = z*z, z4 = z2*z2;
       static const double c[] = {0x1.bcb7b1526e50fp-1, 0x1.287a76370129dp-2, 0x1.63c62378fa3dbp-3, 0x1.fca4139a42374p-4};
       r = z*((c[0] + z2*c[1]) + z4*(c[2] + z2*c[3]));
+      if (__builtin_fabs (r) < 0x1p-126)
+        errno = ERANGE; // underflow
       return r;
     }
     if(__builtin_expect(ux==0x7956ba5eu,0)) return 0x1.16bebap+5f + 0x1p-20f;

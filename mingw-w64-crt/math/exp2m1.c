@@ -29,47 +29,11 @@ SOFTWARE.
 double __cdecl exp2m1(double _X);
 long double __cdecl exp2m1l(long double _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
 #pragma STDC FENV_ACCESS ON
-
-/* __builtin_roundeven was introduced in gcc 10:
-   https://gcc.gnu.org/gcc-10/changes.html,
-   and in clang 17 */
-#if (defined(__GNUC__) && __GNUC__ >= 10) || (defined(__clang__) && __clang_major__ >= 17)
-# define roundeven_finite(x) __builtin_roundeven (x)
-#else
-/* round x to nearest integer, breaking ties to even */
-static double
-roundeven_finite (double x)
-{
-  double ix;
-# if (defined(__GNUC__) || defined(__clang__)) && (defined(__AVX__) || defined(__SSE4_1__) || (__ARM_ARCH >= 8))
-#  if defined __AVX__
-   __asm__("vroundsd $0x8,%1,%1,%0":"=x"(ix):"x"(x));
-#  elif __ARM_ARCH >= 8
-   __asm__ ("frintn %d0, %d1":"=w"(ix):"w"(x));
-#  else /* __SSE4_1__ */
-   __asm__("roundsd $0x8,%1,%0":"=x"(ix):"x"(x));
-#  endif
-# else
-  ix = __builtin_round (x); /* nearest, away from 0 */
-  if (__builtin_fabs (ix - x) == 0.5)
-  {
-    /* if ix is odd, we should return ix-1 if x>0, and ix+1 if x<0 */
-    union { double f; uint64_t n; } u, v;
-    u.f = ix;
-    v.f = ix - __builtin_copysign (1.0, x);
-    if (__builtin_ctz (v.n) > __builtin_ctz (u.n))
-      ix = v.f;
-  }
-# endif
-  return ix;
-}
-#endif
 
 #define LN2H 0x1.62e42fefa39efp-1
 #define LN2L 0x1.abc9e3b39803fp-56
@@ -308,7 +272,7 @@ typedef union {
 
 static inline void exp_1 (double *hi, double *lo, double xh, double xl) {
 #define INVLOG2 0x1.71547652b82fep+12 /* |INVLOG2-2^12/log(2)| < 2^-43.4 */
-  double k = roundeven_finite (xh * INVLOG2);
+  double k = __builtin_roundeven (xh * INVLOG2);
 
   double kh, kl;
 #define LOG2H 0x1.62e42fefa39efp-13
@@ -409,7 +373,7 @@ static inline void q_2 (double *hi, double *lo, double zh, double zl) {
 // returns a double-double approximation hi+lo of exp(x*log(2)) for |x| < 745
 static inline void exp_2 (double *hi, double *lo, double x) {
 
-  double k = roundeven_finite (x * 0x1p12);
+  double k = __builtin_roundeven (x * 0x1p12);
   // since |x| <= 745 we have k <= 3051520
 
   double yh, yl;

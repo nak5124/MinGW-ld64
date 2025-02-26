@@ -1,6 +1,6 @@
 /* Correctly-rounded log2(1+x) function for binary32 value.
 
-Copyright (c) 2022 Alexei Sibidanov.
+Copyright (c) 2022-2025 Alexei Sibidanov.
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -29,8 +29,7 @@ SOFTWARE.
 
 float __cdecl log2p1f(float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -131,7 +130,10 @@ float __cdecl log2p1f(float x) {
         if(__builtin_expect(ax<0x329c5639u, 1)){ // |x| < 0x1.38ac72p-26
           static const double c[] =
             {0x1.71547652b82fep+0, -0x1.71547652b82ffp-1};
-          return z*(c[0] + z*c[1]);
+          float res = z*(c[0] + z*c[1]);
+          if (x != 0 && __builtin_fabs (res) < 0x1p-126)
+            errno = ERANGE; // underflow
+          return res;
         } else {
           if(__builtin_expect(ux == 0x32ff7045u, 0)) return 0x1.70851ap-25f - 0x1.8p-80f;
           if(__builtin_expect(ux == 0xb395efbbu, 0)) return -0x1.b0a00ap-24f + 0x1p-76f;

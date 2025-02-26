@@ -31,8 +31,7 @@ SOFTWARE.
 
 float __cdecl asinpif(float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -45,12 +44,12 @@ float __cdecl asinpif(float x){
   double az = ax, z = x;
   b32u32_u t = {.f = x};
   int32_t e = (t.u>>23)&0xff;
-  if(__builtin_expect(e>=127, 0)){
-    if(ax == 1.0f) return __builtin_copysignf(0.5f, x);
+  if(__builtin_expect(e>=127, 0)){ // |x| >= 1 or nan
+    if(ax == 1.0f) return __builtin_copysignf(0.5f, x); // |x| = 1
     if(e==0xff && (t.u<<9)) return x+x; // nan
     errno = EDOM;
     feraiseexcept(FE_INVALID);
-    return __builtin_nanf("1");
+    return __builtin_nanf("1"); // |x| > 1
   }
   int32_t s = 146 - e, i = 0;
   // s<32 corresponds to |x| >= 2^-12
@@ -98,7 +97,15 @@ float __cdecl asinpif(float x){
     c0 += c2*z4;
     c4 += c6*z4;
     c0 += c4*(z4*z4);
-    if (__builtin_expect(ax <= 0x1.921fb4p-126f && ax != 0.0f, 0))
+    /* For rounding towards zero, the largest positive number for which there
+       is underflow is 0x1.921fb4p-125.
+       For rounding to nearest, it is 0x1.921fb4p-125 too (although the result
+       is 0x1p-126).
+       For rounding upwards, it is 0x1.921fb2p-125. */
+#define THRESHOLD 0x1.fffffe632357dp-127
+    if (ax != 0.0f && (__builtin_fabsf (x) <= 0x1.921fb2p-125f ||
+                       (__builtin_fabsf (x) == 0x1.921fb4p-125f &&
+                        __builtin_fabs (z * ch[0][0]) <= THRESHOLD)))
       errno = ERANGE; // underflow
     return z*c0;
   } else { // |x| >= 2^-4

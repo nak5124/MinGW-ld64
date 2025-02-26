@@ -1,6 +1,6 @@
 /* Correctly-rounded sine of binary32 value for angles in half-revolutions
 
-Copyright (c) 2022 Alexei Sibidanov.
+Copyright (c) 2022-2025 Alexei Sibidanov.
 
 This file is part of the CORE-MATH project
 (https://core-math.gitlabpages.inria.fr/).
@@ -30,8 +30,7 @@ SOFTWARE.
 
 float __cdecl sinpif(float _X);
 
-// Warning: clang also defines __GNUC__
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #endif
 
@@ -82,14 +81,17 @@ float __cdecl sinpif(float x){
   int32_t m = (ix.u&~0u>>9)|1<<23, sgn = ix.u; sgn >>= 31;
   m = (m^sgn) - sgn;
   int32_t s = 143 - e;
-  if(__builtin_expect(s<0, 0)){
-    if(__builtin_expect(s<-6, 0)) return __builtin_copysignf(0.0f, x);
+  if(__builtin_expect(s<0, 0)){ // |x| >= 0x1p+17
+    if(__builtin_expect(s<-6, 0)) // |x| >= 0x1p+23
+      return __builtin_copysignf(0.0f, x);
     int32_t iq = m<<(-s-1);
     iq &= 127;
     if(iq==0||iq==64) return __builtin_copysignf(0.0f, x);
     return S[iq];
-  } else if(__builtin_expect(s>30, 0)){
+  } else if(__builtin_expect(s>30, 0)){ // |x| < 0x1p-14
     double z = x, z2 = z*z;
+    if (x != 0 && __builtin_fabsf (x) <= 0x1.45f306p-128f)
+      errno = ERANGE; // underflow
     return z*(0x1.921fb54442d18p+1 + z2*(-0x1.4abbce625be53p+2));
   }
   int32_t si = 25 - s;
