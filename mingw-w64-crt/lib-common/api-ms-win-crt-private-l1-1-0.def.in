@@ -1114,3 +1114,4 @@ unexpected
 wcschr
 wcsrchr
 wcsstr
+wcswcs == wcsstr

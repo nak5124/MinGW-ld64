@@ -437,8 +437,9 @@
 #ifndef __WIDL__
 # ifndef _CONST_RETURN
 #   ifdef __cplusplus
-#     define _CONST_RETURN const
-#     define _CRT_CONST_CORRECT_OVERLOADS
+#     define  _CONST_RETURN const
+#     define  _CRT_CONST_CORRECT_OVERLOADS
+#     define __CORRECT_ISO_CPP_WCHAR_H_PROTO
 #   else
 #     define _CONST_RETURN
 #   endif

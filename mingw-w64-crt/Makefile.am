@@ -156,8 +156,7 @@ src_libmingwex=\
   misc/mkstemps.c            misc/qsort_r.c            misc/reallocarray.c    misc/realpath.c          misc/setenv.c             \
   misc/sleep.c               misc/strsafe.c            misc/tdelete.c         misc/tdestroy.c          misc/tfind.c              \
   misc/truncate.c            misc/truncate64.c         misc/tsearch.c         misc/twalk.c             misc/unsetenv.c           \
-  misc/wdirent.c             misc/wmemchr.c            misc/wmemcmp.c         misc/wmemcpy.c           misc/wmemmove.c           \
-  misc/wmempcpy.c            misc/wmemset.c            \
+  misc/wdirent.c             misc/wmempcpy.c           \
   \
   ssp/chk_fail.c             ssp/gets_chk.c            ssp/memcpy_chk.c       ssp/memmove_chk.c        ssp/mempcpy_chk.c         \
   ssp/memset_chk.c           ssp/stack_chk_fail.c      ssp/stack_chk_guard.c  ssp/stpcpy_chk.c         ssp/strcat_chk.c          \
@@ -214,6 +213,7 @@ src_libucrt=\
   misc/__badioinfo.c         misc/__initenv.c          misc/__p___initenv.c       misc/__p___winitenv.c    misc/__p__osplatform_emul.c \
   misc/__p__osver_emul.c     misc/__winitenv.c         misc/_onexit.c             misc/output_format.c     misc/ucrt__getmainargs.c    \
   misc/ucrt__wgetmainargs.c  misc/ucrt_amsg_exit.c     misc/ucrt_at_quick_exit.c  misc/ucrt_tzset.c        misc/ucrt-access.c          \
+  misc/wmemchr.c             misc/wmemcmp.c            misc/wmemcpy.c             misc/wmemmove.c          misc/wmemset.c              \
   \
   stdio/ucrt_fprintf.c       stdio/ucrt_fscanf.c       stdio/ucrt_fwprintf.c      stdio/ucrt_fwscanf.c     stdio/ucrt_printf.c         \
   stdio/ucrt_scanf.c         stdio/ucrt_snprintf.c     stdio/ucrt_snwprintf.c     stdio/ucrt_sprintf.c     stdio/ucrt_sscanf.c         \

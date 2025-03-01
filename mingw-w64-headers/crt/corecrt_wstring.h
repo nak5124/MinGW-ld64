@@ -51,9 +51,8 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-  _CRTIMP int                    __cdecl wcsncmp(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount) __NOTHROW __PURE __NONNULL((1, 2));
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control)                 __NOTHROW __PURE __NONNULL((1, 2));
-  _CRTIMP size_t                 __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control)                  __NOTHROW __PURE __NONNULL((1, 2));
+  _CRTIMP int    __cdecl wcsncmp(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount) __NOTHROW __PURE __NONNULL((1, 2));
+  _CRTIMP size_t __cdecl wcsspn(const wchar_t *_Str, const wchar_t *_Control)                  __NOTHROW __PURE __NONNULL((1, 2));
 
   extern wchar_t *__cdecl _wcstok(wchar_t *__restrict _Str, const wchar_t *__restrict _Delim) __NOTHROW __NONNULL((2)) __MINGW_DEPRECATED_SEC_WARN;
 #ifndef __CRT__NO_INLINE
@@ -116,15 +115,33 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int      __cdecl  _wcsnicoll(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount);
   _CRTIMP int      __cdecl  _wcsnicoll_l(const wchar_t *_Str1, const wchar_t *_Str2, size_t _MaxCount, _locale_t _Locale);
 
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch)            __NOTHROW __PURE __NONNULL((1));
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsrchr(const wchar_t *_Str, wchar_t _Ch)           __NOTHROW __PURE __NONNULL((1));
-  _CRTIMP _CONST_RETURN wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr) __NOTHROW __PURE __NONNULL((1, 2));
+#ifdef __CORRECT_ISO_CPP_WCHAR_H_PROTO
+  extern "C++"
+  {
+                  wchar_t *__cdecl wcschr(wchar_t *_Str, wchar_t _Ch)                    __ASM_CALL_NTH(wcschr)  __PURE __NONNULL((1));
+    _CONST_RETURN wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch)              __ASM_CALL_NTH(wcschr)  __PURE __NONNULL((1));
+                  wchar_t *__cdecl wcsrchr(wchar_t *_Str, wchar_t _Ch)                   __ASM_CALL_NTH(wcsrchr) __PURE __NONNULL((1));
+    _CONST_RETURN wchar_t *__cdecl wcsrchr(const wchar_t *_Str, wchar_t _Ch)             __ASM_CALL_NTH(wcsrchr) __PURE __NONNULL((1));
+                  wchar_t *__cdecl wcspbrk(wchar_t *_Str, const wchar_t *_Control)       __ASM_CALL_NTH(wcspbrk) __PURE __NONNULL((1, 2));
+    _CONST_RETURN wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control) __ASM_CALL_NTH(wcspbrk) __PURE __NONNULL((1, 2));
+                  wchar_t *__cdecl wcsstr(wchar_t *_Str, const wchar_t *_SubStr)         __ASM_CALL_NTH(wcsstr)  __PURE __NONNULL((1, 2));
+    _CONST_RETURN wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr)   __ASM_CALL_NTH(wcsstr)  __PURE __NONNULL((1, 2));
+                  wchar_t *__cdecl wcswcs(wchar_t *_Str, const wchar_t *_SubStr)         __ASM_CALL_NTH(wcswcs)  __PURE __NONNULL((1, 2));
+    _CONST_RETURN wchar_t *__cdecl wcswcs(const wchar_t *_Str, const wchar_t *_SubStr)   __ASM_CALL_NTH(wcswcs)  __PURE __NONNULL((1, 2));
+  }
+#else
+  _CRTIMP wchar_t *__cdecl wcschr(const wchar_t *_Str, wchar_t _Ch)              __NOTHROW __PURE __NONNULL((1));
+  _CRTIMP wchar_t *__cdecl wcsrchr(const wchar_t *_Str, wchar_t _Ch)             __NOTHROW __PURE __NONNULL((1));
+  _CRTIMP wchar_t *__cdecl wcspbrk(const wchar_t *_Str, const wchar_t *_Control) __NOTHROW __PURE __NONNULL((1, 2));
+  _CRTIMP wchar_t *__cdecl wcsstr(const wchar_t *_Str, const wchar_t *_SubStr)   __NOTHROW __PURE __NONNULL((1, 2));
+# if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
+  _CRTIMP wchar_t *__cdecl wcswcs(const wchar_t *_Str, const wchar_t *_SubStr)   __NOTHROW __PURE __NONNULL((1, 2));
+# endif
+#endif
+
 
 #if defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_MS)
   _CRTIMP wchar_t *__cdecl wcsdup(const wchar_t *_Str) __NOTHROW __ATTR_MALLOC __ATTR_DEALLOC_FREE __NONNULL((1)) __MINGW_DEPRECATED_MSVC2005;
-#endif
-#if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MS)
-# define wcswcs wcsstr
 #endif
 #ifdef __MINGW_USE_MS
   _CRTIMP int      __cdecl wcsicmp(const wchar_t *_Str1, const wchar_t *_Str2)                    __MINGW_DEPRECATED_MSVC2005;

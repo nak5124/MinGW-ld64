@@ -69,11 +69,20 @@ __MINGW_BEGIN_C_DECLS
     return (!_P || _P->_Wchar == 0);
   }
 
-  _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N)          __NOTHROW __PURE __NONNULL((1));
-  extern int             __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N) __NOTHROW __PURE __NONNULL((1, 2));
-  extern wchar_t        *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
-  extern wchar_t        *__cdecl wmemmove(wchar_t *_S1, const wchar_t *_S2, size_t _N)                      __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
-  extern wchar_t        *__cdecl wmemset(wchar_t *_S, wchar_t _C, size_t _N)                                __NOTHROW __NONNULL((1));
+#ifdef __CORRECT_ISO_CPP_WCHAR_H_PROTO
+  extern "C++"
+  {
+                  wchar_t *__cdecl wmemchr(wchar_t *_S, wchar_t _C, size_t _N)       __ASM_CALL_NTH(wmemchr) __PURE __NONNULL((1));
+    _CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N) __ASM_CALL_NTH(wmemchr) __PURE __NONNULL((1));
+  }
+#else
+   extern wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N) __NOTHROW __PURE __NONNULL((1));
+#endif
+
+  extern int      __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N) __NOTHROW __PURE __NONNULL((1, 2));
+  extern wchar_t *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N) __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  extern wchar_t *__cdecl wmemmove(wchar_t *_S1, const wchar_t *_S2, size_t _N)                      __NOTHROW __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN;
+  extern wchar_t *__cdecl wmemset(wchar_t *_S, wchar_t _C, size_t _N)                                __NOTHROW __NONNULL((1));
 
 #ifndef __CRT__NO_INLINE
 
@@ -86,10 +95,12 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
+#ifndef __cplusplus
+
 #include <intrin.h>
 
   __CRT_INLINE __PURE __NONNULL((1))
-  __NTH_FNC(_CONST_RETURN wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N))
+  __NTH_FNC(wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N))
   {
 #if defined(__aarch64__) || defined(__arm64ec__)
     if(_S)
@@ -98,11 +109,11 @@ __MINGW_BEGIN_C_DECLS
       {
         if (*_S == _C)
         {
-          return (_CONST_RETURN wchar_t *)(_S);
+          return (wchar_t *)(_S);
         }
       }
     }
-    return (_CONST_RETURN wchar_t *)NULL;
+    return (wchar_t *)NULL;
 #else
     size_t         Count = 0;
     unsigned long  Index = 0;
@@ -119,7 +130,7 @@ __MINGW_BEGIN_C_DECLS
         {
           _BitScanForward(&Index, Mask);
           Index >>= 1;
-          return (_CONST_RETURN wchar_t *)&_S[Count + Index];
+          return (wchar_t *)&_S[Count + Index];
         }
         Count += 16;
         S     += 16;
@@ -138,7 +149,7 @@ __MINGW_BEGIN_C_DECLS
         {
           _BitScanForward(&Index, Mask);
           Index >>= 1;
-          return (_CONST_RETURN wchar_t *)&_S[Count + Index];
+          return (wchar_t *)&_S[Count + Index];
         }
         Count += 8;
         S     += 8;
@@ -152,7 +163,7 @@ __MINGW_BEGIN_C_DECLS
         {
           _BitScanForward(&Index, Mask);
           Index >>= 1;
-          return (_CONST_RETURN wchar_t *)&_S[Count + Index];
+          return (wchar_t *)&_S[Count + Index];
         }
         Count += 4;
       }
@@ -161,7 +172,7 @@ __MINGW_BEGIN_C_DECLS
     {
       if(_S[Count] == _C)
       {
-        return (_CONST_RETURN wchar_t *)&_S[Count];
+        return (wchar_t *)&_S[Count];
       }
     }
 
@@ -274,7 +285,9 @@ __MINGW_BEGIN_C_DECLS
     return (_S);
   }
 
-#endif
+#endif  /* __cplusplus */
+
+#endif  /* __CRT__NO_INLINE */
 
 #ifdef __MINGW_USE_GNU
   extern wchar_t *__cdecl wmempcpy(wchar_t *_Dst, const wchar_t *_Src, size_t _Size) __NOTHROW __NONNULL((1, 2));

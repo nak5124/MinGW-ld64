@@ -126,3 +126,5 @@ wchar_t *wcsstr(const wchar_t *restrict h, const wchar_t *restrict n)
 
 	return twoway_wcsstr(h, n);
 }
+
+wchar_t *wcswcs(const wchar_t *restrict h, const wchar_t *restrict n) __ALIAS(wcsstr);

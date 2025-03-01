@@ -7,7 +7,6 @@
 #define _INC_FCNTL
 
 #include <corecrt.h>
-#include <io.h>
 
 #define _O_RDONLY  0x0000
 #define _O_WRONLY  0x0001
@@ -47,5 +46,7 @@
 #define O_SEQUENTIAL _O_SEQUENTIAL
 #define O_RANDOM     _O_RANDOM
 #define O_ACCMODE    _O_ACCMODE
+
+#include <io.h>
 
 #endif  /* _INC_FCNTL */

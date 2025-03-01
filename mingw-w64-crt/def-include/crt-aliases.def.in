@@ -172,6 +172,9 @@ llogb == ilogb
 llogbf == ilogbf
 llogbl == ilogbl
 
+; backward compatibility with drafts of the ISO C
+wcswcs == wcsstr
+
 ; This is list of symbol aliases for POSIX functions
 ADD_DOUBLE_UNDERSCORE(isascii)
 ADD_DOUBLE_UNDERSCORE(toascii)
