@@ -711,7 +711,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl cbrtl(long double _X);
 
 /* 7.12.7.2 The fabs functions: Double in C89 */
-#if defined(__aarch64__) || defined(_ARM64_)
+#ifdef __aarch64__
   _CRTIMP float       __cdecl fabsf(float _X) __CONST;
 #else
   extern  float       __cdecl fabsf(float _X) __CONST;
@@ -719,7 +719,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl fabsl(long double _X) __CONST;
 
 #ifndef __CRT__NO_INLINE
-#if defined(__x86_64__) || defined(_AMD64_)
+#ifdef __x86_64__
   __CRT_INLINE __CONST
   float __cdecl fabsf(float _X)
   {
@@ -901,7 +901,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP float __cdecl _logbf(float _X)                       __NOTHROW;
   _CRTIMP int   __cdecl _finitef(float _X)                     __NOTHROW __CONST;
 
-#if defined(__x86_64__) || defined(_AMD64_)
+#ifdef __x86_64__
   _CRTIMP float __cdecl _nextafterf(float _X, float _Y) __NOTHROW __CONST;
   _CRTIMP int   __cdecl _isnanf(float _X)               __NOTHROW __CONST;
   _CRTIMP int   __cdecl _fpclassf(float _X)             __NOTHROW;

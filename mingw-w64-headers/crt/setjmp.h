@@ -92,7 +92,7 @@ __MINGW_BEGIN_C_DECLS
 #define _setjmp   __intrinsic_setjmpex
 #define _setjmpex __intrinsic_setjmpex
 #ifndef _INC_SETJMPEX
-# if defined(__aarch64__) || defined(_ARM64_)
+# ifdef __aarch64__
 #   define setjmp(BUF) _setjmp((BUF), __builtin_sponentry())
 # else
 #   define setjmp(BUF) _setjmp((BUF), __builtin_frame_address(0))
