@@ -206,49 +206,74 @@
 
 __MINGW_BEGIN_C_DECLS
 
-/*
- * Functions and definitions for controlling the FPU.
- */
+#define _DBL_RADIX   2
+#define _LDBL_RADIX _DBL_RADIX
 
-/* TODO: These constants are only valid for x86 machines */
+#define _SW_INEXACT    0x00000001
+#define _SW_UNDERFLOW  0x00000002
+#define _SW_OVERFLOW   0x00000004
+#define _SW_ZERODIVIDE 0x00000008
+#define _SW_INVALID    0x00000010
+#define _SW_DENORMAL   0x00080000
 
-/* Control word masks for unMask */
-#define _MCW_DN  0x03000000  /* Denormal control */
-#define _MCW_EM  0x0008001F  /* Error masks */
-#define _MCW_IC  0x00040000  /* Infinity */
-#define _MCW_RC  0x00000300  /* Rounding */
-#define _MCW_PC  0x00030000  /* Precision */
+#define _EM_AMBIGUIOUS 0x80000000
+#define _EM_AMBIGUOUS  0x80000000
 
-#ifdef __MINGW_USE_ISOC23
-# ifndef INFINITY
-#   define INFINITY  __builtin_inff()
-# endif
-# ifndef NAN
-#   define NAN       __builtin_nanf("")
-# endif
-#endif
-
-/* Control word values for unNew (use with related unMask above) */
-#define _DN_SAVE       0x00000000
-#define _DN_FLUSH      0x01000000
+/* Interrupt Exception Masks */
+#define _MCW_EM        0x0008001F
+#define _EM_INEXACT    0x00000001
+#define _EM_UNDERFLOW  0x00000002
+#define _EM_OVERFLOW   0x00000004
+#define _EM_ZERODIVIDE 0x00000008
 #define _EM_INVALID    0x00000010
 #define _EM_DENORMAL   0x00080000
-#define _EM_ZERODIVIDE 0x00000008
-#define _EM_OVERFLOW   0x00000004
-#define _EM_UNDERFLOW  0x00000002
-#define _EM_INEXACT    0x00000001
+
+/* Rounding Control */
+#define _MCW_RC  0x00000300
+#define _RC_NEAR 0x00000000
+#define _RC_DOWN 0x00000100
+#define _RC_UP   0x00000200
+#define _RC_CHOP 0x00000300
+
+/* Precision Control */
+#define _MCW_PC 0x00030000
+#define _PC_64  0x00000000
+#define _PC_53  0x00010000
+#define _PC_24  0x00020000
+
+/* Infinity Control */
+#define _MCW_IC        0x00040000
 #define _IC_AFFINE     0x00040000
 #define _IC_PROJECTIVE 0x00000000
-#define _RC_CHOP       0x00000300
-#define _RC_UP         0x00000200
-#define _RC_DOWN       0x00000100
-#define _RC_NEAR       0x00000000
-#define _PC_24         0x00020000
-#define _PC_53         0x00010000
-#define _PC_64         0x00000000
 
-/* These are also defined in Mingw math.h, needed to work around
-   GCC build issues.  */
+/* Denormal Control */
+#define _MCW_DN                         0x03000000
+#define _DN_SAVE                        0x00000000
+#define _DN_FLUSH                       0x01000000
+#define _DN_FLUSH_OPERANDS_SAVE_RESULTS 0x02000000
+#define _DN_SAVE_OPERANDS_FLUSH_RESULTS 0x03000000
+
+/* invalid subconditions (_SW_INVALID also set) */
+#define _SW_UNEMULATED     0x0040  /* Unemulated instruction */
+#define _SW_SQRTNEG        0x0080  /* Square root of a negative number */
+#define _SW_STACKOVERFLOW  0x0200  /* FP stack overflow */
+#define _SW_STACKUNDERFLOW 0x0400  /* FP stack underflow */
+
+/*  Floating point error signals and return codes */
+#define _FPE_INVALID         0x81
+#define _FPE_DENORMAL        0x82
+#define _FPE_ZERODIVIDE      0x83
+#define _FPE_OVERFLOW        0x84
+#define _FPE_UNDERFLOW       0x85
+#define _FPE_INEXACT         0x86
+#define _FPE_UNEMULATED      0x87
+#define _FPE_SQRTNEG         0x88
+#define _FPE_STACKOVERFLOW   0x8a
+#define _FPE_STACKUNDERFLOW  0x8b
+#define _FPE_EXPLICITGEN     0x8c  /* raise(SIGFPE); */
+#define _FPE_MULTIPLE_TRAPS  0x8d
+#define _FPE_MULTIPLE_FAULTS 0x8e
+
 /* Return values for fpclass. */
 #ifndef __MINGW_FPCLASS_DEFINED
 # define __MINGW_FPCLASS_DEFINED 1
@@ -264,65 +289,19 @@ __MINGW_BEGIN_C_DECLS
 # define _FPCLASS_PINF           0x0200  /* Positive Infinity */
 #endif  /* __MINGW_FPCLASS_DEFINED */
 
-#define _SW_INEXACT    0x00000001
-#define _SW_UNDERFLOW  0x00000002
-#define _SW_OVERFLOW   0x00000004
-#define _SW_ZERODIVIDE 0x00000008
-#define _SW_INVALID    0x00000010
-#define _SW_DENORMAL   0x00080000
-
-/* invalid subconditions (_SW_INVALID also set) */
-#define _SW_UNEMULATED     0x0040  /* unemulated instruction */
-#define _SW_SQRTNEG        0x0080  /* square root of a neg number */
-#define _SW_STACKOVERFLOW  0x0200  /* FP stack overflow */
-#define _SW_STACKUNDERFLOW 0x0400  /* FP stack underflow */
-
-/*  Floating point error signals and return codes */
-#define _FPE_INVALID        0x81
-#define _FPE_DENORMAL       0x82
-#define _FPE_ZERODIVIDE     0x83
-#define _FPE_OVERFLOW       0x84
-#define _FPE_UNDERFLOW      0x85
-#define _FPE_INEXACT        0x86
-#define _FPE_UNEMULATED     0x87
-#define _FPE_SQRTNEG        0x88
-#define _FPE_STACKOVERFLOW  0x8a
-#define _FPE_STACKUNDERFLOW 0x8b
-#define _FPE_EXPLICITGEN    0x8c  /* raise( SIGFPE ); */
-
 #define _CW_DEFAULT (_RC_NEAR + _EM_INVALID + _EM_ZERODIVIDE + _EM_OVERFLOW + _EM_UNDERFLOW + _EM_INEXACT + _EM_DENORMAL)
 
-#define CW_DEFAULT _CW_DEFAULT
-#define MCW_PC     _MCW_PC
-#define PC_24      _PC_24
-#define PC_53      _PC_53
-#define PC_64      _PC_64
-
-  /* Set the FPU control word as cw = (cw & ~unMask) | (unNew & unMask),
-   * i.e. change the bits in unMask to have the values they have in unNew,
-   * leaving other bits unchanged. */
+  _CRTIMP unsigned int __cdecl _clearfp(void) __NOTHROW;
   _CRTIMP unsigned int __cdecl _controlfp(unsigned int _NewValue, unsigned int _Mask) __NOTHROW __MINGW_DEPRECATED_SEC_WARN;
+  _CRTIMP void         __cdecl _set_controlfp(unsigned int _NewValue, unsigned int _Mask);
   _CRTIMP errno_t      __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
-  _CRTIMP unsigned int __cdecl _control87(unsigned int _NewValue, unsigned int _Mask) __NOTHROW;
+  _CRTIMP unsigned int __cdecl _statusfp(void) __NOTHROW;
+  /**/    void         __cdecl _fpreset(void)  __NOTHROW;
 
-  _CRTIMP unsigned int __cdecl _clearfp(void)  __NOTHROW;  /* Clear the FPU status word */
-  _CRTIMP unsigned int __cdecl _statusfp(void) __NOTHROW;  /* Report the FPU status word */
 #define _clear87  _clearfp
 #define _status87 _statusfp
 
-  _CRTIMP void __cdecl _set_controlfp(unsigned int _NewValue, unsigned int _Mask);
-
-  /*
-   *  MSVCRT.dll _fpreset initializes the control register to 0x27f,
-   *  the status register to zero and the tag word to 0FFFFh.
-   *  This differs from asm instruction finit/fninit which set control
-   *  word to 0x37f (64 bit mantissa precison rather than 53 bit).
-   *  By default, the mingw version of _fpreset sets fp control as
-   *  per fninit. To use the MSVCRT.dll _fpreset, include CRT_fp8.o when
-   *  building your application.
-   */
-  void __cdecl _fpreset(void) __NOTHROW;
-  void __cdecl  fpreset(void) __NOTHROW;
+  _CRTIMP unsigned int __cdecl _control87(unsigned int _NewValue, unsigned int _Mask) __NOTHROW;
 
   /* Global 'variable' for the current floating point error code. */
   _CRTIMP int *__cdecl __fpecode(void) __NOTHROW;
@@ -330,10 +309,8 @@ __MINGW_BEGIN_C_DECLS
 
   _CRTIMP int __cdecl __fpe_flt_rounds(void);
 
-/*
- * IEEE recommended functions.  MS puts them in float.h
- * but they really belong in math.h.
- */
+#define _DBL_ROUNDS   FLT_ROUNDS
+#define _LDBL_ROUNDS _DBL_ROUNDS
 
 #ifndef _SIGN_DEFINED  /* Also in math.h */
 # define _SIGN_DEFINED
@@ -345,7 +322,7 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int    __cdecl _finite(double _X)                      __NOTHROW __CONST;
   _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW __CONST;
   _CRTIMP int    __cdecl _fpclass(double _X)                     __NOTHROW;
-#if defined(__x86_64__) || defined(_AMD64_)
+#ifdef __x86_64__
   _CRTIMP float  __cdecl _scalbf(float _X, long _Y) __NOTHROW;
 #endif
 
@@ -353,10 +330,82 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP long double __cdecl _chgsignl(long double _X) __NOTHROW;
 #endif  /* _SIGN_DEFINED */
 
+#ifdef __MINGW_USE_MS
+
 #define clear87   _clear87
 #define status87  _status87
 #define control87 _control87
 
+  void __cdecl fpreset(void) __NOTHROW;
+
+#define DBL_RADIX   _DBL_RADIX
+#define DBL_ROUNDS  _DBL_ROUNDS
+#define LDBL_RADIX  _LDBL_RADIX
+#define LDBL_ROUNDS _LDBL_ROUNDS
+
+#define SW_INEXACT    _SW_INEXACT
+#define SW_UNDERFLOW  _SW_UNDERFLOW
+#define SW_OVERFLOW   _SW_OVERFLOW
+#define SW_INVALID    _SW_INVALID
+#define SW_ZERODIVIDE _SW_ZERODIVIDE
+#define SW_DENORMAL   _SW_DENORMAL
+
+#define EM_AMBIGUIOUS _EM_AMBIGUIOUS
+#define EM_AMBIGUOUS  _EM_AMBIGUOUS
+
+#define MCW_EM        _MCW_EM
+#define EM_INEXACT    _EM_INEXACT
+#define EM_UNDERFLOW  _EM_UNDERFLOW
+#define EM_OVERFLOW   _EM_OVERFLOW
+#define EM_ZERODIVIDE _EM_ZERODIVIDE
+#define EM_INVALID    _EM_INVALID
+#define EM_DENORMAL   _EM_DENORMAL
+
+#define MCW_RC  _MCW_RC
+#define RC_NEAR _RC_NEAR
+#define RC_DOWN _RC_DOWN
+#define RC_UP   _RC_UP
+#define RC_CHOP _RC_CHOP
+
+#define MCW_PC _MCW_PC
+#define PC_64  _PC_64
+#define PC_53  _PC_53
+#define PC_24  _PC_24
+
+#define MCW_IC        _MCW_IC
+#define IC_AFFINE     _IC_AFFINE
+#define IC_PROJECTIVE _IC_PROJECTIVE
+
+#define CW_DEFAULT _CW_DEFAULT
+
+#define SW_UNEMULATED     _SW_UNEMULATED
+#define SW_SQRTNEG        _SW_SQRTNEG
+#define SW_STACKOVERFLOW  _SW_STACKOVERFLOW
+#define SW_STACKUNDERFLOW _SW_STACKUNDERFLOW
+
+#define FPE_INVALID        _FPE_INVALID
+#define FPE_DENORMAL       _FPE_DENORMAL
+#define FPE_ZERODIVIDE     _FPE_ZERODIVIDE
+#define FPE_OVERFLOW       _FPE_OVERFLOW
+#define FPE_UNDERFLOW      _FPE_UNDERFLOW
+#define FPE_INEXACT        _FPE_INEXACT
+#define FPE_UNEMULATED     _FPE_UNEMULATED
+#define FPE_SQRTNEG        _FPE_SQRTNEG
+#define FPE_STACKOVERFLOW  _FPE_STACKOVERFLOW
+#define FPE_STACKUNDERFLOW _FPE_STACKUNDERFLOW
+#define FPE_EXPLICITGEN    _FPE_EXPLICITGEN
+
+#endif  /* __MINGW_USE_MS */
+
+#ifdef __MINGW_USE_ISOC23
+# ifndef INFINITY
+#   define INFINITY  __builtin_inff()
+# endif
+# ifndef NAN
+#   define NAN       __builtin_nanf("")
+# endif
+#endif
+
 __MINGW_END_C_DECLS
 
-#endif /* _MINGW_FLOAT_H_ */
+#endif  /* _MINGW_FLOAT_H_ */

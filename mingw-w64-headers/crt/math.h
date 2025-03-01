@@ -242,9 +242,6 @@ __MINGW_BEGIN_C_DECLS
   int __cdecl _matherr(struct _exception *__pexcept);
 #endif
 
-/* These are also declared in Mingw float.h; needed here as well to work
-   around GCC build issues.  */
-/* BEGIN FLOAT.H COPY */
 /*
  * IEEE recommended functions
  */
@@ -258,15 +255,13 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP int    __cdecl _finite(double _X)                      __NOTHROW __CONST;
   _CRTIMP int    __cdecl _isnan(double _X)                       __NOTHROW __CONST;
   _CRTIMP int    __cdecl _fpclass(double _X)                     __NOTHROW;
-#if defined(__x86_64__) || defined(_AMD64_)
+#ifdef __x86_64__
   _CRTIMP float  __cdecl _scalbf(float _X, long _Y) __NOTHROW;
 #endif
 
   _CRTIMP long double __cdecl _copysignl(long double _Number, long double _Sign) __NOTHROW __CONST;
   _CRTIMP long double __cdecl _chgsignl(long double _X) __NOTHROW;
 #endif  /* _SIGN_DEFINED */
-
-/* END FLOAT.H COPY */
 
 #if defined(__MINGW_USE_XOPEN) || defined(__MINGW_USE_MISC) || defined(__MINGW_USE_MS)
 
