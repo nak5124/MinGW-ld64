@@ -95,7 +95,11 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#include <intrin.h>
+#if defined(__x86_64__) && !defined(__arm64ec__)
+# include <x86intrin.h>
+# define __INTRINSIC_GROUP_WCHAR
+# include <psdk_inc/intrin-impl.h>
+#endif
 
 #ifndef __cplusplus
 

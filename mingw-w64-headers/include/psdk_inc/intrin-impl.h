@@ -61,40 +61,30 @@ __INTRINSICS_USEINLINE
 
 #ifdef __MINGW_INTRIN_INLINE
 
-/* Clang has support for MSVC builtins, GCC doesn't */
-#pragma push_macro("__has_builtin")
-#ifndef __has_builtin
-  #define __has_builtin(x) 0
-#endif
-
 /*
  * Macro __INTRINSIC_PROLOG uses non-portable Conditional inclusion
  * (ISO WG14 N2176 (C17) 6.10.1/4). Avoid gcc 7+ -Wexpansion-to-defined
  * warning enabled by -W or -Wextra option.
  * In Clang, this warning is enabled by -pedantic.
  */
-#if defined(__GNUC__) && (__GNUC__ >= 7 || defined(__clang__))
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wexpansion-to-defined"
-#endif
 
 /* These macros are used by the routines below.  While this file may be included
    multiple times, these macros only need to be defined once. */
 #ifndef _INTRIN_MAC_
 #define _INTRIN_MAC_
 
-/* GCC v6 added support for outputting flags.  This allows better code to be
-   produced for a number of intrinsics. */
 #ifndef __GCC_ASM_FLAG_OUTPUTS__
-#define __FLAGCONSTRAINT "=qm"
-#define __FLAGSET "\n\tsetc %[old]"
-#define __FLAGCLOBBER1 , "cc"
-#define __FLAGCLOBBER2 "cc"
+# define __FLAGCONSTRAINT "=qm"
+# define __FLAGSET        "\n\tsetc %[old]"
+# define __FLAGCLOBBER1 , "cc"
+# define __FLAGCLOBBER2   "cc"
 #else
-#define __FLAGCONSTRAINT "=@ccc"
-#define __FLAGSET
-#define __FLAGCLOBBER1
-#define __FLAGCLOBBER2
+# define __FLAGCONSTRAINT "=@ccc"
+# define __FLAGSET
+# define __FLAGCLOBBER1
+# define __FLAGCLOBBER2
 #endif
 
 /* This macro is used by __stosb, __stosw, __stosd, __stosq */
@@ -544,7 +534,7 @@ supports ReadWriteBarrier, map all 3 to do the same. */
 #define __INTRINSIC_SPECIAL__mul128
 #define __INTRINSIC_SPECIAL__umul128
 
-#endif /* __INTRINSIC_GROUP_WINNT */
+#endif  /* __INTRINSIC_GROUP_WINNT */
 
 #ifdef __INTRINSIC_GROUP_WINBASE
 #undef __INTRINSIC_GROUP_WINBASE /* Remove this for efficiency if intrin-impl.h is included again */
@@ -566,7 +556,18 @@ supports ReadWriteBarrier, map all 3 to do the same. */
 #define __INTRINSIC_SPECIAL__InterlockedExchangeAdd64
 #define __INTRINSIC_SPECIAL__InterlockedCompareExchange64
 
-#endif /* __INTRINSIC_GROUP_WINBASE */
+#endif  /* __INTRINSIC_GROUP_WINBASE */
+
+#ifdef __INTRINSIC_GROUP_WCHAR
+#undef __INTRINSIC_GROUP_WCHAR /* Remove this for efficiency if intrin-impl.h is included again */
+
+/* Note that this gets undefined at the end of this file */
+#define __INTRINSIC_ONLYSPECIAL
+
+#define __INTRINSIC_SPECIAL__BitScanForward
+#define __INTRINSIC_SPECIAL__BitScanForward64
+
+#endif  /* __INTRINSIC_GROUP_WCHAR */
 
 /* To add an additional group, put the #ifdef and definitions here. */
 
@@ -2049,10 +2050,6 @@ unsigned __int64 _xgetbv(unsigned int index)
 #undef __FLAGCLOBBER1
 #undef __FLAGCLOBBER2
 
-#if defined(__GNUC__) && (__GNUC__ >= 7 || defined(__clang__))
 #pragma GCC diagnostic pop
-#endif
-
-#pragma pop_macro("__has_builtin")
 
 #endif /* __MINGW_INTRIN_INLINE */

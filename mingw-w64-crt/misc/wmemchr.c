@@ -6,7 +6,11 @@
 
 #define __CRT__NO_INLINE
 #include <wchar.h>
-#include <intrin.h>
+#if defined(__x86_64__) && !defined(__arm64ec__)
+# include <x86intrin.h>
+# define __INTRINSIC_GROUP_WCHAR
+# include <psdk_inc/intrin-impl.h>
+#endif
 
 wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N)
 {
