@@ -30,7 +30,31 @@ __MINGW_BEGIN_C_DECLS
 #ifdef __MINGW_USE_SECAPI
   _CRTIMP errno_t __cdecl memmove_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _SrcSize);
 #endif
-  _CRTIMP _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __NOTHROW __PURE __NONNULL((1));
+
+#ifdef __CORRECT_ISO_CPP_STRING_H_PROTO
+  extern "C++"
+  {
+                  void *__cdecl memchr(void *_Buf, int _Val, size_t _MaxCount)       __ASM_CALL_NTH(memchr) __PURE __NONNULL((1));
+    _CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __ASM_CALL_NTH(memchr) __PURE __NONNULL((1));
+
+# ifdef __OPTIMIZE__
+  __extern_always_inline
+  __NTH_FNC(void *__cdecl memchr(void *_Buf, int _Val, size_t _MaxCount))
+  {
+    return __builtin_memchr(_Buf, _Val, _MaxCount);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount))
+  {
+    return __builtin_memchr(_Buf, _Val, _MaxCount);
+  }
+# endif
+  }
+#else
+  _CRTIMP void *__cdecl memchr(const void *_Buf, int _Val, size_t _MaxCount) __NOTHROW __PURE __NONNULL((1));
+#endif
+
   _CRTIMP int   __cdecl memcmp(const void *_Buf1, const void *_Buf2, size_t _Size)         __NOTHROW __PURE __NONNULL((1, 2));
   _CRTIMP void *__cdecl memset(void *_Dst, int _Val, size_t _Size)                         __NOTHROW __NONNULL((1));
 

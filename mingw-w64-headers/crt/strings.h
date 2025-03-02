@@ -27,8 +27,45 @@
   }
 #endif
 
+#ifdef __CORRECT_ISO_CPP_STRINGS_H_PROTO
+  extern "C++"
+  {
+                  char *__cdecl index(char *_S, int _C)        __ASM_CALL_NTH(index)  __PURE __NONNULL((1));
+    _CONST_RETURN char *__cdecl index(const char *_S, int _C)  __ASM_CALL_NTH(index)  __PURE __NONNULL((1));
+                  char *__cdecl rindex(char *_S, int _C)       __ASM_CALL_NTH(rindex) __PURE __NONNULL((1));
+    _CONST_RETURN char *__cdecl rindex(const char *_S, int _C) __ASM_CALL_NTH(rindex) __PURE __NONNULL((1));
+
+# ifdef __OPTIMIZE__
+  __extern_always_inline
+  __NTH_FNC(char *__cdecl index(char *_S, int _C))
+  {
+    return __builtin_index(_S, _C);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN char *__cdecl index(const char *_S, int _C))
+  {
+    return __builtin_index(_S, _C);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(char *__cdecl rindex(char *_S, int _C))
+  {
+    return __builtin_rindex(_S, _C);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN char *__cdecl rindex(const char *_S, int _C))
+  {
+    return __builtin_rindex(_S, _C);
+  }
+# endif
+  }
+#else
   char *__cdecl index(const char *_S, int _C)  __NOTHROW __PURE __NONNULL((1));
   char *__cdecl rindex(const char *_S, int _C) __NOTHROW __PURE __NONNULL((1));
+#endif
+
 #endif  /* defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) */
 
 #if defined(__MINGW_USE_MISC) || !defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_XOPEN2K8XSI)

@@ -95,9 +95,9 @@ __MINGW_BEGIN_C_DECLS
   }
 #endif
 
-#ifndef __cplusplus
-
 #include <intrin.h>
+
+#ifndef __cplusplus
 
   __CRT_INLINE __PURE __NONNULL((1))
   __NTH_FNC(wchar_t *__cdecl wmemchr(const wchar_t *_S, wchar_t _C, size_t _N))
@@ -179,6 +179,8 @@ __MINGW_BEGIN_C_DECLS
     return NULL;
 #endif
   }
+
+#endif  /* __cplusplus */
 
   __CRT_INLINE __PURE __NONNULL((1, 2))
   __NTH_FNC(int __cdecl wmemcmp(const wchar_t *_S1, const wchar_t *_S2, size_t _N))
@@ -284,8 +286,6 @@ __MINGW_BEGIN_C_DECLS
     }
     return (_S);
   }
-
-#endif  /* __cplusplus */
 
 #endif  /* __CRT__NO_INLINE */
 

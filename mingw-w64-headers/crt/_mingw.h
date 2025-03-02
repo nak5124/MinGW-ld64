@@ -264,6 +264,9 @@
 #define __always_inline __attribute__((__always_inline__))
 #define __gnu_inline    __attribute__((__gnu_inline__))
 
+#define __extern_inline        extern __inline __gnu_inline
+#define __extern_always_inline __extern_inline __always_inline
+
 #undef __mingw_ovr
 #ifdef __cplusplus
 # define __mingw_ovr inline __cdecl
@@ -283,7 +286,7 @@
 #endif
 
 #ifndef __MINGW_INTRIN_INLINE
-# define __MINGW_INTRIN_INLINE extern __inline __always_inline __gnu_inline
+# define __MINGW_INTRIN_INLINE __extern_always_inline
 #endif
 
 #ifdef __NO_INLINE__
@@ -294,7 +297,7 @@
 #ifdef __cplusplus
 # define __forceinline inline __always_inline
 #else
-# define __forceinline extern __inline __always_inline __gnu_inline
+# define __forceinline __extern_always_inline
 #endif
 
 /* Enable workaround for ABI incompatibility on affected platforms */
@@ -440,6 +443,8 @@
 #     define  _CONST_RETURN const
 #     define  _CRT_CONST_CORRECT_OVERLOADS
 #     define __CORRECT_ISO_CPP_WCHAR_H_PROTO
+#     define __CORRECT_ISO_CPP_STRING_H_PROTO
+#     define __CORRECT_ISO_CPP_STRINGS_H_PROTO
 #   else
 #     define _CONST_RETURN
 #   endif

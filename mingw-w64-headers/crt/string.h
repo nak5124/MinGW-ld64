@@ -87,7 +87,29 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP char               *__cdecl _strnset(char *_Str, int _Val, size_t _MaxCount) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t             __cdecl _strnset_s(char *_Str, size_t _Size, int _Val, size_t _MaxCount);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, _strnset_s, char, _Str, int, _Val, size_t, _MaxCount)
-  _CRTIMP _CONST_RETURN char *__cdecl  strpbrk(const char *_Str, const char *_Control) __NOTHROW __PURE __NONNULL((1, 2));
+#ifdef __CORRECT_ISO_CPP_STRING_H_PROTO
+  extern "C++"
+  {
+                  char *__cdecl strpbrk(char *_Str, const char *_Control)       __ASM_CALL_NTH(strpbrk) __PURE __NONNULL((1, 2));
+    _CONST_RETURN char *__cdecl strpbrk(const char *_Str, const char *_Control) __ASM_CALL_NTH(strpbrk) __PURE __NONNULL((1, 2));
+
+# ifdef __OPTIMIZE__
+  __extern_always_inline
+  __NTH_FNC(char *__cdecl strpbrk(char *_Str, const char *_Control))
+  {
+    return __builtin_strpbrk(_Str, _Control);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN char *__cdecl strpbrk(const char *_Str, const char *_Control))
+  {
+    return __builtin_strpbrk(_Str, _Control);
+  }
+# endif
+  }
+#else
+  _CRTIMP char               *__cdecl  strpbrk(const char *_Str, const char *_Control) __NOTHROW __PURE __NONNULL((1, 2));
+#endif
   _CRTIMP char               *__cdecl _strrev(char *_Str);
   _CRTIMP char               *__cdecl _strset(char *_Str, int _Val) __MINGW_DEPRECATED_SEC_WARN;
   _CRTIMP errno_t             __cdecl _strset_s(char *_Dst, size_t _DstSize, int _Value);
@@ -103,9 +125,59 @@ __MINGW_BEGIN_C_DECLS
   _CRTIMP size_t              __cdecl _strxfrm_l(char *__restrict _Dst, const char *__restrict _Src, size_t _MaxCount, _locale_t _Locale)
     __NOTHROW __NONNULL((2, 4)) __ATTR_ACCESS((__write_only__, 1, 3));
 
-  _CRTIMP _CONST_RETURN char *__cdecl strchr(const char *_Str, int _Val)            __NOTHROW __PURE __NONNULL((1));
-  _CRTIMP _CONST_RETURN char *__cdecl strrchr(const char *_Str, int _Ch)            __NOTHROW __PURE __NONNULL((1));
-  _CRTIMP _CONST_RETURN char *__cdecl strstr(const char *_Str, const char *_SubStr) __NOTHROW __PURE __NONNULL((1, 2));
+#ifdef __CORRECT_ISO_CPP_STRING_H_PROTO
+  extern "C++"
+  {
+                  char *__cdecl strchr(char *_Str, int _Val)                  __ASM_CALL_NTH(strchr)  __PURE __NONNULL((1));
+    _CONST_RETURN char *__cdecl strchr(const char *_Str, int _Val)            __ASM_CALL_NTH(strchr)  __PURE __NONNULL((1));
+                  char *__cdecl strrchr(char *_Str, int _Ch)                  __ASM_CALL_NTH(strrchr) __PURE __NONNULL((1));
+    _CONST_RETURN char *__cdecl strrchr(const char *_Str, int _Ch)            __ASM_CALL_NTH(strrchr) __PURE __NONNULL((1));
+                  char *__cdecl strstr(char *_Str, const char *_SubStr)       __ASM_CALL_NTH(strstr)  __PURE __NONNULL((1, 2));
+    _CONST_RETURN char *__cdecl strstr(const char *_Str, const char *_SubStr) __ASM_CALL_NTH(strstr)  __PURE __NONNULL((1, 2));
+
+# ifdef __OPTIMIZE__
+  __extern_always_inline
+  __NTH_FNC(char *__cdecl strchr(char *_Str, int _Val))
+  {
+    return __builtin_strchr(_Str, _Val);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN char *__cdecl strchr(const char *_Str, int _Val))
+  {
+    return __builtin_strchr(_Str, _Val);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(char *__cdecl strrchr(char *_Str, int _Ch))
+  {
+    return __builtin_strrchr(_Str, _Ch);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN char *__cdecl strrchr(const char *_Str, int _Ch))
+  {
+    return __builtin_strrchr(_Str, _Ch);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(char *__cdecl strstr(char *_Str, const char *_SubStr))
+  {
+    return __builtin_strstr(_Str, _SubStr);
+  }
+
+  __extern_always_inline
+  __NTH_FNC(_CONST_RETURN char *__cdecl strstr(const char *_Str, const char *_SubStr))
+  {
+    return __builtin_strstr(_Str, _SubStr);
+  }
+# endif
+  }
+#else
+  _CRTIMP char *__cdecl strchr(const char *_Str, int _Val)            __NOTHROW __PURE __NONNULL((1));
+  _CRTIMP char *__cdecl strrchr(const char *_Str, int _Ch)            __NOTHROW __PURE __NONNULL((1));
+  _CRTIMP char *__cdecl strstr(const char *_Str, const char *_SubStr) __NOTHROW __PURE __NONNULL((1, 2));
+#endif
 
 #if defined(__MINGW_USE_ISOC23) || defined(__MINGW_USE_XOPEN_EXT) || defined(__MINGW_USE_XOPEN2K8) || defined(__MINGW_USE_LIB_EXT2) || defined(__MINGW_USE_MS)
 # pragma push_macro("strdup")
@@ -133,9 +205,19 @@ __MINGW_BEGIN_C_DECLS
 #endif
 
 #ifdef __MINGW_USE_MISC
-  extern void   *__cdecl mempcpy(void *__restrict _Dest, const void *__restrict _Source, size_t _Size) __NOTHROW __NONNULL((1, 2));
-  extern char   *__cdecl strchrnul(const char *_S, int _C)                      __NOTHROW __PURE __NONNULL((1));
-  extern char   *__cdecl strcasestr(const char *_Haystack, const char *_Needle) __NOTHROW __PURE __NONNULL((1, 2));
+  extern void *__cdecl mempcpy(void *__restrict _Dest, const void *__restrict _Source, size_t _Size) __NOTHROW __NONNULL((1, 2));
+#ifdef __CORRECT_ISO_CPP_STRING_H_PROTO
+  extern "C++"
+  {
+                  char *__cdecl strchrnul(char *_S, int _C)                            __ASM_CALL_NTH(strchrnul)  __PURE __NONNULL((1));
+    _CONST_RETURN char *__cdecl strchrnul(const char *_S, int _C)                      __ASM_CALL_NTH(strchrnul)  __PURE __NONNULL((1));
+                  char *__cdecl strcasestr(char *_Haystack, const char *_Needle)       __ASM_CALL_NTH(strcasestr) __PURE __NONNULL((1, 2));
+    _CONST_RETURN char *__cdecl strcasestr(const char *_Haystack, const char *_Needle) __ASM_CALL_NTH(strcasestr) __PURE __NONNULL((1, 2));
+  }
+#else
+  extern char *__cdecl strchrnul(const char *_S, int _C)                      __NOTHROW __PURE __NONNULL((1));
+  extern char *__cdecl strcasestr(const char *_Haystack, const char *_Needle) __NOTHROW __PURE __NONNULL((1, 2));
+#endif
 #endif
 
 #if defined(__MINGW_USE_MISC) || defined(__MINGW_USE_XOPEN2K24)
@@ -167,7 +249,15 @@ __MINGW_BEGIN_C_DECLS
     })                                                       \
   )
 
-  extern void *__cdecl memrchr(const void *_S, int _C, size_t _N)   __NOTHROW __PURE __NONNULL((1)) __ATTR_ACCESS((__read_only__, 1, 3));
+#ifdef __CORRECT_ISO_CPP_STRING_H_PROTO
+  extern "C++"
+  {
+                  void *__cdecl memrchr(void *_S, int _C, size_t _N)       __ASM_CALL_NTH(memrchr)   __PURE __NONNULL((1)) __ATTR_ACCESS((__read_only__, 1, 3));
+    _CONST_RETURN void *__cdecl memrchr(const void *_S, int _C, size_t _N) __ASM_CALL_NTH(memrchr)   __PURE __NONNULL((1)) __ATTR_ACCESS((__read_only__, 1, 3));
+  }
+#else
+  extern void *__cdecl memrchr(const void *_S, int _C, size_t _N) __NOTHROW __PURE __NONNULL((1)) __ATTR_ACCESS((__read_only__, 1, 3));
+#endif
   extern int   __cdecl strverscmp(const char *_S1, const char *_S2) __NOTHROW __PURE __NONNULL((1, 2));
 #endif
 
