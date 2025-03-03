@@ -10,6 +10,11 @@
 # include <x86intrin.h>
 # define __INTRINSIC_GROUP_WCHAR
 # include <psdk_inc/intrin-impl.h>
+# ifdef __clang__
+#   pragma clang attribute __attribute__((target("avx2"))) apply_to=function
+# else
+#   pragma GCC target("avx2")
+# endif
 #endif
 
 int __cdecl wmemcmp(const wchar_t *_S1,const wchar_t *_S2,size_t _N)

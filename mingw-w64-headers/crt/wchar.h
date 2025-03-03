@@ -99,6 +99,12 @@ __MINGW_BEGIN_C_DECLS
 # include <x86intrin.h>
 # define __INTRINSIC_GROUP_WCHAR
 # include <psdk_inc/intrin-impl.h>
+# ifdef __clang__
+#   pragma clang attribute push (__attribute__((target("avx2"))), apply_to=function)
+# else
+#   pragma GCC push_options
+#   pragma GCC target("avx2")
+# endif
 #endif
 
 #ifndef __cplusplus
@@ -267,6 +273,14 @@ __MINGW_BEGIN_C_DECLS
     return 0;
 #endif
   }
+
+#if defined(__x86_64__) && !defined(__arm64ec__)
+# ifdef __clang__
+#   pragma clang attribute pop
+# else
+#   pragma GCC pop_options
+# endif
+#endif
 
   __CRT_INLINE __NONNULL((1, 2)) __MINGW_DEPRECATED_SEC_WARN
   __NTH_FNC(wchar_t *__cdecl wmemcpy(wchar_t *__restrict _S1, const wchar_t *__restrict _S2, size_t _N))
