@@ -7,7 +7,8 @@ else
 endif
 
 AM_CPPFLAGS=$(sysincludes)
-AM_CFLAGS=-pipe -std=gnu23 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
+# GCC bug: If SSE4.1 instruction is enabled, -frounding-math does not work.
+AM_CFLAGS=-pipe -std=gnu23 -fno-finite-math-only -frounding-math -fsignaling-nans -mno-sse4.1 -D_CRTBLD -D_WIN32_WINNT=0x0A00 @IMAGEBASE_CFLAGS@ @CFGUARD_CFLAGS@ @ADD_C_CXX_WARNING_FLAGS@ @ADD_C_ONLY_WARNING_FLAGS@
 AM_CXXFLAGS=@ADD_C_CXX_WARNING_FLAGS@
 CPPFLAGSARM64=
 CPPFLAGS64=-m64 -masm=att
